@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: verify high-risk AI-system conformity using the Article 43 conformity-assessment procedures
   norm_text: Notified bodies shall verify the conformity of high-risk AI systems in accordance with the
@@ -40,7 +39,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: avoid unnecessary provider burdens and account for provider size, sector, structure, and system
     complexity to minimise administrative burdens and compliance costs, particularly for micro and small
@@ -84,7 +82,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: preserve the rigor and protection required for the high-risk system's compliance with the Regulation
   norm_text: The notified body shall, nevertheless, respect the degree of rigour and the level of protection
@@ -119,7 +116,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: make available and submit all relevant documentation to the Article 28 notifying authority upon
     request

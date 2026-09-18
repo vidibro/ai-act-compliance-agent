@@ -7,7 +7,6 @@ records:
   action: make offered compliance commitments binding and declare no further grounds for action
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -24,7 +23,6 @@ records:
   action: reopen proceedings on request or initiative for a listed change breach or information defect
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   mandatory_content:
@@ -48,7 +46,6 @@ records:
   action: reject commitments unable to ensure effective compliance through a reasoned concluding decision
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

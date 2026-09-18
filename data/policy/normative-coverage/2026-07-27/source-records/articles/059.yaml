@@ -5,7 +5,6 @@ records:
   action: process lawfully collected personal data for sandbox development, training, and testing only for that purpose and only when every enacted condition is met
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions: [the personal data were lawfully collected for other purposes, processing occurs in an AI regulatory sandbox, every Article 59(1) condition is met]
@@ -23,7 +22,6 @@ records:
   action: develop the sandbox AI system to safeguard substantial public interest in at least one enacted field
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   conditions:
   - operator: all_of
@@ -50,7 +48,6 @@ records:
   action: process personal data only where necessary for a Chapter III Section 2 requirement that non-personal alternatives cannot effectively fulfil
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   conditions: [anonymised synthetic or other non-personal data cannot effectively fulfil the applicable requirement]
   implementation_refs: [AIA-PP-A59-P1]
@@ -62,7 +59,6 @@ records:
   action: maintain effective mechanisms to identify high data-subject risks, promptly mitigate them, and stop processing where necessary
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   mandatory_content: [effective high-risk monitoring, prompt risk response and mitigation, processing stoppage where necessary]
   implementation_refs: [AIA-PP-A59-P1]
@@ -74,7 +70,6 @@ records:
   action: keep sandbox personal data in a functionally separate isolated protected environment under provider control with access limited to authorised persons
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   implementation_refs: [AIA-PP-A59-P1]
   verification_mode: reported_conditionally
@@ -85,7 +80,6 @@ records:
   action: share originally collected data only under Union data-protection law and never share sandbox-created personal data outside the sandbox
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: [AIA-PO-A59-P1-E]
   verification_mode: reported_conditionally
@@ -96,7 +90,6 @@ records:
   action: prevent sandbox personal-data processing from producing measures or decisions affecting data subjects or impairing their Union-law rights
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   implementation_refs: [AIA-PP-A59-P1]
   verification_mode: reported_conditionally
@@ -107,7 +100,6 @@ records:
   action: protect sandbox personal data with appropriate technical and organisational measures and delete it at sandbox exit or retention-period expiry
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   implementation_refs: [AIA-PP-A59-P1]
   verification_mode: reported_conditionally
@@ -118,7 +110,6 @@ records:
   action: keep sandbox personal-data processing logs throughout participation unless Union or national law provides otherwise
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   implementation_refs: [AIA-PP-A59-P1]
   verification_mode: reported_conditionally
@@ -129,7 +120,6 @@ records:
   action: include a complete detailed description and rationale for training testing and validation together with testing results in the Annex IV technical documentation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   mandatory_content: [process and rationale for training testing and validation, testing results]
   implementation_refs: [AIA-PP-A59-P1]
@@ -141,7 +131,6 @@ records:
   action: publish a short project summary with objectives and expected results on the competent-authority website while excluding protected sensitive operational data
   actors:
   - actor_ref: sandbox_participant
-    category: supported_operator
   targets: []
   mandatory_content: [AI project summary, project objectives, expected results]
   exceptions: [sensitive operational data of law-enforcement border-control immigration or asylum authorities]
@@ -154,7 +143,6 @@ records:
   action: base law-enforcement sandbox personal-data processing on specific Union or national law and satisfy every Article 59(1) condition
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   conditions: [processing serves the enacted criminal-justice or public-security purposes, processing is under law-enforcement authority control and responsibility]
   product_scope: outside_supported_actor
@@ -167,8 +155,7 @@ records:
   quote: Paragraph 1 is without prejudice to Union or national law which excludes processing of personal data for other purposes than those explicitly mentioned in that law, as well as to Union or national law laying down the basis for the processing of personal data which is necessary for the purpose of developing, testing or training of innovative AI systems or any other legal basis, in compliance with Union law on the protection of personal data.
   action: preserve applicable Union and national restrictions and alternative lawful bases for innovative-AI personal-data processing
   actors:
-  - actor_ref: sandbox_personal_data_processor
-    category: supported_operator
+  - actor_ref: sandbox_participant
   targets: []
   kind: legal_consequence
   product_scope: no_product_action

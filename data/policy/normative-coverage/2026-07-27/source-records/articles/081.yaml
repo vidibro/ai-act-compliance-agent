@@ -12,7 +12,6 @@ records:
     national measure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -41,7 +40,6 @@ records:
     non-compliance
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -56,7 +54,6 @@ records:
   action: notify the decision to the market surveillance authority of the Member State concerned
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -71,7 +68,6 @@ records:
   action: inform all other market surveillance authorities of the decision
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -88,7 +84,6 @@ records:
     measure is justified
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -104,7 +99,6 @@ records:
   action: withdraw an unjustified national measure and inform the Commission
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -123,7 +117,6 @@ records:
     standards or common specifications
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: applicability
   product_scope: outside_supported_actor

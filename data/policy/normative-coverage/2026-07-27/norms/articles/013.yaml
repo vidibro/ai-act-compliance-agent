@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: design and develop the high-risk AI system so its operation is sufficiently transparent for
     deployers to interpret its output and use it appropriately
@@ -44,7 +43,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure a type and degree of transparency appropriate for provider and deployer compliance with
     Section 3
@@ -82,7 +80,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: accompany the high-risk AI system with instructions for use in an appropriate digital or other
     format containing concise, complete, correct, clear, relevant, accessible, and comprehensible information
@@ -128,7 +125,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "include the provider\u2019s identity and contact details and, where applicable, those of its\
     \ authorised representative in the instructions"
@@ -167,7 +163,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "include the system\u2019s characteristics, capabilities, and performance limitations in the\
     \ instructions"
@@ -205,7 +200,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "include the system\u2019s intended purpose in the instructions"
   norm_text: its intended purpose
@@ -243,7 +237,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include tested, validated, and expected accuracy levels and metrics, robustness and cybersecurity,
     plus known and foreseeable circumstances that may affect that expected performance
@@ -288,7 +281,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include known or foreseeable intended-use or misuse circumstances that may create health, safety,
     or fundamental-rights risks
@@ -330,7 +322,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include technical capabilities and characteristics relevant to explaining system outputs
   norm_text: where applicable, the technical capabilities and characteristics of the high-risk AI system
@@ -370,7 +361,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include performance concerning specific persons or groups on which the system is intended to
     be used
@@ -411,7 +401,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include input-data specifications or other relevant information about the training, validation,
     and testing datasets used
@@ -453,7 +442,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include information enabling deployers to interpret system outputs and use them appropriately
   norm_text: where applicable, information to enable deployers to interpret the output of the high-risk
@@ -493,7 +481,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include system and performance changes predetermined at the initial conformity assessment
   norm_text: the changes to the high-risk AI system and its performance which have been pre-determined
@@ -532,7 +519,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include the Article 14 human-oversight measures, including technical measures facilitating deployer
     interpretation of high-risk AI-system outputs, in the instructions
@@ -573,7 +559,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include the needed computational and hardware resources, expected system lifetime, and necessary
     maintenance and care measures, their frequency, and software-update needs for proper functioning
@@ -616,7 +601,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: describe relevant system mechanisms that let deployers properly collect, store, and interpret
     Article 12 logs

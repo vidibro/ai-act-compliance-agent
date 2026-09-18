@@ -478,62 +478,117 @@ _PROHIBITED_APPLIES_FROM: dict[ProhibitedPractice, date] = {
 }
 
 
+class ActorCategory(StrEnum):
+    """Fixed legal class of an actor role; never authored per norm."""
+
+    SUPPORTED_OPERATOR = "supported_operator"
+    EXTERNAL_PRIVATE_PARTY = "external_private_party"
+    NATURAL_PERSON = "natural_person"
+    UNION_INSTITUTION_OR_BODY = "union_institution_or_body"
+    MEMBER_STATE = "member_state"
+    PUBLIC_AUTHORITY = "public_authority"
+    NOTIFIED_OR_CONFORMITY_BODY = "notified_or_conformity_body"
+    UNRESOLVED = "unresolved"
+
+
 class ActorRole(StrEnum):
-    """Art. 2(1), Art. 3. Obligations attach to the ROLE, not to the organisation.
-    One organisation may hold several roles and must be assessed separately for each."""
+    """Closed list of actual AI Act actors; qualifications are norm conditions or targets."""
 
-    PROVIDER = "provider"
-    """Art. 3(3). Develops the system, or has it developed, and places it on the market /
-    puts it into service under its own name or trademark. Bears the heaviest obligations."""
+    def __new__(cls, value: str, category: ActorCategory):
+        member = str.__new__(cls, value)
+        member._value_ = value
+        member.category = category
+        return member
 
-    PROSPECTIVE_PROVIDER = "prospective_provider"
-    """A person or organisation preparing to become a provider through an AI regulatory sandbox.
+    PROVIDER = ("provider", ActorCategory.SUPPORTED_OPERATOR)
+    PROSPECTIVE_PROVIDER = ("prospective_provider", ActorCategory.SUPPORTED_OPERATOR)
+    INITIAL_PROVIDER = ("initial_provider", ActorCategory.SUPPORTED_OPERATOR)
+    SANDBOX_PARTICIPANT = ("sandbox_participant", ActorCategory.SUPPORTED_OPERATOR)
+    DEPLOYER = ("deployer", ActorCategory.SUPPORTED_OPERATOR)
+    IMPORTER = ("importer", ActorCategory.SUPPORTED_OPERATOR)
+    DISTRIBUTOR = ("distributor", ActorCategory.SUPPORTED_OPERATOR)
+    AUTHORISED_REPRESENTATIVE = ("authorised_representative", ActorCategory.SUPPORTED_OPERATOR)
+    PRODUCT_MANUFACTURER = ("product_manufacturer", ActorCategory.SUPPORTED_OPERATOR)
+    OPERATOR = ("operator", ActorCategory.SUPPORTED_OPERATOR)
+    GPAI_PROVIDER = ("gpai_provider", ActorCategory.SUPPORTED_OPERATOR)
+    THIRD_PARTY_SUPPLIER = ("third_party_supplier", ActorCategory.EXTERNAL_PRIVATE_PARTY)
+    CERTIFICATE_HOLDER = ("certificate_holder", ActorCategory.EXTERNAL_PRIVATE_PARTY)
+    INTERMEDIARY_SERVICE_PROVIDER = (
+        "intermediary_service_provider",
+        ActorCategory.EXTERNAL_PRIVATE_PARTY,
+    )
+    NATURAL_OR_LEGAL_PERSON = ("natural_or_legal_person", ActorCategory.EXTERNAL_PRIVATE_PARTY)
+    AFFECTED_PERSON = ("affected_person", ActorCategory.NATURAL_PERSON)
+    TESTING_SUBJECT = ("testing_subject", ActorCategory.NATURAL_PERSON)
+    LEGAL_REPRESENTATIVE = ("legal_representative", ActorCategory.EXTERNAL_PRIVATE_PARTY)
+    ADVISORY_FORUM = ("advisory_forum", ActorCategory.UNION_INSTITUTION_OR_BODY)
+    AI_OFFICE = ("ai_office", ActorCategory.UNION_INSTITUTION_OR_BODY)
+    BOARD = ("board", ActorCategory.UNION_INSTITUTION_OR_BODY)
+    COMMISSION = ("commission", ActorCategory.UNION_INSTITUTION_OR_BODY)
+    COUNCIL = ("council", ActorCategory.UNION_INSTITUTION_OR_BODY)
+    COURT_OF_JUSTICE_OF_THE_EUROPEAN_UNION = (
+        "court_of_justice_of_the_european_union",
+        ActorCategory.UNION_INSTITUTION_OR_BODY,
+    )
+    EUROPEAN_DATA_PROTECTION_SUPERVISOR = (
+        "european_data_protection_supervisor",
+        ActorCategory.UNION_INSTITUTION_OR_BODY,
+    )
+    EUROPEAN_PARLIAMENT = ("european_parliament", ActorCategory.UNION_INSTITUTION_OR_BODY)
+    SCIENTIFIC_PANEL = ("scientific_panel", ActorCategory.UNION_INSTITUTION_OR_BODY)
+    UNION_INSTITUTION_OR_BODY = (
+        "union_institution_or_body",
+        ActorCategory.UNION_INSTITUTION_OR_BODY,
+    )
+    MEMBER_STATE = ("member_state", ActorCategory.MEMBER_STATE)
+    PUBLIC_AUTHORITY = ("public_authority", ActorCategory.PUBLIC_AUTHORITY)
+    NATIONAL_COMPETENT_AUTHORITY = ("national_competent_authority", ActorCategory.PUBLIC_AUTHORITY)
+    NOTIFYING_AUTHORITY = ("notifying_authority", ActorCategory.PUBLIC_AUTHORITY)
+    MARKET_SURVEILLANCE_AUTHORITY = (
+        "market_surveillance_authority",
+        ActorCategory.PUBLIC_AUTHORITY,
+    )
+    FUNDAMENTAL_RIGHTS_AUTHORITY = ("fundamental_rights_authority", ActorCategory.PUBLIC_AUTHORITY)
+    DATA_PROTECTION_AUTHORITY = ("data_protection_authority", ActorCategory.PUBLIC_AUTHORITY)
+    LAW_ENFORCEMENT_AUTHORITY = ("law_enforcement_authority", ActorCategory.PUBLIC_AUTHORITY)
+    CIVIL_PROTECTION_AUTHORITY = ("civil_protection_authority", ActorCategory.PUBLIC_AUTHORITY)
+    JUDICIAL_AUTHORITY = ("judicial_authority", ActorCategory.PUBLIC_AUTHORITY)
+    INDEPENDENT_ADMINISTRATIVE_AUTHORITY = (
+        "independent_administrative_authority",
+        ActorCategory.PUBLIC_AUTHORITY,
+    )
+    CONFORMITY_ASSESSMENT_BODY = (
+        "conformity_assessment_body",
+        ActorCategory.NOTIFIED_OR_CONFORMITY_BODY,
+    )
+    CONFORMITY_ASSESSMENT_BODY_PERSONNEL = (
+        "conformity_assessment_body_personnel",
+        ActorCategory.NOTIFIED_OR_CONFORMITY_BODY,
+    )
+    NOTIFIED_BODY = ("notified_body", ActorCategory.NOTIFIED_OR_CONFORMITY_BODY)
+    STANDARDISATION_PARTICIPANT = (
+        "standardisation_participant",
+        ActorCategory.EXTERNAL_PRIVATE_PARTY,
+    )
+    CONCERNED_PARTY = ("concerned_party", ActorCategory.EXTERNAL_PRIVATE_PARTY)
+    GPAI_PROVIDER_CLIENT = ("gpai_provider_client", ActorCategory.EXTERNAL_PRIVATE_PARTY)
 
-    This is not a second Art. 3(3) provider status. Articles 58–59 address the party before market
-    placement, and assigning those conditional sandbox duties to ``provider`` would name the wrong
-    duty-holder in the report.
-    """
+    @property
+    def is_report_actor(self) -> bool:
+        return self in REPORT_ACTOR_ROLES
 
-    INITIAL_PROVIDER = "initial_provider"
-    """Art. 25(2). The party that placed the system on the market BEFORE Art. 25 moved the provider
-    role to someone else — and which, on that paragraph's own words, "shall no longer be considered
-    to be a provider of that specific AI system".
 
-    A role of its own because the duty runs the wrong way to sit anywhere else. Art. 25(2) leaves
-    this party owing a cooperation duty — supply the information, technical access and assistance
-    the new provider needs, in particular for the conformity assessment — and attaching that to
-    PROVIDER would put it on the organisation that has just taken the role ON, which is the exact
-    reverse of who owes it. `Finding.role` exists to stop that kind of mis-attribution; naming the
-    role is how it is stopped here.
-
-    It holds exactly one rule, and holds it only where a reallocation actually occurred. A high-risk
-    system whose provider never changed has no initial provider distinct from its provider, so the
-    role is selected for and comes back empty."""
-
-    SANDBOX_PARTICIPANT = "sandbox_participant"
-    """A participant in an AI regulatory sandbox where the Act assigns the duty to the participant.
-
-    It remains distinct from the provider: an Article 59 condition can bind the participant who
-    develops the sandbox project even before that party becomes the system's provider.
-    """
-
-    DEPLOYER = "deployer"
-    """Art. 3(4). Uses the system under its own authority in a professional capacity.
-    Distinct, lighter obligation set (Art. 26) — out of scope for v0.1."""
-
-    IMPORTER = "importer"
-    """Art. 3(6). Established in the EU, places on the market a system bearing the name or
-    trademark of a third-country entity."""
-
-    DISTRIBUTOR = "distributor"
-    """Art. 3(7). In the supply chain, other than provider or importer, makes the system
-    available on the EU market."""
-
-    AUTHORISED_REPRESENTATIVE = "authorised_representative"
-    """Art. 3(5). Mandated by a third-country provider to act on its behalf in the EU."""
-
-    PRODUCT_MANUFACTURER = "product_manufacturer"
-    """Places a product on the market together with an AI system, under its own name."""
+REPORT_ACTOR_ROLES: tuple[ActorRole, ...] = (
+    ActorRole.PROVIDER,
+    ActorRole.PROSPECTIVE_PROVIDER,
+    ActorRole.INITIAL_PROVIDER,
+    ActorRole.SANDBOX_PARTICIPANT,
+    ActorRole.DEPLOYER,
+    ActorRole.IMPORTER,
+    ActorRole.DISTRIBUTOR,
+    ActorRole.AUTHORISED_REPRESENTATIVE,
+    ActorRole.PRODUCT_MANUFACTURER,
+)
 
 
 class TransparencyDuty(StrEnum):

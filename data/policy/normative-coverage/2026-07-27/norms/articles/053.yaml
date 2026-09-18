@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up and keep current model technical documentation covering training, testing and evaluation,
     containing at least the Annex XI information, for provision on request to the AI Office and national
@@ -52,7 +51,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up, keep current, and make available information and documentation to providers intending
     to integrate the model into their AI systems
@@ -91,7 +89,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: observe and protect intellectual-property rights, confidential business information, and trade
     secrets when providing downstream documentation
@@ -131,7 +128,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: enable downstream providers to understand model capabilities and limitations and comply with
     the Regulation
@@ -170,7 +166,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include at least all Annex XII elements in the downstream information and documentation
   norm_text: contain, at a minimum, the elements set out in Annex XII
@@ -208,7 +203,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: put in place a policy for compliance with Union copyright and related-rights law
   norm_text: put in place a policy to comply with Union law on copyright and related rights
@@ -245,7 +239,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: identify and comply through state-of-the-art technologies with Article 4(3) rights reservations
   norm_text: identify and comply with, including through state-of-the-art technologies, a reservation
@@ -283,7 +276,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up and publish a sufficiently detailed AI-Office-template summary of model training content
   norm_text: draw up and make publicly available a sufficiently detailed summary about the content used
@@ -321,7 +313,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: disapply Article 53(1)(a) and (b) where every enacted free-and-open-source condition is met
   norm_text: The obligations set out in paragraph 1, points (a) and (b), shall not apply to providers
@@ -364,7 +355,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: restore Article 53(1)(a) and (b) obligations for general-purpose AI models with systemic risk
   norm_text: This exception shall not apply to general-purpose AI models with systemic risks.
@@ -403,7 +393,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: cooperate as necessary with the Commission and national competent authorities exercising regulatory
     powers
@@ -442,7 +431,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: rely on Article 56 codes of practice to demonstrate Article 53(1) compliance until a harmonised
     standard is published
@@ -481,7 +469,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: presume conformity to the extent a European harmonised standard covers the Article 53 obligations
   norm_text: Compliance with European harmonised standards grants providers the presumption of conformity
@@ -518,7 +505,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: demonstrate alternative adequate means of compliance for Commission assessment
   norm_text: Providers of general-purpose AI models who do not adhere to an approved code of practice
@@ -557,7 +543,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97 delegated acts detailing measurement and calculation methodologies for comparable,
     verifiable Annex XI documentation
@@ -593,7 +578,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97(2) delegated acts amending Annexes XI and XII for technological developments
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97(2) to amend
@@ -627,8 +611,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: downstream_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: treat Article 53 information and documentation, including trade secrets, under Article 78 confidentiality
     obligations

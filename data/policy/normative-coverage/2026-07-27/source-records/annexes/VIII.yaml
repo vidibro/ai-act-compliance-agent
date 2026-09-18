@@ -7,7 +7,6 @@ records:
     law-enforcement, migration, asylum and border-control systems, and entry 13 is optional
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A71-2
@@ -25,7 +24,6 @@ records:
     apply only where their enacted condition is met
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-NHR-A71-2
@@ -38,7 +36,6 @@ records:
   action: submit and maintain the Section C deployer registration information
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-DP-A71-3

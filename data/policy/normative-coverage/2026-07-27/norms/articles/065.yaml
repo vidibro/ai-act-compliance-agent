@@ -4,8 +4,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: union_legislature
-    category: union_institution_or_body
+  - actor_ref: european_parliament
+  - actor_ref: council
   targets: []
   action: establish the European Artificial Intelligence Board
   norm_text: "A European Artificial Intelligence Board (the \u2018 Board \u2019) is hereby established."
@@ -39,7 +39,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   action: compose the Board of one representative per Member State
   norm_text: The Board shall be composed of one representative per Member State.
@@ -73,7 +72,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: participate in the Board as observer
   norm_text: The European Data Protection Supervisor shall participate as observer.
@@ -107,7 +105,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: attend Board meetings without voting
   norm_text: "The AI Office shall also attend the Board\u2019s meetings, without taking part in the votes."
@@ -141,7 +138,6 @@ norms:
   kind: power
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   action: invite relevant national or Union authorities bodies or experts to Board meetings case by case
   norm_text: Other national and Union authorities, bodies or experts may be invited to the meetings by
@@ -177,7 +173,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: designate the Board representative for a three-year term renewable once
   norm_text: Each representative shall be designated by their Member State for a period of three years,
@@ -212,7 +207,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: ensure Board representatives possess every enacted competence contact-point and coordination
     capability
@@ -253,8 +247,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: board_member_state_representatives
-    category: union_institution_or_body
+  - actor_ref: board
   targets: []
   action: adopt by two-thirds majority rules covering Chair selection mandate and tasks voting and Board
     and subgroup organisation
@@ -298,7 +291,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   action: establish standing market-surveillance and notifying-authority cooperation subgroups
   norm_text: The Board shall establish two standing sub-groups to provide a platform for cooperation and
@@ -335,8 +327,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: market_surveillance_standing_subgroup
-    category: union_institution_or_body
+  - actor_ref: board
   targets: []
   action: act as the Regulation's Article 30 administrative cooperation group
   norm_text: The standing sub-group for market surveillance should act as the administrative cooperation
@@ -370,7 +361,6 @@ norms:
   kind: power
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   action: establish other issue-specific subgroups and invite appropriate advisory-forum observers
   norm_text: The Board may establish other standing or temporary sub-groups as appropriate for the purpose
@@ -406,7 +396,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   action: organise and operate the Board to safeguard objectivity and impartiality
   norm_text: The Board shall be organised and operated so as to safeguard the objectivity and impartiality
@@ -441,7 +430,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   action: select a Member State representative to chair the Board
   norm_text: The Board shall be chaired by one of the representatives of the Member States.
@@ -475,7 +463,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: provide the secretariat for the Board
   norm_text: The AI Office shall provide the secretariat for the Board
@@ -509,7 +496,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: convene the Board's meetings upon request of the Chair
   norm_text: convene the meetings upon request of the Chair
@@ -543,7 +529,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: prepare the agenda in accordance with the Board's tasks under this Regulation and its rules
     of procedure

@@ -7,7 +7,6 @@ records:
     and keep it up to date
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-HR-A11
@@ -26,7 +25,6 @@ records:
     competent authorities and notified bodies the clear, comprehensive information needed to assess compliance
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-HR-A11
@@ -41,7 +39,6 @@ records:
   action: include every applicable Annex IV element
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-HR-A11
@@ -54,7 +51,6 @@ records:
   action: use the simplified-documentation option
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:
@@ -72,7 +68,6 @@ records:
     and SMCs
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -87,7 +82,6 @@ records:
   action: use the Commission form when taking the simplified-documentation option
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-HR-A11
@@ -101,7 +95,6 @@ records:
   action: accept the simplified form for conformity assessment
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -119,7 +112,6 @@ records:
     information required by the applicable Annex I Section A legislation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the high-risk AI system relates to a product covered by Union harmonisation legislation listed in
@@ -138,7 +130,6 @@ records:
     to preserve all information needed to assess Section 2 compliance
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions:

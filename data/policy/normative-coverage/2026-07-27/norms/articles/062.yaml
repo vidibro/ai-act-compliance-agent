@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: undertake every enacted sandbox access, awareness, communication and standardisation action
     for SMEs, start-ups, deployers, innovators and relevant authorities
@@ -45,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: provide priority AI regulatory sandbox access to SMEs and start-ups with a registered office
     or branch in the Union
@@ -85,7 +83,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: keep the priority access from precluding other SMEs and start-ups from sandbox access
   norm_text: the priority access shall not preclude other SMEs, including start-ups, other than those
@@ -125,7 +122,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: organise awareness-raising and training activities on applying this Regulation, tailored to
     the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
@@ -162,7 +158,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: utilise existing dedicated channels to advise SMEs, start-ups, deployers, other innovators and,
     as appropriate, local public authorities and answer their implementation queries, including on sandbox
@@ -199,7 +194,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: establish new communication channels for that advice and query response
   norm_text: where appropriate, establish new ones for communication with SMEs including start-ups, deployers,
@@ -237,7 +231,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: facilitate SME and other relevant stakeholder participation in the standardisation development
     process
@@ -273,8 +266,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: conformity_assessment_fee_setter
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment
     fees
@@ -314,7 +306,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: undertake every enacted template, information platform, awareness and procurement best-practice
     action
@@ -354,7 +345,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: provide standardised templates for the areas covered by this Regulation
   norm_text: provide standardised templates for areas covered by this Regulation, as specified by the
@@ -391,7 +381,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: develop and maintain a single information platform giving all operators across the Union easy-to-use
     information on this Regulation
@@ -428,7 +417,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: organise appropriate communication campaigns raising awareness of the obligations arising from
     this Regulation
@@ -465,7 +453,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
   norm_text: evaluate and promote the convergence of best practices in public procurement procedures in

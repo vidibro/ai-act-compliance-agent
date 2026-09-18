@@ -6,7 +6,6 @@ records:
   action: establish and document a risk-proportionate post-market monitoring system
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A72
@@ -25,7 +24,6 @@ records:
     continuous compliance while excluding protected law-enforcement data
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   mandatory_content:
   - active systematic lifetime data collection documentation and analysis
@@ -43,7 +41,6 @@ records:
   action: base the post-market monitoring system on a post-market monitoring plan
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A72
@@ -57,7 +54,6 @@ records:
     IV
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A72
@@ -70,7 +66,6 @@ records:
   action: adopt Board-informed plan guidance and a template by 2 September 2027
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -89,7 +84,6 @@ records:
     protection is achieved
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:

@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: fundamental_rights_authority
-    category: public_authority
   targets: []
   action: request and electronically access necessary authority-held information in accessible machine-readable
     form within the body's mandate
@@ -47,7 +46,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: grant necessary information access without undue delay including by obtaining it from a provider
     or deployer
@@ -85,8 +83,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: market_surveillance_and_fundamental_rights_authorities
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: fundamental_rights_authority
   targets: []
   action: cooperate closely exchange necessary information and provide mutual assistance while respecting
     respective mandates and independence
@@ -123,7 +121,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: identify the paragraph 1 public authorities or bodies and make a list of them publicly available
     by 2 November 2024
@@ -161,7 +158,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: notify the list to the Commission and other Member States and keep it up to date
   norm_text: Member States shall notify the list to the Commission and to the other Member States, and
@@ -198,7 +194,6 @@ norms:
   kind: power
   actors:
   - actor_ref: fundamental_rights_authority
-    category: public_authority
   targets: []
   action: make a reasoned technical-testing request when documentation cannot establish a fundamental-rights
     infringement
@@ -238,7 +233,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: organise requested technical testing within a reasonable time with close requesting-body involvement
   norm_text: The market surveillance authority shall organise the testing with the close involvement of
@@ -273,7 +267,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: fundamental_rights_authority
-    category: public_authority
   targets: []
   action: treat information and documentation obtained under Article 77 according to Article 78 confidentiality
   norm_text: Any information or documentation obtained by the national public authorities or bodies referred

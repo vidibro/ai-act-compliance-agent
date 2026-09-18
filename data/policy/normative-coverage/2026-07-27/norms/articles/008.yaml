@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure high-risk AI systems comply with the Section 2 requirements while considering intended
     purpose and the generally acknowledged state of the art
@@ -43,7 +42,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: take the Article 9 risk-management system into account when ensuring compliance with the Section
     2 requirements
@@ -81,7 +79,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure a product containing an AI system fully complies with every applicable requirement under
     the relevant Union harmonisation legislation
@@ -123,7 +120,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: integrate AI testing, reporting, information, and documentation into existing product documentation
     and procedures required by Annex I Section A legislation

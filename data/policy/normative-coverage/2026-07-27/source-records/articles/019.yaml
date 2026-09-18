@@ -7,7 +7,6 @@ records:
     s control"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - "the automatically generated logs are under the provider\u2019s control"
@@ -24,7 +23,6 @@ records:
     least six months"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - "the automatically generated logs are under the provider\u2019s control"
@@ -43,8 +41,7 @@ records:
   action: maintain automatically generated high-risk-system logs within documentation kept under applicable
     Union financial-services law
   actors:
-  - actor_ref: financial_institution_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   conditions:
   - the provider is a financial institution subject to internal-governance requirements under Union financial-services

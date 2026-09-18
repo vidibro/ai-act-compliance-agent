@@ -14,6 +14,7 @@ from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import (
+    ActorCategory,
     ActorRole,
     DeployerType,
     OpenSourceRelease,
@@ -24,7 +25,6 @@ from aiact.schemas.enums import (
     TransparencyDuty,
     Verdict,
 )
-from aiact.schemas.norm import ActorCategory
 from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRuleset
 from aiact.schemas.question import EVIDENCE_QUOTE_MAX, REASONING_MAX, Answer, Confidence
 
@@ -56,6 +56,7 @@ DISCLAIMER = (
     "Article 25 moved nothing. Any organisation to which one of those circumstances applies owes "
     "the provider obligations set out in this report, whatever role the documentation gives it."
 )
+
 
 def _systemic_risk_note(risk: SystemicRisk | None) -> str:
     """What the Art. 51 answer settles, in the reader's own terms."""
@@ -174,13 +175,13 @@ class CriterionFinding(BaseModel):
 def aggregate_criteria(criteria: list[CriterionFinding]) -> Verdict:
     """The rule verdict its criteria allow. Only mandatory criteria count, and none is outvoted.
 
-      any gap or inadequate  -> failing: GAP when no mandatory criterion was addressed at all
-                                (none passed or was thin), otherwise INADEQUATE — the rule's
-                                content exists and falls short
-      else any needs_review  -> NEEDS_REVIEW
-      all pass               -> PASS
-      all not_applicable     -> NOT_APPLICABLE (the rule was not judged)
-      pass mixed with n/a    -> NEEDS_REVIEW: a mandatory criterion went unjudged"""
+    any gap or inadequate  -> failing: GAP when no mandatory criterion was addressed at all
+                              (none passed or was thin), otherwise INADEQUATE — the rule's
+                              content exists and falls short
+    else any needs_review  -> NEEDS_REVIEW
+    all pass               -> PASS
+    all not_applicable     -> NOT_APPLICABLE (the rule was not judged)
+    pass mixed with n/a    -> NEEDS_REVIEW: a mandatory criterion went unjudged"""
     verdicts = [criterion.verdict for criterion in criteria if criterion.mandatory]
     if not verdicts:
         raise ValueError("an aggregate rule needs at least one mandatory criterion")
@@ -484,9 +485,7 @@ class ComplianceReport(BaseModel):
         worth saying out loud — every Chapter V rule below carries `effective_date: 2025-08-02`,
         and a provider reading that date against a model it shipped in 2024 would conclude it is
         two years in breach."""
-        if not any(
-            uc.risk_class is RiskClass.GPAI_MODEL for uc in self.classification.use_cases
-        ):
+        if not any(uc.risk_class is RiskClass.GPAI_MODEL for uc in self.classification.use_cases):
             return None
         return (
             "IF THIS MODEL WAS PLACED ON THE MARKET BEFORE 2 AUGUST 2025, the Chapter V dates "

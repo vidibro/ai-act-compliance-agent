@@ -8,7 +8,6 @@ records:
     compliance
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -23,7 +22,6 @@ records:
   action: initiate structured dialogue with the GPAI provider before an information request
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -40,7 +38,6 @@ records:
     request
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -61,7 +58,6 @@ records:
     101 fines in an information request
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - legal basis and purpose
@@ -79,8 +75,8 @@ records:
     information requested.
   action: supply information requested by the Commission
   actors:
-  - actor_ref: gpai_provider_or_representative
-    category: supported_operator
+  - actor_ref: gpai_provider
+  - actor_ref: authorised_representative
   targets: []
   conditions:
   - the Commission issued a request for information under Article 91(1) or Article 91(3)
@@ -95,8 +91,7 @@ records:
     requested on behalf of the provider of the general-purpose AI model concerned.
   action: supply requested information on behalf of a legal-person or non-legal-personality GPAI provider
   actors:
-  - actor_ref: legally_or_statutorily_authorised_representative
-    category: external_private_party
+  - actor_ref: legal_representative
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -113,8 +108,7 @@ records:
   quote: Lawyers duly authorised to act may supply information on behalf of their clients.
   action: supply the requested information on behalf of a client
   actors:
-  - actor_ref: duly_authorised_lawyer
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -129,7 +123,6 @@ records:
   action: remain fully responsible for information a lawyer supplied on the client's behalf
   actors:
   - actor_ref: gpai_provider_client
-    category: supported_operator
   targets: []
   kind: legal_consequence
   conditions:

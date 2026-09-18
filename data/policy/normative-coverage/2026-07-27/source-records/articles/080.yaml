@@ -9,7 +9,6 @@ records:
     guidelines
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -29,7 +28,6 @@ records:
   action: require necessary compliance and corrective action without undue delay within a prescribed period
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -48,7 +46,6 @@ records:
     required provider action
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -66,7 +63,6 @@ records:
     and obligations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A20
@@ -80,7 +76,6 @@ records:
   action: incur Article 99 fines for failure to comply within the prescribed period
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -99,7 +94,6 @@ records:
     market
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A20
@@ -111,7 +105,6 @@ records:
   action: apply Article 79(5) to (9) escalation after inadequate provider correction
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -129,7 +122,6 @@ records:
     III Section 2
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -150,7 +142,6 @@ records:
   action: perform appropriate classification checks with particular account taken of EU database information
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor

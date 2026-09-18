@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: provide a qualified alert when there is reason to suspect a concrete identifiable Union-level
     risk or Article 51 systemic-risk conditions
@@ -49,8 +48,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: commission_through_ai_office
-    category: union_institution_or_body
+  - actor_ref: commission
   targets: []
   action: after informing the Board exercise Section powers to assess a qualified alert
   norm_text: Upon such qualified alert, the Commission, through the AI Office and after having informed
@@ -87,7 +85,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: inform the Board of every measure under Articles 91 to 94
   norm_text: The AI Office shall inform the Board of any measure according to Articles 91 to 94.
@@ -121,7 +118,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: duly reason and include the minimum required information in a qualified alert
   norm_text: A qualified alert shall be duly reasoned and indicate at least

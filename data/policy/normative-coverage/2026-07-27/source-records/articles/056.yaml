@@ -8,7 +8,6 @@ records:
     international approaches
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -21,8 +20,8 @@ records:
     obligations provided for in Articles 53 and 55, including the following issues
   action: aim to ensure codes cover Articles 53 and 55 and every listed implementation issue
   actors:
-  - actor_ref: ai_office_and_board
-    category: union_institution_or_body
+  - actor_ref: ai_office
+  - actor_ref: board
   targets: []
   mandatory_content:
   - keeping Article 53(1)(a) and (b) information current
@@ -47,8 +46,8 @@ records:
   action: make code measures proportionate and responsive to severity, probability, and AI-value-chain
     emergence challenges
   actors:
-  - actor_ref: ai_office_and_board
-    category: union_institution_or_body
+  - actor_ref: ai_office
+  - actor_ref: board
   targets: []
   mandatory_content:
   - risk proportionality
@@ -66,7 +65,6 @@ records:
   action: invite general-purpose-model providers and relevant national authorities to draw up codes
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -80,8 +78,7 @@ records:
     providers and independent experts, may support the process.
   action: support the code-drawing process
   actors:
-  - actor_ref: relevant_stakeholder
-    category: external_private_party
+  - actor_ref: standardisation_participant
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -99,8 +96,8 @@ records:
     to achieve them, and account for the needs and interests of all interested parties, including affected
     persons
   actors:
-  - actor_ref: ai_office_and_board
-    category: union_institution_or_body
+  - actor_ref: ai_office
+  - actor_ref: board
   targets: []
   mandatory_content:
   - specific objectives
@@ -123,7 +120,6 @@ records:
     indicators
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -137,7 +133,6 @@ records:
   action: make indicators and reporting commitments reflect participant size and capacity differences
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -151,8 +146,8 @@ records:
     Regulation.
   action: regularly monitor and evaluate participant achievement and codes' contribution to proper application
   actors:
-  - actor_ref: commission_and_board
-    category: union_institution_or_body
+  - actor_ref: commission
+  - actor_ref: board
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -166,7 +161,6 @@ records:
   action: assess Article 53 and 55 coverage while taking utmost account of the Board's opinion
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -179,7 +173,6 @@ records:
   action: regularly monitor and evaluate achievement of code objectives
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -192,7 +185,6 @@ records:
   action: publish the assessment of code adequacy
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -206,7 +198,6 @@ records:
   action: invite all general-purpose-model providers to adhere to codes of practice
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -223,7 +214,6 @@ records:
     full code
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   product_scope: no_product_action
@@ -238,7 +228,6 @@ records:
   action: encourage and facilitate review and adaptation of codes in light of emerging standards
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -251,7 +240,6 @@ records:
   action: assist assessment of available standards
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -264,7 +252,6 @@ records:
   action: ensure codes of practice are ready by 2 May 2025
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -278,7 +265,6 @@ records:
   action: take necessary steps toward timely codes, including inviting providers under paragraph 7
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -293,7 +279,6 @@ records:
   action: adopt implementing acts providing common Article 53 and 55 implementation rules
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions:
@@ -310,7 +295,6 @@ records:
   action: adopt fallback common-rule acts under the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions:
   - the Commission exercises the Article 56(9) implementing power

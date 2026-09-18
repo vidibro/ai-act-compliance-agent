@@ -10,8 +10,7 @@ records:
   action: perform a fundamental-rights impact assessment containing all six required elements before deploying
     the qualifying Annex III system
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions: &id001
   - the system is high-risk under Article 6(2) and is not intended for Annex III point 2
@@ -40,8 +39,7 @@ records:
   quote: The obligation laid down in paragraph 1 applies to the first use of the high-risk AI system.
   action: apply the fundamental-rights assessment duty to the system's first use
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: applicability
   conditions: *id001
@@ -56,8 +54,7 @@ records:
     or existing impact assessments carried out by provider.
   action: rely in similar cases on a prior fundamental-rights assessment or an existing provider assessment
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: permission
   conditions:
@@ -74,8 +71,7 @@ records:
   action: update the fundamental-rights assessment information when a required element changes or becomes
     outdated
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - during use, the deployer considers a paragraph 1 element changed or no longer current
@@ -91,8 +87,7 @@ records:
   action: notify the market-surveillance authority of the assessment results using the completed paragraph
     5 template
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the Article 27(1) assessment has been performed
@@ -108,8 +103,7 @@ records:
   quote: In the case referred to in Article 46(1), deployers may be exempt from that obligation to notify.
   action: exempt the deployer from the result-notification duty in an Article 46(1) case
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: permission
   conditions:
@@ -127,8 +121,7 @@ records:
     protection impact assessment or include relevant parts thereof in the fundamental rights impact assessment.
   action: cross-reference or incorporate relevant DPIA sections when they already meet an Article 27 obligation
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: permission
   conditions:
@@ -145,7 +138,6 @@ records:
     compliance
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -160,7 +152,6 @@ records:
   action: make the template support relevant DPIA cross-references and incorporated sections
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   conditions:
   - DPIA reuse under Article 27(4) is relevant

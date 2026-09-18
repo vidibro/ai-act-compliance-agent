@@ -8,7 +8,6 @@ records:
     30(2) tool
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -22,7 +21,6 @@ records:
   action: apply the Articles 29 and 30 procedures to notification-scope extensions
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -37,7 +35,6 @@ records:
   action: apply paragraphs 3 to 9 to notification changes other than scope extensions
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -54,7 +51,6 @@ records:
     least one year ahead when planned
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -87,8 +83,7 @@ records:
     by the end of that nine-month-period before issuing new certificates for those systems.
   action: complete a full assessment within nine months before issuing replacement certificates
   actors:
-  - actor_ref: assuming_notified_body
-    category: notified_or_conformity_body
+  - actor_ref: notified_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -101,7 +96,6 @@ records:
   action: withdraw the designation when the notified body has ceased activity
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -119,7 +113,6 @@ records:
     utmost diligence
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -136,7 +129,6 @@ records:
   action: inform the notified body of the objections raised
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -152,7 +144,6 @@ records:
   action: receive an opportunity to make its views on the objections known
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: entitlement
   product_scope: outside_supported_actor
@@ -172,7 +163,6 @@ records:
     failure
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -188,7 +178,6 @@ records:
   action: immediately inform the Commission and other Member States of the designation measure
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -204,7 +193,6 @@ records:
   action: inform affected providers within 10 days of restriction, suspension, or withdrawal of designation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -222,7 +210,6 @@ records:
     on request to other Member States' notifying authorities and market-surveillance authorities
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -241,7 +228,6 @@ records:
   action: assess the impact of the designation change on certificates issued by the notified body
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -260,7 +246,6 @@ records:
     designation change
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -280,7 +265,6 @@ records:
     period
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -299,7 +283,6 @@ records:
     withdrawn
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -319,7 +302,6 @@ records:
     required to be suspended or withdrawn
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -338,7 +320,6 @@ records:
     risk
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -397,7 +378,6 @@ records:
     certificate monitoring and responsibility
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_mode: missing
   verification_mode: reported_conditionally
@@ -436,7 +416,6 @@ records:
   action: extend provisional certificate validity in three-month periods up to a total of 12 months
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -452,10 +431,8 @@ records:
   action: immediately inform the Commission, other Member States, and other notified bodies of the replacement
     arrangement
   actors:
-  - actor_ref: competent_authority
-    category: public_authority
-  - actor_ref: assuming_notified_body
-    category: notified_or_conformity_body
+  - actor_ref: national_competent_authority
+  - actor_ref: notified_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for these addressees.

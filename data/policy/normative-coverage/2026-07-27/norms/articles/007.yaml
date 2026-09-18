@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97 delegated acts adding or modifying Annex III high-risk use cases when both
     statutory conditions are fulfilled
@@ -48,7 +47,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: take every Article 7(2) criterion into account when assessing whether an Annex III amendment
     meets Article 7(1)(b)
@@ -147,7 +145,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97 delegated acts removing Annex III high-risk use cases when both statutory conditions
     are fulfilled

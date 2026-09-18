@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: establish and effectively implement effective proportionate and dissuasive infringement penalties
     and enforcement measures
@@ -46,7 +45,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: account for SME start-up and SMC interests and economic viability when imposing penalties
   norm_text: The Member States shall take into account the interests of SMEs, including start-ups, and
@@ -81,7 +79,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: notify the Commission of the paragraph 1 rules on penalties and other enforcement measures,
     without delay and at the latest by the date of entry into application, and notify it without delay
@@ -121,8 +118,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: infringing_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: expose Article 5 prohibited-practice non-compliance to a fine up to EUR 35 000 000 or, for an
     undertaking, 7 % of preceding-year worldwide annual turnover, whichever is higher
@@ -259,8 +255,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: cap SME and start-up fines at the lower applicable percentage or amount
   norm_text: In the case of SMEs, including start-ups, each fine referred to in this Article shall be
@@ -296,8 +291,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: cap SMC fines under paragraphs 4 and 5 at the lower applicable percentage or amount
   norm_text: In the case of SMCs, each fine referred to in paragraphs 4 and 5 shall be up to the percentages
@@ -333,8 +327,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: consider all relevant circumstances and the specified factors when deciding whether and how
     much to fine
@@ -390,7 +383,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: establish the extent to which administrative fines apply to domestic public authorities and
     bodies
@@ -427,7 +419,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: ensure court-imposed or other-body-imposed fine rules have equivalent effect
   norm_text: Depending on the legal system of the Member States, the rules on administrative fines may
@@ -465,8 +456,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: exercise Article 99 powers subject to effective remedies due process and other appropriate safeguards
   norm_text: The exercise of powers under this Article shall be subject to appropriate procedural safeguards
@@ -501,7 +491,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: report annually to the Commission on Article 99 fines and related proceedings
   norm_text: Member States shall, on an annual basis, report to the Commission about the administrative

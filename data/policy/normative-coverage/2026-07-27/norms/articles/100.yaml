@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: impose administrative fines on in-scope Union institutions bodies offices and agencies after
     considering all relevant circumstances and specified factors
@@ -59,8 +58,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: infringing_union_institution_or_body
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: expose Union-body Article 5 non-compliance to a fine up to EUR 1500000
   norm_text: Non-compliance with the prohibition of the AI practices referred to in Article 5 shall be
@@ -97,8 +95,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: infringing_union_institution_or_body
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: expose other Union-body AI Act non-compliance to a fine up to EUR 750000
   norm_text: The non-compliance of the AI system with any requirements or obligations under this Regulation,
@@ -136,7 +133,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: give the Union institution, body, office or agency subject to the proceedings the opportunity
     of being heard on the possible infringement before taking a decision
@@ -175,7 +171,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: base the decision only on elements and circumstances on which the parties concerned have been
     able to comment
@@ -211,7 +206,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: associate any complainants closely with the proceedings
   norm_text: Complainants, if any, shall be associated closely with the proceedings.
@@ -246,7 +240,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: fully respect the rights of defence of the parties concerned in the proceedings
   norm_text: The rights of defence of the parties concerned shall be fully respected in the proceedings.
@@ -279,8 +272,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
-  - actor_ref: party_concerned_in_article_100_proceedings
-    category: union_institution_or_body
+  - actor_ref: concerned_party
   targets: []
   action: have access to the European Data Protection Supervisor's file
   norm_text: "They shall be entitled to have access to the European Data Protection Supervisor\u2019s\
@@ -318,8 +310,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: union_budget_and_enforcement_framework
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: contribute the funds collected by imposing Article 100 fines to the general budget of the Union
   norm_text: Funds collected by imposition of fines in this Article shall contribute to the general budget
@@ -354,8 +345,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: union_budget_and_enforcement_framework
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: keep the fines from affecting the effective operation of the Union institution, body, office
     or agency fined
@@ -392,7 +382,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: notify the Commission annually of Article 100 fines and initiated proceedings
   norm_text: The European Data Protection Supervisor shall, on an annual basis, notify the Commission

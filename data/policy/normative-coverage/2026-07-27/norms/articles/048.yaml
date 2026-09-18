@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: apply the Regulation 765/2008 Article 30 general principles to the CE marking
   norm_text: The CE marking shall be subject to the general principles set out in Article 30 of Regulation
@@ -41,7 +40,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use an easily accessible digital CE marking for digitally provided high-risk systems
   norm_text: For high-risk AI systems provided digitally, a digital CE marking shall be used, only if
@@ -81,7 +79,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: affix the CE marking visibly, legibly, and indelibly, using packaging or accompanying documentation
     only where system affixing is impossible or unwarranted
@@ -120,7 +117,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: place the responsible notified body's identification number after the CE marking where applicable
   norm_text: Where applicable, the CE marking shall be followed by the identification number of the notified
@@ -158,7 +154,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: have the notified-body number affixed by the body or, under its instructions, by the provider
     or authorised representative
@@ -197,7 +192,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include the notified-body number in promotional material claiming CE-marking compliance
   norm_text: The identification number shall also be indicated in any promotional material which mentions
@@ -236,7 +230,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: make the CE marking indicate compliance with other applicable CE-marking Union law
   norm_text: Where high-risk AI systems are subject to other Union law which also provides for the affixing

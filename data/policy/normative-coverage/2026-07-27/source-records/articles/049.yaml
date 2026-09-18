@@ -9,7 +9,6 @@ records:
     placement or putting into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the system is high-risk and listed in Annex III other than point 2
@@ -28,7 +27,6 @@ records:
     falls to the representative
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - the system is high-risk and listed in Annex III other than point 2
@@ -48,7 +46,6 @@ records:
     EU database
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider concluded under Article 6(3) that the system is not high-risk
@@ -68,7 +65,6 @@ records:
     EU database where applicable
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - the provider concluded under Article 6(3) that the system is not high-risk
@@ -87,8 +83,7 @@ records:
   action: register itself, select the system, and register its use in the Article 71 EU database before
     service or use
   actors:
-  - actor_ref: public_authority_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer is a public authority, Union institution, body, office or agency, or acts on its behalf
@@ -108,8 +103,7 @@ records:
   action: lodge the applicable registration in a secure non-public section of the Article 71 EU database
     and limit it to the enacted Annex VIII and Annex IX information
   actors:
-  - actor_ref: registering_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   conditions:
   - the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or border-control
@@ -136,7 +130,6 @@ records:
   action: access the respective restricted sections of the EU database
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: entitlement
   product_scope: outside_supported_actor
@@ -150,8 +143,7 @@ records:
     the respective restricted sections of the EU database listed in the first subparagraph of this paragraph.
   action: access the respective restricted sections of the EU database
   actors:
-  - actor_ref: article_74_8_national_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: entitlement
   product_scope: outside_supported_actor
@@ -165,7 +157,6 @@ records:
   action: register Annex III point 2 high-risk systems at national level
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the high-risk system is referred to in Annex III point 2

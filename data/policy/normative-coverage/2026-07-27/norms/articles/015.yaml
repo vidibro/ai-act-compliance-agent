@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: design and develop the high-risk AI system to achieve appropriate accuracy, robustness, and
     cybersecurity and perform consistently in those respects throughout its lifecycle
@@ -48,7 +47,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: encourage appropriate accuracy, robustness, and performance benchmarks and measurement methodologies
     in cooperation with relevant stakeholders and organisations
@@ -85,7 +83,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: declare the high-risk AI system's accuracy levels and relevant accuracy metrics in the accompanying
     instructions for use
@@ -123,7 +120,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: make the high-risk AI system as resilient as possible to errors, faults, and inconsistencies
     within the system or its operating environment
@@ -163,7 +159,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: apply technical and organisational measures supporting resilience to errors, faults, and inconsistencies
   norm_text: Technical and organisational measures shall be taken in this regard.
@@ -199,7 +194,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use technical redundancy solutions, including backup or fail-safe plans, to achieve system robustness
   norm_text: The robustness of high-risk AI systems may be achieved through technical redundancy solutions,
@@ -236,7 +230,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: eliminate or minimise the risk of biased-output feedback loops and address any such loops with
     appropriate mitigation measures
@@ -277,7 +270,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: make the system resilient against unauthorised attempts to alter its use, outputs, or performance
     through vulnerabilities
@@ -315,7 +307,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: make cybersecurity technical solutions appropriate to the relevant circumstances and risks
   norm_text: The technical solutions aiming to ensure the cybersecurity of high-risk AI systems shall
@@ -352,7 +343,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control training-data-poisoning
     attacks
@@ -389,7 +379,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control attacks manipulating
     pre-trained training components
@@ -426,7 +415,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control adversarial-example
     and model-evasion attacks
@@ -463,7 +451,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control confidentiality attacks
   norm_text: confidentiality attacks
@@ -499,7 +486,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control model flaws
   norm_text: model flaws

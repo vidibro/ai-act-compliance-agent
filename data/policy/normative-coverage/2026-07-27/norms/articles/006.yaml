@@ -313,7 +313,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: document the Article 6(3) non-high-risk assessment before placing the system on the market or
     putting it into service
@@ -352,7 +351,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: register the provider and non-high-risk system as required by Article 49(2)
   norm_text: Such provider shall be subject to the registration obligation set out in Article 49(2).
@@ -389,7 +387,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: provide the documented non-high-risk assessment to national competent authorities upon request
   norm_text: Upon request of national competent authorities, the provider shall provide the documentation
@@ -427,7 +424,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: provide Article 96 guidelines on the practical implementation of Article 6 by 2 February 2026
     after consulting the AI Board, together with a comprehensive list of practical high-risk and non-high-risk
@@ -468,7 +464,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97 delegated acts adding or modifying Article 6(3) exception conditions when supported
     by concrete and reliable evidence
@@ -509,7 +504,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97 delegated acts deleting Article 6(3) exception conditions when necessary to
     maintain the required protection
@@ -549,7 +543,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: ensure Article 6(3) condition amendments do not decrease the Regulation's overall protection
     of health, safety and fundamental rights, remain consistent with Article 7(1) delegated acts, and

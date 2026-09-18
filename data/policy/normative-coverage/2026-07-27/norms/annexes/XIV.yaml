@@ -5,7 +5,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: prohibit a conformity-assessment body from carrying out assessments unless it is designated
     under the Regulation and acting within its designated AI-system scope
@@ -41,8 +40,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: conformity_assessment_body_designation
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: use the Annex XIV code mappings as the legal scope of an Article 30 notified conformity-assessment
     body's designation
@@ -77,8 +75,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0102 to AI systems subject to Annex I Section A point 2
   norm_text: AIP 0102AI systems subject to point 2 of Section A of Annex I
@@ -111,8 +108,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0103 to AI systems subject to Annex I Section A point 3
   norm_text: AIP 0103AI systems subject to point 3 of Section A of Annex I
@@ -145,8 +141,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0104 to AI systems subject to Annex I Section A point 4
   norm_text: AIP 0104AI systems subject to point 4 of Section A of Annex I
@@ -179,8 +174,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0105 to AI systems subject to Annex I Section A point 5
   norm_text: AIP 0105AI systems subject to point 5 of Section A of Annex I
@@ -213,8 +207,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0106 to AI systems subject to Annex I Section A point 6
   norm_text: AIP 0106AI systems subject to point 6 of Section A of Annex I
@@ -247,8 +240,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0107 to AI systems subject to Annex I Section A point 7
   norm_text: AIP 0107AI systems subject to point 7 of Section A of Annex I
@@ -281,8 +273,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0108 to AI systems subject to Annex I Section A point 8
   norm_text: AIP 0108AI systems subject to point 8 of Section A of Annex I
@@ -315,8 +306,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0109 to AI systems subject to Annex I Section A point 9
   norm_text: AIP 0109AI systems subject to point 9 of Section A of Annex I
@@ -349,8 +339,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0110 to AI systems subject to Annex I Section A point 10
   norm_text: AIP 0110AI systems subject to point 10 of Section A of Annex I
@@ -383,8 +372,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0111 to AI systems subject to Annex I Section A point 11
   norm_text: AIP 0111AI systems subject to point 11 of Section A of Annex I
@@ -417,8 +405,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIP 0112 to AI systems subject to Annex I Section A point 12
   norm_text: AIP 0112AI systems subject to point 12 of Section A of Annex I
@@ -451,8 +438,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIB 0201 to remote biometric identification systems under Annex III point 1
   norm_text: AIB 0201Remote biometric identification systems
@@ -485,8 +471,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIB 0202 to biometric-categorisation AI systems under Annex III point 1
   norm_text: AIB 0202Biometric categorisation AI systems
@@ -519,8 +504,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIB 0203 to emotion-recognition AI systems under Annex III point 1
   norm_text: AIB 0203Emotion recognition AI systems
@@ -553,8 +537,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0101 to symbolic AI, expert and knowledge-based systems, and search-and-optimisation
     systems
@@ -589,8 +572,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0201 to AI systems that process structured data
   norm_text: AIH 0201AI systems that process structured data
@@ -623,8 +605,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0202 to AI systems that process signal and audio data
   norm_text: AIH 0202AI systems that process signal and audio data
@@ -657,8 +638,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0203 to AI systems that process text data
   norm_text: AIH 0203AI systems that process text data
@@ -691,8 +671,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0204 to AI systems that process image and video
   norm_text: AIH 0204AI systems that process image and video
@@ -725,8 +704,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0205 to environment-learning AI systems not covered by AIH 0401
   norm_text: AIH 0205AI systems that learn from their environment, excluding AI systems covered under
@@ -761,8 +739,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0301 to generative AI systems, including systems based on general-purpose AI models
   norm_text: AIH 0301generative AI systems, including AI systems based on general-purpose AI models
@@ -795,8 +772,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: conformity_assessment_body_designation_scope
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   action: map code AIH 0401 to other emerging AI technologies not covered by another code, including agentic
     AI
@@ -833,7 +809,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: use the Annex XIV lists when specifying AI-system types in an Article 29 designation application
   norm_text: Conformity assessment bodies shall use the lists of codes, categories and corresponding types

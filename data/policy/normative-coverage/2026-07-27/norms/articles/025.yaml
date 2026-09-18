@@ -4,8 +4,10 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: distributor_importer_deployer_or_third_party
-    category: supported_operator
+  - actor_ref: distributor
+  - actor_ref: importer
+  - actor_ref: deployer
+  - actor_ref: third_party_supplier
   targets: []
   action: treat a distributor, importer, deployer, or other third party as the provider subject to Article
     16 after it puts its name or trademark on the high-risk system
@@ -46,8 +48,10 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: distributor_importer_deployer_or_third_party
-    category: supported_operator
+  - actor_ref: distributor
+  - actor_ref: importer
+  - actor_ref: deployer
+  - actor_ref: third_party_supplier
   targets: []
   action: treat the substantially modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when the modified system remains high-risk
@@ -89,8 +93,10 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: distributor_importer_deployer_or_third_party
-    category: supported_operator
+  - actor_ref: distributor
+  - actor_ref: importer
+  - actor_ref: deployer
+  - actor_ref: third_party_supplier
   targets: []
   action: treat the purpose-modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when its change makes an existing system high-risk
@@ -134,7 +140,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   action: cease treating the initial provider as provider of the specific system after a paragraph 1 role
     transfer
@@ -175,7 +180,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   action: closely cooperate with the new provider after the provider role has transferred
   norm_text: That initial provider shall closely cooperate with new providers
@@ -213,7 +217,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   action: provide the new provider with necessary information, reasonably expected technical access, and
     other assistance required for regulatory compliance
@@ -263,7 +266,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   action: disapply the initial-provider cooperation and documentation duties where high-risk conversion
     was clearly prohibited
@@ -304,7 +306,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is marketed with the product under its name or trademark
@@ -346,7 +347,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is later put into service under its name or trademark
@@ -388,8 +388,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: high_risk_provider_and_third_party_supplier
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: third_party_supplier
   targets: []
   action: use a written agreement to specify the state-of-the-art information, capabilities, technical
     access, and assistance necessary for the provider's full compliance
@@ -435,7 +435,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: third_party_supplier
-    category: external_private_party
   targets: []
   action: disapply the written-agreement duty to publicly accessible free and open-source supplies other
     than general-purpose AI models
@@ -475,7 +474,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: develop and recommend voluntary model terms for high-risk-system supply contracts
   norm_text: The AI Office may develop and recommend voluntary model terms for contracts between providers
@@ -511,7 +509,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: consider sector-specific and business-case contractual requirements when developing model terms
   norm_text: When developing those voluntary model terms, the AI Office shall take into account possible
@@ -547,7 +544,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: publish voluntary model terms free of charge in an easily usable electronic format
   norm_text: The voluntary model terms shall be published and be available free of charge in an easily
@@ -581,8 +577,9 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: parties_under_article_25_paragraphs_2_and_3
-    category: supported_operator
+  - actor_ref: initial_provider
+  - actor_ref: provider
+  - actor_ref: product_manufacturer
   targets: []
   action: observe and protect intellectual-property rights, confidential business information, and trade
     secrets when applying paragraphs 2 and 3

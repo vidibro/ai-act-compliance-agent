@@ -1,8 +1,8 @@
 schema_version: 1
-act_version_date: "2026-07-27"
+act_version_date: '2026-07-27'
 source:
   kind: article
-  document: "9"
+  document: '9'
 audit:
   audit_schema_version: 1
   segments_scanned: 20
@@ -10,113 +10,115 @@ audit:
   finding_count: 7
   audit_sha256: 3b750d6237dfdc49da8347a68eec3aef50d1c268a79e8edba61a53cb09a43ddf
 decisions:
-  - finding_id: AIA-VALID-3A5EB984164A447C
-    target: AIA-TEXT-A009-P002
-    rule: uncovered_legal_effect_text
-    source_ref: AIA-TEXT-A009-P002
+- finding_id: AIA-VALID-3A5EB984164A447C
+  target: AIA-TEXT-A009-P002
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-A009-P002
+  source_sha256: 354bc4f8df45d2924afaf54b13009834726a7904d67b0783a5ddb591e98d0eb7
+  target_sha256: 4d4aeb94c6c85933b10ea913756e3830156c23ee4d960395cb1e68f889bf0e9c
+  decision: accepted_with_basis
+  reason: This is the Article 9(2) chapeau, not a further provider action. Its four
+    listed steps are independently reconstructed as the four qualifying norms, each
+    a mandatory criterion of the Article 9 risk-management rule.
+  legal_basis:
+  - span_id: AIA-TEXT-A009-P002
     source_sha256: 354bc4f8df45d2924afaf54b13009834726a7904d67b0783a5ddb591e98d0eb7
-    target_sha256: 4d4aeb94c6c85933b10ea913756e3830156c23ee4d960395cb1e68f889bf0e9c
-    decision: accepted_with_basis
-    reason: >-
-      This is the Article 9(2) chapeau, not a further provider action. Its four listed steps are
-      independently reconstructed as the four qualifying norms, each a mandatory criterion of the
-      Article 9 risk-management rule.
-    legal_basis:
-      - span_id: AIA-TEXT-A009-P002
-        source_sha256: 354bc4f8df45d2924afaf54b13009834726a7904d67b0783a5ddb591e98d0eb7
-        quote: "It shall comprise the following steps:"
-    reviewed_by: vidibro
-  - finding_id: AIA-VALID-30C467378038E455
-    target: AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
-    rule: condition_not_structured_or_retained_in_action
-    source_ref: AIA-TEXT-A009-P003
+    quote: 'It shall comprise the following steps:'
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-30C467378038E455
+  target: AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
+  rule: condition_not_structured_or_retained_in_action
+  source_ref: AIA-TEXT-A009-P003
+  source_sha256: 3755ff0cd0ec85802a7270db5d17051fc92deddc40ea07ed9977ccd9ea01507f
+  target_sha256: 4f3470464fc771dc364f0edef1153df92446e3ec67d227bf2961a0ba937de340
+  decision: accepted_with_basis
+  reason: The canonical action retains the complete condition as “intended-use risks”;
+    it does not broaden the duty to all hypothetical uses. The audit's lexical condition
+    detector does not recognise that equivalent phrase.
+  legal_basis:
+  - span_id: AIA-TEXT-A009-P003
     source_sha256: 3755ff0cd0ec85802a7270db5d17051fc92deddc40ea07ed9977ccd9ea01507f
-    target_sha256: 4f3470464fc771dc364f0edef1153df92446e3ec67d227bf2961a0ba937de340
-    decision: accepted_with_basis
-    reason: >-
-      The canonical action retains the complete condition as “intended-use risks”; it does not
-      broaden the duty to all hypothetical uses. The audit's lexical condition detector does not
-      recognise that equivalent phrase.
-    legal_basis:
-      - span_id: AIA-TEXT-A009-P003
-        source_sha256: 3755ff0cd0ec85802a7270db5d17051fc92deddc40ea07ed9977ccd9ea01507f
-        quote: "when the high-risk AI system is used in accordance with its intended purpose"
-    reviewed_by: vidibro
-  - finding_id: AIA-VALID-93BBB62A9222EE78
-    target: AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
-    rule: condition_not_structured_or_retained_in_action
-    source_ref: AIA-TEXT-A009-P004
+    quote: when the high-risk AI system is used in accordance with its intended purpose
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-93BBB62A9222EE78
+  target: AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
+  rule: condition_not_structured_or_retained_in_action
+  source_ref: AIA-TEXT-A009-P004
+  source_sha256: 5f9e977eb73f4705d3aad0e15323659271ec3a8579d3fbc9db2edeb55a1a1535
+  target_sha256: 20c24cd6a9af41e3fa8bd64d159697c124fbdee7c323b1e92cb1f71764c22f59
+  decision: accepted_with_basis
+  reason: The action expressly retains both intended use and reasonably foreseeable
+    misuse. The audit flags it only because it is a normalized phrase rather than
+    the source's “when” form.
+  legal_basis:
+  - span_id: AIA-TEXT-A009-P004
     source_sha256: 5f9e977eb73f4705d3aad0e15323659271ec3a8579d3fbc9db2edeb55a1a1535
-    target_sha256: 20c24cd6a9af41e3fa8bd64d159697c124fbdee7c323b1e92cb1f71764c22f59
-    decision: accepted_with_basis
-    reason: >-
-      The action expressly retains both intended use and reasonably foreseeable misuse. The
-      audit flags it only because it is a normalized phrase rather than the source's “when” form.
-    legal_basis:
-      - span_id: AIA-TEXT-A009-P004
-        source_sha256: 5f9e977eb73f4705d3aad0e15323659271ec3a8579d3fbc9db2edeb55a1a1535
-        quote: "when the high-risk AI system is used in accordance with its intended purpose, and under conditions of reasonably foreseeable misuse"
-    reviewed_by: vidibro
-  - finding_id: AIA-VALID-9B3B2B4DD50B2FFF
-    target: AIA-NORM-A009-P5-ACCEPTABLE-RESIDUAL-RISK
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A009-P009
+    quote: when the high-risk AI system is used in accordance with its intended purpose,
+      and under conditions of reasonably foreseeable misuse
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-9B3B2B4DD50B2FFF
+  target: AIA-NORM-A009-P5-ACCEPTABLE-RESIDUAL-RISK
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A009-P009
+  source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
+  target_sha256: 869661e1e5f384bbbe4b7242103b2b1a8ab779a36b0c7f9f6c608feb02e1c220
+  decision: accepted_with_basis
+  reason: The action retains both required levels of residual-risk judgment — each
+    hazard and the whole system. The enclosing risk-management-measures wording is
+    the source sentence's grammatical subject, not an omitted separate condition.
+  legal_basis:
+  - span_id: AIA-TEXT-A009-P009
     source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
-    target_sha256: 869661e1e5f384bbbe4b7242103b2b1a8ab779a36b0c7f9f6c608feb02e1c220
-    decision: accepted_with_basis
-    reason: >-
-      The action retains both required levels of residual-risk judgment — each hazard and the
-      whole system. The enclosing risk-management-measures wording is the source sentence's
-      grammatical subject, not an omitted separate condition.
-    legal_basis:
-      - span_id: AIA-TEXT-A009-P009
-        source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
-        quote: "The risk management measures referred to in paragraph 2, point (d), shall be such that the relevant residual risk associated with each hazard, as well as the overall residual risk of the high-risk AI systems is judged to be acceptable."
-    reviewed_by: vidibro
-  - finding_id: AIA-VALID-29DA90EDAD3C91DE
-    target: AIA-TEXT-A009-P009
-    rule: uncovered_legal_effect_text
-    source_ref: AIA-TEXT-A009-P009
+    quote: The risk management measures referred to in paragraph 2, point (d), shall
+      be such that the relevant residual risk associated with each hazard, as well
+      as the overall residual risk of the high-risk AI systems is judged to be acceptable.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-29DA90EDAD3C91DE
+  target: AIA-TEXT-A009-P009
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-A009-P009
+  source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
+  target_sha256: b931f1edd7a39cd5e4005bfa961cae0e58456e5390395b5cf2b3c44527c21ff0
+  decision: accepted_with_basis
+  reason: This is the grammatical chapeau of the one residual-risk norm. The norm's
+    structured action contains the resulting mandatory judgment, so no independent
+    legal effect is unrepresented.
+  legal_basis:
+  - span_id: AIA-TEXT-A009-P009
     source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
-    target_sha256: b931f1edd7a39cd5e4005bfa961cae0e58456e5390395b5cf2b3c44527c21ff0
-    decision: accepted_with_basis
-    reason: >-
-      This is the grammatical chapeau of the one residual-risk norm. The norm's structured action
-      contains the resulting mandatory judgment, so no independent legal effect is unrepresented.
-    legal_basis:
-      - span_id: AIA-TEXT-A009-P009
-        source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
-        quote: "The risk management measures referred to in paragraph 2, point (d), shall be such that"
-    reviewed_by: vidibro
-  - finding_id: AIA-VALID-B8E392A8BE3034A6
-    target: AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A009-P014
+    quote: The risk management measures referred to in paragraph 2, point (d), shall
+      be such that
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B8E392A8BE3034A6
+  target: AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A009-P014
+  source_sha256: 27a651d2640afe5702a2c9febecb06c926dccdc2893db453d66abc88e893a053
+  target_sha256: e81629b6282e45fa482fe9e73ee5f09dbd0e586ecfc77e62d6edafd4b537aa6b
+  decision: accepted_with_basis
+  reason: The canonical action retains the purpose qualifier (“when reducing use-related
+    risks”) and every listed deployer-context factor. The initial source phrase is
+    a purpose qualifier, not a missing condition that changes the duty's scope.
+  legal_basis:
+  - span_id: AIA-TEXT-A009-P014
     source_sha256: 27a651d2640afe5702a2c9febecb06c926dccdc2893db453d66abc88e893a053
-    target_sha256: e81629b6282e45fa482fe9e73ee5f09dbd0e586ecfc77e62d6edafd4b537aa6b
-    decision: accepted_with_basis
-    reason: >-
-      The canonical action retains the purpose qualifier (“when reducing use-related risks”) and
-      every listed deployer-context factor. The initial source phrase is a purpose qualifier, not
-      a missing condition that changes the duty's scope.
-    legal_basis:
-      - span_id: AIA-TEXT-A009-P014
-        source_sha256: 27a651d2640afe5702a2c9febecb06c926dccdc2893db453d66abc88e893a053
-        quote: "With a view to eliminating or reducing risks related to the use of the high-risk AI system"
-    reviewed_by: vidibro
-  - finding_id: AIA-VALID-DC1F1B11DC9E282C
-    target: AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A009-P018
+    quote: With a view to eliminating or reducing risks related to the use of the
+      high-risk AI system
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-DC1F1B11DC9E282C
+  target: AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A009-P018
+  source_sha256: bd659a42050599b335e397fef434b83305827b01682d1a0d6a33078b970815be
+  target_sha256: b42df198489f86c04cf2d5ca3523b54d171d89046d32c38be39adf72e371af63
+  decision: accepted_with_basis
+  reason: The action retains the intended-purpose trigger, persons under 18, and the
+    conditional extension to other vulnerable groups. The introductory implementation
+    phrase supplies Article 9 context but does not add a separate condition to this
+    duty.
+  legal_basis:
+  - span_id: AIA-TEXT-A009-P018
     source_sha256: bd659a42050599b335e397fef434b83305827b01682d1a0d6a33078b970815be
-    target_sha256: b42df198489f86c04cf2d5ca3523b54d171d89046d32c38be39adf72e371af63
-    decision: accepted_with_basis
-    reason: >-
-      The action retains the intended-purpose trigger, persons under 18, and the conditional
-      extension to other vulnerable groups. The introductory implementation phrase supplies
-      Article 9 context but does not add a separate condition to this duty.
-    legal_basis:
-      - span_id: AIA-TEXT-A009-P018
-        source_sha256: bd659a42050599b335e397fef434b83305827b01682d1a0d6a33078b970815be
-        quote: "When implementing the risk management system as provided for in paragraphs 1 to 7"
-    reviewed_by: vidibro
+    quote: When implementing the risk management system as provided for in paragraphs
+      1 to 7
+  reviewed_by: vidibro

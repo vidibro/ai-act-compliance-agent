@@ -4,8 +4,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: take context-sensitive measures supporting AI literacy among staff and other persons operating
     or using AI systems on the provider's or deployer's behalf
@@ -52,9 +52,7 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: support and facilitate provider and deployer efforts, particularly those of SMEs, to fulfil
     the Article 4(1) AI-literacy obligation
@@ -91,7 +89,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: publish practical examples of compliance with the Article 4(1) obligation on the single information
     platform
@@ -127,7 +124,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   action: adopt recommendations supporting the Commission and Member States in promoting the AI literacy
     required by Article 4(1), including through common objectives

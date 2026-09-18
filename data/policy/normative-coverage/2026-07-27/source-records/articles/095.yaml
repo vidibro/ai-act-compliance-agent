@@ -9,8 +9,8 @@ records:
   action: encourage and facilitate codes and governance mechanisms for voluntary Chapter III Section 2
     application to non-high-risk systems
   actors:
-  - actor_ref: ai_office_and_member_states
-    category: public_authority
+  - actor_ref: ai_office
+  - actor_ref: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -27,8 +27,8 @@ records:
     to all AI systems, on the basis of clear objectives and key performance indicators; the elements listed
     are examples and are not exhaustive, and applying the requirements stays voluntary
   actors:
-  - actor_ref: ai_office_and_member_states
-    category: public_authority
+  - actor_ref: ai_office
+  - actor_ref: member_state
   targets: []
   mandatory_content:
   - clear objectives
@@ -54,8 +54,9 @@ records:
   action: draw up a voluntary code individually jointly or through representative organisations and cover
     one or more similarly purposed systems
   actors:
-  - actor_ref: provider_deployer_or_representative_organisation
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
+  - actor_ref: authorised_representative
   targets: []
   kind: power
   product_scope: no_product_action
@@ -71,8 +72,8 @@ records:
     of conduct.
   action: account for SME start-up and SMC interests and needs when encouraging and facilitating codes
   actors:
-  - actor_ref: ai_office_and_member_states
-    category: public_authority
+  - actor_ref: ai_office
+  - actor_ref: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

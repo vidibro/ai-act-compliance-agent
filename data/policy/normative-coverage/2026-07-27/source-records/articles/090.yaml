@@ -7,7 +7,6 @@ records:
     risk or Article 51 systemic-risk conditions
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   kind: power
   mandatory_content: []
@@ -32,8 +31,7 @@ records:
     Board, may exercise the powers laid down in this Section for the purpose of assessing the matter.
   action: after informing the Board exercise Section powers to assess a qualified alert
   actors:
-  - actor_ref: commission_through_ai_office
-    category: union_institution_or_body
+  - actor_ref: commission
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -50,7 +48,6 @@ records:
   action: inform the Board of every measure under Articles 91 to 94
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -63,7 +60,6 @@ records:
   action: duly reason and include the minimum required information in a qualified alert
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - systemic-risk GPAI provider point of contact

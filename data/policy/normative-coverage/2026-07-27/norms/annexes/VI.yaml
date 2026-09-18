@@ -44,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: verify that the established quality management system complies with Article 17
   norm_text: The provider verifies that the established quality management system is in compliance with
@@ -80,7 +79,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: examine the technical documentation to assess the AI system's compliance with the relevant Chapter
     III Section 2 requirements
@@ -118,7 +116,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: verify that the AI system's design and development process and Article 72 post-market monitoring
     are consistent with its technical documentation

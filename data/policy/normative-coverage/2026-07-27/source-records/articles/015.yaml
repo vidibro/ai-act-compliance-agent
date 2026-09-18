@@ -8,7 +8,6 @@ records:
     cybersecurity and perform consistently in those respects throughout its lifecycle
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   mandatory_content:
   - appropriate accuracy
@@ -28,7 +27,6 @@ records:
     in cooperation with relevant stakeholders and organisations
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -43,7 +41,6 @@ records:
     instructions for use
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -57,7 +54,6 @@ records:
     within the system or its operating environment
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -68,7 +64,6 @@ records:
   action: apply technical and organisational measures supporting resilience to errors, faults, and inconsistencies
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -80,7 +75,6 @@ records:
   action: use technical redundancy solutions, including backup or fail-safe plans, to achieve system robustness
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   implementation_mode: report_only
@@ -98,7 +92,6 @@ records:
     appropriate mitigation measures
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the high-risk AI system continues to learn after market placement or being put into service
@@ -113,7 +106,6 @@ records:
     through vulnerabilities
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -125,7 +117,6 @@ records:
   action: make cybersecurity technical solutions appropriate to the relevant circumstances and risks
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -137,7 +128,6 @@ records:
     attacks
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: &id003
   - measures addressing the AI-specific vulnerability are appropriate
@@ -151,7 +141,6 @@ records:
     pre-trained training components
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: *id003
   implementation_refs: *id001
@@ -164,7 +153,6 @@ records:
     and model-evasion attacks
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: *id003
   implementation_refs: *id001
@@ -176,7 +164,6 @@ records:
   action: implement measures to prevent, detect, respond to, resolve, and control confidentiality attacks
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: *id003
   implementation_refs: *id001
@@ -188,7 +175,6 @@ records:
   action: implement measures to prevent, detect, respond to, resolve, and control model flaws
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: *id003
   implementation_refs: *id001

@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: establish, implement, document, and maintain a risk-management system for each high-risk AI
     system
@@ -47,7 +46,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: plan and operate risk management as a continuous iterative process throughout the entire high-risk
     AI-system lifecycle, with regular systematic review and updating
@@ -88,7 +86,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: identify and analyse known and reasonably foreseeable intended-use risks to health, safety,
     and fundamental rights
@@ -128,7 +125,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: estimate and evaluate risks emerging from intended use and reasonably foreseeable misuse
   norm_text: the estimation and evaluation of the risks that may emerge when the high-risk AI system is
@@ -167,7 +163,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: evaluate other risks using data from the Article 72 post-market monitoring system
   norm_text: the evaluation of other risks possibly arising, based on the analysis of data gathered from
@@ -205,7 +200,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: adopt appropriate and targeted measures addressing the risks identified under Article 9(2)(a)
   norm_text: the adoption of appropriate and targeted risk management measures designed to address the
@@ -283,7 +277,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: consider the effects and possible interactions of the combined Section 2 requirements when selecting
     risk-management measures
@@ -324,7 +317,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: judge both each hazard's relevant residual risk and the high-risk AI system's overall residual
     risk to be acceptable
@@ -363,7 +355,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: eliminate or reduce identified and evaluated risks through design and development as far as
     technically feasible
@@ -402,7 +393,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: implement adequate mitigation and control measures for risks that cannot be eliminated where
     appropriate
@@ -441,7 +431,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: provide the information required by Article 13 as part of risk management
   norm_text: provision of information required pursuant to Article 13
@@ -478,7 +467,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: provide deployer training where appropriate as part of risk management
   norm_text: where appropriate, training to deployers.
@@ -516,7 +504,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: consider expected deployer knowledge, experience, education, training, and the presumable use
     context when reducing use-related risks
@@ -554,7 +541,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: test high-risk AI systems to identify the most appropriate targeted risk-management measures
   norm_text: High-risk AI systems shall be tested for the purpose of identifying the most appropriate
@@ -591,7 +577,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use testing to ensure both consistent performance for the intended purpose and compliance with
     the Section 2 requirements
@@ -631,7 +616,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include testing in real-world conditions in the testing procedures
   norm_text: Testing procedures may include testing in real-world conditions in accordance with Article
@@ -669,7 +653,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: test high-risk AI systems throughout development where appropriate and, in every case, before
     market placement or putting into service
@@ -708,7 +691,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: test against predefined metrics and probabilistic thresholds appropriate to the intended purpose
   norm_text: Testing shall be carried out against prior defined metrics and probabilistic thresholds that
@@ -745,7 +727,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: consider, in view of the intended purpose, likely adverse impacts on persons under 18 and, where
     appropriate, other vulnerable groups
@@ -784,7 +765,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: incorporate or combine Article 9 aspects with internal risk-management procedures required by
     other Union law

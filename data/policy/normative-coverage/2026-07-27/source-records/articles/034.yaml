@@ -6,7 +6,6 @@ records:
   action: verify high-risk AI-system conformity using the Article 43 conformity-assessment procedures
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -25,7 +24,6 @@ records:
     enterprises
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -45,7 +43,6 @@ records:
   action: preserve the rigor and protection required for the high-risk system's compliance with the Regulation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -62,7 +59,6 @@ records:
     request
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

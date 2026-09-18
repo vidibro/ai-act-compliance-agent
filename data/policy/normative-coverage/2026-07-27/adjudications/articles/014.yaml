@@ -1,8 +1,8 @@
 schema_version: 1
-act_version_date: "2026-07-27"
+act_version_date: '2026-07-27'
 source:
   kind: article
-  document: "14"
+  document: '14'
 audit:
   audit_schema_version: 1
   segments_scanned: 14
@@ -10,18 +10,17 @@ audit:
   finding_count: 0
   audit_sha256: f16cfffe1502f4fda6972c0dd8570ac688efddbc163a2c00aff7a8e878cfab34
 decisions:
-  - finding_id: AIA-VALID-83E43D172407920D
-    target: AIA-NORM-A014-P2-RISK-PREVENTION
-    rule: condition_not_structured_or_retained_in_action
-    source_ref: AIA-TEXT-A014-P002
-    source_sha256: 5676dc2afeb8d34f905bc97460baa17cccc7628fab6f8b088d69aea5abb8d67c
-    target_sha256: 157786822b33c9fe7e8d827475d80465819a85fbe10321fbd97cb6d6ce4f3fe4
-    decision: fixed
-    reason: >-
-      The canonical action now explicitly retains the intended-purpose and reasonably foreseeable
-      misuse trigger, including the residual-risk qualifier. The exact source-record patch proves
-      the structural audit's preimage and correction.
-    fix:
-      patch_file: fixes/AIA-VALID-83E43D172407920D.patch.yaml
-      patch_sha256: 15401518af1900bc5160a26adf1e28721102954d0901149f3034a09b2a9fec7f
-    reviewed_by: vidibro
+- finding_id: AIA-VALID-83E43D172407920D
+  target: AIA-NORM-A014-P2-RISK-PREVENTION
+  rule: condition_not_structured_or_retained_in_action
+  source_ref: AIA-TEXT-A014-P002
+  source_sha256: 5676dc2afeb8d34f905bc97460baa17cccc7628fab6f8b088d69aea5abb8d67c
+  target_sha256: 157786822b33c9fe7e8d827475d80465819a85fbe10321fbd97cb6d6ce4f3fe4
+  decision: fixed
+  reason: The canonical action now explicitly retains the intended-purpose and reasonably
+    foreseeable misuse trigger, including the residual-risk qualifier. The exact source-record
+    patch proves the structural audit's preimage and correction.
+  fix:
+    patch_file: fixes/AIA-VALID-83E43D172407920D.patch.yaml
+    patch_sha256: 8ff923ff6104eaa83ba706765de973858b6cc85e373434cd03f9c4fa252ee5ec
+  reviewed_by: vidibro

@@ -6,7 +6,6 @@ records:
     paragraph 2 and 3 information on the enacted registered systems
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - Article 6(2) high-risk AI systems registered in accordance with Articles 49 and 60
@@ -23,7 +22,6 @@ records:
   action: consult the relevant experts when setting the database's functional specifications
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions:
   - the Commission is setting the functional specifications of the database
@@ -38,7 +36,6 @@ records:
   action: consult the Board when updating the database's functional specifications
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions:
   - the Commission is updating the functional specifications of the database
@@ -53,7 +50,6 @@ records:
   action: enter the applicable Annex VIII Sections A and B data into the EU database
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A71-2
@@ -65,7 +61,6 @@ records:
   action: enter the applicable Annex VIII Sections A and B data into the EU database where registration falls to the representative
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions: [the authorised representative is applicable for the data entry]
   implementation_refs:
@@ -77,8 +72,7 @@ records:
   quote: The data listed in Section C of Annex VIII shall be entered into the EU database by the deployer who is, or who acts on behalf of, a public authority, agency or body, in accordance with Article 49(3) and (4).
   action: enter Annex VIII Section C data into the EU database under Article 49(3) and (4)
   actors:
-  - actor_ref: public_authority_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions: [the deployer is or acts for a public authority agency or body]
   implementation_refs:
@@ -92,7 +86,6 @@ records:
     user-friendly manner
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   exceptions:
   - the section referred to in Article 49(4)
@@ -108,7 +101,6 @@ records:
   action: the information should be easily navigable and machine-readable
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -123,7 +115,6 @@ records:
     authorities and the Commission
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   exceptions:
   - the prospective provider or provider has given consent for also making the information accessible
@@ -139,7 +130,6 @@ records:
   action: limit database personal data to what Regulation processing requires while including authorised registrant names and contacts
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content: [necessity-limited personal data, names and contact details of legally authorised natural-person registrants]
   product_scope: outside_supported_actor
@@ -153,7 +143,6 @@ records:
   action: be the controller of the EU database
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -168,7 +157,6 @@ records:
     providers and deployers
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content: [adequate technical support, adequate administrative support]
   product_scope: outside_supported_actor
@@ -182,7 +170,6 @@ records:
   action: ensure the EU database complies with applicable accessibility requirements
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: fine a GPAI provider up to 3 % of preceding-year worldwide annual turnover or EUR 15 000 000,
     whichever is higher, for intentional or negligent listed conduct
@@ -55,7 +54,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
   norm_text: In fixing the amount of the fine or periodic penalty payment, regard shall be had to the
@@ -96,7 +94,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before
     a fine decision
@@ -134,7 +131,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: ensure Article 101 fines are effective proportionate and dissuasive
   norm_text: Fines imposed in accordance with this Article shall be effective, proportionate and dissuasive
@@ -168,7 +164,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: communicate information on Article 101 fines to the Board as appropriate
   norm_text: Information on fines imposed under this Article shall also be communicated to the Board as
@@ -203,7 +198,6 @@ norms:
   kind: power
   actors:
   - actor_ref: court_of_justice_of_the_european_union
-    category: union_institution_or_body
   targets: []
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
   norm_text: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
@@ -239,7 +233,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings
     through the Article 98(2) examination procedure

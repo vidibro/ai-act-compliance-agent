@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: adopt a decision establishing detected AI Act or binding-commitment non-compliance
   norm_text: Where the AI Office finds that an operator falling within the scope of Article 75(1) does
@@ -45,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: communicate preliminary findings before adopting a non-compliance decision
   norm_text: Before adopting a decision pursuant to paragraph 1, the AI Office shall communicate its preliminary
@@ -81,7 +79,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: explain contemplated AI Office measures and measures the operator should take in the preliminary
     findings
@@ -119,7 +116,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: order necessary compliance measures within a reasonable specified period and information about
     intended measures
@@ -159,8 +155,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: describe implemented measures ensuring compliance with the AI Office decision, once they are
     implemented
@@ -198,7 +193,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: conduct a structured dialogue before requesting a measure
   norm_text: Prior to requesting any measure, the AI Office may engage in a structured dialogue with the
@@ -232,8 +226,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: propose Article 75b commitments during structured dialogue
   norm_text: During this dialogue, the operator may propose commitments in accordance with Article 75b.
@@ -268,7 +261,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: accompany a non-compliance decision with Article 99 penalties adapted to AI Office enforcement
   norm_text: A decision adopted pursuant to paragraph 1 of this Article may be accompanied by the imposition
@@ -305,8 +297,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4)
     fines
@@ -349,8 +340,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: expose incorrect incomplete or misleading requested information supplied to the AI Office to
     Article 99(5) fines
@@ -388,7 +378,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: impose periodic penalty payments compelling specified investigation information inspection correction
     and compliance conduct
@@ -439,7 +428,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: make periodic penalty payments effective and proportionate and, where applicable, keep them
     within 5 % of average daily income or worldwide annual turnover in the preceding financial year per
@@ -482,7 +470,6 @@ norms:
   kind: power
   actors:
   - actor_ref: court_of_justice_of_the_european_union
-    category: union_institution_or_body
   targets: []
   action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited
     jurisdiction
@@ -519,8 +506,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: union_enforcement_framework
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: allocate Article 75c fine and periodic-payment funds to the Union general budget
   norm_text: Funds collected through the imposition of fines or periodic penalty payments pursuant to
@@ -555,8 +541,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: ai_office_enforcement_power
-    category: union_institution_or_body
+  - actor_ref: ai_office
   targets: []
   action: apply a five-year infringement limitation period from commission or cessation for continuing
     or repeated infringements
@@ -594,8 +579,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: ai_office_decision_enforcement_power
-    category: union_institution_or_body
+  - actor_ref: ai_office
   targets: []
   action: apply a five-year final-decision enforcement limitation period
   norm_text: The power of the AI Office to enforce decisions taken pursuant to this Article shall be subject
@@ -632,7 +616,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: specify infringement and decision-enforcement limitation rules including interruption circumstances
     in the Article 75d(3) implementing act
@@ -668,7 +651,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: close proceedings immediately by decision when no grounds for non-compliance exist
   norm_text: Where the AI Office determines that there are no grounds to adopt a decision of non-compliance,

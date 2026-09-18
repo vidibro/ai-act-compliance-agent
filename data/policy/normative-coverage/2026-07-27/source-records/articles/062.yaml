@@ -6,7 +6,6 @@ records:
     for SMEs, start-ups, deployers, innovators and relevant authorities
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   qualifier_spans:
   - A062-P002
@@ -27,7 +26,6 @@ records:
     or branch in the Union
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   conditions:
   - the SME or start-up has a registered office or a branch in the Union
@@ -47,7 +45,6 @@ records:
   action: keep the priority access from precluding other SMEs and start-ups from sandbox access
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: legal_consequence
   conditions:
@@ -67,7 +64,6 @@ records:
     the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -84,7 +80,6 @@ records:
     participation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -101,7 +96,6 @@ records:
   action: establish new communication channels for that advice and query response
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   conditions:
   - where appropriate
@@ -120,7 +114,6 @@ records:
     process
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -137,8 +130,7 @@ records:
   action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment
     fees
   actors:
-  - actor_ref: conformity_assessment_fee_setter
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   mandatory_content:
   - SME size
@@ -156,7 +148,6 @@ records:
     action
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   qualifier_spans:
   - A062-P008
@@ -175,7 +166,6 @@ records:
   action: provide standardised templates for the areas covered by this Regulation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   conditions:
   - the Board specifies the areas in its request
@@ -194,7 +184,6 @@ records:
     information on this Regulation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -211,7 +200,6 @@ records:
     this Regulation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -227,7 +215,6 @@ records:
   action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

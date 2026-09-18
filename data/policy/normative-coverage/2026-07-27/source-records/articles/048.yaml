@@ -6,7 +6,6 @@ records:
   action: apply the Regulation 765/2008 Article 30 general principles to the CE marking
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: The Article 48(3) affixing norm carries the CE-marking check; Article 48(1)
@@ -21,7 +20,6 @@ records:
   action: use an easily accessible digital CE marking for digitally provided high-risk systems
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A48-2
@@ -39,7 +37,6 @@ records:
     only where system affixing is impossible or unwarranted
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A48
@@ -52,7 +49,6 @@ records:
   action: place the responsible notified body's identification number after the CE marking where applicable
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a notified body was responsible for the Article 43 conformity assessment procedures
@@ -68,7 +64,6 @@ records:
     or authorised representative
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a notified body was responsible for the Article 43 conformity assessment procedures
@@ -83,7 +78,6 @@ records:
   action: include the notified-body number in promotional material claiming CE-marking compliance
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a notified body was responsible for the Article 43 conformity assessment procedures
@@ -100,7 +94,6 @@ records:
   action: make the CE marking indicate compliance with other applicable CE-marking Union law
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_mode: missing
   verification_mode: reported_conditionally

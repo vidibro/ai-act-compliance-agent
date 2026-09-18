@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: call upon scientific-panel experts for Regulation enforcement support
   norm_text: Member States may call upon experts of the scientific panel to support their enforcement
@@ -40,7 +39,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: pay required expert advice and support fees at the Commission-equivalent remuneration rate
   norm_text: The Member States may be required to pay fees for the advice and support provided by the
@@ -77,7 +75,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: facilitate timely Member State expert access and efficiently coordinate expert and Union AI
     testing support for maximum added value

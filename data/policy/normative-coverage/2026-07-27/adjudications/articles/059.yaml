@@ -1,155 +1,135 @@
 schema_version: 1
-act_version_date: "2026-07-27"
+act_version_date: '2026-07-27'
 source:
   kind: article
-  document: "59"
-
+  document: '59'
 audit:
   audit_schema_version: 1
   segments_scanned: 19
   norms_scanned: 13
   finding_count: 10
   audit_sha256: 342f05ba4a26d19e1fe478b7801d3714c11b19cdf6494264a92630c7d3e520b5
-
 decisions:
-  - finding_id: AIA-VALID-FC9AED74926F379E
-    target: AIA-NORM-A059-P1-B-DATA-NECESSITY
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P008
-    source_sha256: 9942b8886c2b495be1be43261c7b1b1898d4533a827905f18b95320f48feb79f
-    target_sha256: 79b86609a2ba07813cb71c1bb0c8883aca23c7562c6189d33a5d2fab20e8913b
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation records that the permission is allowed only when this and all
-      other numbered conditions are met; the structured action and condition retain this condition.
-    legal_basis: &article_59_permission_basis
-      - span_id: AIA-TEXT-A059-P001
-        source_sha256: e6e4ce518ac157a5b763a88d7ba56f3b566c59d6043ff59f4a314137e3a9a0a4
-        quote: "when all of the following conditions are met:"
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-077062255E90AB6A
-    target: AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P009
-    source_sha256: 3434e9cf08f16e490bbd9ac71e0adcf4a6f540f2b1dee1d676d4acb6593c30b3
-    target_sha256: 0ad7e4284cee5b400add6107f7ece18df9343236a910b8b92da82ee0af4a3423
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation records its legal force, while mandatory_content retains the
-      monitoring, mitigation, and stoppage requirements.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-559FE1903B55EBFB
-    target: AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P010
-    source_sha256: 00e6a61935ab085a45fc448b9613be41aea3908a4c4881a3c0e8683bbd4530f8
-    target_sha256: c7056dea6df668adba679c4b9592c3ae78ae22ef5ba8d5f02ee1adc937f100be
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation supplies its legal force and the structured action retains the
-      protected-environment and authorised-access limits.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-E4F0B7258EF972D3
-    target: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P011
-    source_sha256: 7797e95bac69de08f6784f008c9fd3e1cf09027b9fb940221eeaa95bc39fadc9
-    target_sha256: d82e6fa6c02422a5aab9d00f284e40dbc2aa9bf6197ad1cf14d86f35051d208c
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation supplies its legal force and the structured action retains both
-      sharing limits.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-9F828F46CD63F65D
-    target: AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P012
-    source_sha256: 77f86ae55d49bd83f432d9d9bb9ea4b0dff621970311660c53d705f219386b7e
-    target_sha256: 2ac6f486604eebe285512a05fa2d43d1a573e6e24bae7d28fada799c05f2248b
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation supplies its legal force and the structured action retains both
-      data-subject protections.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-2CA75F8571FE3E35
-    target: AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P013
-    source_sha256: c94ff4ea01a74993b7cc195c998e4ea1c9bfd2213e2974fde515bc367144b193
-    target_sha256: cc5730a97234bada0f811a042398daa3af9e519661e702e09a194c690aaf42bc
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation supplies its legal force and the structured action retains the
-      protection and deletion triggers.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-C16EDDEFB8804F9B
-    target: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P014
-    source_sha256: 92a00d788e6461a271d902182fd8feb943050d1b5b14375199efe227a98aa79d
-    target_sha256: b275a8785426a66161b1da82b06ac48de7da9a291fbbc89b15a31b1cdb64b79a
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation supplies its legal force and the structured action retains the
-      duration and Union- or national-law qualifier.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-916AA0264EFA340A
-    target: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P015
-    source_sha256: a8d6c3e0025c9ee17494e179fbfc44bbe3a671322db338d5c2666808203023c6
-    target_sha256: 0fe115c4866a355530f7e58a6f95cfdac11bcf6b4f78fb4189bf1c2b1782ad2c
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation supplies its legal force and mandatory_content retains both
-      required Annex IV documentation elements.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-542FA8162A9FF4D8
-    target: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A059-P016
-    source_sha256: a8e8065ae7549c9e8690659dc6a4c507358e1df02666ec78b609b89dbcf29398
-    target_sha256: 6b118f477011ff2fa79a532bf0fa6d512e3573bf632cca481383131de904e3b3
-    decision: accepted_with_basis
-    reason: >-
-      This is one numbered condition of the Article 59(1) permission. The canonical
-      conditional_on_norms relation supplies its legal force, while mandatory_content and
-      exceptions retain the publication content and protected operational-data limit.
-    legal_basis: *article_59_permission_basis
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-BBCA81079B5674D6
-    target: AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A059-P018
-    source_sha256: 657a43881f57666b2ae76b5e3e1f6639e3a95764c0076beabacee1221bf46bb8
-    target_sha256: cd1e6bf8c8c40e83bf339f78e7356c12539a23eaa5134542b7a98f67dc4ab021
-    decision: false_positive
-    reason: >-
-      This norm is itself the complete saving clause: its action preserves the external law rather
-      than omitting a separate exception. The canonical external-requirements relation records
-      that the product does not adjudicate that external law.
-    reviewed_by: vidibro
+- finding_id: AIA-VALID-FC9AED74926F379E
+  target: AIA-NORM-A059-P1-B-DATA-NECESSITY
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P008
+  source_sha256: 9942b8886c2b495be1be43261c7b1b1898d4533a827905f18b95320f48feb79f
+  target_sha256: 79b86609a2ba07813cb71c1bb0c8883aca23c7562c6189d33a5d2fab20e8913b
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation records that the permission is allowed only when
+    this and all other numbered conditions are met; the structured action and condition
+    retain this condition.
+  legal_basis: &id001
+  - span_id: AIA-TEXT-A059-P001
+    source_sha256: e6e4ce518ac157a5b763a88d7ba56f3b566c59d6043ff59f4a314137e3a9a0a4
+    quote: 'when all of the following conditions are met:'
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-077062255E90AB6A
+  target: AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P009
+  source_sha256: 3434e9cf08f16e490bbd9ac71e0adcf4a6f540f2b1dee1d676d4acb6593c30b3
+  target_sha256: 0ad7e4284cee5b400add6107f7ece18df9343236a910b8b92da82ee0af4a3423
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation records its legal force, while mandatory_content
+    retains the monitoring, mitigation, and stoppage requirements.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-559FE1903B55EBFB
+  target: AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P010
+  source_sha256: 00e6a61935ab085a45fc448b9613be41aea3908a4c4881a3c0e8683bbd4530f8
+  target_sha256: c7056dea6df668adba679c4b9592c3ae78ae22ef5ba8d5f02ee1adc937f100be
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation supplies its legal force and the structured action
+    retains the protected-environment and authorised-access limits.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-E4F0B7258EF972D3
+  target: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P011
+  source_sha256: 7797e95bac69de08f6784f008c9fd3e1cf09027b9fb940221eeaa95bc39fadc9
+  target_sha256: d82e6fa6c02422a5aab9d00f284e40dbc2aa9bf6197ad1cf14d86f35051d208c
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation supplies its legal force and the structured action
+    retains both sharing limits.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-9F828F46CD63F65D
+  target: AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P012
+  source_sha256: 77f86ae55d49bd83f432d9d9bb9ea4b0dff621970311660c53d705f219386b7e
+  target_sha256: 2ac6f486604eebe285512a05fa2d43d1a573e6e24bae7d28fada799c05f2248b
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation supplies its legal force and the structured action
+    retains both data-subject protections.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-2CA75F8571FE3E35
+  target: AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P013
+  source_sha256: c94ff4ea01a74993b7cc195c998e4ea1c9bfd2213e2974fde515bc367144b193
+  target_sha256: cc5730a97234bada0f811a042398daa3af9e519661e702e09a194c690aaf42bc
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation supplies its legal force and the structured action
+    retains the protection and deletion triggers.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-C16EDDEFB8804F9B
+  target: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P014
+  source_sha256: 92a00d788e6461a271d902182fd8feb943050d1b5b14375199efe227a98aa79d
+  target_sha256: b275a8785426a66161b1da82b06ac48de7da9a291fbbc89b15a31b1cdb64b79a
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation supplies its legal force and the structured action
+    retains the duration and Union- or national-law qualifier.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-916AA0264EFA340A
+  target: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P015
+  source_sha256: a8d6c3e0025c9ee17494e179fbfc44bbe3a671322db338d5c2666808203023c6
+  target_sha256: 0fe115c4866a355530f7e58a6f95cfdac11bcf6b4f78fb4189bf1c2b1782ad2c
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation supplies its legal force and mandatory_content retains
+    both required Annex IV documentation elements.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-542FA8162A9FF4D8
+  target: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A059-P016
+  source_sha256: a8e8065ae7549c9e8690659dc6a4c507358e1df02666ec78b609b89dbcf29398
+  target_sha256: 6b118f477011ff2fa79a532bf0fa6d512e3573bf632cca481383131de904e3b3
+  decision: accepted_with_basis
+  reason: This is one numbered condition of the Article 59(1) permission. The canonical
+    conditional_on_norms relation supplies its legal force, while mandatory_content
+    and exceptions retain the publication content and protected operational-data limit.
+  legal_basis: *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-BBCA81079B5674D6
+  target: AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A059-P018
+  source_sha256: 657a43881f57666b2ae76b5e3e1f6639e3a95764c0076beabacee1221bf46bb8
+  target_sha256: cd1e6bf8c8c40e83bf339f78e7356c12539a23eaa5134542b7a98f67dc4ab021
+  decision: false_positive
+  reason: 'This norm is itself the complete saving clause: its action preserves the
+    external law rather than omitting a separate exception. The canonical external-requirements
+    relation records that the product does not adjudicate that external law.'
+  reviewed_by: vidibro

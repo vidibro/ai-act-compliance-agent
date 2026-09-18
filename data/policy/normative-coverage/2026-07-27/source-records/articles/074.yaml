@@ -6,7 +6,6 @@ records:
   action: apply Regulation 2019/1020 using the enacted expanded operator and product meanings
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: applicability
   mandatory_content:
@@ -30,7 +29,6 @@ records:
     information of potential interest for applying Union competition law
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -45,7 +43,6 @@ records:
     the measures taken
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   mandatory_content:
   - use of prohibited practices that occurred during that year
@@ -64,7 +61,6 @@ records:
     is designated
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   qualifier_spans:
   - A074-P006
@@ -83,7 +79,6 @@ records:
     to 83
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -105,7 +100,6 @@ records:
   action: exercise Article 14(4)(d) and (j) surveillance powers remotely as appropriate
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -123,7 +117,6 @@ records:
   action: assign directly connected financial-services AI surveillance to the relevant financial supervisor
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -138,7 +131,6 @@ records:
   action: designate another relevant authority as the market-surveillance authority for the Regulation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   qualifier_spans: []
   product_scope: outside_supported_actor
@@ -161,8 +153,7 @@ records:
   action: should report without delay to the European Central Bank market-surveillance information potentially
     relevant to its prudential-supervision tasks
   actors:
-  - actor_ref: financial_market_surveillance_authority
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   kind: recommendation
   product_scope: outside_supported_actor
@@ -186,7 +177,6 @@ records:
     surveillance authorities
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -201,7 +191,6 @@ records:
     or otherwise interferes with their activities when acting in their judicial capacity
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -217,7 +206,6 @@ records:
   action: supervise in-scope Union bodies except the Court acting judicially
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -238,7 +226,6 @@ records:
   action: facilitate coordination between AI surveillance and other relevant national authorities
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -256,8 +243,8 @@ records:
   action: propose joint activities, including joint investigations, on categories of high-risk AI systems
     found to present a serious risk across two or more Member States
   actors:
-  - actor_ref: market_surveillance_authority_and_commission
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: commission
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -271,7 +258,6 @@ records:
   action: provide coordination support for joint investigations
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -290,7 +276,6 @@ records:
     remote access where appropriate
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A74-12
@@ -307,7 +292,6 @@ records:
     are met
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   mandatory_content: []
   qualifier_spans:
@@ -328,7 +312,6 @@ records:
   action: treat obtained information and documentation under Article 78 confidentiality
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

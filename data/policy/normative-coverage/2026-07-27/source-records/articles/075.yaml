@@ -6,7 +6,6 @@ records:
   action: hold exclusive supervision and enforcement competence for the listed systems
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: legal_consequence
   mandatory_content:
@@ -46,7 +45,6 @@ records:
     or in its undertaking
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -62,7 +60,6 @@ records:
   action: report serious incidents to the AI Office rather than through the Article 73 route
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
@@ -76,7 +73,6 @@ records:
   action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:
@@ -93,7 +89,6 @@ records:
     authority
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -109,8 +104,7 @@ records:
   action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
     inspections and enforcement
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -124,8 +118,7 @@ records:
     tasks under this paragraph, in accordance with the applicable national procedures.
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -143,7 +136,6 @@ records:
   action: assist AI Office territorial action involving access to a public authority's data or AI system
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -163,7 +155,6 @@ records:
     or recall decision
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -179,7 +170,6 @@ records:
   action: consult involved authorities where appropriate on application and enforcement matters
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -194,7 +184,6 @@ records:
   action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -212,7 +201,6 @@ records:
   action: verify regulatory conformity and market eligibility
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -227,7 +215,6 @@ records:
   action: entrust tests or assessments to designated notified bodies
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -240,7 +227,6 @@ records:
   action: act on the Commission's behalf when entrusted
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -256,7 +242,6 @@ records:
   action: withdraw an inadequately performed delegation immediately
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -273,7 +258,6 @@ records:
   action: bear testing and assessment fees
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A75-1E
@@ -285,7 +269,6 @@ records:
   action: pay entrusted-service costs directly to the notified body
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A75-1E
@@ -298,7 +281,6 @@ records:
     market surveillance authorities accordingly
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   conditions:
   - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
@@ -324,7 +306,6 @@ records:
     compliance
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   mandatory_content:
@@ -349,7 +330,6 @@ records:
   action: take utmost account of a market surveillance authority's assessment request
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -363,7 +343,6 @@ records:
   action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -382,7 +361,6 @@ records:
     exercising them
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - the intention to exercise the Article 75a powers, or the reasons for not exercising them
@@ -400,7 +378,6 @@ records:
     and about their outcome, without disclosing any confidential information
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   conditions:
   - the AI Office decides to exercise its powers in accordance with Article 75a
@@ -422,7 +399,6 @@ records:
     information needed to conclude an investigation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -441,7 +417,6 @@ records:
   action: supply relevant requested compliance information without delay and within 30 days
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -458,7 +433,6 @@ records:
   action: safeguard obtained information under Article 78 confidentiality
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -470,8 +444,8 @@ records:
   quote: The procedure provided for in Chapter VI of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
   action: apply the Regulation 2019/1020 Chapter VI procedure with necessary adaptations
   actors:
-  - actor_ref: market_surveillance_authority_and_ai_office
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: ai_office
   targets: []
   kind: applicability
   product_scope: outside_supported_actor

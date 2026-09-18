@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: establish a quality-management system that ensures compliance with the Regulation
   norm_text: Providers of high-risk AI systems shall put a quality management system in place that ensures
@@ -42,7 +41,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: document the quality-management system systematically and orderly through written policies,
     procedures, and instructions
@@ -80,7 +78,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include a regulatory-compliance strategy covering conformity assessment and management of system
     modifications
@@ -119,7 +116,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include techniques, procedures, and systematic actions for system design, design control, and
     design verification
@@ -158,7 +154,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include techniques, procedures, and systematic actions for system development, quality control,
     and quality assurance
@@ -197,7 +192,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include examination, testing, and validation procedures covering the periods before, during,
     and after development and specifying their frequency
@@ -236,7 +230,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include applicable technical specifications and standards and the alternative means used for
     Section 2 compliance where harmonised standards are incomplete or insufficient
@@ -276,7 +269,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include data-management systems and procedures covering all listed and other relevant pre-market
     or pre-service data operations
@@ -317,7 +309,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include the Article 9 risk-management system in the quality-management system
   norm_text: the risk management system referred to in Article 9
@@ -354,7 +345,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include the establishment, implementation, and maintenance of an Article 72 post-market monitoring
     system
@@ -393,7 +383,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include procedures for reporting serious incidents under Article 73
   norm_text: procedures related to the reporting of a serious incident in accordance with Article 73
@@ -430,7 +419,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include processes for handling communication with all listed authorities, bodies, operators,
     customers, and interested parties
@@ -470,7 +458,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include systems and procedures for keeping all relevant documentation and information
   norm_text: systems and procedures for record-keeping of all relevant documentation and information
@@ -507,7 +494,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include resource management and security-of-supply measures
   norm_text: resource management, including security-of-supply related measures
@@ -544,7 +530,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include an accountability framework assigning management and staff responsibilities for every
     Article 17(1) aspect
@@ -583,7 +568,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "implement the Article 17(1) aspects proportionately to the provider\u2019s organisational size,\
     \ particularly for SMEs, start-ups, and SMCs"
@@ -622,7 +606,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: preserve the degree of rigour and protection required for system compliance regardless of provider
     size
@@ -660,7 +643,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: integrate the Article 17(1) aspects into a quality-management system required by relevant sectoral
     Union law
@@ -700,8 +682,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: financial_institution_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: deem the Article 17 QMS obligation fulfilled through compliance with applicable Union financial-services
     governance rules, except for points (g), (h), and (i)
@@ -744,8 +725,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: financial_institution_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: take applicable Article 40 harmonised standards into account when relying on the financial-institution
     governance route

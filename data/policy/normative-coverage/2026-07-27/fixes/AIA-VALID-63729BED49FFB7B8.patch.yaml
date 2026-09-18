@@ -1,9 +1,16 @@
 schema_version: 1
 finding_id: AIA-VALID-63729BED49FFB7B8
 target_file: source-records/articles/024.yaml
-before_sha256: 041bc9b4b6a827100436cdcaaa40dc326c41c6897f833c0106a9db835a8f6210
-after_sha256: 1d1bc1be06d6340c3cd5580e9b3aa38d9419499485e04ffa5dfcc4567dcaee1e
+before_sha256: f223dc9d88bbeb796884c03f7c437ac57040405ec475d6d5ff9467330e4f19e3
+after_sha256: afbbfb904d9a2c67864856b0c0c5faf4c6531a1a9d461ea9c8238c200f891ed6
 replacements:
-- old: "  action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while\n    the system is under the distributor's responsibility\n  actors:\n  - actor_ref: distributor\n    category: supported_operator\n  targets: []\n  implementation_refs: *id002"
-  new: "  action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while\n    the system is under the distributor's responsibility\n  actors:\n  - actor_ref: distributor\n    category: supported_operator\n  targets: []\n  conditions:\n  - the high-risk AI system is under the distributor's responsibility\n  - storage or transport conditions are applicable\n  implementation_refs: *id002"
+- old: "  action: ensure applicable storage and transport conditions do not jeopardise\
+    \ Section 2 compliance while\n    the system is under the distributor's responsibility\n\
+    \  actors:\n  - actor_ref: distributor\n  targets: []\n  implementation_refs:\
+    \ *id002"
+  new: "  action: ensure applicable storage and transport conditions do not jeopardise\
+    \ Section 2 compliance while\n    the system is under the distributor's responsibility\n\
+    \  actors:\n  - actor_ref: distributor\n  targets: []\n  conditions:\n  - the\
+    \ high-risk AI system is under the distributor's responsibility\n  - storage or\
+    \ transport conditions are applicable\n  implementation_refs: *id002"
   expected_occurrences: 1

@@ -8,7 +8,6 @@ records:
     or jointly
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -22,7 +21,6 @@ records:
   action: provide technical support, advice, and tools for sandbox establishment and operation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -38,7 +36,6 @@ records:
   action: fulfil the national-sandbox obligation through participation providing equivalent national coverage
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: permission
   conditions:
@@ -54,8 +51,8 @@ records:
     competent authorities of other Member States may also be established.
   action: establish additional regional, local, or jointly operated sandboxes
   actors:
-  - actor_ref: member_state_or_competent_authority
-    category: public_authority
+  - actor_ref: member_state
+  - actor_ref: national_competent_authority
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -70,7 +67,6 @@ records:
   action: establish an AI regulatory sandbox for Union institutions, bodies, offices and agencies
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -86,7 +82,6 @@ records:
     its sandbox
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   kind: legal_consequence
   conditions:
@@ -104,7 +99,6 @@ records:
     to establish and supervise sandboxes for systems under their supervision
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   qualifier_spans:
@@ -122,7 +116,6 @@ records:
     to the AI Office for its sandbox
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: legal_consequence
   conditions:
@@ -141,7 +134,6 @@ records:
     where other Union-law compliance is supervised
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: obligation
   conditions:
@@ -157,7 +149,6 @@ records:
   action: provide priority access to SMEs, including start-ups, and SMCs in the Union sandbox
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: obligation
   conditions:
@@ -175,7 +166,6 @@ records:
     timely compliance with this Article
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -189,7 +179,6 @@ records:
   action: cooperate with other relevant authorities
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: obligation
   conditions:
@@ -205,7 +194,6 @@ records:
   action: allow involvement of other actors within the AI ecosystem
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: permission
   conditions:
@@ -222,7 +210,6 @@ records:
   action: preserve other regulatory sandboxes established under Union or national law
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -238,7 +225,6 @@ records:
     and national competent authorities
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -256,8 +242,7 @@ records:
   action: operate an innovation-fostering controlled environment for development, training, testing and
     validation under a specific agreed sandbox plan
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: obligation
   mandatory_content:
@@ -276,8 +261,7 @@ records:
   quote: Such sandboxes may include testing in real world conditions supervised therein.
   action: include supervised testing in real-world conditions within the sandbox
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -292,8 +276,7 @@ records:
   action: incorporate the real-world testing plan referred to in Articles 60 and 60a into the sandbox
     plan
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: obligation
   conditions:
@@ -313,8 +296,7 @@ records:
   action: provide sandbox guidance, supervision, and support addressing risks, testing, mitigation, effectiveness,
     and applicable law
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -328,8 +310,7 @@ records:
     and obligations set out in this Regulation.
   action: guide sandbox participants on regulatory expectations and fulfilment of Regulation obligations
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -342,8 +323,7 @@ records:
     shall provide a written proof of the activities successfully carried out in the sandbox.
   action: provide written proof of activities successfully carried out in the sandbox
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: obligation
   conditions:
@@ -359,8 +339,7 @@ records:
     in the sandbox and the related results and learning outcomes.
   action: provide an exit report detailing sandbox activities, results and learning outcomes
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: obligation
   mandatory_content:
@@ -380,7 +359,6 @@ records:
     market surveillance activities
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   product_scope: no_product_action
@@ -398,7 +376,6 @@ records:
     reasonably accelerating conformity assessment procedures
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -415,7 +392,6 @@ records:
     reasonably accelerating conformity assessment procedures
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -430,8 +406,8 @@ records:
   action: access the exit reports with provider or prospective-provider agreement, subject to Article
     78 confidentiality
   actors:
-  - actor_ref: commission_and_board
-    category: union_institution_or_body
+  - actor_ref: commission
+  - actor_ref: board
   targets: []
   kind: permission
   conditions:
@@ -447,8 +423,8 @@ records:
   quote: shall take them into account, as appropriate, when exercising their tasks under this Regulation.
   action: take exit reports into account when exercising tasks under this Regulation
   actors:
-  - actor_ref: commission_and_board
-    category: union_institution_or_body
+  - actor_ref: commission
+  - actor_ref: board
   targets: []
   kind: obligation
   conditions:
@@ -468,8 +444,7 @@ records:
   action: make the exit report publicly available through the single information platform only with both
     parties' explicit agreement
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: permission
   conditions:
@@ -486,8 +461,7 @@ records:
   quote: The establishment of AI regulatory sandboxes shall aim to contribute to the following objectives
   action: design sandbox establishment to contribute to every enacted objective
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   mandatory_content:
   - legal certainty and compliance
@@ -518,7 +492,6 @@ records:
     supervision within their remit
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -533,7 +506,6 @@ records:
     and local levels
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -548,7 +520,6 @@ records:
   action: require adequate mitigation of significant risks identified during sandbox development and testing
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: obligation
   conditions:
@@ -567,7 +538,6 @@ records:
     is possible
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: power
   conditions:
@@ -584,7 +554,6 @@ records:
   action: inform the AI Office of the suspension decision
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: obligation
   conditions:
@@ -603,7 +572,6 @@ records:
     with the objective of supporting AI innovation in the Union
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -619,8 +587,8 @@ records:
   action: remain liable under applicable Union and national liability law for third-party damage resulting
     from sandbox experimentation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: legal_consequence
   conditions:
@@ -641,7 +609,6 @@ records:
     sandbox conditions
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   conditions:
@@ -662,8 +629,8 @@ records:
   action: benefit from no administrative fines regarding the other Union or national law whose competent
     authorities supervised and provided compliance guidance
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: legal_consequence
   conditions:
@@ -683,8 +650,7 @@ records:
     they facilitate cross-border cooperation between national competent authorities.
   action: design and implement sandboxes to facilitate relevant cross-border authority cooperation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -698,8 +664,7 @@ records:
     within the framework of the Board.
   action: coordinate activities and cooperate within the framework of the Board
   actors:
-  - actor_ref: sandbox_public_authorities
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   kind: obligation
   conditions:
@@ -717,8 +682,7 @@ records:
   action: support joint sandbox establishment and operation, including across sectors, and exchange related
     best practices
   actors:
-  - actor_ref: sandbox_public_authorities
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   kind: permission
   conditions:
@@ -735,7 +699,6 @@ records:
   action: inform the AI Office and the Board of the establishment of a sandbox
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -749,7 +712,6 @@ records:
   action: ask the AI Office and the Board for support and guidance
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -766,7 +728,6 @@ records:
     and cross-border cooperation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -783,7 +744,6 @@ records:
     and every year thereafter until termination, followed by a final report
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: obligation
   mandatory_content:
@@ -809,7 +769,6 @@ records:
   action: make annual sandbox reports or abstracts thereof publicly available online
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -824,7 +783,6 @@ records:
   action: take annual sandbox reports into account when exercising tasks under this Regulation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   conditions:
@@ -845,7 +803,6 @@ records:
     and non-binding guidance in accordance with Article 62(1)(c)
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   mandatory_content:
@@ -865,7 +822,6 @@ records:
   action: proactively coordinate with national competent authorities
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   conditions:

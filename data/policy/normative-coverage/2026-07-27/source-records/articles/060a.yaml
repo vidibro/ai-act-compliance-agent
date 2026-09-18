@@ -5,7 +5,6 @@ records:
   action: allow Article 60a real-world testing of Section B AI-enabled products to assess Articles 8 to 15 conformity
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -19,7 +18,6 @@ records:
   action: adopt an individual or joint real-world testing framework when allowing Article 60a testing
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   conditions: [the Member State chooses to allow Article 60a testing]
   product_scope: outside_supported_actor
@@ -33,7 +31,6 @@ records:
   action: notify the Commission of an adopted testing framework before implementation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -46,7 +43,6 @@ records:
   action: preserve Commission competences under Section B harmonisation legislation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -68,7 +64,6 @@ records:
     to implement real-world testing frameworks and test Section B AI-enabled products
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   conditions: [the Member State has adopted a real-world testing framework]
   product_scope: outside_supported_actor
@@ -87,7 +82,6 @@ records:
   action: make every enacted plan compliance governance and protection element part of the real-world testing framework
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   mandatory_content: [mandatory agreed testing plan, incorporated Article 60 safeguards, effective governance and accountability, high protection of health safety and fundamental rights]
   qualifier_spans: [A060A-P006, A060A-P007, A060A-P008, A060A-P009]
@@ -101,8 +95,8 @@ records:
   quote: include the provision of a mandatory real-world testing plan to be agreed between the provider or prospective provider and the national competent authority or relevant authority in accordance with the Union harmonisation legislation listed in Section B of Annex I;
   action: agree a mandatory real-world testing plan with the competent or relevant authority under applicable Section B legislation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -111,8 +105,8 @@ records:
   quote: ensure compliance with the requirements laid down in Article 60(2), (3), (4)(d)-(j) and (5)-(9), where any reference to market surveillance authorities in those provisions shall be read as a reference to the national competent authority or relevant authority, as appropriate in accordance with the Union harmonisation legislation listed in Section B of Annex I;
   action: comply with the incorporated Article 60 testing safeguards using the competent-authority substitution required by Section B legislation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -122,8 +116,8 @@ records:
   action: comply with the applicable provisions of the Section B Union harmonisation legislation when
     conducting the real-world testing
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -133,8 +127,8 @@ records:
   action: keep the Section B requirements from affecting the application of Article 60a to the extent
     necessary to enable the paragraph 1 testing
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: legal_consequence
   product_scope: no_product_action

@@ -6,7 +6,6 @@ records:
   action: ensure the high-risk AI system automatically records event logs throughout its lifetime
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-HR-A12
@@ -20,7 +19,6 @@ records:
     modifications
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A012-P002
@@ -34,7 +32,6 @@ records:
   action: enable logging of events relevant to Article 72 post-market monitoring
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A012-P002
@@ -48,7 +45,6 @@ records:
   action: enable logging of events relevant to deployer monitoring under Article 26(5)
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A012-P002
@@ -63,7 +59,6 @@ records:
   action: record the start and end date and time of every use
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A012-P006
@@ -80,7 +75,6 @@ records:
   action: record the reference database against which the system checked input data
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A012-P006
@@ -97,7 +91,6 @@ records:
   action: record the input data for which the search produced a match
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A012-P006
@@ -115,7 +108,6 @@ records:
   action: record the identity of every natural person involved in verifying results under Article 14(5)
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A012-P006

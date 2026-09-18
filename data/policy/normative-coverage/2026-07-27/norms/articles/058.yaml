@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt implementing acts specifying the complete sandbox lifecycle and all enacted common-principle
     areas
@@ -51,7 +50,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt the sandbox-arrangement implementing acts under the Article 98(2) examination procedure
   norm_text: Those implementing acts shall be adopted in accordance with the examination procedure referred
@@ -86,7 +84,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: ensure the implementing acts produce every enacted access, flexibility, support, recognition,
     duration, and testing outcome
@@ -139,8 +136,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: direct prospective sandbox providers to relevant pre-deployment and value-adding services
   norm_text: Prospective providers in the AI regulatory sandboxes, in particular SMEs and start-ups, shall
@@ -177,7 +173,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: specifically agree real-world testing terms and conditions, in particular appropriate safeguards,
     with participants to protect fundamental rights, health and safety
@@ -218,7 +213,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: cooperate with other national competent authorities to ensure consistent real-world sandbox
     testing practices across the Union

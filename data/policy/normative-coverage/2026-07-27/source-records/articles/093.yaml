@@ -6,7 +6,6 @@ records:
     providers
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   mandatory_content: []
@@ -37,7 +36,6 @@ records:
   action: initiate structured dialogue with the GPAI provider before requesting a measure
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -55,7 +53,6 @@ records:
     action
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor

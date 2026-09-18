@@ -1,9 +1,14 @@
 schema_version: 1
 finding_id: AIA-VALID-83E43D172407920D
 target_file: source-records/articles/014.yaml
-before_sha256: 0a5826ea87438ec091d376e64a450d35e6a5667f260ae67c42970cc94b03fe6a
-after_sha256: bccf809b4226510a5a2d4a4352b72457e10b003012ce5f0acad02eef1ca7b298
+before_sha256: 2b365170dbd2e96cdbfb7300e9a5822b1a74d9b307509edbd4064a34bb373022
+after_sha256: bae0bcbd2848bbd26a4588d16af95c36785bb88b7a87c4c770fe2aad11423e60
 replacements:
-- old: "  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks arising\n    from intended use or reasonably foreseeable misuse, including residual risks"
-  new: "  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks that\n    emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including risks that persist despite other Section 2 requirements"
+- old: "  action: design human oversight to prevent or minimise health, safety, and\
+    \ fundamental-rights risks arising\n    from intended use or reasonably foreseeable\
+    \ misuse, including residual risks"
+  new: "  action: design human oversight to prevent or minimise health, safety, and\
+    \ fundamental-rights risks that\n    emerge when the system is used for its intended\
+    \ purpose or under reasonably foreseeable misuse, including risks that persist\
+    \ despite other Section 2 requirements"
   expected_occurrences: 1

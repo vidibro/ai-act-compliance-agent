@@ -748,7 +748,7 @@ def test_article_four_literacy_norm_keeps_context_and_individual_guarantee_limit
         if norm.norm_id == "AIA-NORM-A004-P1-AI-LITERACY-MEASURES"
     )
 
-    assert norm.actors[0].actor_ref == "provider_or_deployer"
+    assert [actor.actor_ref for actor in norm.actors] == ["provider", "deployer"]
     assert norm.product_scope.value == "in_scope"
     assert norm.implementation_mode.value == "compliance_rule"
     assert len(norm.conditions) == 3
@@ -1080,9 +1080,7 @@ def test_article_twenty_six_preserves_structured_triggers_and_complete_log_reten
         bundle.norm_inventory.target_norm_ids_for(
             authorisation.norm_id, NormRelationKind.RELIES_ON_NORMS
         )
-    ) == {
-        "AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680"
-    }
+    ) == {"AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680"}
     assert retention.norm_text.startswith("Deployers of high-risk AI systems shall keep")
     assert "period appropriate to the intended purpose" in retention.norm_text
     assert "at least six months" in retention.action
@@ -1236,9 +1234,7 @@ def test_annex_three_supplies_twenty_five_article_six_classification_routes():
     assert all(norm.kind.value == "applicability" for norm in norms)
     assert all(
         "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK"
-        in bundle.norm_inventory.target_norm_ids_for(
-            norm.norm_id, NormRelationKind.RELIES_ON_NORMS
-        )
+        in bundle.norm_inventory.target_norm_ids_for(norm.norm_id, NormRelationKind.RELIES_ON_NORMS)
         for norm in norms
     )
 
@@ -1356,10 +1352,14 @@ def test_article_ten_covers_dataset_quality_and_reuses_article_4a_safeguards():
             norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
         ) == [carrier_id]
 
-    uniquely_implemented = set(norms) - set(carried_by) - {
-        "AIA-NORM-A010-P3-COMBINED-DATASETS",
-        "AIA-NORM-A010-P6-TESTING-DATA-ONLY",
-    }
+    uniquely_implemented = (
+        set(norms)
+        - set(carried_by)
+        - {
+            "AIA-NORM-A010-P3-COMBINED-DATASETS",
+            "AIA-NORM-A010-P6-TESTING-DATA-ONLY",
+        }
+    )
     assert all(
         norms[norm_id].implementation_refs == ["AIA-HR-A10"] for norm_id in uniquely_implemented
     )
@@ -1996,13 +1996,9 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     protection = norms["AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS"]
     assert protection.implementation_mode.value == "report_only"
     assert protection.implementation_refs == ["AIA-IP-A25-2"]
+    assert norms["AIA-NORM-A025-P2-NO-COOPERATION-DUTY"].implementation_mode.value == "report_only"
     assert (
-        norms["AIA-NORM-A025-P2-NO-COOPERATION-DUTY"].implementation_mode.value
-        == "report_only"
-    )
-    assert (
-        norms["AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION"].implementation_mode.value
-        == "report_only"
+        norms["AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION"].implementation_mode.value == "report_only"
     )
 
 
@@ -2747,9 +2743,12 @@ def test_article_forty_three_reconciles_all_conformity_routes():
     assert norms["AIA-NORM-A043-P2-INTERNAL-CONTROL"].implementation_refs == ["AIA-PO-A43-2"]
     assert norms["AIA-NORM-A043-P4-NEW-ASSESSMENT"].implementation_refs == ["AIA-PO-A43-4"]
     qms = norms["AIA-NORM-A043-P3-QMS"]
-    assert len(
-        bundle.norm_inventory.target_norm_ids_for(qms.norm_id, NormRelationKind.RELIES_ON_NORMS)
-    ) == 28
+    assert (
+        len(
+            bundle.norm_inventory.target_norm_ids_for(qms.norm_id, NormRelationKind.RELIES_ON_NORMS)
+        )
+        == 28
+    )
     exclusion = norms["AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION"]
     assert exclusion.kind.value == "applicability"
     assert exclusion.product_scope.value == "dependency_only"
@@ -3068,9 +3067,7 @@ def test_article_fifty_one_extracts_systemic_risk_classification_gates():
     assert all(
         norm.implementation_mode.value == "applicability_question" for norm in classification
     )
-    delegated_acts = [
-        norm for norm in norms.values() if norm.actors[0].actor_ref == "commission"
-    ]
+    delegated_acts = [norm for norm in norms.values() if norm.actors[0].actor_ref == "commission"]
     assert len(delegated_acts) == 1
     assert all(norm.implementation_mode.value == "none_required" for norm in delegated_acts)
     presumption = norms["AIA-NORM-A051-P2-COMPUTE-PRESUMPTION"]
@@ -3175,9 +3172,7 @@ def test_article_fifty_four_maps_representative_mandate_lifecycle():
     assert len(exception.implementation_refs) == 5
     assert exception.exceptions == ["the general-purpose AI model presents systemic risk"]
     representative = [
-        norm
-        for norm in norms.values()
-        if norm.actors[0].actor_ref == "authorised_representative"
+        norm for norm in norms.values() if norm.actors[0].actor_ref == "authorised_representative"
     ]
     assert len(representative) == 8
 
@@ -3516,8 +3511,8 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
 
     inform = norms["AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES"]
     agreement = norms["AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT"]
-    assert inform.actors[0].actor_ref == "provider_or_prospective_provider"
-    assert agreement.actors[0].actor_ref == "provider_and_deployer"
+    assert [actor.actor_ref for actor in inform.actors] == ["provider", "prospective_provider"]
+    assert [actor.actor_ref for actor in agreement.actors] == ["provider", "deployer"]
     assert inform.conditions == agreement.conditions == [cooperation]
     assert inform.mandatory_content == [
         "all aspects of the testing relevant to the deployer's decision to participate",
@@ -3572,7 +3567,7 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     assert not recall.conditions
     assert "upon such termination" in recall.action
     assert all(
-        norm.actors[0].actor_ref == "provider_or_prospective_provider"
+        [actor.actor_ref for actor in norm.actors] == ["provider", "prospective_provider"]
         for norm in (report, mitigate, recall)
     )
 
@@ -3796,9 +3791,7 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     assert convene.conditions == ["the Chair requests the meeting"]
     assert not agenda.conditions
     assert "rules of procedure" in agenda.action
-    assert all(
-        norm.actors[0].actor_ref == "ai_office" for norm in (secretariat, convene, agenda)
-    )
+    assert all(norm.actors[0].actor_ref == "ai_office" for norm in (secretariat, convene, agenda))
     assert_extraction_never_approves(norms.values())
 
 
@@ -4226,7 +4219,10 @@ def test_article_seventy_four_maps_provider_access_duties():
     joint = norms["AIA-NORM-A074-P11-JOINT-ACTIVITIES"]
     support = norms["AIA-NORM-A074-P11-AI-OFFICE-COORDINATION-SUPPORT"]
     assert joint.kind.value == "power"
-    assert joint.actors[0].actor_ref == "market_surveillance_authority_and_commission"
+    assert [actor.actor_ref for actor in joint.actors] == [
+        "market_surveillance_authority",
+        "commission",
+    ]
     assert support.kind.value == "obligation"
     assert support.actors[0].actor_ref == "ai_office"
     assert_extraction_never_approves(norms.values())

@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: assign one identification number to each notified body even when it is notified under multiple
     Union acts
@@ -41,7 +40,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: publish the list of bodies notified under the Regulation with their identification numbers and
     notified activities
@@ -80,7 +78,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: keep the notified-body list up to date
   norm_text: The Commission shall ensure that the list is kept up to date.

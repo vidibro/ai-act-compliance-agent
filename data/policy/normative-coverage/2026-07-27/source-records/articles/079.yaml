@@ -7,8 +7,7 @@ records:
   action: treat an AI system risking health safety or fundamental rights as a Regulation 2019/1020 product
     presenting a risk
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   kind: definition
   product_scope: no_product_action
@@ -27,7 +26,6 @@ records:
     presents a risk
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -46,7 +44,6 @@ records:
     are identified
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -61,7 +58,6 @@ records:
     Article 79 evaluation
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   conditions:
   - the market surveillance authority is carrying out an Article 79(2) evaluation of the AI system
@@ -81,7 +77,6 @@ records:
   action: require correction withdrawal or recall without undue delay within the shorter enacted deadline
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -97,7 +92,6 @@ records:
   action: inform the relevant notified body of required corrective measures
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -111,7 +105,6 @@ records:
   action: apply Regulation 2019/1020 Article 18 to paragraph 2 corrective measures
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -128,7 +121,6 @@ records:
     required actions
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -145,7 +137,6 @@ records:
     market
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-ALL-A79
@@ -162,7 +153,6 @@ records:
     or put into service, to withdraw the product or standalone AI system, or to recall it
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   conditions:
   - the operator does not take adequate corrective action within the period referred to in paragraph 2
@@ -178,7 +168,6 @@ records:
   action: notify the Commission and the other Member States of those measures without undue delay
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -192,7 +181,6 @@ records:
     details in the paragraph 5 notification
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   mandatory_content:
   - the information necessary for the identification of the non-compliant AI system
@@ -227,8 +215,7 @@ records:
   action: promptly report adopted measures additional information and any objection to the notified national
     measure
   actors:
-  - actor_ref: other_market_surveillance_authority
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -245,8 +232,7 @@ records:
     of the paragraph 5 notification, or within 30 days where the non-compliance concerns the Article 5
     prohibition
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -263,8 +249,7 @@ records:
     with Article 18 of Regulation (EU) 2019/1020.
   action: preserve the concerned operator's procedural rights under Article 18 of Regulation (EU) 2019/1020
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -279,8 +264,7 @@ records:
   action: reduce the three-month objection period to 30 days where the non-compliance concerns the prohibition
     of the AI practices referred to in Article 5
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -296,7 +280,6 @@ records:
   action: ensure appropriate restrictive measures including market withdrawal without undue delay
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

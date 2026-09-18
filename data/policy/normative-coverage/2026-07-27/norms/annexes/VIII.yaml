@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: submit and maintain the Section A provider registration information; entries 2, 3, 8 and 9 apply
     only where their enacted condition is met, entry 12 is withheld for the enacted law-enforcement, migration,
@@ -68,7 +67,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: submit and maintain the Section B not-high-risk registration information; entries 2 and 3 apply
     only where their enacted condition is met
@@ -119,7 +117,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: submit and maintain the Section C deployer registration information
   norm_text: The following information shall be provided and thereafter kept up to date

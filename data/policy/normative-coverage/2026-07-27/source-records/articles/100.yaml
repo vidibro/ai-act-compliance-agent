@@ -10,7 +10,6 @@ records:
     considering all relevant circumstances and specified factors
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   kind: power
   mandatory_content:
@@ -40,8 +39,7 @@ records:
     to administrative fines of up to EUR 1500000.
   action: expose Union-body Article 5 non-compliance to a fine up to EUR 1500000
   actors:
-  - actor_ref: infringing_union_institution_or_body
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -58,8 +56,7 @@ records:
     other than those laid down in Article 5, shall be subject to administrative fines of up to EUR 750000.
   action: expose other Union-body AI Act non-compliance to a fine up to EUR 750000
   actors:
-  - actor_ref: infringing_union_institution_or_body
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -80,7 +77,6 @@ records:
     of being heard on the possible infringement before taking a decision
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   conditions:
   - the decision is taken pursuant to Article 100
@@ -97,7 +93,6 @@ records:
     able to comment
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -110,7 +105,6 @@ records:
   action: associate any complainants closely with the proceedings
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   conditions:
   - there are complainants
@@ -125,7 +119,6 @@ records:
   action: fully respect the rights of defence of the parties concerned in the proceedings
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -139,8 +132,7 @@ records:
     \ data or business secrets."
   action: have access to the European Data Protection Supervisor's file
   actors:
-  - actor_ref: party_concerned_in_article_100_proceedings
-    category: union_institution_or_body
+  - actor_ref: concerned_party
   targets: []
   kind: entitlement
   exceptions:
@@ -159,8 +151,7 @@ records:
     of the Union
   action: contribute the funds collected by imposing Article 100 fines to the general budget of the Union
   actors:
-  - actor_ref: union_budget_and_enforcement_framework
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -175,8 +166,7 @@ records:
   action: keep the fines from affecting the effective operation of the Union institution, body, office
     or agency fined
   actors:
-  - actor_ref: union_budget_and_enforcement_framework
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -192,7 +182,6 @@ records:
   action: notify the Commission annually of Article 100 fines and initiated proceedings
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

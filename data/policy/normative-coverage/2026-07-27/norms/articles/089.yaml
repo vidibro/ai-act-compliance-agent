@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: take necessary actions monitoring GPAI-provider compliance and adherence to approved codes of
     practice
@@ -42,8 +41,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
-  - actor_ref: downstream_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: lodge a complaint alleging a GPAI provider's infringement of this Regulation
   norm_text: Downstream providers shall have the right to lodge a complaint alleging an infringement of
@@ -77,8 +75,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: downstream_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: duly reason and include the minimum required information in a downstream-provider complaint
   norm_text: A complaint shall be duly reasoned and indicate at least

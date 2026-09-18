@@ -7,7 +7,6 @@ records:
     requirements
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -23,7 +22,6 @@ records:
     tasks
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -39,7 +37,6 @@ records:
   action: take full responsibility for tasks performed by subcontractors or subsidiaries
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -53,7 +50,6 @@ records:
   action: subcontract activities or use a subsidiary only with the provider's agreement
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -69,7 +65,6 @@ records:
   action: make the list of subsidiaries publicly available
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -85,7 +80,6 @@ records:
     authority for five years after subcontracting ends
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -8,7 +8,6 @@ records:
     model on the Union market
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider is established in a third country
@@ -23,7 +22,6 @@ records:
   action: enable the authorised representative to perform every task specified in its mandate
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-GP-A54-2
@@ -36,7 +34,6 @@ records:
   action: perform every task specified in the provider's mandate
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-GPAR-A54-3
@@ -49,7 +46,6 @@ records:
   action: provide the AI Office a mandate copy in an official Union-institution language on request
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - the AI Office requests a copy of the mandate
@@ -65,7 +61,6 @@ records:
     55
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A054-P003
@@ -82,7 +77,6 @@ records:
     years after market placement
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A054-P003
@@ -101,7 +95,6 @@ records:
     AI Office request
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A054-P003
@@ -120,7 +113,6 @@ records:
     systems in the Union
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A054-P003
@@ -139,7 +131,6 @@ records:
     compliance issues
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-GP-A54-4
@@ -152,7 +143,6 @@ records:
   action: terminate the mandate when the provider is or appears to be acting contrary to regulatory obligations
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - the representative considers or has reason to consider the provider non-compliant
@@ -167,7 +157,6 @@ records:
   action: immediately inform the AI Office of the mandate termination and its reasons
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - the representative terminates the mandate under Article 54(5)
@@ -189,7 +178,6 @@ records:
     AI models presenting systemic risk
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:

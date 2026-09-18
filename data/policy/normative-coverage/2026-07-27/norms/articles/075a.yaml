@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
   norm_text: When exercising its tasks of supervision and enforcement laid down in Article 75(1) of this
@@ -41,7 +40,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: reclaim all supervision and enforcement costs associated with non-compliance from the relevant
     operator
@@ -78,8 +76,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: ai_office_supervision
-    category: union_institution_or_body
+  - actor_ref: ai_office
   targets: []
   action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
   norm_text: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
@@ -114,7 +111,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
   norm_text: Where the AI Office has reasonable grounds to suspect non-compliance with this Regulation
@@ -153,7 +149,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: notify the concerned AI-system operator when starting an investigation
   norm_text: Upon starting such an investigation, the AI Office shall notify the operator of the AI system
@@ -189,7 +184,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: exercise paragraph 1 powers on initiative or complaint including before formally starting an
     investigation
@@ -226,7 +220,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
   norm_text: Where a market surveillance authority has reason to suspect non-compliance with this Regulation
@@ -264,7 +257,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: exercise listed information and document powers by simple request or decision
   norm_text: The AI Office may exercise the powers listed in Article 14(4), points (a), (b) and (c) of
@@ -299,7 +291,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: state the legal basis and purpose of the request, specify the information required and set the
     period for providing it
@@ -339,7 +330,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: additionally indicate, for a simple request, that there is no obligation to provide the information
     and that a voluntary reply must be correct and not misleading, and indicate the potential Article
@@ -382,7 +372,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: additionally indicate, for a request made by decision, the Article 99(5) fines for supplying
     incorrect, incomplete or misleading information and the right to have the decision reviewed by the
@@ -423,7 +412,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: send a copy of the request to the market surveillance authority of the Member State in whose
     territory the operator or its legal representative is situated
@@ -458,8 +446,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: requested_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: ensure any voluntary response to a simple AI Office request is correct and not misleading
   norm_text: in the case of a voluntary reply, the information must be correct and not misleading
@@ -493,7 +480,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: conduct necessary remote or on-site inspections for Section enforcement tasks
   norm_text: In order to carry out the tasks assigned to it under this Section, the AI Office may conduct
@@ -529,7 +515,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: inform the provider about inspection subject purpose fines and review rights and inform the
     territorial authority before inspection
@@ -567,8 +552,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: ai_office_official
-    category: union_institution_or_body
+  - actor_ref: ai_office
   targets: []
   action: exercise the specified entry examination copying questioning recording and sealing powers during
     inspection
@@ -614,7 +598,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: provide necessary assistance including police-equivalent assistance where appropriate to overcome
     inspection obstruction
@@ -653,7 +636,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: apply for required judicial authorisation for an on-site inspection including precautionarily
     where appropriate
@@ -691,8 +673,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: national_judicial_authority
-    category: public_authority
+  - actor_ref: judicial_authority
   targets: []
   action: promptly review requested coercive measures for non-arbitrariness and proportionality without
     reviewing investigation necessity or demanding the AI Office file
@@ -738,8 +719,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: member_state_market_surveillance_authority
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: conduct requested territorial fact-finding for the AI Office under national-law powers
   norm_text: At the request of the AI Office, the competent market surveillance authority of a Member
@@ -777,7 +757,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: order system access and explanations and require retention of necessary compliance-assessment
     data and documents
@@ -817,7 +796,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
   norm_text: "To assist it in monitoring the effective implementation and compliance with the relevant\
@@ -855,7 +833,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: share monitoring information with relevant Member-State competent authorities
   norm_text: Information obtained as a result of such monitoring actions shall be shared with the relevant
@@ -889,8 +866,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_75a_information_recipient
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: use Article 75a information only for AI Act purposes
   norm_text: Information collected pursuant to this Article shall be used only for the purpose of this

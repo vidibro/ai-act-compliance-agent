@@ -4,8 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: sme_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: comply with eligible Article 17 quality-management elements in the authorised simplified manner
   norm_text: SMEs, including start-ups, may comply with certain elements of the quality management system
@@ -43,7 +42,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: develop SME-sensitive quality-management simplification guidelines that preserve protection
     and high-risk compliance
@@ -81,8 +79,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: sme_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: preserve every other Regulation requirement and obligation despite the Article 63(1) simplification
   norm_text: Paragraph 1 of this Article shall not be interpreted as exempting those operators from fulfilling

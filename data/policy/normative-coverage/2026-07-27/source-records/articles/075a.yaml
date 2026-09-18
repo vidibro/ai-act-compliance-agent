@@ -7,7 +7,6 @@ records:
   action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -25,7 +24,6 @@ records:
     operator
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -38,8 +36,7 @@ records:
   quote: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
   action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
   actors:
-  - actor_ref: ai_office_supervision
-    category: union_institution_or_body
+  - actor_ref: ai_office
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -56,7 +53,6 @@ records:
   action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -74,7 +70,6 @@ records:
   action: notify the concerned AI-system operator when starting an investigation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -92,7 +87,6 @@ records:
     investigation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -108,7 +102,6 @@ records:
   action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -126,7 +119,6 @@ records:
   action: exercise listed information and document powers by simple request or decision
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -143,7 +135,6 @@ records:
     period for providing it
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - the legal basis and the purpose of the request
@@ -165,7 +156,6 @@ records:
     99(5) fines
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   conditions:
   - the request is a simple request
@@ -188,7 +178,6 @@ records:
     Court of Justice of the European Union
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   conditions:
   - the request is made by decision
@@ -208,7 +197,6 @@ records:
     territory the operator or its legal representative is situated
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -220,8 +208,7 @@ records:
   quote: in the case of a voluntary reply, the information must be correct and not misleading
   action: ensure any voluntary response to a simple AI Office request is correct and not misleading
   actors:
-  - actor_ref: requested_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   conditions:
   - the AI Office requested the information by simple request rather than by decision
@@ -239,7 +226,6 @@ records:
   action: conduct necessary remote or on-site inspections for Section enforcement tasks
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -258,7 +244,6 @@ records:
     territorial authority before inspection
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -271,8 +256,7 @@ records:
   action: exercise the specified entry examination copying questioning recording and sealing powers during
     inspection
   actors:
-  - actor_ref: ai_office_official
-    category: union_institution_or_body
+  - actor_ref: ai_office
   targets: []
   kind: power
   mandatory_content:
@@ -302,7 +286,6 @@ records:
     inspection obstruction
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -320,7 +303,6 @@ records:
     where appropriate
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -345,8 +327,7 @@ records:
   action: promptly review requested coercive measures for non-arbitrariness and proportionality without
     reviewing investigation necessity or demanding the AI Office file
   actors:
-  - actor_ref: national_judicial_authority
-    category: public_authority
+  - actor_ref: judicial_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -363,8 +344,7 @@ records:
     of this Regulation.
   action: conduct requested territorial fact-finding for the AI Office under national-law powers
   actors:
-  - actor_ref: member_state_market_surveillance_authority
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -382,7 +362,6 @@ records:
     data and documents
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   mandatory_content:
@@ -406,7 +385,6 @@ records:
   action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -421,7 +399,6 @@ records:
   action: share monitoring information with relevant Member-State competent authorities
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -433,8 +410,7 @@ records:
   quote: Information collected pursuant to this Article shall be used only for the purpose of this Regulation.
   action: use Article 75a information only for AI Act purposes
   actors:
-  - actor_ref: article_75a_information_recipient
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

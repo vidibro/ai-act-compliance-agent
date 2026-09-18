@@ -5,7 +5,6 @@ norms:
   kind: entitlement
   actors:
   - actor_ref: natural_or_legal_person
-    category: natural_person
   targets: []
   action: submit an infringement complaint to the relevant market surveillance authority without prejudice
     to other remedies
@@ -43,7 +42,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: take such complaints into account for the purpose of conducting market surveillance activities,
     in accordance with Regulation (EU) 2019/1020, and handle them under the dedicated procedures established

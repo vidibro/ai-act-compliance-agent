@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: allow Article 60a real-world testing of Section B AI-enabled products to assess Articles 8 to
     15 conformity
@@ -44,7 +43,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: adopt an individual or joint real-world testing framework when allowing Article 60a testing
   norm_text: Member States that choose to allow testing as referred to in paragraph 1 shall, individually
@@ -80,7 +78,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: notify the Commission of an adopted testing framework before implementation
   norm_text: Each Member State shall notify the Commission of any real-world testing framework it adopts
@@ -115,7 +112,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: preserve Commission competences under Section B harmonisation legislation
   norm_text: This shall not affect the competences of the Commission under the Union harmonisation legislation
@@ -151,7 +147,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: ensure that the relevant national competent, relevant and infrastructure or product authorities
     cooperate closely with each other in good faith and remove practical obstacles necessary to implement
@@ -197,7 +192,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: make every enacted plan compliance governance and protection element part of the real-world
     testing framework
@@ -241,8 +235,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: agree a mandatory real-world testing plan with the competent or relevant authority under applicable
     Section B legislation
@@ -277,8 +271,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: comply with the incorporated Article 60 testing safeguards using the competent-authority substitution
     required by Section B legislation
@@ -315,8 +309,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: comply with the applicable provisions of the Section B Union harmonisation legislation when
     conducting the real-world testing
@@ -351,8 +345,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: keep the Section B requirements from affecting the application of Article 60a to the extent
     necessary to enable the paragraph 1 testing

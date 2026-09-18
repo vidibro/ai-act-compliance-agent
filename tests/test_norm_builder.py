@@ -21,7 +21,6 @@ from aiact.norm_builder import (
 )
 from aiact.policy_loader import article_filename, load_policy_spec
 from aiact.schemas.norm import (
-    ActorCategory,
     Norm,
     NormActor,
     NormRelation,
@@ -258,9 +257,7 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
                 source="A001-P1",
                 quote="shall keep a record",
                 action="keep a record",
-                actors=[
-                    NormActor(actor_ref="provider", category=ActorCategory.SUPPORTED_OPERATOR)
-                ],
+                actors=[NormActor(actor_ref="provider")],
             )
         ],
     )
@@ -310,14 +307,14 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
         source="A001-P1",
         quote="may act if condition A is met",
         action="act when condition A is met",
-        actors=[NormActor(actor_ref="provider", category=ActorCategory.SUPPORTED_OPERATOR)],
+        actors=[NormActor(actor_ref="provider")],
     )
     child = NormSourceRecord(
         norm_id="AIA-NORM-A001-P2-CONDITION",
         source="A001-P2",
         quote="Condition A.",
         action="satisfy condition A",
-        actors=[NormActor(actor_ref="provider", category=ActorCategory.SUPPORTED_OPERATOR)],
+        actors=[NormActor(actor_ref="provider")],
     )
     relation = NormRelation(
         relation_id="AIA-REL-A001-P1-CONDITIONAL-ON-P2",
@@ -359,9 +356,7 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
         (
             NormRelationKind.NATIONAL_LAW_REGULATION,
             {
-                "report_for_prohibited_practices": [
-                    "realtime_remote_biometric_identification"
-                ],
+                "report_for_prohibited_practices": ["realtime_remote_biometric_identification"],
                 "detail": "Applicable national law supplies the detailed rules.",
             },
         ),

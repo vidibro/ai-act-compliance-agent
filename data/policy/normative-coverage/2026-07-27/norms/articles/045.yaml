@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: inform the notifying authority of each listed issuance, adverse decision, notification-related
     circumstance or information-request event without requiring a prior request for disclosure
@@ -54,7 +53,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: inform the notifying authority on request about conformity assessment activities within the
     notification scope and other activities performed, including cross-border activities and subcontracting
@@ -94,7 +92,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: inform other notified bodies of each listed adverse quality-management approval or technical-documentation
     certificate outcome without requiring a prior request for disclosure
@@ -137,7 +134,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: inform other notified bodies, upon request, of the quality-system approvals or Union technical
     documentation assessment certificates and supplements that the notified body has issued
@@ -181,7 +177,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: provide relevant information on issues relating to negative conformity assessment results to
     other notified bodies carrying out similar conformity assessment activities covering the same types
@@ -222,7 +217,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: provide relevant information on issues relating to positive conformity assessment results, on
     request, to other notified bodies carrying out similar conformity assessment activities covering the
@@ -264,7 +258,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: safeguard obtained information confidentiality under Article 78
   norm_text: Notified bodies shall safeguard the confidentiality of the information that they obtain,

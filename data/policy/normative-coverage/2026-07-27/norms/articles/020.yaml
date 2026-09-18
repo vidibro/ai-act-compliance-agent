@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: immediately take the appropriate corrective response by bringing a non-conforming system into
     conformity, withdrawing it, disabling it, or recalling it
@@ -47,7 +46,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: inform the distributor and, where applicable, deployers, the authorised representative, and
     importers about the non-conforming system and corrective response
@@ -87,7 +85,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: immediately investigate the causes of an Article 79(1) risk, collaborating with the reporting
     deployer where applicable, and inform the competent market-surveillance authorities and, where applicable,

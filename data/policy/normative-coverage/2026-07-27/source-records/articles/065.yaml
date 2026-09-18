@@ -4,8 +4,8 @@ records:
   quote: A European Artificial Intelligence Board (the ‘ Board ’) is hereby established.
   action: establish the European Artificial Intelligence Board
   actors:
-  - actor_ref: union_legislature
-    category: union_institution_or_body
+  - actor_ref: european_parliament
+  - actor_ref: council
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -19,7 +19,6 @@ records:
   action: compose the Board of one representative per Member State
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -32,7 +31,6 @@ records:
   action: participate in the Board as observer
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -45,7 +43,6 @@ records:
   action: attend Board meetings without voting
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -58,7 +55,6 @@ records:
   action: invite relevant national or Union authorities bodies or experts to Board meetings case by case
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions: [the issues discussed are relevant to the invited participant]
@@ -73,7 +69,6 @@ records:
   action: designate the Board representative for a three-year term renewable once
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -86,7 +81,6 @@ records:
   action: ensure Board representatives possess every enacted competence contact-point and coordination capability
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   mandatory_content: [competences and powers to contribute actively to Article 66 tasks, single Board contact point and where appropriate stakeholder contact point, power to facilitate national consistency and coordination including data collection]
   qualifier_spans: [A065-P005, A065-P006, A065-P007]
@@ -100,8 +94,7 @@ records:
   quote: The designated representatives of the Member States shall adopt the Board’s rules of procedure by a two-thirds majority. The rules of procedure shall, in particular, lay down procedures for the selection process, the duration of the mandate of, and specifications of the tasks of, the Chair, detailed arrangements for voting, and the organisation of the Board’s activities and those of its sub-groups.
   action: adopt by two-thirds majority rules covering Chair selection mandate and tasks voting and Board and subgroup organisation
   actors:
-  - actor_ref: board_member_state_representatives
-    category: union_institution_or_body
+  - actor_ref: board
   targets: []
   mandatory_content: [Chair selection process, Chair mandate duration, Chair task specifications, detailed voting arrangements, organisation of Board and subgroup activities]
   product_scope: outside_supported_actor
@@ -115,7 +108,6 @@ records:
   action: establish standing market-surveillance and notifying-authority cooperation subgroups
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   mandatory_content: [market-surveillance cooperation and exchange, notifying-authority cooperation and exchange on notified bodies]
   product_scope: outside_supported_actor
@@ -128,8 +120,7 @@ records:
   quote: The standing sub-group for market surveillance should act as the administrative cooperation group (ADCO) for this Regulation within the meaning of Article 30 of Regulation (EU) 2019/1020.
   action: act as the Regulation's Article 30 administrative cooperation group
   actors:
-  - actor_ref: market_surveillance_standing_subgroup
-    category: union_institution_or_body
+  - actor_ref: board
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -142,7 +133,6 @@ records:
   action: establish other issue-specific subgroups and invite appropriate advisory-forum observers
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -156,7 +146,6 @@ records:
   action: organise and operate the Board to safeguard objectivity and impartiality
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -169,7 +158,6 @@ records:
   action: select a Member State representative to chair the Board
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -182,7 +170,6 @@ records:
   action: provide the secretariat for the Board
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -195,7 +182,6 @@ records:
   action: convene the Board's meetings upon request of the Chair
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   conditions: [the Chair requests the meeting]
   product_scope: outside_supported_actor
@@ -210,7 +196,6 @@ records:
     of procedure
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

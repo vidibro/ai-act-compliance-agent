@@ -8,8 +8,7 @@ records:
   action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by
     31 December 2030
   actors:
-  - actor_ref: annex_x_large_scale_it_system_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   conditions:
   - the AI system is a component of a large-scale IT system established by a legal act listed in Annex
@@ -28,8 +27,7 @@ records:
   quote: The requirements laid down in this Regulation shall be taken into account in the evaluation
   action: account for AI Act requirements when evaluating or replacing each Annex X large-scale IT system
   actors:
-  - actor_ref: large_scale_it_system_evaluator
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -69,8 +67,8 @@ records:
   action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August
     2030
   actors:
-  - actor_ref: high_risk_provider_and_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   conditions:
   - the high-risk AI system is intended to be used by public authorities
@@ -87,7 +85,6 @@ records:
   action: bring GPAI models placed on the market before 2 August 2025 into compliance by 2 August 2027
   actors:
   - actor_ref: gpai_provider
-    category: supported_operator
   targets: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported GPAI providers.
@@ -104,8 +101,7 @@ records:
   action: bring pre-2-August-2026 synthetic-content-generating AI systems into Article 50(2) compliance
     by 2 December 2026
   actors:
-  - actor_ref: synthetic_content_ai_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers.

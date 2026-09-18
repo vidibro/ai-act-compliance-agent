@@ -7,7 +7,6 @@ records:
     deployers to interpret its output and use it appropriately
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: &id001
   - AIA-HR-A13
@@ -21,7 +20,6 @@ records:
     Section 3
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -35,7 +33,6 @@ records:
     format containing concise, complete, correct, clear, relevant, accessible, and comprehensible information
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   mandatory_content:
   - concise information
@@ -56,7 +53,6 @@ records:
     \ authorised representative in the instructions"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: &id002
   - A013-P003
@@ -71,7 +67,6 @@ records:
     \ instructions"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id003
@@ -83,7 +78,6 @@ records:
   action: "include the system\u2019s intended purpose in the instructions"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: &id004
   - A013-P003
@@ -101,7 +95,6 @@ records:
     plus known and foreseeable circumstances that may affect that expected performance
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id004
   mandatory_content:
@@ -119,7 +112,6 @@ records:
     or fundamental-rights risks
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id004
   implementation_refs: *id003
@@ -132,7 +124,6 @@ records:
   action: include technical capabilities and characteristics relevant to explaining system outputs
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id004
   conditions:
@@ -148,7 +139,6 @@ records:
     be used
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id004
   conditions:
@@ -165,7 +155,6 @@ records:
     and testing datasets used
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id004
   conditions:
@@ -180,7 +169,6 @@ records:
   action: include information enabling deployers to interpret system outputs and use them appropriately
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id004
   conditions:
@@ -195,7 +183,6 @@ records:
   action: include system and performance changes predetermined at the initial conformity assessment
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   conditions:
@@ -211,7 +198,6 @@ records:
     interpretation of high-risk AI-system outputs, in the instructions
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   mandatory_content:
@@ -229,7 +215,6 @@ records:
     maintenance and care measures, their frequency, and software-update needs for proper functioning
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   mandatory_content:
@@ -247,7 +232,6 @@ records:
     Article 12 logs
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   conditions:

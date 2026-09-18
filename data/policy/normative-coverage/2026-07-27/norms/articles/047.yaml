@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up a written machine-readable, physical, or electronically signed declaration for each
     high-risk system and keep it available to national competent authorities for 10 years after market
@@ -49,7 +48,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: identify the specific high-risk system covered by the declaration
   norm_text: The EU declaration of conformity shall identify the high-risk AI system for which it has
@@ -86,7 +84,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: submit a declaration copy to relevant national competent authorities on request
   norm_text: A copy of the EU declaration of conformity shall be submitted to the relevant national competent
@@ -123,7 +120,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: state that the covered high-risk system meets Chapter III Section 2 requirements
   norm_text: The EU declaration of conformity shall state that the high-risk AI system concerned meets
@@ -160,7 +156,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include every Annex V information item in the declaration and translate it into an easily understood
     language for authorities in every Member State where the system is placed on the market or made available
@@ -202,7 +197,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up one declaration covering all applicable Union law when other harmonisation legislation
     also requires one
@@ -241,7 +235,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include all information needed to identify every Union harmonisation law covered
   norm_text: The declaration shall contain all the information required to identify the Union harmonisation
@@ -280,7 +273,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: assume responsibility for Section 2 compliance by drawing up the declaration
   norm_text: By drawing up the EU declaration of conformity, the provider shall assume responsibility
@@ -317,7 +309,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: keep the declaration of conformity current as appropriate
   norm_text: The provider shall keep the EU declaration of conformity up-to-date as appropriate.
@@ -353,7 +344,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: amend Annex V declaration content to introduce elements required by technical progress
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order

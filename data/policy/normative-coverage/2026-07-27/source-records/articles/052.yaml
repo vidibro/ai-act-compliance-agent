@@ -8,7 +8,6 @@ records:
     51(1)(a) condition
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
@@ -23,7 +22,6 @@ records:
   action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider submits the Article 52(1) notification
@@ -41,7 +39,6 @@ records:
     risk
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions:
@@ -61,7 +58,6 @@ records:
   action: present substantiated model-specific arguments with the notification against systemic-risk classification
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:
@@ -81,7 +77,6 @@ records:
     risk
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions:
   - paragraph 2 arguments are insufficiently substantiated
@@ -113,7 +108,6 @@ records:
   action: designate a general-purpose AI model as presenting systemic risks using Annex XIII criteria
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions:
@@ -131,7 +125,6 @@ records:
   action: adopt Article 97 delegated acts specifying and updating Annex XIII criteria
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -146,7 +139,6 @@ records:
   action: take a provider's reasoned reassessment request into account
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions:
   - the provider makes a reasoned request concerning a model designated under Article 52(4)
@@ -162,7 +154,6 @@ records:
   action: reassess under Annex XIII whether the model still presents systemic risks
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions:
@@ -179,7 +170,6 @@ records:
   action: include objective, detailed, and new post-designation reasons in a reassessment request
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider requests reassessment under Article 52(5)
@@ -200,7 +190,6 @@ records:
     decision
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:
@@ -220,7 +209,6 @@ records:
     and protecting intellectual-property rights, confidential business information, and trade secrets
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - keep the published list up to date

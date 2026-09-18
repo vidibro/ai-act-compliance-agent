@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: evaluate a reasonably suspected non-high-risk classification under Article 6(3) and Commission
     guidelines
@@ -46,7 +45,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: require necessary compliance and corrective action without undue delay within a prescribed period
   norm_text: Where, in the course of that evaluation, the market surveillance authority finds that the
@@ -86,7 +84,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: promptly inform the Commission and other Member States of cross-border evaluation results and
     required provider action
@@ -126,7 +123,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: bring an authority-reclassified high-risk system into compliance with all applicable requirements
     and obligations
@@ -164,7 +160,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: incur Article 99 fines for failure to comply within the prescribed period
   norm_text: Where the provider of an AI system concerned does not bring the AI system into compliance
@@ -203,7 +198,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure appropriate corrective action across all concerned systems made available on the Union
     market
@@ -241,7 +235,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: apply Article 79(5) to (9) escalation after inadequate provider correction
   norm_text: Article 79(5) to (9) shall apply.
@@ -276,7 +269,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: incur Article 99 fines for intentional non-high-risk misclassification used to circumvent Chapter
     III Section 2
@@ -318,7 +310,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: perform appropriate classification checks with particular account taken of EU database information
   norm_text: In exercising their power to monitor the application of this Article, and in accordance with

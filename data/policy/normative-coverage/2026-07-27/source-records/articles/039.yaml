@@ -7,8 +7,7 @@ records:
     equivalent level of compliance.
   action: authorise an eligible third-country conformity-assessment body to perform notified-body activities
   actors:
-  - actor_ref: third_country_conformity_assessment_body
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
   targets: []
   kind: permission
   product_scope: outside_supported_actor

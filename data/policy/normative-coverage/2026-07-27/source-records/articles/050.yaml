@@ -11,7 +11,6 @@ records:
   action: design direct-interaction systems to inform natural persons they are interacting with AI
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-TR-A50-1
@@ -40,7 +39,6 @@ records:
   action: make synthetic outputs both machine-readably marked and detectable
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-TR-A50-2
@@ -66,7 +64,6 @@ records:
   action: inform people exposed to emotion recognition or biometric categorisation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-TR-A50-3
@@ -85,7 +82,6 @@ records:
   action: process personal data under the referenced data-protection instruments
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   exceptions:
   - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
@@ -105,7 +101,6 @@ records:
   action: disclose artificial generation or manipulation of deep-fake image, audio, or video
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-TR-A50-4
@@ -129,7 +124,6 @@ records:
   action: disclose artificial generation or manipulation of public-interest text
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-TR-A50-4
@@ -148,8 +142,8 @@ records:
     The information shall conform to the applicable accessibility requirements.
   action: provide paragraphs 1 to 4 information clearly, distinguishably, on time, and accessibly
   actors:
-  - actor_ref: provider_or_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: The four existing transparency rules carry this shared qualifier.
@@ -166,8 +160,8 @@ records:
     deployers of AI systems.
   action: preserve Chapter III and other transparency duties alongside Article 50
   actors:
-  - actor_ref: provider_or_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   kind: applicability
   product_scope: dependency_only
@@ -184,7 +178,6 @@ records:
   action: encourage and facilitate Union-level codes of practice
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -200,7 +193,6 @@ records:
   action: assess whether code adherence adequately ensures compliance
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -216,7 +208,6 @@ records:
   action: adopt common implementation rules if a code is inadequate
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor

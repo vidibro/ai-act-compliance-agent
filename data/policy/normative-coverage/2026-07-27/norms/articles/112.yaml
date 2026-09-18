@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: assess annually the need to amend Annex III and Article 5 lists through the Article 97 delegation
     period
@@ -43,7 +42,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
   norm_text: The Commission shall submit the findings of that assessment to the European Parliament and
@@ -78,7 +76,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: evaluate and report by 2 August 2028 and every four years on specified Annex III transparency
     and governance amendments
@@ -121,7 +118,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: submit a public four-year Regulation review report assessing enforcement structure and possible
     need for a Union agency
@@ -159,7 +155,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
   norm_text: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
@@ -195,7 +190,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: make Article 112(3) review reports public
   norm_text: The reports shall be made public
@@ -229,7 +223,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: address the specified authority-resource penalty standardisation and market-entry matters in
     paragraph 2 reports
@@ -273,7 +266,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: evaluate by 2 August 2028 the AI Office's functioning powers competences status and resource
     needs
@@ -311,7 +303,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: submit the AI Office evaluation report to Parliament and Council
   norm_text: The Commission shall submit a report on its evaluation to the European Parliament and to
@@ -346,7 +337,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation
     and the need for further measures
@@ -384,7 +374,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it
     public
@@ -422,7 +411,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk
     AI codes
@@ -459,8 +447,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: board_member_states_and_national_competent_authorities
-    category: public_authority
+  - actor_ref: member_state
+  - actor_ref: national_competent_authority
   targets: []
   action: provide requested information without undue delay for Article 112 evaluations and reviews
   norm_text: For the purposes of paragraphs 1 to 7, the Board, the Member States and national competent
@@ -496,7 +484,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: account for positions and findings of the Board Parliament Council and other relevant bodies
     or sources in Article 112 reviews
@@ -534,7 +521,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: submit necessary AI Act amendment proposals considering technological health safety fundamental-rights
     and information-society developments
@@ -570,7 +556,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
   norm_text: To guide the evaluations and reviews referred to in paragraphs 1 to 7 of this Article, the
@@ -613,8 +598,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: union_rulemaker
-    category: union_institution_or_body
+  - actor_ref: commission
   targets: []
   action: account for sector regulatory specificities and existing governance conformity-assessment and
     enforcement structures in relevant amendments and acts
@@ -654,7 +638,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: assess AI Act enforcement by 2 August 2031 and report to Parliament Council and the European
     Economic and Social Committee
@@ -691,7 +674,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: accompany the enforcement report when appropriate with an amendment proposal addressing enforcement
     structure and possible Union agency need

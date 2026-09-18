@@ -8,7 +8,6 @@ records:
     authorities
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -23,7 +22,6 @@ records:
     III systems
   actors:
   - actor_ref: certificate_holder
-    category: supported_operator
   targets: []
   kind: legal_consequence
   implementation_mode: missing
@@ -38,7 +36,6 @@ records:
     duration caps
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: entitlement
   implementation_mode: missing
@@ -54,7 +51,6 @@ records:
   action: preserve a certificate supplement's validity while its underlying certificate remains valid
   actors:
   - actor_ref: certificate_holder
-    category: supported_operator
   targets: []
   kind: legal_consequence
   implementation_mode: missing
@@ -73,7 +69,6 @@ records:
     timely corrective action restores compliance
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   conditions:
   - the notified body finds that the AI system no longer meets Chapter III Section 2 requirements
@@ -92,7 +87,6 @@ records:
   action: give reasons for the certificate decision
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -106,7 +100,6 @@ records:
   action: make an appeal procedure available against notified-body decisions, including certificate decisions
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

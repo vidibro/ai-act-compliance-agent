@@ -6,7 +6,6 @@ records:
   action: designate one or more Union structures for Regulation 2019/1020 Article 21(6) AI testing support
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -21,8 +20,7 @@ records:
   action: provide independent technical or scientific advice when requested by the Board Commission or
     market surveillance authorities
   actors:
-  - actor_ref: union_ai_testing_support_structure
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

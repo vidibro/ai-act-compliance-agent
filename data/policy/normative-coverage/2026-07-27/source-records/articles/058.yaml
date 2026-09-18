@@ -5,7 +5,6 @@ records:
   action: adopt implementing acts specifying the complete sandbox lifecycle and all enacted common-principle areas
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content: [eligibility and selection, application participation monitoring exit and termination procedures, participant terms and conditions, governance data-protection supervision and national and Union coordination]
   qualifier_spans: [A058-P002, A058-P003, A058-P004, A058-P005]
@@ -20,7 +19,6 @@ records:
   action: adopt the sandbox-arrangement implementing acts under the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -33,7 +31,6 @@ records:
   action: ensure the implementing acts produce every enacted access, flexibility, support, recognition, duration, and testing outcome
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - transparent fair eligibility and selection with decisions within three months
@@ -56,8 +53,7 @@ records:
   quote: Prospective providers in the AI regulatory sandboxes, in particular SMEs and start-ups, shall be directed, where relevant, to pre-deployment services such as guidance on the implementation of this Regulation, to other value-adding services such as help with standardisation documents and certification, testing and experimentation facilities, European Digital Innovation Hubs and centres of excellence.
   action: direct prospective sandbox providers to relevant pre-deployment and value-adding services
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -71,7 +67,6 @@ records:
     with participants to protect fundamental rights, health and safety
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   conditions: [the authority considers authorising supervised real-world sandbox testing]
   mandatory_content: [testing terms and conditions, safeguards protecting fundamental rights health and safety]
@@ -88,7 +83,6 @@ records:
     testing practices across the Union
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   conditions:
   - the authority considers authorising supervised real-world sandbox testing

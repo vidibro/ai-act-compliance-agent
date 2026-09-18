@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: choose either Annex VI internal control or Annex VII notified-body assessment for a high-risk
     Annex III point 1 system when the applicable standards or common specifications were applied
@@ -45,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use Annex VII where standards or common specifications are unavailable, unapplied, partly applied,
     or restricted
@@ -91,7 +89,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: choose any notified body for the Annex VII conformity-assessment procedure
   norm_text: For the purposes of the conformity assessment procedure referred to in Annex VII, the provider
@@ -132,7 +129,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: act as the notified body for systems intended for the specified public-authority or Union-body
     use
@@ -172,7 +168,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use the Annex VI internal-control procedure without notified-body involvement for Annex III
     points 2 to 8
@@ -211,7 +206,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: follow the applicable Section A Annex I conformity-assessment procedure
   norm_text: shall follow the relevant conformity assessment procedure
@@ -249,7 +243,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include Chapter III Section 2 requirements in that assessment
   norm_text: shall be part of that assessment
@@ -287,7 +280,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: undertake assessment of the Article 17 quality-management system and apply the specified Annex
     VII procedural requirements
@@ -328,8 +320,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: sectoral_notified_body
-    category: notified_or_conformity_body
+  - actor_ref: notified_body
   targets: []
   action: assess conformity with Chapter III Section 2
   norm_text: shall have the power to assess the conformity of high-risk AI systems
@@ -365,8 +356,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sectoral_notified_body
-    category: notified_or_conformity_body
+  - actor_ref: notified_body
   targets: []
   action: apply for AI Act designation by 28 January 2028
   norm_text: shall apply for designation in accordance with Section 4 of this Chapter by 28 January 2028
@@ -401,7 +391,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   action: use a no-third-party sectoral route only after applying standards covering all Section 2 requirements
   norm_text: that manufacturer may use that option only if it has also applied harmonised standards
@@ -441,7 +430,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   action: preserve the sectoral conformity-route choice despite AI high-risk classification
   norm_text: does not affect the choice of the conformity assessment procedure
@@ -477,7 +465,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   action: avoid a third-party procedure where sectoral law does not otherwise require it
   norm_text: are not required to choose a conformity assessment procedure involving third-party conformity
@@ -515,7 +502,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: perform a new conformity assessment after a substantial modification regardless of subsequent
     distribution or continued use
@@ -557,7 +543,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: exclude predetermined and initially documented learning changes from substantial modification
   norm_text: For high-risk AI systems that continue to learn after being placed on the market or put into
@@ -598,7 +583,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: amend Annexes VI and VII for technical progress
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
@@ -633,7 +617,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
@@ -670,7 +653,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: account for internal-control effectiveness and notified-body capacity when adopting the paragraph
     6 delegated acts

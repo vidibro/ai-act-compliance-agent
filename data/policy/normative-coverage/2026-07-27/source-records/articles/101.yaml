@@ -8,7 +8,6 @@ records:
     whichever is higher, for intentional or negligent listed conduct
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   mandatory_content: []
@@ -40,7 +39,6 @@ records:
   action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - the nature, gravity and duration of the infringement
@@ -60,7 +58,6 @@ records:
     a fine decision
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -75,7 +72,6 @@ records:
   action: ensure Article 101 fines are effective proportionate and dissuasive
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -88,7 +84,6 @@ records:
   action: communicate information on Article 101 fines to the Board as appropriate
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -102,7 +97,6 @@ records:
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
   actors:
   - actor_ref: court_of_justice_of_the_european_union
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -120,7 +114,6 @@ records:
     through the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

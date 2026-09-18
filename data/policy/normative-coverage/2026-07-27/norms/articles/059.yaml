@@ -5,7 +5,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: process lawfully collected personal data for sandbox development, training, and testing only
     for that purpose and only when every enacted condition is met
@@ -60,7 +59,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: develop the sandbox AI system to safeguard substantial public interest in at least one enacted
     field
@@ -118,7 +116,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: process personal data only where necessary for a Chapter III Section 2 requirement that non-personal
     alternatives cannot effectively fulfil
@@ -157,7 +154,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: maintain effective mechanisms to identify high data-subject risks, promptly mitigate them, and
     stop processing where necessary
@@ -200,7 +196,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: keep sandbox personal data in a functionally separate isolated protected environment under provider
     control with access limited to authorised persons
@@ -238,7 +233,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: share originally collected data only under Union data-protection law and never share sandbox-created
     personal data outside the sandbox
@@ -275,7 +269,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: prevent sandbox personal-data processing from producing measures or decisions affecting data
     subjects or impairing their Union-law rights
@@ -313,7 +306,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: protect sandbox personal data with appropriate technical and organisational measures and delete
     it at sandbox exit or retention-period expiry
@@ -351,7 +343,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: keep sandbox personal-data processing logs throughout participation unless Union or national
     law provides otherwise
@@ -388,7 +379,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: include a complete detailed description and rationale for training testing and validation together
     with testing results in the Annex IV technical documentation
@@ -428,7 +418,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: sandbox_participant
-    category: supported_operator
   targets: []
   action: publish a short project summary with objectives and expected results on the competent-authority
     website while excluding protected sensitive operational data
@@ -472,7 +461,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: base law-enforcement sandbox personal-data processing on specific Union or national law and
     satisfy every Article 59(1) condition
@@ -512,8 +500,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: sandbox_personal_data_processor
-    category: supported_operator
+  - actor_ref: sandbox_participant
   targets: []
   action: preserve applicable Union and national restrictions and alternative lawful bases for innovative-AI
     personal-data processing

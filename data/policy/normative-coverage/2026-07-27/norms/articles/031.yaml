@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: be established under Member-State law and possess legal personality
   norm_text: A notified body shall be established under the national law of a Member State and shall have
@@ -42,7 +41,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: satisfy all organisational, quality-management, resource, process, and cybersecurity requirements
     necessary for notified-body tasks
@@ -78,7 +76,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: structure responsibilities, reporting, and operations to ensure confidence in performance and
     assessment results
@@ -115,7 +112,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: remain independent from assessed-system providers, economically interested operators, and provider
     competitors
@@ -153,7 +149,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: allow necessary operational or personal use of assessed high-risk systems despite the independence
     rule
@@ -189,8 +184,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: conformity_assessment_body_and_personnel
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
+  - actor_ref: conformity_assessment_body_personnel
   targets: []
   action: prohibit the conformity assessment body, its top-level management and assessment personnel from
     activities conflicting with independence of judgement or assessment integrity, in particular consultancy
@@ -227,7 +222,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: document and implement structures and procedures safeguarding impartiality and promoting and
     applying its principles throughout the organisation, personnel and assessment activities
@@ -264,7 +258,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: maintain documented procedures ensuring Article 78 confidentiality for personnel, committees,
     subsidiaries, subcontractors and associated external bodies or personnel during conformity assessment
@@ -304,7 +297,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: use assessment procedures proportionate to provider size, sector, structure, and system complexity
   norm_text: Notified bodies shall have procedures for the performance of activities which take due account
@@ -340,7 +332,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: obtain appropriate assessment liability insurance unless the establishment Member State assumes
     liability or responsibility
@@ -380,7 +371,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: ensure every task is performed with the highest professional integrity and requisite field competence
   norm_text: Notified bodies shall be capable of carrying out all their tasks under this Regulation with
@@ -416,7 +406,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: maintain sufficient internal competence to evaluate effectively the tasks conducted by external
     parties on the notified body's behalf
@@ -452,7 +441,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: participate in the coordination activities referred to in Article 38
   norm_text: Notified bodies shall participate in coordination activities as referred to in Article 38.
@@ -485,8 +473,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: conformity_assessment_body_and_personnel
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
+  - actor_ref: conformity_assessment_body_personnel
   targets: []
   action: prohibit the conformity assessment body, its top-level management and assessment personnel from
     direct involvement in high-risk AI-system design, development, marketing or use and from representing
@@ -526,7 +514,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: organise and operate the notified body to safeguard the independence, objectivity and impartiality
     of its activities
@@ -561,8 +548,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: notified_body_staff
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body_personnel
   targets: []
   action: observe professional secrecy for all information obtained in carrying out tasks under the Regulation
   norm_text: The staff of notified bodies shall be bound to observe professional secrecy with regard to
@@ -600,7 +586,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: maintain permanent availability of sufficient administrative, technical, legal and scientific
     staff with experience and knowledge of the relevant AI-system types, data and data computing, and
@@ -638,7 +623,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: take part directly in European standardisation organisations, be represented in them, or ensure
     awareness and current knowledge of relevant standards

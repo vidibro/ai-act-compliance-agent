@@ -161,7 +161,6 @@ records:
     putting it into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   conditions:
@@ -176,7 +175,6 @@ records:
   action: register the provider and non-high-risk system as required by Article 49(2)
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   conditions:
@@ -193,7 +191,6 @@ records:
   action: provide the documented non-high-risk assessment to national competent authorities upon request
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   conditions:
@@ -214,7 +211,6 @@ records:
     AI-system use cases
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -237,7 +233,6 @@ records:
     by concrete and reliable evidence
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions:
@@ -259,7 +254,6 @@ records:
     maintain the required protection
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   conditions:
@@ -282,7 +276,6 @@ records:
     account for market and technological developments
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor

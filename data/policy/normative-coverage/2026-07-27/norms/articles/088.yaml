@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: exercise exclusive Chapter V supervision and enforcement powers subject to Article 94 guarantees
   norm_text: The Commission shall have exclusive powers to supervise and enforce Chapter V, taking into
@@ -40,7 +39,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: entrust Chapter V supervision and enforcement implementation to the AI Office within enacted
     competence boundaries
@@ -79,7 +77,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: request necessary proportionate Commission exercise of Section powers to assist surveillance
     tasks

@@ -8,7 +8,6 @@ records:
     conditions are fulfilled
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -46,7 +45,6 @@ records:
   action: consult the Article 67 advisory forum when drafting common specifications
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -63,7 +61,6 @@ records:
   action: adopt common-specification implementing acts under the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -79,7 +76,6 @@ records:
     drafting the act
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -113,7 +109,6 @@ records:
   action: assess a proposed harmonised standard under Regulation 1025/2012 before reference publication
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -133,7 +128,6 @@ records:
   action: repeal common-specification acts or parts overlapping a published harmonised standard
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -153,7 +147,6 @@ records:
     are not followed
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   verification_mode: reported_not_judged
   conditions:
@@ -169,7 +162,6 @@ records:
   action: inform the Commission with a detailed explanation of deficiencies in a common specification
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -188,7 +180,6 @@ records:
     amend the implementing act establishing it
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

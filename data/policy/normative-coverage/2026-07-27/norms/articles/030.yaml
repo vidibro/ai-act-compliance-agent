@@ -5,7 +5,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: notify only conformity-assessment bodies satisfying Article 31
   norm_text: Notifying authorities may notify only conformity assessment bodies which have satisfied the
@@ -40,7 +39,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: notify the Commission and other Member States of qualifying bodies using Annex XIV classifications
     and the Commission tool
@@ -78,7 +76,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: amend Annex XIV classifications by delegated act in response to technical, knowledge, or scientific
     developments
@@ -117,7 +114,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: include complete assessment scope and competence information in the body notification
   norm_text: The notification referred to in paragraph 2 of this Article shall include full details of
@@ -157,7 +153,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: provide competence and continuing-monitoring evidence for a notification not based on accreditation
   norm_text: Where a notification is not based on an accreditation certificate as referred to in Article
@@ -196,7 +191,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: permit notified-body activities only after the applicable no-objection period expires
   norm_text: The conformity assessment body concerned may perform the activities of a notified body only
@@ -236,7 +230,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: promptly consult the relevant Member States and conformity body when objections arise
   norm_text: Where objections are raised, the Commission shall, without delay, enter into consultations
@@ -272,7 +265,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: decide whether the disputed authorisation is justified
   norm_text: In view thereof, the Commission shall decide whether the authorisation is justified.
@@ -307,7 +299,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: address the authorisation decision to the concerned Member State and conformity body
   norm_text: The Commission shall address its decision to the Member State concerned and to the relevant

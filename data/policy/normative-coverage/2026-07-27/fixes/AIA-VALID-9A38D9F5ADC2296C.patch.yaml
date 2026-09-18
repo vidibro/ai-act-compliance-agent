@@ -1,9 +1,11 @@
 schema_version: 1
 finding_id: AIA-VALID-9A38D9F5ADC2296C
 target_file: source-records/articles/026.yaml
-before_sha256: 24ee289a2e7d2e91793702fd35b76398b4733f60b44686e865fd39a6ca4f1453
-after_sha256: 576398ca3e30d901860139e6a372c0757e6d497d2c37995a136ae163384e02be
+before_sha256: 9a0847388f997874fe90f187d863c25abb047820a0a37c502f6383fb2d02c5c1
+after_sha256: 10336d590e1f62fa044d4c8b4188e1f09f5e9e6c8d16eb39949c4cbe1b665774
 replacements:
-- old: '  action: report an identified serious incident to the provider, importer or distributor, and relevant market-surveillance authorities'
-  new: '  action: immediately inform first the provider, then the importer or distributor and relevant market-surveillance authorities, of an identified serious incident'
+- old: '  action: report an identified serious incident to the provider, importer
+    or distributor, and relevant market-surveillance authorities'
+  new: '  action: immediately inform first the provider, then the importer or distributor
+    and relevant market-surveillance authorities, of an identified serious incident'
   expected_occurrences: 1

@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: notify the Commission and other Member States of relevant notification changes through the Article
     30(2) tool
@@ -42,7 +41,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: apply the Articles 29 and 30 procedures to notification-scope extensions
   norm_text: The procedures laid down in Articles 29 and 30 shall apply to extensions of the scope of
@@ -78,7 +76,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: apply paragraphs 3 to 9 to notification changes other than scope extensions
   norm_text: For changes to the notification other than extensions of its scope, the procedures laid down
@@ -114,7 +111,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: inform the notifying authority and affected providers of cessation as soon as possible and at
     least one year ahead when planned
@@ -189,8 +185,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: assuming_notified_body
-    category: notified_or_conformity_body
+  - actor_ref: notified_body
   targets: []
   action: complete a full assessment within nine months before issuing replacement certificates
   norm_text: The latter notified body shall complete a full assessment of the high-risk AI systems affected
@@ -225,7 +220,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: withdraw the designation when the notified body has ceased activity
   norm_text: Where the notified body has ceased its activity, the notifying authority shall withdraw the
@@ -261,7 +255,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: investigate suspected Article 31 noncompliance or failure of obligations without delay and with
     utmost diligence
@@ -300,7 +293,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: inform the notified body of the objections raised
   norm_text: In that context, it shall inform the notified body concerned about the objections raised
@@ -336,7 +328,6 @@ norms:
   kind: entitlement
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: receive an opportunity to make its views on the objections known
   norm_text: In that context, it shall inform the notified body concerned about the objections raised
@@ -372,7 +363,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: restrict, suspend, or withdraw the designation proportionately to the seriousness of confirmed
     failure
@@ -412,7 +402,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: immediately inform the Commission and other Member States of the designation measure
   norm_text: It shall immediately inform the Commission and the other Member States accordingly.
@@ -447,7 +436,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: inform affected providers within 10 days of restriction, suspension, or withdrawal of designation
   norm_text: Where its designation has been suspended, restricted, or fully or partially withdrawn, the
@@ -483,7 +471,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: take appropriate steps to preserve the affected notified body's files and make them available
     on request to other Member States' notifying authorities and market-surveillance authorities
@@ -524,7 +511,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: assess the impact of the designation change on certificates issued by the notified body
   norm_text: assess the impact on the certificates issued by the notified body
@@ -560,7 +546,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: report findings to the Commission and other Member States within three months of notifying the
     designation change
@@ -598,7 +583,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: require suspension or withdrawal of unduly issued certificates within a reasonable authority-set
     period
@@ -637,7 +621,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: inform the Commission and Member States which certificates were required to be suspended or
     withdrawn
@@ -675,7 +658,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: provide the provider's establishment-state authorities all relevant information on certificates
     required to be suspended or withdrawn
@@ -714,7 +696,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: take necessary appropriate measures to avoid potential health, safety, or fundamental-rights
     risk
@@ -808,7 +789,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: confirm in writing within three months that a qualified replacement body temporarily assumes
     certificate monitoring and responsibility
@@ -892,7 +872,6 @@ norms:
   kind: power
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: extend provisional certificate validity in three-month periods up to a total of 12 months
   norm_text: In the circumstances referred to in the first subparagraph, the national competent authority
@@ -929,10 +908,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: competent_authority
-    category: public_authority
-  - actor_ref: assuming_notified_body
-    category: notified_or_conformity_body
+  - actor_ref: national_competent_authority
+  - actor_ref: notified_body
   targets: []
   action: immediately inform the Commission, other Member States, and other notified bodies of the replacement
     arrangement

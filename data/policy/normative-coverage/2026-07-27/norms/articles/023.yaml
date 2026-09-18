@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: verify that the provider carried out the relevant Article 43 conformity-assessment procedure
     before the system is placed on the market
@@ -45,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: verify that the provider drew up technical documentation compliant with Article 11 and Annex
     IV before the system is placed on the market
@@ -85,7 +83,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: verify that the system has the required CE marking and is accompanied by its EU declaration
     and instructions before market placement
@@ -128,7 +125,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: verify that the provider appointed an authorised representative under Article 22(1) before the
     system is placed on the market
@@ -167,7 +163,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: withhold a suspected non-conforming or falsified system from the market until it has been brought
     into conformity
@@ -208,7 +203,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: inform the provider, authorised representative, and market-surveillance authorities that the
     system presents an Article 79(1) risk
@@ -251,7 +245,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: display the importer's required identity and contact address on the system and, where applicable,
     its packaging or accompanying documentation
@@ -292,7 +285,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while
     the system is under the importer's responsibility
@@ -333,7 +325,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: keep the applicable certificate, instructions, and EU declaration for 10 years after market
     placement or putting into service
@@ -377,7 +368,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: provide requesting competent authorities with all information and documentation necessary to
     demonstrate Section 2 conformity in a language easily understood by them
@@ -418,7 +408,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: ensure the technical documentation can be made available to the requesting authorities
   norm_text: For this purpose, they shall also ensure that the technical documentation can be made available
@@ -456,7 +445,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: importer
-    category: supported_operator
   targets: []
   action: cooperate in competent-authority actions concerning systems the importer placed on the market,
     particularly risk reduction and mitigation

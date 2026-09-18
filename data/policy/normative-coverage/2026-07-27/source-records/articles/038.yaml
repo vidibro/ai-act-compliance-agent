@@ -9,7 +9,6 @@ records:
     conformity assessment
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -24,7 +23,6 @@ records:
     group
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -38,7 +36,6 @@ records:
   action: provide for exchange of knowledge and best practices among notifying authorities
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

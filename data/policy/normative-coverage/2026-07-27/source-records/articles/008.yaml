@@ -8,7 +8,6 @@ records:
     purpose and the generally acknowledged state of the art
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_mode: carried_by_other_norm
@@ -24,7 +23,6 @@ records:
     2 requirements
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs:
@@ -41,7 +39,6 @@ records:
     the relevant Union harmonisation legislation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   conditions:
@@ -64,7 +61,6 @@ records:
     and procedures required by Annex I Section A legislation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:

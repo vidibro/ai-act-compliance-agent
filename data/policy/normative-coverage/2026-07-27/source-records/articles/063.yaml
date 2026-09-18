@@ -4,8 +4,7 @@ records:
   quote: SMEs, including start-ups, may comply with certain elements of the quality management system required by Article 17 in a simplified manner, provided that they do not have partner enterprises or linked enterprises within the meaning of Recommendation 2003/361/EC.
   action: comply with eligible Article 17 quality-management elements in the authorised simplified manner
   actors:
-  - actor_ref: sme_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   kind: permission
   conditions: [the SME has no partner enterprise or linked enterprise within Recommendation 2003/361/EC, simplification is limited to elements identified by Commission guidance]
@@ -17,7 +16,6 @@ records:
   action: develop SME-sensitive quality-management simplification guidelines that preserve protection and high-risk compliance
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -29,8 +27,7 @@ records:
   quote: Paragraph 1 of this Article shall not be interpreted as exempting those operators from fulfilling any other requirements or obligations laid down in this Regulation, including those established in Articles 9, 10, 11, 12, 13, 14, 15, 72 and 73.
   action: preserve every other Regulation requirement and obligation despite the Article 63(1) simplification
   actors:
-  - actor_ref: sme_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   kind: legal_consequence
   product_scope: no_product_action

@@ -1,9 +1,17 @@
 schema_version: 1
 finding_id: AIA-VALID-774F8A5B5EBFD65D
 target_file: source-records/articles/018.yaml
-before_sha256: 05aecc03fc2a8489042af2196d9aa6448e0bdc04b6f8190920c1ee1eea60c8e7
-after_sha256: fe50fff65e73b7e92575543e554ecffecdcd2befdc69a22d95f32af46ab3b9d1
+before_sha256: 4ece3b987fae8c1988022fcaf61a694978d9065d308cc8d0cd8bb96d96ae6a2e
+after_sha256: 3cb6267b3efa075402d39d0638993ee1071ec4ae6bfeb3d75ef04ecaf3002efd
 replacements:
-- old: "  action: determine conditions preserving authority access to Article 18(1) documentation after a locally\n    established provider or authorised representative becomes bankrupt or ceases activity early\n  actors:\n  - actor_ref: member_state\n    category: member_state\n  targets: []"
-  new: "  action: determine conditions preserving authority access to Article 18(1) documentation after a locally\n    established provider or authorised representative becomes bankrupt or ceases activity early\n  conditions:\n  - a locally established provider or authorised representative becomes bankrupt or ceases activity before\n    the ten-year period ends\n  actors:\n  - actor_ref: member_state\n    category: member_state\n  targets: []"
+- old: "  action: determine conditions preserving authority access to Article 18(1)\
+    \ documentation after a locally\n    established provider or authorised representative\
+    \ becomes bankrupt or ceases activity early\n  actors:\n  - actor_ref: member_state\n\
+    \  targets: []"
+  new: "  action: determine conditions preserving authority access to Article 18(1)\
+    \ documentation after a locally\n    established provider or authorised representative\
+    \ becomes bankrupt or ceases activity early\n  conditions:\n  - a locally established\
+    \ provider or authorised representative becomes bankrupt or ceases activity before\n\
+    \    the ten-year period ends\n  actors:\n  - actor_ref: member_state\n  targets:\
+    \ []"
   expected_occurrences: 1

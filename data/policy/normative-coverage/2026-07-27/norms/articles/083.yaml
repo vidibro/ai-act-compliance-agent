@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: require the provider to end identified formal non-compliance within a prescribed period
   norm_text: Where the market surveillance authority of a Member State makes one of the following findings,
@@ -60,7 +59,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: take proportionate restriction prohibition recall or withdrawal measures without delay when
     formal non-compliance persists

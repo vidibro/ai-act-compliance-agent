@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: evaluate the model using standardised state-of-the-art protocols and tools, including conducting
     and documenting adversarial testing to identify and mitigate systemic risks
@@ -47,7 +46,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: assess and mitigate possible Union-level systemic risks and their sources across development,
     market placement, and use
@@ -88,7 +86,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: keep track of and document relevant serious-incident information and possible corrective measures,
     and report them without undue delay to the AI Office and, as appropriate, national competent authorities
@@ -130,7 +127,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model and
     its physical infrastructure
@@ -169,7 +165,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: rely on Article 56 codes to demonstrate Article 55(1) compliance until a harmonised standard
     is published
@@ -208,7 +203,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: presume conformity to the extent European harmonised standards cover Article 55 obligations
   norm_text: Compliance with European harmonised standards grants providers the presumption of conformity
@@ -245,7 +239,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: demonstrate alternative adequate means of compliance for Commission assessment
   norm_text: Providers of general-purpose AI models with systemic risks who do not adhere to an approved
@@ -283,8 +276,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_55_information_recipient
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: treat Article 55 information and documentation, including trade secrets, under Article 78 confidentiality
     duties

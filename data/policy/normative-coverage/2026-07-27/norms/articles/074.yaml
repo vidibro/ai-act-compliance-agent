@@ -5,7 +5,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: apply Regulation 2019/1020 using the enacted expanded operator and product meanings
   norm_text: 'Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation. For the
@@ -46,7 +45,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: report annually to the Commission and the relevant national competition authorities any surveillance
     information of potential interest for applying Union competition law
@@ -85,7 +83,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: report annually to the Commission on the use of prohibited practices during that year and on
     the measures taken
@@ -123,7 +120,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: assign Section A product surveillance to the sectoral authority unless a coordinated alternative
     is designated
@@ -163,7 +159,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: substitute same-objective sectoral procedures providing equivalent protection for Articles 79
     to 83
@@ -205,7 +200,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: exercise Article 14(4)(d) and (j) surveillance powers remotely as appropriate
   norm_text: Without prejudice to the powers of market surveillance authorities under Article 14 of Regulation
@@ -242,7 +236,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: assign directly connected financial-services AI surveillance to the relevant financial supervisor
   norm_text: For high-risk AI systems placed on the market, put into service, or used by financial institutions
@@ -280,7 +273,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: designate another relevant authority as the market-surveillance authority for the Regulation
   norm_text: By way of derogation from paragraph 6, in appropriate circumstances, and provided that coordination
@@ -317,8 +309,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: recommendation
   actors:
-  - actor_ref: financial_market_surveillance_authority
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: should report without delay to the European Central Bank market-surveillance information potentially
     relevant to its prudential-supervision tasks
@@ -359,7 +350,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: designate, for the enacted Annex III systems, either the competent data protection supervisory
     authorities or another authority designated under the same Articles 41 to 44 conditions as market
@@ -401,7 +391,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: conduct no market surveillance activity that affects the independence of judicial authorities
     or otherwise interferes with their activities when acting in their judicial capacity
@@ -437,7 +426,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: supervise in-scope Union bodies except the Court acting judicially
   norm_text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation,
@@ -475,7 +463,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: facilitate coordination between AI surveillance and other relevant national authorities
   norm_text: Member States shall facilitate coordination between market surveillance authorities designated
@@ -511,8 +498,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: market_surveillance_authority_and_commission
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: commission
   targets: []
   action: propose joint activities, including joint investigations, on categories of high-risk AI systems
     found to present a serious risk across two or more Member States
@@ -552,7 +539,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: provide coordination support for joint investigations
   norm_text: The AI Office shall provide coordination support for joint investigations.
@@ -586,7 +572,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: grant necessary full authority access to documentation and development data sets including safeguarded
     remote access where appropriate
@@ -630,7 +615,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: grant source-code access on a reasoned request only after both necessity and exhaustion conditions
     are met
@@ -674,7 +658,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: treat obtained information and documentation under Article 78 confidentiality
   norm_text: Any information or documentation obtained by market surveillance authorities shall be treated

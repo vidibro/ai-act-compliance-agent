@@ -4,8 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: high_risk_ai_system_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: exceptionally process special categories of personal data where strictly necessary for bias
     detection and correction in high-risk AI systems
@@ -57,8 +56,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_4a_special_category_data_processor
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: apply technical reuse limitations and state-of-the-art security and privacy-preserving measures,
     including pseudonymisation, to special-category personal data
@@ -98,8 +97,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_4a_special_category_data_processor
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: secure and protect special-category personal data with suitable safeguards, documented strict
     access controls, authorised access, and appropriate confidentiality obligations
@@ -141,8 +140,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_4a_special_category_data_processor
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: prevent special-category personal data from being transmitted, transferred, or otherwise accessed
     by other parties
@@ -182,8 +181,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_4a_special_category_data_processor
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: delete special-category personal data when the bias is corrected or the retention period ends,
     whichever occurs first
@@ -223,8 +222,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: article_4a_special_category_data_processor
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: record why special-category processing was strictly necessary for bias detection and correction
     and why other data could not achieve that objective
@@ -266,8 +265,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: other_ai_provider_or_deployer_or_high_risk_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: exceptionally process special categories of personal data for qualifying bias detection and
     correction involving other AI systems and models or deployment of high-risk AI systems
@@ -311,8 +310,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: article_4a_paragraph_2_actor
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: prevent Article 4a(2) from being construed as requiring bias detection and correction
   norm_text: This paragraph does not create any obligation to conduct such bias detection and correction.

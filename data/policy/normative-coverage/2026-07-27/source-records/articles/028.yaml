@@ -8,7 +8,6 @@ records:
     procedures and monitoring
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -22,7 +21,6 @@ records:
   action: develop conformity-assessment-body procedures cooperatively across Member-State notifying authorities
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -37,7 +35,6 @@ records:
   action: assign paragraph 1 assessment and monitoring to a qualifying national accreditation body
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -53,7 +50,6 @@ records:
   action: organise and operate without conformity-body conflicts while safeguarding objectivity and impartiality
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -72,7 +68,6 @@ records:
   action: assign notification decisions to competent persons other than the body assessors
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -87,7 +82,6 @@ records:
     on a commercial or competitive basis
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -106,7 +100,6 @@ records:
   action: safeguard obtained information according to Article 78 confidentiality requirements
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -120,7 +113,6 @@ records:
   action: maintain enough competent personnel to perform notifying-authority tasks properly
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -135,7 +127,6 @@ records:
     law, and fundamental-rights supervision
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -154,7 +145,6 @@ records:
   action: provide eligible conformity bodies a single application and unified assessment procedure
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   conditions: &id001
   - the relevant Section A Annex I legislation provides for the single application and unified assessment
@@ -172,7 +162,6 @@ records:
   action: cooperate across AI Act and Section A Annex I notifying authorities in unified assessments
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   conditions: *id001
   product_scope: outside_supported_actor
@@ -190,7 +179,6 @@ records:
     AI Act designation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   conditions: *id001
   product_scope: outside_supported_actor
@@ -206,7 +194,6 @@ records:
   action: require a multi-designated conformity body to apply only once for AI Act designation
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -222,7 +209,6 @@ records:
     body is designated
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -240,7 +226,6 @@ records:
     ensuring both sets of notified-body requirements
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -262,7 +247,6 @@ records:
     Member State designates another
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor

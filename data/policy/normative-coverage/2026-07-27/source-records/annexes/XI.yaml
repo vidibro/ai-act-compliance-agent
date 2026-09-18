@@ -7,7 +7,6 @@ records:
     documentation, proportionate to model size and risk profile
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
@@ -51,7 +50,6 @@ records:
   action: base unknown model energy consumption on information about computational resources used
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:
@@ -72,7 +70,6 @@ records:
     documentation for a general-purpose AI model with systemic risk
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
@@ -101,7 +98,6 @@ records:
     in the technical documentation for a general-purpose AI model with systemic risk
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
@@ -125,7 +121,6 @@ records:
     for a general-purpose AI model with systemic risk
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.

@@ -6,7 +6,6 @@ records:
   action: notify only conformity-assessment bodies satisfying Article 31
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -24,7 +23,6 @@ records:
     and the Commission tool
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -42,7 +40,6 @@ records:
     developments
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -58,7 +55,6 @@ records:
   action: include complete assessment scope and competence information in the body notification
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -80,7 +76,6 @@ records:
   action: provide competence and continuing-monitoring evidence for a notification not based on accreditation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   conditions:
   - the notification is not based on an Article 29(2) accreditation certificate
@@ -99,7 +94,6 @@ records:
   action: permit notified-body activities only after the applicable no-objection period expires
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   kind: permission
   conditions:
@@ -117,7 +111,6 @@ records:
   action: promptly consult the relevant Member States and conformity body when objections arise
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions: &id001
   - objections are raised to the notification
@@ -132,7 +125,6 @@ records:
   action: decide whether the disputed authorisation is justified
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions: *id001
   product_scope: outside_supported_actor
@@ -147,7 +139,6 @@ records:
   action: address the authorisation decision to the concerned Member State and conformity body
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   conditions: *id001
   product_scope: outside_supported_actor

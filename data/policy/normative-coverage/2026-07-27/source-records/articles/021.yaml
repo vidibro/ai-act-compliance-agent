@@ -11,7 +11,6 @@ records:
     by the relevant Member State
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a competent authority makes a reasoned request
@@ -28,7 +27,6 @@ records:
     s control"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a competent authority makes a reasoned request
@@ -43,8 +41,7 @@ records:
     accordance with the confidentiality obligations set out in Article 78.
   action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
   actors:
-  - actor_ref: competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   implementation_mode: report_only
   implementation_refs:

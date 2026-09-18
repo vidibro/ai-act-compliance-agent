@@ -6,7 +6,6 @@ records:
   action: report every serious incident to the market surveillance authority where it occurred
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-ALL-A73
@@ -21,8 +20,8 @@ records:
   action: report immediately after establishing a causal link or reasonable likelihood and no later than
     15 days after awareness, taking account of the severity of the serious incident
   actors:
-  - actor_ref: provider_or_applicable_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   qualifier_spans:
   - A073-P003
@@ -38,8 +37,8 @@ records:
   action: report a widespread infringement or Article 3(49)(b) incident immediately and within two days
     of awareness
   actors:
-  - actor_ref: provider_or_applicable_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   implementation_refs:
   - AIA-ALL-A73
@@ -54,8 +53,8 @@ records:
     incident.
   action: report a death immediately on established or suspected causality and within ten days of awareness
   actors:
-  - actor_ref: provider_or_applicable_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   implementation_refs:
   - AIA-ALL-A73
@@ -67,8 +66,8 @@ records:
     may submit an initial report that is incomplete, followed by a complete report.
   action: submit an initial incomplete report followed by a complete report where needed for timeliness
   actors:
-  - actor_ref: provider_or_applicable_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   kind: permission
   implementation_refs:
@@ -84,7 +83,6 @@ records:
     concerned
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a serious incident has been reported pursuant to paragraph 1
@@ -99,7 +97,6 @@ records:
   action: include a risk assessment of the reported serious incident and corrective action in the investigation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a serious incident has been reported pursuant to paragraph 1
@@ -117,7 +114,6 @@ records:
     during the first-subparagraph investigations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-ALL-A73
@@ -132,7 +128,6 @@ records:
     evaluation of the causes of the incident before informing the competent authorities of such action
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: prohibition
   implementation_refs:
@@ -147,7 +142,6 @@ records:
   action: inform Article 77(1) authorities of Article 3(49)(c) incident notifications
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -162,7 +156,6 @@ records:
   action: issue incident-reporting guidance by 2 August 2025 and assess it regularly
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -179,7 +172,6 @@ records:
     seven days of receiving the paragraph 1 notification and follow that Regulation's notification procedures
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -198,7 +190,6 @@ records:
   action: limit reporting to Article 3(49)(c) incidents where equivalent Union reporting legislation applies
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   implementation_refs:
@@ -214,8 +205,8 @@ records:
   action: limit covered medical-device reports to Article 3(49)(c) incidents and send them to the designated
     national competent authority
   actors:
-  - actor_ref: provider_or_applicable_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   implementation_refs:
   - AIA-ALL-A73-10
@@ -229,7 +220,6 @@ records:
     taken
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -4,8 +4,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: provide and keep current all five Annex IX information items when registering real-world testing
     under Article 60

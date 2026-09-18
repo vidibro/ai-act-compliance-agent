@@ -4,8 +4,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: conduct eligible high-risk AI testing outside a sandbox under Article 60 and its testing plan
     without infringing Article 5
@@ -51,7 +51,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: specify detailed testing-plan elements by implementing acts adopted under the Article 98(2)
     examination procedure
@@ -87,8 +86,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: preserve applicable Union and national product testing law
   norm_text: This paragraph shall be without prejudice to Union or national law on the testing in real
@@ -124,8 +123,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: conduct eligible high-risk system testing before market placement or service alone or with deployers
   norm_text: Providers or prospective providers may conduct testing of high-risk AI systems referred to
@@ -161,8 +160,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: preserve any ethical review required by Union or national law
   norm_text: The testing of high-risk AI systems in real world conditions under this Article shall be
@@ -198,8 +197,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: conduct real-world testing only when all eleven conditions are met
   norm_text: Providers or prospective providers may conduct the testing in real world conditions only
@@ -258,8 +257,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: draw up the testing plan and submit it to the relevant Member State market surveillance authority
   norm_text: the provider or prospective provider has drawn up a real-world testing plan and submitted
@@ -295,8 +294,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: obtain authority approval or rely on 30-day tacit approval only where national law permits it
   norm_text: the market surveillance authority in the Member State where the testing in real world conditions
@@ -343,8 +342,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: register real-world testing through the single registration route that the enacted system classes
     assign, with the identifier and information that route requires
@@ -409,8 +408,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: be Union-established or appoint a Union-established legal representative
   norm_text: the provider or prospective provider conducting the testing in real world conditions is established
@@ -449,8 +448,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: transfer testing data to third countries only with appropriate applicable Union-law safeguards
   norm_text: data collected and processed for the purpose of the testing in real world conditions shall
@@ -487,8 +486,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: limit testing to the time necessary for its objectives and at most six months absent a valid
     extension
@@ -524,8 +523,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: extend testing once for six months after prior notice and explanation
   norm_text: may be extended for an additional period of six months, subject to prior notification by
@@ -565,8 +564,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: appropriately protect testing subjects vulnerable because of age or disability
   norm_text: the subjects of the testing in real world conditions who are persons belonging to vulnerable
@@ -601,8 +600,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: inform the participating deployers or prospective deployers of the testing aspects relevant
     to their participation decision and give them the Article 13 instructions for use
@@ -646,8 +645,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_and_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: conclude an agreement specifying the parties' roles and responsibilities with a view to ensuring
     compliance with the real-world testing provisions of this Regulation and of other applicable Union
@@ -691,8 +690,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: obtain the testing subjects' informed consent in accordance with Article 61
   norm_text: the subjects of the testing in real world conditions have given informed consent in accordance
@@ -728,8 +727,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: keep the testing itself and its outcome free of any negative effect on the subjects when the
     law-enforcement substitute for informed consent applies
@@ -769,8 +768,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: delete the subjects' personal data after the test is performed when the law-enforcement substitute
     for informed consent applies
@@ -808,8 +807,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_and_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: ensure effective testing oversight by qualified persons with necessary capacity training and
     authority
@@ -846,8 +845,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: ensure system predictions recommendations and decisions can be effectively reversed and disregarded
   norm_text: the predictions, recommendations or decisions of the AI system can be effectively reversed
@@ -882,8 +881,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
-  - actor_ref: testing_subject_or_representative
-    category: natural_person
+  - actor_ref: testing_subject
+  - actor_ref: legal_representative
   targets: []
   action: withdraw from the testing at any time by revoking informed consent, without any resulting detriment
     and without having to provide any justification, and request immediate and permanent deletion of the
@@ -923,8 +922,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: preserve activities completed before consent withdrawal
   norm_text: The withdrawal of the informed consent shall not affect the activities already carried out.
@@ -959,7 +958,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: confer the enacted real-world testing supervision powers on the national market surveillance
     authorities in accordance with Article 75
@@ -1001,7 +999,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: use the conferred information, inspection and check powers to ensure the safe development of
     testing in real world conditions
@@ -1036,8 +1033,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: report the serious incident to the national market surveillance authority in accordance with
     Article 73
@@ -1073,8 +1070,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: adopt immediate mitigation measures for the serious incident or, failing that, suspend testing
     until mitigation takes place or terminate it
@@ -1114,8 +1111,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: establish a procedure for the prompt recall of the AI system upon such termination of the testing
     in real world conditions
@@ -1150,8 +1147,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: notify the relevant authority of testing suspension or termination and final outcomes
   norm_text: Providers or prospective providers shall notify the national market surveillance authority
@@ -1186,8 +1183,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: bear liability under applicable law for damage caused during real-world testing
   norm_text: The provider or prospective provider shall be liable under applicable Union and national

@@ -4,8 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: definition
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: treat an AI system risking health safety or fundamental rights as a Regulation 2019/1020 product
     presenting a risk
@@ -43,7 +42,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: evaluate all enacted requirements and obligations when sufficient reason indicates an AI system
     presents a risk
@@ -83,7 +81,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: prioritise vulnerable-group risks and cooperate with fundamental-rights bodies when such risks
     are identified
@@ -121,7 +118,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: cooperate as necessary with market surveillance and fundamental-rights authorities during an
     Article 79 evaluation
@@ -160,7 +156,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: require correction withdrawal or recall without undue delay within the shorter enacted deadline
   norm_text: Where, in the course of that evaluation, the market surveillance authority or, where applicable
@@ -203,7 +198,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: inform the relevant notified body of required corrective measures
   norm_text: The market surveillance authority shall inform the relevant notified body accordingly.
@@ -237,7 +231,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: apply Regulation 2019/1020 Article 18 to paragraph 2 corrective measures
   norm_text: Article 18 of Regulation (EU) 2019/1020 shall apply to the measures referred to in the second
@@ -273,7 +266,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: promptly inform the Commission and other Member States of cross-border evaluation results and
     required actions
@@ -311,7 +303,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: ensure appropriate corrective action across all concerned systems made available on the Union
     market
@@ -349,7 +340,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: take all appropriate provisional measures to prohibit or restrict the system's being made available
     or put into service, to withdraw the product or standalone AI system, or to recall it
@@ -389,7 +379,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: notify the Commission and the other Member States of those measures without undue delay
   norm_text: That authority shall without undue delay notify the Commission and the other Member States
@@ -424,7 +413,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: include identification supply-chain risk measure operator-argument and non-compliance-ground
     details in the paragraph 5 notification
@@ -475,8 +463,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: other_market_surveillance_authority
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: promptly report adopted measures additional information and any objection to the notified national
     measure
@@ -514,8 +501,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: deem the provisional measure justified when no objection is raised within three months of receipt
     of the paragraph 5 notification, or within 30 days where the non-compliance concerns the Article 5
@@ -556,8 +542,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: preserve the concerned operator's procedural rights under Article 18 of Regulation (EU) 2019/1020
   norm_text: This shall be without prejudice to the procedural rights of the concerned operator in accordance
@@ -592,8 +577,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: authority_applying_article_79
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: reduce the three-month objection period to 30 days where the non-compliance concerns the prohibition
     of the AI practices referred to in Article 5
@@ -630,7 +614,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: ensure appropriate restrictive measures including market withdrawal without undue delay
   norm_text: The market surveillance authorities shall ensure that appropriate restrictive measures are

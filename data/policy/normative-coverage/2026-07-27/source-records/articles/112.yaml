@@ -9,7 +9,6 @@ records:
     period
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -23,7 +22,6 @@ records:
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -38,7 +36,6 @@ records:
     and governance amendments
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - extending or adding Annex III area headings
@@ -63,7 +60,6 @@ records:
     need for a Union agency
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -77,7 +73,6 @@ records:
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -92,7 +87,6 @@ records:
   action: make Article 112(3) review reports public
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -106,7 +100,6 @@ records:
     paragraph 2 reports
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - national competent authority financial technical and human resources
@@ -133,7 +126,6 @@ records:
     needs
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -147,7 +139,6 @@ records:
   action: submit the AI Office evaluation report to Parliament and Council
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -164,7 +155,6 @@ records:
     and the need for further measures
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -177,7 +167,6 @@ records:
   action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it public
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -197,7 +186,6 @@ records:
     AI codes
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -210,8 +198,8 @@ records:
     shall provide the Commission with information upon its request and without undue delay.
   action: provide requested information without undue delay for Article 112 evaluations and reviews
   actors:
-  - actor_ref: board_member_states_and_national_competent_authorities
-    category: public_authority
+  - actor_ref: member_state
+  - actor_ref: national_competent_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -229,7 +217,6 @@ records:
     or sources in Article 112 reviews
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -245,7 +232,6 @@ records:
     and information-society developments
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -263,7 +249,6 @@ records:
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - Annex III systems and area headings
@@ -287,8 +272,7 @@ records:
   action: account for sector regulatory specificities and existing governance conformity-assessment and
     enforcement structures in relevant amendments and acts
   actors:
-  - actor_ref: union_rulemaker
-    category: union_institution_or_body
+  - actor_ref: commission
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -307,7 +291,6 @@ records:
     Economic and Social Committee
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -323,7 +306,6 @@ records:
     structure and possible Union agency need
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

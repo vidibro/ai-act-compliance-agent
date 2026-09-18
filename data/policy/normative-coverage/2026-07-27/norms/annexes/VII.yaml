@@ -114,7 +114,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: complete the Annex VII quality-management application
   norm_text: The application of the provider shall include
@@ -168,7 +167,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: continue implementing and maintaining the approved quality-management system so that it remains
     adequate and efficient
@@ -208,7 +206,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: notify the notified body of intended QMS or covered-system-list changes
   norm_text: Any intended change to the approved quality management system or the list of AI systems covered
@@ -248,7 +245,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: assess whether the quality-management system satisfies Article 17
   norm_text: The quality management system shall be assessed by the notified body
@@ -282,7 +278,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: notify the quality-management assessment decision to the provider or its authorised representative
   norm_text: The decision shall be notified to the provider or its authorised representative.
@@ -318,7 +313,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: examine the proposed changes and decide whether the modified quality management system still
     satisfies the point 3.2 requirements or whether a reassessment is necessary
@@ -355,7 +349,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: notify the provider of that decision
   norm_text: The notified body shall notify the provider of its decision. The notification shall contain
@@ -392,7 +385,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: lodge an application with a notified body of the provider's choice for assessment of the technical
     documentation of the covered AI system
@@ -432,7 +424,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include all three point 4.2 items in the technical-documentation assessment application
   norm_text: 'The application shall include:'
@@ -474,7 +465,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: examine the technical documentation
   norm_text: The technical documentation shall be examined by the notified body.
@@ -508,7 +498,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: grant the notified body necessary full dataset access
   norm_text: Where relevant, and limited to what is necessary to fulfil its tasks, the notified body shall
@@ -551,7 +540,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: supply further evidence or tests required for the conformity assessment
   norm_text: In examining the technical documentation, the notified body may require that the provider
@@ -592,7 +580,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: carry out adequate tests when provider testing is unsatisfactory
   norm_text: Where the notified body is not satisfied with the tests carried out by the provider, the
@@ -628,7 +615,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: grant reasoned and necessary model access after other means are exhausted
   norm_text: Where necessary to assess the conformity of the high-risk AI system with the requirements
@@ -673,7 +659,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: retrain before reapplying where training data fail the requirement
   norm_text: Where the AI system does not meet the requirement relating to the data used to train it,
@@ -713,7 +698,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: notify the technical-documentation assessment decision to the provider or its authorised representative
   norm_text: The decision of the notified body shall be notified to the provider or its authorised representative.
@@ -749,7 +733,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: issue the certificate where the system conforms
   norm_text: Where the AI system is in conformity with the requirements set out in Chapter III, Section
@@ -785,7 +768,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: include the required provider, examination, validity, identification, evaluation, and in-use
     control information in the Union technical-documentation assessment certificate and its annexes
@@ -830,7 +812,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: refuse certification and give detailed reasons where the system does not conform
   norm_text: Where the AI system is not in conformity with the requirements set out in Chapter III, Section
@@ -867,7 +848,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: state specific training-data non-compliance considerations in the refusal decision
   norm_text: In this case, the reasoned assessment decision of the notified body refusing to issue the
@@ -906,7 +886,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: assess any AI-system change that could affect compliance or intended purpose
   norm_text: Any change to the AI system that could affect the compliance of the AI system with the requirements
@@ -942,7 +921,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: inform the certificate-issuing notified body of intended or discovered changes that could affect
     compliance or intended purpose
@@ -983,7 +961,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: assess an intended change and decide whether it requires a new Article 43(4) conformity assessment
     or a certificate supplement
@@ -1020,7 +997,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: assess changes eligible for the supplement route, notify the provider of the decision, and issue
     an approved certificate supplement
@@ -1059,7 +1035,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: allow the notified body to access the premises where the AI systems are designed, developed
     and tested
@@ -1099,7 +1074,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: share all information the notified body needs for surveillance
   norm_text: The provider shall further share with the notified body all necessary information.
@@ -1137,7 +1111,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: carry out periodic audits and provide the provider an audit report
   norm_text: The notified body shall carry out periodic audits
@@ -1171,7 +1144,6 @@ norms:
   kind: power
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: carry out additional tests during surveillance audits of certified AI systems
   norm_text: In the context of those audits, the notified body may carry out additional tests of the AI

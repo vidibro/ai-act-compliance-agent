@@ -6,7 +6,6 @@ records:
   action: submit a notification application to the notifying authority of the establishment Member State
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -24,7 +23,6 @@ records:
     accreditation certificate
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -44,7 +42,6 @@ records:
     legislation
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -60,7 +57,6 @@ records:
     no accreditation certificate is available
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   conditions:
   - the body cannot provide an accreditation certificate
@@ -78,7 +74,6 @@ records:
     AI Act designation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -96,7 +91,6 @@ records:
     the relevant harmonisation legislation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   conditions:
   - the body has a Section A Annex I designation and undergoes the Article 28(8) unified assessment
@@ -113,7 +107,6 @@ records:
   action: update application and compliance evidence whenever relevant changes occur
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   conditions:
   - relevant changes occur

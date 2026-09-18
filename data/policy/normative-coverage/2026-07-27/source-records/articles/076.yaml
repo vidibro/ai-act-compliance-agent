@@ -6,7 +6,6 @@ records:
   action: exercise competences and powers to ensure real-world testing complies with this Regulation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -23,8 +22,7 @@ records:
   action: substitute the competent sectoral authority and Article 60a for Article 76 references in Article
     60a testing
   actors:
-  - actor_ref: authority_applying_article_76
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   kind: applicability
   product_scope: outside_supported_actor
@@ -40,7 +38,6 @@ records:
   action: verify Article 60 compliance when supervising sandbox real-world testing
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -58,7 +55,6 @@ records:
   action: allow provider-conducted sandbox testing under an appropriate Article 60(4)(f) and (g) derogation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -73,7 +69,6 @@ records:
     suspected Articles 60 or 61 breach
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: power
   mandatory_content:
@@ -97,7 +92,6 @@ records:
     objection
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -115,7 +109,6 @@ records:
     occurred
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

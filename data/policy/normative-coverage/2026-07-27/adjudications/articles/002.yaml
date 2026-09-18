@@ -1,118 +1,105 @@
 schema_version: 1
-act_version_date: "2026-07-27"
+act_version_date: '2026-07-27'
 source:
   kind: article
-  document: "2"
-
+  document: '2'
 audit:
   audit_schema_version: 1
   segments_scanned: 26
   norms_scanned: 27
   finding_count: 8
   audit_sha256: ed5cd9b2f138b813a7bd2b77709ff0553636f922bff4ebad3e589d43713cab7c
-
 decisions:
-  - finding_id: AIA-VALID-74A02C46BA0B5288
-    target: AIA-NORM-A002-P3-NATIONAL-SECURITY-COMPETENCE
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A002-P010
+- finding_id: AIA-VALID-74A02C46BA0B5288
+  target: AIA-NORM-A002-P3-NATIONAL-SECURITY-COMPETENCE
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A002-P010
+  source_sha256: 0c52e252e166f6c33b652fe3ed5fda1459f4e11cd5cfb8032091d42b1992d731
+  target_sha256: da00bd1a299af3fab7b4aa5fb8a45ea5d1083fc9e622c0a533caeee2fe1aefd9
+  decision: accepted_with_basis
+  reason: The atomic quotation records the national-security competence effect. Its
+    preceding subject, “This Regulation”, is retained through the exact paragraph
+    basis below; together they reconstruct the complete saving clause.
+  legal_basis:
+  - span_id: AIA-TEXT-A002-P010
     source_sha256: 0c52e252e166f6c33b652fe3ed5fda1459f4e11cd5cfb8032091d42b1992d731
-    target_sha256: da00bd1a299af3fab7b4aa5fb8a45ea5d1083fc9e622c0a533caeee2fe1aefd9
-    decision: accepted_with_basis
-    reason: >-
-      The atomic quotation records the national-security competence effect. Its preceding subject,
-      “This Regulation”, is retained through the exact paragraph basis below; together they
-      reconstruct the complete saving clause.
-    legal_basis:
-      - span_id: AIA-TEXT-A002-P010
-        source_sha256: 0c52e252e166f6c33b652fe3ed5fda1459f4e11cd5cfb8032091d42b1992d731
-        quote: >-
-          This Regulation does not apply to areas outside the scope of Union law, and shall not, in
-          any event, affect the competences of the Member States concerning national security,
-          regardless of the type of entity entrusted by the Member States with carrying out tasks in
-          relation to those competences.
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-7123F60F54F32E99
-    target: AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A002-P010
-    source_sha256: 0c52e252e166f6c33b652fe3ed5fda1459f4e11cd5cfb8032091d42b1992d731
-    target_sha256: 2d17bcf73f9a35cda76c40281cb6c192cb90bce5b1a9516e571be20f1e59ee65
-    decision: false_positive
-    reason: >-
-      This norm is itself the complete exclusion. Its structured action explicitly excludes areas
-      outside Union law; there is no separate exception to retain.
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-491F5C94CAFEF7A4
-    target: AIA-NORM-A002-P3-MILITARY-EXCLUSION
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A002-P011
-    source_sha256: 5ba3c6a64afff5d976e2363f7a087b217d54613c14ec4b79d98c190c53cf79e9
-    target_sha256: 97d1d5df44af507ac75cb5c52e992639a0f5d2f63beb77534fdf04890538f85a
-    decision: false_positive
-    reason: >-
-      This norm is the complete military, defence, and national-security exclusion. Its structured
-      conditions retain exclusive purpose and the entity-neutral qualifier.
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-B8C04E2A10EB53B8
-    target: AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A002-P012
-    source_sha256: 75e733ac6df4948584d5307a227341aa29bf25e9a6f1fbd79fea0e0a4b370ea0
-    target_sha256: d53d6eb78e5164cddc745a2faf1505ac1d717370f83f9155e3261fb9f60bbd86
-    decision: false_positive
-    reason: >-
-      This norm is the complete third-country military-output exclusion. Its structured conditions
-      retain both the non-Union placement gate and the exclusive-purpose, entity-neutral limits.
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-A982CD1CD0709BC7
-    target: AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A002-P015
-    source_sha256: c1747a74db5ccec6d600b94091ee6608d55f3f9caccabb94cfb9e0b5d082e20f
-    target_sha256: 8e5d5ce89598e9da2ec59af36a6592d1d56c1ddce6d815b2694976569efa442d
-    decision: false_positive
-    reason: >-
-      This norm is the complete scientific-research-and-development exclusion. Its structured
-      conditions retain both specific development purpose and sole putting into service purpose.
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-5DC3F32A6B8CC1A3
-    target: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A002-P017
-    source_sha256: 4e52736fee0605840a096efc9f8c23213125ff238de215421da5c7168e997e77
-    target_sha256: 6cb985d6591991bdf2007fefc00ae034a20dd191a1ea7c0af5ea1bf20f568986
-    decision: false_positive
-    reason: >-
-      This norm is the complete pre-market research, testing, and development exclusion. Its
-      structured conditions retain both the AI object and the pre-market temporal boundary.
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-06C46D318C5877DB
-    target: AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A002-P018
-    source_sha256: bde35e9ee237f7e6cec2d8d19d66c690d7ba4852ea206921ad1536b3d3410f42
-    target_sha256: f7a49f8daf636188f1ff757b16cde95a39f43f6d5e62f5410deffc5baf9ad31b
-    decision: false_positive
-    reason: >-
-      This norm is the complete saving clause. Its action directly preserves the other Union
-      consumer-protection and product-safety regimes; it does not omit a separate exception.
-    reviewed_by: vidibro
-
-  - finding_id: AIA-VALID-A25DC086C982C1C6
-    target: AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION
-    rule: exception_not_structured_or_retained
-    source_ref: AIA-TEXT-A002-P019
-    source_sha256: 22cfa1d419b08e830c74bdb5f741c19673a0728ab9f83068a34dfa3cb4433a91
-    target_sha256: 1423a0d0551143c18a1c65d5a9685a1ffef4e7f46e109d104984a9fef5188647
-    decision: false_positive
-    reason: >-
-      This norm is the complete personal, non-professional deployer exclusion. Its structured
-      conditions retain natural-person status and the purely personal, non-professional limits.
-    reviewed_by: vidibro
+    quote: This Regulation does not apply to areas outside the scope of Union law,
+      and shall not, in any event, affect the competences of the Member States concerning
+      national security, regardless of the type of entity entrusted by the Member
+      States with carrying out tasks in relation to those competences.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-7123F60F54F32E99
+  target: AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A002-P010
+  source_sha256: 0c52e252e166f6c33b652fe3ed5fda1459f4e11cd5cfb8032091d42b1992d731
+  target_sha256: 2d17bcf73f9a35cda76c40281cb6c192cb90bce5b1a9516e571be20f1e59ee65
+  decision: false_positive
+  reason: This norm is itself the complete exclusion. Its structured action explicitly
+    excludes areas outside Union law; there is no separate exception to retain.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-491F5C94CAFEF7A4
+  target: AIA-NORM-A002-P3-MILITARY-EXCLUSION
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A002-P011
+  source_sha256: 5ba3c6a64afff5d976e2363f7a087b217d54613c14ec4b79d98c190c53cf79e9
+  target_sha256: 97d1d5df44af507ac75cb5c52e992639a0f5d2f63beb77534fdf04890538f85a
+  decision: false_positive
+  reason: This norm is the complete military, defence, and national-security exclusion.
+    Its structured conditions retain exclusive purpose and the entity-neutral qualifier.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B8C04E2A10EB53B8
+  target: AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A002-P012
+  source_sha256: 75e733ac6df4948584d5307a227341aa29bf25e9a6f1fbd79fea0e0a4b370ea0
+  target_sha256: d53d6eb78e5164cddc745a2faf1505ac1d717370f83f9155e3261fb9f60bbd86
+  decision: false_positive
+  reason: This norm is the complete third-country military-output exclusion. Its structured
+    conditions retain both the non-Union placement gate and the exclusive-purpose,
+    entity-neutral limits.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-A982CD1CD0709BC7
+  target: AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A002-P015
+  source_sha256: c1747a74db5ccec6d600b94091ee6608d55f3f9caccabb94cfb9e0b5d082e20f
+  target_sha256: 8e5d5ce89598e9da2ec59af36a6592d1d56c1ddce6d815b2694976569efa442d
+  decision: false_positive
+  reason: This norm is the complete scientific-research-and-development exclusion.
+    Its structured conditions retain both specific development purpose and sole putting
+    into service purpose.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-5DC3F32A6B8CC1A3
+  target: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A002-P017
+  source_sha256: 4e52736fee0605840a096efc9f8c23213125ff238de215421da5c7168e997e77
+  target_sha256: 6cb985d6591991bdf2007fefc00ae034a20dd191a1ea7c0af5ea1bf20f568986
+  decision: false_positive
+  reason: This norm is the complete pre-market research, testing, and development
+    exclusion. Its structured conditions retain both the AI object and the pre-market
+    temporal boundary.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-06C46D318C5877DB
+  target: AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A002-P018
+  source_sha256: bde35e9ee237f7e6cec2d8d19d66c690d7ba4852ea206921ad1536b3d3410f42
+  target_sha256: f7a49f8daf636188f1ff757b16cde95a39f43f6d5e62f5410deffc5baf9ad31b
+  decision: false_positive
+  reason: This norm is the complete saving clause. Its action directly preserves the
+    other Union consumer-protection and product-safety regimes; it does not omit a
+    separate exception.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-A25DC086C982C1C6
+  target: AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A002-P019
+  source_sha256: 22cfa1d419b08e830c74bdb5f741c19673a0728ab9f83068a34dfa3cb4433a91
+  target_sha256: 1423a0d0551143c18a1c65d5a9685a1ffef4e7f46e109d104984a9fef5188647
+  decision: false_positive
+  reason: This norm is the complete personal, non-professional deployer exclusion.
+    Its structured conditions retain natural-person status and the purely personal,
+    non-professional limits.
+  reviewed_by: vidibro

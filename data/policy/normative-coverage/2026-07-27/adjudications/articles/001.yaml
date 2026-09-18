@@ -1,16 +1,12 @@
 schema_version: 1
-act_version_date: "2026-07-27"
+act_version_date: '2026-07-27'
 source:
   kind: article
-  document: "1"
-
-# Article 1 states the Regulation's purpose and the categories of rules it establishes. It creates
-# no actor-specific duty, permission, or legal consequence for this product to implement.
+  document: '1'
 audit:
   audit_schema_version: 1
   segments_scanned: 10
   norms_scanned: 0
   finding_count: 0
   audit_sha256: 047e7368acfe8b7c2e7a7c4524aed893e738316767ea35f1b04df3c527723bd2
-
 decisions: []

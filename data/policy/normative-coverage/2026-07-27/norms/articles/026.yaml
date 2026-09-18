@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: take appropriate technical and organisational measures to use the system according to its accompanying
     instructions
@@ -44,7 +43,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: assign human oversight to persons with all necessary competence, training, authority, and support
   norm_text: Deployers shall assign human oversight to natural persons who have the necessary competence,
@@ -85,7 +83,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: preserve other Union and national deployer obligations and the deployer's freedom to organise
     resources and activities used to implement provider-indicated human oversight alongside Article 26(1)
@@ -127,7 +124,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: ensure controlled input data is relevant and sufficiently representative for the system's intended
     purpose
@@ -167,7 +163,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: monitor system operation on the basis of the instructions for use and, where relevant, inform
     providers in accordance with Article 72
@@ -207,7 +202,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: without undue delay notify the provider or distributor and relevant market-surveillance authority
     of an Article 79(1) risk and suspend use of the system
@@ -252,7 +246,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: immediately inform first the provider, then the importer or distributor and relevant market-surveillance
     authorities, of an identified serious incident
@@ -292,7 +285,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: apply the Article 73 reporting route when the provider cannot be reached
   norm_text: If the deployer is not able to reach the provider, Article 73 shall apply mutatis mutandis.
@@ -330,7 +322,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: exclude sensitive operational data of law-enforcement deployers
   norm_text: This obligation shall not cover sensitive operational data of deployers of AI systems which
@@ -368,8 +359,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: financial_institution_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: deem financial institutions compliant through relevant financial-services governance rules
   norm_text: For deployers that are financial institutions subject to requirements regarding their internal
@@ -411,7 +401,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: keep controlled automatically generated high-risk-system logs for a period appropriate to the
     system's intended purpose and for at least six months
@@ -452,8 +441,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: financial_institution_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: maintain automatically generated logs within documentation kept under applicable Union financial-services
     law
@@ -493,8 +481,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: employer_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: inform workers' representatives and affected workers before workplace deployment or use that
     they will be subject to the high-risk system
@@ -533,8 +520,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: employer_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: provide the workplace-use notice according to applicable Union and national worker-information
     rules and practices
@@ -572,8 +558,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: public_authority_or_union_body_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: comply with the applicable Article 49 registration obligations
   norm_text: Deployers of high-risk AI systems that are public authorities, or Union institutions, bodies,
@@ -610,8 +595,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: public_authority_or_union_body_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: do not use an envisaged high-risk system found absent from the EU database
   norm_text: When such deployers find that the high-risk AI system that they envisage using has not been
@@ -649,8 +633,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: public_authority_or_union_body_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: inform the provider or distributor that the envisaged system is not registered in the EU database
   norm_text: shall inform the provider or the distributor
@@ -688,7 +671,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: use Article 13 information when carrying out an applicable data-protection impact assessment
   norm_text: Where applicable, deployers of high-risk AI systems shall use the information provided under
@@ -726,8 +708,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: preserve the requirements of Directive (EU) 2016/680 when applying the post-remote biometric-identification
     regime
@@ -763,8 +744,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: request qualifying judicial or binding reviewable administrative authorisation before use or
     without undue delay and within 48 hours
@@ -807,8 +787,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: limit each post-remote biometric-identification use to what is strictly necessary for investigating
     a specific offence
@@ -847,8 +826,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: stop the authorised use immediately when the authorisation request is rejected
   norm_text: If the authorisation requested pursuant to the first subparagraph is rejected, the use of
@@ -886,8 +864,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: delete personal data linked to the use for which authorisation was rejected
   norm_text: the personal data linked to the use of the high-risk AI system for which the authorisation
@@ -924,8 +901,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: law_enforcement_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: prohibit untargeted law-enforcement use lacking the specified offence, proceeding, threat, or
     missing-person link
@@ -966,8 +942,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: law_enforcement_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: ensure law-enforcement authorities do not take an adverse legal decision based solely on the
     system's output
@@ -1008,8 +983,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: preserve the referenced GDPR and law-enforcement Directive rules for biometric-data processing
   norm_text: This paragraph is without prejudice to Article 9 of Regulation (EU) 2016/679 and Article
@@ -1045,8 +1019,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: document every post-remote biometric-identification use in the relevant police file regardless
     of purpose or deployer and make that record available on request to the market-surveillance and national
@@ -1091,8 +1064,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: preserve supervisory-authority powers under Directive (EU) 2016/680
   norm_text: This subparagraph shall be without prejudice to the powers conferred by Directive (EU) 2016/680
@@ -1129,8 +1101,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: submit annual post-remote biometric-identification use reports to both specified authorities
   norm_text: Deployers shall submit annual reports to the relevant market surveillance and national data
@@ -1170,8 +1141,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: aggregate annual reports across multiple deployments
   norm_text: The reports may be aggregated to cover more than one deployment.
@@ -1210,7 +1180,6 @@ norms:
   kind: power
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: introduce stricter national post-remote biometric-identification laws consistent with Union
     law
@@ -1245,8 +1214,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: inform natural persons that they are subject to Annex III high-risk-system use in decision-making
   norm_text: Without prejudice to Article 50 of this Regulation, deployers of high-risk AI systems referred
@@ -1285,8 +1253,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: law_enforcement_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: apply the Directive (EU) 2016/680 Article 13 notice regime to law-enforcement use
   norm_text: For high-risk AI systems used for law enforcement purposes Article 13 of Directive (EU) 2016/680
@@ -1325,7 +1292,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: cooperate with relevant competent-authority actions concerning the high-risk system
   norm_text: Deployers shall cooperate with the relevant competent authorities in any action those authorities

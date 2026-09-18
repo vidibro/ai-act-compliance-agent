@@ -1398,8 +1398,7 @@ records:
   action: construe competent-authority and market-surveillance-authority references as references to the
     European Data Protection Supervisor for Union-body AI systems
   actors:
-  - actor_ref: union_institution_ai_system_authority_reference
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   kind: legal_consequence
   conditions:

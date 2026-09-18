@@ -4,8 +4,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: obtain freely given informed consent from the testing subjects before their participation in
     Article 60 testing, after duly informing them with concise, clear, relevant and understandable information
@@ -61,8 +61,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: date and document the informed consent
   norm_text: The informed consent shall be dated and documented
@@ -97,8 +97,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: give a copy of the informed consent to the subjects of testing or their legal representative
   norm_text: a copy shall be given to the subjects of testing or their legal representative.

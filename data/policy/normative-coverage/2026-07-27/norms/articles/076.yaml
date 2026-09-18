@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: exercise competences and powers to ensure real-world testing complies with this Regulation
   norm_text: Market surveillance authorities shall have competences and powers to ensure that testing
@@ -39,8 +38,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: authority_applying_article_76
-    category: public_authority
+  - actor_ref: market_surveillance_authority
   targets: []
   action: substitute the competent sectoral authority and Article 60a for Article 76 references in Article
     60a testing
@@ -79,7 +77,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: verify Article 60 compliance when supervising sandbox real-world testing
   norm_text: Where testing in real world conditions is conducted for AI systems that are supervised within
@@ -117,7 +114,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: allow provider-conducted sandbox testing under an appropriate Article 60(4)(f) and (g) derogation
   norm_text: Those authorities may, as appropriate, allow the testing in real world conditions to be conducted
@@ -152,7 +148,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: suspend terminate or require modification of real-world testing after a serious incident or
     suspected Articles 60 or 61 breach
@@ -192,7 +187,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: state grounds and the provider's challenge route in a paragraph 3 decision or Article 60(4)(b)
     objection
@@ -231,7 +225,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: communicate intervention grounds to authorities in other Member States where planned testing
     occurred

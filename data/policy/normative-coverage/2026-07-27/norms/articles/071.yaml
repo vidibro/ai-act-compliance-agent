@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: set up and maintain the EU database, in collaboration with the Member States, containing the
     paragraph 2 and 3 information on the enacted registered systems
@@ -47,7 +46,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: consult the relevant experts when setting the database's functional specifications
   norm_text: When setting the functional specifications of such database, the Commission shall consult
@@ -83,7 +81,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: consult the Board when updating the database's functional specifications
   norm_text: when updating the functional specifications of such database, the Commission shall consult
@@ -119,7 +116,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: enter the applicable Annex VIII Sections A and B data into the EU database
   norm_text: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by
@@ -156,7 +152,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   action: enter the applicable Annex VIII Sections A and B data into the EU database where registration
     falls to the representative
@@ -194,8 +189,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: public_authority_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: enter Annex VIII Section C data into the EU database under Article 49(3) and (4)
   norm_text: The data listed in Section C of Annex VIII shall be entered into the EU database by the deployer
@@ -234,7 +228,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: keep the information registered under Article 49 accessible and publicly available in a user-friendly
     manner
@@ -273,7 +266,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: the information should be easily navigable and machine-readable
   norm_text: The information should be easily navigable and machine-readable.
@@ -307,7 +299,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: keep the information registered under Article 60 accessible only to market surveillance authorities
     and the Commission
@@ -346,7 +337,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: limit database personal data to what Regulation processing requires while including authorised
     registrant names and contacts
@@ -386,7 +376,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: be the controller of the EU database
   norm_text: The Commission shall be the controller of the EU database.
@@ -421,7 +410,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: make adequate technical and administrative support available to providers, prospective providers
     and deployers
@@ -459,7 +447,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: ensure the EU database complies with applicable accessibility requirements
   norm_text: The EU database shall comply with the applicable accessibility requirements.

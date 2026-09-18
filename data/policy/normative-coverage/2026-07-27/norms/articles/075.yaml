@@ -5,7 +5,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: hold exclusive supervision and enforcement competence for the listed systems
   norm_text: 'The AI Office shall be exclusively competent for the supervision and enforcement of the
@@ -62,7 +61,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: apply the AI Office's exclusive competence to providers and only to deployers that are the provider
     or in its undertaking
@@ -100,7 +98,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: report serious incidents to the AI Office rather than through the Article 73 route
   norm_text: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence
@@ -139,7 +136,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
   norm_text: Article 73 (2) to (9), shall apply mutatis mutandis.
@@ -177,7 +173,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: promptly transmit relevant incident information to the territorially competent market surveillance
     authority
@@ -213,8 +208,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
     inspections and enforcement
@@ -251,8 +245,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
   norm_text: To that end, those authorities shall enjoy the powers provided for pursuant to this Regulation
@@ -289,7 +282,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: assist AI Office territorial action involving access to a public authority's data or AI system
   norm_text: "When taking investigatory or enforcement action in the territory of a Member State that\
@@ -327,7 +319,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: notify the competent market authority without undue delay before a prohibition restriction withdrawal
     or recall decision
@@ -366,7 +357,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: consult involved authorities where appropriate on application and enforcement matters
   norm_text: The AI Office shall consult the authorities involved in the application of this Regulation,
@@ -401,7 +391,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
   norm_text: The AI Office shall be responsible for conformity assessments and tests of AI systems referred
@@ -439,7 +428,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: verify regulatory conformity and market eligibility
   norm_text: Those tests and assessments shall verify that the systems comply with the relevant requirements
@@ -477,7 +465,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: entrust tests or assessments to designated notified bodies
   norm_text: The Commission shall entrust the performance of those tests or assessments to notified bodies
@@ -511,7 +498,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: act on the Commission's behalf when entrusted
   norm_text: the notified body shall act on behalf of the Commission
@@ -546,7 +532,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: withdraw an inadequately performed delegation immediately
   norm_text: If a notified body to which the Commission has delegated tasks under this paragraph does
@@ -582,7 +567,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: bear testing and assessment fees
   norm_text: The fees for testing and assessment activities shall be levied on the provider of a high-risk
@@ -619,7 +603,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: pay entrusted-service costs directly to the notified body
   norm_text: The provider shall pay the costs related to the services entrusted by the Commission to the
@@ -656,7 +639,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: cooperate with the AI Office to carry out compliance evaluations and inform the Board and other
     market surveillance authorities accordingly
@@ -696,7 +678,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI Office
     assessment of the matter so that the necessary supervisory and enforcement measures ensure prompt
@@ -747,7 +728,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: take utmost account of a market surveillance authority's assessment request
   norm_text: The AI Office shall take utmost account of the request
@@ -781,7 +761,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
   norm_text: the market surveillance authority shall cooperate actively and provide the AI Office the
@@ -817,7 +796,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: inform the single point of contact, without undue delay and no later than four months after
     receiving the request, of the intention to exercise the Article 75a powers or of the reasons for not
@@ -856,7 +834,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: periodically inform the single point of contact about major developments in the proceedings
     and about their outcome, without disclosing any confidential information
@@ -896,7 +873,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model
     information needed to conclude an investigation
@@ -937,7 +913,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: supply relevant requested compliance information without delay and within 30 days
   norm_text: In that case, the AI Office shall supply to the applicant authority without delay, and in
@@ -975,7 +950,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: safeguard obtained information under Article 78 confidentiality
   norm_text: Market surveillance authorities shall safeguard the confidentiality of the information that
@@ -1009,8 +983,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: market_surveillance_authority_and_ai_office
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: ai_office
   targets: []
   action: apply the Regulation 2019/1020 Chapter VI procedure with necessary adaptations
   norm_text: The procedure provided for in Chapter VI of Regulation (EU) 2019/1020 shall apply mutatis

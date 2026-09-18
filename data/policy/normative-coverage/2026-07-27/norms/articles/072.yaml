@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: establish and document a risk-proportionate post-market monitoring system
   norm_text: Providers shall establish and document a post-market monitoring system in a manner that is
@@ -42,7 +41,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: actively collect document and analyse lifetime performance and interaction data to evaluate
     continuous compliance while excluding protected law-enforcement data
@@ -90,7 +88,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: base the post-market monitoring system on a post-market monitoring plan
   norm_text: The post-market monitoring system shall be based on a post-market monitoring plan.
@@ -126,7 +123,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include the post-market monitoring plan in the technical documentation referred to in Annex
     IV
@@ -164,7 +160,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Board-informed plan guidance and a template by 2 September 2027
   norm_text: The Commission, taking utmost account of the opinion of the Board, shall adopt guidance,
@@ -199,7 +194,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: integrate Article 72 elements into an existing sectoral monitoring system and plan where equivalent
     protection is achieved

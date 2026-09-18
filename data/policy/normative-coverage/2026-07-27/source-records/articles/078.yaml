@@ -5,8 +5,7 @@ records:
     data obtained in carrying out their tasks and activities in such a manner as to protect, in particular
   action: protect confidentiality of task-related information and data under Union or national law
   actors:
-  - actor_ref: persons_involved_in_regulation_application
-    category: natural_person
+  - actor_ref: natural_or_legal_person
   targets: []
   mandatory_content:
   - the intellectual property rights and confidential business information or trade secrets of a natural
@@ -37,8 +36,7 @@ records:
     for the exercise of their powers in accordance with this Regulation and with Regulation (EU) 2019/1020.
   action: request only data strictly necessary for risk assessment and exercise of enacted powers
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -53,8 +51,7 @@ records:
   action: protect obtained information and data through adequate effective cybersecurity and delete collected
     data as soon as its acquisition purpose no longer requires it
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -75,8 +72,8 @@ records:
   action: disclose confidentially exchanged information only after prior consultation of the originating
     national competent authority and the deployer
   actors:
-  - actor_ref: national_competent_authority_and_commission
-    category: public_authority
+  - actor_ref: national_competent_authority
+  - actor_ref: commission
   targets: []
   conditions:
   - the high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement,
@@ -94,8 +91,8 @@ records:
   action: exclude sensitive operational data on the activities of law enforcement, border control, immigration
     or asylum authorities from the exchange of information
   actors:
-  - actor_ref: national_competent_authority_and_commission
-    category: public_authority
+  - actor_ref: national_competent_authority
+  - actor_ref: commission
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -110,8 +107,7 @@ records:
     remain within the premises of those authorities.
   action: keep the Annex IV technical documentation within the premises of the authority
   actors:
-  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   conditions:
   - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
@@ -127,8 +123,7 @@ records:
   action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon request,
     immediately access the documentation or obtain a copy of it
   actors:
-  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   conditions:
   - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
@@ -146,7 +141,6 @@ records:
     to access the documentation or any copy of it
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -183,9 +177,7 @@ records:
     and adequate confidentiality arrangements
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: power
   product_scope: outside_supported_actor

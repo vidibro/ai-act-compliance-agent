@@ -9,7 +9,6 @@ records:
     conformity, withdrawing it, disabling it, or recalling it
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: &id001
   - the provider considers or has reason to consider that a high-risk system it placed on the market or
@@ -26,7 +25,6 @@ records:
     importers about the non-conforming system and corrective response
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: *id001
   implementation_refs: *id002
@@ -45,7 +43,6 @@ records:
     the certifying notified body of the non-compliance and relevant corrective action
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions: &id003
   - the high-risk AI system presents an Article 79(1) risk and the provider becomes aware of it

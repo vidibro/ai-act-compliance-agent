@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: designate or establish at least one notifying authority responsible for conformity-assessment-body
     procedures and monitoring
@@ -42,7 +41,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: develop conformity-assessment-body procedures cooperatively across Member-State notifying authorities
   norm_text: Those procedures shall be developed in cooperation between the notifying authorities of all
@@ -77,7 +75,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: assign paragraph 1 assessment and monitoring to a qualifying national accreditation body
   norm_text: Member States may decide that the assessment and monitoring referred to in paragraph 1 is
@@ -113,7 +110,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: organise and operate without conformity-body conflicts while safeguarding objectivity and impartiality
   norm_text: Notifying authorities shall be established, organised and operated in such a way that no
@@ -152,7 +148,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: assign notification decisions to competent persons other than the body assessors
   norm_text: Notifying authorities shall be organised in such a way that decisions relating to the notification
@@ -188,7 +183,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: refrain from offering or providing conformity-assessment-body activities or consultancy services
     on a commercial or competitive basis
@@ -226,7 +220,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: safeguard obtained information according to Article 78 confidentiality requirements
   norm_text: Notifying authorities shall safeguard the confidentiality of the information that they obtain,
@@ -261,7 +254,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: maintain enough competent personnel to perform notifying-authority tasks properly
   norm_text: Notifying authorities shall have an adequate number of competent personnel at their disposal
@@ -296,7 +288,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: ensure personnel possess function-appropriate expertise, including relevant technology, AI,
     law, and fundamental-rights supervision
@@ -332,7 +323,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: provide eligible conformity bodies a single application and unified assessment procedure
   norm_text: Notifying authorities designated pursuant to this Regulation that are responsible for AI
@@ -374,7 +364,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: cooperate across AI Act and Section A Annex I notifying authorities in unified assessments
   norm_text: notifying authorities designated pursuant to this Regulation and those designated pursuant
@@ -411,7 +400,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: make the unified procedure available to already designated Section A Annex I bodies seeking
     AI Act designation
@@ -451,7 +439,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: require a multi-designated conformity body to apply only once for AI Act designation
   norm_text: A conformity assessment body that is designated pursuant to more than one piece of Union
@@ -488,7 +475,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: apply the AI Act designation across all relevant Section A Annex I legislation for which the
     body is designated
@@ -525,7 +511,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: operate the unified procedure without unnecessary duplication, using existing procedures while
     ensuring both sets of notified-body requirements
@@ -567,7 +552,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: notifying_authority
-    category: public_authority
   targets: []
   action: treat the Section A Annex I notifying authority as the unified-procedure authority unless the
     Member State designates another

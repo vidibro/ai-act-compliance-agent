@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: design and develop the high-risk AI system, including appropriate human-machine interfaces,
     for effective natural-person oversight throughout use
@@ -44,7 +43,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks that
     emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including
@@ -86,7 +84,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: make human-oversight measures commensurate with the system's risks, autonomy and context of
     use and ensure them through either or both Article 14(3) measure routes
@@ -130,7 +127,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "enable assigned overseers to understand the system\u2019s relevant capabilities and limitations,\
     \ monitor its operation, and detect and address anomalies, dysfunctions, and unexpected performance"
@@ -170,7 +166,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: enable assigned overseers to remain aware of possible automation bias, especially where system
     information or recommendations inform human decisions
@@ -210,7 +205,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: enable assigned overseers to correctly interpret system outputs using available interpretation
     tools and methods
@@ -249,7 +243,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: enable assigned overseers to decide not to use the system in a particular situation or otherwise
     disregard, override, or reverse its output
@@ -288,7 +281,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: enable assigned overseers to intervene in system operation or interrupt it through a stop control
     or similar procedure that brings it to a safe halt
@@ -328,7 +320,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure no deployer action or decision relies on a system identification unless at least two
     competent, trained, and authorised natural persons separately verify and confirm it
@@ -371,7 +362,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: disapply the two-person verification requirement for specified public-authority uses where Union
     or national law considers it disproportionate

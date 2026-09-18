@@ -5,7 +5,6 @@ records:
   action: develop Union AI expertise and capabilities through the AI Office
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -18,7 +17,6 @@ records:
   action: facilitate the Regulation tasks entrusted to the AI Office
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -30,8 +28,7 @@ records:
   quote: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources to effectively perform its duties and exercise its powers in relation to the enforcement of this Regulation.
   action: allocate adequate resources for effective performance of AI Office enforcement duties and powers
   actors:
-  - actor_ref: union_budgetary_authority
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   conditions: [the applicable budgetary procedure remains observed]
   product_scope: outside_supported_actor

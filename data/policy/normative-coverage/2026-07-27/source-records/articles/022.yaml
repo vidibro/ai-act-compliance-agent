@@ -8,7 +8,6 @@ records:
     a high-risk AI system available on the Union market
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider is established in a third country
@@ -23,7 +22,6 @@ records:
   action: enable the authorised representative to perform every task specified in its mandate
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
@@ -35,7 +33,6 @@ records:
   action: perform the tasks specified in the mandate received from the provider
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   implementation_refs: &id002
   - AIA-AR-A22
@@ -49,7 +46,6 @@ records:
     in an official EU-institution language indicated by the competent authority
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions: &id003
   - a market-surveillance authority requests a copy of the mandate
@@ -68,7 +64,6 @@ records:
     of the provider
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider appoints an authorised representative under Article 22(1)
@@ -91,7 +86,6 @@ records:
     an appropriate conformity assessment
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   implementation_refs: *id002
   verification_mode: reported_not_judged
@@ -110,7 +104,6 @@ records:
     into service
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - the 10-year retention period begins after the high-risk AI system is placed on the market or put into service
@@ -132,7 +125,6 @@ records:
     demonstrate Section 2 conformity
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions: &id005
   - a competent authority makes a reasoned request
@@ -147,7 +139,6 @@ records:
   action: provide the requesting authority access to Article 12(1) logs under the provider's control
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - a competent authority makes a reasoned request
@@ -165,7 +156,6 @@ records:
     and mitigation
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions: *id005
   implementation_refs: *id002
@@ -178,7 +168,6 @@ records:
   action: comply with the applicable Article 49(1) registration obligations
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - Article 49(1) registration obligations apply to the representative
@@ -193,7 +182,6 @@ records:
   action: ensure the provider's Annex VIII Section A point 3 registration information is correct
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions:
   - the provider carries out the registration itself
@@ -209,7 +197,6 @@ records:
     under the Regulation
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions: &id006
   - the representative considers or has reason to consider that the provider is acting contrary to its
@@ -226,7 +213,6 @@ records:
     the mandate termination and its reasons
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   conditions: *id006
   implementation_refs: *id002

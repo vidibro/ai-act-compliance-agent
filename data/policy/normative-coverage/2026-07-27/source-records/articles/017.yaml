@@ -6,7 +6,6 @@ records:
   action: establish a quality-management system that ensures compliance with the Regulation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: &id001
   - AIA-PO-A17
@@ -20,7 +19,6 @@ records:
     procedures, and instructions
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
@@ -33,7 +31,6 @@ records:
     modifications
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: &id002
   - A017-P001
@@ -48,7 +45,6 @@ records:
     design verification
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -62,7 +58,6 @@ records:
     and quality assurance
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -76,7 +71,6 @@ records:
     and after development and specifying their frequency
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -91,7 +85,6 @@ records:
     Section 2 compliance where harmonised standards are incomplete or insufficient
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -107,7 +100,6 @@ records:
     or pre-service data operations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -119,7 +111,6 @@ records:
   action: include the Article 9 risk-management system in the quality-management system
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -133,7 +124,6 @@ records:
     system
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -145,7 +135,6 @@ records:
   action: include procedures for reporting serious incidents under Article 73
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -160,7 +149,6 @@ records:
     customers, and interested parties
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -172,7 +160,6 @@ records:
   action: include systems and procedures for keeping all relevant documentation and information
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -184,7 +171,6 @@ records:
   action: include resource management and security-of-supply measures
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -198,7 +184,6 @@ records:
     Article 17(1) aspect
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -213,7 +198,6 @@ records:
     \ particularly for SMEs, start-ups, and SMCs"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
@@ -226,7 +210,6 @@ records:
     size
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
@@ -240,7 +223,6 @@ records:
     Union law
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:
@@ -260,8 +242,7 @@ records:
   action: deem the Article 17 QMS obligation fulfilled through compliance with applicable Union financial-services
     governance rules, except for points (g), (h), and (i)
   actors:
-  - actor_ref: financial_institution_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   kind: legal_consequence
   conditions:
@@ -280,8 +261,7 @@ records:
   action: take applicable Article 40 harmonised standards into account when relying on the financial-institution
     governance route
   actors:
-  - actor_ref: financial_institution_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   conditions:
   - the provider relies on Union financial-services governance compliance to fulfil the Article 17 QMS

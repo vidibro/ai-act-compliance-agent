@@ -7,7 +7,6 @@ records:
     system
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   mandatory_content:
@@ -28,7 +27,6 @@ records:
     AI-system lifecycle, with regular systematic review and updating
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   mandatory_content:
@@ -46,7 +44,6 @@ records:
     and fundamental rights
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -61,7 +58,6 @@ records:
   action: estimate and evaluate risks emerging from intended use and reasonably foreseeable misuse
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -76,7 +72,6 @@ records:
   action: evaluate other risks using data from the Article 72 post-market monitoring system
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -91,7 +86,6 @@ records:
   action: adopt appropriate and targeted measures addressing the risks identified under Article 9(2)(a)
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -124,7 +118,6 @@ records:
     risk-management measures
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   conditions:
@@ -140,7 +133,6 @@ records:
     risk to be acceptable
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   mandatory_content:
@@ -157,7 +149,6 @@ records:
     technically feasible
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -173,7 +164,6 @@ records:
     appropriate
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -187,7 +177,6 @@ records:
   action: provide the information required by Article 13 as part of risk management
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -201,7 +190,6 @@ records:
   action: provide deployer training where appropriate as part of risk management
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   conditions:
@@ -219,7 +207,6 @@ records:
     context when reducing use-related risks
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -232,7 +219,6 @@ records:
   action: test high-risk AI systems to identify the most appropriate targeted risk-management measures
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -246,7 +232,6 @@ records:
     the Section 2 requirements
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   mandatory_content:
@@ -261,7 +246,6 @@ records:
   action: include testing in real-world conditions in the testing procedures
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:
@@ -279,7 +263,6 @@ records:
     market placement or putting into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -292,7 +275,6 @@ records:
   action: test against predefined metrics and probabilistic thresholds appropriate to the intended purpose
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -307,7 +289,6 @@ records:
     appropriate, other vulnerable groups
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -323,7 +304,6 @@ records:
     other Union law
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   conditions:

@@ -4,8 +4,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: ai_office_and_member_states
-    category: public_authority
+  - actor_ref: ai_office
+  - actor_ref: member_state
   targets: []
   action: encourage and facilitate codes and governance mechanisms for voluntary Chapter III Section 2
     application to non-high-risk systems
@@ -43,8 +43,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: ai_office_and_member_states
-    category: public_authority
+  - actor_ref: ai_office
+  - actor_ref: member_state
   targets: []
   action: facilitate the drawing up of codes of conduct for the voluntary application of specific requirements
     to all AI systems, on the basis of clear objectives and key performance indicators; the elements listed
@@ -90,8 +90,9 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: provider_deployer_or_representative_organisation
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
+  - actor_ref: authorised_representative
   targets: []
   action: draw up a voluntary code individually jointly or through representative organisations and cover
     one or more similarly purposed systems
@@ -130,8 +131,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: ai_office_and_member_states
-    category: public_authority
+  - actor_ref: ai_office
+  - actor_ref: member_state
   targets: []
   action: account for SME start-up and SMC interests and needs when encouraging and facilitating codes
   norm_text: The AI Office and the Member States shall take into account the specific interests and needs

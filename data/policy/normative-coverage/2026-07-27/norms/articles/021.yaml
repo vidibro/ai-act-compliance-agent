@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: provide a requesting competent authority with all information and documentation necessary to
     demonstrate Section 2 conformity, in an easily understood official EU-institution language indicated
@@ -48,7 +47,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "give a requesting competent authority access to applicable Article 12(1) logs under the provider\u2019\
     s control"
@@ -88,8 +86,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
   norm_text: Any information obtained by a competent authority pursuant to this Article shall be treated

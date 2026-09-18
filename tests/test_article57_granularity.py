@@ -115,7 +115,7 @@ def test_report_access_consideration_and_public_release_do_not_share_one_gate(no
     assert consideration.kind.value == "obligation"
     assert publication.kind.value == "permission"
     assert access.actors == consideration.actors
-    assert access.actors[0].actor_ref == "commission_and_board"
+    assert [actor.actor_ref for actor in access.actors] == ["commission", "board"]
     assert access.conditions == [
         "Article 78 confidentiality provisions are observed",
         "the provider or prospective provider agrees to access",
@@ -165,7 +165,7 @@ def test_liability_and_two_no_fine_protections_preserve_different_conditions(nor
     ai_act = norms["P12-AI-ACT-NO-FINE-PROTECTION"]
     other_law = norms["P12-OTHER-LAW-NO-FINE-PROTECTION"]
     assert all(n.kind.value == "legal_consequence" for n in (liability, ai_act, other_law))
-    assert liability.actors[0].actor_ref == "provider_or_prospective_provider"
+    assert [actor.actor_ref for actor in liability.actors] == ["provider", "prospective_provider"]
     assert "third-party damage resulting from sandbox experimentation" in liability.action
     assert not any("guidance" in condition for condition in liability.conditions)
     # The pinned text specifically says prospective providers for the AI Act safe harbour.

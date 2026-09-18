@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: ensure at least one national AI regulatory sandbox is operational by 2 August 2027, individually
     or jointly
@@ -43,7 +42,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: provide technical support, advice, and tools for sandbox establishment and operation
   norm_text: The Commission may provide technical support, advice and tools for the establishment and
@@ -78,7 +76,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: fulfil the national-sandbox obligation through participation providing equivalent national coverage
   norm_text: The obligation under the first subparagraph may also be fulfilled by participating in an
@@ -114,8 +111,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: member_state_or_competent_authority
-    category: public_authority
+  - actor_ref: member_state
+  - actor_ref: national_competent_authority
   targets: []
   action: establish additional regional, local, or jointly operated sandboxes
   norm_text: Additional AI regulatory sandboxes at regional or local level, or established jointly with
@@ -150,7 +147,6 @@ norms:
   kind: power
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: establish an AI regulatory sandbox for Union institutions, bodies, offices and agencies
   norm_text: The European Data Protection Supervisor may establish an AI regulatory sandbox for Union
@@ -185,7 +181,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   action: construe this Chapter's national competent authority references as references to the EDPS for
     its sandbox
@@ -223,7 +218,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: establish an Article 75(1) Union-level sandbox without prejudice to Member States' competence
     to establish and supervise sandboxes for systems under their supervision
@@ -261,7 +255,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: construe this Chapter's national competent authority references, where relevant, as references
     to the AI Office for its sandbox
@@ -299,7 +292,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: implement the Union sandbox in close cooperation with relevant competent authorities, in particular
     where other Union-law compliance is supervised
@@ -337,7 +329,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: provide priority access to SMEs, including start-ups, and SMCs in the Union sandbox
   norm_text: shall provide priority access to SMEs, including start-ups, and SMCs.
@@ -372,7 +363,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: ensure paragraph 1 and 2 competent authorities allocate sufficient resources for effective and
     timely compliance with this Article
@@ -408,7 +398,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: cooperate with other relevant authorities
   norm_text: Where appropriate, national competent authorities shall cooperate with other relevant authorities
@@ -443,7 +432,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: allow involvement of other actors within the AI ecosystem
   norm_text: may allow for the involvement of other actors within the AI ecosystem.
@@ -477,7 +465,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: preserve other regulatory sandboxes established under Union or national law
   norm_text: This Article shall not affect other regulatory sandboxes established under Union or national
@@ -513,7 +500,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: ensure appropriate cooperation between authorities supervising other Union or national-law sandboxes
     and national competent authorities
@@ -548,8 +534,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: operate an innovation-fostering controlled environment for development, training, testing and
     validation under a specific agreed sandbox plan
@@ -592,8 +577,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: include supervised testing in real-world conditions within the sandbox
   norm_text: Such sandboxes may include testing in real world conditions supervised therein.
@@ -626,8 +610,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: incorporate the real-world testing plan referred to in Articles 60 and 60a into the sandbox
     plan
@@ -663,8 +646,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: provide sandbox guidance, supervision, and support addressing risks, testing, mitigation, effectiveness,
     and applicable law
@@ -702,8 +684,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: guide sandbox participants on regulatory expectations and fulfilment of Regulation obligations
   norm_text: Competent authorities shall provide providers and prospective providers participating in
@@ -738,8 +719,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: provide written proof of activities successfully carried out in the sandbox
   norm_text: Upon request of the provider or prospective provider of the AI system, the competent authority
@@ -774,8 +754,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: provide an exit report detailing sandbox activities, results and learning outcomes
   norm_text: The competent authority shall also provide an exit report detailing the activities carried
@@ -813,7 +792,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use sandbox documentation to demonstrate compliance through conformity assessment or relevant
     market surveillance activities
@@ -850,7 +828,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: take exit reports and national-authority written proof positively into account with a view to
     reasonably accelerating conformity assessment procedures
@@ -887,7 +864,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: take exit reports and national-authority written proof positively into account with a view to
     reasonably accelerating conformity assessment procedures
@@ -923,8 +899,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: commission_and_board
-    category: union_institution_or_body
+  - actor_ref: commission
+  - actor_ref: board
   targets: []
   action: access the exit reports with provider or prospective-provider agreement, subject to Article
     78 confidentiality
@@ -961,8 +937,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: commission_and_board
-    category: union_institution_or_body
+  - actor_ref: commission
+  - actor_ref: board
   targets: []
   action: take exit reports into account when exercising tasks under this Regulation
   norm_text: shall take them into account, as appropriate, when exercising their tasks under this Regulation.
@@ -998,8 +974,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: make the exit report publicly available through the single information platform only with both
     parties' explicit agreement
@@ -1038,8 +1013,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: design sandbox establishment to contribute to every enacted objective
   norm_text: The establishment of AI regulatory sandboxes shall aim to contribute to the following objectives
@@ -1084,7 +1058,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: associate and involve data-protection and other competent authorities in sandbox operation and
     supervision within their remit
@@ -1124,7 +1097,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: preserve sandbox supervisors' existing supervisory and corrective powers, including at regional
     and local levels
@@ -1161,7 +1133,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: require adequate mitigation of significant risks identified during sandbox development and testing
   norm_text: Any significant risks to health and safety and fundamental rights identified during the development
@@ -1198,7 +1169,6 @@ norms:
   kind: power
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: temporarily or permanently suspend testing or participation in the sandbox if no effective mitigation
     is possible
@@ -1236,7 +1206,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: inform the AI Office of the suspension decision
   norm_text: shall inform the AI Office of such decision.
@@ -1271,7 +1240,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: exercise supervisory powers within relevant law, using discretion for the specific sandbox project
     with the objective of supporting AI innovation in the Union
@@ -1308,8 +1276,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: remain liable under applicable Union and national liability law for third-party damage resulting
     from sandbox experimentation
@@ -1350,7 +1318,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: prospective_provider
-    category: supported_operator
   targets: []
   action: benefit from no administrative fines for infringements of this Regulation under the prospective-provider
     sandbox conditions
@@ -1392,8 +1359,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   action: benefit from no administrative fines regarding the other Union or national law whose competent
     authorities supervised and provided compliance guidance
@@ -1435,8 +1402,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_competent_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: design and implement sandboxes to facilitate relevant cross-border authority cooperation
   norm_text: The AI regulatory sandboxes shall be designed and implemented in such a way that, where relevant,
@@ -1470,8 +1436,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: sandbox_public_authorities
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: coordinate activities and cooperate within the framework of the Board
   norm_text: National competent authorities, the European Data Protection Supervisor and the AI Office,
@@ -1508,8 +1473,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: sandbox_public_authorities
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: support joint sandbox establishment and operation, including across sectors, and exchange related
     best practices
@@ -1546,7 +1510,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: inform the AI Office and the Board of the establishment of a sandbox
   norm_text: National competent authorities shall inform the AI Office and the Board of the establishment
@@ -1581,7 +1544,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: ask the AI Office and the Board for support and guidance
   norm_text: may ask them for support and guidance.
@@ -1614,7 +1576,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: publish and keep current a list of planned and existing sandboxes to encourage sandbox interaction
     and cross-border cooperation
@@ -1651,7 +1612,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: submit annual reports to the AI Office and the Board from one year after sandbox establishment
     and every year thereafter until termination, followed by a final report
@@ -1698,7 +1658,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   action: make annual sandbox reports or abstracts thereof publicly available online
   norm_text: The national competent authorities shall make those annual reports or abstracts thereof available
@@ -1733,7 +1692,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: take annual sandbox reports into account when exercising tasks under this Regulation
   norm_text: The Commission shall, where appropriate, take the annual reports into account when exercising
@@ -1769,7 +1727,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: develop a single dedicated interface for sandbox information, stakeholder interaction, enquiries
     and non-binding guidance in accordance with Article 62(1)(c)
@@ -1813,7 +1770,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: proactively coordinate with national competent authorities
   norm_text: The Commission shall proactively coordinate with national competent authorities, where relevant.

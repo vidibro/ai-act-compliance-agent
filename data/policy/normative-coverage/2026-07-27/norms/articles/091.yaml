@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: request Articles 53 and 55 documentation or other information necessary to assess GPAI-provider
     compliance
@@ -42,7 +41,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: initiate structured dialogue with the GPAI provider before an information request
   norm_text: Before sending the request for information, the AI Office may initiate a structured dialogue
@@ -77,7 +75,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: issue a necessary proportionate information request on a duly substantiated scientific-panel
     request
@@ -117,7 +114,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: include the legal basis purpose required information response period and applicable Article
     101 fines in an information request
@@ -157,8 +153,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: gpai_provider_or_representative
-    category: supported_operator
+  - actor_ref: gpai_provider
+  - actor_ref: authorised_representative
   targets: []
   action: supply information requested by the Commission
   norm_text: The provider of the general-purpose AI model concerned, or its representative shall supply
@@ -195,8 +191,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: legally_or_statutorily_authorised_representative
-    category: external_private_party
+  - actor_ref: legal_representative
   targets: []
   action: supply requested information on behalf of a legal-person or non-legal-personality GPAI provider
   norm_text: In the case of legal persons, companies or firms, or where the provider has no legal personality,
@@ -235,8 +230,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: duly_authorised_lawyer
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   action: supply the requested information on behalf of a client
   norm_text: Lawyers duly authorised to act may supply information on behalf of their clients.
@@ -270,7 +264,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: gpai_provider_client
-    category: supported_operator
   targets: []
   action: remain fully responsible for information a lawyer supplied on the client's behalf
   norm_text: The clients shall nevertheless remain fully responsible if the information supplied is incomplete,

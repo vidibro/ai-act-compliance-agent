@@ -128,7 +128,7 @@ def test_shipped_spec_loads():
     # only rules besides Art. 25(2) whose activation is decided by a question rather than by the
     # classification: the duties exist for a provider that elects to trial the system on live
     # inputs before placing it on the market, and for nobody else.
-    assert len(spec.rules) == 117
+    assert len(spec.rules) == 123
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because
@@ -231,8 +231,10 @@ def test_every_article_is_classified_in_scope_or_out(version):
     # str, not int: a consolidation inserts LETTERED articles (4a, 60a, 75a-75d), and int() both
     # crashes on them and would collapse 4a onto 4. A rule's own label is already a string; the
     # ledger's keys come from YAML and are not.
-    in_store = {p.stem.removeprefix("article-").lstrip("0") for p in
-                (ARTICLES_ROOT / version).glob("article-*.md")}
+    in_store = {
+        p.stem.removeprefix("article-").lstrip("0")
+        for p in (ARTICLES_ROOT / version).glob("article-*.md")
+    }
     cited = {r.source.article for r in spec.rules}
     entries = {str(k): v for k, v in ledger["article_rulings"].items()}
     whole = {k for k, v in entries.items() if isinstance(v, str)}
@@ -690,7 +692,7 @@ _DUTY_VERB = re.compile(r"\b(shall|must|required to|obliged to|responsible for)\
 # blanket count would notice, and so would the stale half of this test.
 DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
     "94": "Procedural rights of GPAI economic operators. Rights against the enforcing body, not "
-          "duties owed under the Regulation. The Article has no divisions to itemise.",
+    "duties owed under the Regulation. The Article has no divisions to itemise.",
 }
 
 
@@ -713,13 +715,13 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
     flagged = set()
     for article in whole:
         number = int(re.match(r"\d+", article).group())
-        suffix = article[len(str(number)):]
+        suffix = article[len(str(number)) :]
         path = ARTICLES_DIR / f"article-{number:03d}{suffix}.md"
         body = path.read_text(encoding="utf-8").split("---", 2)[2]
         bounds = [m.start() for m in _PARAGRAPH_START.finditer(body)] or [0]
         bounds.append(len(body))
         for i in range(len(bounds) - 1):
-            paragraph = body[bounds[i]:bounds[i + 1]].replace("\n", " ")
+            paragraph = body[bounds[i] : bounds[i + 1]].replace("\n", " ")
             if _DUTY_ROLE.search(paragraph) and _DUTY_VERB.search(paragraph):
                 flagged.add(article)
                 break

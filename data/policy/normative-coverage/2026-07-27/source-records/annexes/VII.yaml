@@ -43,7 +43,6 @@ records:
   action: complete the Annex VII quality-management application
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider lodges an application for assessment of the quality management system
@@ -77,7 +76,6 @@ records:
     adequate and efficient
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the notified body approved the quality management system
@@ -93,7 +91,6 @@ records:
   action: notify the notified body of intended QMS or covered-system-list changes
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the notified body approved the quality management system
@@ -109,7 +106,6 @@ records:
   action: assess whether the quality-management system satisfies Article 17
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -122,7 +118,6 @@ records:
   action: notify the quality-management assessment decision to the provider or its authorised representative
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -141,7 +136,6 @@ records:
     satisfies the point 3.2 requirements or whether a reassessment is necessary
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -155,7 +149,6 @@ records:
   action: notify the provider of that decision
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -175,7 +168,6 @@ records:
     documentation of the covered AI system
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider intends to place the AI system on the market or put it into service
@@ -187,7 +179,6 @@ records:
   action: include all three point 4.2 items in the technical-documentation assessment application
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider lodges the point 4.1 application for assessment of the technical documentation
@@ -207,7 +198,6 @@ records:
   action: examine the technical documentation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -223,7 +213,6 @@ records:
   action: grant the notified body necessary full dataset access
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A43-1B
@@ -241,7 +230,6 @@ records:
   action: supply further evidence or tests required for the conformity assessment
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A43-1B
@@ -257,7 +245,6 @@ records:
   action: carry out adequate tests when provider testing is unsatisfactory
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -277,7 +264,6 @@ records:
   action: grant reasoned and necessary model access after other means are exhausted
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A43-1B
@@ -294,7 +280,6 @@ records:
   action: retrain before reapplying where training data fail the requirement
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   conditions:
@@ -310,7 +295,6 @@ records:
   action: notify the technical-documentation assessment decision to the provider or its authorised representative
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -327,7 +311,6 @@ records:
   action: issue the certificate where the system conforms
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -346,7 +329,6 @@ records:
     control information in the Union technical-documentation assessment certificate and its annexes
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -368,7 +350,6 @@ records:
   action: refuse certification and give detailed reasons where the system does not conform
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -385,7 +366,6 @@ records:
   action: state specific training-data non-compliance considerations in the refusal decision
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -405,7 +385,6 @@ records:
   action: assess any AI-system change that could affect compliance or intended purpose
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -420,7 +399,6 @@ records:
     compliance or intended purpose
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - a notified body issued a Union technical documentation assessment certificate for the AI system
@@ -439,7 +417,6 @@ records:
     or a certificate supplement
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -455,7 +432,6 @@ records:
     an approved certificate supplement
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   conditions:
   - the change can be addressed through a supplement to the Union technical-documentation assessment certificate
@@ -473,7 +449,6 @@ records:
     and tested
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the notified body carries out point 5 surveillance of the approved quality management system
@@ -488,7 +463,6 @@ records:
   action: share all information the notified body needs for surveillance
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the notified body carries out point 5 surveillance of the approved quality management system
@@ -503,7 +477,6 @@ records:
   action: carry out periodic audits and provide the provider an audit report
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -517,7 +490,6 @@ records:
   action: carry out additional tests during surveillance audits of certified AI systems
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: power
   conditions:

@@ -7,7 +7,6 @@ records:
     authority as national competent authorities for the purposes of this Regulation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   mandatory_content:
   - at least one notifying authority
@@ -27,7 +26,6 @@ records:
     Regulation
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -39,8 +37,7 @@ records:
   quote: The members of those authorities shall refrain from any action incompatible with their duties.
   action: refrain from any action incompatible with the member's duties
   actors:
-  - actor_ref: national_competent_authority_member
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -56,7 +53,6 @@ records:
     Member State's organisational needs
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: permission
   conditions:
@@ -75,7 +71,6 @@ records:
     authorities, and any subsequent changes to them
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   mandatory_content:
   - identity of the notifying authorities and the market surveillance authorities
@@ -94,7 +89,6 @@ records:
     available through electronic communication means by 2 August 2025
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -109,7 +103,6 @@ records:
     and notify the Commission of its identity
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -122,7 +115,6 @@ records:
   action: publicly provide the single-point-of-contact list
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -138,7 +130,6 @@ records:
     human resources and with infrastructure to fulfil their tasks effectively
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   mandatory_content:
   - adequate technical resources
@@ -161,7 +152,6 @@ records:
     cover every enacted field
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   mandatory_content:
   - in-depth understanding of AI technologies
@@ -183,7 +173,6 @@ records:
   action: assess the paragraph 3 competence and resource requirements annually and update them where necessary
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -197,7 +186,6 @@ records:
   action: take appropriate measures ensuring adequate cybersecurity
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -211,7 +199,6 @@ records:
   action: comply with Article 78 confidentiality when performing authority tasks
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -227,7 +214,6 @@ records:
     thereafter
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -240,7 +226,6 @@ records:
   action: transmit Member State authority-resource information to the Board
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -253,7 +238,6 @@ records:
   action: facilitate experience exchange among national competent authorities
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -271,7 +255,6 @@ records:
     for other applicable Union law
   actors:
   - actor_ref: national_competent_authority
-    category: public_authority
   targets: []
   kind: power
   conditions:
@@ -288,7 +271,6 @@ records:
   action: act as competent supervisory authority for in-scope Union institutions bodies offices and agencies
   actors:
   - actor_ref: european_data_protection_supervisor
-    category: union_institution_or_body
   targets: []
   conditions:
   - a Union institution body office or agency falls within the Regulation's scope

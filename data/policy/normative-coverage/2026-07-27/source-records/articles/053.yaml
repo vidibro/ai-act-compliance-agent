@@ -10,7 +10,6 @@ records:
     competent authorities
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A053-P001
@@ -30,7 +29,6 @@ records:
     to integrate the model into their AI systems
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-GP-A53-1B
@@ -45,7 +43,6 @@ records:
     secrets when providing downstream documentation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-GP-A53-1B
@@ -61,7 +58,6 @@ records:
     the Regulation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A053-P003
@@ -75,7 +71,6 @@ records:
   action: include at least all Annex XII elements in the downstream information and documentation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A053-P003
@@ -91,7 +86,6 @@ records:
   action: put in place a policy for compliance with Union copyright and related-rights law
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A053-P001
@@ -106,7 +100,6 @@ records:
   action: identify and comply through state-of-the-art technologies with Article 4(3) rights reservations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-GP-A53-1C
@@ -120,7 +113,6 @@ records:
   action: draw up and publish a sufficiently detailed AI-Office-template summary of model training content
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A053-P001
@@ -137,7 +129,6 @@ records:
   action: disapply Article 53(1)(a) and (b) where every enacted free-and-open-source condition is met
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:
@@ -155,7 +146,6 @@ records:
   action: restore Article 53(1)(a) and (b) obligations for general-purpose AI models with systemic risk
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:
@@ -174,7 +164,6 @@ records:
     powers
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-GP-A53-3
@@ -189,7 +178,6 @@ records:
     standard is published
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   product_scope: no_product_action
@@ -205,7 +193,6 @@ records:
   action: presume conformity to the extent a European harmonised standard covers the Article 53 obligations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -222,7 +209,6 @@ records:
   action: demonstrate alternative adequate means of compliance for Commission assessment
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
@@ -238,7 +224,6 @@ records:
     verifiable Annex XI documentation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -253,7 +238,6 @@ records:
   action: adopt Article 97(2) delegated acts amending Annexes XI and XII for technological developments
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -268,8 +252,7 @@ records:
   action: treat Article 53 information and documentation, including trade secrets, under Article 78 confidentiality
     obligations
   actors:
-  - actor_ref: downstream_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   conditions:
   - the downstream provider obtains information or documentation under Article 53

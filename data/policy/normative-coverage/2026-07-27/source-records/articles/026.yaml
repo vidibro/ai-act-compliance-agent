@@ -8,7 +8,6 @@ records:
     instructions
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs: &id001
   - AIA-DP-A26
@@ -21,7 +20,6 @@ records:
   action: assign human oversight to persons with all necessary competence, training, authority, and support
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
@@ -41,7 +39,6 @@ records:
     and (2)
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   kind: applicability
   product_scope: dependency_only
@@ -64,7 +61,6 @@ records:
     purpose
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   conditions:
   - the deployer exercises control over the input data
@@ -79,7 +75,6 @@ records:
     providers in accordance with Article 72
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-DP-A26
@@ -98,7 +93,6 @@ records:
     of an Article 79(1) risk and suspend use of the system
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   conditions:
   - the deployer has reason to consider that use in accordance with the instructions may result in the
@@ -118,7 +112,6 @@ records:
   action: immediately inform first the provider, then the importer or distributor and relevant market-surveillance authorities, of an identified serious incident
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   conditions:
   - the deployer has identified a serious incident
@@ -132,7 +125,6 @@ records:
   action: apply the Article 73 reporting route when the provider cannot be reached
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:
@@ -149,7 +141,6 @@ records:
   action: exclude sensitive operational data of law-enforcement deployers
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:
@@ -167,8 +158,7 @@ records:
     governance arrangements, processes and mechanisms pursuant to the relevant financial service law.
   action: deem financial institutions compliant through relevant financial-services governance rules
   actors:
-  - actor_ref: financial_institution_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: legal_consequence
   conditions:
@@ -189,7 +179,6 @@ records:
     system's intended purpose and for at least six months
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   conditions:
   - the automatically generated logs are under the deployer's control
@@ -207,8 +196,7 @@ records:
   action: maintain automatically generated logs within documentation kept under applicable Union financial-services
     law
   actors:
-  - actor_ref: financial_institution_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer is a financial institution subject to internal-governance requirements under Union financial-services
@@ -225,8 +213,7 @@ records:
   action: inform workers' representatives and affected workers before workplace deployment or use that
     they will be subject to the high-risk system
   actors:
-  - actor_ref: employer_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer is an employer putting the high-risk system into service or using it at the workplace
@@ -241,8 +228,7 @@ records:
   action: provide the workplace-use notice according to applicable Union and national worker-information
     rules and practices
   actors:
-  - actor_ref: employer_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - Union or national worker-information rules and practices apply
@@ -257,8 +243,7 @@ records:
     offices or agencies shall comply with the registration obligations referred to in Article 49.
   action: comply with the applicable Article 49 registration obligations
   actors:
-  - actor_ref: public_authority_or_union_body_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer is a public authority or a Union institution, body, office, or agency
@@ -272,8 +257,7 @@ records:
     in the EU database referred to in Article 71, they shall not use that system
   action: do not use an envisaged high-risk system found absent from the EU database
   actors:
-  - actor_ref: public_authority_or_union_body_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: prohibition
   conditions: &id004
@@ -288,8 +272,7 @@ records:
   quote: shall inform the provider or the distributor
   action: inform the provider or distributor that the envisaged system is not registered in the EU database
   actors:
-  - actor_ref: public_authority_or_union_body_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions: *id004
   implementation_refs:
@@ -304,7 +287,6 @@ records:
   action: use Article 13 information when carrying out an applicable data-protection impact assessment
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   conditions:
   - the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
@@ -318,8 +300,7 @@ records:
   action: preserve the requirements of Directive (EU) 2016/680 when applying the post-remote biometric-identification
     regime
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: applicability
   implementation_mode: report_only
@@ -336,8 +317,7 @@ records:
   action: request qualifying judicial or binding reviewable administrative authorisation before use or
     without undue delay and within 48 hours
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions: &id006
   - the system is used for post-remote biometric identification in an investigation targeting a person
@@ -355,8 +335,7 @@ records:
   action: limit each post-remote biometric-identification use to what is strictly necessary for investigating
     a specific offence
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions: *id006
   implementation_refs: *id005
@@ -369,8 +348,7 @@ records:
     with immediate effect
   action: stop the authorised use immediately when the authorisation request is rejected
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions: &id007
   - the requested authorisation is rejected
@@ -383,8 +361,7 @@ records:
     requested shall be deleted
   action: delete personal data linked to the use for which authorisation was rejected
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions: *id007
   implementation_refs: *id005
@@ -399,8 +376,7 @@ records:
   action: prohibit untargeted law-enforcement use lacking the specified offence, proceeding, threat, or
     missing-person link
   actors:
-  - actor_ref: law_enforcement_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer uses a high-risk AI system for post-remote biometric identification for law
@@ -418,8 +394,7 @@ records:
   action: ensure law-enforcement authorities do not take an adverse legal decision based solely on the
     system's output
   actors:
-  - actor_ref: law_enforcement_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer uses a high-risk AI system for post-remote biometric identification for law
@@ -435,8 +410,7 @@ records:
     Directive (EU) 2016/680 for the processing of biometric data.
   action: preserve the referenced GDPR and law-enforcement Directive rules for biometric-data processing
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: applicability
   implementation_mode: report_only
@@ -453,8 +427,7 @@ records:
     of purpose or deployer and make that record available on request to the market-surveillance and national
     data-protection authorities
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer uses a high-risk AI system for post-remote biometric identification for law
@@ -473,8 +446,7 @@ records:
     on supervisory authorities.
   action: preserve supervisory-authority powers under Directive (EU) 2016/680
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: applicability
   implementation_mode: report_only
@@ -488,8 +460,7 @@ records:
     of sensitive operational data related to law enforcement.
   action: submit annual post-remote biometric-identification use reports to both specified authorities
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   implementation_refs: *id005
   verification_mode: reported_not_judged
@@ -504,8 +475,7 @@ records:
   quote: The reports may be aggregated to cover more than one deployment.
   action: aggregate annual reports across multiple deployments
   actors:
-  - actor_ref: post_remote_biometric_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the deployer uses a high-risk AI system for post-remote biometric identification for law
@@ -524,7 +494,6 @@ records:
     law
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -540,8 +509,7 @@ records:
     use of the high-risk AI system
   action: inform natural persons that they are subject to Annex III high-risk-system use in decision-making
   actors:
-  - actor_ref: annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   conditions:
   - the Annex III high-risk system makes or assists decisions related to natural persons
@@ -557,8 +525,7 @@ records:
     shall apply.
   action: apply the Directive (EU) 2016/680 Article 13 notice regime to law-enforcement use
   actors:
-  - actor_ref: law_enforcement_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: applicability
   conditions:
@@ -574,7 +541,6 @@ records:
   action: cooperate with relevant competent-authority actions concerning the high-risk system
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-DP-A26-12

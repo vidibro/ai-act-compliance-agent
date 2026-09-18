@@ -19,8 +19,8 @@ from pathlib import Path
 from aiact.classify.graph import QUESTIONS
 from aiact.norm_validity import audit_norm_validity, load_adjudication_ledger
 from aiact.policy_loader import criterion_from_norm, load_policy_spec, report_norm_from_norm
+from aiact.schemas.enums import ActorCategory
 from aiact.schemas.norm import (
-    ActorCategory,
     ImplementationMode,
     Norm,
     NormativeCoverageBundle,
@@ -63,12 +63,15 @@ def _report_reconstruction_errors(
         errors.append(f"implementation_mode is {norm.implementation_mode.value}")
     if norm.product_scope is not ProductScope.IN_SCOPE:
         errors.append(f"product_scope is {norm.product_scope.value}")
-    if norm.kind not in {
-        NormKind.PERMISSION,
-        NormKind.LEGAL_CONSEQUENCE,
-        NormKind.APPLICABILITY,
-    } and not external_conditional_obligation and not any(
-        actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors
+    if (
+        norm.kind
+        not in {
+            NormKind.PERMISSION,
+            NormKind.LEGAL_CONSEQUENCE,
+            NormKind.APPLICABILITY,
+        }
+        and not external_conditional_obligation
+        and not any(actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors)
     ):
         errors.append(f"kind is {norm.kind.value}, not reportable")
     if norm.verification_mode is VerificationMode.UNRESOLVED:
@@ -176,12 +179,15 @@ def traceability_errors(
             and norm.verification_mode is VerificationMode.REPORTED_CONDITIONALLY
             and norm.norm_id in external_conditional_obligation_ids
         )
-        if norm.kind not in {
-            NormKind.PERMISSION,
-            NormKind.LEGAL_CONSEQUENCE,
-            NormKind.APPLICABILITY,
-        } and not external_conditional_obligation and not any(
-            actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors
+        if (
+            norm.kind
+            not in {
+                NormKind.PERMISSION,
+                NormKind.LEGAL_CONSEQUENCE,
+                NormKind.APPLICABILITY,
+            }
+            and not external_conditional_obligation
+            and not any(actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors)
         ):
             errors.append(
                 f"{norm.norm_id} is report_only but has non-reportable kind {norm.kind.value}"
@@ -226,9 +232,10 @@ def traceability_errors(
         }:
             return set(target.implementation_refs)
         relations = carried_relations_by_source.get(norm_id, [])
-        if target.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM or len(
-            relations
-        ) != 1:
+        if (
+            target.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM
+            or len(relations) != 1
+        ):
             return set()
         return set().union(
             *(resolved_rule_ids(child, (*path, norm_id)) for child in relations[0].target_norm_ids)
@@ -242,9 +249,10 @@ def traceability_errors(
         if target.implementation_mode is ImplementationMode.REPORT_ONLY:
             return {norm_id}
         relations = carried_relations_by_source.get(norm_id, [])
-        if target.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM or len(
-            relations
-        ) != 1:
+        if (
+            target.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM
+            or len(relations) != 1
+        ):
             return set()
         return set().union(
             *(
@@ -389,13 +397,9 @@ def traceability_errors(
         for problem in _report_reconstruction_errors(
             target, external_conditional_obligation=external_conditional_obligation
         ):
-            errors.append(
-                f"report norm {report_norm.norm_id} cannot be reconstructed: {problem}"
-            )
+            errors.append(f"report norm {report_norm.norm_id} cannot be reconstructed: {problem}")
         if report_norm != report_norm_from_norm(target):
-            errors.append(
-                f"report norm {report_norm.norm_id} differs from its canonical norm"
-            )
+            errors.append(f"report norm {report_norm.norm_id} differs from its canonical norm")
     for relation in sorted(bundle.norm_inventory.relations, key=lambda item: item.relation_id):
         source = norms[relation.source_norm_id]
         if not in_scope(source):

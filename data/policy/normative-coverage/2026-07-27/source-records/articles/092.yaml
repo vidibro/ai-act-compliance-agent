@@ -7,7 +7,6 @@ records:
     either enacted purpose
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   conditions:
@@ -35,7 +34,6 @@ records:
   action: appoint Article 68(2)-qualified independent experts to carry out evaluations for the Commission
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -50,7 +48,6 @@ records:
   action: request access to the GPAI model through APIs source code or other appropriate technical means
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -69,7 +66,6 @@ records:
     request
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content:
   - legal basis
@@ -87,8 +83,8 @@ records:
     information requested.
   action: supply the information requested following a Commission request for model access
   actors:
-  - actor_ref: gpai_provider_or_representative
-    category: supported_operator
+  - actor_ref: gpai_provider
+  - actor_ref: authorised_representative
   targets: []
   conditions:
   - the Commission requested access to the model under Article 92(3)
@@ -103,8 +99,7 @@ records:
     on behalf of the provider of the general-purpose AI model concerned.
   action: provide requested model access on behalf of a legal-person or non-legal-personality GPAI provider
   actors:
-  - actor_ref: legally_or_statutorily_authorised_representative
-    category: external_private_party
+  - actor_ref: legal_representative
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -126,7 +121,6 @@ records:
     the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -143,7 +137,6 @@ records:
     mitigations
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor

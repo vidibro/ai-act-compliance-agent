@@ -6,7 +6,6 @@ records:
     ten years after market placement or being put into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: &id001
   - A018-P001
@@ -21,7 +20,6 @@ records:
     authorities until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs: *id002
@@ -34,7 +32,6 @@ records:
     until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   conditions:
@@ -49,7 +46,6 @@ records:
     until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   conditions:
@@ -64,7 +60,6 @@ records:
     until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs: *id002
@@ -83,7 +78,6 @@ records:
     the ten-year period ends
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -98,8 +92,7 @@ records:
   action: maintain Article 11 technical documentation within the documentation kept under applicable Union
     financial-services law
   actors:
-  - actor_ref: financial_institution_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   conditions:
   - the provider is a financial institution subject to internal-governance requirements under Union financial-services

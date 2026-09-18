@@ -13,6 +13,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from aiact.schemas.enums import (
+    ActorCategory,
     ActorRole,
     AnnexIIIArea,
     CheckType,
@@ -22,7 +23,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
-from aiact.schemas.norm import ActorCategory, ConditionGroup, NormKind, VerificationMode
+from aiact.schemas.norm import ConditionGroup, NormKind, VerificationMode
 
 
 class LegalSource(BaseModel):
@@ -477,6 +478,7 @@ class PolicyRule(BaseModel):
         if route is not None and route in self.effective_date_by_route:
             return self.effective_date_by_route[route]
         return min(self.effective_date_by_route.values())
+
     status: Literal["active", "postponed", "amended"]
     # "postponed": adopted but not yet applicable (e.g. Annex III obligations whose
     # application date was pushed back). Regulatory movement lives in DATA, not in code.

@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: register itself and the Annex III high-risk system in the Article 71 EU database before market
     placement or putting into service
@@ -47,7 +46,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   action: register itself and the Annex III high-risk system in the Article 71 EU database where the registration
     falls to the representative
@@ -90,7 +88,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: register itself and the system concluded not high-risk under Article 6(3) in the Article 71
     EU database
@@ -131,7 +128,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   action: register itself and the system concluded not high-risk under Article 6(3) in the Article 71
     EU database where applicable
@@ -173,8 +169,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: public_authority_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: register itself, select the system, and register its use in the Article 71 EU database before
     service or use
@@ -216,8 +211,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: registering_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: lodge the applicable registration in a secure non-public section of the Article 71 EU database
     and limit it to the enacted Annex VIII and Annex IX information
@@ -269,7 +263,6 @@ norms:
   kind: entitlement
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: access the respective restricted sections of the EU database
   norm_text: Only the Commission and national authorities referred to in Article 74(8) shall have access
@@ -304,8 +297,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
-  - actor_ref: article_74_8_national_authority
-    category: public_authority
+  - actor_ref: national_competent_authority
   targets: []
   action: access the respective restricted sections of the EU database
   norm_text: Only the Commission and national authorities referred to in Article 74(8) shall have access
@@ -341,7 +333,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: register Annex III point 2 high-risk systems at national level
   norm_text: High-risk AI systems referred to in point 2 of Annex III shall be registered at national

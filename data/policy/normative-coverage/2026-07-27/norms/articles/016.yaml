@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure high-risk AI systems comply with the requirements in Chapter III, Section 2
   norm_text: ensure that their high-risk AI systems are compliant with the requirements set out in Section
@@ -57,7 +56,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "display the provider\u2019s name, registered trade name or registered trade mark, and contact\
     \ address on the system or, when that is not possible, on its packaging or accompanying documentation"
@@ -97,7 +95,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: maintain a quality-management system complying with Article 17
   norm_text: have a quality management system in place which complies with Article 17
@@ -133,7 +130,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: keep the documentation required by Article 18
   norm_text: keep the documentation referred to in Article 18
@@ -169,7 +165,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: "keep automatically generated high-risk-system logs when they are under the provider\u2019s\
     \ control"
@@ -207,7 +202,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure the system completes the applicable Article 43 conformity-assessment procedure before
     market placement or being put into service
@@ -252,7 +246,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up the Article 47 EU declaration of conformity
   norm_text: draw up an EU declaration of conformity in accordance with Article 47
@@ -290,7 +283,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: affix the CE marking to the system or, when that is not possible, its packaging or accompanying
     documentation in accordance with Article 48
@@ -330,7 +322,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: comply with the Article 49(1) registration obligations
   norm_text: comply with the registration obligations referred to in Article 49(1)
@@ -367,7 +358,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: take necessary corrective actions and provide the information required by Article 20
   norm_text: take the necessary corrective actions and provide information as required in Article 20
@@ -403,7 +393,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: demonstrate system conformity with Section 2 upon a reasoned request from a national competent
     authority
@@ -443,7 +432,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure the high-risk AI system complies with the applicable accessibility requirements in Directives
     (EU) 2016/2102 and (EU) 2019/882

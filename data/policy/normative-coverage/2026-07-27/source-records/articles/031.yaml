@@ -6,7 +6,6 @@ records:
   action: be established under Member-State law and possess legal personality
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -24,7 +23,6 @@ records:
     necessary for notified-body tasks
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -40,7 +38,6 @@ records:
     assessment results
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -57,7 +54,6 @@ records:
     competitors
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -72,7 +68,6 @@ records:
     rule
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -88,8 +83,8 @@ records:
   action: prohibit the conformity assessment body, its top-level management and assessment personnel
     from activities conflicting with independence of judgement or assessment integrity, in particular consultancy
   actors:
-  - actor_ref: conformity_assessment_body_and_personnel
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
+  - actor_ref: conformity_assessment_body_personnel
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -106,7 +101,6 @@ records:
     and applying its principles throughout the organisation, personnel and assessment activities
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -126,7 +120,6 @@ records:
   - disclosure required by law
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -141,7 +134,6 @@ records:
   action: use assessment procedures proportionate to provider size, sector, structure, and system complexity
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -157,7 +149,6 @@ records:
     liability or responsibility
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -177,7 +168,6 @@ records:
   action: ensure every task is performed with the highest professional integrity and requisite field competence
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -192,7 +182,6 @@ records:
     parties on the notified body's behalf
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -205,7 +194,6 @@ records:
   action: participate in the coordination activities referred to in Article 38
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -222,8 +210,8 @@ records:
     from direct involvement in high-risk AI-system design, development, marketing or use and from representing
     parties engaged in those activities
   actors:
-  - actor_ref: conformity_assessment_body_and_personnel
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body
+  - actor_ref: conformity_assessment_body_personnel
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -243,7 +231,6 @@ records:
     impartiality of its activities
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -259,8 +246,7 @@ records:
   action: observe professional secrecy for all information obtained in carrying out tasks under the
     Regulation
   actors:
-  - actor_ref: notified_body_staff
-    category: notified_or_conformity_body
+  - actor_ref: conformity_assessment_body_personnel
   targets: []
   kind: obligation
   exceptions:
@@ -281,7 +267,6 @@ records:
     computing, and Section 2 requirements
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -297,7 +282,6 @@ records:
     ensure awareness and current knowledge of relevant standards
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor

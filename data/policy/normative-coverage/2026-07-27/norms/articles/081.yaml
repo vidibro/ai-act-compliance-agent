@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: promptly consult the relevant authority and operators and evaluate an objected-to or Union-law-inconsistent
     national measure
@@ -58,7 +57,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: decide whether the national measure is justified within six months or 60 days for Article 5
     non-compliance
@@ -96,7 +94,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: notify the decision to the market surveillance authority of the Member State concerned
   norm_text: shall notify its decision to the market surveillance authority of the Member State concerned.
@@ -131,7 +128,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: inform all other market surveillance authorities of the decision
   norm_text: The Commission shall also inform all other market surveillance authorities of its decision.
@@ -165,7 +161,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: take appropriate restrictions without undue delay and inform the Commission when the national
     measure is justified
@@ -204,7 +199,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: withdraw an unjustified national measure and inform the Commission
   norm_text: Where the Commission considers the national measure to be unjustified, the Member State concerned
@@ -240,7 +234,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: apply the Regulation 1025/2012 Article 11 procedure when justified non-compliance arises from
     standards or common specifications

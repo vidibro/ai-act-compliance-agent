@@ -4,8 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: persons_involved_in_regulation_application
-    category: natural_person
+  - actor_ref: natural_or_legal_person
   targets: []
   action: protect confidentiality of task-related information and data under Union or national law
   norm_text: shall, in accordance with Union or national law, respect the confidentiality of information
@@ -54,8 +53,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: request only data strictly necessary for risk assessment and exercise of enacted powers
   norm_text: The authorities involved in the application of this Regulation pursuant to paragraph 1 shall
@@ -90,8 +88,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: authorities_involved_in_application
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: protect obtained information and data through adequate effective cybersecurity and delete collected
     data as soon as its acquisition purpose no longer requires it
@@ -129,8 +126,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: national_competent_authority_and_commission
-    category: public_authority
+  - actor_ref: national_competent_authority
+  - actor_ref: commission
   targets: []
   action: disclose confidentially exchanged information only after prior consultation of the originating
     national competent authority and the deployer
@@ -172,8 +169,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: national_competent_authority_and_commission
-    category: public_authority
+  - actor_ref: national_competent_authority
+  - actor_ref: commission
   targets: []
   action: exclude sensitive operational data on the activities of law enforcement, border control, immigration
     or asylum authorities from the exchange of information
@@ -208,8 +205,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: keep the Annex IV technical documentation within the premises of the authority
   norm_text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI
@@ -248,8 +244,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon request,
     immediately access the documentation or obtain a copy of it
@@ -291,7 +286,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: allow only market surveillance authority staff holding the appropriate level of security clearance
     to access the documentation or any copy of it
@@ -367,9 +361,7 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: exchange necessary confidential information with third-country regulators under applicable agreements
     and adequate confidentiality arrangements

@@ -5,7 +5,6 @@ records:
   action: provide for an independent scientific panel by implementing act under the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -18,7 +17,6 @@ records:
   action: select panel experts with current task-relevant AI expertise who satisfy every enacted competence independence and performance condition
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content: [particular AI expertise and competence, independence from AI-system and GPAI-model providers, diligent accurate and objective performance ability]
   qualifier_spans: [A068-P003, A068-P004, A068-P005]
@@ -33,7 +31,6 @@ records:
   action: determine needs-based panel size with Board consultation and ensure fair gender and geographical representation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -46,7 +43,6 @@ records:
   action: advise and support the AI Office, in particular on the enacted tasks
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   qualifier_spans: [A068-P008, A068-P014, A068-P015, A068-P016]
   product_scope: outside_supported_actor
@@ -60,7 +56,6 @@ records:
   action: support the work of market surveillance authorities
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   conditions: [the market surveillance authorities request the support]
   product_scope: outside_supported_actor
@@ -75,7 +70,6 @@ records:
     the powers of the market surveillance authorities
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -89,7 +83,6 @@ records:
     procedure
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -103,7 +96,6 @@ records:
     models and systems, in particular through the enacted tasks
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   qualifier_spans: [A068-P009, A068-P010, A068-P011, A068-P012, A068-P013]
   product_scope: outside_supported_actor
@@ -118,7 +110,6 @@ records:
     accordance with Article 90
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -132,7 +123,6 @@ records:
     capabilities of general-purpose AI models and systems
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -145,7 +135,6 @@ records:
   action: advise on the classification of general-purpose AI models with systemic risk
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -158,7 +147,6 @@ records:
   action: advise on the classification of various general-purpose AI models and systems
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -171,7 +159,6 @@ records:
   action: contribute to the development of tools and templates
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -185,8 +172,7 @@ records:
   action: perform the panel's tasks impartially and objectively and ensure the confidentiality of information
     and data obtained in carrying out those tasks and activities
   actors:
-  - actor_ref: scientific_panel_expert
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -202,8 +188,7 @@ records:
   quote: They shall neither seek nor take instructions from anyone when exercising their tasks under paragraph 3.
   action: neither seek nor take instructions from anyone when exercising the paragraph 3 tasks
   actors:
-  - actor_ref: scientific_panel_expert
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -216,8 +201,7 @@ records:
   quote: Each expert shall draw up a declaration of interests, which shall be made publicly available.
   action: draw up a declaration of interests that is made publicly available
   actors:
-  - actor_ref: scientific_panel_expert
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -230,7 +214,6 @@ records:
   action: establish systems and procedures actively managing and preventing potential expert conflicts of interest
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -243,7 +226,6 @@ records:
   action: include panel alert and AI Office assistance conditions procedures and detailed arrangements in the implementing act
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   mandatory_content: [conditions procedures and arrangements for alerts, conditions procedures and arrangements for AI Office assistance requests]
   product_scope: outside_supported_actor

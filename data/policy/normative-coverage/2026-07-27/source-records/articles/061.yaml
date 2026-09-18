@@ -6,8 +6,8 @@ records:
     in Article 60 testing, after duly informing them with concise, clear, relevant and understandable
     information on every enacted matter
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   mandatory_content:
   - the nature and objectives of the testing in real world conditions and the possible
@@ -31,8 +31,8 @@ records:
   quote: The informed consent shall be dated and documented
   action: date and document the informed consent
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   mandatory_content: [dated consent, documented consent]
   verification_mode: reported_conditionally
@@ -43,8 +43,8 @@ records:
   action: give a copy of the informed consent to the subjects of testing or their legal
     representative
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro

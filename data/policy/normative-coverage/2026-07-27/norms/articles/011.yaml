@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up technical documentation before placing the system on the market or putting it into service
     and keep it up to date
@@ -45,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up documentation that demonstrates compliance with Chapter III Section 2 and gives national
     competent authorities and notified bodies the clear, comprehensive information needed to assess compliance
@@ -87,7 +85,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include every applicable Annex IV element
   norm_text: It shall contain, at a minimum, the elements set out in Annex IV.
@@ -123,7 +120,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use the simplified-documentation option
   norm_text: SMEs, including start-ups, and SMCs, may provide the elements of the technical documentation
@@ -161,7 +157,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: establish a simplified technical-documentation form targeted at the needs of SMEs, start-ups,
     and SMCs
@@ -197,7 +192,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: use the Commission form when taking the simplified-documentation option
   norm_text: Where an SME, including a start-up, or an SMC, opts to provide the information required in
@@ -235,7 +229,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: accept the simplified form for conformity assessment
   norm_text: Notified bodies shall accept the form for the purposes of the conformity assessment.
@@ -269,7 +262,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: draw up one technical-documentation set containing both the Article 11(1) information and the
     information required by the applicable Annex I Section A legislation
@@ -311,7 +303,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97 delegated acts amending Annex IV where necessary in light of technical progress
     to preserve all information needed to assess Section 2 compliance

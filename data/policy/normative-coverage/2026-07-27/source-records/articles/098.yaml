@@ -6,7 +6,6 @@ records:
   action: receive assistance from a Regulation 182/2011 committee
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -18,8 +17,7 @@ records:
   quote: Where reference is made to this paragraph, Article 5 of Regulation (EU) No 182/2011 shall apply.
   action: apply the Regulation 182/2011 Article 5 examination procedure when Article 98(2) is referenced
   actors:
-  - actor_ref: committee_procedure
-    category: union_institution_or_body
+  - actor_ref: commission
   targets: []
   kind: applicability
   product_scope: outside_supported_actor

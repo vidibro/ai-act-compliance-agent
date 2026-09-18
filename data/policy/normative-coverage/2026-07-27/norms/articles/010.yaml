@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: develop data-trained high-risk AI systems using training, validation, and testing datasets that
     meet the Article 10(2) to (4) and Article 4a(1) quality criteria
@@ -45,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: apply data-governance and management practices appropriate to the intended purpose to training,
     validation, and testing datasets
@@ -83,7 +81,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: address relevant design choices in dataset governance and management practices
   norm_text: the relevant design choices
@@ -120,7 +117,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: address data-collection processes, data origin, and the original collection purpose of personal
     data
@@ -159,7 +155,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: address relevant data-preparation operations including annotation, labelling, cleaning, updating,
     enrichment, and aggregation
@@ -198,7 +193,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: formulate assumptions about what the data are intended to measure and represent
   norm_text: the formulation of assumptions, in particular with respect to the information that the data
@@ -236,7 +230,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: assess the availability, quantity, and suitability of the required datasets
   norm_text: an assessment of the availability, quantity and suitability of the data sets that are needed
@@ -273,7 +266,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: examine possible biases likely to affect health or safety, negatively affect fundamental rights,
     or cause prohibited discrimination
@@ -314,7 +306,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: adopt appropriate measures to detect, prevent, and mitigate biases identified under Article
     10(2)(f)
@@ -353,7 +344,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: identify compliance-blocking data gaps or shortcomings and determine how to address them
   norm_text: the identification of relevant data gaps or shortcomings that prevent compliance with this
@@ -391,7 +381,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure training, validation, and testing datasets are relevant and sufficiently representative,
     and to the best extent possible free of errors and complete, in view of the intended purpose
@@ -433,7 +422,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: ensure datasets have appropriate statistical properties, including for affected persons or groups
     where applicable
@@ -471,7 +459,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: meet the Article 10(3) dataset characteristics at the individual-dataset level or across a combination
     of datasets
@@ -509,7 +496,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: account for geographical, contextual, behavioural, and functional characteristics of the intended-use
     setting to the extent required by the intended purpose
@@ -548,7 +534,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: exceptionally process special-category personal data where strictly necessary for bias detection
     and correction in high-risk AI systems
@@ -599,7 +584,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: apply technical reuse limitations and state-of-the-art security and privacy-preserving measures,
     including pseudonymisation
@@ -636,7 +620,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: secure and protect special-category personal data using documented strict access controls, authorised
     access, and confidentiality obligations
@@ -675,7 +658,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: prevent special-category personal data from being transmitted, transferred, or otherwise accessed
     by other parties
@@ -712,7 +694,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: delete special-category personal data when bias is corrected or the retention period ends, whichever
     occurs first
@@ -749,7 +730,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: record why special-category processing was strictly necessary for bias detection and correction
     and why other data could not achieve that objective
@@ -788,7 +768,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: limit the Article 10(2) to (4) and Article 4a(1) requirements to testing datasets for high-risk
     systems developed without model-training techniques

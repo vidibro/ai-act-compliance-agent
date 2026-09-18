@@ -13,6 +13,7 @@ import pytest
 from pydantic import ValidationError
 
 from aiact.schemas import (
+    ActorCategory,
     ActorRole,
     AnnexIIIArea,
     Answer,
@@ -24,6 +25,7 @@ from aiact.schemas import (
     DocumentChunk,
     Finding,
     LegalSource,
+    NormActor,
     ObligationStatus,
     PolicyRule,
     PolicyRuleset,
@@ -35,6 +37,17 @@ from aiact.schemas import (
 )
 
 ACT_DATE = date(2024, 7, 12)
+
+
+def test_norm_actor_uses_one_closed_role_catalogue_and_derives_its_category():
+    actor = NormActor(actor_ref=ActorRole.PROVIDER)
+
+    assert actor.category is ActorCategory.SUPPORTED_OPERATOR
+    assert ActorRole.COMMISSION.category is ActorCategory.UNION_INSTITUTION_OR_BODY
+    with pytest.raises(ValidationError, match="actor_ref"):
+        NormActor(actor_ref="provider_or_deployer")
+    with pytest.raises(ValidationError, match="category"):
+        NormActor(actor_ref="provider", category="supported_operator")
 
 
 # --------------------------------------------------------------------------------------

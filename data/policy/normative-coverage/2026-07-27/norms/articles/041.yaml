@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt implementing acts establishing common specifications when the enacted standardisation
     conditions are fulfilled
@@ -64,7 +63,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: consult the Article 67 advisory forum when drafting common specifications
   norm_text: When drafting the common specifications, the Commission shall consult the advisory forum
@@ -100,7 +98,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt common-specification implementing acts under the Article 98(2) examination procedure
   norm_text: The implementing acts referred to in the first subparagraph of this paragraph shall be adopted
@@ -135,7 +132,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: inform the Article 22 standardisation committee that paragraph 1 conditions are fulfilled before
     drafting the act
@@ -213,7 +209,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: assess a proposed harmonised standard under Regulation 1025/2012 before reference publication
   norm_text: Where a harmonised standard is adopted by a European standardisation organisation and proposed
@@ -251,7 +246,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: repeal common-specification acts or parts overlapping a published harmonised standard
   norm_text: When reference to a harmonised standard is published in the Official Journal of the European
@@ -289,7 +283,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: duly justify technical solutions providing at least equivalent compliance when common specifications
     are not followed
@@ -330,7 +323,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: inform the Commission with a detailed explanation of deficiencies in a common specification
   norm_text: Where a Member State considers that a common specification does not entirely meet the requirements
@@ -368,7 +360,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: assess Member-State information about a deficient common specification and, if appropriate,
     amend the implementing act establishing it

@@ -40,8 +40,14 @@ from aiact.gap.criteria import aggregate_confidence, aggregate_reasoning, settle
 from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
-from aiact.schemas.enums import ActorRole, ProviderReallocation, RealWorldTesting, Verdict
-from aiact.schemas.norm import ActorCategory, NormKind
+from aiact.schemas.enums import (
+    ActorCategory,
+    ActorRole,
+    ProviderReallocation,
+    RealWorldTesting,
+    Verdict,
+)
+from aiact.schemas.norm import NormKind
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
@@ -273,9 +279,7 @@ def build_graph(
                 if report_norm.norm_id not in ids:
                     ids.append(report_norm.norm_id)
         permissions = {role: sorted(ids) for role, ids in permissions.items() if ids}
-        legal_consequences = {
-            role: sorted(ids) for role, ids in legal_consequences.items() if ids
-        }
+        legal_consequences = {role: sorted(ids) for role, ids in legal_consequences.items() if ids}
         conditional_applicability = {
             role: sorted(ids) for role, ids in conditional_applicability.items() if ids
         }

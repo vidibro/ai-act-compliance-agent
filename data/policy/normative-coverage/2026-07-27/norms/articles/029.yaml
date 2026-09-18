@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: submit a notification application to the notifying authority of the establishment Member State
   norm_text: Conformity assessment bodies shall submit an application for notification to the notifying
@@ -40,7 +39,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: accompany the notification application with the required scope description and available qualifying
     accreditation certificate
@@ -83,7 +81,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: add valid documents relating to the applicant's existing designations under other Union harmonisation
     legislation
@@ -119,7 +116,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
-    category: notified_or_conformity_body
   targets: []
   action: provide all evidence necessary to verify, recognise, and monitor Article 31 compliance when
     no accreditation certificate is available
@@ -157,7 +153,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: reuse existing harmonisation-law designation documents and certificates to support and expedite
     AI Act designation
@@ -194,7 +189,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: submit the unified-assessment single application to the notifying authority designated under
     the relevant harmonisation legislation
@@ -233,7 +227,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: update application and compliance evidence whenever relevant changes occur
   norm_text: The notified body shall update the documentation referred to in paragraphs 2 and 3 of this

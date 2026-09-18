@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: issue Annex VII certificates in a language easily understood by the relevant establishment-state
     authorities
@@ -42,7 +41,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: certificate_holder
-    category: supported_operator
   targets: []
   action: limit indicated certificate validity to five years for Annex I systems and four years for Annex
     III systems
@@ -79,7 +77,6 @@ norms:
   kind: entitlement
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: extend certificate validity after provider request and applicable reassessment within the enacted
     duration caps
@@ -119,7 +116,6 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: certificate_holder
-    category: supported_operator
   targets: []
   action: preserve a certificate supplement's validity while its underlying certificate remains valid
   norm_text: Any supplement to a certificate shall remain valid, provided that the certificate which it
@@ -156,7 +152,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: proportionately suspend, withdraw, or restrict a certificate after Section 2 noncompliance unless
     timely corrective action restores compliance
@@ -198,7 +193,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: give reasons for the certificate decision
   norm_text: The notified body shall give reasons for its decision.
@@ -232,7 +226,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: make an appeal procedure available against notified-body decisions, including certificate decisions
   norm_text: An appeal procedure against decisions of the notified bodies, including on conformity certificates

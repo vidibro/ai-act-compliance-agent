@@ -4,8 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: perform a fundamental-rights impact assessment containing all six required elements before deploying
     the qualifying Annex III system
@@ -63,8 +62,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: apply the fundamental-rights assessment duty to the system's first use
   norm_text: The obligation laid down in paragraph 1 applies to the first use of the high-risk AI system.
@@ -102,8 +100,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: rely in similar cases on a prior fundamental-rights assessment or an existing provider assessment
   norm_text: The deployer may, in similar cases, rely on previously conducted fundamental rights impact
@@ -139,8 +136,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: update the fundamental-rights assessment information when a required element changes or becomes
     outdated
@@ -179,8 +175,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: notify the market-surveillance authority of the assessment results using the completed paragraph
     5 template
@@ -221,8 +216,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: exempt the deployer from the result-notification duty in an Article 46(1) case
   norm_text: In the case referred to in Article 46(1), deployers may be exempt from that obligation to
@@ -259,8 +253,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: qualifying_annex_iii_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: cross-reference or incorporate relevant DPIA sections when they already meet an Article 27 obligation
   norm_text: If any of the obligations laid down in this Article is already met through the data protection
@@ -300,7 +293,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: develop a questionnaire template, potentially through an automated tool, that simplifies deployer
     compliance
@@ -337,7 +329,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: make the template support relevant DPIA cross-references and incorporated sections
   norm_text: This template shall, where relevant, give deployers the possibility to include cross-references

@@ -11,7 +11,6 @@ records:
     main elements to an eligible affected person
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   conditions:
   - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
@@ -31,7 +30,6 @@ records:
     decision adversely affects the person
   actors:
   - actor_ref: affected_person
-    category: natural_person
   targets: []
   kind: entitlement
   product_scope: no_product_action
@@ -56,7 +54,6 @@ records:
     restriction
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   kind: applicability
   product_scope: no_product_action
@@ -70,8 +67,7 @@ records:
     otherwise provided for under Union law.
   action: apply Article 86 only where Union law does not otherwise provide the explanation right
   actors:
-  - actor_ref: authority_applying_article_86
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   kind: applicability
   product_scope: no_product_action

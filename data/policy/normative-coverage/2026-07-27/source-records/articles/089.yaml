@@ -8,7 +8,6 @@ records:
     practice
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -24,8 +23,7 @@ records:
     Regulation.
   action: lodge a complaint alleging a GPAI provider's infringement of this Regulation
   actors:
-  - actor_ref: downstream_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   kind: entitlement
   product_scope: no_product_action
@@ -38,8 +36,7 @@ records:
   quote: A complaint shall be duly reasoned and indicate at least
   action: duly reason and include the minimum required information in a downstream-provider complaint
   actors:
-  - actor_ref: downstream_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   mandatory_content:
   - GPAI provider point of contact

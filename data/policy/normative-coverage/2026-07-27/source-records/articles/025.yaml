@@ -6,8 +6,10 @@ records:
   action: treat a distributor, importer, deployer, or other third party as the provider subject to Article
     16 after it puts its name or trademark on the high-risk system
   actors:
-  - actor_ref: distributor_importer_deployer_or_third_party
-    category: supported_operator
+  - actor_ref: distributor
+  - actor_ref: importer
+  - actor_ref: deployer
+  - actor_ref: third_party_supplier
   targets: []
   kind: legal_consequence
   conditions:
@@ -30,8 +32,10 @@ records:
   action: treat the substantially modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when the modified system remains high-risk
   actors:
-  - actor_ref: distributor_importer_deployer_or_third_party
-    category: supported_operator
+  - actor_ref: distributor
+  - actor_ref: importer
+  - actor_ref: deployer
+  - actor_ref: third_party_supplier
   targets: []
   kind: legal_consequence
   conditions:
@@ -54,8 +58,10 @@ records:
   action: treat the purpose-modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when its change makes an existing system high-risk
   actors:
-  - actor_ref: distributor_importer_deployer_or_third_party
-    category: supported_operator
+  - actor_ref: distributor
+  - actor_ref: importer
+  - actor_ref: deployer
+  - actor_ref: third_party_supplier
   targets: []
   kind: legal_consequence
   conditions:
@@ -78,7 +84,6 @@ records:
     transfer
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   conditions: &id002
@@ -96,7 +101,6 @@ records:
   action: closely cooperate with the new provider after the provider role has transferred
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   conditions: *id002
   exceptions: &id003
@@ -115,7 +119,6 @@ records:
     other assistance required for regulatory compliance
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   conditions: *id002
   exceptions: *id003
@@ -140,7 +143,6 @@ records:
     was clearly prohibited
   actors:
   - actor_ref: initial_provider
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:
@@ -157,7 +159,6 @@ records:
     system is marketed with the product under its name or trademark
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   kind: legal_consequence
   conditions:
@@ -180,7 +181,6 @@ records:
     system is later put into service under its name or trademark
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   kind: legal_consequence
   conditions:
@@ -205,8 +205,8 @@ records:
   action: use a written agreement to specify the state-of-the-art information, capabilities, technical
     access, and assistance necessary for the provider's full compliance
   actors:
-  - actor_ref: high_risk_provider_and_third_party_supplier
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: third_party_supplier
   targets: []
   implementation_refs: &id006
   - AIA-PO-A25-4
@@ -226,7 +226,6 @@ records:
     than general-purpose AI models
   actors:
   - actor_ref: third_party_supplier
-    category: external_private_party
   targets: []
   kind: applicability
   exceptions:
@@ -243,7 +242,6 @@ records:
   action: develop and recommend voluntary model terms for high-risk-system supply contracts
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -258,7 +256,6 @@ records:
   action: consider sector-specific and business-case contractual requirements when developing model terms
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   conditions:
   - the AI Office develops voluntary model terms
@@ -274,7 +271,6 @@ records:
   action: publish voluntary model terms free of charge in an easily usable electronic format
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -289,8 +285,9 @@ records:
   action: observe and protect intellectual-property rights, confidential business information, and trade
     secrets when applying paragraphs 2 and 3
   actors:
-  - actor_ref: parties_under_article_25_paragraphs_2_and_3
-    category: supported_operator
+  - actor_ref: initial_provider
+  - actor_ref: provider
+  - actor_ref: product_manufacturer
   targets: []
   implementation_mode: report_only
   implementation_refs:

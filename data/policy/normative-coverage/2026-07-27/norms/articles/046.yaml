@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: authorise temporary national placing or service of a specific high-risk system under the enacted
     exceptional derogation
@@ -50,7 +49,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: complete the necessary conformity-assessment procedures without undue delay
   norm_text: The completion of those procedures shall be undertaken without undue delay.
@@ -84,8 +82,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: law_enforcement_or_civil_protection_authority
-    category: public_authority
+  - actor_ref: law_enforcement_authority
+  - actor_ref: civil_protection_authority
   targets: []
   action: put a specific high-risk system into urgent public-safety service before authorisation
   norm_text: In a duly justified situation of urgency for exceptional reasons of public security or in
@@ -125,8 +123,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: law_enforcement_or_civil_protection_authority
-    category: public_authority
+  - actor_ref: law_enforcement_authority
+  - actor_ref: civil_protection_authority
   targets: []
   action: stop use of the high-risk AI system with immediate effect when the paragraph 1 authorisation
     requested for urgent use under paragraph 2 is refused
@@ -162,8 +160,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: law_enforcement_or_civil_protection_authority
-    category: public_authority
+  - actor_ref: law_enforcement_authority
+  - actor_ref: civil_protection_authority
   targets: []
   action: immediately discard all results and outputs of the urgent use of the high-risk AI system when
     the paragraph 1 authorisation requested under paragraph 2 is refused
@@ -199,7 +197,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: inform the Commission and other Member States of every paragraph 1 or 2 authorisation
   norm_text: The market surveillance authority shall inform the Commission and the other Member States
@@ -236,7 +233,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: exclude sensitive law-enforcement operational data from the authorisation notification
   norm_text: This obligation shall not cover sensitive operational data in relation to the activities
@@ -312,7 +308,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: consult the relevant Member State without delay after a qualifying objection or concern
   norm_text: the Commission shall, without delay, enter into consultations with the relevant Member State.
@@ -352,8 +347,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
-  - actor_ref: concerned_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: be consulted and receive an opportunity to present views on the authorisation
   norm_text: The operators concerned shall be consulted and have the possibility to present their views.
@@ -388,7 +382,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: decide whether the authorisation is justified after consultation
   norm_text: Having regard thereto, the Commission shall decide whether the authorisation is justified.
@@ -423,7 +416,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: address the authorisation decision to the concerned Member State and relevant operators
   norm_text: The Commission shall address its decision to the Member State concerned and to the relevant
@@ -459,7 +451,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: withdraw an authorisation that the Commission considers unjustified
   norm_text: Where the Commission considers the authorisation unjustified, it shall be withdrawn by the
@@ -495,7 +486,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: apply only the relevant sectoral-law conformity-assessment derogations to Section A Annex I
     products

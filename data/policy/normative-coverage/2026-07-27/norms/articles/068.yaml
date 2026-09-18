@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: provide for an independent scientific panel by implementing act under the Article 98(2) examination
     procedure
@@ -43,7 +42,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: select panel experts with current task-relevant AI expertise who satisfy every enacted competence
     independence and performance condition
@@ -87,7 +85,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: determine needs-based panel size with Board consultation and ensure fair gender and geographical
     representation
@@ -123,7 +120,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: advise and support the AI Office, in particular on the enacted tasks
   norm_text: 'The scientific panel shall advise and support the AI Office, in particular with regard to
@@ -163,7 +159,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: support the work of market surveillance authorities
   norm_text: supporting the work of market surveillance authorities, at their request;
@@ -197,7 +192,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: support the Article 74(11) cross-border market surveillance activities without prejudice to
     the powers of the market surveillance authorities
@@ -232,7 +226,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: support the AI Office in carrying out its duties under the Article 81 Union safeguard procedure
   norm_text: supporting the AI Office in carrying out its duties in the context of the Union safeguard
@@ -266,7 +259,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: support the implementation and enforcement of this Regulation as regards general-purpose AI
     models and systems, in particular through the enacted tasks
@@ -307,7 +299,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: alert the AI Office of possible Union-level systemic risks of general-purpose AI models in accordance
     with Article 90
@@ -342,7 +333,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: contribute to developing tools and methodologies, including benchmarks, for evaluating the capabilities
     of general-purpose AI models and systems
@@ -377,7 +367,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: advise on the classification of general-purpose AI models with systemic risk
   norm_text: providing advice on the classification of general-purpose AI models with systemic risk;
@@ -410,7 +399,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: advise on the classification of various general-purpose AI models and systems
   norm_text: providing advice on the classification of various general-purpose AI models and systems;
@@ -443,7 +431,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: scientific_panel
-    category: union_institution_or_body
   targets: []
   action: contribute to the development of tools and templates
   norm_text: contributing to the development of tools and templates;
@@ -475,8 +462,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: scientific_panel_expert
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   action: perform the panel's tasks impartially and objectively and ensure the confidentiality of information
     and data obtained in carrying out those tasks and activities
@@ -514,8 +500,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: scientific_panel_expert
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   action: neither seek nor take instructions from anyone when exercising the paragraph 3 tasks
   norm_text: They shall neither seek nor take instructions from anyone when exercising their tasks under
@@ -549,8 +534,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: scientific_panel_expert
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   action: draw up a declaration of interests that is made publicly available
   norm_text: Each expert shall draw up a declaration of interests, which shall be made publicly available.
@@ -584,7 +568,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: establish systems and procedures actively managing and preventing potential expert conflicts
     of interest
@@ -620,7 +603,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: include panel alert and AI Office assistance conditions procedures and detailed arrangements
     in the implementing act

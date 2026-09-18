@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: ensure subcontractors and subsidiaries used for conformity-assessment tasks meet Article 31
     requirements
@@ -42,7 +41,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: inform the notifying authority when using a subcontractor or subsidiary for conformity-assessment
     tasks
@@ -78,7 +76,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: take full responsibility for tasks performed by subcontractors or subsidiaries
   norm_text: Notified bodies shall take full responsibility for the tasks performed by any subcontractors
@@ -113,7 +110,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: subcontract activities or use a subsidiary only with the provider's agreement
   norm_text: Activities may be subcontracted or carried out by a subsidiary only with the agreement of
@@ -149,7 +145,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: make the list of subsidiaries publicly available
   norm_text: Notified bodies shall make a list of their subsidiaries publicly available.
@@ -183,7 +178,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
-    category: notified_or_conformity_body
   targets: []
   action: keep subcontractor or subsidiary qualification and work documents available to the notifying
     authority for five years after subcontracting ends

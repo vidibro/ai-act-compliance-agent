@@ -4,8 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: annex_x_large_scale_it_system_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by
     31 December 2030
@@ -47,8 +46,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: large_scale_it_system_evaluator
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: account for AI Act requirements when evaluating or replacing each Annex X large-scale IT system
   norm_text: The requirements laid down in this Regulation shall be taken into account in the evaluation
@@ -125,8 +123,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: high_risk_provider_and_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August
     2030
@@ -164,7 +162,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: gpai_provider
-    category: supported_operator
   targets: []
   action: bring GPAI models placed on the market before 2 August 2025 into compliance by 2 August 2027
   norm_text: Providers of general-purpose AI models that have been placed on the market before 2 August
@@ -200,8 +197,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: synthetic_content_ai_provider
-    category: supported_operator
+  - actor_ref: provider
   targets: []
   action: bring pre-2-August-2026 synthetic-content-generating AI systems into Article 50(2) compliance
     by 2 December 2026

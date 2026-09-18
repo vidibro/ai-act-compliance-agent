@@ -14,7 +14,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from aiact.schemas.enums import ProhibitedPractice
+from aiact.schemas.enums import ActorCategory, ActorRole, ProhibitedPractice
 from aiact.schemas.interpretation import InterpretiveLink
 from aiact.schemas.review import ReviewRecord, ReviewStatus
 
@@ -41,17 +41,6 @@ class NormKind(StrEnum):
     APPLICABILITY = "applicability"
     DEFINITION = "definition"
     LEGAL_CONSEQUENCE = "legal_consequence"
-
-
-class ActorCategory(StrEnum):
-    SUPPORTED_OPERATOR = "supported_operator"
-    EXTERNAL_PRIVATE_PARTY = "external_private_party"
-    NATURAL_PERSON = "natural_person"
-    UNION_INSTITUTION_OR_BODY = "union_institution_or_body"
-    MEMBER_STATE = "member_state"
-    PUBLIC_AUTHORITY = "public_authority"
-    NOTIFIED_OR_CONFORMITY_BODY = "notified_or_conformity_body"
-    UNRESOLVED = "unresolved"
 
 
 class ProductScope(StrEnum):
@@ -150,13 +139,7 @@ class NormRelation(BaseModel):
         has_guidance = bool(self.guidance_refs)
         has_report_practices = bool(self.report_for_prohibited_practices)
         if self.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS:
-            if (
-                has_rules
-                or has_norms
-                or has_guidance
-                or has_report_practices
-                or not has_external
-            ):
+            if has_rules or has_norms or has_guidance or has_report_practices or not has_external:
                 raise ValueError(
                     "subject_to_external_requirements needs external_requirements "
                     "and no target rules"
@@ -169,24 +152,12 @@ class NormRelation(BaseModel):
             NormRelationKind.PARALLEL_NORMS,
             NormRelationKind.RELIES_ON_NORMS,
         }:
-            if (
-                has_rules
-                or has_external
-                or has_guidance
-                or has_report_practices
-                or not has_norms
-            ):
+            if has_rules or has_external or has_guidance or has_report_practices or not has_norms:
                 raise ValueError(
                     f"{self.kind.value} needs target_norm_ids and no rule or external targets"
                 )
         elif self.kind is NormRelationKind.INTERPRETED_BY_COMMISSION_GUIDANCE:
-            if (
-                has_rules
-                or has_norms
-                or has_external
-                or has_report_practices
-                or not has_guidance
-            ):
+            if has_rules or has_norms or has_external or has_report_practices or not has_guidance:
                 raise ValueError("interpreted_by_commission_guidance needs guidance_refs only")
         elif self.kind is NormRelationKind.NATIONAL_LAW_REGULATION:
             if (
@@ -221,9 +192,7 @@ class NormRelation(BaseModel):
             raise ValueError("norm relation target_rule_ids must not contain duplicates")
         if len(self.target_norm_ids) != len(set(self.target_norm_ids)):
             raise ValueError("norm relation target_norm_ids must not contain duplicates")
-        for name, values in (
-            ("guidance_refs", self.guidance_refs),
-        ):
+        for name, values in (("guidance_refs", self.guidance_refs),):
             if len(values) != len(set(values)):
                 raise ValueError(f"norm relation {name} must not contain duplicates")
         if len(self.external_requirements) != len(set(self.external_requirements)):
@@ -309,8 +278,14 @@ class TextReviewInventory(BaseModel):
 class NormActor(BaseModel):
     """A person or body to which the norm assigns a legal effect."""
 
-    actor_ref: str = Field(min_length=1)
-    category: ActorCategory
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    actor_ref: ActorRole
+
+    @property
+    def category(self) -> ActorCategory:
+        """The actor's fixed classification from the single ActorRole catalogue."""
+        return self.actor_ref.category
 
 
 class NormTarget(BaseModel):

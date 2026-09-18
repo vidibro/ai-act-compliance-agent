@@ -7,8 +7,7 @@ records:
   action: apply Regulation 2019/1020 Article 18 procedural rights with necessary adaptations while preserving
     more specific rights
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   kind: applicability
   product_scope: no_product_action
@@ -23,7 +22,6 @@ records:
   action: fully respect Article 75(1) operators' defence and file-access rights in proceedings
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -37,8 +35,7 @@ records:
   action: access the AI Office file through negotiated disclosure subject to legitimate business-secret
     interests and stated confidentiality exclusions
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   kind: entitlement
   product_scope: no_product_action
@@ -58,7 +55,6 @@ records:
   action: set negotiated-disclosure terms by decision when parties disagree
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -75,7 +71,6 @@ records:
   action: disclose and use information necessary to prove an infringement despite file-access restrictions
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   kind: permission
   product_scope: outside_supported_actor
@@ -90,7 +85,6 @@ records:
   action: adopt implementing acts on file access and negotiated disclosure arrangements
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -106,7 +100,6 @@ records:
   action: publish Article 75b and 75c decisions with party names decision substance and imposed penalties
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -120,7 +113,6 @@ records:
   action: protect affected persons' confidentiality rights and legitimate interests when publishing decisions
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

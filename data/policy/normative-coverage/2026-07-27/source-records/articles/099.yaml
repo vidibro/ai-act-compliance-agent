@@ -11,7 +11,6 @@ records:
     and enforcement measures
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -25,7 +24,6 @@ records:
   action: account for SME start-up and SMC interests and economic viability when imposing penalties
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -42,7 +40,6 @@ records:
     of subsequent amendments
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -61,8 +58,7 @@ records:
   action: expose Article 5 prohibited-practice non-compliance to a fine up to EUR 35 000 000 or, for an
     undertaking, 7 % of preceding-year worldwide annual turnover, whichever is higher
   actors:
-  - actor_ref: infringing_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -138,8 +134,7 @@ records:
     the percentages or amount referred to in paragraphs 3, 4 and 5, whichever thereof is lower.
   action: cap SME and start-up fines at the lower applicable percentage or amount
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -155,8 +150,7 @@ records:
     or amount referred therein, whichever is lower.
   action: cap SMC fines under paragraphs 4 and 5 at the lower applicable percentage or amount
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
@@ -172,8 +166,7 @@ records:
   action: consider all relevant circumstances and the specified factors when deciding whether and how
     much to fine
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   mandatory_content:
   - infringement nature gravity duration consequences affected persons and damage
@@ -210,7 +203,6 @@ records:
     bodies
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -226,7 +218,6 @@ records:
   action: ensure court-imposed or other-body-imposed fine rules have equivalent effect
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -241,8 +232,7 @@ records:
     in accordance with Union and national law, including effective judicial remedies and due process.
   action: exercise Article 99 powers subject to effective remedies due process and other appropriate safeguards
   actors:
-  - actor_ref: enforcing_authority
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -257,7 +247,6 @@ records:
   action: report annually to the Commission on Article 99 fines and related proceedings
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

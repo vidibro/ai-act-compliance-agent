@@ -9,8 +9,8 @@ records:
   action: conduct eligible high-risk AI testing outside a sandbox under Article 60 and its testing plan
     without infringing Article 5
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: permission
   conditions:
@@ -31,7 +31,6 @@ records:
     examination procedure
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -45,8 +44,8 @@ records:
     listed in Annex I.
   action: preserve applicable Union and national product testing law
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -62,8 +61,8 @@ records:
     AI system on their own or in partnership with one or more deployers or prospective deployers.
   action: conduct eligible high-risk system testing before market placement or service alone or with deployers
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: permission
   verification_mode: reported_conditionally
@@ -74,8 +73,8 @@ records:
     prejudice to any ethical review that is required by Union or national law.
   action: preserve any ethical review required by Union or national law
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -90,8 +89,8 @@ records:
     all of the following conditions are met
   action: conduct real-world testing only when all eleven conditions are met
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: permission
   qualifier_spans:
@@ -129,8 +128,8 @@ records:
     is to be conducted;
   action: draw up the testing plan and submit it to the relevant Member State market surveillance authority
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -145,8 +144,8 @@ records:
     subject to an authorisation;
   action: obtain authority approval or rely on 30-day tacit approval only where national law permits it
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   conditions:
   - operator: any_of
@@ -175,8 +174,8 @@ records:
   action: register real-world testing through the single registration route that the enacted system classes
     assign, with the identifier and information that route requires
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   conditions:
   - operator: any_of
@@ -208,8 +207,8 @@ records:
     in the Union or has appointed a legal representative who is established in the Union;
   action: be Union-established or appoint a Union-established legal representative
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   conditions:
@@ -226,8 +225,8 @@ records:
     law are implemented;
   action: transfer testing data to third countries only with appropriate applicable Union-law safeguards
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -239,8 +238,8 @@ records:
   action: limit testing to the time necessary for its objectives and at most six months absent a valid
     extension
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -252,8 +251,8 @@ records:
     of the need for such an extension;
   action: extend testing once for six months after prior notice and explanation
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: permission
   implementation_refs:
@@ -270,8 +269,8 @@ records:
     groups due to their age or disability, are appropriately protected;
   action: appropriately protect testing subjects vulnerable because of age or disability
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -285,8 +284,8 @@ records:
   action: inform the participating deployers or prospective deployers of the testing aspects relevant
     to their participation decision and give them the Article 13 instructions for use
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   conditions:
   - the provider or prospective provider organises the testing in real world conditions in cooperation
@@ -309,8 +308,8 @@ records:
     compliance with the real-world testing provisions of this Regulation and of other applicable Union
     and national law
   actors:
-  - actor_ref: provider_and_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   conditions:
   - the provider or prospective provider organises the testing in real world conditions in cooperation
@@ -326,8 +325,8 @@ records:
     with Article 61
   action: obtain the testing subjects' informed consent in accordance with Article 61
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   exceptions:
   - law-enforcement testing where seeking informed consent would prevent the AI system from being tested
@@ -342,8 +341,8 @@ records:
   action: keep the testing itself and its outcome free of any negative effect on the subjects when the
     law-enforcement substitute for informed consent applies
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   conditions:
   - the testing is in the case of law enforcement
@@ -357,8 +356,8 @@ records:
   action: delete the subjects' personal data after the test is performed when the law-enforcement substitute
     for informed consent applies
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   conditions:
   - the testing is in the case of law enforcement
@@ -374,8 +373,8 @@ records:
   action: ensure effective testing oversight by qualified persons with necessary capacity training and
     authority
   actors:
-  - actor_ref: provider_and_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -386,8 +385,8 @@ records:
     disregarded.
   action: ensure system predictions recommendations and decisions can be effectively reversed and disregarded
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -402,8 +401,8 @@ records:
     and without having to provide any justification, and request immediate and permanent deletion of the
     subject's personal data
   actors:
-  - actor_ref: testing_subject_or_representative
-    category: natural_person
+  - actor_ref: testing_subject
+  - actor_ref: legal_representative
   targets: []
   kind: entitlement
   product_scope: outside_supported_actor
@@ -419,8 +418,8 @@ records:
   quote: The withdrawal of the informed consent shall not affect the activities already carried out.
   action: preserve activities completed before consent withdrawal
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -438,7 +437,6 @@ records:
     authorities in accordance with Article 75
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   mandatory_content:
   - power to require providers and prospective providers to provide information
@@ -458,7 +456,6 @@ records:
     testing in real world conditions
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -472,8 +469,8 @@ records:
   action: report the serious incident to the national market surveillance authority in accordance with
     Article 73
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   conditions:
   - a serious incident is identified in the course of the testing in real world conditions
@@ -487,8 +484,8 @@ records:
   action: adopt immediate mitigation measures for the serious incident or, failing that, suspend testing
     until mitigation takes place or terminate it
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   conditions:
   - a serious incident is identified in the course of the testing in real world conditions
@@ -504,8 +501,8 @@ records:
   action: establish a procedure for the prompt recall of the AI system upon such termination of the testing
     in real world conditions
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -516,8 +513,8 @@ records:
     termination of the testing in real world conditions and of the final outcomes.
   action: notify the relevant authority of testing suspension or termination and final outcomes
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -527,8 +524,8 @@ records:
     law for any damage caused in the course of their testing in real world conditions.
   action: bear liability under applicable law for damage caused during real-world testing
   actors:
-  - actor_ref: provider_or_prospective_provider
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: prospective_provider
   targets: []
   kind: legal_consequence
   product_scope: no_product_action

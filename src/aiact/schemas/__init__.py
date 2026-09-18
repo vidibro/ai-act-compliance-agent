@@ -23,6 +23,7 @@ from aiact.schemas.classification import (
     UseCaseClassification,
 )
 from aiact.schemas.enums import (
+    ActorCategory,
     ActorRole,
     AnnexIIIArea,
     CheckType,
@@ -48,7 +49,6 @@ from aiact.schemas.interpretation import (
     InterpretiveLink,
 )
 from aiact.schemas.norm import (
-    ActorCategory,
     CandidateDetectionChannel,
     ImplementationMode,
     Norm,

@@ -9,7 +9,6 @@ records:
     meet the Article 10(2) to (4) and Article 4a(1) quality criteria
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: &id001
@@ -24,7 +23,6 @@ records:
     validation, and testing datasets
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -36,7 +34,6 @@ records:
   action: address relevant design choices in dataset governance and management practices
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: &id002
@@ -52,7 +49,6 @@ records:
     data
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: *id002
@@ -67,7 +63,6 @@ records:
     enrichment, and aggregation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: *id002
@@ -81,7 +76,6 @@ records:
   action: formulate assumptions about what the data are intended to measure and represent
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: *id002
@@ -94,7 +88,6 @@ records:
   action: assess the availability, quantity, and suitability of the required datasets
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: *id002
@@ -110,7 +103,6 @@ records:
     or cause prohibited discrimination
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: *id002
@@ -127,7 +119,6 @@ records:
     10(2)(f)
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: *id002
@@ -141,7 +132,6 @@ records:
   action: identify compliance-blocking data gaps or shortcomings and determine how to address them
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans: *id002
@@ -156,7 +146,6 @@ records:
     and to the best extent possible free of errors and complete, in view of the intended purpose
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   mandatory_content:
@@ -175,7 +164,6 @@ records:
     where applicable
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -189,7 +177,6 @@ records:
     of datasets
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   implementation_mode: report_only
@@ -205,7 +192,6 @@ records:
     setting to the extent required by the intended purpose
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -221,7 +207,6 @@ records:
     and correction in high-risk AI systems
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   qualifier_spans:
@@ -249,7 +234,6 @@ records:
     including pseudonymisation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -268,7 +252,6 @@ records:
     access, and confidentiality obligations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -285,7 +268,6 @@ records:
     by other parties
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -302,7 +284,6 @@ records:
     occurs first
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -321,7 +302,6 @@ records:
     and why other data could not achieve that objective
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: obligation
   qualifier_spans:
@@ -339,7 +319,6 @@ records:
     systems developed without model-training techniques
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:

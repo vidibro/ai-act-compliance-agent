@@ -1,8 +1,8 @@
 schema_version: 1
-act_version_date: "2026-07-27"
+act_version_date: '2026-07-27'
 source:
   kind: article
-  document: "19"
+  document: '19'
 audit:
   audit_schema_version: 1
   segments_scanned: 3
@@ -10,19 +10,19 @@ audit:
   finding_count: 1
   audit_sha256: 6b1c8a106d312ce494f7744be90c3c573a8c4baa5805e95d5517dc9969b5d2ac
 decisions:
-  - finding_id: AIA-VALID-89C0BE07A90B8058
-    target: AIA-NORM-A019-P1-RETENTION-PERIOD
-    rule: fragment_without_qualifier_span
-    source_ref: AIA-TEXT-A019-P001
+- finding_id: AIA-VALID-89C0BE07A90B8058
+  target: AIA-NORM-A019-P1-RETENTION-PERIOD
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A019-P001
+  source_sha256: e29d01e413d34e25e1363c0bf128ade6fea8cf532ec8bb1a502a61061c357820
+  target_sha256: 3f180ee0c56c764bd27eada3a3eab04af8705f619eeb2c3081cc1c96b6a0e625
+  decision: accepted_with_basis
+  reason: This is the second sentence of the same Article 19(1) provider duty. Its
+    action, control condition, minimum period, and Union/national-law exception fully
+    reconstruct the retention requirement; a separate qualifier span would add no
+    legal content.
+  legal_basis:
+  - span_id: AIA-TEXT-A019-P001
     source_sha256: e29d01e413d34e25e1363c0bf128ade6fea8cf532ec8bb1a502a61061c357820
-    target_sha256: 3f180ee0c56c764bd27eada3a3eab04af8705f619eeb2c3081cc1c96b6a0e625
-    decision: accepted_with_basis
-    reason: >-
-      This is the second sentence of the same Article 19(1) provider duty. Its action, control
-      condition, minimum period, and Union/national-law exception fully reconstruct the retention
-      requirement; a separate qualifier span would add no legal content.
-    legal_basis:
-      - span_id: AIA-TEXT-A019-P001
-        source_sha256: e29d01e413d34e25e1363c0bf128ade6fea8cf532ec8bb1a502a61061c357820
-        quote: "Without prejudice to applicable Union or national law"
-    reviewed_by: vidibro
+    quote: Without prejudice to applicable Union or national law
+  reviewed_by: vidibro

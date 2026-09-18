@@ -4,8 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: apply Regulation 2019/1020 Article 18 procedural rights with necessary adaptations while preserving
     more specific rights
@@ -43,7 +42,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: fully respect Article 75(1) operators' defence and file-access rights in proceedings
   norm_text: The rights of defence and of access to the file of operators falling within the scope of
@@ -77,8 +75,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
-  - actor_ref: article_75_operator
-    category: supported_operator
+  - actor_ref: operator
   targets: []
   action: access the AI Office file through negotiated disclosure subject to legitimate business-secret
     interests and stated confidentiality exclusions
@@ -118,7 +115,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: set negotiated-disclosure terms by decision when parties disagree
   norm_text: The AI Office shall have the power to adopt decisions setting out such terms of disclosure
@@ -153,7 +149,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: disclose and use information necessary to prove an infringement despite file-access restrictions
   norm_text: Nothing in this paragraph shall prevent the AI Office from disclosing and using information
@@ -188,7 +183,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt implementing acts on file access and negotiated disclosure arrangements
   norm_text: The Commission may adopt implementing acts concerning the practical arrangements for access
@@ -223,7 +217,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: publish Article 75b and 75c decisions with party names decision substance and imposed penalties
   norm_text: The AI Office shall publish the decisions it adopts pursuant to Articles 75b and 75c. Such
@@ -259,7 +252,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: protect affected persons' confidentiality rights and legitimate interests when publishing decisions
   norm_text: The publication shall have regard to the rights and legitimate interests of any person concerned

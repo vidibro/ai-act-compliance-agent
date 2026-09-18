@@ -10,8 +10,8 @@ records:
   action: take context-sensitive measures supporting AI literacy among staff and other persons operating
     or using AI systems on the provider's or deployer's behalf
   actors:
-  - actor_ref: provider_or_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   kind: obligation
   conditions:
@@ -34,9 +34,7 @@ records:
     the Article 4(1) AI-literacy obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -52,7 +50,6 @@ records:
     platform
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -69,7 +66,6 @@ records:
     required by Article 4(1), including through common objectives
   actors:
   - actor_ref: board
-    category: union_institution_or_body
   targets: []
   kind: obligation
   conditions:

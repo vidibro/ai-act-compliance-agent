@@ -8,7 +8,6 @@ records:
     and documenting adversarial testing to identify and mitigate systemic risks
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A055-P001
@@ -28,7 +27,6 @@ records:
     market placement, and use
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A055-P001
@@ -45,7 +43,6 @@ records:
     and report them without undue delay to the AI Office and, as appropriate, national competent authorities
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A055-P001
@@ -64,7 +61,6 @@ records:
     its physical infrastructure
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans:
   - A055-P001
@@ -81,7 +77,6 @@ records:
     is published
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: permission
   product_scope: no_product_action
@@ -96,7 +91,6 @@ records:
   action: presume conformity to the extent European harmonised standards cover Article 55 obligations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -112,7 +106,6 @@ records:
   action: demonstrate alternative adequate means of compliance for Commission assessment
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
@@ -127,8 +120,7 @@ records:
   action: treat Article 55 information and documentation, including trade secrets, under Article 78 confidentiality
     duties
   actors:
-  - actor_ref: article_55_information_recipient
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

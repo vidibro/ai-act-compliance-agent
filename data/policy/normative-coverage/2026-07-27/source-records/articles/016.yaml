@@ -6,7 +6,6 @@ records:
   action: ensure high-risk AI systems comply with the requirements in Chapter III, Section 2
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: &id001
   - A016-P001
@@ -38,7 +37,6 @@ records:
     \ address on the system or, when that is not possible, on its packaging or accompanying documentation"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs:
@@ -51,7 +49,6 @@ records:
   action: maintain a quality-management system complying with Article 17
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_mode: carried_by_other_norm
@@ -65,7 +62,6 @@ records:
   action: keep the documentation required by Article 18
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_mode: carried_by_other_norm
@@ -81,7 +77,6 @@ records:
     \ control"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   conditions:
@@ -98,7 +93,6 @@ records:
     market placement or being put into service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs:
@@ -118,7 +112,6 @@ records:
   action: draw up the Article 47 EU declaration of conformity
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs:
@@ -136,7 +129,6 @@ records:
     documentation in accordance with Article 48
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs:
@@ -150,7 +142,6 @@ records:
   action: comply with the Article 49(1) registration obligations
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs:
@@ -164,7 +155,6 @@ records:
   action: take necessary corrective actions and provide the information required by Article 20
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_mode: carried_by_other_norm
@@ -180,7 +170,6 @@ records:
     authority
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   conditions:
@@ -197,7 +186,6 @@ records:
     (EU) 2016/2102 and (EU) 2019/882
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id001
   implementation_refs:

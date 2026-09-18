@@ -2743,8 +2743,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: union_institution_ai_system_authority_reference
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: construe competent-authority and market-surveillance-authority references as references to the
     European Data Protection Supervisor for Union-body AI systems

@@ -5,7 +5,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit placing on the market, putting into service, or using AI systems employing subliminal,
     purposefully manipulative, or deceptive techniques that materially distort decisions and cause or
@@ -54,7 +53,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit placing on the market, putting into service, or using AI systems that exploit vulnerabilities
     and materially distort behaviour in a significantly harmful or likely harmful manner
@@ -101,7 +99,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating realistic
     intimate or sexually explicit material of an identifiable natural person without explicit consent
@@ -156,7 +153,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating material
     or performances covered by Directive 2011/93/EU
@@ -205,7 +201,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit placing on the market, putting into service, or using AI systems for social scoring
     that leads to either prohibited form of detrimental or unfavourable treatment
@@ -252,7 +247,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
@@ -298,7 +292,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems that
     create or expand facial-recognition databases through untargeted scraping from the internet or CCTV
@@ -338,7 +331,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     infer emotions in workplaces or educational institutions
@@ -380,7 +372,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using biometric categorisation
     systems to infer the listed sensitive characteristics of individuals
@@ -425,7 +416,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: prohibit law-enforcement use of real-time remote biometric identification in publicly accessible
     spaces unless strictly necessary for a listed objective
@@ -509,7 +499,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: limit the point (ba) and (bb) market-placement and putting-into-service prohibitions to the
     two specified system-purpose or foreseeable-outcome cases
@@ -556,7 +545,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: limit the point (ba) and (bb) use prohibitions to purposeful generation or manipulation by the
     deployer
@@ -640,7 +628,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: deploy real-time remote biometric identification for a permitted Article 5(1)(h) objective only
     to confirm the specifically targeted individual's identity
@@ -678,7 +665,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: consider both the non-use harm and the rights-and-freedoms consequences before using real-time
     remote biometric identification
@@ -722,7 +708,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: comply with necessary and proportionate national-law safeguards and conditions, particularly
     temporal, geographic, and personal limits
@@ -763,7 +748,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: complete an Article 27 fundamental-rights impact assessment before authorisation of real-time
     remote biometric identification use
@@ -802,7 +786,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: register the real-time remote biometric identification system in the EU database before authorisation,
     or without undue delay after urgent use begins
@@ -843,7 +826,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: obtain prior judicial or binding independent-administrative authorisation, upon a reasoned request
     and under applicable national rules, for each covered use
@@ -885,7 +867,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: commence urgent use without prior authorisation
   norm_text: in a duly justified situation of urgency, the use of such system may be commenced without
@@ -926,7 +907,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: stop the use immediately if authorisation is rejected
   norm_text: If such authorisation is rejected, the use shall be stopped with immediate effect
@@ -964,7 +944,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: immediately discard and delete all data, results, and outputs from the use if authorisation
     is rejected
@@ -1003,8 +982,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: power
   actors:
-  - actor_ref: authorising_authority
-    category: public_authority
+  - actor_ref: judicial_authority
+  - actor_ref: independent_administrative_authority
   targets: []
   action: grant authorisation only on objective evidence or clear indications that the requested use is
     necessary, proportionate, and strictly limited in time and geographic and personal scope
@@ -1049,8 +1028,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: authorising_authority
-    category: public_authority
+  - actor_ref: judicial_authority
+  - actor_ref: independent_administrative_authority
   targets: []
   action: take the Article 5(2) elements into account when deciding an authorisation request
   norm_text: In deciding on the request, that authority shall take into account the elements referred
@@ -1086,8 +1065,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
-  - actor_ref: decision_maker
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   action: prohibit decisions producing an adverse legal effect on a person based solely on real-time remote
     biometric identification output
@@ -1125,7 +1103,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: notify the relevant market-surveillance authority and national data-protection authority of
     each covered use in accordance with applicable national rules
@@ -1165,7 +1142,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   action: include at least the Article 5(6) information in each use notification while excluding sensitive
     operational data
@@ -1207,7 +1183,6 @@ norms:
   kind: power
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: provide for full or partial authorisation of covered real-time remote biometric identification
     use within the limits and conditions of Article 5(1)(h), (2), and (3)
@@ -1246,7 +1221,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: lay down national rules for the request, issuance, exercise, supervision, and reporting of Article
     5(3) authorisations
@@ -1284,7 +1258,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: specify in national rules the objectives and qualifying criminal offences for which competent
     authorities may receive authorisation
@@ -1324,7 +1297,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: notify the Commission of the national rules no later than 30 days after their adoption
   norm_text: Member States shall notify those rules to the Commission at the latest 30 days following
@@ -1359,7 +1331,6 @@ norms:
   kind: power
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: introduce more restrictive laws on remote biometric identification use in accordance with Union
     law
@@ -1395,8 +1366,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: national_market_surveillance_and_data_protection_authorities
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: data_protection_authority
   targets: []
   action: submit annual reports to the Commission on notified real-time remote biometric identification
     use
@@ -1435,7 +1406,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: provide Member States and national market-surveillance and data-protection authorities with
     an annual-reporting template that includes the number and outcomes of decisions on Article 5(3) authorisation
@@ -1476,7 +1446,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: publish annual reports on covered real-time remote biometric identification use using aggregated
     Member State data from Article 5(6) reports
@@ -1513,7 +1482,6 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: exclude sensitive operational data about related law-enforcement activities from the Commission's
     annual reports

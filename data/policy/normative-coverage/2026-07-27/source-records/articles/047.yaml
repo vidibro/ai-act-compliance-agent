@@ -9,7 +9,6 @@ records:
     placement or service
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47
@@ -26,7 +25,6 @@ records:
   action: identify the specific high-risk system covered by the declaration
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47
@@ -39,7 +37,6 @@ records:
   action: submit a declaration copy to relevant national competent authorities on request
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47
@@ -52,7 +49,6 @@ records:
   action: state that the covered high-risk system meets Chapter III Section 2 requirements
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47-2
@@ -67,7 +63,6 @@ records:
     language for authorities in every Member State where the system is placed on the market or made available
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47-2
@@ -86,7 +81,6 @@ records:
     also requires one
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47-3
@@ -99,7 +93,6 @@ records:
   action: include all information needed to identify every Union harmonisation law covered
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the high-risk AI system is subject to other Union harmonisation legislation which also requires an
@@ -115,7 +108,6 @@ records:
   action: assume responsibility for Section 2 compliance by drawing up the declaration
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47-4
@@ -127,7 +119,6 @@ records:
   action: keep the declaration of conformity current as appropriate
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs:
   - AIA-PO-A47-4
@@ -141,7 +132,6 @@ records:
   action: amend Annex V declaration content to introduce elements required by technical progress
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: power
   product_scope: outside_supported_actor

@@ -5,7 +5,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: apply the Regulation to providers placing AI systems or general-purpose AI models on the Union
     market or putting AI systems into service in the Union, regardless of establishment
@@ -46,7 +45,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   action: apply the Regulation to deployers established or located within the Union
   norm_text: deployers of AI systems that have their place of establishment or are located within the
@@ -84,8 +82,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: provider_or_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   action: apply the Regulation to third-country providers and deployers where the AI system output is
     used in the Union
@@ -124,8 +122,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: importer_or_distributor
-    category: supported_operator
+  - actor_ref: importer
+  - actor_ref: distributor
   targets: []
   action: apply the Regulation to importers and distributors of AI systems
   norm_text: importers and distributors of AI systems
@@ -163,7 +161,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   action: apply the Regulation to product manufacturers placing an AI system on the market or putting
     it into service with their product under their name or trademark
@@ -203,7 +200,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   action: apply the Regulation to authorised representatives of providers not established in the Union
   norm_text: authorised representatives of providers, which are not established in the Union
@@ -241,7 +237,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: affected_person
-    category: natural_person
   targets: []
   action: apply the Regulation to affected persons located in the Union
   norm_text: affected persons that are located in the Union
@@ -393,7 +388,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: preserve Member State competences concerning national security regardless of the entity entrusted
     with the relevant tasks
@@ -565,7 +559,6 @@ norms:
   kind: applicability
   actors:
   - actor_ref: intermediary_service_provider
-    category: external_private_party
   targets: []
   action: preserve the application of intermediary-service provider liability rules under Chapter II of
     Regulation (EU) 2022/2065
@@ -759,8 +752,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: pre_market_ai_research_testing_or_development_actor
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   action: conduct pre-market AI research, testing, and development activities in accordance with applicable
     Union law
@@ -868,8 +860,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
-  - actor_ref: natural_person_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   action: exclude deployer obligations for natural persons using AI systems in a purely personal non-professional
     activity
@@ -909,10 +900,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: union
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: maintain or introduce laws, regulations, or administrative provisions that more favourably protect
     workers regarding employers' use of AI systems, or encourage or allow more favourable collective agreements
@@ -1066,7 +1055,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt delegated acts by 2 August 2027 specifying how the Article 2(13) limitation operates
   norm_text: By 2 August 2027, the Commission shall adopt delegated acts in accordance with Article 97

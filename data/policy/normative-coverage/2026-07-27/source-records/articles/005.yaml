@@ -12,7 +12,6 @@ records:
     are reasonably likely to cause significant harm
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -39,7 +38,6 @@ records:
     and materially distort behaviour in a significantly harmful or likely harmful manner
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -66,7 +64,6 @@ records:
     intimate or sexually explicit material of an identifiable natural person without explicit consent
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -100,7 +97,6 @@ records:
     or performances covered by Directive 2011/93/EU
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -131,7 +127,6 @@ records:
     that leads to either prohibited form of detrimental or unfavourable treatment
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -160,7 +155,6 @@ records:
     assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -182,7 +176,6 @@ records:
     create or expand facial-recognition databases through untargeted scraping from the internet or CCTV
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -202,7 +195,6 @@ records:
     infer emotions in workplaces or educational institutions
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -226,7 +218,6 @@ records:
     systems to infer the listed sensitive characteristics of individuals
   actors:
   - actor_ref: operator
-    category: supported_operator
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -248,7 +239,6 @@ records:
     spaces unless strictly necessary for a listed objective
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -292,7 +282,6 @@ records:
     two specified system-purpose or foreseeable-outcome cases
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -318,7 +307,6 @@ records:
     deployer
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -358,7 +346,6 @@ records:
     to confirm the specifically targeted individual's identity
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -372,7 +359,6 @@ records:
     remote biometric identification
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -398,7 +384,6 @@ records:
     temporal, geographic, and personal limits
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -414,7 +399,6 @@ records:
     remote biometric identification use
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -432,7 +416,6 @@ records:
     or without undue delay after urgent use begins
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -454,7 +437,6 @@ records:
     and under applicable national rules, for each covered use
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -471,7 +453,6 @@ records:
   action: commence urgent use without prior authorisation
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: permission
   implementation_mode: report_only
@@ -488,7 +469,6 @@ records:
   action: stop the use immediately if authorisation is rejected
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -506,7 +486,6 @@ records:
     is rejected
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -528,8 +507,8 @@ records:
   action: grant authorisation only on objective evidence or clear indications that the requested use is
     necessary, proportionate, and strictly limited in time and geographic and personal scope
   actors:
-  - actor_ref: authorising_authority
-    category: public_authority
+  - actor_ref: judicial_authority
+  - actor_ref: independent_administrative_authority
   targets: []
   kind: power
   implementation_mode: report_only
@@ -546,8 +525,8 @@ records:
     paragraph 2.
   action: take the Article 5(2) elements into account when deciding an authorisation request
   actors:
-  - actor_ref: authorising_authority
-    category: public_authority
+  - actor_ref: judicial_authority
+  - actor_ref: independent_administrative_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -561,8 +540,7 @@ records:
   action: prohibit decisions producing an adverse legal effect on a person based solely on real-time remote
     biometric identification output
   actors:
-  - actor_ref: decision_maker
-    category: public_authority
+  - actor_ref: public_authority
   targets: []
   kind: prohibition
   implementation_mode: report_only
@@ -579,7 +557,6 @@ records:
     each covered use in accordance with applicable national rules
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -594,7 +571,6 @@ records:
     operational data
   actors:
   - actor_ref: law_enforcement_authority
-    category: public_authority
   targets: []
   conditions:
   - a use of a real-time remote biometric identification system in publicly accessible spaces for
@@ -617,7 +593,6 @@ records:
     use within the limits and conditions of Article 5(1)(h), (2), and (3)
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -635,7 +610,6 @@ records:
     5(3) authorisations
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -653,7 +627,6 @@ records:
     authorities may receive authorisation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -669,7 +642,6 @@ records:
   action: notify the Commission of the national rules no later than 30 days after their adoption
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -685,7 +657,6 @@ records:
     law
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -703,8 +674,8 @@ records:
   action: submit annual reports to the Commission on notified real-time remote biometric identification
     use
   actors:
-  - actor_ref: national_market_surveillance_and_data_protection_authorities
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: data_protection_authority
   targets: []
   kind: obligation
   conditions:
@@ -725,7 +696,6 @@ records:
     authorisation requests
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   mandatory_content:
@@ -746,7 +716,6 @@ records:
     Member State data from Article 5(6) reports
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -762,7 +731,6 @@ records:
     annual reports
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor

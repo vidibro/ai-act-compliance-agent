@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   action: require appropriate timely measures eliminating a compliant high-risk system's public-interest
     risk
@@ -52,8 +51,8 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider_or_other_relevant_operator
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: operator
   targets: []
   action: ensure corrective action across all concerned systems made available on the Union market within
     the authority's timeline
@@ -92,7 +91,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: immediately report the finding with system supply-chain risk and national-measure details
   norm_text: The Member States shall immediately inform the Commission and the other Member States of
@@ -134,7 +132,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: promptly consult concerned Member States and operators and evaluate national measures
   norm_text: The Commission shall without undue delay enter into consultation with the Member States concerned
@@ -169,7 +166,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: decide whether the measure is justified and propose other appropriate measures where necessary
   norm_text: On the basis of the results of that evaluation, the Commission shall decide whether the measure
@@ -205,7 +201,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: immediately communicate the decision to the Member States concerned and to the relevant operators
   norm_text: The Commission shall immediately communicate its decision to the Member States concerned
@@ -240,7 +235,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: inform the other Member States of the decision
   norm_text: It shall also inform the other Member States.

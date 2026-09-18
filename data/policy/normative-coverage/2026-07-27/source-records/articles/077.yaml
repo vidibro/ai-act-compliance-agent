@@ -11,7 +11,6 @@ records:
     form within the body's mandate
   actors:
   - actor_ref: fundamental_rights_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -32,7 +31,6 @@ records:
     or deployer
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -49,8 +47,8 @@ records:
   action: cooperate closely exchange necessary information and provide mutual assistance while respecting
     respective mandates and independence
   actors:
-  - actor_ref: market_surveillance_and_fundamental_rights_authorities
-    category: public_authority
+  - actor_ref: market_surveillance_authority
+  - actor_ref: fundamental_rights_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -65,7 +63,6 @@ records:
     by 2 November 2024
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   mandatory_content:
   - identification of the public authorities or bodies referred to in paragraph 1
@@ -82,7 +79,6 @@ records:
   action: notify the list to the Commission and other Member States and keep it up to date
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -102,7 +98,6 @@ records:
     infringement
   actors:
   - actor_ref: fundamental_rights_authority
-    category: public_authority
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -120,7 +115,6 @@ records:
   action: organise requested technical testing within a reasonable time with close requesting-body involvement
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -135,7 +129,6 @@ records:
   action: treat information and documentation obtained under Article 77 according to Article 78 confidentiality
   actors:
   - actor_ref: fundamental_rights_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

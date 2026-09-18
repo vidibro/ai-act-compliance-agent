@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: notify the Commission without delay and within two weeks of meeting or anticipating the Article
     51(1)(a) condition
@@ -45,7 +44,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
   norm_text: That notification shall include the information necessary to demonstrate that the relevant
@@ -84,7 +82,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: designate an unnotified general-purpose AI model presenting systemic risks as a model with systemic
     risk
@@ -121,7 +118,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: present substantiated model-specific arguments with the notification against systemic-risk classification
   norm_text: The provider of a general-purpose AI model that meets the condition referred to in Article
@@ -161,7 +157,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: reject insufficiently substantiated rebuttal arguments that fail to demonstrate absence of systemic
     risk
@@ -237,7 +232,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: designate a general-purpose AI model as presenting systemic risks using Annex XIII criteria
   norm_text: The Commission may designate a general-purpose AI model as presenting systemic risks, ex
@@ -275,7 +269,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: adopt Article 97 delegated acts specifying and updating Annex XIII criteria
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
@@ -310,7 +303,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: take a provider's reasoned reassessment request into account
   norm_text: Upon a reasoned request of a provider whose model has been designated as a general-purpose
@@ -346,7 +338,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: reassess under Annex XIII whether the model still presents systemic risks
   norm_text: may decide to reassess whether the general-purpose AI model can still be considered to present
@@ -381,7 +372,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: include objective, detailed, and new post-designation reasons in a reassessment request
   norm_text: Such a request shall contain objective, detailed and new reasons that have arisen since the
@@ -420,7 +410,6 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   action: request reassessment no earlier than six months after the applicable designation or maintenance
     decision
@@ -459,7 +448,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: ensure publication of a current list of general-purpose AI models with systemic risk while observing
     and protecting intellectual-property rights, confidential business information, and trade secrets

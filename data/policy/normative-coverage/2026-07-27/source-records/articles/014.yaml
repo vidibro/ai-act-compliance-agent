@@ -8,7 +8,6 @@ records:
     for effective natural-person oversight throughout use
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: &id001
   - AIA-HR-A14
@@ -24,7 +23,6 @@ records:
     emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including risks that persist despite other Section 2 requirements
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -38,7 +36,6 @@ records:
     use and ensure them through either or both Article 14(3) measure routes
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -58,7 +55,6 @@ records:
     monitor its operation, and detect and address anomalies, dysfunctions, and unexpected performance"
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: &id002
   - A014-P006
@@ -74,7 +70,6 @@ records:
     information or recommendations inform human decisions
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -88,7 +83,6 @@ records:
     tools and methods
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -102,7 +96,6 @@ records:
     disregard, override, or reverse its output
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -116,7 +109,6 @@ records:
     or similar procedure that brings it to a safe halt
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -133,7 +125,6 @@ records:
     competent, trained, and authorised natural persons separately verify and confirm it
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   conditions:
   - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
@@ -150,7 +141,6 @@ records:
     or national law considers it disproportionate
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   conditions:

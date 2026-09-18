@@ -7,7 +7,6 @@ records:
   action: require the provider to end identified formal non-compliance within a prescribed period
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   mandatory_content: []
   qualifier_spans:
@@ -44,7 +43,6 @@ records:
     formal non-compliance persists
   actors:
   - actor_ref: market_surveillance_authority
-    category: public_authority
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

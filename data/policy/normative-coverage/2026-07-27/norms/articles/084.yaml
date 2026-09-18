@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: designate one or more Union structures for Regulation 2019/1020 Article 21(6) AI testing support
   norm_text: The Commission shall designate one or more Union AI testing support structures to perform
@@ -39,8 +38,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: union_ai_testing_support_structure
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: provide independent technical or scientific advice when requested by the Board Commission or
     market surveillance authorities

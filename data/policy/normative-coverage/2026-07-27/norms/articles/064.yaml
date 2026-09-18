@@ -5,7 +5,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: develop Union AI expertise and capabilities through the AI Office
   norm_text: The Commission shall develop Union expertise and capabilities in the field of AI through
@@ -40,7 +39,6 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   action: facilitate the Regulation tasks entrusted to the AI Office
   norm_text: Member States shall facilitate the tasks entrusted to the AI Office, as reflected in this
@@ -74,8 +72,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: union_budgetary_authority
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   targets: []
   action: allocate adequate resources for effective performance of AI Office enforcement duties and powers
   norm_text: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources

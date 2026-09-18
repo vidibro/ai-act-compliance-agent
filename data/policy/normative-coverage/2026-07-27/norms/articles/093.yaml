@@ -5,7 +5,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: request necessary appropriate compliance mitigation or market-restriction measures from GPAI
     providers
@@ -54,7 +53,6 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
-    category: union_institution_or_body
   targets: []
   action: initiate structured dialogue with the GPAI provider before requesting a measure
   norm_text: Before a measure is requested, the AI Office may initiate a structured dialogue with the
@@ -89,7 +87,6 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   action: make offered systemic-risk mitigation commitments binding and declare no further grounds for
     action

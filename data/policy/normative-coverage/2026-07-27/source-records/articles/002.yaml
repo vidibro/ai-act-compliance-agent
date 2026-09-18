@@ -8,7 +8,6 @@ records:
     market or putting AI systems into service in the Union, regardless of establishment
   actors:
   - actor_ref: provider
-    category: supported_operator
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -24,7 +23,6 @@ records:
   action: apply the Regulation to deployers established or located within the Union
   actors:
   - actor_ref: deployer
-    category: supported_operator
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -41,8 +39,8 @@ records:
   action: apply the Regulation to third-country providers and deployers where the AI system output is
     used in the Union
   actors:
-  - actor_ref: provider_or_deployer
-    category: supported_operator
+  - actor_ref: provider
+  - actor_ref: deployer
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -57,8 +55,8 @@ records:
   quote: importers and distributors of AI systems
   action: apply the Regulation to importers and distributors of AI systems
   actors:
-  - actor_ref: importer_or_distributor
-    category: supported_operator
+  - actor_ref: importer
+  - actor_ref: distributor
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -76,7 +74,6 @@ records:
     it into service with their product under their name or trademark
   actors:
   - actor_ref: product_manufacturer
-    category: supported_operator
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -92,7 +89,6 @@ records:
   action: apply the Regulation to authorised representatives of providers not established in the Union
   actors:
   - actor_ref: authorised_representative
-    category: supported_operator
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -108,7 +104,6 @@ records:
   action: apply the Regulation to affected persons located in the Union
   actors:
   - actor_ref: affected_person
-    category: natural_person
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -182,7 +177,6 @@ records:
     with the relevant tasks
   actors:
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: applicability
   product_scope: no_product_action
@@ -269,7 +263,6 @@ records:
     Regulation (EU) 2022/2065
   actors:
   - actor_ref: intermediary_service_provider
-    category: external_private_party
   targets: []
   kind: applicability
   product_scope: no_product_action
@@ -359,8 +352,7 @@ records:
   action: conduct pre-market AI research, testing, and development activities in accordance with applicable
     Union law
   actors:
-  - actor_ref: pre_market_ai_research_testing_or_development_actor
-    category: external_private_party
+  - actor_ref: natural_or_legal_person
   targets: []
   kind: obligation
   product_scope: no_product_action
@@ -406,8 +398,7 @@ records:
   action: exclude deployer obligations for natural persons using AI systems in a purely personal non-professional
     activity
   actors:
-  - actor_ref: natural_person_deployer
-    category: supported_operator
+  - actor_ref: deployer
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -428,10 +419,8 @@ records:
   action: maintain or introduce laws, regulations, or administrative provisions that more favourably protect
     workers regarding employers' use of AI systems, or encourage or allow more favourable collective agreements
   actors:
-  - actor_ref: union
-    category: union_institution_or_body
+  - actor_ref: union_institution_or_body
   - actor_ref: member_state
-    category: member_state
   targets: []
   kind: permission
   product_scope: no_product_action
@@ -526,7 +515,6 @@ records:
   action: adopt delegated acts by 2 August 2027 specifying how the Article 2(13) limitation operates
   actors:
   - actor_ref: commission
-    category: union_institution_or_body
   targets: []
   kind: obligation
   conditions:
