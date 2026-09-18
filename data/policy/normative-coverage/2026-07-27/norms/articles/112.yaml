@@ -18,8 +18,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -51,8 +51,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -89,8 +89,8 @@ norms:
   - AIA-TEXT-A112-P003
   - AIA-TEXT-A112-P004
   - AIA-TEXT-A112-P005
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - extending or adding Annex III area headings
   - amending Article 50 additional-transparency systems
@@ -128,8 +128,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -162,8 +162,12 @@ norms:
   - AIA-TEXT-A112-P006
   qualifier_spans: []
   conditions:
-  - the report's findings make an amendment proposal appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the report's findings make an amendment proposal appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A112-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -194,8 +198,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -232,8 +236,8 @@ norms:
   - AIA-TEXT-A112-P009
   - AIA-TEXT-A112-P010
   - AIA-TEXT-A112-P011
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - national competent authority financial technical and human resources
   - Member-State penalties and administrative fines
@@ -272,8 +276,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -305,8 +309,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -341,8 +345,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -375,8 +379,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - submission of the report to the European Parliament and Council
   - publication of the report
@@ -413,8 +417,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P014
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -448,8 +452,12 @@ norms:
   - AIA-TEXT-A112-P015
   qualifier_spans: []
   conditions:
-  - the Commission requests the information for a paragraph 1 to 7 evaluation or review
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission requests the information for a paragraph 1 to 7 evaluation or review
+      basis_segment_ids:
+      - AIA-TEXT-A112-P015
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -484,8 +492,12 @@ norms:
   - AIA-TEXT-A112-P016
   qualifier_spans: []
   conditions:
-  - the Commission is carrying out a paragraph 1 to 7 evaluation or review
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission is carrying out a paragraph 1 to 7 evaluation or review
+      basis_segment_ids:
+      - AIA-TEXT-A112-P016
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -518,8 +530,12 @@ norms:
   - AIA-TEXT-A112-P017
   qualifier_spans: []
   conditions:
-  - the Commission considers amendment necessary
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission considers amendment necessary
+      basis_segment_ids:
+      - AIA-TEXT-A112-P017
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -557,8 +573,8 @@ norms:
   - AIA-TEXT-A112-P019
   - AIA-TEXT-A112-P020
   - AIA-TEXT-A112-P021
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - Annex III systems and area headings
   - Article 5 prohibited practices
@@ -597,9 +613,13 @@ norms:
   - AIA-TEXT-A112-P022
   qualifier_spans: []
   conditions:
-  - a paragraph 10 amendment or relevant delegated or implementing act concerns sectoral Union harmonisation
-    legislation listed in Section B of Annex I
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a paragraph 10 amendment or relevant delegated or implementing act concerns sectoral Union
+        harmonisation legislation listed in Section B of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A112-P022
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -633,8 +653,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A112-P023
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -669,8 +689,12 @@ norms:
   - AIA-TEXT-A112-P023
   qualifier_spans: []
   conditions:
-  - the enforcement assessment findings make an amendment proposal appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the enforcement assessment findings make an amendment proposal appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A112-P023
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

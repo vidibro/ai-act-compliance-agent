@@ -16,8 +16,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -52,8 +52,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -85,8 +85,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional procedure is outside the supported operator surface.
@@ -121,9 +121,13 @@ norms:
   - AIA-TEXT-A075A-P002
   qualifier_spans: []
   conditions:
-  - the AI Office has reasonable grounds to suspect non-compliance by a provider or deployer of an Article
-    75(1) AI system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office has reasonable grounds to suspect non-compliance by a provider or deployer of
+        an Article 75(1) AI system
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -156,8 +160,12 @@ norms:
   - AIA-TEXT-A075A-P002
   qualifier_spans: []
   conditions:
-  - the AI Office starts an investigation under Article 75a(2)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office starts an investigation under Article 75a(2)
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -191,8 +199,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -226,9 +234,13 @@ norms:
   - AIA-TEXT-A075A-P003
   qualifier_spans: []
   conditions:
-  - the market-surveillance authority has reason to suspect non-compliance by a provider or deployer of
-    an Article 75(1) AI system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority has reason to suspect non-compliance by a provider or deployer
+        of an Article 75(1) AI system
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -260,8 +272,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -295,8 +307,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - the legal basis and the purpose of the request
   - what information is required
@@ -336,8 +348,12 @@ norms:
   - AIA-TEXT-A075A-P005
   qualifier_spans: []
   conditions:
-  - the request is a simple request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the request is a simple request
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P005
+  exceptions: null
   mandatory_content:
   - that there is no obligation to provide the information requested, but a voluntary reply must be correct
     and not misleading
@@ -376,8 +392,12 @@ norms:
   - AIA-TEXT-A075A-P005
   qualifier_spans: []
   conditions:
-  - the request is made by decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the request is made by decision
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P005
+  exceptions: null
   mandatory_content:
   - the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading information
   - the right to have the decision reviewed by the Court of Justice of the European Union
@@ -412,8 +432,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -444,8 +464,12 @@ norms:
   - AIA-TEXT-A075A-P005
   qualifier_spans: []
   conditions:
-  - the AI Office requested the information by simple request rather than by decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office requested the information by simple request rather than by decision
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a conditional information-quality duty for supported operators.
@@ -478,8 +502,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -515,8 +539,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -554,8 +578,8 @@ norms:
   - AIA-TEXT-A075A-P010
   - AIA-TEXT-A075A-P011
   - AIA-TEXT-A075A-P012
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - enter Union business premises land or property
   - examine relevant books data and material
@@ -596,8 +620,12 @@ norms:
   - AIA-TEXT-A075A-P013
   qualifier_spans: []
   conditions:
-  - a natural or legal person opposes or obstructs an AI Office inspection
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a natural or legal person opposes or obstructs an AI Office inspection
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -633,8 +661,12 @@ norms:
   - AIA-TEXT-A075A-P014
   qualifier_spans: []
   conditions:
-  - national law requires judicial authorisation for the on-site inspection
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: national law requires judicial authorisation for the on-site inspection
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P014
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -678,8 +710,12 @@ norms:
   - AIA-TEXT-A075A-P014
   qualifier_spans: []
   conditions:
-  - judicial authorisation for an AI Office inspection has been requested
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: judicial authorisation for an AI Office inspection has been requested
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P014
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -714,8 +750,12 @@ norms:
   - AIA-TEXT-A075A-P015
   qualifier_spans: []
   conditions:
-  - the AI Office requests the fact-finding measure
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office requests the fact-finding measure
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P015
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -750,8 +790,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A075A-P017
   - AIA-TEXT-A075A-P018
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - access to and explanations about AI systems
   - retention of necessary compliance-assessment data and documents
@@ -788,8 +828,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P019
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -821,8 +861,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P019
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -854,8 +894,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

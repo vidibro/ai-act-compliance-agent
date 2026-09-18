@@ -19,8 +19,12 @@ norms:
   - AIA-TEXT-A052-P001
   qualifier_spans: []
   conditions:
-  - the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
+      basis_segment_ids:
+      - AIA-TEXT-A052-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -55,8 +59,12 @@ norms:
   - AIA-TEXT-A052-P001
   qualifier_spans: []
   conditions:
-  - the provider submits the Article 52(1) notification
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider submits the Article 52(1) notification
+      basis_segment_ids:
+      - AIA-TEXT-A052-P001
+  exceptions: null
   mandatory_content:
   - information necessary to demonstrate that the Article 51(1)(a) requirement has been met
   product_scope: in_scope
@@ -92,8 +100,13 @@ norms:
   - AIA-TEXT-A052-P001
   qualifier_spans: []
   conditions:
-  - the Commission becomes aware that an unnotified general-purpose AI model presents systemic risks
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission becomes aware that an unnotified general-purpose AI model presents systemic
+        risks
+      basis_segment_ids:
+      - AIA-TEXT-A052-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -129,9 +142,15 @@ norms:
   - AIA-TEXT-A052-P002
   qualifier_spans: []
   conditions:
-  - the model meets the Article 51(1)(a) condition
-  - the arguments are presented with the notification and are sufficiently substantiated
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the model meets the Article 51(1)(a) condition
+      basis_segment_ids:
+      - AIA-TEXT-A052-P002
+    - text: the arguments are presented with the notification and are sufficiently substantiated
+      basis_segment_ids:
+      - AIA-TEXT-A052-P002
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Grants an optional rebuttal procedure rather than imposing a compliance action.
@@ -167,9 +186,15 @@ norms:
   - AIA-TEXT-A052-P003
   qualifier_spans: []
   conditions:
-  - paragraph 2 arguments are insufficiently substantiated
-  - the provider did not demonstrate that the model lacks systemic risk due to its specific characteristics
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: paragraph 2 arguments are insufficiently substantiated
+      basis_segment_ids:
+      - AIA-TEXT-A052-P003
+    - text: the provider did not demonstrate that the model lacks systemic risk due to its specific characteristics
+      basis_segment_ids:
+      - AIA-TEXT-A052-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -203,8 +228,12 @@ norms:
   - AIA-TEXT-A052-P003
   qualifier_spans: []
   conditions:
-  - the Commission rejects the provider's paragraph 2 arguments under Article 52(3)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission rejects the provider's paragraph 2 arguments under Article 52(3)
+      basis_segment_ids:
+      - AIA-TEXT-A052-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -238,9 +267,15 @@ norms:
   - AIA-TEXT-A052-P004
   qualifier_spans: []
   conditions:
-  - designation is ex officio or follows a qualified Article 90(1)(a) scientific-panel alert
-  - designation is based on Annex XIII criteria
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: designation is ex officio or follows a qualified Article 90(1)(a) scientific-panel alert
+      basis_segment_ids:
+      - AIA-TEXT-A052-P004
+    - text: designation is based on Annex XIII criteria
+      basis_segment_ids:
+      - AIA-TEXT-A052-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -272,8 +307,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A052-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -306,8 +341,12 @@ norms:
   - AIA-TEXT-A052-P006
   qualifier_spans: []
   conditions:
-  - the provider makes a reasoned request concerning a model designated under Article 52(4)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider makes a reasoned request concerning a model designated under Article 52(4)
+      basis_segment_ids:
+      - AIA-TEXT-A052-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -339,8 +378,12 @@ norms:
   - AIA-TEXT-A052-P006
   qualifier_spans: []
   conditions:
-  - the Commission has received and considered a reasoned provider request under Article 52(5)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission has received and considered a reasoned provider request under Article 52(5)
+      basis_segment_ids:
+      - AIA-TEXT-A052-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -373,8 +416,12 @@ norms:
   - AIA-TEXT-A052-P006
   qualifier_spans: []
   conditions:
-  - the provider requests reassessment under Article 52(5)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider requests reassessment under Article 52(5)
+      basis_segment_ids:
+      - AIA-TEXT-A052-P006
+  exceptions: null
   mandatory_content:
   - objective reasons
   - detailed reasons
@@ -413,8 +460,13 @@ norms:
   - AIA-TEXT-A052-P006
   qualifier_spans: []
   conditions:
-  - at least six months have passed since the initial designation or the latest decision maintaining it
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: at least six months have passed since the initial designation or the latest decision maintaining
+        it
+      basis_segment_ids:
+      - AIA-TEXT-A052-P006
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Grants a timed procedural option rather than imposing a compliance action.
@@ -449,8 +501,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A052-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - keep the published list up to date
   - observe and protect intellectual-property rights in accordance with Union and national law

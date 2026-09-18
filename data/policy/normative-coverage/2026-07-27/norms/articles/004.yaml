@@ -23,12 +23,24 @@ norms:
   - AIA-TEXT-A004-P001
   qualifier_spans: []
   conditions:
-  - account for the covered persons' technical knowledge, experience, education, and training
-  - account for the context in which the AI systems are to be used
-  - consider the persons or groups on whom the AI systems are to be used
+    operator: all_of
+    operands:
+    - text: account for the covered persons' technical knowledge, experience, education, and training
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
+    - text: account for the context in which the AI systems are to be used
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
+    - text: consider the persons or groups on whom the AI systems are to be used
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
   exceptions:
-  - the obligation does not require a guaranteed specific AI-literacy level for any particular individual
-    among the covered staff or other persons
+    operator: any_of
+    operands:
+    - text: the obligation does not require a guaranteed specific AI-literacy level for any particular
+        individual among the covered staff or other persons
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -64,8 +76,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A004-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission or Member States.
@@ -98,8 +110,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A004-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -134,8 +146,12 @@ norms:
   - AIA-TEXT-A004-P003
   qualifier_spans: []
   conditions:
-  - take European competence frameworks into account
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: take European competence frameworks into account
+      basis_segment_ids:
+      - AIA-TEXT-A004-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Board.

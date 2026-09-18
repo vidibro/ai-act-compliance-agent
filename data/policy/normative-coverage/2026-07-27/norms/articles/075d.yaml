@@ -18,8 +18,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075D-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This grants procedural protection rather than imposing a product action.
@@ -51,8 +51,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075D-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -86,11 +86,21 @@ norms:
   - AIA-TEXT-A075D-P002
   qualifier_spans: []
   conditions:
-  - adoption of an Article 75c(1) decision is possible
+    operator: all_of
+    operands:
+    - text: adoption of an Article 75c(1) decision is possible
+      basis_segment_ids:
+      - AIA-TEXT-A075D-P002
   exceptions:
-  - confidential information and internal documents of the AI Office, the Board, competent market-surveillance
-    authorities or other Member-State public authorities
-  - correspondence between the AI Office and those authorities
+    operator: any_of
+    operands:
+    - text: confidential information and internal documents of the AI Office, the Board, competent market-surveillance
+        authorities or other Member-State public authorities
+      basis_segment_ids:
+      - AIA-TEXT-A075D-P002
+    - text: correspondence between the AI Office and those authorities
+      basis_segment_ids:
+      - AIA-TEXT-A075D-P002
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This is a procedural entitlement rather than a product action.
@@ -122,8 +132,12 @@ norms:
   - AIA-TEXT-A075D-P002
   qualifier_spans: []
   conditions:
-  - the parties disagree about negotiated-disclosure terms
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the parties disagree about negotiated-disclosure terms
+      basis_segment_ids:
+      - AIA-TEXT-A075D-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -155,8 +169,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075D-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -188,8 +202,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075D-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -222,8 +236,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075D-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -255,8 +269,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075D-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

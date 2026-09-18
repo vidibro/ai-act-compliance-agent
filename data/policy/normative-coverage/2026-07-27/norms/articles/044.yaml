@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A044-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -52,8 +52,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A044-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -89,9 +89,15 @@ norms:
   - AIA-TEXT-A044-P002
   qualifier_spans: []
   conditions:
-  - the provider requests the extension
-  - applicable conformity-assessment procedures are used for reassessment
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider requests the extension
+      basis_segment_ids:
+      - AIA-TEXT-A044-P002
+    - text: applicable conformity-assessment procedures are used for reassessment
+      basis_segment_ids:
+      - AIA-TEXT-A044-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -125,8 +131,12 @@ norms:
   - AIA-TEXT-A044-P002
   qualifier_spans: []
   conditions:
-  - the underlying certificate remains valid
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the underlying certificate remains valid
+      basis_segment_ids:
+      - AIA-TEXT-A044-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -163,10 +173,18 @@ norms:
   - AIA-TEXT-A044-P003
   qualifier_spans: []
   conditions:
-  - the notified body finds that the AI system no longer meets Chapter III Section 2 requirements
+    operator: all_of
+    operands:
+    - text: the notified body finds that the AI system no longer meets Chapter III Section 2 requirements
+      basis_segment_ids:
+      - AIA-TEXT-A044-P003
   exceptions:
-  - the provider ensures compliance through appropriate corrective action within an appropriate deadline
-    set by the notified body
+    operator: any_of
+    operands:
+    - text: the provider ensures compliance through appropriate corrective action within an appropriate
+        deadline set by the notified body
+      basis_segment_ids:
+      - AIA-TEXT-A044-P003
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -197,8 +215,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A044-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -230,8 +248,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A044-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

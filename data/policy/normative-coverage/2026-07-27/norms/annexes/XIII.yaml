@@ -23,8 +23,8 @@ norms:
   - AIA-TEXT-ANNEX-XIII-P006
   - AIA-TEXT-ANNEX-XIII-P007
   - AIA-TEXT-ANNEX-XIII-P008
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - number of model parameters
   - quality or size of the dataset, including token-based measurement
@@ -69,9 +69,13 @@ norms:
   - AIA-TEXT-ANNEX-XIII-P007
   qualifier_spans: []
   conditions:
-  - the model has been made available to at least 10,000 registered business users established in the
-    Union
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the model has been made available to at least 10,000 registered business users established
+        in the Union
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-XIII-P007
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This presumption informs Commission designation without creating an independent

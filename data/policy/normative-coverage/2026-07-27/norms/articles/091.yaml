@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A091-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -50,8 +50,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A091-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -86,10 +86,16 @@ norms:
   - AIA-TEXT-A091-P003
   qualifier_spans: []
   conditions:
-  - the scientific panel has made a duly substantiated request
-  - access to the information is necessary and proportionate for fulfilment of the scientific panel's
-    Article 68(2) tasks
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the scientific panel has made a duly substantiated request
+      basis_segment_ids:
+      - AIA-TEXT-A091-P003
+    - text: access to the information is necessary and proportionate for fulfilment of the scientific
+        panel's Article 68(2) tasks
+      basis_segment_ids:
+      - AIA-TEXT-A091-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -123,8 +129,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A091-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - legal basis and purpose
   - required information
@@ -163,8 +169,12 @@ norms:
   - AIA-TEXT-A091-P005
   qualifier_spans: []
   conditions:
-  - the Commission issued a request for information under Article 91(1) or Article 91(3)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission issued a request for information under Article 91(1) or Article 91(3)
+      basis_segment_ids:
+      - AIA-TEXT-A091-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -199,11 +209,17 @@ norms:
   - AIA-TEXT-A091-P005
   qualifier_spans: []
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the provider is a legal person, company, or firm
-    - the provider has no legal personality
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the provider is a legal person, company, or firm
+        basis_segment_ids:
+        - AIA-TEXT-A091-P005
+      - text: the provider has no legal personality
+        basis_segment_ids:
+        - AIA-TEXT-A091-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -234,8 +250,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A091-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -270,9 +286,15 @@ norms:
   - AIA-TEXT-A091-P005
   qualifier_spans: []
   conditions:
-  - a duly authorised lawyer supplied the information on the client's behalf
-  - the information supplied is incomplete, incorrect or misleading
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a duly authorised lawyer supplied the information on the client's behalf
+      basis_segment_ids:
+      - AIA-TEXT-A091-P005
+    - text: the information supplied is incomplete, incorrect or misleading
+      basis_segment_ids:
+      - AIA-TEXT-A091-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

@@ -22,11 +22,20 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A046-P003
   conditions:
-  - a duly justified request invokes public security, life or health, environmental, or key industrial
-    or infrastructure protection
-  - authorisation is limited to the period in which necessary conformity assessment is carried out
-  - the authority concludes that the system complies with Section 2
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a duly justified request invokes public security, life or health, environmental, or key industrial
+        or infrastructure protection
+      basis_segment_ids:
+      - AIA-TEXT-A046-P001
+    - text: authorisation is limited to the period in which necessary conformity assessment is carried
+        out
+      basis_segment_ids:
+      - AIA-TEXT-A046-P001
+    - text: the authority concludes that the system complies with Section 2
+      basis_segment_ids:
+      - AIA-TEXT-A046-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -58,8 +67,12 @@ norms:
   - AIA-TEXT-A046-P001
   qualifier_spans: []
   conditions:
-  - the system is operating under a paragraph 1 derogation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system is operating under a paragraph 1 derogation
+      basis_segment_ids:
+      - AIA-TEXT-A046-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -96,10 +109,16 @@ norms:
   - AIA-TEXT-A046-P002
   qualifier_spans: []
   conditions:
-  - a duly justified public-security urgency or specific substantial imminent threat to life or physical
-    safety exists
-  - paragraph 1 authorisation is requested during or after use without undue delay
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a duly justified public-security urgency or specific substantial imminent threat to life or
+        physical safety exists
+      basis_segment_ids:
+      - AIA-TEXT-A046-P002
+    - text: paragraph 1 authorisation is requested during or after use without undue delay
+      basis_segment_ids:
+      - AIA-TEXT-A046-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -134,8 +153,12 @@ norms:
   - AIA-TEXT-A046-P002
   qualifier_spans: []
   conditions:
-  - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
+      basis_segment_ids:
+      - AIA-TEXT-A046-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -169,8 +192,12 @@ norms:
   - AIA-TEXT-A046-P002
   qualifier_spans: []
   conditions:
-  - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
+      basis_segment_ids:
+      - AIA-TEXT-A046-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -203,9 +230,17 @@ norms:
   - AIA-TEXT-A046-P003
   qualifier_spans: []
   conditions:
-  - the market-surveillance authority has issued an authorisation under paragraph 1 or 2
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority has issued an authorisation under paragraph 1 or 2
+      basis_segment_ids:
+      - AIA-TEXT-A046-P003
   exceptions:
-  - sensitive operational data relating to law-enforcement activities
+    operator: any_of
+    operands:
+    - text: sensitive operational data relating to law-enforcement activities
+      basis_segment_ids:
+      - AIA-TEXT-A046-P003
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -238,8 +273,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Qualifies an institutional notification duty only.
@@ -276,9 +311,13 @@ norms:
   - AIA-TEXT-A046-P004
   qualifier_spans: []
   conditions:
-  - neither a Member State nor the Commission raises an objection within 15 calendar days after receiving
-    the paragraph 3 information
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: neither a Member State nor the Commission raises an objection within 15 calendar days after
+        receiving the paragraph 3 information
+      basis_segment_ids:
+      - AIA-TEXT-A046-P004
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines authorisation status rather than an operator compliance action.
@@ -311,14 +350,22 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - within 15 calendar days after the paragraph 3 notification, a Member State objects to an authorisation
-      issued by another Member State's market-surveillance authority
-    - the Commission considers the authorisation contrary to Union law
-    - the Commission considers unfounded the Member State's conclusion that the system complies with Section
-      2
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: within 15 calendar days after the paragraph 3 notification, a Member State objects to an
+          authorisation issued by another Member State's market-surveillance authority
+        basis_segment_ids:
+        - AIA-TEXT-A046-P005
+      - text: the Commission considers the authorisation contrary to Union law
+        basis_segment_ids:
+        - AIA-TEXT-A046-P005
+      - text: the Commission considers unfounded the Member State's conclusion that the system complies
+          with Section 2
+        basis_segment_ids:
+        - AIA-TEXT-A046-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -350,8 +397,12 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   conditions:
-  - the Commission conducts consultations under paragraph 5 about the authorisation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission conducts consultations under paragraph 5 about the authorisation
+      basis_segment_ids:
+      - AIA-TEXT-A046-P005
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Grants procedural participation rather than imposing a compliance action.
@@ -383,8 +434,12 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   conditions:
-  - the Commission has considered the consultation and the concerned operators' views
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission has considered the consultation and the concerned operators' views
+      basis_segment_ids:
+      - AIA-TEXT-A046-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -417,8 +472,12 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   conditions:
-  - the Commission has decided whether the authorisation is justified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission has decided whether the authorisation is justified
+      basis_segment_ids:
+      - AIA-TEXT-A046-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -451,8 +510,12 @@ norms:
   - AIA-TEXT-A046-P006
   qualifier_spans: []
   conditions:
-  - the Commission considers the authorisation unjustified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission considers the authorisation unjustified
+      basis_segment_ids:
+      - AIA-TEXT-A046-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -487,8 +550,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

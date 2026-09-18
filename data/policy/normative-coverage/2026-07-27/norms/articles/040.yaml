@@ -22,10 +22,16 @@ norms:
   - AIA-TEXT-A040-P001
   qualifier_spans: []
   conditions:
-  - the system or model conforms to a harmonised standard or part whose reference is published in the
-    Official Journal
-  - the harmonised standard covers the relevant requirement or obligation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system or model conforms to a harmonised standard or part whose reference is published
+        in the Official Journal
+      basis_segment_ids:
+      - AIA-TEXT-A040-P001
+    - text: the harmonised standard covers the relevant requirement or obligation
+      basis_segment_ids:
+      - AIA-TEXT-A040-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -60,8 +66,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -96,8 +102,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - reporting and documentation processes to improve AI-system resource performance, such as reducing
     high-risk AI-system energy and other resource consumption during its lifecycle
@@ -133,8 +139,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -171,8 +177,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - clear standards
   - consistency with relevant sector standards
@@ -208,8 +214,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -251,8 +257,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -290,8 +296,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - promote AI investment and innovation, including through legal certainty
   - promote Union-market competitiveness and growth

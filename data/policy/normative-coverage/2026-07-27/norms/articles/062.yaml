@@ -20,8 +20,8 @@ norms:
   - AIA-TEXT-A062-P003
   - AIA-TEXT-A062-P004
   - AIA-TEXT-A062-P005
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -57,9 +57,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A062-P001
   conditions:
-  - the SME or start-up has a registered office or a branch in the Union
-  - the SME or start-up fulfils the sandbox eligibility conditions and selection criteria
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the SME or start-up has a registered office or a branch in the Union
+      basis_segment_ids:
+      - AIA-TEXT-A062-P002
+    - text: the SME or start-up fulfils the sandbox eligibility conditions and selection criteria
+      basis_segment_ids:
+      - AIA-TEXT-A062-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -96,8 +102,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A062-P001
   conditions:
-  - the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
+      basis_segment_ids:
+      - AIA-TEXT-A062-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -131,8 +141,8 @@ norms:
   - AIA-TEXT-A062-P003
   qualifier_spans:
   - AIA-TEXT-A062-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -166,8 +176,8 @@ norms:
   - AIA-TEXT-A062-P004
   qualifier_spans:
   - AIA-TEXT-A062-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -202,8 +212,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A062-P001
   conditions:
-  - where appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A062-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -237,8 +251,8 @@ norms:
   - AIA-TEXT-A062-P005
   qualifier_spans:
   - AIA-TEXT-A062-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -272,8 +286,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A062-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - SME size
   - market size
@@ -313,8 +327,8 @@ norms:
   - AIA-TEXT-A062-P009
   - AIA-TEXT-A062-P010
   - AIA-TEXT-A062-P011
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -348,8 +362,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A062-P007
   conditions:
-  - the Board specifies the areas in its request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Board specifies the areas in its request
+      basis_segment_ids:
+      - AIA-TEXT-A062-P008
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -383,8 +401,8 @@ norms:
   - AIA-TEXT-A062-P009
   qualifier_spans:
   - AIA-TEXT-A062-P007
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -418,8 +436,8 @@ norms:
   - AIA-TEXT-A062-P010
   qualifier_spans:
   - AIA-TEXT-A062-P007
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -452,8 +470,8 @@ norms:
   - AIA-TEXT-A062-P011
   qualifier_spans:
   - AIA-TEXT-A062-P007
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

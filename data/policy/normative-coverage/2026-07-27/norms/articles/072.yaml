@@ -16,8 +16,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -58,9 +58,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P002
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - sensitive operational data of law-enforcement deployers
+    operator: any_of
+    operands:
+    - text: sensitive operational data of law-enforcement deployers
+      basis_segment_ids:
+      - AIA-TEXT-A072-P002
   mandatory_content:
   - active systematic lifetime data collection documentation and analysis
   - continuous Chapter III Section 2 compliance evaluation
@@ -96,8 +100,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -132,8 +136,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -166,8 +170,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -208,22 +212,38 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A072-P005
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - operator: all_of
+    - operator: any_of
       operands:
-      - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-        I
-      - a post-market monitoring system and plan are already established under that legislation
-    - operator: all_of
-      operands:
-      - the high-risk AI system is referred to in point 5 of Annex III
-      - the system is placed on the market or put into service by a financial institution
-      - the financial institution is subject to Union financial-services-law requirements concerning internal
-        governance, arrangements or processes
-  - the integration uses the paragraph 3 template as appropriate
-  - the result achieves an equivalent level of protection
-  exceptions: []
+      - operator: all_of
+        operands:
+        - text: the high-risk AI system is covered by Union harmonisation legislation listed in Section
+            A of Annex I
+          basis_segment_ids:
+          - AIA-TEXT-A072-P004
+        - text: a post-market monitoring system and plan are already established under that legislation
+          basis_segment_ids:
+          - AIA-TEXT-A072-P004
+      - operator: all_of
+        operands:
+        - text: the high-risk AI system is referred to in point 5 of Annex III
+          basis_segment_ids:
+          - AIA-TEXT-A072-P004
+        - text: the system is placed on the market or put into service by a financial institution
+          basis_segment_ids:
+          - AIA-TEXT-A072-P004
+        - text: the financial institution is subject to Union financial-services-law requirements concerning
+            internal governance, arrangements or processes
+          basis_segment_ids:
+          - AIA-TEXT-A072-P004
+    - text: the integration uses the paragraph 3 template as appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A072-P004
+    - text: the result achieves an equivalent level of protection
+      basis_segment_ids:
+      - AIA-TEXT-A072-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

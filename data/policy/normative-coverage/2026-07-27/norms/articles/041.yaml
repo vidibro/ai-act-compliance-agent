@@ -25,22 +25,39 @@ norms:
   - AIA-TEXT-A041-P006
   - AIA-TEXT-A041-P007
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the Commission has requested one or more European standardisation organisations, pursuant to Article
-      10(1) of Regulation (EU) No 1025/2012, to draft a harmonised standard for Chapter III Section 2
-      requirements or, as applicable, Chapter V Sections 2 and 3 obligations
-    - operator: any_of
+    - operator: all_of
       operands:
-      - the request has not been accepted by any of the European standardisation organisations
-      - the harmonised standards addressing the request are not delivered within the deadline set in accordance
-        with Article 10(1) of Regulation (EU) No 1025/2012
-      - the relevant harmonised standards insufficiently address fundamental rights concerns
-      - the harmonised standards do not comply with the request
-    - no reference to harmonised standards covering those requirements or obligations has been published
-      in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012
-    - no such reference is expected to be published within a reasonable period
-  exceptions: []
+      - text: the Commission has requested one or more European standardisation organisations, pursuant
+          to Article 10(1) of Regulation (EU) No 1025/2012, to draft a harmonised standard for Chapter
+          III Section 2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+        basis_segment_ids:
+        - AIA-TEXT-A041-P001
+      - operator: any_of
+        operands:
+        - text: the request has not been accepted by any of the European standardisation organisations
+          basis_segment_ids:
+          - AIA-TEXT-A041-P001
+        - text: the harmonised standards addressing the request are not delivered within the deadline
+            set in accordance with Article 10(1) of Regulation (EU) No 1025/2012
+          basis_segment_ids:
+          - AIA-TEXT-A041-P001
+        - text: the relevant harmonised standards insufficiently address fundamental rights concerns
+          basis_segment_ids:
+          - AIA-TEXT-A041-P001
+        - text: the harmonised standards do not comply with the request
+          basis_segment_ids:
+          - AIA-TEXT-A041-P001
+      - text: no reference to harmonised standards covering those requirements or obligations has been
+          published in the Official Journal of the European Union in accordance with Regulation (EU) No
+          1025/2012
+        basis_segment_ids:
+        - AIA-TEXT-A041-P001
+      - text: no such reference is expected to be published within a reasonable period
+        basis_segment_ids:
+        - AIA-TEXT-A041-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -73,8 +90,12 @@ norms:
   - AIA-TEXT-A041-P008
   qualifier_spans: []
   conditions:
-  - the Commission is drafting common specifications under paragraph 1
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission is drafting common specifications under paragraph 1
+      basis_segment_ids:
+      - AIA-TEXT-A041-P008
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -106,8 +127,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A041-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -141,8 +162,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A041-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -180,9 +201,15 @@ norms:
   - AIA-TEXT-A041-P011
   qualifier_spans: []
   conditions:
-  - the system or model conforms to the relevant common specification or part
-  - the common specification covers the relevant requirement or obligation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system or model conforms to the relevant common specification or part
+      basis_segment_ids:
+      - AIA-TEXT-A041-P011
+    - text: the common specification covers the relevant requirement or obligation
+      basis_segment_ids:
+      - AIA-TEXT-A041-P011
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -216,9 +243,13 @@ norms:
   - AIA-TEXT-A041-P012
   qualifier_spans: []
   conditions:
-  - a European standardisation organisation has adopted a harmonised standard and proposed publication
-    of its reference in the Official Journal of the European Union
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a European standardisation organisation has adopted a harmonised standard and proposed publication
+        of its reference in the Official Journal of the European Union
+      basis_segment_ids:
+      - AIA-TEXT-A041-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -253,8 +284,13 @@ norms:
   - AIA-TEXT-A041-P012
   qualifier_spans: []
   conditions:
-  - the reference to a harmonised standard is published in the Official Journal of the European Union
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the reference to a harmonised standard is published in the Official Journal of the European
+        Union
+      basis_segment_ids:
+      - AIA-TEXT-A041-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -291,8 +327,12 @@ norms:
   - AIA-TEXT-A041-P013
   qualifier_spans: []
   conditions:
-  - the provider does not comply with the paragraph 1 common specifications
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider does not comply with the paragraph 1 common specifications
+      basis_segment_ids:
+      - AIA-TEXT-A041-P013
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -327,9 +367,13 @@ norms:
   - AIA-TEXT-A041-P014
   qualifier_spans: []
   conditions:
-  - the Member State considers that a common specification does not entirely meet Chapter III Section
-    2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Member State considers that a common specification does not entirely meet Chapter III
+        Section 2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+      basis_segment_ids:
+      - AIA-TEXT-A041-P014
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -363,9 +407,13 @@ norms:
   - AIA-TEXT-A041-P014
   qualifier_spans: []
   conditions:
-  - a Member State has submitted detailed information that a common specification does not entirely meet
-    the applicable requirements or obligations
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a Member State has submitted detailed information that a common specification does not entirely
+        meet the applicable requirements or obligations
+      basis_segment_ids:
+      - AIA-TEXT-A041-P014
+  exceptions: null
   mandatory_content:
   - assess the Member State's information
   - if appropriate after that assessment, amend the implementing act establishing the common specification

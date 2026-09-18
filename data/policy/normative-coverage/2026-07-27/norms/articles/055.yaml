@@ -19,8 +19,8 @@ norms:
   - AIA-TEXT-A055-P002
   qualifier_spans:
   - AIA-TEXT-A055-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - conduct adversarial testing of the model with a view to identifying and mitigating systemic risks
   - document adversarial testing of the model with a view to identifying and mitigating systemic risks
@@ -60,8 +60,8 @@ norms:
   - AIA-TEXT-A055-P003
   qualifier_spans:
   - AIA-TEXT-A055-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -98,8 +98,8 @@ norms:
   - AIA-TEXT-A055-P004
   qualifier_spans:
   - AIA-TEXT-A055-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - relevant serious-incident information
   - possible corrective measures
@@ -137,8 +137,8 @@ norms:
   - AIA-TEXT-A055-P005
   qualifier_spans:
   - AIA-TEXT-A055-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -174,8 +174,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A055-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Provides an optional compliance route rather than an additional product action.
@@ -209,8 +209,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A055-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
@@ -246,8 +246,12 @@ norms:
   - AIA-TEXT-A055-P006
   qualifier_spans: []
   conditions:
-  - the provider neither adheres to an approved code nor complies with a covering harmonised standard
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider neither adheres to an approved code nor complies with a covering harmonised standard
+      basis_segment_ids:
+      - AIA-TEXT-A055-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -281,8 +285,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A055-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

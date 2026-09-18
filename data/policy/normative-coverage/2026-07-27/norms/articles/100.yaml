@@ -28,8 +28,8 @@ norms:
   - AIA-TEXT-A100-P006
   - AIA-TEXT-A100-P007
   - AIA-TEXT-A100-P008
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - infringement nature gravity duration consequences affected persons and damage
   - responsibility and technical organisational measures
@@ -70,9 +70,13 @@ norms:
   - AIA-TEXT-A100-P009
   qualifier_spans: []
   conditions:
-  - an in-scope Union institution, body, office, or agency does not comply with the Article 5 prohibition
-    of AI practices
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an in-scope Union institution, body, office, or agency does not comply with the Article 5
+        prohibition of AI practices
+      basis_segment_ids:
+      - AIA-TEXT-A100-P009
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
@@ -106,9 +110,13 @@ norms:
   - AIA-TEXT-A100-P010
   qualifier_spans: []
   conditions:
-  - an AI system of an in-scope Union institution, body, office, or agency does not comply with a requirement
-    or obligation under this Regulation other than Article 5
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an AI system of an in-scope Union institution, body, office, or agency does not comply with
+        a requirement or obligation under this Regulation other than Article 5
+      basis_segment_ids:
+      - AIA-TEXT-A100-P010
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
@@ -144,8 +152,12 @@ norms:
   - AIA-TEXT-A100-P011
   qualifier_spans: []
   conditions:
-  - the decision is taken pursuant to Article 100
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the decision is taken pursuant to Article 100
+      basis_segment_ids:
+      - AIA-TEXT-A100-P011
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -178,8 +190,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A100-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -211,8 +223,12 @@ norms:
   - AIA-TEXT-A100-P011
   qualifier_spans: []
   conditions:
-  - there are complainants
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: there are complainants
+      basis_segment_ids:
+      - AIA-TEXT-A100-P011
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -243,8 +259,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A100-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -278,10 +294,18 @@ norms:
   - AIA-TEXT-A100-P012
   qualifier_spans: []
   conditions:
-  - the person is a party concerned in Article 100 proceedings
+    operator: all_of
+    operands:
+    - text: the person is a party concerned in Article 100 proceedings
+      basis_segment_ids:
+      - AIA-TEXT-A100-P012
   exceptions:
-  - the legitimate interest of individuals or undertakings in the protection of their personal data or
-    business secrets
+    operator: any_of
+    operands:
+    - text: the legitimate interest of individuals or undertakings in the protection of their personal
+        data or business secrets
+      basis_segment_ids:
+      - AIA-TEXT-A100-P012
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -314,8 +338,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A100-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -349,8 +373,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A100-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -383,8 +407,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A100-P014
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

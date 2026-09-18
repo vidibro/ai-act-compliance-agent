@@ -17,8 +17,8 @@ norms:
   - AIA-TEXT-ANNEX-VII-P002
   qualifier_spans:
   - AIA-TEXT-ANNEX-VII-P004
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -53,8 +53,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - examination of the approved quality management system under point 3
   - surveillance of that system under point 5
@@ -88,8 +88,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -129,8 +129,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P011
   - AIA-TEXT-ANNEX-VII-P012
   conditions:
-  - the provider lodges an application for assessment of the quality management system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider lodges an application for assessment of the quality management system
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P006
+  exceptions: null
   mandatory_content:
   - the name and address of the provider
   - if the application is lodged by an authorised representative, also their name and address
@@ -176,8 +180,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P014
   qualifier_spans: []
   conditions:
-  - the notified body approved the quality management system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body approved the quality management system
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P014
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -213,9 +221,15 @@ norms:
   - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
   conditions:
-  - the notified body approved the quality management system
-  - the provider intends to change that system or the list of AI systems it covers
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body approved the quality management system
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P015
+    - text: the provider intends to change that system or the list of AI systems it covers
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P015
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -248,8 +262,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -280,8 +294,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - conclusions of the quality-management-system assessment
   - reasoned assessment decision
@@ -317,8 +331,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -350,8 +364,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - the conclusions of the examination of the changes
   - the reasoned assessment decision
@@ -389,9 +403,15 @@ norms:
   - AIA-TEXT-ANNEX-VII-P017
   qualifier_spans: []
   conditions:
-  - the provider intends to place the AI system on the market or put it into service
-  - the AI system is covered by the point 3 quality management system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider intends to place the AI system on the market or put it into service
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P017
+    - text: the AI system is covered by the point 3 quality management system
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P017
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -427,8 +447,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P020
   - AIA-TEXT-ANNEX-VII-P021
   conditions:
-  - the provider lodges the point 4.1 application for assessment of the technical documentation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider lodges the point 4.1 application for assessment of the technical documentation
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P018
+  exceptions: null
   mandatory_content:
   - provider name and address
   - written declaration that the same application has not been lodged with another notified body
@@ -462,8 +486,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P022
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -499,10 +523,19 @@ norms:
   - AIA-TEXT-ANNEX-VII-P022
   qualifier_spans: []
   conditions:
-  - access is relevant and limited to what is necessary for the notified body to fulfil its tasks
-  - any remote access is provided through an API or another relevant technical means or tool where appropriate
-  - applicable security safeguards are observed
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: access is relevant and limited to what is necessary for the notified body to fulfil its tasks
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P022
+    - text: any remote access is provided through an API or another relevant technical means or tool where
+        appropriate
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P022
+    - text: applicable security safeguards are observed
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P022
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -539,9 +572,15 @@ norms:
   - AIA-TEXT-ANNEX-VII-P023
   qualifier_spans: []
   conditions:
-  - the notified body requires the evidence or tests while examining the technical documentation
-  - the evidence or tests enable proper assessment of conformity with Chapter III Section 2
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body requires the evidence or tests while examining the technical documentation
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P023
+    - text: the evidence or tests enable proper assessment of conformity with Chapter III Section 2
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P023
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -576,8 +615,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P023
   qualifier_spans: []
   conditions:
-  - the notified body is not satisfied with the tests carried out by the provider
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body is not satisfied with the tests carried out by the provider
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P023
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -615,10 +658,18 @@ norms:
   - AIA-TEXT-ANNEX-VII-P024
   qualifier_spans: []
   conditions:
-  - access is necessary to assess compliance with Chapter III Section 2
-  - all other reasonable means of verifying conformity have been exhausted and proved insufficient
-  - the notified body makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: access is necessary to assess compliance with Chapter III Section 2
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P024
+    - text: all other reasonable means of verifying conformity have been exhausted and proved insufficient
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P024
+    - text: the notified body makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P024
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -655,8 +706,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   conditions:
-  - the AI system does not meet the requirement relating to the data used to train it
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system does not meet the requirement relating to the data used to train it
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P025
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -689,8 +744,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - conclusions of the technical-documentation assessment
   - reasoned assessment decision
@@ -725,8 +780,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   conditions:
-  - the AI system conforms with Chapter III Section 2
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system conforms with Chapter III Section 2
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P025
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -762,8 +821,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - provider name and address
   - conclusions of the examination
@@ -803,8 +862,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   conditions:
-  - the AI system does not conform with Chapter III Section 2
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system does not conform with Chapter III Section 2
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P025
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -838,8 +901,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   conditions:
-  - the AI system fails to meet the requirement relating to the data used to train it
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system fails to meet the requirement relating to the data used to train it
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P025
+  exceptions: null
   mandatory_content:
   - specific considerations on the quality of the training data
   - reasons for non-compliance
@@ -874,8 +941,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -910,9 +977,15 @@ norms:
   - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   conditions:
-  - a notified body issued a Union technical documentation assessment certificate for the AI system
-  - the change could affect the AI system's compliance with the requirements or its intended purpose
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a notified body issued a Union technical documentation assessment certificate for the AI system
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P026
+    - text: the change could affect the AI system's compliance with the requirements or its intended purpose
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P026
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -948,8 +1021,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -984,9 +1057,16 @@ norms:
   - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   conditions:
-  - the change can be addressed through a supplement to the Union technical-documentation assessment certificate
-  - issuance of the supplement requires approval of the change
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the change can be addressed through a supplement to the Union technical-documentation assessment
+        certificate
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P026
+    - text: issuance of the supplement requires approval of the change
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P026
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1021,8 +1101,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P029
   qualifier_spans: []
   conditions:
-  - the notified body carries out point 5 surveillance of the approved quality management system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body carries out point 5 surveillance of the approved quality management system
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P029
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1057,8 +1141,12 @@ norms:
   - AIA-TEXT-ANNEX-VII-P029
   qualifier_spans: []
   conditions:
-  - the notified body carries out point 5 surveillance of the approved quality management system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body carries out point 5 surveillance of the approved quality management system
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P029
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1091,8 +1179,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P030
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1125,9 +1213,15 @@ norms:
   - AIA-TEXT-ANNEX-VII-P030
   qualifier_spans: []
   conditions:
-  - the notified body is conducting a periodic surveillance audit
-  - the AI system has a Union technical-documentation assessment certificate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body is conducting a periodic surveillance audit
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P030
+    - text: the AI system has a Union technical-documentation assessment certificate
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VII-P030
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

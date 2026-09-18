@@ -20,13 +20,19 @@ norms:
   - AIA-TEXT-A090-P002
   - AIA-TEXT-A090-P003
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the scientific panel has reason to suspect that a general-purpose AI model poses a concrete identifiable
-      risk at Union level
-    - the scientific panel has reason to suspect that a general-purpose AI model meets the conditions
-      referred to in Article 51
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the scientific panel has reason to suspect that a general-purpose AI model poses a concrete
+          identifiable risk at Union level
+        basis_segment_ids:
+        - AIA-TEXT-A090-P001
+      - text: the scientific panel has reason to suspect that a general-purpose AI model meets the conditions
+          referred to in Article 51
+        basis_segment_ids:
+        - AIA-TEXT-A090-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -59,9 +65,15 @@ norms:
   - AIA-TEXT-A090-P004
   qualifier_spans: []
   conditions:
-  - the scientific panel has provided a qualified alert
-  - the Board has been informed
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the scientific panel has provided a qualified alert
+      basis_segment_ids:
+      - AIA-TEXT-A090-P004
+    - text: the Board has been informed
+      basis_segment_ids:
+      - AIA-TEXT-A090-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -92,8 +104,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A090-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -129,8 +141,12 @@ norms:
   - AIA-TEXT-A090-P007
   - AIA-TEXT-A090-P008
   conditions:
-  - the scientific panel provides a qualified alert
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the scientific panel provides a qualified alert
+      basis_segment_ids:
+      - AIA-TEXT-A090-P005
+  exceptions: null
   mandatory_content:
   - systemic-risk GPAI provider point of contact
   - relevant facts and reasons for the alert

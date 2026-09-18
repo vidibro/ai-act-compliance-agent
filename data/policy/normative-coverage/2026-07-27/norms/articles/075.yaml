@@ -23,14 +23,25 @@ norms:
   - AIA-TEXT-A075-P005
   - AIA-TEXT-A075-P006
   - AIA-TEXT-A075-P007
-  conditions: []
+  conditions: null
   exceptions:
-  - point (a) only, AI systems related to products covered by the Union harmonisation legislation listed
-    in Annex I
-  - point (a) only, AI systems referred to in point 2 of Annex III
-  - point (a) only, AI systems provided by law enforcement authorities, border management authorities
-    and financial institutions, insofar as those AI systems fall under Article 74(6)
-  - point (a) only, AI systems referred to in point 8 of Annex III as regards the administration of justice
+    operator: any_of
+    operands:
+    - text: point (a) only, AI systems related to products covered by the Union harmonisation legislation
+        listed in Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A075-P001
+    - text: point (a) only, AI systems referred to in point 2 of Annex III
+      basis_segment_ids:
+      - AIA-TEXT-A075-P001
+    - text: point (a) only, AI systems provided by law enforcement authorities, border management authorities
+        and financial institutions, insofar as those AI systems fall under Article 74(6)
+      basis_segment_ids:
+      - AIA-TEXT-A075-P001
+    - text: point (a) only, AI systems referred to in point 8 of Annex III as regards the administration
+        of justice
+      basis_segment_ids:
+      - AIA-TEXT-A075-P001
   mandatory_content:
   - AI systems based on general-purpose AI models where the model and the system are developed by the
     same provider, or by providers forming part of the same undertaking as that provider, except for AI
@@ -73,8 +84,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -109,8 +120,13 @@ norms:
   - AIA-TEXT-A075-P009
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is subject to the competence of the AI Office pursuant to Article
+        75(1)
+      basis_segment_ids:
+      - AIA-TEXT-A075-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -145,8 +161,12 @@ norms:
   - AIA-TEXT-A075-P009
   qualifier_spans: []
   conditions:
-  - a serious incident is reported to the AI Office under Article 75(1a)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a serious incident is reported to the AI Office under Article 75(1a)
+      basis_segment_ids:
+      - AIA-TEXT-A075-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -181,8 +201,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -217,8 +237,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -252,8 +272,12 @@ norms:
   - AIA-TEXT-A075-P010
   qualifier_spans: []
   conditions:
-  - the authorities assist the AI Office under Article 75(1b)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authorities assist the AI Office under Article 75(1b)
+      basis_segment_ids:
+      - AIA-TEXT-A075-P010
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -287,9 +311,13 @@ norms:
   - AIA-TEXT-A075-P011
   qualifier_spans: []
   conditions:
-  - the AI Office takes investigatory or enforcement action in a Member State involving access to a public
-    authority's data or AI system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office takes investigatory or enforcement action in a Member State involving access
+        to a public authority's data or AI system
+      basis_segment_ids:
+      - AIA-TEXT-A075-P011
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -325,8 +353,13 @@ norms:
   - AIA-TEXT-A075-P012
   qualifier_spans: []
   conditions:
-  - before the AI Office takes a national-market prohibition, restriction, withdrawal or recall decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before the AI Office takes a national-market prohibition, restriction, withdrawal or recall
+        decision
+      basis_segment_ids:
+      - AIA-TEXT-A075-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -358,8 +391,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -393,9 +426,13 @@ norms:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   conditions:
-  - an Article 75(1) AI system is classified as high-risk and subject to third-party conformity assessment
-    under Article 43 before market placement or putting into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an Article 75(1) AI system is classified as high-risk and subject to third-party conformity
+        assessment under Article 43 before market placement or putting into service
+      basis_segment_ids:
+      - AIA-TEXT-A075-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -430,8 +467,12 @@ norms:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   conditions:
-  - the AI Office performs paragraph 1e conformity assessments or tests
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office performs paragraph 1e conformity assessments or tests
+      basis_segment_ids:
+      - AIA-TEXT-A075-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -462,8 +503,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -495,8 +536,12 @@ norms:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   conditions:
-  - the Commission entrusts paragraph 1e tests or assessments to the notified body
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission entrusts paragraph 1e tests or assessments to the notified body
+      basis_segment_ids:
+      - AIA-TEXT-A075-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -529,8 +574,12 @@ norms:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   conditions:
-  - the notified body does not adequately perform the paragraph 1e tasks delegated to it
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body does not adequately perform the paragraph 1e tasks delegated to it
+      basis_segment_ids:
+      - AIA-TEXT-A075-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -563,8 +612,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P014
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -598,8 +647,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P014
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -634,9 +683,13 @@ norms:
   - AIA-TEXT-A075-P015
   qualifier_spans: []
   conditions:
-  - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
-    deployers for at least one high-risk purpose are non-compliant
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authority has sufficient reason to consider that general-purpose AI systems usable directly
+        by deployers for at least one high-risk purpose are non-compliant
+      basis_segment_ids:
+      - AIA-TEXT-A075-P015
+  exceptions: null
   mandatory_content:
   - cooperate with the AI Office on compliance evaluations
   - inform the Board and other market surveillance authorities accordingly
@@ -682,9 +735,13 @@ norms:
   - AIA-TEXT-A075-P018
   - AIA-TEXT-A075-P019
   conditions:
-  - the market-surveillance authority has well-founded and sufficient reasons to suspect that a provider
-    or deployer of an Article 75(1) system infringed the Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority has well-founded and sufficient reasons to suspect that
+        a provider or deployer of an Article 75(1) system infringed the Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A075-P016
+  exceptions: null
   mandatory_content:
   - provider or deployer name
   - relevant facts allegedly infringed provisions reasons and any negative effects
@@ -718,8 +775,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -752,8 +809,12 @@ norms:
   - AIA-TEXT-A075-P020
   qualifier_spans: []
   conditions:
-  - the market-surveillance authority has made an Article 75(2a) assessment request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority has made an Article 75(2a) assessment request
+      basis_segment_ids:
+      - AIA-TEXT-A075-P020
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -788,8 +849,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P021
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - the intention to exercise the Article 75a powers, or the reasons for not exercising them
   product_scope: outside_supported_actor
@@ -825,8 +886,12 @@ norms:
   - AIA-TEXT-A075-P021
   qualifier_spans: []
   conditions:
-  - the AI Office decides to exercise its powers in accordance with Article 75a
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office decides to exercise its powers in accordance with Article 75a
+      basis_segment_ids:
+      - AIA-TEXT-A075-P021
+  exceptions: null
   mandatory_content:
   - major developments in the proceedings
   - the outcome of the proceedings
@@ -865,9 +930,13 @@ norms:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
   conditions:
-  - the market-surveillance authority cannot conclude its high-risk-system investigation because it cannot
-    access general-purpose-model information despite all appropriate efforts to obtain it
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority cannot conclude its high-risk-system investigation because
+        it cannot access general-purpose-model information despite all appropriate efforts to obtain it
+      basis_segment_ids:
+      - AIA-TEXT-A075-P022
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -899,9 +968,13 @@ norms:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
   conditions:
-  - the market-surveillance authority submits the reasoned information-access request described in Article
-    75(3)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority submits the reasoned information-access request described
+        in Article 75(3)
+      basis_segment_ids:
+      - AIA-TEXT-A075-P022
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -937,9 +1010,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A075-P022
   conditions:
-  - the market-surveillance authority submits the reasoned information-access request described in Article
-    75(3)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority submits the reasoned information-access request described
+        in Article 75(3)
+      basis_segment_ids:
+      - AIA-TEXT-A075-P022
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -972,8 +1049,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1007,8 +1084,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

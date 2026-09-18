@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - establish the risk-management system
   - implement the risk-management system
@@ -58,8 +58,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - regular systematic review
   - regular updating
@@ -98,8 +98,8 @@ norms:
   - AIA-TEXT-A009-P003
   qualifier_spans:
   - AIA-TEXT-A009-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -135,8 +135,8 @@ norms:
   - AIA-TEXT-A009-P004
   qualifier_spans:
   - AIA-TEXT-A009-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -171,8 +171,8 @@ norms:
   - AIA-TEXT-A009-P005
   qualifier_spans:
   - AIA-TEXT-A009-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -207,8 +207,8 @@ norms:
   - AIA-TEXT-A009-P006
   qualifier_spans:
   - AIA-TEXT-A009-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -246,8 +246,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -285,8 +285,12 @@ norms:
   - AIA-TEXT-A009-P008
   qualifier_spans: []
   conditions:
-  - minimise risks effectively while appropriately balancing implementation of the combined requirements
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: minimise risks effectively while appropriately balancing implementation of the combined requirements
+      basis_segment_ids:
+      - AIA-TEXT-A009-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -320,8 +324,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - acceptable relevant residual risk for each hazard
   - acceptable overall residual risk for the high-risk AI system
@@ -359,8 +363,8 @@ norms:
   - AIA-TEXT-A009-P011
   qualifier_spans:
   - AIA-TEXT-A009-P010
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -396,8 +400,8 @@ norms:
   - AIA-TEXT-A009-P012
   qualifier_spans:
   - AIA-TEXT-A009-P010
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -431,8 +435,8 @@ norms:
   - AIA-TEXT-A009-P013
   qualifier_spans:
   - AIA-TEXT-A009-P010
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -467,8 +471,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A009-P010
   conditions:
-  - deployer training is appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: deployer training is appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A009-P013
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -503,8 +511,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P014
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -538,8 +546,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -574,8 +582,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - consistent performance for the intended purpose
   - compliance with the Section 2 requirements
@@ -612,8 +620,12 @@ norms:
   - AIA-TEXT-A009-P016
   qualifier_spans: []
   conditions:
-  - real-world testing complies with Article 60
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: real-world testing complies with Article 60
+      basis_segment_ids:
+      - AIA-TEXT-A009-P016
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -649,8 +661,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P017
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -684,8 +696,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P017
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -721,8 +733,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A009-P018
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -760,9 +772,13 @@ norms:
   - AIA-TEXT-A009-P019
   qualifier_spans: []
   conditions:
-  - the provider is already subject to internal risk-management-process requirements under other relevant
-    Union law
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider is already subject to internal risk-management-process requirements under other
+        relevant Union law
+      basis_segment_ids:
+      - AIA-TEXT-A009-P019
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

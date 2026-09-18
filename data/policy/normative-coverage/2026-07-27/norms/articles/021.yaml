@@ -22,8 +22,12 @@ norms:
   - AIA-TEXT-A021-P001
   qualifier_spans: []
   conditions:
-  - a competent authority makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A021-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -60,9 +64,15 @@ norms:
   - AIA-TEXT-A021-P002
   qualifier_spans: []
   conditions:
-  - a competent authority makes a reasoned request
-  - "the applicable automatically generated logs are under the provider\u2019s control"
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A021-P002
+    - text: "the applicable automatically generated logs are under the provider\u2019s control"
+      basis_segment_ids:
+      - AIA-TEXT-A021-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -96,8 +106,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A021-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

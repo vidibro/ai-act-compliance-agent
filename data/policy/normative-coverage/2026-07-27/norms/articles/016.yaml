@@ -17,8 +17,8 @@ norms:
   - AIA-TEXT-A016-P002
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -69,8 +69,8 @@ norms:
   - AIA-TEXT-A016-P003
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -103,8 +103,8 @@ norms:
   - AIA-TEXT-A016-P004
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -137,8 +137,8 @@ norms:
   - AIA-TEXT-A016-P005
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -174,8 +174,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A016-P001
   conditions:
-  - "the automatically generated logs are under the provider\u2019s control"
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: "the automatically generated logs are under the provider\u2019s control"
+      basis_segment_ids:
+      - AIA-TEXT-A016-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -210,8 +214,8 @@ norms:
   - AIA-TEXT-A016-P007
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -251,8 +255,8 @@ norms:
   - AIA-TEXT-A016-P008
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -290,8 +294,8 @@ norms:
   - AIA-TEXT-A016-P009
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -325,8 +329,8 @@ norms:
   - AIA-TEXT-A016-P010
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -359,8 +363,8 @@ norms:
   - AIA-TEXT-A016-P011
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -397,8 +401,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A016-P001
   conditions:
-  - a national competent authority makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a national competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A016-P012
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -434,8 +442,8 @@ norms:
   - AIA-TEXT-A016-P013
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

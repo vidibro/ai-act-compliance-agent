@@ -18,8 +18,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P1
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -53,8 +53,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P2
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - necessary competence
   - necessary training
@@ -94,8 +94,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P3
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - other deployer obligations under Union or national law remain unaffected
   - the deployer's freedom to organise resources and activities for implementing provider-indicated human
@@ -135,8 +135,12 @@ norms:
   - AIA-TEXT-A026-P4
   qualifier_spans: []
   conditions:
-  - the deployer exercises control over the input data
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer exercises control over the input data
+      basis_segment_ids:
+      - AIA-TEXT-A026-P4
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -171,8 +175,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P5
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - monitor operation on the basis of the instructions for use
   - where relevant, inform providers in accordance with Article 72
@@ -213,9 +217,13 @@ norms:
   - AIA-TEXT-A026-P5
   qualifier_spans: []
   conditions:
-  - the deployer has reason to consider that use in accordance with the instructions may result in the
-    AI system presenting a risk within the meaning of Article 79(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer has reason to consider that use in accordance with the instructions may result
+        in the AI system presenting a risk within the meaning of Article 79(1)
+      basis_segment_ids:
+      - AIA-TEXT-A026-P5
+  exceptions: null
   mandatory_content:
   - without undue delay inform the provider or distributor and relevant market-surveillance authority
   - suspend use of the system
@@ -254,8 +262,12 @@ norms:
   - AIA-TEXT-A026-P5
   qualifier_spans: []
   conditions:
-  - the deployer has identified a serious incident
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer has identified a serious incident
+      basis_segment_ids:
+      - AIA-TEXT-A026-P5
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -290,8 +302,12 @@ norms:
   - AIA-TEXT-A026-P5
   qualifier_spans: []
   conditions:
-  - the deployer is not able to reach the provider
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is not able to reach the provider
+      basis_segment_ids:
+      - AIA-TEXT-A026-P5
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -327,8 +343,12 @@ norms:
   - AIA-TEXT-A026-P5
   qualifier_spans: []
   conditions:
-  - the deployer is a law enforcement authority
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is a law enforcement authority
+      basis_segment_ids:
+      - AIA-TEXT-A026-P5
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -366,9 +386,13 @@ norms:
   - AIA-TEXT-A026-P5
   qualifier_spans: []
   conditions:
-  - the deployer is a financial institution subject to requirements regarding its internal governance,
-    arrangements or processes under Union financial services law
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is a financial institution subject to requirements regarding its internal governance,
+        arrangements or processes under Union financial services law
+      basis_segment_ids:
+      - AIA-TEXT-A026-P5
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -406,9 +430,18 @@ norms:
   - AIA-TEXT-A026-P6
   qualifier_spans: []
   conditions:
-  - the automatically generated logs are under the deployer's control
+    operator: all_of
+    operands:
+    - text: the automatically generated logs are under the deployer's control
+      basis_segment_ids:
+      - AIA-TEXT-A026-P6
   exceptions:
-  - applicable Union or national law, particularly personal-data law, provides a different retention period
+    operator: any_of
+    operands:
+    - text: applicable Union or national law, particularly personal-data law, provides a different retention
+        period
+      basis_segment_ids:
+      - AIA-TEXT-A026-P6
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -445,9 +478,13 @@ norms:
   - AIA-TEXT-A026-P6
   qualifier_spans: []
   conditions:
-  - the deployer is a financial institution subject to internal-governance requirements under Union financial-services
-    law
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is a financial institution subject to internal-governance requirements under
+        Union financial-services law
+      basis_segment_ids:
+      - AIA-TEXT-A026-P6
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -484,8 +521,12 @@ norms:
   - AIA-TEXT-A026-P7
   qualifier_spans: []
   conditions:
-  - the deployer is an employer putting the high-risk system into service or using it at the workplace
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is an employer putting the high-risk system into service or using it at the workplace
+      basis_segment_ids:
+      - AIA-TEXT-A026-P7
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -521,8 +562,12 @@ norms:
   - AIA-TEXT-A026-P7
   qualifier_spans: []
   conditions:
-  - Union or national worker-information rules and practices apply
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: Union or national worker-information rules and practices apply
+      basis_segment_ids:
+      - AIA-TEXT-A026-P7
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -557,8 +602,12 @@ norms:
   - AIA-TEXT-A026-P8
   qualifier_spans: []
   conditions:
-  - the deployer is a public authority or a Union institution, body, office, or agency
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is a public authority or a Union institution, body, office, or agency
+      basis_segment_ids:
+      - AIA-TEXT-A026-P8
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -593,9 +642,15 @@ norms:
   - AIA-TEXT-A026-P8
   qualifier_spans: []
   conditions:
-  - the deployer satisfies the Article 26(8) public-authority or Union-body condition
-  - the envisaged system is not registered in the Article 71 EU database
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer satisfies the Article 26(8) public-authority or Union-body condition
+      basis_segment_ids:
+      - AIA-TEXT-A026-P8
+    - text: the envisaged system is not registered in the Article 71 EU database
+      basis_segment_ids:
+      - AIA-TEXT-A026-P8
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -629,9 +684,15 @@ norms:
   - AIA-TEXT-A026-P8
   qualifier_spans: []
   conditions:
-  - the deployer satisfies the Article 26(8) public-authority or Union-body condition
-  - the envisaged system is not registered in the Article 71 EU database
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer satisfies the Article 26(8) public-authority or Union-body condition
+      basis_segment_ids:
+      - AIA-TEXT-A026-P8
+    - text: the envisaged system is not registered in the Article 71 EU database
+      basis_segment_ids:
+      - AIA-TEXT-A026-P8
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -667,8 +728,12 @@ norms:
   - AIA-TEXT-A026-P9
   qualifier_spans: []
   conditions:
-  - the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
+      basis_segment_ids:
+      - AIA-TEXT-A026-P9
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -702,8 +767,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -741,11 +806,19 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the system is used for post-remote biometric identification in an investigation targeting a person
-    suspected or convicted of a criminal offence
+    operator: all_of
+    operands:
+    - text: the system is used for post-remote biometric identification in an investigation targeting
+        a person suspected or convicted of a criminal offence
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
   exceptions:
-  - initial identification of a potential suspect based on objective and verifiable facts directly linked
-    to the offence
+    operator: any_of
+    operands:
+    - text: initial identification of a potential suspect based on objective and verifiable facts directly
+        linked to the offence
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -781,9 +854,13 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the system is used for post-remote biometric identification in an investigation targeting a person
-    suspected or convicted of a criminal offence
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system is used for post-remote biometric identification in an investigation targeting
+        a person suspected or convicted of a criminal offence
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -819,8 +896,12 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the requested authorisation is rejected
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the requested authorisation is rejected
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -855,8 +936,12 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the requested authorisation is rejected
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the requested authorisation is rejected
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -894,9 +979,13 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
-    purposes
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
+        purposes
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -934,9 +1023,13 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
-    purposes
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
+        purposes
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -970,8 +1063,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1010,10 +1103,18 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
-    purposes
+    operator: all_of
+    operands:
+    - text: the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
+        purposes
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
   exceptions:
-  - sensitive operational data related to law enforcement must not be disclosed
+    operator: any_of
+    operands:
+    - text: sensitive operational data related to law enforcement must not be disclosed
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
   mandatory_content:
   - document each use in the relevant police file regardless of purpose or deployer
   - make the record available to either specified authority upon request
@@ -1050,8 +1151,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1086,9 +1187,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - sensitive operational data related to law enforcement must not be disclosed
+    operator: any_of
+    operands:
+    - text: sensitive operational data related to law enforcement must not be disclosed
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
   mandatory_content:
   - report to the relevant market-surveillance authority
   - report to the national data-protection authority
@@ -1124,10 +1229,16 @@ norms:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
-    purposes
-  - annual reports are submitted under Article 26(10)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
+        purposes
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
+    - text: annual reports are submitted under Article 26(10)
+      basis_segment_ids:
+      - AIA-TEXT-A026-P10
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1161,8 +1272,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P10
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1197,9 +1308,17 @@ norms:
   - AIA-TEXT-A026-P11
   qualifier_spans: []
   conditions:
-  - the Annex III high-risk system makes or assists decisions related to natural persons
+    operator: all_of
+    operands:
+    - text: the Annex III high-risk system makes or assists decisions related to natural persons
+      basis_segment_ids:
+      - AIA-TEXT-A026-P11
   exceptions:
-  - law-enforcement use follows Article 13 of Directive (EU) 2016/680
+    operator: any_of
+    operands:
+    - text: law-enforcement use follows Article 13 of Directive (EU) 2016/680
+      basis_segment_ids:
+      - AIA-TEXT-A026-P11
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1235,8 +1354,12 @@ norms:
   - AIA-TEXT-A026-P11
   qualifier_spans: []
   conditions:
-  - the high-risk system is used for law-enforcement purposes
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk system is used for law-enforcement purposes
+      basis_segment_ids:
+      - AIA-TEXT-A026-P11
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1270,8 +1393,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A026-P12
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

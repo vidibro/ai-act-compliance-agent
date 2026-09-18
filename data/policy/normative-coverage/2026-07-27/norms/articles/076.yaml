@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A076-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -52,8 +52,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A076-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -87,9 +87,13 @@ norms:
   - AIA-TEXT-A076-P003
   qualifier_spans: []
   conditions:
-  - real-world testing is supervised by the market-surveillance authority within an Article 58 AI regulatory
-    sandbox
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: real-world testing is supervised by the market-surveillance authority within an Article 58
+        AI regulatory sandbox
+      basis_segment_ids:
+      - AIA-TEXT-A076-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -121,8 +125,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A076-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -157,8 +161,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A076-P005
   - AIA-TEXT-A076-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - suspend or terminate testing
   - require providers and deployers including prospective ones to modify any aspect of testing
@@ -196,8 +200,12 @@ norms:
   - AIA-TEXT-A076-P007
   qualifier_spans: []
   conditions:
-  - the authority has taken an Article 76(3) decision or issued an Article 60(4)(b) objection
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authority has taken an Article 76(3) decision or issued an Article 60(4)(b) objection
+      basis_segment_ids:
+      - AIA-TEXT-A076-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -232,8 +240,12 @@ norms:
   - AIA-TEXT-A076-P008
   qualifier_spans: []
   conditions:
-  - where applicable, the authority has taken an Article 76(3) decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: where applicable, the authority has taken an Article 76(3) decision
+      basis_segment_ids:
+      - AIA-TEXT-A076-P008
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

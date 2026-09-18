@@ -6,34 +6,44 @@ import pytest
 from pydantic import ValidationError
 
 from aiact.norm_loader import load_normative_coverage
-from aiact.schemas.norm import ConditionGroup, NormRelationKind
+from aiact.schemas.norm import LogicalExpression, NormRelationKind
+
+LEAF = {"text": "shared premise", "basis_segment_ids": ["AIA-TEXT-A003-P001"]}
 
 
 @pytest.mark.parametrize(
     "value",
     [
-        {"operator": "xor", "operands": ["a", "b"]},
+        {"operator": "xor", "operands": [LEAF]},
         {"operator": "all_of", "operands": []},
-        {"operator": "any_of", "operands": ["a"]},
-        {"operator": "all_of", "operands": ["a", " "]},
-        {"operator": "all_of", "operands": ["a", "b"], "typo": True},
-        {"operator": "any_of", "operands": ["a", {"operator": "all_of", "operands": []}]},
+        {
+            "operator": "all_of",
+            "operands": [{"text": " ", "basis_segment_ids": ["AIA-TEXT-A003-P001"]}],
+        },
+        {"operator": "all_of", "operands": [LEAF], "typo": True},
+        {"operator": "any_of", "operands": [LEAF, {"operator": "all_of", "operands": []}]},
     ],
 )
 def test_condition_groups_reject_ambiguous_or_empty_structure(value):
     with pytest.raises(ValidationError):
-        ConditionGroup.model_validate(value)
+        LogicalExpression.model_validate(value)
 
 
 def test_nested_condition_groups_round_trip():
     value = {
         "operator": "all_of",
         "operands": [
-            "shared premise",
-            {"operator": "any_of", "operands": ["alternative a", "alternative b"]},
+            LEAF,
+            {
+                "operator": "any_of",
+                "operands": [
+                    {"text": "alternative a", "basis_segment_ids": ["AIA-TEXT-A003-P001"]},
+                    {"text": "alternative b", "basis_segment_ids": ["AIA-TEXT-A003-P002"]},
+                ],
+            },
         ],
     }
-    assert ConditionGroup.model_validate(value).model_dump(mode="json") == value
+    assert LogicalExpression.model_validate(value).model_dump(mode="json") == value
 
 
 @pytest.fixture(scope="module")
@@ -56,10 +66,10 @@ def test_article_three_preserves_both_routes_and_cross_border_threshold(correcte
         if n.norm_id.endswith("A003-D061-WIDESPREAD-INFRINGEMENT")
     )
     root = norm.conditions[0]
-    assert isinstance(root, ConditionGroup) and root.operator == "all_of"
+    assert isinstance(root, LogicalExpression) and root.operator == "all_of"
     assert "contrary to Union law" in root.operands[0]
     routes = root.operands[1]
-    assert isinstance(routes, ConditionGroup) and routes.operator == "any_of"
+    assert isinstance(routes, LogicalExpression) and routes.operator == "any_of"
     assert len(routes.operands) == 2
     connections, concurrent = routes.operands
     assert connections.operator == "any_of" and len(connections.operands) == 3
@@ -115,7 +125,7 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
     assert len(norms) == 18
     assert norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions == ["disclosure required by law"]
     staff = norms["P7-STAFF-PROFESSIONAL-SECRECY"]
-    assert staff.actors[0].actor_ref == "notified_body_staff"
+    assert staff.actors[0].actor_ref == "conformity_assessment_body_personnel"
     assert "notifying authorities of the Member State" in staff.exceptions[0]
     assert "disclosure required by law" not in staff.exceptions
     for suffix in (

@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -47,8 +47,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -79,8 +79,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -111,8 +111,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -145,8 +145,12 @@ norms:
   - AIA-TEXT-A065-P002
   qualifier_spans: []
   conditions:
-  - the issues discussed are relevant to the invited participant
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the issues discussed are relevant to the invited participant
+      basis_segment_ids:
+      - AIA-TEXT-A065-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -178,8 +182,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -215,8 +219,8 @@ norms:
   - AIA-TEXT-A065-P005
   - AIA-TEXT-A065-P006
   - AIA-TEXT-A065-P007
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - competences and powers to contribute actively to Article 66 tasks
   - single Board contact point and where appropriate stakeholder contact point
@@ -255,8 +259,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - Chair selection process
   - Chair mandate duration
@@ -294,8 +298,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - market-surveillance cooperation and exchange
   - notifying-authority cooperation and exchange on notified bodies
@@ -328,8 +332,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -362,8 +366,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -395,8 +399,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -427,8 +431,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -459,8 +463,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -491,8 +495,12 @@ norms:
   - AIA-TEXT-A065-P013
   qualifier_spans: []
   conditions:
-  - the Chair requests the meeting
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Chair requests the meeting
+      basis_segment_ids:
+      - AIA-TEXT-A065-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -524,8 +532,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - draw up the documentation before market placement or putting into service
   - keep the documentation up to date
@@ -57,8 +57,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - demonstrate compliance with Chapter III Section 2
   - provide clear and comprehensive information needed to assess compliance
@@ -93,8 +93,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -129,8 +129,12 @@ norms:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
   conditions:
-  - provider is an SME, start-up, or SMC
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: provider is an SME, start-up, or SMC
+      basis_segment_ids:
+      - AIA-TEXT-A011-P1
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -164,8 +168,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -199,8 +203,12 @@ norms:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
   conditions:
-  - provider is an SME, start-up, or SMC and opts for simplified documentation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: provider is an SME, start-up, or SMC and opts for simplified documentation
+      basis_segment_ids:
+      - AIA-TEXT-A011-P1
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -232,8 +240,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -270,9 +278,13 @@ norms:
   - AIA-TEXT-A011-P2
   qualifier_spans: []
   conditions:
-  - the high-risk AI system relates to a product covered by Union harmonisation legislation listed in
-    Annex I, Section A
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system relates to a product covered by Union harmonisation legislation listed
+        in Annex I, Section A
+      basis_segment_ids:
+      - AIA-TEXT-A011-P2
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -309,9 +321,13 @@ norms:
   - AIA-TEXT-A011-P3
   qualifier_spans: []
   conditions:
-  - an Annex IV amendment is necessary in light of technical progress to ensure the technical documentation
-    provides all information needed to assess Section 2 compliance
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an Annex IV amendment is necessary in light of technical progress to ensure the technical
+        documentation provides all information needed to assess Section 2 compliance
+      basis_segment_ids:
+      - AIA-TEXT-A011-P3
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

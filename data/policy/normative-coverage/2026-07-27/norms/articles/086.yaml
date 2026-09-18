@@ -22,12 +22,26 @@ norms:
   - AIA-TEXT-A086-P001
   qualifier_spans: []
   conditions:
-  - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
-  - the decision produces legal effects on the affected person or similarly significantly affects them
-  - the affected person considers the decision to have an adverse impact on their health, safety or fundamental
-    rights
+    operator: all_of
+    operands:
+    - text: the deployer took a decision on the basis of output from a high-risk AI system listed in Annex
+        III
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
+    - text: the decision produces legal effects on the affected person or similarly significantly affects
+        them
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
+    - text: the affected person considers the decision to have an adverse impact on their health, safety
+        or fundamental rights
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
   exceptions:
-  - the system is listed under point 2 of Annex III
+    operator: any_of
+    operands:
+    - text: the system is listed under point 2 of Annex III
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -61,12 +75,26 @@ norms:
   - AIA-TEXT-A086-P001
   qualifier_spans: []
   conditions:
-  - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
-  - the decision produces legal effects on the affected person or similarly significantly affects them
-  - the affected person considers the decision to have an adverse impact on their health, safety or fundamental
-    rights
+    operator: all_of
+    operands:
+    - text: the deployer took a decision on the basis of output from a high-risk AI system listed in Annex
+        III
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
+    - text: the decision produces legal effects on the affected person or similarly significantly affects
+        them
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
+    - text: the affected person considers the decision to have an adverse impact on their health, safety
+        or fundamental rights
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
   exceptions:
-  - the system is listed under point 2 of Annex III
+    operator: any_of
+    operands:
+    - text: the system is listed under point 2 of Annex III
+      basis_segment_ids:
+      - AIA-TEXT-A086-P001
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This records the person's correlative entitlement; the deployer action is mapped
@@ -102,8 +130,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A086-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This qualifies the mapped explanation duty rather than creating another action.
@@ -136,8 +164,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A086-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This defines the right's legal boundary without creating another action.

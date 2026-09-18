@@ -19,8 +19,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - Article 6(2) high-risk AI systems registered in accordance with Articles 49 and 60
   - Article 6(3) systems not considered high-risk, registered in accordance with Article 6(4) and Article
@@ -56,8 +56,12 @@ norms:
   - AIA-TEXT-A071-P001
   qualifier_spans: []
   conditions:
-  - the Commission is setting the functional specifications of the database
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission is setting the functional specifications of the database
+      basis_segment_ids:
+      - AIA-TEXT-A071-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -90,8 +94,12 @@ norms:
   - AIA-TEXT-A071-P001
   qualifier_spans: []
   conditions:
-  - the Commission is updating the functional specifications of the database
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission is updating the functional specifications of the database
+      basis_segment_ids:
+      - AIA-TEXT-A071-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -124,8 +132,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -161,8 +169,12 @@ norms:
   - AIA-TEXT-A071-P002
   qualifier_spans: []
   conditions:
-  - the authorised representative is applicable for the data entry
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authorised representative is applicable for the data entry
+      basis_segment_ids:
+      - AIA-TEXT-A071-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -198,8 +210,12 @@ norms:
   - AIA-TEXT-A071-P003
   qualifier_spans: []
   conditions:
-  - the deployer is or acts for a public authority agency or body
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is or acts for a public authority agency or body
+      basis_segment_ids:
+      - AIA-TEXT-A071-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -234,10 +250,16 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P004
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - the section referred to in Article 49(4)
-  - the section referred to in Article 60(4), point (c)
+    operator: any_of
+    operands:
+    - text: the section referred to in Article 49(4)
+      basis_segment_ids:
+      - AIA-TEXT-A071-P004
+    - text: the section referred to in Article 60(4), point (c)
+      basis_segment_ids:
+      - AIA-TEXT-A071-P004
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -268,8 +290,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -303,10 +325,14 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P004
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - the prospective provider or provider has given consent for also making the information accessible
-    the public
+    operator: any_of
+    operands:
+    - text: the prospective provider or provider has given consent for also making the information accessible
+        the public
+      basis_segment_ids:
+      - AIA-TEXT-A071-P004
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -341,8 +367,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - necessity-limited personal data
   - names and contact details of legally authorised natural-person registrants
@@ -376,8 +402,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -410,8 +436,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - adequate technical support
   - adequate administrative support
@@ -444,8 +470,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A071-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

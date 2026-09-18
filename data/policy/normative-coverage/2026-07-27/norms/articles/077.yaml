@@ -21,9 +21,13 @@ norms:
   - AIA-TEXT-A077-P001
   qualifier_spans: []
   conditions:
-  - access is necessary for the authority or body to fulfil its fundamental-rights mandate effectively
-    within its jurisdiction
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: access is necessary for the authority or body to fulfil its fundamental-rights mandate effectively
+        within its jurisdiction
+      basis_segment_ids:
+      - AIA-TEXT-A077-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -59,8 +63,12 @@ norms:
   - AIA-TEXT-A077-P002
   qualifier_spans: []
   conditions:
-  - the conditions specified in Article 77 are met
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the conditions specified in Article 77 are met
+      basis_segment_ids:
+      - AIA-TEXT-A077-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -95,8 +103,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A077-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -129,8 +137,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A077-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - identification of the public authorities or bodies referred to in paragraph 1
   - a publicly available list of them
@@ -164,8 +172,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A077-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - notify the Commission and other Member States
   - keep the list up to date
@@ -203,9 +211,13 @@ norms:
   - AIA-TEXT-A077-P005
   qualifier_spans: []
   conditions:
-  - paragraph 1 documentation is insufficient to determine whether Union fundamental-rights obligations
-    were infringed
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: paragraph 1 documentation is insufficient to determine whether Union fundamental-rights obligations
+        were infringed
+      basis_segment_ids:
+      - AIA-TEXT-A077-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -237,8 +249,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A077-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -271,8 +283,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A077-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

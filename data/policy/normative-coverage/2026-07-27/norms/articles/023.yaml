@@ -19,8 +19,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A023-P001
   conditions:
-  - before placing the high-risk AI system on the market
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before placing the high-risk AI system on the market
+      basis_segment_ids:
+      - AIA-TEXT-A023-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -57,8 +61,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A023-P001
   conditions:
-  - before placing the high-risk AI system on the market
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before placing the high-risk AI system on the market
+      basis_segment_ids:
+      - AIA-TEXT-A023-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -95,8 +103,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A023-P001
   conditions:
-  - before placing the high-risk AI system on the market
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before placing the high-risk AI system on the market
+      basis_segment_ids:
+      - AIA-TEXT-A023-P004
+  exceptions: null
   mandatory_content:
   - required CE marking
   - EU declaration of conformity
@@ -135,8 +147,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A023-P001
   conditions:
-  - before placing the high-risk AI system on the market
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before placing the high-risk AI system on the market
+      basis_segment_ids:
+      - AIA-TEXT-A023-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -173,9 +189,13 @@ norms:
   - AIA-TEXT-A023-P006
   qualifier_spans: []
   conditions:
-  - the importer has sufficient reason to consider the system non-conforming or falsified, or its documentation
-    falsified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the importer has sufficient reason to consider the system non-conforming or falsified, or
+        its documentation falsified
+      basis_segment_ids:
+      - AIA-TEXT-A023-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -212,8 +232,12 @@ norms:
   - AIA-TEXT-A023-P006
   qualifier_spans: []
   conditions:
-  - the high-risk AI system presents a risk within the meaning of Article 79(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system presents a risk within the meaning of Article 79(1)
+      basis_segment_ids:
+      - AIA-TEXT-A023-P006
+  exceptions: null
   mandatory_content:
   - provider notification
   - authorised-representative notification
@@ -252,8 +276,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A023-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - importer name and registered trade name or trade mark
   - importer contact address
@@ -292,9 +316,15 @@ norms:
   - AIA-TEXT-A023-P008
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is under the importer's responsibility
-  - storage or transport conditions are applicable
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is under the importer's responsibility
+      basis_segment_ids:
+      - AIA-TEXT-A023-P008
+    - text: storage or transport conditions are applicable
+      basis_segment_ids:
+      - AIA-TEXT-A023-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -331,9 +361,13 @@ norms:
   - AIA-TEXT-A023-P009
   qualifier_spans: []
   conditions:
-  - the 10-year retention period begins after the high-risk AI system is placed on the market or put into
-    service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the 10-year retention period begins after the high-risk AI system is placed on the market
+        or put into service
+      basis_segment_ids:
+      - AIA-TEXT-A023-P009
+  exceptions: null
   mandatory_content:
   - notified-body certificate where applicable
   - instructions for use
@@ -374,8 +408,12 @@ norms:
   - AIA-TEXT-A023-P010
   qualifier_spans: []
   conditions:
-  - a relevant competent authority makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a relevant competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A023-P010
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -410,8 +448,12 @@ norms:
   - AIA-TEXT-A023-P010
   qualifier_spans: []
   conditions:
-  - a relevant competent authority makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a relevant competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A023-P010
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -447,8 +489,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A023-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

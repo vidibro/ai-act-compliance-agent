@@ -20,15 +20,23 @@ norms:
   - AIA-TEXT-A092-P002
   - AIA-TEXT-A092-P003
   conditions:
-  - the AI Office has consulted the Board
-  - operator: any_of
+    operator: all_of
     operands:
-    - to assess compliance of the provider with obligations under this Regulation, where the information
-      gathered pursuant to Article 91 is insufficient
-    - to investigate systemic risks at Union level of general-purpose AI models with systemic risk, in
-      particular following a qualified alert from the scientific panel in accordance with Article 90(1),
-      point (a)
-  exceptions: []
+    - text: the AI Office has consulted the Board
+      basis_segment_ids:
+      - AIA-TEXT-A092-P001
+    - operator: any_of
+      operands:
+      - text: to assess compliance of the provider with obligations under this Regulation, where the information
+          gathered pursuant to Article 91 is insufficient
+        basis_segment_ids:
+        - AIA-TEXT-A092-P001
+      - text: to investigate systemic risks at Union level of general-purpose AI models with systemic
+          risk, in particular following a qualified alert from the scientific panel in accordance with
+          Article 90(1), point (a)
+        basis_segment_ids:
+        - AIA-TEXT-A092-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -62,8 +70,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -97,8 +105,12 @@ norms:
   - AIA-TEXT-A092-P005
   qualifier_spans: []
   conditions:
-  - access is requested for an evaluation purpose specified in paragraph 1
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: access is requested for an evaluation purpose specified in paragraph 1
+      basis_segment_ids:
+      - AIA-TEXT-A092-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -132,8 +144,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - legal basis
   - purpose and reasons
@@ -172,8 +184,12 @@ norms:
   - AIA-TEXT-A092-P007
   qualifier_spans: []
   conditions:
-  - the Commission requested access to the model under Article 92(3)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission requested access to the model under Article 92(3)
+      basis_segment_ids:
+      - AIA-TEXT-A092-P007
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -208,11 +224,17 @@ norms:
   - AIA-TEXT-A092-P007
   qualifier_spans: []
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the provider is a legal person, company, or firm
-    - the provider has no legal personality
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the provider is a legal person, company, or firm
+        basis_segment_ids:
+        - AIA-TEXT-A092-P007
+      - text: the provider has no legal personality
+        basis_segment_ids:
+        - AIA-TEXT-A092-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -247,8 +269,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -283,8 +305,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

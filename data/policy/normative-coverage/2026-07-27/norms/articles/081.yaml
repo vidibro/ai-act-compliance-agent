@@ -22,19 +22,29 @@ norms:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - operator: all_of
+    - operator: any_of
       operands:
-      - a Member State market-surveillance authority objects to a measure taken by another market-surveillance
-        authority
-      - operator: any_of
+      - operator: all_of
         operands:
-        - the objection is raised within three months after receipt of the Article 79(5) notification
-        - the objection concerns Article 5 prohibited-practice non-compliance and is raised within 30
-          days after receipt of the Article 79(5) notification
-    - the Commission considers the measure contrary to Union law
-  exceptions: []
+        - text: a Member State market-surveillance authority objects to a measure taken by another market-surveillance
+            authority
+          basis_segment_ids:
+          - AIA-TEXT-A081-P001
+        - operator: any_of
+          operands:
+          - text: the objection is raised within three months after receipt of the Article 79(5) notification
+            basis_segment_ids:
+            - AIA-TEXT-A081-P001
+          - text: the objection concerns Article 5 prohibited-practice non-compliance and is raised within
+              30 days after receipt of the Article 79(5) notification
+            basis_segment_ids:
+            - AIA-TEXT-A081-P001
+      - text: the Commission considers the measure contrary to Union law
+        basis_segment_ids:
+        - AIA-TEXT-A081-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -69,9 +79,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A081-P001
   conditions:
-  - the decision is based on the results of the evaluation
-  - the measure does not concern Article 5 prohibited-practice non-compliance
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the decision is based on the results of the evaluation
+      basis_segment_ids:
+      - AIA-TEXT-A081-P001
+    - text: the measure does not concern Article 5 prohibited-practice non-compliance
+      basis_segment_ids:
+      - AIA-TEXT-A081-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -105,9 +121,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A081-P001
   conditions:
-  - the decision is based on the results of the evaluation
-  - the measure concerns Article 5 prohibited-practice non-compliance
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the decision is based on the results of the evaluation
+      basis_segment_ids:
+      - AIA-TEXT-A081-P001
+    - text: the measure concerns Article 5 prohibited-practice non-compliance
+      basis_segment_ids:
+      - AIA-TEXT-A081-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -140,8 +162,12 @@ norms:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
   conditions:
-  - the Commission has decided whether the national measure is justified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission has decided whether the national measure is justified
+      basis_segment_ids:
+      - AIA-TEXT-A081-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -172,8 +198,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -209,8 +235,12 @@ norms:
   - AIA-TEXT-A081-P002
   qualifier_spans: []
   conditions:
-  - the Commission considers the measure taken by the relevant Member State justified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission considers the measure taken by the relevant Member State justified
+      basis_segment_ids:
+      - AIA-TEXT-A081-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -243,8 +273,12 @@ norms:
   - AIA-TEXT-A081-P002
   qualifier_spans: []
   conditions:
-  - the Commission considers the national measure unjustified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission considers the national measure unjustified
+      basis_segment_ids:
+      - AIA-TEXT-A081-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -281,12 +315,18 @@ norms:
   - AIA-TEXT-A081-P003
   qualifier_spans: []
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the national measure is considered justified
-    - the AI system's non-compliance is attributed to shortcomings in the Article 40 or 41 harmonised
-      standards or common specifications
-  exceptions: []
+    - operator: all_of
+      operands:
+      - text: the national measure is considered justified
+        basis_segment_ids:
+        - AIA-TEXT-A081-P003
+      - text: the AI system's non-compliance is attributed to shortcomings in the Article 40 or 41 harmonised
+          standards or common specifications
+        basis_segment_ids:
+        - AIA-TEXT-A081-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

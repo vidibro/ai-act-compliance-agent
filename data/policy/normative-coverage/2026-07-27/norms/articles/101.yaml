@@ -23,15 +23,28 @@ norms:
   - AIA-TEXT-A101-P004
   - AIA-TEXT-A101-P005
   conditions:
-  - the Commission finds that the provider acted intentionally or negligently
-  - operator: any_of
+    operator: all_of
     operands:
-    - the provider infringed relevant provisions of this Regulation
-    - the provider failed to comply with an Article 91 document or information request or supplied incorrect,
-      incomplete, or misleading information
-    - the provider failed to comply with a measure requested under Article 93
-    - the provider failed to make available access to the general-purpose AI model for an Article 92 evaluation
-  exceptions: []
+    - text: the Commission finds that the provider acted intentionally or negligently
+      basis_segment_ids:
+      - AIA-TEXT-A101-P001
+    - operator: any_of
+      operands:
+      - text: the provider infringed relevant provisions of this Regulation
+        basis_segment_ids:
+        - AIA-TEXT-A101-P001
+      - text: the provider failed to comply with an Article 91 document or information request or supplied
+          incorrect, incomplete, or misleading information
+        basis_segment_ids:
+        - AIA-TEXT-A101-P001
+      - text: the provider failed to comply with a measure requested under Article 93
+        basis_segment_ids:
+        - AIA-TEXT-A101-P001
+      - text: the provider failed to make available access to the general-purpose AI model for an Article
+          92 evaluation
+        basis_segment_ids:
+        - AIA-TEXT-A101-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -65,8 +78,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A101-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - the nature, gravity and duration of the infringement
   - due account of the principles of proportionality and appropriateness
@@ -105,8 +118,12 @@ norms:
   - AIA-TEXT-A101-P007
   qualifier_spans: []
   conditions:
-  - the Commission intends to adopt a paragraph 1 fine decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission intends to adopt a paragraph 1 fine decision
+      basis_segment_ids:
+      - AIA-TEXT-A101-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -137,8 +154,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A101-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -170,8 +187,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A101-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -204,8 +221,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A101-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -240,8 +257,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A101-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

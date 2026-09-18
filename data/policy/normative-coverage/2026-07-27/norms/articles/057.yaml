@@ -18,8 +18,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -51,8 +51,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -86,8 +86,12 @@ norms:
   - AIA-TEXT-A057-P002
   qualifier_spans: []
   conditions:
-  - participation in the existing sandbox provides equivalent national coverage
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: participation in the existing sandbox provides equivalent national coverage
+      basis_segment_ids:
+      - AIA-TEXT-A057-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -120,8 +124,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -153,8 +157,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -189,8 +193,12 @@ norms:
   - AIA-TEXT-A057-P004
   qualifier_spans: []
   conditions:
-  - the EDPS establishes the sandbox under paragraph 3
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the EDPS establishes the sandbox under paragraph 3
+      basis_segment_ids:
+      - AIA-TEXT-A057-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -225,8 +233,8 @@ norms:
   - AIA-TEXT-A057-P005
   qualifier_spans:
   - AIA-TEXT-A057-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -261,8 +269,12 @@ norms:
   - AIA-TEXT-A057-P005
   qualifier_spans: []
   conditions:
-  - the AI Office establishes the sandbox under paragraph 3a
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office establishes the sandbox under paragraph 3a
+      basis_segment_ids:
+      - AIA-TEXT-A057-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -297,8 +309,12 @@ norms:
   - AIA-TEXT-A057-P005
   qualifier_spans: []
   conditions:
-  - the AI Office establishes the sandbox under paragraph 3a
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office establishes the sandbox under paragraph 3a
+      basis_segment_ids:
+      - AIA-TEXT-A057-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -330,8 +346,12 @@ norms:
   - AIA-TEXT-A057-P005
   qualifier_spans: []
   conditions:
-  - the AI Office establishes the sandbox under paragraph 3a
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office establishes the sandbox under paragraph 3a
+      basis_segment_ids:
+      - AIA-TEXT-A057-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -364,8 +384,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -397,8 +417,12 @@ norms:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
   conditions:
-  - where appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A057-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -429,8 +453,12 @@ norms:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
   conditions:
-  - where appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A057-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -463,8 +491,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -497,8 +525,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -534,8 +562,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - a controlled environment fostering innovation and facilitating development, training, testing and
     validation of innovative AI systems
@@ -571,8 +599,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -606,8 +634,12 @@ norms:
   - AIA-TEXT-A057-P008
   qualifier_spans: []
   conditions:
-  - where the Articles 60 and 60a real-world testing plan is applicable
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: where the Articles 60 and 60a real-world testing plan is applicable
+      basis_segment_ids:
+      - AIA-TEXT-A057-P008
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -643,8 +675,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -677,8 +709,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -711,8 +743,12 @@ norms:
   - AIA-TEXT-A057-P011
   qualifier_spans: []
   conditions:
-  - the provider or prospective provider of the AI system requests written proof
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider or prospective provider of the AI system requests written proof
+      basis_segment_ids:
+      - AIA-TEXT-A057-P011
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -744,8 +780,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - activities carried out in the sandbox
   - related results
@@ -781,8 +817,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
@@ -817,8 +853,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -852,8 +888,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -888,9 +924,15 @@ norms:
   - AIA-TEXT-A057-P012
   qualifier_spans: []
   conditions:
-  - Article 78 confidentiality provisions are observed
-  - the provider or prospective provider agrees to access
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: Article 78 confidentiality provisions are observed
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+    - text: the provider or prospective provider agrees to access
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -923,10 +965,18 @@ norms:
   - AIA-TEXT-A057-P012
   qualifier_spans: []
   conditions:
-  - Article 78 confidentiality provisions are observed
-  - the provider or prospective provider agrees to access
-  - where appropriate when exercising tasks under this Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: Article 78 confidentiality provisions are observed
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+    - text: the provider or prospective provider agrees to access
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+    - text: where appropriate when exercising tasks under this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -961,10 +1011,18 @@ norms:
   - AIA-TEXT-A057-P012
   qualifier_spans: []
   conditions:
-  - the provider or prospective provider explicitly agrees to public release
-  - the national competent authority explicitly agrees to public release
-  - Article 78 confidentiality provisions are observed
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider or prospective provider explicitly agrees to public release
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+    - text: the national competent authority explicitly agrees to public release
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+    - text: Article 78 confidentiality provisions are observed
+      basis_segment_ids:
+      - AIA-TEXT-A057-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1001,8 +1059,8 @@ norms:
   - AIA-TEXT-A057-P016
   - AIA-TEXT-A057-P017
   - AIA-TEXT-A057-P018
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - legal certainty and compliance
   - best-practice sharing
@@ -1044,8 +1102,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P019
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1079,8 +1137,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1113,9 +1171,13 @@ norms:
   - AIA-TEXT-A057-P020
   qualifier_spans: []
   conditions:
-  - significant risks to health and safety and fundamental rights are identified during development and
-    testing
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: significant risks to health and safety and fundamental rights are identified during development
+        and testing
+      basis_segment_ids:
+      - AIA-TEXT-A057-P020
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1149,9 +1211,15 @@ norms:
   - AIA-TEXT-A057-P020
   qualifier_spans: []
   conditions:
-  - significant risks are identified during sandbox development and testing
-  - no effective mitigation is possible
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: significant risks are identified during sandbox development and testing
+      basis_segment_ids:
+      - AIA-TEXT-A057-P020
+    - text: no effective mitigation is possible
+      basis_segment_ids:
+      - AIA-TEXT-A057-P020
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1183,8 +1251,13 @@ norms:
   - AIA-TEXT-A057-P020
   qualifier_spans: []
   conditions:
-  - a decision temporarily or permanently suspending testing or sandbox participation has been taken
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a decision temporarily or permanently suspending testing or sandbox participation has been
+        taken
+      basis_segment_ids:
+      - AIA-TEXT-A057-P020
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1219,8 +1292,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1257,9 +1330,15 @@ norms:
   - AIA-TEXT-A057-P021
   qualifier_spans: []
   conditions:
-  - the provider or prospective provider participates in the sandbox
-  - third-party damage results from sandbox experimentation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider or prospective provider participates in the sandbox
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+    - text: third-party damage results from sandbox experimentation
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
@@ -1297,10 +1376,18 @@ norms:
   - AIA-TEXT-A057-P021
   qualifier_spans: []
   conditions:
-  - the prospective provider observes the specific sandbox plan
-  - the prospective provider observes the terms and conditions of participation
-  - the prospective provider follows national competent authority guidance in good faith
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the prospective provider observes the specific sandbox plan
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+    - text: the prospective provider observes the terms and conditions of participation
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+    - text: the prospective provider follows national competent authority guidance in good faith
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
@@ -1338,11 +1425,19 @@ norms:
   - AIA-TEXT-A057-P021
   qualifier_spans: []
   conditions:
-  - the provider or prospective provider participates in the sandbox
-  - competent authorities responsible for the other law were actively involved in supervision of the AI
-    system in the sandbox
-  - those competent authorities provided guidance for compliance with that law
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider or prospective provider participates in the sandbox
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+    - text: competent authorities responsible for the other law were actively involved in supervision
+        of the AI system in the sandbox
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+    - text: those competent authorities provided guidance for compliance with that law
+      basis_segment_ids:
+      - AIA-TEXT-A057-P021
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
@@ -1375,8 +1470,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P022
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1410,9 +1505,13 @@ norms:
   - AIA-TEXT-A057-P023
   qualifier_spans: []
   conditions:
-  - as appropriate and within the respective competences of national competent authorities, the EDPS and
-    the AI Office
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: as appropriate and within the respective competences of national competent authorities, the
+        EDPS and the AI Office
+      basis_segment_ids:
+      - AIA-TEXT-A057-P023
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1446,8 +1545,12 @@ norms:
   - AIA-TEXT-A057-P023
   qualifier_spans: []
   conditions:
-  - within the respective competences of national competent authorities, the EDPS and the AI Office
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: within the respective competences of national competent authorities, the EDPS and the AI Office
+      basis_segment_ids:
+      - AIA-TEXT-A057-P023
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1479,8 +1582,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P024
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1510,8 +1613,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P024
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1545,8 +1648,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P024
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1580,8 +1683,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P025
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - implementation progress and results
   - best practices
@@ -1623,8 +1726,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P025
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1657,8 +1760,12 @@ norms:
   - AIA-TEXT-A057-P025
   qualifier_spans: []
   conditions:
-  - where appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A057-P025
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1694,8 +1801,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P026
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - all relevant sandbox information
   - stakeholder interaction with sandboxes
@@ -1732,8 +1839,12 @@ norms:
   - AIA-TEXT-A057-P026
   qualifier_spans: []
   conditions:
-  - where relevant
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids:
+      - AIA-TEXT-A057-P026
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

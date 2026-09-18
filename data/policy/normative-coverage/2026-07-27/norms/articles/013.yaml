@@ -18,8 +18,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A013-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -54,8 +54,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A013-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -91,8 +91,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A013-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - concise information
   - complete information
@@ -135,8 +135,8 @@ norms:
   - AIA-TEXT-A013-P004
   qualifier_spans:
   - AIA-TEXT-A013-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -171,8 +171,8 @@ norms:
   - AIA-TEXT-A013-P005
   qualifier_spans:
   - AIA-TEXT-A013-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -207,8 +207,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A013-P003
   - AIA-TEXT-A013-P005
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -248,8 +248,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A013-P003
   - AIA-TEXT-A013-P005
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - tested, validated, and expected accuracy levels and metrics, robustness, and cybersecurity
   - known and foreseeable circumstances that may affect that expected performance
@@ -290,8 +290,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A013-P003
   - AIA-TEXT-A013-P005
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -328,8 +328,12 @@ norms:
   - AIA-TEXT-A013-P003
   - AIA-TEXT-A013-P005
   conditions:
-  - the system has technical capabilities or characteristics relevant to explaining its output
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system has technical capabilities or characteristics relevant to explaining its output
+      basis_segment_ids:
+      - AIA-TEXT-A013-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -367,8 +371,12 @@ norms:
   - AIA-TEXT-A013-P003
   - AIA-TEXT-A013-P005
   conditions:
-  - information about performance for intended persons or groups is appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: information about performance for intended persons or groups is appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A013-P010
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -407,8 +415,12 @@ norms:
   - AIA-TEXT-A013-P003
   - AIA-TEXT-A013-P005
   conditions:
-  - input-data specifications or dataset information is appropriate for the intended purpose
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: input-data specifications or dataset information is appropriate for the intended purpose
+      basis_segment_ids:
+      - AIA-TEXT-A013-P011
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -445,8 +457,12 @@ norms:
   - AIA-TEXT-A013-P003
   - AIA-TEXT-A013-P005
   conditions:
-  - information is applicable to deployer interpretation and appropriate use of system outputs
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: information is applicable to deployer interpretation and appropriate use of system outputs
+      basis_segment_ids:
+      - AIA-TEXT-A013-P012
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -482,8 +498,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A013-P003
   conditions:
-  - the provider predetermined changes to the system or its performance at the initial conformity assessment
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider predetermined changes to the system or its performance at the initial conformity
+        assessment
+      basis_segment_ids:
+      - AIA-TEXT-A013-P013
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -519,8 +540,8 @@ norms:
   - AIA-TEXT-A013-P014
   qualifier_spans:
   - AIA-TEXT-A013-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - Article 14 human-oversight measures
   - technical measures facilitating deployer interpretation of high-risk AI-system outputs
@@ -559,8 +580,8 @@ norms:
   - AIA-TEXT-A013-P015
   qualifier_spans:
   - AIA-TEXT-A013-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - needed computational and hardware resources
   - expected lifetime of the high-risk AI system
@@ -600,8 +621,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A013-P003
   conditions:
-  - the system includes mechanisms relevant to deployer collection, storage, or interpretation of logs
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system includes mechanisms relevant to deployer collection, storage, or interpretation
+        of logs
+      basis_segment_ids:
+      - AIA-TEXT-A013-P016
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

@@ -18,7 +18,14 @@ from typing import Literal
 import yaml
 from pydantic import BaseModel, Field, model_validator
 
-from aiact.schemas.norm import Norm, NormativeCoverageBundle, SourceKind, TemporalRegime
+from aiact.schemas.norm import (
+    ConditionClause,
+    LogicalExpression,
+    Norm,
+    NormativeCoverageBundle,
+    SourceKind,
+    TemporalRegime,
+)
 
 STRUCTURAL_PREFIX = re.compile(r"^\s*(?:Article\s+\S+\s*)?(?:\d+\.|\([a-z]+\))?\s*", re.I)
 LEGAL_EFFECT = re.compile(
@@ -54,6 +61,7 @@ class FieldValidation(StrEnum):
     ACTOR_EVIDENCE = "actor_evidence"
     TARGET_EVIDENCE = "target_evidence"
     TEMPORAL_REGIME = "temporal_regime"
+    LOGICAL_EXPRESSION_EVIDENCE = "logical_expression_evidence"
 
 
 class AdjudicationScope(BaseModel):
@@ -245,6 +253,21 @@ def _semantic_text(norm: Norm) -> str:
     return " ".join(parts)
 
 
+def _legacy_expression_payload(expression: LogicalExpression | None) -> list[object]:
+    """Keep legal-content adjudication IDs stable across a structural expression migration."""
+    def operand_payload(operand):
+        if hasattr(operand, "text"):
+            return operand.text
+        return {
+            "operator": operand.operator,
+            "operands": [operand_payload(item) for item in operand.operands],
+        }
+
+    if expression is None:
+        return []
+    return [operand_payload(item) for item in expression.operands]
+
+
 def _uncovered_text(text: str, quotes: list[str]) -> str:
     covered = [False] * len(text)
     for quote in quotes:
@@ -288,14 +311,13 @@ def _norm_sha256(norm: Norm) -> str:
     This deliberately selected payload is therefore a stable audit contract, rather than a dump
     of the evolving ``Norm`` schema.
     """
-    canonical_norm = norm.model_dump(mode="json")
     payload = {
         "norm_id": norm.norm_id,
         "norm_text": norm.norm_text,
         "action": norm.action,
         "qualifier_spans": norm.qualifier_spans,
-        "conditions": canonical_norm["conditions"],
-        "exceptions": norm.exceptions,
+        "conditions": _legacy_expression_payload(norm.conditions),
+        "exceptions": _legacy_expression_payload(norm.exceptions),
         "mandatory_content": norm.mandatory_content,
         # Preserve the published adjudication hash contract while dependencies are represented
         # only by relations and therefore intentionally excluded from legal-content review.
@@ -336,6 +358,42 @@ def _temporal_assignment_sha256(norm: Norm, regime: TemporalRegime) -> str:
         "norm_id": norm.norm_id,
         "temporal_regime_id": norm.temporal_regime_id,
         "regime": regime.canonical_payload(),
+    }
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode()).hexdigest()
+
+
+def _expression_leaves(
+    expression: LogicalExpression | None,
+    *,
+    path: tuple[int, ...] = (),
+) -> list[tuple[tuple[int, ...], ConditionClause]]:
+    """Return source-backed propositions in deterministic depth-first order."""
+    if expression is None:
+        return []
+    leaves: list[tuple[tuple[int, ...], ConditionClause]] = []
+    for index, operand in enumerate(expression.operands):
+        operand_path = (*path, index)
+        if isinstance(operand, ConditionClause):
+            leaves.append((operand_path, operand))
+        else:
+            leaves.extend(_expression_leaves(operand, path=operand_path))
+    return leaves
+
+
+def _expression_leaf_sha256(
+    norm: Norm,
+    field: Literal["conditions", "exceptions"],
+    path: tuple[int, ...],
+    clause: ConditionClause,
+) -> str:
+    """Bind a finding to one exact proposition and its declared evidence."""
+    payload = {
+        "norm_id": norm.norm_id,
+        "field": field,
+        "path": path,
+        "text": clause.text,
+        "basis_segment_ids": clause.basis_segment_ids,
     }
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode()).hexdigest()
@@ -388,8 +446,9 @@ def _new_field_findings(
     """Audit populated actor-evidence and timing fields without requiring their migration yet.
 
     Empty new fields are deliberately not findings: the existing inventory is being migrated in
-    controlled batches. Once a field is populated, however, every deterministic check below is
-    enforced and its exact value becomes part of the audit attestation.
+    controlled batches. Once actor, target, or temporal data is populated, every deterministic
+    check below is enforced. Logical-expression evidence is additionally gated because the
+    temporary legacy-data adapter supplies inferred citations until each source file is rewritten.
     """
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
     regimes = {regime.regime_id: regime for regime in bundle.norm_inventory.temporal_regimes}
@@ -401,6 +460,41 @@ def _new_field_findings(
         requirements = (required_field_validations or {}).get(
             (primary.source.kind, primary.source.document), set()
         )
+        if FieldValidation.LOGICAL_EXPRESSION_EVIDENCE in requirements:
+            for field, expression in (
+                ("conditions", norm.conditions),
+                ("exceptions", norm.exceptions),
+            ):
+                for path, clause in _expression_leaves(expression):
+                    path_text = ".".join(map(str, path))
+                    target = f"{norm.norm_id}:{field}:{path_text}"
+                    target_sha256 = _expression_leaf_sha256(norm, field, path, clause)
+                    for basis_segment_id in clause.basis_segment_ids:
+                        basis = segments.get(basis_segment_id)
+                        if basis is None:
+                            findings.append(
+                                _finding(
+                                    target=f"{target}:{basis_segment_id}",
+                                    rule="logical_expression_basis_segment_unknown",
+                                    source_ref=primary.segment_id,
+                                    source_sha256=primary.sha256,
+                                    target_sha256=target_sha256,
+                                    evidence=clause.text,
+                                )
+                            )
+                            continue
+                        if _contains_exact_words(basis.text, clause.text):
+                            continue
+                        findings.append(
+                            _finding(
+                                target=f"{target}:{basis_segment_id}",
+                                rule="logical_expression_basis_does_not_contain_text",
+                                source_ref=primary.segment_id,
+                                source_sha256=primary.sha256,
+                                target_sha256=target_sha256,
+                                evidence=basis.text,
+                            )
+                        )
         for actor_index, actor in enumerate(norm.actors):
             if (
                 FieldValidation.ACTOR_EVIDENCE in requirements

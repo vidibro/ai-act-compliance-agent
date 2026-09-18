@@ -24,12 +24,20 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A005-P001
   conditions:
-  - the techniques have the objective or effect of materially distorting a person or group's behaviour
-    by appreciably impairing informed decision-making
-  - the distortion causes a decision that would not otherwise have been taken
-  - the decision causes or is reasonably likely to cause significant harm to that person, another person,
-    or a group
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the techniques have the objective or effect of materially distorting a person or group's behaviour
+        by appreciably impairing informed decision-making
+      basis_segment_ids:
+      - AIA-TEXT-A005-P002
+    - text: the distortion causes a decision that would not otherwise have been taken
+      basis_segment_ids:
+      - AIA-TEXT-A005-P002
+    - text: the decision causes or is reasonably likely to cause significant harm to that person, another
+        person, or a group
+      basis_segment_ids:
+      - AIA-TEXT-A005-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -69,12 +77,20 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A005-P001
   conditions:
-  - the vulnerability arises from age, disability, or a specific social or economic situation
-  - exploitation has the objective or effect of materially distorting the behaviour of the vulnerable
-    person or group member
-  - the distortion causes or is reasonably likely to cause significant harm to that person or another
-    person
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the vulnerability arises from age, disability, or a specific social or economic situation
+      basis_segment_ids:
+      - AIA-TEXT-A005-P003
+    - text: exploitation has the objective or effect of materially distorting the behaviour of the vulnerable
+        person or group member
+      basis_segment_ids:
+      - AIA-TEXT-A005-P003
+    - text: the distortion causes or is reasonably likely to cause significant harm to that person or
+        another person
+      basis_segment_ids:
+      - AIA-TEXT-A005-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -120,14 +136,26 @@ norms:
   - AIA-TEXT-A005-P022
   - AIA-TEXT-A005-P023
   conditions:
-  - the material realistically depicts an identifiable natural person's intimate parts or sexually explicit
-    activities
-  - the depicted person did not give freely-given, specific, informed, unambiguous, and explicit consent
-    to the generation or manipulation
-  - the relevant placing, service, or use condition in Article 5(1a) is satisfied
+    operator: all_of
+    operands:
+    - text: the material realistically depicts an identifiable natural person's intimate parts or sexually
+        explicit activities
+      basis_segment_ids:
+      - AIA-TEXT-A005-P004
+    - text: the depicted person did not give freely-given, specific, informed, unambiguous, and explicit
+        consent to the generation or manipulation
+      basis_segment_ids:
+      - AIA-TEXT-A005-P004
+    - text: the relevant placing, service, or use condition in Article 5(1a) is satisfied
+      basis_segment_ids:
+      - AIA-TEXT-A005-P004
   exceptions:
-  - manipulation that neither increases exposure of depicted intimate parts nor alters the nature of depicted
-    sexually explicit activities does not constitute manipulation
+    operator: any_of
+    operands:
+    - text: manipulation that neither increases exposure of depicted intimate parts nor alters the nature
+        of depicted sexually explicit activities does not constitute manipulation
+      basis_segment_ids:
+      - AIA-TEXT-A005-P004
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -170,11 +198,21 @@ norms:
   - AIA-TEXT-A005-P021
   - AIA-TEXT-A005-P022
   conditions:
-  - the generated or manipulated material or performance falls within Article 2, points (c) or (e), of
-    Directive 2011/93/EU
-  - the relevant placing, service, or use condition in Article 5(1a) is satisfied
+    operator: all_of
+    operands:
+    - text: the generated or manipulated material or performance falls within Article 2, points (c) or
+        (e), of Directive 2011/93/EU
+      basis_segment_ids:
+      - AIA-TEXT-A005-P005
+    - text: the relevant placing, service, or use condition in Article 5(1a) is satisfied
+      basis_segment_ids:
+      - AIA-TEXT-A005-P005
   exceptions:
-  - a without-right defence applies under national law
+    operator: any_of
+    operands:
+    - text: a without-right defence applies under national law
+      basis_segment_ids:
+      - AIA-TEXT-A005-P005
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -215,11 +253,17 @@ norms:
   - AIA-TEXT-A005-P007
   - AIA-TEXT-A005-P008
   conditions:
-  - persons or groups are evaluated or classified over time using social behaviour or known, inferred,
-    or predicted personal or personality characteristics
-  - the social score leads to treatment in an unrelated context or treatment that is unjustified or disproportionate
-    to the social behaviour or its gravity
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: persons or groups are evaluated or classified over time using social behaviour or known, inferred,
+        or predicted personal or personality characteristics
+      basis_segment_ids:
+      - AIA-TEXT-A005-P006
+    - text: the social score leads to treatment in an unrelated context or treatment that is unjustified
+        or disproportionate to the social behaviour or its gravity
+      basis_segment_ids:
+      - AIA-TEXT-A005-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -260,10 +304,14 @@ norms:
   - AIA-TEXT-A005-P009
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  conditions: []
+  conditions: null
   exceptions:
-  - an AI system supports a human assessment of a person's involvement in criminal activity already based
-    on objective and verifiable facts directly linked to criminal activity
+    operator: any_of
+    operands:
+    - text: an AI system supports a human assessment of a person's involvement in criminal activity already
+        based on objective and verifiable facts directly linked to criminal activity
+      basis_segment_ids:
+      - AIA-TEXT-A005-P009
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -300,8 +348,8 @@ norms:
   - AIA-TEXT-A005-P010
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -339,9 +387,13 @@ norms:
   - AIA-TEXT-A005-P011
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  conditions: []
+  conditions: null
   exceptions:
-  - the system is intended to be put in place or on the market for medical or safety reasons
+    operator: any_of
+    operands:
+    - text: the system is intended to be put in place or on the market for medical or safety reasons
+      basis_segment_ids:
+      - AIA-TEXT-A005-P011
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -381,10 +433,16 @@ norms:
   - AIA-TEXT-A005-P012
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  conditions: []
+  conditions: null
   exceptions:
-  - labelling or filtering lawfully acquired biometric datasets based on biometric data
-  - categorising biometric data in the area of law enforcement
+    operator: any_of
+    operands:
+    - text: labelling or filtering lawfully acquired biometric datasets based on biometric data
+      basis_segment_ids:
+      - AIA-TEXT-A005-P012
+    - text: categorising biometric data in the area of law enforcement
+      basis_segment_ids:
+      - AIA-TEXT-A005-P012
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -424,12 +482,20 @@ norms:
   - AIA-TEXT-A005-P014
   - AIA-TEXT-A005-P015
   - AIA-TEXT-A005-P016
-  conditions: []
+  conditions: null
   exceptions:
-  - targeted searches for specified victims and missing persons
-  - prevention of the specified substantial and imminent safety threat or terrorist-attack threat
-  - localisation or identification of a criminal suspect for investigation, prosecution, or penalty execution
-    concerning qualifying Annex II offences
+    operator: any_of
+    operands:
+    - text: targeted searches for specified victims and missing persons
+      basis_segment_ids:
+      - AIA-TEXT-A005-P013
+    - text: prevention of the specified substantial and imminent safety threat or terrorist-attack threat
+      basis_segment_ids:
+      - AIA-TEXT-A005-P013
+    - text: localisation or identification of a criminal suspect for investigation, prosecution, or penalty
+        execution concerning qualifying Annex II offences
+      basis_segment_ids:
+      - AIA-TEXT-A005-P013
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -463,8 +529,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P017
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains interpretation without creating an independent AI
@@ -506,11 +572,17 @@ norms:
   - AIA-TEXT-A005-P020
   - AIA-TEXT-A005-P021
   conditions:
-  - generation or manipulation is the intended purpose of the AI system
-  - or generation or manipulation is reasonably foreseeable and reproducible without significant technical
-    modification and the system lacks reasonable and adequate safeguards to reliably prevent and correct
-    it
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: generation or manipulation is the intended purpose of the AI system
+      basis_segment_ids:
+      - AIA-TEXT-A005-P019
+    - text: or generation or manipulation is reasonably foreseeable and reproducible without significant
+        technical modification and the system lacks reasonable and adequate safeguards to reliably prevent
+        and correct it
+      basis_segment_ids:
+      - AIA-TEXT-A005-P019
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -549,9 +621,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A005-P018
   conditions:
-  - the deployer uses the system for the purpose of generating or manipulating the prohibited material
-    or performance
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer uses the system for the purpose of generating or manipulating the prohibited
+        material or performance
+      basis_segment_ids:
+      - AIA-TEXT-A005-P022
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -589,9 +665,15 @@ norms:
   - AIA-TEXT-A005-P023
   qualifier_spans: []
   conditions:
-  - the manipulation does not increase exposure of any depicted intimate parts
-  - the manipulation does not alter the nature of depicted sexually explicit activities
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the manipulation does not increase exposure of any depicted intimate parts
+      basis_segment_ids:
+      - AIA-TEXT-A005-P023
+    - text: the manipulation does not alter the nature of depicted sexually explicit activities
+      basis_segment_ids:
+      - AIA-TEXT-A005-P023
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -626,8 +708,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P024
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -664,8 +746,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A005-P025
   - AIA-TEXT-A005-P026
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - the nature of the situation giving rise to the possible use, in particular the seriousness, probability
     and scale of the harm that would be caused if the system were not used
@@ -707,8 +789,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -744,8 +826,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -782,9 +864,17 @@ norms:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
   conditions:
-  - when urgent use begins before registration, complete registration without undue delay
+    operator: all_of
+    operands:
+    - text: when urgent use begins before registration, complete registration without undue delay
+      basis_segment_ids:
+      - AIA-TEXT-A005-P027
   exceptions:
-  - in a duly justified urgent case, use may begin before registration
+    operator: any_of
+    operands:
+    - text: in a duly justified urgent case, use may begin before registration
+      basis_segment_ids:
+      - AIA-TEXT-A005-P027
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -823,8 +913,12 @@ norms:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   conditions:
-  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -859,9 +953,15 @@ norms:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   conditions:
-  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-  - the situation of urgency is duly justified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+    - text: the situation of urgency is duly justified
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -896,9 +996,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A005-P028
   conditions:
-  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-  - the situation of urgency is duly justified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+    - text: the situation of urgency is duly justified
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -934,9 +1040,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A005-P028
   conditions:
-  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-  - the situation of urgency is duly justified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+    - text: the situation of urgency is duly justified
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -971,9 +1083,15 @@ norms:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   conditions:
-  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-  - the requested authorisation is rejected
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+    - text: the requested authorisation is rejected
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1009,9 +1127,15 @@ norms:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   conditions:
-  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-  - the requested authorisation is rejected
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+    - text: the requested authorisation is rejected
+      basis_segment_ids:
+      - AIA-TEXT-A005-P028
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1053,10 +1177,18 @@ norms:
   - AIA-TEXT-A005-P029
   qualifier_spans: []
   conditions:
-  - the use pursues an Article 5(1)(h) objective identified in the request
-  - objective evidence or clear indications establish necessity and proportionality
-  - the time period and geographic and personal scope are limited to what is strictly necessary
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the use pursues an Article 5(1)(h) objective identified in the request
+      basis_segment_ids:
+      - AIA-TEXT-A005-P029
+    - text: objective evidence or clear indications establish necessity and proportionality
+      basis_segment_ids:
+      - AIA-TEXT-A005-P029
+    - text: the time period and geographic and personal scope are limited to what is strictly necessary
+      basis_segment_ids:
+      - AIA-TEXT-A005-P029
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1091,8 +1223,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P029
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1127,8 +1259,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P029
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1165,8 +1297,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P030
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1202,9 +1334,13 @@ norms:
   - AIA-TEXT-A005-P030
   qualifier_spans: []
   conditions:
-  - a use of a real-time remote biometric identification system in publicly accessible spaces for law
-    enforcement purposes is notified under Article 5(4)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a use of a real-time remote biometric identification system in publicly accessible spaces
+        for law enforcement purposes is notified under Article 5(4)
+      basis_segment_ids:
+      - AIA-TEXT-A005-P030
+  exceptions: null
   mandatory_content:
   - include at least the information specified in Article 5(6)
   - exclude sensitive operational data
@@ -1242,8 +1378,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although their
@@ -1278,8 +1414,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although their
@@ -1316,8 +1452,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although the
@@ -1350,8 +1486,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States.
@@ -1384,8 +1520,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although stricter
@@ -1423,8 +1559,12 @@ norms:
   - AIA-TEXT-A005-P032
   qualifier_spans: []
   conditions:
-  - the authority has been notified of covered use pursuant to Article 5(4)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authority has been notified of covered use pursuant to Article 5(4)
+      basis_segment_ids:
+      - AIA-TEXT-A005-P032
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for national supervisory authorities.
@@ -1460,8 +1600,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P032
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - the number of decisions on Article 5(3) authorisation requests
   - the outcomes of those decisions
@@ -1497,8 +1637,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P033
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -1531,8 +1671,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P033
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -1565,8 +1705,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P034
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains legal interpretation without creating an independent

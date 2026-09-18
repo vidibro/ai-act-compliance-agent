@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A036-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -51,8 +51,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A036-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -85,8 +85,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A036-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -121,8 +121,12 @@ norms:
   - AIA-TEXT-A036-P004
   qualifier_spans: []
   conditions:
-  - the notified body decides to cease conformity-assessment activities
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body decides to cease conformity-assessment activities
+      basis_segment_ids:
+      - AIA-TEXT-A036-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -158,8 +162,12 @@ norms:
   - AIA-TEXT-A036-P004
   qualifier_spans: []
   conditions:
-  - another notified body confirms in writing that it assumes responsibility for the covered systems
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: another notified body confirms in writing that it assumes responsibility for the covered systems
+      basis_segment_ids:
+      - AIA-TEXT-A036-P004
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
@@ -191,8 +199,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A036-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -225,8 +233,12 @@ norms:
   - AIA-TEXT-A036-P004
   qualifier_spans: []
   conditions:
-  - the notified body has ceased its activity
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body has ceased its activity
+      basis_segment_ids:
+      - AIA-TEXT-A036-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -261,9 +273,13 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   conditions:
-  - the notifying authority has sufficient reason to consider that the notified body no longer meets Article
-    31 requirements or is failing to fulfil its obligations
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notifying authority has sufficient reason to consider that the notified body no longer
+        meets Article 31 requirements or is failing to fulfil its obligations
+      basis_segment_ids:
+      - AIA-TEXT-A036-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -296,8 +312,12 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   conditions:
-  - the objections arise in the notifying authority's investigation of the notified body
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the objections arise in the notifying authority's investigation of the notified body
+      basis_segment_ids:
+      - AIA-TEXT-A036-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -330,8 +350,12 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   conditions:
-  - the objections arise in the notifying authority's investigation of the notified body
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the objections arise in the notifying authority's investigation of the notified body
+      basis_segment_ids:
+      - AIA-TEXT-A036-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -367,9 +391,13 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   conditions:
-  - the notifying authority concludes that the notified body no longer meets Article 31 requirements or
-    is failing to fulfil its obligations
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notifying authority concludes that the notified body no longer meets Article 31 requirements
+        or is failing to fulfil its obligations
+      basis_segment_ids:
+      - AIA-TEXT-A036-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -401,8 +429,12 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   conditions:
-  - the notifying authority has restricted, suspended or withdrawn the notified body's designation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notifying authority has restricted, suspended or withdrawn the notified body's designation
+      basis_segment_ids:
+      - AIA-TEXT-A036-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -435,8 +467,12 @@ norms:
   - AIA-TEXT-A036-P006
   qualifier_spans: []
   conditions:
-  - the notified body's designation has been suspended, restricted, or fully or partially withdrawn
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been suspended, restricted, or fully or partially withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -471,8 +507,12 @@ norms:
   - AIA-TEXT-A036-P007
   qualifier_spans: []
   conditions:
-  - the notified body's designation has been restricted, suspended or withdrawn
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been restricted, suspended or withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P007
+  exceptions: null
   mandatory_content:
   - ensure that the affected notified body's files are kept
   - make the files available when requested by another Member State's notifying authority or a market-surveillance
@@ -508,8 +548,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   conditions:
-  - the notified body's designation has been restricted, suspended or withdrawn
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been restricted, suspended or withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P009
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -544,8 +588,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   conditions:
-  - the notified body's designation has been restricted, suspended or withdrawn
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been restricted, suspended or withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P010
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -581,8 +629,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   conditions:
-  - the notified body's designation has been restricted, suspended or withdrawn
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been restricted, suspended or withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P011
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -617,8 +669,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   conditions:
-  - the notified body's designation has been restricted, suspended or withdrawn
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been restricted, suspended or withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -654,8 +710,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   conditions:
-  - the notified body's designation has been restricted, suspended or withdrawn
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been restricted, suspended or withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -691,9 +751,16 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   conditions:
-  - the notified body's designation has been restricted, suspended or withdrawn
-  - appropriate measures are necessary to avoid a potential risk to health, safety or fundamental rights
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body's designation has been restricted, suspended or withdrawn
+      basis_segment_ids:
+      - AIA-TEXT-A036-P013
+    - text: appropriate measures are necessary to avoid a potential risk to health, safety or fundamental
+        rights
+      basis_segment_ids:
+      - AIA-TEXT-A036-P013
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -731,22 +798,38 @@ norms:
   - AIA-TEXT-A036-P015
   - AIA-TEXT-A036-P016
   conditions:
-  - the notified body's designation has been suspended or restricted
-  - operator: any_of
+    operator: all_of
     operands:
-    - operator: all_of
+    - text: the notified body's designation has been suspended or restricted
+      basis_segment_ids:
+      - AIA-TEXT-A036-P014
+    - operator: any_of
       operands:
-      - the notifying authority confirms within one month that affected certificates pose no health, safety
-        or fundamental-rights risk
-      - the notifying authority provides a timeline for actions to remedy the suspension or restriction
-    - operator: all_of
-      operands:
-      - the notifying authority confirms no certificates relevant to the suspension will be issued, amended
-        or reissued during the suspension or restriction
-      - the notifying authority states whether the notified body can continue to monitor and remain responsible
-        for existing certificates during the suspension or restriction
+      - operator: all_of
+        operands:
+        - text: the notifying authority confirms within one month that affected certificates pose no health,
+            safety or fundamental-rights risk
+          basis_segment_ids:
+          - AIA-TEXT-A036-P014
+        - text: the notifying authority provides a timeline for actions to remedy the suspension or restriction
+          basis_segment_ids:
+          - AIA-TEXT-A036-P014
+      - operator: all_of
+        operands:
+        - text: the notifying authority confirms no certificates relevant to the suspension will be issued,
+            amended or reissued during the suspension or restriction
+          basis_segment_ids:
+          - AIA-TEXT-A036-P014
+        - text: the notifying authority states whether the notified body can continue to monitor and remain
+            responsible for existing certificates during the suspension or restriction
+          basis_segment_ids:
+          - AIA-TEXT-A036-P014
   exceptions:
-  - certificates that were unduly issued
+    operator: any_of
+    operands:
+    - text: certificates that were unduly issued
+      basis_segment_ids:
+      - AIA-TEXT-A036-P014
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
@@ -784,8 +867,12 @@ norms:
   - AIA-TEXT-A036-P016
   qualifier_spans: []
   conditions:
-  - the notifying authority determines the original notified body cannot support existing certificates
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notifying authority determines the original notified body cannot support existing certificates
+      basis_segment_ids:
+      - AIA-TEXT-A036-P016
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -823,11 +910,17 @@ norms:
   - AIA-TEXT-A036-P018
   - AIA-TEXT-A036-P019
   conditions:
-  - the provider's establishment-state authority confirms no associated health, safety, or fundamental-rights
-    risk
-  - another notified body accepts immediate responsibility in writing and completes assessment within
-    12 months of withdrawal
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider's establishment-state authority confirms no associated health, safety, or fundamental-rights
+        risk
+      basis_segment_ids:
+      - AIA-TEXT-A036-P017
+    - text: another notified body accepts immediate responsibility in writing and completes assessment
+        within 12 months of withdrawal
+      basis_segment_ids:
+      - AIA-TEXT-A036-P017
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
@@ -862,8 +955,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A036-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -898,8 +991,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A036-P021
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for these addressees.

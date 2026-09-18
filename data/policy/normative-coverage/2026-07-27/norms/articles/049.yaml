@@ -20,9 +20,15 @@ norms:
   - AIA-TEXT-A049-P001
   qualifier_spans: []
   conditions:
-  - the system is high-risk and listed in Annex III other than point 2
-  - registration occurs before placing on the market or putting into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system is high-risk and listed in Annex III other than point 2
+      basis_segment_ids:
+      - AIA-TEXT-A049-P001
+    - text: registration occurs before placing on the market or putting into service
+      basis_segment_ids:
+      - AIA-TEXT-A049-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -60,10 +66,18 @@ norms:
   - AIA-TEXT-A049-P001
   qualifier_spans: []
   conditions:
-  - the system is high-risk and listed in Annex III other than point 2
-  - the representative is applicable for the registration
-  - registration occurs before placing on the market or putting into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system is high-risk and listed in Annex III other than point 2
+      basis_segment_ids:
+      - AIA-TEXT-A049-P001
+    - text: the representative is applicable for the registration
+      basis_segment_ids:
+      - AIA-TEXT-A049-P001
+    - text: registration occurs before placing on the market or putting into service
+      basis_segment_ids:
+      - AIA-TEXT-A049-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -100,9 +114,15 @@ norms:
   - AIA-TEXT-A049-P002
   qualifier_spans: []
   conditions:
-  - the provider concluded under Article 6(3) that the system is not high-risk
-  - registration occurs before placing on the market or putting into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider concluded under Article 6(3) that the system is not high-risk
+      basis_segment_ids:
+      - AIA-TEXT-A049-P002
+    - text: registration occurs before placing on the market or putting into service
+      basis_segment_ids:
+      - AIA-TEXT-A049-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -140,10 +160,18 @@ norms:
   - AIA-TEXT-A049-P002
   qualifier_spans: []
   conditions:
-  - the provider concluded under Article 6(3) that the system is not high-risk
-  - the representative is applicable for the registration
-  - registration occurs before placing on the market or putting into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider concluded under Article 6(3) that the system is not high-risk
+      basis_segment_ids:
+      - AIA-TEXT-A049-P002
+    - text: the representative is applicable for the registration
+      basis_segment_ids:
+      - AIA-TEXT-A049-P002
+    - text: registration occurs before placing on the market or putting into service
+      basis_segment_ids:
+      - AIA-TEXT-A049-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -181,10 +209,19 @@ norms:
   - AIA-TEXT-A049-P003
   qualifier_spans: []
   conditions:
-  - the deployer is a public authority, Union institution, body, office or agency, or acts on its behalf
-  - the system is high-risk and listed in Annex III other than point 2
-  - registration occurs before putting into service or use
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is a public authority, Union institution, body, office or agency, or acts on
+        its behalf
+      basis_segment_ids:
+      - AIA-TEXT-A049-P003
+    - text: the system is high-risk and listed in Annex III other than point 2
+      basis_segment_ids:
+      - AIA-TEXT-A049-P003
+    - text: registration occurs before putting into service or use
+      basis_segment_ids:
+      - AIA-TEXT-A049-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -227,9 +264,13 @@ norms:
   - AIA-TEXT-A049-P007
   - AIA-TEXT-A049-P008
   conditions:
-  - the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or border-control
-    management
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or
+        border-control management
+      basis_segment_ids:
+      - AIA-TEXT-A049-P004
+  exceptions: null
   mandatory_content:
   - use the secure non-public section of the Article 71 EU database
   - Annex VIII Section A points 1 to 10, except points 6, 8, and 9
@@ -268,8 +309,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A049-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -302,8 +343,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A049-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -337,8 +378,12 @@ norms:
   - AIA-TEXT-A049-P010
   qualifier_spans: []
   conditions:
-  - the high-risk system is referred to in Annex III point 2
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk system is referred to in Annex III point 2
+      basis_segment_ids:
+      - AIA-TEXT-A049-P010
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

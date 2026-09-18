@@ -20,8 +20,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - draw up the declaration in the prescribed written, machine-readable, physical or electronically signed
     form
@@ -58,8 +58,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -93,8 +93,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -128,8 +128,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -165,8 +165,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - contain the information set out in Annex V
   - use a language easily understood by competent authorities in every Member State where the system is
@@ -205,8 +205,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -241,9 +241,13 @@ norms:
   - AIA-TEXT-A047-P003
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is subject to other Union harmonisation legislation which also requires an
-    EU declaration of conformity
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is subject to other Union harmonisation legislation which also requires
+        an EU declaration of conformity
+      basis_segment_ids:
+      - AIA-TEXT-A047-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -277,8 +281,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -311,8 +315,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -346,8 +350,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A047-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -28,8 +28,8 @@ norms:
   - AIA-TEXT-A053-P002
   qualifier_spans:
   - AIA-TEXT-A053-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - draw up and keep the technical documentation up to date
   - cover model training, testing and evaluation results
@@ -76,8 +76,8 @@ norms:
   - AIA-TEXT-A053-P003
   qualifier_spans:
   - AIA-TEXT-A053-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -121,8 +121,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A053-P001
   - AIA-TEXT-A053-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -164,8 +164,8 @@ norms:
   - AIA-TEXT-A053-P004
   qualifier_spans:
   - AIA-TEXT-A053-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -206,8 +206,8 @@ norms:
   - AIA-TEXT-A053-P005
   qualifier_spans:
   - AIA-TEXT-A053-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - the elements set out in Annex XII
   product_scope: in_scope
@@ -249,8 +249,8 @@ norms:
   - AIA-TEXT-A053-P006
   qualifier_spans:
   - AIA-TEXT-A053-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -292,8 +292,8 @@ norms:
   - AIA-TEXT-A053-P006
   qualifier_spans:
   - AIA-TEXT-A053-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -335,8 +335,8 @@ norms:
   - AIA-TEXT-A053-P007
   qualifier_spans:
   - AIA-TEXT-A053-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -381,9 +381,15 @@ norms:
   - AIA-TEXT-A053-P008
   qualifier_spans: []
   conditions:
-  - the licence permits access, usage, modification, and distribution
-  - model parameters including weights, architecture information, and usage information are public
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the licence permits access, usage, modification, and distribution
+      basis_segment_ids:
+      - AIA-TEXT-A053-P008
+    - text: model parameters including weights, architecture information, and usage information are public
+      basis_segment_ids:
+      - AIA-TEXT-A053-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -426,8 +432,12 @@ norms:
   - AIA-TEXT-A053-P008
   qualifier_spans: []
   conditions:
-  - the general-purpose AI model presents systemic risk
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the general-purpose AI model presents systemic risk
+      basis_segment_ids:
+      - AIA-TEXT-A053-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -471,8 +481,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A053-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -515,8 +525,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A053-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -557,8 +567,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A053-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -601,8 +611,12 @@ norms:
   - AIA-TEXT-A053-P010
   qualifier_spans: []
   conditions:
-  - the provider neither adheres to an approved code nor complies with a covering harmonised standard
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider neither adheres to an approved code nor complies with a covering harmonised standard
+      basis_segment_ids:
+      - AIA-TEXT-A053-P010
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -645,8 +659,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A053-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -685,8 +699,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A053-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -728,8 +742,12 @@ norms:
   - AIA-TEXT-A053-P013
   qualifier_spans: []
   conditions:
-  - the downstream provider obtains information or documentation under Article 53
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the downstream provider obtains information or documentation under Article 53
+      basis_segment_ids:
+      - AIA-TEXT-A053-P013
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

@@ -27,13 +27,24 @@ norms:
   - AIA-TEXT-A004A-P006
   - AIA-TEXT-A004A-P007
   conditions:
-  - the processing is strictly necessary for bias detection and correction under Article 10(2), points
-    (f) and (g)
-  - the processing is subject to appropriate safeguards for natural persons' fundamental rights and freedoms
-  - processing other data, including synthetic or anonymised data, cannot effectively achieve the bias
-    detection and correction
-  - every safeguard and condition in Article 4a(1), points (b) to (f), is satisfied
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the processing is strictly necessary for bias detection and correction under Article 10(2),
+        points (f) and (g)
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P001
+    - text: the processing is subject to appropriate safeguards for natural persons' fundamental rights
+        and freedoms
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P001
+    - text: processing other data, including synthetic or anonymised data, cannot effectively achieve
+        the bias detection and correction
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P001
+    - text: every safeguard and condition in Article 4a(1), points (b) to (f), is satisfied
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -72,8 +83,13 @@ norms:
   - AIA-TEXT-A004A-P001
   - AIA-TEXT-A004A-P010
   conditions:
-  - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
+        permission
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -114,8 +130,13 @@ norms:
   - AIA-TEXT-A004A-P001
   - AIA-TEXT-A004A-P010
   conditions:
-  - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
+        permission
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -154,8 +175,13 @@ norms:
   - AIA-TEXT-A004A-P001
   - AIA-TEXT-A004A-P010
   conditions:
-  - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
+        permission
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -194,8 +220,13 @@ norms:
   - AIA-TEXT-A004A-P001
   - AIA-TEXT-A004A-P010
   conditions:
-  - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
+        permission
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -236,8 +267,13 @@ norms:
   - AIA-TEXT-A004A-P001
   - AIA-TEXT-A004A-P010
   conditions:
-  - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
+        permission
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P007
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -277,11 +313,17 @@ norms:
   - AIA-TEXT-A004A-P009
   - AIA-TEXT-A004A-P010
   conditions:
-  - the processing is strictly necessary for bias detection and correction concerning biases likely to
-    affect health or safety, negatively affect fundamental rights, or cause discrimination prohibited
-    by Union law
-  - all Article 4a(1) conditions and safeguards are applied
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the processing is strictly necessary for bias detection and correction concerning biases likely
+        to affect health or safety, negatively affect fundamental rights, or cause discrimination prohibited
+        by Union law
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P008
+    - text: all Article 4a(1) conditions and safeguards are applied
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -314,8 +356,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A004A-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This clause constrains downstream rule interpretation but creates no independent

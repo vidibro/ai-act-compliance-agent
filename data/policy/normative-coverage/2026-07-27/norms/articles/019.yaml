@@ -18,8 +18,12 @@ norms:
   - AIA-TEXT-A019-P001
   qualifier_spans: []
   conditions:
-  - "the automatically generated logs are under the provider\u2019s control"
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: "the automatically generated logs are under the provider\u2019s control"
+      basis_segment_ids:
+      - AIA-TEXT-A019-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -56,9 +60,18 @@ norms:
   - AIA-TEXT-A019-P001
   qualifier_spans: []
   conditions:
-  - "the automatically generated logs are under the provider\u2019s control"
+    operator: all_of
+    operands:
+    - text: "the automatically generated logs are under the provider\u2019s control"
+      basis_segment_ids:
+      - AIA-TEXT-A019-P001
   exceptions:
-  - applicable Union or national law, particularly personal-data law, provides a different retention period
+    operator: any_of
+    operands:
+    - text: applicable Union or national law, particularly personal-data law, provides a different retention
+        period
+      basis_segment_ids:
+      - AIA-TEXT-A019-P001
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -96,9 +109,13 @@ norms:
   - AIA-TEXT-A019-P002
   qualifier_spans: []
   conditions:
-  - the provider is a financial institution subject to internal-governance requirements under Union financial-services
-    law
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider is a financial institution subject to internal-governance requirements under
+        Union financial-services law
+      basis_segment_ids:
+      - AIA-TEXT-A019-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

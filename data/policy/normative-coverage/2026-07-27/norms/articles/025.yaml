@@ -22,9 +22,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A025-P001
   conditions:
-  - the party puts its name or trademark on a high-risk AI system already placed on the market or put
-    into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the party puts its name or trademark on a high-risk AI system already placed on the market
+        or put into service
+      basis_segment_ids:
+      - AIA-TEXT-A025-P002
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition reallocates the provider role and thereby determines which operator
@@ -66,9 +70,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A025-P001
   conditions:
-  - the party substantially modifies an already marketed or operational high-risk system and it remains
-    high-risk under Article 6
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the party substantially modifies an already marketed or operational high-risk system and it
+        remains high-risk under Article 6
+      basis_segment_ids:
+      - AIA-TEXT-A025-P003
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition reallocates the provider role and thereby determines which operator
@@ -111,9 +119,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A025-P001
   conditions:
-  - the party changes the intended purpose of an already marketed or operational non-high-risk system
-    so that it becomes high-risk under Article 6
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the party changes the intended purpose of an already marketed or operational non-high-risk
+        system so that it becomes high-risk under Article 6
+      basis_segment_ids:
+      - AIA-TEXT-A025-P004
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition reallocates the provider role and thereby determines which operator
@@ -151,8 +163,12 @@ norms:
   - AIA-TEXT-A025-P005
   qualifier_spans: []
   conditions:
-  - an Article 25(1) provider-role transfer occurs
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an Article 25(1) provider-role transfer occurs
+      basis_segment_ids:
+      - AIA-TEXT-A025-P005
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This consequence determines the parties' respective roles and the resulting allocation
@@ -187,9 +203,18 @@ norms:
   - AIA-TEXT-A025-P006
   qualifier_spans: []
   conditions:
-  - an Article 25(1) provider-role transfer occurs
+    operator: all_of
+    operands:
+    - text: an Article 25(1) provider-role transfer occurs
+      basis_segment_ids:
+      - AIA-TEXT-A025-P006
   exceptions:
-  - the initial provider clearly specified that its system must not be changed into a high-risk system
+    operator: any_of
+    operands:
+    - text: the initial provider clearly specified that its system must not be changed into a high-risk
+        system
+      basis_segment_ids:
+      - AIA-TEXT-A025-P006
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -232,9 +257,18 @@ norms:
   - AIA-TEXT-A025-P009
   - AIA-TEXT-A025-P010
   conditions:
-  - an Article 25(1) provider-role transfer occurs
+    operator: all_of
+    operands:
+    - text: an Article 25(1) provider-role transfer occurs
+      basis_segment_ids:
+      - AIA-TEXT-A025-P006
   exceptions:
-  - the initial provider clearly specified that its system must not be changed into a high-risk system
+    operator: any_of
+    operands:
+    - text: the initial provider clearly specified that its system must not be changed into a high-risk
+        system
+      basis_segment_ids:
+      - AIA-TEXT-A025-P006
   mandatory_content:
   - technical documentation sufficient to assess Article 16 compliance
   - information about known limitations and failure modes
@@ -275,8 +309,13 @@ norms:
   - AIA-TEXT-A025-P011
   qualifier_spans: []
   conditions:
-  - the initial provider clearly specified that its AI system must not be changed into a high-risk system
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the initial provider clearly specified that its AI system must not be changed into a high-risk
+        system
+      basis_segment_ids:
+      - AIA-TEXT-A025-P011
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -313,9 +352,16 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A025-P012
   conditions:
-  - the high-risk AI system is a safety component of a product covered by Section A of Annex I legislation
-  - the system is marketed with the product under the product manufacturer's name or trademark
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is a safety component of a product covered by Section A of Annex I
+        legislation
+      basis_segment_ids:
+      - AIA-TEXT-A025-P013
+    - text: the system is marketed with the product under the product manufacturer's name or trademark
+      basis_segment_ids:
+      - AIA-TEXT-A025-P013
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition assigns the provider role and thereby determines which operator
@@ -353,10 +399,17 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A025-P012
   conditions:
-  - the high-risk AI system is a safety component of a product covered by Section A of Annex I legislation
-  - the system is put into service under the product manufacturer's name or trademark after product market
-    placement
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is a safety component of a product covered by Section A of Annex I
+        legislation
+      basis_segment_ids:
+      - AIA-TEXT-A025-P014
+    - text: the system is put into service under the product manufacturer's name or trademark after product
+        market placement
+      basis_segment_ids:
+      - AIA-TEXT-A025-P014
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition assigns the provider role and thereby determines which operator
@@ -396,8 +449,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A025-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - necessary information
   - necessary capabilities
@@ -438,9 +491,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A025-P015
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - general-purpose AI models remain subject to the written-agreement duty
+    operator: any_of
+    operands:
+    - text: general-purpose AI models remain subject to the written-agreement duty
+      basis_segment_ids:
+      - AIA-TEXT-A025-P015
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -474,8 +531,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A025-P016
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -508,8 +565,12 @@ norms:
   - AIA-TEXT-A025-P016
   qualifier_spans: []
   conditions:
-  - the AI Office develops voluntary model terms
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office develops voluntary model terms
+      basis_segment_ids:
+      - AIA-TEXT-A025-P016
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -541,8 +602,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A025-P016
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -578,8 +639,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A025-P017
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

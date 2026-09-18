@@ -18,8 +18,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - appropriate accuracy
   - appropriate robustness
@@ -58,8 +58,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -93,8 +93,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -131,8 +131,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -165,8 +165,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -200,8 +200,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -239,8 +239,12 @@ norms:
   - AIA-TEXT-A015-P006
   qualifier_spans: []
   conditions:
-  - the high-risk AI system continues to learn after market placement or being put into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system continues to learn after market placement or being put into service
+      basis_segment_ids:
+      - AIA-TEXT-A015-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -275,8 +279,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -310,8 +314,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A015-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -345,8 +349,12 @@ norms:
   - AIA-TEXT-A015-P009
   qualifier_spans: []
   conditions:
-  - measures addressing the AI-specific vulnerability are appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: measures addressing the AI-specific vulnerability are appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -380,8 +388,12 @@ norms:
   - AIA-TEXT-A015-P009
   qualifier_spans: []
   conditions:
-  - measures addressing the AI-specific vulnerability are appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: measures addressing the AI-specific vulnerability are appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -415,8 +427,12 @@ norms:
   - AIA-TEXT-A015-P009
   qualifier_spans: []
   conditions:
-  - measures addressing the AI-specific vulnerability are appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: measures addressing the AI-specific vulnerability are appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -449,8 +465,12 @@ norms:
   - AIA-TEXT-A015-P009
   qualifier_spans: []
   conditions:
-  - measures addressing the AI-specific vulnerability are appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: measures addressing the AI-specific vulnerability are appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -483,8 +503,12 @@ norms:
   - AIA-TEXT-A015-P009
   qualifier_spans: []
   conditions:
-  - measures addressing the AI-specific vulnerability are appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: measures addressing the AI-specific vulnerability are appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

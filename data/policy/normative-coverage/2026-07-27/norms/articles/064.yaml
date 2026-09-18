@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A064-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -48,8 +48,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A064-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -82,8 +82,12 @@ norms:
   - AIA-TEXT-A064-P003
   qualifier_spans: []
   conditions:
-  - the applicable budgetary procedure remains observed
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the applicable budgetary procedure remains observed
+      basis_segment_ids:
+      - AIA-TEXT-A064-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

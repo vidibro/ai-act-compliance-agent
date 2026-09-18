@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A098-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -50,8 +50,12 @@ norms:
   - AIA-TEXT-A098-P002
   qualifier_spans: []
   conditions:
-  - an enacted provision refers to Article 98(2)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an enacted provision refers to Article 98(2)
+      basis_segment_ids:
+      - AIA-TEXT-A098-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional procedure is outside the supported operator surface.

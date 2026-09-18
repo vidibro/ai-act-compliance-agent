@@ -24,14 +24,20 @@ norms:
   - AIA-TEXT-A050-P1
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: []
+  conditions: null
   exceptions:
-  - interaction with an AI system is obvious from the point of view of a natural person who is reasonably
-    well-informed, observant and circumspect, taking into account the circumstances and the context of
-    use
-  - AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences, subject
-    to safeguards for third-party rights and freedoms, unless the system is publicly available for reporting
-    a criminal offence
+    operator: any_of
+    operands:
+    - text: interaction with an AI system is obvious from the point of view of a natural person who is
+        reasonably well-informed, observant and circumspect, taking into account the circumstances and
+        the context of use
+      basis_segment_ids:
+      - AIA-TEXT-A050-P1
+    - text: AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences,
+        subject to safeguards for third-party rights and freedoms, unless the system is publicly available
+        for reporting a criminal offence
+      basis_segment_ids:
+      - AIA-TEXT-A050-P1
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -75,10 +81,16 @@ norms:
   - AIA-TEXT-A050-P2
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: []
+  conditions: null
   exceptions:
-  - assistive standard editing, or no substantial alteration of deployer input data or its semantics
-  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+    operator: any_of
+    operands:
+    - text: assistive standard editing, or no substantial alteration of deployer input data or its semantics
+      basis_segment_ids:
+      - AIA-TEXT-A050-P2
+    - text: use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+      basis_segment_ids:
+      - AIA-TEXT-A050-P2
   mandatory_content:
   - machine-readable marking
   - detectability as artificial or manipulated
@@ -121,11 +133,15 @@ norms:
   - AIA-TEXT-A050-P3
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: []
+  conditions: null
   exceptions:
-  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
-    criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
-    Union law
+    operator: any_of
+    operands:
+    - text: biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
+        criminal offences, subject to safeguards for third-party rights and freedoms and in accordance
+        with Union law
+      basis_segment_ids:
+      - AIA-TEXT-A050-P3
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -158,11 +174,15 @@ norms:
   primary_spans:
   - AIA-TEXT-A050-P3
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
-    criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
-    Union law
+    operator: any_of
+    operands:
+    - text: biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
+        criminal offences, subject to safeguards for third-party rights and freedoms and in accordance
+        with Union law
+      basis_segment_ids:
+      - AIA-TEXT-A050-P3
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -203,10 +223,18 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A050-P5
   conditions:
-  - for evidently artistic, creative, satirical, fictional, or analogous works or programmes, disclosure
-    is limited to an appropriate indication that does not hamper display or enjoyment
+    operator: all_of
+    operands:
+    - text: for evidently artistic, creative, satirical, fictional, or analogous works or programmes,
+        disclosure is limited to an appropriate indication that does not hamper display or enjoyment
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
   exceptions:
-  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+    operator: any_of
+    operands:
+    - text: use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -246,11 +274,17 @@ norms:
   - AIA-TEXT-A050-P4
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: []
+  conditions: null
   exceptions:
-  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
-  - AI-generated content underwent human review or editorial control and a natural or legal person holds
-    editorial responsibility for publication
+    operator: any_of
+    operands:
+    - text: use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
+    - text: AI-generated content underwent human review or editorial control and a natural or legal person
+        holds editorial responsibility for publication
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -285,8 +319,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A050-P5
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - clear and distinguishable
   - no later than first interaction or exposure
@@ -324,8 +358,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A050-P6
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -358,8 +392,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A050-P7
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -392,8 +426,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A050-P7
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -427,8 +461,12 @@ norms:
   - AIA-TEXT-A050-P7
   qualifier_spans: []
   conditions:
-  - the Commission deems the code of practice inadequate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission deems the code of practice inadequate
+      basis_segment_ids:
+      - AIA-TEXT-A050-P7
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

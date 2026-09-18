@@ -17,9 +17,13 @@ norms:
   - AIA-TEXT-A075B-P001
   qualifier_spans: []
   conditions:
-  - during Article 75a(2) proceedings, the operator offers commitments to ensure compliance with the relevant
-    provisions of the Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: during Article 75a(2) proceedings, the operator offers commitments to ensure compliance with
+        the relevant provisions of the Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A075B-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -53,8 +57,8 @@ norms:
   - AIA-TEXT-A075B-P002
   - AIA-TEXT-A075B-P003
   - AIA-TEXT-A075B-P004
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - material factual change
   - operator acts contrary to commitments
@@ -91,8 +95,12 @@ norms:
   - AIA-TEXT-A075B-P005
   qualifier_spans: []
   conditions:
-  - the AI Office considers the offered commitments unable to ensure effective compliance
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office considers the offered commitments unable to ensure effective compliance
+      basis_segment_ids:
+      - AIA-TEXT-A075B-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

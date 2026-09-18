@@ -444,11 +444,12 @@ Examples of reasons not to split automatically:
 
 Atomicity is adjudicated from legal effect, not punctuation or occurrences of modal words.
 
-Condition groups may explicitly preserve conjunctions and alternatives using `operator: all_of`
-or `operator: any_of` with at least two `operands`, each a nonempty text premise or nested group.
-For example, a shared risk premise AND any of four qualifying uses remains one applicability norm,
-not four cumulative obligations. Legacy prose conditions remain supported without automatically
-inferring their logic. These groups record legal structure; they are not executable runtime predicates.
+Conditions and exceptions use one explicit `LogicalExpression` shape: a non-empty `all_of` or
+`any_of` tree. Each leaf is a `ConditionClause` with non-blank `text` and one or more exact
+`basis_segment_ids`. For example, a shared risk premise AND any of four qualifying uses remains one
+applicability norm, not four cumulative obligations. These expressions record legal structure; they
+are not executable runtime predicates. The temporary legacy-list adapter exists only while source
+records are rewritten; generated norms always use the canonical expression shape.
 
 ## Completion and assurance accounting
 

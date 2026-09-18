@@ -20,9 +20,13 @@ norms:
   - AIA-TEXT-A042-P001
   qualifier_spans: []
   conditions:
-  - training and testing data reflect the intended geographical, behavioural, contextual, or functional
-    setting
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: training and testing data reflect the intended geographical, behavioural, contextual, or functional
+        setting
+      basis_segment_ids:
+      - AIA-TEXT-A042-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -62,10 +66,16 @@ norms:
   - AIA-TEXT-A042-P002
   qualifier_spans: []
   conditions:
-  - a Regulation 2019/881 cybersecurity certificate or conformity statement covers the relevant Article
-    15 requirements
-  - references to the cybersecurity scheme have been published in the Official Journal
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a Regulation 2019/881 cybersecurity certificate or conformity statement covers the relevant
+        Article 15 requirements
+      basis_segment_ids:
+      - AIA-TEXT-A042-P002
+    - text: references to the cybersecurity scheme have been published in the Official Journal
+      basis_segment_ids:
+      - AIA-TEXT-A042-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -103,9 +113,15 @@ norms:
   - AIA-TEXT-A042-P003
   qualifier_spans: []
   conditions:
-  - the system falls within Regulation 2024/2847
-  - the conditions in Article 12(1) of Regulation 2024/2847 are fulfilled
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system falls within Regulation 2024/2847
+      basis_segment_ids:
+      - AIA-TEXT-A042-P003
+    - text: the conditions in Article 12(1) of Regulation 2024/2847 are fulfilled
+      basis_segment_ids:
+      - AIA-TEXT-A042-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

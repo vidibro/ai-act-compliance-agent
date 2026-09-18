@@ -22,8 +22,8 @@ norms:
   - AIA-TEXT-A058-P003
   - AIA-TEXT-A058-P004
   - AIA-TEXT-A058-P005
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - eligibility and selection
   - application participation monitoring exit and termination procedures
@@ -59,8 +59,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A058-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -102,8 +102,8 @@ norms:
   - AIA-TEXT-A058-P014
   - AIA-TEXT-A058-P015
   - AIA-TEXT-A058-P016
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - transparent fair eligibility and selection with decisions within three months
   - broad equal demand-responsive access and partnership applications
@@ -146,8 +146,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A058-P017
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -183,8 +183,12 @@ norms:
   - AIA-TEXT-A058-P018
   qualifier_spans: []
   conditions:
-  - the authority considers authorising supervised real-world sandbox testing
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authority considers authorising supervised real-world sandbox testing
+      basis_segment_ids:
+      - AIA-TEXT-A058-P018
+  exceptions: null
   mandatory_content:
   - testing terms and conditions
   - safeguards protecting fundamental rights health and safety
@@ -220,9 +224,15 @@ norms:
   - AIA-TEXT-A058-P018
   qualifier_spans: []
   conditions:
-  - the authority considers authorising supervised real-world sandbox testing
-  - where appropriate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authority considers authorising supervised real-world sandbox testing
+      basis_segment_ids:
+      - AIA-TEXT-A058-P018
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A058-P018
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

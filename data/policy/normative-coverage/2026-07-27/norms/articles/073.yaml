@@ -16,8 +16,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -53,8 +53,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -94,8 +94,12 @@ norms:
   - AIA-TEXT-A073-P002
   - AIA-TEXT-A073-P003
   conditions:
-  - a deployer is applicable
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a deployer is applicable
+      basis_segment_ids:
+      - AIA-TEXT-A073-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -133,8 +137,12 @@ norms:
   - AIA-TEXT-A073-P004
   qualifier_spans: []
   conditions:
-  - a widespread infringement or Article 3(49)(b) serious incident occurs
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a widespread infringement or Article 3(49)(b) serious incident occurs
+      basis_segment_ids:
+      - AIA-TEXT-A073-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -172,8 +180,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A073-P004
   conditions:
-  - a widespread infringement or Article 3(49)(b) serious incident occurs
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a widespread infringement or Article 3(49)(b) serious incident occurs
+      basis_segment_ids:
+      - AIA-TEXT-A073-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -211,8 +223,12 @@ norms:
   - AIA-TEXT-A073-P005
   qualifier_spans: []
   conditions:
-  - a person has died in the serious incident
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a person has died in the serious incident
+      basis_segment_ids:
+      - AIA-TEXT-A073-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -250,8 +266,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A073-P005
   conditions:
-  - a person has died in the serious incident
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a person has died in the serious incident
+      basis_segment_ids:
+      - AIA-TEXT-A073-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -287,8 +307,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -325,8 +345,12 @@ norms:
   - AIA-TEXT-A073-P007
   qualifier_spans: []
   conditions:
-  - a serious incident has been reported pursuant to paragraph 1
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a serious incident has been reported pursuant to paragraph 1
+      basis_segment_ids:
+      - AIA-TEXT-A073-P007
+  exceptions: null
   mandatory_content:
   - necessary investigation of the serious incident and the AI system concerned
   product_scope: in_scope
@@ -361,8 +385,12 @@ norms:
   - AIA-TEXT-A073-P007
   qualifier_spans: []
   conditions:
-  - a serious incident has been reported pursuant to paragraph 1
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a serious incident has been reported pursuant to paragraph 1
+      basis_segment_ids:
+      - AIA-TEXT-A073-P007
+  exceptions: null
   mandatory_content:
   - risk assessment of the incident
   - corrective action
@@ -399,8 +427,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -437,8 +465,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -472,8 +500,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -506,8 +534,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -542,8 +570,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - take the appropriate Article 19 measures within seven days
   - follow the Regulation (EU) 2019/1020 notification procedures
@@ -581,8 +609,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -621,8 +649,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -656,8 +684,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

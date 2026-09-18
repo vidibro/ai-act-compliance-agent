@@ -17,10 +17,16 @@ norms:
   - AIA-TEXT-A043-P1
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is listed in point 1 of Annex III
-  - the provider has applied Article 40 harmonised standards or, where applicable, Article 41 common specifications
-    in demonstrating compliance with Section 2 requirements
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is listed in point 1 of Annex III
+      basis_segment_ids:
+      - AIA-TEXT-A043-P1
+    - text: the provider has applied Article 40 harmonised standards or, where applicable, Article 41
+        common specifications in demonstrating compliance with Section 2 requirements
+      basis_segment_ids:
+      - AIA-TEXT-A043-P1
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -55,16 +61,29 @@ norms:
   - AIA-TEXT-A043-P1
   qualifier_spans: []
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the high-risk AI system is listed in point 1 of Annex III
-    - operator: any_of
+    - operator: all_of
       operands:
-      - harmonised standards under Article 40 do not exist and Article 41 common specifications are unavailable
-      - the provider did not apply, or applied only part of, the harmonised standard
-      - available common specifications were not applied by the provider
-      - a harmonised standard was published with a restriction, only for the part that was restricted
-  exceptions: []
+      - text: the high-risk AI system is listed in point 1 of Annex III
+        basis_segment_ids:
+        - AIA-TEXT-A043-P1
+      - operator: any_of
+        operands:
+        - text: harmonised standards under Article 40 do not exist and Article 41 common specifications
+            are unavailable
+          basis_segment_ids:
+          - AIA-TEXT-A043-P1
+        - text: the provider did not apply, or applied only part of, the harmonised standard
+          basis_segment_ids:
+          - AIA-TEXT-A043-P1
+        - text: available common specifications were not applied by the provider
+          basis_segment_ids:
+          - AIA-TEXT-A043-P1
+        - text: a harmonised standard was published with a restriction, only for the part that was restricted
+          basis_segment_ids:
+          - AIA-TEXT-A043-P1
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -99,11 +118,20 @@ norms:
   - AIA-TEXT-A043-P1
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII
+        procedure
+      basis_segment_ids:
+      - AIA-TEXT-A043-P1
   exceptions:
-  - where the system is intended to be put into service by law enforcement, immigration or asylum authorities,
-    or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market surveillance authority,
-    as applicable, shall act as the notified body
+    operator: any_of
+    operands:
+    - text: where the system is intended to be put into service by law enforcement, immigration or asylum
+        authorities, or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market
+        surveillance authority, as applicable, shall act as the notified body
+      basis_segment_ids:
+      - AIA-TEXT-A043-P1
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -139,10 +167,17 @@ norms:
   - AIA-TEXT-A043-P1
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
-  - the system is intended to be put into service by law enforcement, immigration or asylum authorities,
-    or Union institutions, bodies, offices or agencies
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII
+        procedure
+      basis_segment_ids:
+      - AIA-TEXT-A043-P1
+    - text: the system is intended to be put into service by law enforcement, immigration or asylum authorities,
+        or Union institutions, bodies, offices or agencies
+      basis_segment_ids:
+      - AIA-TEXT-A043-P1
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -177,8 +212,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A043-P2
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -212,9 +247,13 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is covered by Union harmonisation legislation listed in Section A
+        of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -248,9 +287,13 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is covered by Union harmonisation legislation listed in Section A
+        of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -286,9 +329,13 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is covered by Union harmonisation legislation listed in Section A
+        of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content:
   - assess the Article 17 quality-management system
   - apply the specified Annex VII procedural requirements
@@ -323,10 +370,17 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
-  - the body's compliance with Article 31(4), (5), (10) and (11) has been assessed in the context of the
-    notification procedure in accordance with the relevant Union harmonisation legislation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the body has been notified under Union harmonisation legislation listed in Section A of Annex
+        I
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+    - text: the body's compliance with Article 31(4), (5), (10) and (11) has been assessed in the context
+        of the notification procedure in accordance with the relevant Union harmonisation legislation
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -358,8 +412,13 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the body has been notified under Union harmonisation legislation listed in Section A of Annex
+        I
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -392,11 +451,17 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - Union harmonisation legislation listed in Section A of Annex I gives the product manufacturer an option
-    to rely on a conformity assessment not involving a third party
-  - the manufacturer has applied harmonised standards ensuring compliance with all the requirements of
-    that legislation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: Union harmonisation legislation listed in Section A of Annex I gives the product manufacturer
+        an option to rely on a conformity assessment not involving a third party
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+    - text: the manufacturer has applied harmonised standards ensuring compliance with all the requirements
+        of that legislation
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -429,9 +494,15 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - the product is covered by Union harmonisation legislation listed in Section A of Annex I
-  - the product is classified as a high-risk AI system under Article 6(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the product is covered by Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+    - text: the product is classified as a high-risk AI system under Article 6(1)
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -464,10 +535,18 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   conditions:
-  - the product is covered by Union harmonisation legislation listed in Section A of Annex I
-  - the product includes a high-risk AI system as a safety component
-  - third-party conformity assessment is not required by that Union harmonisation legislation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the product is covered by Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+    - text: the product includes a high-risk AI system as a safety component
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+    - text: third-party conformity assessment is not required by that Union harmonisation legislation
+      basis_segment_ids:
+      - AIA-TEXT-A043-P3
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -504,9 +583,15 @@ norms:
   - AIA-TEXT-A043-P4
   qualifier_spans: []
   conditions:
-  - the high-risk AI system has already undergone a conformity-assessment procedure
-  - the high-risk AI system is substantially modified
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system has already undergone a conformity-assessment procedure
+      basis_segment_ids:
+      - AIA-TEXT-A043-P4
+    - text: the high-risk AI system is substantially modified
+      basis_segment_ids:
+      - AIA-TEXT-A043-P4
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -544,9 +629,16 @@ norms:
   - AIA-TEXT-A043-P4
   qualifier_spans: []
   conditions:
-  - the continuing-learning change and performance effect was predetermined at initial conformity assessment
-  - the change is included in Annex IV point 2(f) technical documentation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the continuing-learning change and performance effect was predetermined at initial conformity
+        assessment
+      basis_segment_ids:
+      - AIA-TEXT-A043-P4
+    - text: the change is included in Annex IV point 2(f) technical documentation
+      basis_segment_ids:
+      - AIA-TEXT-A043-P4
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability to the new-assessment obligation.
@@ -578,8 +670,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A043-P5
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -613,8 +705,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A043-P6
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -649,8 +741,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A043-P6
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - Annex VI internal-control effectiveness in preventing or minimising health, safety, and fundamental-rights
     risks

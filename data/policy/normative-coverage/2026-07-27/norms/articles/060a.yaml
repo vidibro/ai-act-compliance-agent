@@ -19,8 +19,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060A-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -53,8 +53,12 @@ norms:
   - AIA-TEXT-A060A-P002
   qualifier_spans: []
   conditions:
-  - the Member State chooses to allow Article 60a testing
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Member State chooses to allow Article 60a testing
+      basis_segment_ids:
+      - AIA-TEXT-A060A-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -86,8 +90,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060A-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -120,8 +124,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060A-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -161,8 +165,12 @@ norms:
   - AIA-TEXT-A060A-P004
   qualifier_spans: []
   conditions:
-  - the Member State has adopted a real-world testing framework
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Member State has adopted a real-world testing framework
+      basis_segment_ids:
+      - AIA-TEXT-A060A-P004
+  exceptions: null
   mandatory_content:
   - ensure close and good-faith cooperation between all specified authorities
   - where necessary, ensure removal of practical obstacles, including procedural barriers to accessing
@@ -203,8 +211,8 @@ norms:
   - AIA-TEXT-A060A-P007
   - AIA-TEXT-A060A-P008
   - AIA-TEXT-A060A-P009
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - mandatory agreed testing plan
   - incorporated Article 60 safeguards
@@ -242,8 +250,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060A-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -279,8 +287,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060A-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -314,8 +322,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060A-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -350,8 +358,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060A-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Limits the effect of other applicable law rather than creating an independent

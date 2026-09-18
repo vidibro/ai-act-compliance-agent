@@ -18,9 +18,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A094-P001
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - more specific procedural rights provided by this Regulation remain unaffected
+    operator: any_of
+    operands:
+    - text: more specific procedural rights provided by this Regulation remain unaffected
+      basis_segment_ids:
+      - AIA-TEXT-A094-P001
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This grants procedural protection rather than imposing a product compliance action.

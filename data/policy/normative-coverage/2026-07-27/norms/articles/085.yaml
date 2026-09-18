@@ -18,8 +18,12 @@ norms:
   - AIA-TEXT-A085-P001
   qualifier_spans: []
   conditions:
-  - the natural or legal person has grounds to consider that this Regulation has been infringed
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the natural or legal person has grounds to consider that this Regulation has been infringed
+      basis_segment_ids:
+      - AIA-TEXT-A085-P001
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This is a complainant entitlement rather than an operator product action.
@@ -54,8 +58,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A085-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - take complaints into account in market surveillance activities
   - handle complaints under the dedicated procedures established by market surveillance authorities

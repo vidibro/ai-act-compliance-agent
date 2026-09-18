@@ -18,7 +18,7 @@ from aiact.norm_validity import (
     load_adjudication_ledger,
 )
 from aiact.schemas import ActorRole, NormActor, NormTarget, TargetKind, TemporalRegime
-from aiact.schemas.norm import NormRelationKind, SourceKind
+from aiact.schemas.norm import ConditionClause, NormRelationKind, SourceKind
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY = ROOT / "data" / "policy"
@@ -502,6 +502,72 @@ def test_target_basis_is_checked_deterministically_and_hash_bound():
     findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
 
     assert [finding.rule for finding in findings].count("target_basis_does_not_name_target") == 1
+
+
+def test_logical_expression_leaf_evidence_is_checked_when_the_field_is_enforced():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION"
+    )
+    assert norm.conditions is not None
+    norm.conditions.operands[0] = ConditionClause(
+        text="a condition that is not in the cited legal text",
+        basis_segment_ids=["AIA-TEXT-A015-P006"],
+    )
+    requirements = {
+        (SourceKind.ARTICLE, "15"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=requirements,
+    )
+
+    target = (
+        "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION:"
+        "conditions:0:AIA-TEXT-A015-P006"
+    )
+    assert any(
+        finding.target == target
+        and finding.rule == "logical_expression_basis_does_not_contain_text"
+        for finding in findings
+    )
+
+
+def test_logical_expression_unknown_basis_is_reported_when_the_field_is_enforced():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION"
+    )
+    assert norm.conditions is not None
+    norm.conditions.operands[0] = ConditionClause(
+        text="a condition with a missing cited segment",
+        basis_segment_ids=["AIA-TEXT-A015-P999"],
+    )
+    requirements = {
+        (SourceKind.ARTICLE, "15"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=requirements,
+    )
+
+    target = (
+        "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION:"
+        "conditions:0:AIA-TEXT-A015-P999"
+    )
+    assert any(
+        finding.target == target
+        and finding.rule == "logical_expression_basis_segment_unknown"
+        for finding in findings
+    )
 
 
 def test_temporal_assignment_needs_source_bound_adjudication_when_its_date_is_unproven(tmp_path):

@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A029-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -52,8 +52,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A029-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - conformity assessment activities
   - conformity assessment modules
@@ -90,8 +90,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A029-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -126,8 +126,12 @@ norms:
   - AIA-TEXT-A029-P004
   qualifier_spans: []
   conditions:
-  - the body cannot provide an accreditation certificate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the body cannot provide an accreditation certificate
+      basis_segment_ids:
+      - AIA-TEXT-A029-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -161,8 +165,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A029-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -198,8 +202,12 @@ norms:
   - AIA-TEXT-A029-P006
   qualifier_spans: []
   conditions:
-  - the body has a Section A Annex I designation and undergoes the Article 28(8) unified assessment
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the body has a Section A Annex I designation and undergoes the Article 28(8) unified assessment
+      basis_segment_ids:
+      - AIA-TEXT-A029-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -234,8 +242,12 @@ norms:
   - AIA-TEXT-A029-P007
   qualifier_spans: []
   conditions:
-  - relevant changes occur
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: relevant changes occur
+      basis_segment_ids:
+      - AIA-TEXT-A029-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

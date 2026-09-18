@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A084-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -51,8 +51,12 @@ norms:
   - AIA-TEXT-A084-P002
   qualifier_spans: []
   conditions:
-  - the Board, the Commission, or a market-surveillance authority requests the advice
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Board, the Commission, or a market-surveillance authority requests the advice
+      basis_segment_ids:
+      - AIA-TEXT-A084-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

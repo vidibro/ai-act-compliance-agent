@@ -20,12 +20,20 @@ norms:
   - AIA-TEXT-A032-P001
   qualifier_spans: []
   conditions:
-  - the conformity-assessment body demonstrates conformity with the relevant harmonised standards or parts
-    thereof
-  - references to those standards or parts have been published in the Official Journal of the European
-    Union
-  - the standards cover the relevant Article 31 requirements
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the conformity-assessment body demonstrates conformity with the relevant harmonised standards
+        or parts thereof
+      basis_segment_ids:
+      - AIA-TEXT-A032-P001
+    - text: references to those standards or parts have been published in the Official Journal of the
+        European Union
+      basis_segment_ids:
+      - AIA-TEXT-A032-P001
+    - text: the standards cover the relevant Article 31 requirements
+      basis_segment_ids:
+      - AIA-TEXT-A032-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

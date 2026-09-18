@@ -23,13 +23,22 @@ norms:
   - AIA-TEXT-A082-P001
   qualifier_spans: []
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the market-surveillance authority has performed an Article 79 evaluation
-    - the market-surveillance authority has consulted the relevant Article 77(1) national public authority
-    - the authority finds that a compliant high-risk AI system nevertheless presents a risk to health
-      or safety, fundamental rights, or another aspect of public-interest protection
-  exceptions: []
+    - operator: all_of
+      operands:
+      - text: the market-surveillance authority has performed an Article 79 evaluation
+        basis_segment_ids:
+        - AIA-TEXT-A082-P001
+      - text: the market-surveillance authority has consulted the relevant Article 77(1) national public
+          authority
+        basis_segment_ids:
+        - AIA-TEXT-A082-P001
+      - text: the authority finds that a compliant high-risk AI system nevertheless presents a risk to
+          health or safety, fundamental rights, or another aspect of public-interest protection
+        basis_segment_ids:
+        - AIA-TEXT-A082-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -65,8 +74,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A082-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -102,8 +111,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A082-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - system identification data
   - system origin and supply chain
@@ -139,8 +148,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A082-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -173,8 +182,12 @@ norms:
   - AIA-TEXT-A082-P004
   qualifier_spans: []
   conditions:
-  - the decision is based on the results of the evaluation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the decision is based on the results of the evaluation
+      basis_segment_ids:
+      - AIA-TEXT-A082-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -206,8 +219,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A082-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -238,8 +251,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A082-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

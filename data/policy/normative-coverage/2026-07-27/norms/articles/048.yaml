@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A048-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -52,9 +52,13 @@ norms:
   - AIA-TEXT-A048-P002
   qualifier_spans: []
   conditions:
-  - the marking is easily accessible through the system interface, a machine-readable code, or other electronic
-    means
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the marking is easily accessible through the system interface, a machine-readable code, or
+        other electronic means
+      basis_segment_ids:
+      - AIA-TEXT-A048-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -90,8 +94,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A048-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -126,8 +130,12 @@ norms:
   - AIA-TEXT-A048-P004
   qualifier_spans: []
   conditions:
-  - a notified body was responsible for the Article 43 conformity assessment procedures
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a notified body was responsible for the Article 43 conformity assessment procedures
+      basis_segment_ids:
+      - AIA-TEXT-A048-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -163,8 +171,12 @@ norms:
   - AIA-TEXT-A048-P004
   qualifier_spans: []
   conditions:
-  - a notified body was responsible for the Article 43 conformity assessment procedures
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a notified body was responsible for the Article 43 conformity assessment procedures
+      basis_segment_ids:
+      - AIA-TEXT-A048-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -199,9 +211,15 @@ norms:
   - AIA-TEXT-A048-P004
   qualifier_spans: []
   conditions:
-  - a notified body was responsible for the Article 43 conformity assessment procedures
-  - promotional material mentions that the high-risk AI system fulfils the CE marking requirements
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a notified body was responsible for the Article 43 conformity assessment procedures
+      basis_segment_ids:
+      - AIA-TEXT-A048-P004
+    - text: promotional material mentions that the high-risk AI system fulfils the CE marking requirements
+      basis_segment_ids:
+      - AIA-TEXT-A048-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -236,8 +254,12 @@ norms:
   - AIA-TEXT-A048-P005
   qualifier_spans: []
   conditions:
-  - other applicable Union law also provides for affixing the CE marking
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: other applicable Union law also provides for affixing the CE marking
+      basis_segment_ids:
+      - AIA-TEXT-A048-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

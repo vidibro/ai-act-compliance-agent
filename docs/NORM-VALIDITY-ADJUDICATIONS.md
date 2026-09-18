@@ -44,7 +44,7 @@ deliberately excluded: changing the implementation graph must not reopen a legal
 Changing models does not change the ID when they produce the same audited record. Changing enacted
 source or audited legal content does.
 
-## Actor, target, and temporal evidence
+## Actor, target, temporal, and logical-expression evidence
 
 Two newer fields are audited by the same flow, but are deliberately migrated in batches:
 
@@ -63,6 +63,12 @@ Two newer fields are audited by the same flow, but are deliberately migrated in 
   46(3) information. Every recorded date, period, and trigger must occur in the legal basis.
   When the Act states a period but no trigger, `trigger` is `null`: the report must show the period
   but must not calculate an individual due date. Article 75(3)'s thirty-day period is this case.
+- `conditions` and `exceptions` are either absent or one `LogicalExpression`. An expression is a
+  non-empty `all_of` or `any_of` tree. Every leaf is a `ConditionClause` with non-blank `text` and
+  at least one `basis_segment_ids` citation. The builder rejects an unknown cited segment. Once the
+  expression gate is enabled, the audit also proves that every leaf text occurs in every cited
+  segment; failures are `logical_expression_basis_segment_unknown` or
+  `logical_expression_basis_does_not_contain_text`.
 
 Each norm has at most one deadline constraint. When enacted text imposes both urgency and an outer
 limit, the source record must split them into two norms which may map to the same rule. The related
@@ -92,12 +98,17 @@ and its matching article shard:
 required_field_validations:
   - actor_evidence
   - temporal_regime
+  - logical_expression_evidence
 ```
 
 `actor_evidence` makes every listed actor without `basis_segment_ids` a finding.
 `target_evidence` makes every listed target without `basis_segment_ids` a finding.
 `temporal_regime` makes every norm without `temporal_regime_id` a finding. A norm that states a
 calendar or relative deadline must reference a regime carrying the corresponding deadline form.
+`logical_expression_evidence` enforces the exact source evidence for every condition and exception
+leaf in the document. It is deliberately not enabled while legacy list values are being adapted at
+load time: those temporary citations are inferred from the primary segment, not yet reviewed leaf
+evidence. Rewrite the source records first, then enable the gate and adjudicate its findings.
 The strict build enforces the declared gate; it is the explicit point at which an article can no
 longer rely on empty staged fields. Do not enable a gate until its source-record changes and their
 adjudications are ready together.

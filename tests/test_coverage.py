@@ -1134,7 +1134,7 @@ def test_every_legal_enum_still_matches_the_enacted_list_it_names():
         ProhibitedPractice,
         ScopeExclusion,
     )
-    from aiact.schemas.norm import ConditionGroup, NormKind
+    from aiact.schemas.norm import LogicalExpression, NormKind
 
     norms = load_normative_coverage().norm_inventory.norms
     by_id = {norm.norm_id: norm for norm in norms}
@@ -1177,9 +1177,9 @@ def test_every_legal_enum_still_matches_the_enacted_list_it_names():
 
     # Art. 6(3), one member per limb of the derogation's own any_of.
     derogation = by_id["AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION"].conditions[0]
-    assert isinstance(derogation, ConditionGroup)
+    assert isinstance(derogation, LogicalExpression)
     limbs = next(
-        operand for operand in derogation.operands if isinstance(operand, ConditionGroup)
+        operand for operand in derogation.operands if isinstance(operand, LogicalExpression)
     )
     assert limbs.operator == "any_of"
     assert len(DerogationCondition) == len(limbs.operands), (

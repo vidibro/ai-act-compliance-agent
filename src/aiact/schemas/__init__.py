@@ -51,7 +51,9 @@ from aiact.schemas.interpretation import (
 )
 from aiact.schemas.norm import (
     CandidateDetectionChannel,
+    ConditionClause,
     ImplementationMode,
+    LogicalExpression,
     Norm,
     NormActor,
     NormativeCoverageBundle,
@@ -109,6 +111,9 @@ __all__ = [
     "InterpretiveEffect",
     "InterpretiveLink",
     "CandidateDetectionChannel",
+    "ConditionClause",
+    "LogicalExpression",
+    "LogicalExpression",
     "ActorCategory",
     "ImplementationMode",
     "Norm",

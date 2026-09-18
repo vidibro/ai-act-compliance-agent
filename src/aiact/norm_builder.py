@@ -17,8 +17,8 @@ from aiact.norm_metrics import measure_normative_coverage, render_coverage_markd
 from aiact.policy_loader import article_filename, source_body
 from aiact.schemas.interpretation import InterpretationTargetKind, InterpretiveLink
 from aiact.schemas.norm import (
-    ConditionGroup,
     ImplementationMode,
+    LogicalExpression,
     NormActor,
     NormKind,
     NormRelation,
@@ -29,6 +29,7 @@ from aiact.schemas.norm import (
     SourceKind,
     TemporalRegime,
     VerificationMode,
+    _condition_basis_segments,
 )
 from aiact.text_segments import corpus_documents
 from aiact.yaml_loader import load_yaml_mapping_or_shards
@@ -139,8 +140,8 @@ class NormSourceRecord(BaseModel):
     implementation_mode: ImplementationMode | None = None
     implementation_reason: str = ""
     verification_mode: VerificationMode | None = None
-    conditions: list[str | ConditionGroup] = []
-    exceptions: list[str] = []
+    conditions: LogicalExpression | None = None
+    exceptions: LogicalExpression | None = None
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     qualifier_spans: list[str] = []
@@ -148,6 +149,22 @@ class NormSourceRecord(BaseModel):
         default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
     )
     verified_by: str = ""
+
+    @model_validator(mode="before")
+    @classmethod
+    def _normalise_legacy_expressions(cls, value: object) -> object:
+        if not isinstance(value, dict) or "source" not in value:
+            return value
+        from aiact.schemas.norm import _normalise_expression_input
+
+        converted = dict(value)
+        basis_segment_id = f"AIA-TEXT-{converted['source']}"
+        for field, operator in (("conditions", "all_of"), ("exceptions", "any_of")):
+            if field in converted:
+                converted[field] = _normalise_expression_input(
+                    converted[field], operator=operator, basis_segment_id=basis_segment_id
+                )
+        return converted
 
     @model_validator(mode="after")
     def _has_actor_or_target(self) -> NormSourceRecord:
@@ -556,9 +573,13 @@ def _build_norms(
         target_basis = [
             segment for target in record.targets for segment in target.basis_segment_ids
         ]
+        expression_basis = [
+            *_condition_basis_segments(record.conditions),
+            *_condition_basis_segments(record.exceptions),
+        ]
         unknown_spans = [
             span
-            for span in [primary, *qualifiers, *actor_basis, *target_basis]
+            for span in [primary, *qualifiers, *actor_basis, *target_basis, *expression_basis]
             if span not in segments_by_id
         ]
         if unknown_spans:
@@ -574,6 +595,7 @@ def _build_norms(
             *((span, "qualifying_norm_ids") for span in qualifiers),
             *((span, "qualifying_norm_ids") for span in actor_basis if span != primary),
             *((span, "qualifying_norm_ids") for span in target_basis if span != primary),
+            *((span, "qualifying_norm_ids") for span in expression_basis if span != primary),
         ]:
             segment = segments_by_id[span]
             if segment["disposition"] != SegmentDisposition.NORMATIVE.value:
@@ -604,8 +626,12 @@ def _build_norms(
             "detection_channels": _detection_channels(record),
             "primary_spans": [primary],
             "qualifier_spans": qualifiers,
-            "conditions": record.model_dump(mode="json")["conditions"],
-            "exceptions": record.exceptions,
+            "conditions": (
+                record.conditions.model_dump(mode="json") if record.conditions is not None else None
+            ),
+            "exceptions": (
+                record.exceptions.model_dump(mode="json") if record.exceptions is not None else None
+            ),
             "mandatory_content": mandatory_content,
             "product_scope": record.product_scope.value,
             "product_scope_reason": record.product_scope_reason,

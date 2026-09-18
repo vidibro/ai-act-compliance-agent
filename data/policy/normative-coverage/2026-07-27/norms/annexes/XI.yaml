@@ -32,8 +32,8 @@ norms:
   - AIA-TEXT-ANNEX-XI-P014
   - AIA-TEXT-ANNEX-XI-P015
   - AIA-TEXT-ANNEX-XI-P016
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - tasks the model is intended to perform and the type and nature of AI systems into which it can be
     integrated
@@ -82,8 +82,12 @@ norms:
   - AIA-TEXT-ANNEX-XI-P011
   qualifier_spans: []
   conditions:
-  - the model's energy consumption is unknown
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the model's energy consumption is unknown
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-XI-P011
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -123,13 +127,21 @@ norms:
   - AIA-TEXT-ANNEX-XI-P017
   - AIA-TEXT-ANNEX-XI-P018
   conditions:
-  - the general-purpose AI model has systemic risk
-  - operator: any_of
+    operator: all_of
     operands:
-    - the evaluation strategies are described on the basis of available public evaluation protocols and
-      tools
-    - the evaluation strategies are described on the basis of other evaluation methodologies
-  exceptions: []
+    - text: the general-purpose AI model has systemic risk
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-XI-P019
+    - operator: any_of
+      operands:
+      - text: the evaluation strategies are described on the basis of available public evaluation protocols
+          and tools
+        basis_segment_ids:
+        - AIA-TEXT-ANNEX-XI-P019
+      - text: the evaluation strategies are described on the basis of other evaluation methodologies
+        basis_segment_ids:
+        - AIA-TEXT-ANNEX-XI-P019
+  exceptions: null
   mandatory_content:
   - a detailed description of the evaluation strategies, including evaluation results
   - evaluation criteria
@@ -170,9 +182,15 @@ norms:
   - AIA-TEXT-ANNEX-XI-P017
   - AIA-TEXT-ANNEX-XI-P018
   conditions:
-  - the general-purpose AI model has systemic risk
-  - where applicable
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the general-purpose AI model has systemic risk
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-XI-P020
+    - text: where applicable
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-XI-P020
+  exceptions: null
   mandatory_content:
   - the measures put in place for the purpose of conducting internal and/or external adversarial testing
     (e.g. red teaming)
@@ -212,9 +230,15 @@ norms:
   - AIA-TEXT-ANNEX-XI-P017
   - AIA-TEXT-ANNEX-XI-P018
   conditions:
-  - the general-purpose AI model has systemic risk
-  - where applicable
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the general-purpose AI model has systemic risk
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-XI-P021
+    - text: where applicable
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-XI-P021
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

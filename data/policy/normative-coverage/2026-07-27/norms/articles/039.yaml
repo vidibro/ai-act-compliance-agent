@@ -18,9 +18,15 @@ norms:
   - AIA-TEXT-A039-P001
   qualifier_spans: []
   conditions:
-  - the body is established in a third country that has concluded an agreement with the Union
-  - the body meets Article 31 requirements or ensures an equivalent level of compliance
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the body is established in a third country that has concluded an agreement with the Union
+      basis_segment_ids:
+      - AIA-TEXT-A039-P001
+    - text: the body meets Article 31 requirements or ensures an equivalent level of compliance
+      basis_segment_ids:
+      - AIA-TEXT-A039-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

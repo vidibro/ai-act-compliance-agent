@@ -17,11 +17,17 @@ norms:
   - AIA-TEXT-A075C-P001
   qualifier_spans: []
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - an Article 75(1) operator does not comply with relevant provisions of the Regulation
-    - an Article 75(1) operator does not comply with commitments made binding under Article 75b
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: an Article 75(1) operator does not comply with relevant provisions of the Regulation
+        basis_segment_ids:
+        - AIA-TEXT-A075C-P001
+      - text: an Article 75(1) operator does not comply with commitments made binding under Article 75b
+        basis_segment_ids:
+        - AIA-TEXT-A075C-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -54,8 +60,12 @@ norms:
   - AIA-TEXT-A075C-P002
   qualifier_spans: []
   conditions:
-  - before the AI Office adopts an Article 75c(1) decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before the AI Office adopts an Article 75c(1) decision
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -90,8 +100,12 @@ norms:
   - AIA-TEXT-A075C-P002
   qualifier_spans: []
   conditions:
-  - the AI Office communicates preliminary findings under Article 75c(2)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office communicates preliminary findings under Article 75c(2)
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -127,8 +141,12 @@ norms:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
   conditions:
-  - the requirement is relevant to the Article 75c(1) decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the requirement is relevant to the Article 75c(1) decision
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P003
+  exceptions: null
   mandatory_content:
   - the necessary measures to ensure compliance within a reasonable period specified in the decision
   - information on the measures the operator intends to take to comply with the decision
@@ -164,9 +182,15 @@ norms:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
   conditions:
-  - an Article 75c(1) decision ordered the operator to take measures
-  - the measures have been implemented
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an Article 75c(1) decision ordered the operator to take measures
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P003
+    - text: the measures have been implemented
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is an enforcement-response duty for a supported operator.
@@ -198,8 +222,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -231,8 +255,12 @@ norms:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
   conditions:
-  - the operator is participating in the structured dialogue described in Article 75c(3)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the operator is participating in the structured dialogue described in Article 75c(3)
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P003
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This is an optional procedural opportunity rather than a standing compliance duty.
@@ -267,8 +295,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -306,8 +334,8 @@ norms:
   - AIA-TEXT-A075C-P006
   - AIA-TEXT-A075C-P007
   - AIA-TEXT-A075C-P008
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - infringement of any applicable AI Act provision
   - failure to comply with specified decisions or measures
@@ -345,8 +373,13 @@ norms:
   - AIA-TEXT-A075C-P009
   qualifier_spans: []
   conditions:
-  - incorrect, incomplete or misleading information is supplied to the AI Office in reply to a request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: incorrect, incomplete or misleading information is supplied to the AI Office in reply to a
+        request
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P009
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This is an enforcement consequence rather than an independent product action.
@@ -387,8 +420,8 @@ norms:
   - AIA-TEXT-A075C-P015
   - AIA-TEXT-A075C-P016
   - AIA-TEXT-A075C-P017
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - submit to investigation
   - comply with a decided information request
@@ -430,8 +463,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P018
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - make the penalty payments effective and proportionate
   - the basis is the average daily income or worldwide annual turnover
@@ -471,8 +504,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P019
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -505,8 +538,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -542,8 +575,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P021
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -577,8 +610,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P022
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -611,8 +644,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P023
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -645,8 +678,12 @@ norms:
   - AIA-TEXT-A075C-P024
   qualifier_spans: []
   conditions:
-  - the AI Office determines there are no grounds to adopt a non-compliance decision
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Office determines there are no grounds to adopt a non-compliance decision
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P024
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

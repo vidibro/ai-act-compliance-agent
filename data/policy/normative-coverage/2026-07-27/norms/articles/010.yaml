@@ -19,8 +19,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A010-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -55,8 +55,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A010-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -90,8 +90,8 @@ norms:
   - AIA-TEXT-A010-P003
   qualifier_spans:
   - AIA-TEXT-A010-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -127,8 +127,8 @@ norms:
   - AIA-TEXT-A010-P004
   qualifier_spans:
   - AIA-TEXT-A010-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -164,8 +164,8 @@ norms:
   - AIA-TEXT-A010-P005
   qualifier_spans:
   - AIA-TEXT-A010-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -200,8 +200,8 @@ norms:
   - AIA-TEXT-A010-P006
   qualifier_spans:
   - AIA-TEXT-A010-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -235,8 +235,8 @@ norms:
   - AIA-TEXT-A010-P007
   qualifier_spans:
   - AIA-TEXT-A010-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -274,8 +274,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A010-P002
   conditions:
-  - give particular attention where data outputs influence inputs for future operations
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: give particular attention where data outputs influence inputs for future operations
+      basis_segment_ids:
+      - AIA-TEXT-A010-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -311,8 +315,8 @@ norms:
   - AIA-TEXT-A010-P009
   qualifier_spans:
   - AIA-TEXT-A010-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -347,8 +351,8 @@ norms:
   - AIA-TEXT-A010-P010
   qualifier_spans:
   - AIA-TEXT-A010-P002
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -383,8 +387,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A010-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - relevant in view of the intended purpose
   - sufficiently representative in view of the intended purpose
@@ -423,8 +427,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A010-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -459,8 +463,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A010-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -496,8 +500,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A010-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -542,11 +546,19 @@ norms:
   - AIA-TEXT-A010-P018
   - AIA-TEXT-A010-P019
   conditions:
-  - processing is strictly necessary for Article 10(2)(f) and (g) bias detection and correction
-  - bias detection and correction cannot be effectively achieved using other data, including synthetic
-    or anonymised data
-  - appropriate safeguards protect natural persons' fundamental rights and freedoms
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: processing is strictly necessary for Article 10(2)(f) and (g) bias detection and correction
+      basis_segment_ids:
+      - AIA-TEXT-A010-P013
+    - text: bias detection and correction cannot be effectively achieved using other data, including synthetic
+        or anonymised data
+      basis_segment_ids:
+      - AIA-TEXT-A010-P013
+    - text: appropriate safeguards protect natural persons' fundamental rights and freedoms
+      basis_segment_ids:
+      - AIA-TEXT-A010-P013
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -581,8 +593,8 @@ norms:
   - AIA-TEXT-A010-P015
   qualifier_spans:
   - AIA-TEXT-A010-P013
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -618,8 +630,8 @@ norms:
   - AIA-TEXT-A010-P016
   qualifier_spans:
   - AIA-TEXT-A010-P013
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -653,8 +665,8 @@ norms:
   - AIA-TEXT-A010-P017
   qualifier_spans:
   - AIA-TEXT-A010-P013
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -688,8 +700,8 @@ norms:
   - AIA-TEXT-A010-P018
   qualifier_spans:
   - AIA-TEXT-A010-P013
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -725,8 +737,8 @@ norms:
   - AIA-TEXT-A010-P019
   qualifier_spans:
   - AIA-TEXT-A010-P013
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -763,8 +775,12 @@ norms:
   - AIA-TEXT-A010-P020
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is developed without techniques involving training an AI model
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is developed without techniques involving training an AI model
+      basis_segment_ids:
+      - AIA-TEXT-A010-P020
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

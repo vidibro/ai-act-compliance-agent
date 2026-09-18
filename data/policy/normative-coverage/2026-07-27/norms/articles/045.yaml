@@ -21,16 +21,26 @@ norms:
   - AIA-TEXT-A045-P004
   - AIA-TEXT-A045-P005
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the notified body has issued an Annex VII Union technical documentation assessment certificate,
-      a supplement to such a certificate or a quality management system approval
-    - the notified body has refused, restricted, suspended or withdrawn an Annex VII Union technical documentation
-      assessment certificate or quality management system approval
-    - circumstances affect the scope of or conditions for notification
-    - the notified body has received a market-surveillance-authority information request regarding conformity
-      assessment activities
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the notified body has issued an Annex VII Union technical documentation assessment certificate,
+          a supplement to such a certificate or a quality management system approval
+        basis_segment_ids:
+        - AIA-TEXT-A045-P001
+      - text: the notified body has refused, restricted, suspended or withdrawn an Annex VII Union technical
+          documentation assessment certificate or quality management system approval
+        basis_segment_ids:
+        - AIA-TEXT-A045-P001
+      - text: circumstances affect the scope of or conditions for notification
+        basis_segment_ids:
+        - AIA-TEXT-A045-P001
+      - text: the notified body has received a market-surveillance-authority information request regarding
+          conformity assessment activities
+        basis_segment_ids:
+        - AIA-TEXT-A045-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -65,8 +75,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A045-P006
   conditions:
-  - the notifying authority requests information about the notified body's activities
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notifying authority requests information about the notified body's activities
+      basis_segment_ids:
+      - AIA-TEXT-A045-P001
+  exceptions: null
   mandatory_content:
   - conformity assessment activities performed within the scope of the notification
   - other activities performed, including cross-border activities and subcontracting
@@ -104,12 +118,18 @@ norms:
   - AIA-TEXT-A045-P008
   - AIA-TEXT-A045-P009
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the notified body has refused, suspended or withdrawn a quality management system approval
-    - the notified body has refused, withdrawn, suspended or otherwise restricted a Union technical documentation
-      assessment certificate or supplement
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the notified body has refused, suspended or withdrawn a quality management system approval
+        basis_segment_ids:
+        - AIA-TEXT-A045-P007
+      - text: the notified body has refused, withdrawn, suspended or otherwise restricted a Union technical
+          documentation assessment certificate or supplement
+        basis_segment_ids:
+        - AIA-TEXT-A045-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -145,13 +165,19 @@ norms:
   - AIA-TEXT-A045-P008
   - AIA-TEXT-A045-P009
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - another notified body requests information about quality-system approvals that the notified body
-      has issued
-    - another notified body requests information about Union technical documentation assessment certificates
-      or supplements that the notified body has issued
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: another notified body requests information about quality-system approvals that the notified
+          body has issued
+        basis_segment_ids:
+        - AIA-TEXT-A045-P007
+      - text: another notified body requests information about Union technical documentation assessment
+          certificates or supplements that the notified body has issued
+        basis_segment_ids:
+        - AIA-TEXT-A045-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -187,10 +213,16 @@ norms:
   - AIA-TEXT-A045-P010
   qualifier_spans: []
   conditions:
-  - the information concerns issues relating to negative conformity assessment results
-  - the recipient is another notified body carrying out similar conformity assessment activities covering
-    the same types of AI systems
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the information concerns issues relating to negative conformity assessment results
+      basis_segment_ids:
+      - AIA-TEXT-A045-P010
+    - text: the recipient is another notified body carrying out similar conformity assessment activities
+        covering the same types of AI systems
+      basis_segment_ids:
+      - AIA-TEXT-A045-P010
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -226,11 +258,19 @@ norms:
   - AIA-TEXT-A045-P010
   qualifier_spans: []
   conditions:
-  - the information concerns issues relating to positive conformity assessment results
-  - the recipient is another notified body carrying out similar conformity assessment activities covering
-    the same types of AI systems
-  - that recipient requests the information
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the information concerns issues relating to positive conformity assessment results
+      basis_segment_ids:
+      - AIA-TEXT-A045-P010
+    - text: the recipient is another notified body carrying out similar conformity assessment activities
+        covering the same types of AI systems
+      basis_segment_ids:
+      - AIA-TEXT-A045-P010
+    - text: that recipient requests the information
+      basis_segment_ids:
+      - AIA-TEXT-A045-P010
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -262,8 +302,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A045-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

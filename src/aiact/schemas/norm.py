@@ -478,22 +478,108 @@ class TemporalRegime(BaseModel):
         return payload
 
 
-class ConditionGroup(BaseModel):
-    """Explicit legal conjunction/disjunction, not an executable runtime predicate.
+class ConditionClause(BaseModel):
+    """One source-backed factual or legal proposition in a norm's logical expression."""
 
-    Legacy prose conditions remain supported; no logical grouping is inferred from them.
-    """
+    model_config = ConfigDict(extra="forbid")
+
+    text: str = Field(min_length=1)
+    basis_segment_ids: list[NormativeSegmentId] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _is_nonempty_and_has_unique_basis_segments(self) -> ConditionClause:
+        if not self.text.strip():
+            raise ValueError("condition text must not be blank")
+        if len(self.basis_segment_ids) != len(set(self.basis_segment_ids)):
+            raise ValueError("condition basis_segment_ids must not contain duplicates")
+        return self
+
+    def __str__(self) -> str:
+        return self.text
+
+    def __contains__(self, value: object) -> bool:
+        return isinstance(value, str) and value in self.text
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, str):
+            return self.text == other
+        return super().__eq__(other)
+
+
+class LogicalExpression(BaseModel):
+    """An explicit conjunction or disjunction of source-backed legal propositions."""
 
     model_config = ConfigDict(extra="forbid")
 
     operator: Literal["all_of", "any_of"]
-    operands: list[str | ConditionGroup] = Field(min_length=2)
+    operands: list[ConditionClause | LogicalExpression] = Field(min_length=1)
 
-    @model_validator(mode="after")
-    def _leaves_are_nonempty(self) -> ConditionGroup:
-        if any(isinstance(item, str) and not item.strip() for item in self.operands):
-            raise ValueError("condition operands must not be blank")
-        return self
+    def __bool__(self) -> bool:
+        return bool(self.operands)
+
+    def __iter__(self):
+        return iter(self.operands)
+
+    def __len__(self) -> int:
+        return len(self.operands)
+
+    def __getitem__(self, index: int) -> ConditionClause | LogicalExpression:
+        return self.operands[index]
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, list):
+            return self.operands == other
+        return super().__eq__(other)
+
+
+def _condition_basis_segments(expression: LogicalExpression | None) -> list[str]:
+    """Collect every leaf's source evidence without duplicating it in a norm span list."""
+    if expression is None:
+        return []
+    segments: list[str] = []
+    for operand in expression.operands:
+        if isinstance(operand, ConditionClause):
+            segments.extend(operand.basis_segment_ids)
+        else:
+            segments.extend(_condition_basis_segments(operand))
+    return segments
+
+
+def _normalise_expression_input(value: object, *, operator: str, basis_segment_id: str) -> object:
+    """Convert legacy list/string authoring data into the one canonical expression shape.
+
+    This is an input migration adapter only. Loaded and generated norms always expose an explicit
+    root and source-backed leaves; the source-record rewrite removes the adapter's remaining use.
+    """
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return {"text": value, "basis_segment_ids": [basis_segment_id]}
+    if isinstance(value, list):
+        if not value:
+            return None
+        return {
+            "operator": operator,
+            "operands": [
+                _normalise_expression_input(
+                    item, operator="all_of", basis_segment_id=basis_segment_id
+                )
+                for item in value
+            ],
+        }
+    if isinstance(value, dict) and "operator" in value and "operands" in value:
+        return {
+            **value,
+            "operands": [
+                _normalise_expression_input(
+                    item,
+                    operator="all_of",
+                    basis_segment_id=basis_segment_id,
+                )
+                for item in value["operands"]
+            ],
+        }
+    return value
 
 
 class Norm(BaseModel):
@@ -513,8 +599,8 @@ class Norm(BaseModel):
     temporal_regime_id: str | None = Field(
         default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
     )
-    conditions: list[str | ConditionGroup] = []
-    exceptions: list[str] = []
+    conditions: LogicalExpression | None = None
+    exceptions: LogicalExpression | None = None
     mandatory_content: list[str] = []
     product_scope: ProductScope
     product_scope_reason: str = ""
@@ -523,6 +609,22 @@ class Norm(BaseModel):
     implementation_reason: str = ""
     verification_mode: VerificationMode
     review: ReviewRecord
+
+    @model_validator(mode="before")
+    @classmethod
+    def _normalise_legacy_expressions(cls, value: object) -> object:
+        if not isinstance(value, dict):
+            return value
+        primary_spans = value.get("primary_spans", [])
+        if not primary_spans:
+            return value
+        converted = dict(value)
+        for field, operator in (("conditions", "all_of"), ("exceptions", "any_of")):
+            if field in converted:
+                converted[field] = _normalise_expression_input(
+                    converted[field], operator=operator, basis_segment_id=primary_spans[0]
+                )
+        return converted
 
     @property
     def all_spans(self) -> list[str]:
@@ -533,6 +635,8 @@ class Norm(BaseModel):
                 + self.definition_spans
                 + [segment for actor in self.actors for segment in actor.basis_segment_ids]
                 + [segment for target in self.targets for segment in target.basis_segment_ids]
+                + _condition_basis_segments(self.conditions)
+                + _condition_basis_segments(self.exceptions)
             )
         )
 

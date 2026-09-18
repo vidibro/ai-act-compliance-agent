@@ -21,14 +21,24 @@ norms:
   - AIA-TEXT-A060-P001
   qualifier_spans: []
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the high-risk AI system is listed in Annex III
-    - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-      I
-  - Article 60 and the real-world testing plan are followed
-  - Article 5 prohibitions remain observed
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the high-risk AI system is listed in Annex III
+        basis_segment_ids:
+        - AIA-TEXT-A060-P001
+      - text: the high-risk AI system is covered by Union harmonisation legislation listed in Section
+          A of Annex I
+        basis_segment_ids:
+        - AIA-TEXT-A060-P001
+    - text: Article 60 and the real-world testing plan are followed
+      basis_segment_ids:
+      - AIA-TEXT-A060-P001
+    - text: Article 5 prohibitions remain observed
+      basis_segment_ids:
+      - AIA-TEXT-A060-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -62,8 +72,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -98,8 +108,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Preserves other applicable law rather than creating an independent product action.
@@ -134,8 +144,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -169,8 +179,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Preserves an independently applicable review requirement rather than creating
@@ -217,8 +227,8 @@ norms:
   - AIA-TEXT-A060-P015
   - AIA-TEXT-A060-P016
   - AIA-TEXT-A060-P017
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - testing plan submitted
   - authority approval or applicable tacit approval
@@ -265,8 +275,8 @@ norms:
   - AIA-TEXT-A060-P007
   qualifier_spans:
   - AIA-TEXT-A060-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -306,14 +316,22 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the market-surveillance authority approves the real-world testing and testing plan
-    - operator: all_of
+    - operator: any_of
       operands:
-      - the market-surveillance authority does not answer within 30 days
-      - national law provides for tacit approval
-  exceptions: []
+      - text: the market-surveillance authority approves the real-world testing and testing plan
+        basis_segment_ids:
+        - AIA-TEXT-A060-P008
+      - operator: all_of
+        operands:
+        - text: the market-surveillance authority does not answer within 30 days
+          basis_segment_ids:
+          - AIA-TEXT-A060-P008
+        - text: national law provides for tacit approval
+          basis_segment_ids:
+          - AIA-TEXT-A060-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -358,27 +376,41 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - operator: all_of
+    - operator: any_of
       operands:
-      - the system is neither a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the
-        areas of law enforcement, migration, asylum and border control management nor a high-risk AI system
-        referred to in point 2 of Annex III
-      - the testing is registered in accordance with Article 71(4) with a Union-wide unique single identification
-        number and with the information specified in Annex IX
-    - operator: all_of
-      operands:
-      - the system is a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the areas
-        of law enforcement, migration, asylum and border control management
-      - the testing is registered in the secure non-public section of the EU database according to Article
-        49(4), point (d), with a Union-wide unique single identification number and with the information
-        specified therein
-    - operator: all_of
-      operands:
-      - the system is a high-risk AI system referred to in point 2 of Annex III
-      - the testing is registered in accordance with Article 49(5)
-  exceptions: []
+      - operator: all_of
+        operands:
+        - text: the system is neither a high-risk AI system referred to in points 1, 6 and 7 of Annex
+            III in the areas of law enforcement, migration, asylum and border control management nor a
+            high-risk AI system referred to in point 2 of Annex III
+          basis_segment_ids:
+          - AIA-TEXT-A060-P009
+        - text: the testing is registered in accordance with Article 71(4) with a Union-wide unique single
+            identification number and with the information specified in Annex IX
+          basis_segment_ids:
+          - AIA-TEXT-A060-P009
+      - operator: all_of
+        operands:
+        - text: the system is a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the
+            areas of law enforcement, migration, asylum and border control management
+          basis_segment_ids:
+          - AIA-TEXT-A060-P009
+        - text: the testing is registered in the secure non-public section of the EU database according
+            to Article 49(4), point (d), with a Union-wide unique single identification number and with
+            the information specified therein
+          basis_segment_ids:
+          - AIA-TEXT-A060-P009
+      - operator: all_of
+        operands:
+        - text: the system is a high-risk AI system referred to in point 2 of Annex III
+          basis_segment_ids:
+          - AIA-TEXT-A060-P009
+        - text: the testing is registered in accordance with Article 49(5)
+          basis_segment_ids:
+          - AIA-TEXT-A060-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -413,11 +445,18 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the provider or prospective provider conducting the testing is established in the Union
-    - the provider or prospective provider has appointed a legal representative established in the Union
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the provider or prospective provider conducting the testing is established in the Union
+        basis_segment_ids:
+        - AIA-TEXT-A060-P010
+      - text: the provider or prospective provider has appointed a legal representative established in
+          the Union
+        basis_segment_ids:
+        - AIA-TEXT-A060-P010
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -453,8 +492,8 @@ norms:
   - AIA-TEXT-A060-P011
   qualifier_spans:
   - AIA-TEXT-A060-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -489,8 +528,8 @@ norms:
   - AIA-TEXT-A060-P012
   qualifier_spans:
   - AIA-TEXT-A060-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -527,9 +566,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - prior authority notification
-  - explanation of need
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: prior authority notification
+      basis_segment_ids:
+      - AIA-TEXT-A060-P012
+    - text: explanation of need
+      basis_segment_ids:
+      - AIA-TEXT-A060-P012
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -564,8 +609,8 @@ norms:
   - AIA-TEXT-A060-P013
   qualifier_spans:
   - AIA-TEXT-A060-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -604,9 +649,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - the provider or prospective provider organises the testing in real world conditions in cooperation
-    with one or more deployers or prospective deployers
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider or prospective provider organises the testing in real world conditions in cooperation
+        with one or more deployers or prospective deployers
+      basis_segment_ids:
+      - AIA-TEXT-A060-P014
+  exceptions: null
   mandatory_content:
   - all aspects of the testing relevant to the deployer's decision to participate
   - Article 13 instructions for use of the AI system
@@ -650,9 +699,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - the provider or prospective provider organises the testing in real world conditions in cooperation
-    with one or more deployers or prospective deployers
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider or prospective provider organises the testing in real world conditions in cooperation
+        with one or more deployers or prospective deployers
+      basis_segment_ids:
+      - AIA-TEXT-A060-P014
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -687,9 +740,14 @@ norms:
   - AIA-TEXT-A060-P015
   qualifier_spans:
   - AIA-TEXT-A060-P006
-  conditions: []
+  conditions: null
   exceptions:
-  - law-enforcement testing where seeking informed consent would prevent the AI system from being tested
+    operator: any_of
+    operands:
+    - text: law-enforcement testing where seeking informed consent would prevent the AI system from being
+        tested
+      basis_segment_ids:
+      - AIA-TEXT-A060-P015
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -727,9 +785,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - the testing is in the case of law enforcement
-  - seeking informed consent would prevent the AI system from being tested
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the testing is in the case of law enforcement
+      basis_segment_ids:
+      - AIA-TEXT-A060-P015
+    - text: seeking informed consent would prevent the AI system from being tested
+      basis_segment_ids:
+      - AIA-TEXT-A060-P015
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -765,9 +829,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A060-P006
   conditions:
-  - the testing is in the case of law enforcement
-  - seeking informed consent would prevent the AI system from being tested
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the testing is in the case of law enforcement
+      basis_segment_ids:
+      - AIA-TEXT-A060-P015
+    - text: seeking informed consent would prevent the AI system from being tested
+      basis_segment_ids:
+      - AIA-TEXT-A060-P015
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -803,8 +873,8 @@ norms:
   - AIA-TEXT-A060-P016
   qualifier_spans:
   - AIA-TEXT-A060-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -838,8 +908,8 @@ norms:
   - AIA-TEXT-A060-P017
   qualifier_spans:
   - AIA-TEXT-A060-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -876,8 +946,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P018
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - withdrawal at any time by revoking informed consent
   - immediate and permanent deletion of the subject's personal data on request
@@ -912,8 +982,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P018
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines a withdrawal consequence rather than an independent product action.
@@ -948,8 +1018,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P019
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - power to require providers and prospective providers to provide information
   - power to carry out unannounced remote or on-site inspections
@@ -986,8 +1056,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P019
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1022,8 +1092,12 @@ norms:
   - AIA-TEXT-A060-P020
   qualifier_spans: []
   conditions:
-  - a serious incident is identified in the course of the testing in real world conditions
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a serious incident is identified in the course of the testing in real world conditions
+      basis_segment_ids:
+      - AIA-TEXT-A060-P020
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1059,8 +1133,12 @@ norms:
   - AIA-TEXT-A060-P020
   qualifier_spans: []
   conditions:
-  - a serious incident is identified in the course of the testing in real world conditions
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a serious incident is identified in the course of the testing in real world conditions
+      basis_segment_ids:
+      - AIA-TEXT-A060-P020
+  exceptions: null
   mandatory_content:
   - adopt immediate mitigation measures
   - if immediate mitigation is not adopted, suspend testing until mitigation takes place or terminate
@@ -1097,8 +1175,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1132,8 +1210,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P021
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1167,8 +1245,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A060-P022
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Establishes liability consequences rather than an independent product action.

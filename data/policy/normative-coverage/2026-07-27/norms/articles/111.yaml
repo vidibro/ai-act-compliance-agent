@@ -19,11 +19,21 @@ norms:
   - AIA-TEXT-A111-P001
   qualifier_spans: []
   conditions:
-  - the AI system is a component of a large-scale IT system established by a legal act listed in Annex
-    X
-  - the system was placed on the market or put into service before 2 August 2027
+    operator: all_of
+    operands:
+    - text: the AI system is a component of a large-scale IT system established by a legal act listed
+        in Annex X
+      basis_segment_ids:
+      - AIA-TEXT-A111-P001
+    - text: the system was placed on the market or put into service before 2 August 2027
+      basis_segment_ids:
+      - AIA-TEXT-A111-P001
   exceptions:
-  - application of Article 5 under Article 113(3)(a) is unaffected
+    operator: any_of
+    operands:
+    - text: application of Article 5 under Article 113(3)(a) is unaffected
+      basis_segment_ids:
+      - AIA-TEXT-A111-P001
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for operators of AI components in covered
@@ -55,8 +65,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A111-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -94,12 +104,24 @@ norms:
   - AIA-TEXT-A111-P003
   qualifier_spans: []
   conditions:
-  - the high-risk AI system was placed on the market or put into service before Chapter III's Article
-    113 application date
-  - from that date, the system is subject to significant design changes
+    operator: all_of
+    operands:
+    - text: the high-risk AI system was placed on the market or put into service before Chapter III's
+        Article 113 application date
+      basis_segment_ids:
+      - AIA-TEXT-A111-P003
+    - text: from that date, the system is subject to significant design changes
+      basis_segment_ids:
+      - AIA-TEXT-A111-P003
   exceptions:
-  - the paragraph 1 large-scale IT systems are excluded
-  - application of Article 5 under Article 113 third paragraph point (a) is unaffected
+    operator: any_of
+    operands:
+    - text: the paragraph 1 large-scale IT systems are excluded
+      basis_segment_ids:
+      - AIA-TEXT-A111-P003
+    - text: application of Article 5 under Article 113 third paragraph point (a) is unaffected
+      basis_segment_ids:
+      - AIA-TEXT-A111-P003
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition determines whether other operator obligations apply.
@@ -135,8 +157,12 @@ norms:
   - AIA-TEXT-A111-P003
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is intended to be used by public authorities
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is intended to be used by public authorities
+      basis_segment_ids:
+      - AIA-TEXT-A111-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers and deployers.
@@ -170,8 +196,12 @@ norms:
   - AIA-TEXT-A111-P004
   qualifier_spans: []
   conditions:
-  - the general-purpose AI model was placed on the market before 2 August 2025
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the general-purpose AI model was placed on the market before 2 August 2025
+      basis_segment_ids:
+      - AIA-TEXT-A111-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported GPAI providers.
@@ -206,9 +236,15 @@ norms:
   - AIA-TEXT-A111-P005
   qualifier_spans: []
   conditions:
-  - the AI system generates synthetic audio, image, video, or text content
-  - the AI system was placed on the market before 2 August 2026
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system generates synthetic audio, image, video, or text content
+      basis_segment_ids:
+      - AIA-TEXT-A111-P005
+    - text: the AI system was placed on the market before 2 August 2026
+      basis_segment_ids:
+      - AIA-TEXT-A111-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers.

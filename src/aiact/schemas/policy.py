@@ -23,7 +23,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
-from aiact.schemas.norm import ConditionGroup, NormKind, VerificationMode
+from aiact.schemas.norm import LogicalExpression, NormKind, VerificationMode
 
 
 class LegalSource(BaseModel):
@@ -103,8 +103,8 @@ class RuleCriterion(BaseModel):
     targets: list[str]
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
-    conditions: list[str | ConditionGroup]
-    exceptions: list[str]
+    conditions: LogicalExpression | None
+    exceptions: LogicalExpression | None
     mandatory_content: list[str]
     source_spans: list[str] = Field(min_length=1)
     verification_mode: VerificationMode
@@ -139,8 +139,8 @@ class ReportNorm(BaseModel):
     targets: list[str]
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
-    conditions: list[str | ConditionGroup]
-    exceptions: list[str]
+    conditions: LogicalExpression | None
+    exceptions: LogicalExpression | None
     source_spans: list[str] = Field(min_length=1)
     activation_rule_ids: list[str] = Field(min_length=1)
     verification_mode: VerificationMode

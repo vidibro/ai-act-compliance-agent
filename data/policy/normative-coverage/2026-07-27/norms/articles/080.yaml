@@ -20,9 +20,13 @@ norms:
   - AIA-TEXT-A080-P001
   qualifier_spans: []
   conditions:
-  - the authority has sufficient reason to consider that a system classified by its provider as non-high-risk
-    under Article 6(3) is actually high-risk
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authority has sufficient reason to consider that a system classified by its provider as
+        non-high-risk under Article 6(3) is actually high-risk
+      basis_segment_ids:
+      - AIA-TEXT-A080-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -59,8 +63,12 @@ norms:
   - AIA-TEXT-A080-P002
   qualifier_spans: []
   conditions:
-  - the Article 80 evaluation finds that the AI system is high-risk
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Article 80 evaluation finds that the AI system is high-risk
+      basis_segment_ids:
+      - AIA-TEXT-A080-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -96,9 +104,13 @@ norms:
   - AIA-TEXT-A080-P003
   qualifier_spans: []
   conditions:
-  - the market-surveillance authority considers that use of the AI system is not restricted to its national
-    territory
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the market-surveillance authority considers that use of the AI system is not restricted to
+        its national territory
+      basis_segment_ids:
+      - AIA-TEXT-A080-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -132,8 +144,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A080-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -169,8 +181,12 @@ norms:
   - AIA-TEXT-A080-P004
   qualifier_spans: []
   conditions:
-  - the provider does not bring the AI system into compliance within the Article 80(2) period
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider does not bring the AI system into compliance within the Article 80(2) period
+      basis_segment_ids:
+      - AIA-TEXT-A080-P004
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: The penalty enforces the compliance duty without adding an independent product
@@ -205,8 +221,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A080-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -239,8 +255,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A080-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -277,9 +293,13 @@ norms:
   - AIA-TEXT-A080-P007
   qualifier_spans: []
   conditions:
-  - the Article 80(1) evaluation establishes intentional non-high-risk misclassification to circumvent
-    Chapter III Section 2 requirements
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Article 80(1) evaluation establishes intentional non-high-risk misclassification to circumvent
+        Chapter III Section 2 requirements
+      basis_segment_ids:
+      - AIA-TEXT-A080-P007
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: The penalty enforces the Article 6 classification duty without adding an independent
@@ -314,8 +334,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A080-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

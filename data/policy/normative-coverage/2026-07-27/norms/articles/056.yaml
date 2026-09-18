@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -56,8 +56,8 @@ norms:
   - AIA-TEXT-A056-P004
   - AIA-TEXT-A056-P005
   - AIA-TEXT-A056-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - keeping Article 53(1)(a) and (b) information current
   - adequate detail for the training-content summary
@@ -97,8 +97,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - risk proportionality
   - severity and probability
@@ -133,8 +133,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -166,8 +166,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -204,8 +204,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - specific objectives
   - commitments or measures to achieve those objectives
@@ -244,8 +244,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -277,8 +277,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -312,8 +312,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -345,8 +345,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -377,8 +377,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -409,8 +409,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -442,8 +442,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -477,8 +477,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines the optional extent of code adherence rather than a required product action.
@@ -510,8 +510,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -542,8 +542,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -575,8 +575,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -608,8 +608,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -643,8 +643,12 @@ norms:
   - AIA-TEXT-A056-P014
   qualifier_spans: []
   conditions:
-  - no code is finalised by 2 August 2025 or the AI Office assesses the code as inadequate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: no code is finalised by 2 August 2025 or the AI Office assesses the code as inadequate
+      basis_segment_ids:
+      - AIA-TEXT-A056-P014
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -677,8 +681,12 @@ norms:
   - AIA-TEXT-A056-P014
   qualifier_spans: []
   conditions:
-  - the Commission exercises the Article 56(9) implementing power
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission exercises the Article 56(9) implementing power
+      basis_segment_ids:
+      - AIA-TEXT-A056-P014
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

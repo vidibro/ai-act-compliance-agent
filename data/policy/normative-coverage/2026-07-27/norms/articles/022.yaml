@@ -19,8 +19,12 @@ norms:
   - AIA-TEXT-A022-P001
   qualifier_spans: []
   conditions:
-  - the provider is established in a third country
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider is established in a third country
+      basis_segment_ids:
+      - AIA-TEXT-A022-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -54,8 +58,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A022-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -89,8 +93,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A022-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -126,8 +130,12 @@ norms:
   - AIA-TEXT-A022-P003
   qualifier_spans: []
   conditions:
-  - a market-surveillance authority requests a copy of the mandate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a market-surveillance authority requests a copy of the mandate
+      basis_segment_ids:
+      - AIA-TEXT-A022-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -166,8 +174,12 @@ norms:
   - AIA-TEXT-A022-P003
   qualifier_spans: []
   conditions:
-  - the provider appoints an authorised representative under Article 22(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider appoints an authorised representative under Article 22(1)
+      basis_segment_ids:
+      - AIA-TEXT-A022-P003
+  exceptions: null
   mandatory_content:
   - authority to verify the declaration, technical documentation, and conformity assessment
   - authority to keep the enacted records available for the enacted period
@@ -211,8 +223,8 @@ norms:
   - AIA-TEXT-A022-P004
   qualifier_spans:
   - AIA-TEXT-A022-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -253,9 +265,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A022-P003
   conditions:
-  - the 10-year retention period begins after the high-risk AI system is placed on the market or put into
-    service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the 10-year retention period begins after the high-risk AI system is placed on the market
+        or put into service
+      basis_segment_ids:
+      - AIA-TEXT-A022-P005
+  exceptions: null
   mandatory_content:
   - appointing provider contact details
   - EU declaration of conformity
@@ -297,8 +313,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A022-P003
   conditions:
-  - a competent authority makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A022-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -334,9 +354,15 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A022-P003
   conditions:
-  - a competent authority makes a reasoned request
-  - the applicable automatically generated logs are under the provider's control
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A022-P006
+    - text: the applicable automatically generated logs are under the provider's control
+      basis_segment_ids:
+      - AIA-TEXT-A022-P006
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -374,8 +400,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A022-P003
   conditions:
-  - a competent authority makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A022-P007
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -410,8 +440,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A022-P003
   conditions:
-  - Article 49(1) registration obligations apply to the representative
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: Article 49(1) registration obligations apply to the representative
+      basis_segment_ids:
+      - AIA-TEXT-A022-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -447,8 +481,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A022-P003
   conditions:
-  - the provider carries out the registration itself
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider carries out the registration itself
+      basis_segment_ids:
+      - AIA-TEXT-A022-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -484,9 +522,13 @@ norms:
   - AIA-TEXT-A022-P009
   qualifier_spans: []
   conditions:
-  - the representative considers or has reason to consider that the provider is acting contrary to its
-    obligations under the Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the representative considers or has reason to consider that the provider is acting contrary
+        to its obligations under the Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A022-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -523,9 +565,13 @@ norms:
   - AIA-TEXT-A022-P009
   qualifier_spans: []
   conditions:
-  - the representative considers or has reason to consider that the provider is acting contrary to its
-    obligations under the Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the representative considers or has reason to consider that the provider is acting contrary
+        to its obligations under the Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A022-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

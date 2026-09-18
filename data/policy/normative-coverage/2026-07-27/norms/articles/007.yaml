@@ -21,10 +21,16 @@ norms:
   - AIA-TEXT-A007-P002
   - AIA-TEXT-A007-P003
   conditions:
-  - the AI system is intended for an area already listed in Annex III
-  - its health, safety, or fundamental-rights risk is equivalent to or greater than the risk of an existing
-    Annex III high-risk use case
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system is intended for an area already listed in Annex III
+      basis_segment_ids:
+      - AIA-TEXT-A007-P001
+    - text: its health, safety, or fundamental-rights risk is equivalent to or greater than the risk of
+        an existing Annex III high-risk use case
+      basis_segment_ids:
+      - AIA-TEXT-A007-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -71,19 +77,43 @@ norms:
   - AIA-TEXT-A007-P016
   - AIA-TEXT-A007-P017
   conditions:
-  - consider the system's intended purpose
-  - consider actual and likely extent of use
-  - consider the nature and amount of processed data, especially special-category personal data
-  - consider system autonomy and the possibility of human override
-  - consider demonstrated harm, adverse impact, and significant documented concerns
-  - consider potential harm intensity, scale, and disproportionate group effects
-  - consider affected persons' dependency on outcomes and practical or legal ability to opt out
-  - consider power imbalances and vulnerability relative to the deployer
-  - consider whether outcomes are technically corrigible or reversible
-  - consider the magnitude and likelihood of benefits, including product-safety improvements
-  - consider effective non-damages redress and measures under Union law that prevent or substantially
-    minimise risk
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: consider the system's intended purpose
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider actual and likely extent of use
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider the nature and amount of processed data, especially special-category personal data
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider system autonomy and the possibility of human override
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider demonstrated harm, adverse impact, and significant documented concerns
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider potential harm intensity, scale, and disproportionate group effects
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider affected persons' dependency on outcomes and practical or legal ability to opt out
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider power imbalances and vulnerability relative to the deployer
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider whether outcomes are technically corrigible or reversible
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider the magnitude and likelihood of benefits, including product-safety improvements
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+    - text: consider effective non-damages redress and measures under Union law that prevent or substantially
+        minimise risk
+      basis_segment_ids:
+      - AIA-TEXT-A007-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -117,8 +147,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A007-P013
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This assessment rule constrains the Commission's Annex III amendment analysis
@@ -158,11 +188,17 @@ norms:
   - AIA-TEXT-A007-P019
   - AIA-TEXT-A007-P020
   conditions:
-  - applying the Article 7(2) criteria, the use case no longer poses significant risks to fundamental
-    rights, health, or safety
-  - removal does not decrease the overall protection of health, safety, and fundamental rights under Union
-    law
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: applying the Article 7(2) criteria, the use case no longer poses significant risks to fundamental
+        rights, health, or safety
+      basis_segment_ids:
+      - AIA-TEXT-A007-P018
+    - text: removal does not decrease the overall protection of health, safety, and fundamental rights
+        under Union law
+      basis_segment_ids:
+      - AIA-TEXT-A007-P018
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.

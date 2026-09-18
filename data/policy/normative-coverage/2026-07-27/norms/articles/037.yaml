@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A037-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -50,8 +50,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A037-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - notification information
   - information on maintaining notified-body competence
@@ -85,8 +85,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A037-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -122,8 +122,13 @@ norms:
   - AIA-TEXT-A037-P004
   qualifier_spans: []
   conditions:
-  - the Commission ascertains that a notified body does not meet or no longer meets its notification requirements
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission ascertains that a notified body does not meet or no longer meets its notification
+        requirements
+      basis_segment_ids:
+      - AIA-TEXT-A037-P004
+  exceptions: null
   mandatory_content:
   - inform the notifying Member State accordingly
   - request the Member State to take necessary corrective measures, including suspension or withdrawal
@@ -158,8 +163,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A037-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -191,8 +196,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A037-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -18,8 +18,12 @@ norms:
   - AIA-TEXT-A089-P001
   qualifier_spans: []
   conditions:
-  - the action serves performance of the AI Office's tasks under this Section
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the action serves performance of the AI Office's tasks under this Section
+      basis_segment_ids:
+      - AIA-TEXT-A089-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -51,8 +55,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A089-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This is an optional procedural entitlement rather than a compliance action.
@@ -88,8 +92,12 @@ norms:
   - AIA-TEXT-A089-P004
   - AIA-TEXT-A089-P005
   conditions:
-  - a downstream provider exercises its entitlement to lodge a complaint
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a downstream provider exercises its entitlement to lodge a complaint
+      basis_segment_ids:
+      - AIA-TEXT-A089-P002
+  exceptions: null
   mandatory_content:
   - GPAI provider point of contact
   - relevant facts provisions and reasons supporting alleged infringement

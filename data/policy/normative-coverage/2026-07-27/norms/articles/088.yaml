@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A088-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -50,10 +50,16 @@ norms:
   primary_spans:
   - AIA-TEXT-A088-P001
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - the Commission's powers of organisation are unaffected
-  - the Treaty-based division of competences between Member States and the Union is unaffected
+    operator: any_of
+    operands:
+    - text: the Commission's powers of organisation are unaffected
+      basis_segment_ids:
+      - AIA-TEXT-A088-P001
+    - text: the Treaty-based division of competences between Member States and the Union is unaffected
+      basis_segment_ids:
+      - AIA-TEXT-A088-P001
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -88,9 +94,13 @@ norms:
   - AIA-TEXT-A088-P002
   qualifier_spans: []
   conditions:
-  - exercising the Section powers is necessary and proportionate to assist fulfilment of the authority's
-    tasks under this Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: exercising the Section powers is necessary and proportionate to assist fulfilment of the authority's
+        tasks under this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A088-P002
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

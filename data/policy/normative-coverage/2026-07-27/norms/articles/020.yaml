@@ -20,9 +20,13 @@ norms:
   - AIA-TEXT-A020-P001
   qualifier_spans: []
   conditions:
-  - the provider considers or has reason to consider that a high-risk system it placed on the market or
-    put into service is non-conforming
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider considers or has reason to consider that a high-risk system it placed on the
+        market or put into service is non-conforming
+      basis_segment_ids:
+      - AIA-TEXT-A020-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -58,9 +62,13 @@ norms:
   - AIA-TEXT-A020-P001
   qualifier_spans: []
   conditions:
-  - the provider considers or has reason to consider that a high-risk system it placed on the market or
-    put into service is non-conforming
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider considers or has reason to consider that a high-risk system it placed on the
+        market or put into service is non-conforming
+      basis_segment_ids:
+      - AIA-TEXT-A020-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -101,8 +109,12 @@ norms:
   - AIA-TEXT-A020-P002
   qualifier_spans: []
   conditions:
-  - the high-risk AI system presents an Article 79(1) risk and the provider becomes aware of it
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system presents an Article 79(1) risk and the provider becomes aware of it
+      basis_segment_ids:
+      - AIA-TEXT-A020-P002
+  exceptions: null
   mandatory_content:
   - investigate the causes, collaborating with the reporting deployer where applicable
   - inform the competent market-surveillance authorities of the nature of the non-compliance and relevant

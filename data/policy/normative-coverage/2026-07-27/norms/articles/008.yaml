@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A008-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -53,8 +53,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A008-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -92,9 +92,13 @@ norms:
   - AIA-TEXT-A008-P002
   qualifier_spans: []
   conditions:
-  - the product contains an AI system to which both this Regulation and Union harmonisation legislation
-    listed in Annex I Section A apply
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the product contains an AI system to which both this Regulation and Union harmonisation legislation
+        listed in Annex I Section A apply
+      basis_segment_ids:
+      - AIA-TEXT-A008-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -134,11 +138,17 @@ norms:
   - AIA-TEXT-A008-P002
   qualifier_spans: []
   conditions:
-  - the product contains an AI system to which both this Regulation and Union harmonisation legislation
-    listed in Annex I Section A apply
-  - integration is appropriate for ensuring consistency, avoiding duplication, and minimising additional
-    burdens
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the product contains an AI system to which both this Regulation and Union harmonisation legislation
+        listed in Annex I Section A apply
+      basis_segment_ids:
+      - AIA-TEXT-A008-P002
+    - text: integration is appropriate for ensuring consistency, avoiding duplication, and minimising
+        additional burdens
+      basis_segment_ids:
+      - AIA-TEXT-A008-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

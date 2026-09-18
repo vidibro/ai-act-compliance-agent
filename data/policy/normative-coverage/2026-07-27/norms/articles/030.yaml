@@ -15,8 +15,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A030-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -51,8 +51,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A030-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -88,8 +88,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A030-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -122,8 +122,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A030-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - conformity assessment activities
   - conformity assessment modules
@@ -163,8 +163,12 @@ norms:
   - AIA-TEXT-A030-P004
   qualifier_spans: []
   conditions:
-  - the notification is not based on an Article 29(2) accreditation certificate
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notification is not based on an Article 29(2) accreditation certificate
+      basis_segment_ids:
+      - AIA-TEXT-A030-P004
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -200,9 +204,13 @@ norms:
   - AIA-TEXT-A030-P005
   qualifier_spans: []
   conditions:
-  - no Commission or Member-State objection within two weeks for an accredited notification or two months
-    for an evidence-based notification
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: no Commission or Member-State objection within two weeks for an accredited notification or
+        two months for an evidence-based notification
+      basis_segment_ids:
+      - AIA-TEXT-A030-P005
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -235,8 +243,12 @@ norms:
   - AIA-TEXT-A030-P006
   qualifier_spans: []
   conditions:
-  - objections are raised to the notification
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: objections are raised to the notification
+      basis_segment_ids:
+      - AIA-TEXT-A030-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -268,8 +280,12 @@ norms:
   - AIA-TEXT-A030-P006
   qualifier_spans: []
   conditions:
-  - objections are raised to the notification
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: objections are raised to the notification
+      basis_segment_ids:
+      - AIA-TEXT-A030-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -302,8 +318,12 @@ norms:
   - AIA-TEXT-A030-P006
   qualifier_spans: []
   conditions:
-  - objections are raised to the notification
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: objections are raised to the notification
+      basis_segment_ids:
+      - AIA-TEXT-A030-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

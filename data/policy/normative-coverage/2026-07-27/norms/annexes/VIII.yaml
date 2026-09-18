@@ -17,11 +17,15 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VIII-A
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - entry 12 only, the electronic instructions for use are not provided for high-risk AI systems in the
-    areas of law enforcement or migration, asylum and border control management referred to in Annex III,
-    points 1, 6 and 7
+    operator: any_of
+    operands:
+    - text: entry 12 only, the electronic instructions for use are not provided for high-risk AI systems
+        in the areas of law enforcement or migration, asylum and border control management referred to
+        in Annex III, points 1, 6 and 7
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-VIII-A
   mandatory_content:
   - The name, address and contact details of the provider;
   - Where submission of information is carried out by another person on behalf of the provider, the name,
@@ -77,8 +81,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VIII-B
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - The name, address and contact details of the provider;
   - Where submission of information is carried out by another person on behalf of the provider, the name,
@@ -125,8 +129,8 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-VIII-C
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - The name, address and contact details of the deployer;
   - The name, address and contact details of the person submitting information on behalf of the deployer;

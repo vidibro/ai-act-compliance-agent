@@ -17,8 +17,12 @@ norms:
   - AIA-TEXT-A033-P001
   qualifier_spans: []
   conditions:
-  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+      basis_segment_ids:
+      - AIA-TEXT-A033-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -51,8 +55,12 @@ norms:
   - AIA-TEXT-A033-P001
   qualifier_spans: []
   conditions:
-  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+      basis_segment_ids:
+      - AIA-TEXT-A033-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -84,8 +92,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A033-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -118,8 +126,12 @@ norms:
   - AIA-TEXT-A033-P003
   qualifier_spans: []
   conditions:
-  - the provider agrees to the subcontracting or subsidiary arrangement
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider agrees to the subcontracting or subsidiary arrangement
+      basis_segment_ids:
+      - AIA-TEXT-A033-P003
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -150,8 +162,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A033-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -186,8 +198,12 @@ norms:
   - AIA-TEXT-A033-P004
   qualifier_spans: []
   conditions:
-  - retain the documents for five years from termination of the subcontracting
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: retain the documents for five years from termination of the subcontracting
+      basis_segment_ids:
+      - AIA-TEXT-A033-P004
+  exceptions: null
   mandatory_content:
   - documents assessing the qualifications of the subcontractor or subsidiary
   - documents concerning work performed by the subcontractor or subsidiary under the Regulation

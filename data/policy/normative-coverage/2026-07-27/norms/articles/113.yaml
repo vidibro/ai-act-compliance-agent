@@ -16,8 +16,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-ENTRY
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -49,8 +49,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-GENERAL
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -82,10 +82,14 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-A
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b) apply from 2 December
-    2026 instead
+    operator: any_of
+    operands:
+    - text: Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b) apply from
+        2 December 2026 instead
+      basis_segment_ids:
+      - AIA-TEXT-A113-A
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -117,8 +121,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-A
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -151,9 +155,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-B
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - Article 101 is excluded from the 2 August 2025 application date
+    operator: any_of
+    operands:
+    - text: Article 101 is excluded from the 2 August 2025 application date
+      basis_segment_ids:
+      - AIA-TEXT-A113-B
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -187,10 +195,14 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-C
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - Article 6(5), which remains governed by the general application date rather than this deferred Annex
-    III route date
+    operator: any_of
+    operands:
+    - text: Article 6(5), which remains governed by the general application date rather than this deferred
+        Annex III route date
+      basis_segment_ids:
+      - AIA-TEXT-A113-C
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -222,10 +234,14 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-C
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - Article 6(5), which remains governed by the general application date rather than this deferred Annex
-    I route date
+    operator: any_of
+    operands:
+    - text: Article 6(5), which remains governed by the general application date rather than this deferred
+        Annex I route date
+      basis_segment_ids:
+      - AIA-TEXT-A113-C
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -257,8 +273,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A113-D
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.

@@ -14,8 +14,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -52,8 +52,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -85,8 +85,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -120,10 +120,14 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P002
   qualifier_spans: []
-  conditions: []
+  conditions: null
   exceptions:
-  - the European Parliament or the Council opposes the extension no later than three months before the
-    end of the period
+    operator: any_of
+    operands:
+    - text: the European Parliament or the Council opposes the extension no later than three months before
+        the end of the period
+      basis_segment_ids:
+      - AIA-TEXT-A097-P002
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -157,8 +161,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -194,8 +198,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -228,8 +232,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -262,8 +266,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -295,8 +299,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A097-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -336,13 +340,19 @@ norms:
   - AIA-TEXT-A097-P006
   qualifier_spans: []
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - no objection has been expressed by either the European Parliament or the Council within a period
-      of three months of notification of that act to them
-    - before the expiry of that period, the European Parliament and the Council have both informed the
-      Commission that they will not object
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: no objection has been expressed by either the European Parliament or the Council within
+          a period of three months of notification of that act to them
+        basis_segment_ids:
+        - AIA-TEXT-A097-P006
+      - text: before the expiry of that period, the European Parliament and the Council have both informed
+          the Commission that they will not object
+        basis_segment_ids:
+        - AIA-TEXT-A097-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -376,8 +386,12 @@ norms:
   - AIA-TEXT-A097-P006
   qualifier_spans: []
   conditions:
-  - the European Parliament or the Council takes the initiative
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the European Parliament or the Council takes the initiative
+      basis_segment_ids:
+      - AIA-TEXT-A097-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

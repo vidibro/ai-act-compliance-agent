@@ -17,8 +17,12 @@ norms:
   - AIA-TEXT-A024-P001
   qualifier_spans: []
   conditions:
-  - before making the high-risk AI system available on the market
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before making the high-risk AI system available on the market
+      basis_segment_ids:
+      - AIA-TEXT-A024-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -53,8 +57,12 @@ norms:
   - AIA-TEXT-A024-P001
   qualifier_spans: []
   conditions:
-  - before making the high-risk AI system available on the market
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before making the high-risk AI system available on the market
+      basis_segment_ids:
+      - AIA-TEXT-A024-P001
+  exceptions: null
   mandatory_content:
   - EU declaration of conformity
   - instructions for use
@@ -91,8 +99,12 @@ norms:
   - AIA-TEXT-A024-P001
   qualifier_spans: []
   conditions:
-  - before making the high-risk AI system available on the market
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: before making the high-risk AI system available on the market
+      basis_segment_ids:
+      - AIA-TEXT-A024-P001
+  exceptions: null
   mandatory_content:
   - provider identification under Article 16(b)
   - provider quality-management system under Article 16(c)
@@ -133,9 +145,13 @@ norms:
   - AIA-TEXT-A024-P002
   qualifier_spans: []
   conditions:
-  - the distributor considers or has reason to consider from its information that the system is not Section
-    2 compliant
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the distributor considers or has reason to consider from its information that the system is
+        not Section 2 compliant
+      basis_segment_ids:
+      - AIA-TEXT-A024-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -170,8 +186,12 @@ norms:
   - AIA-TEXT-A024-P002
   qualifier_spans: []
   conditions:
-  - the high-risk AI system presents a risk within the meaning of Article 79(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system presents a risk within the meaning of Article 79(1)
+      basis_segment_ids:
+      - AIA-TEXT-A024-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -208,9 +228,15 @@ norms:
   - AIA-TEXT-A024-P003
   qualifier_spans: []
   conditions:
-  - the high-risk AI system is under the distributor's responsibility
-  - storage or transport conditions are applicable
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system is under the distributor's responsibility
+      basis_segment_ids:
+      - AIA-TEXT-A024-P003
+    - text: storage or transport conditions are applicable
+      basis_segment_ids:
+      - AIA-TEXT-A024-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -247,9 +273,13 @@ norms:
   - AIA-TEXT-A024-P004
   qualifier_spans: []
   conditions:
-  - the distributor considers or has reason to consider from its information that a system it made available
-    is not Section 2 compliant
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the distributor considers or has reason to consider from its information that a system it
+        made available is not Section 2 compliant
+      basis_segment_ids:
+      - AIA-TEXT-A024-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -287,8 +317,12 @@ norms:
   - AIA-TEXT-A024-P004
   qualifier_spans: []
   conditions:
-  - the high-risk AI system presents a risk within the meaning of Article 79(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the high-risk AI system presents a risk within the meaning of Article 79(1)
+      basis_segment_ids:
+      - AIA-TEXT-A024-P004
+  exceptions: null
   mandatory_content:
   - notification to the provider or importer
   - notification to the authorities competent for the system
@@ -330,8 +364,12 @@ norms:
   - AIA-TEXT-A024-P005
   qualifier_spans: []
   conditions:
-  - a relevant competent authority makes a reasoned request
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: a relevant competent authority makes a reasoned request
+      basis_segment_ids:
+      - AIA-TEXT-A024-P005
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -367,8 +405,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A024-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

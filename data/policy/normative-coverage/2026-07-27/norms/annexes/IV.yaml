@@ -40,8 +40,8 @@ norms:
   - AIA-TEXT-ANNEX-IV-I7
   - AIA-TEXT-ANNEX-IV-I8
   - AIA-TEXT-ANNEX-IV-I9
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - intended purpose, provider name, system version, and relationship to previous versions
   - interaction or possible interaction with external hardware, software, or other AI systems

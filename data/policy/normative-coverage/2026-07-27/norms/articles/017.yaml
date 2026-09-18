@@ -16,8 +16,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A017-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -52,8 +52,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A017-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -89,8 +89,8 @@ norms:
   - AIA-TEXT-A017-P002
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -126,8 +126,8 @@ norms:
   - AIA-TEXT-A017-P003
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -163,8 +163,8 @@ norms:
   - AIA-TEXT-A017-P004
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -200,8 +200,8 @@ norms:
   - AIA-TEXT-A017-P005
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -238,8 +238,8 @@ norms:
   - AIA-TEXT-A017-P006
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -277,8 +277,8 @@ norms:
   - AIA-TEXT-A017-P007
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -312,8 +312,8 @@ norms:
   - AIA-TEXT-A017-P008
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -349,8 +349,8 @@ norms:
   - AIA-TEXT-A017-P009
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -384,8 +384,8 @@ norms:
   - AIA-TEXT-A017-P010
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -422,8 +422,8 @@ norms:
   - AIA-TEXT-A017-P011
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -457,8 +457,8 @@ norms:
   - AIA-TEXT-A017-P012
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -492,8 +492,8 @@ norms:
   - AIA-TEXT-A017-P013
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -529,8 +529,8 @@ norms:
   - AIA-TEXT-A017-P014
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -566,8 +566,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A017-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -602,8 +602,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A017-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -640,9 +640,13 @@ norms:
   - AIA-TEXT-A017-P016
   qualifier_spans: []
   conditions:
-  - the provider is subject to quality-management-system or equivalent obligations under relevant sectoral
-    Union law
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider is subject to quality-management-system or equivalent obligations under relevant
+        sectoral Union law
+      basis_segment_ids:
+      - AIA-TEXT-A017-P016
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -681,10 +685,18 @@ norms:
   - AIA-TEXT-A017-P017
   qualifier_spans: []
   conditions:
-  - the provider is a financial institution subject to internal-governance requirements under Union financial-services
-    law
+    operator: all_of
+    operands:
+    - text: the provider is a financial institution subject to internal-governance requirements under
+        Union financial-services law
+      basis_segment_ids:
+      - AIA-TEXT-A017-P017
   exceptions:
-  - Article 17(1)(g), (h), and (i) remain independently required
+    operator: any_of
+    operands:
+    - text: Article 17(1)(g), (h), and (i) remain independently required
+      basis_segment_ids:
+      - AIA-TEXT-A017-P017
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -719,9 +731,13 @@ norms:
   - AIA-TEXT-A017-P017
   qualifier_spans: []
   conditions:
-  - the provider relies on Union financial-services governance compliance to fulfil the Article 17 QMS
-    obligation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the provider relies on Union financial-services governance compliance to fulfil the Article
+        17 QMS obligation
+      basis_segment_ids:
+      - AIA-TEXT-A017-P017
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

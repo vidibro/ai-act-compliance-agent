@@ -122,10 +122,10 @@ def _report_norm_block(norm: ReportNorm) -> list[str]:
     """One canonical permission or legal effect, with its route and limits."""
     lines = [f"  --  {norm.norm_id}"]
     lines += _wrapped("means:", norm.action)
-    for condition in norm.conditions:
-        lines += _wrapped("if:", _condition_text(condition))
-    for exception in norm.exceptions:
-        lines += _wrapped("except:", exception)
+    if norm.conditions:
+        lines += _wrapped("if:", _condition_text(norm.conditions))
+    if norm.exceptions:
+        lines += _wrapped("except:", _condition_text(norm.exceptions))
     lines += _wrapped("basis:", ", ".join(norm.source_spans))
     return lines
 

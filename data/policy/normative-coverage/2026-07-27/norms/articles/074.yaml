@@ -19,8 +19,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A074-P002
   - AIA-TEXT-A074-P003
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - Article 2(1) operators treated as economic operators
   - in-scope AI systems treated as products
@@ -58,8 +58,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -92,8 +92,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - use of prohibited practices that occurred during that year
   - measures taken
@@ -132,8 +132,8 @@ norms:
   - AIA-TEXT-A074-P005
   qualifier_spans:
   - AIA-TEXT-A074-P006
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -170,10 +170,17 @@ norms:
   - AIA-TEXT-A074-P007
   qualifier_spans: []
   conditions:
-  - the AI system is related to a product covered by Union harmonisation legislation listed in Section
-    A of Annex I
-  - that legislation already provides procedures with the same objective and an equivalent level of protection
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system is related to a product covered by Union harmonisation legislation listed in
+        Section A of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A074-P007
+    - text: that legislation already provides procedures with the same objective and an equivalent level
+        of protection
+      basis_segment_ids:
+      - AIA-TEXT-A074-P007
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -207,8 +214,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P008
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -243,8 +250,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P009
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -278,9 +285,15 @@ norms:
   - AIA-TEXT-A074-P010
   qualifier_spans: []
   conditions:
-  - the circumstances are appropriate
-  - coordination with the relevant financial supervisory authority is ensured
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the circumstances are appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A074-P010
+    - text: coordination with the relevant financial supervisory authority is ensured
+      basis_segment_ids:
+      - AIA-TEXT-A074-P010
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -317,9 +330,13 @@ norms:
   - AIA-TEXT-A074-P011
   qualifier_spans: []
   conditions:
-  - the authority supervises regulated credit institutions under Directive 2013/36/EU that participate
-    in the Single Supervisory Mechanism
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the authority supervises regulated credit institutions under Directive 2013/36/EU that participate
+        in the Single Supervisory Mechanism
+      basis_segment_ids:
+      - AIA-TEXT-A074-P011
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -358,8 +375,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -392,8 +409,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -427,9 +444,17 @@ norms:
   - AIA-TEXT-A074-P013
   qualifier_spans: []
   conditions:
-  - a Union institution, body, office or agency falls within the scope of the Regulation
+    operator: all_of
+    operands:
+    - text: a Union institution, body, office or agency falls within the scope of the Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A074-P013
   exceptions:
-  - the Court of Justice of the European Union acting in its judicial capacity
+    operator: any_of
+    operands:
+    - text: the Court of Justice of the European Union acting in its judicial capacity
+      basis_segment_ids:
+      - AIA-TEXT-A074-P013
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -463,8 +488,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P014
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -502,8 +527,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -534,8 +559,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P015
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -574,9 +599,13 @@ norms:
   - AIA-TEXT-A074-P016
   qualifier_spans: []
   conditions:
-  - the access is relevant and limited to what is necessary for the market-surveillance authority to fulfil
-    its tasks
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the access is relevant and limited to what is necessary for the market-surveillance authority
+        to fulfil its tasks
+      basis_segment_ids:
+      - AIA-TEXT-A074-P016
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -615,10 +644,16 @@ norms:
   - AIA-TEXT-A074-P018
   - AIA-TEXT-A074-P019
   conditions:
-  - source-code access is necessary for assessing conformity with Chapter III Section 2 requirements
-  - testing, auditing and verification procedures based on data and documentation provided by the provider
-    have been exhausted or proved insufficient
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: source-code access is necessary for assessing conformity with Chapter III Section 2 requirements
+      basis_segment_ids:
+      - AIA-TEXT-A074-P017
+    - text: testing, auditing and verification procedures based on data and documentation provided by
+        the provider have been exhausted or proved insufficient
+      basis_segment_ids:
+      - AIA-TEXT-A074-P017
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -651,8 +686,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A074-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

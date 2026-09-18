@@ -17,9 +17,15 @@ norms:
   - AIA-TEXT-A063-P001
   qualifier_spans: []
   conditions:
-  - the SME has no partner enterprise or linked enterprise within Recommendation 2003/361/EC
-  - simplification is limited to elements identified by Commission guidance
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the SME has no partner enterprise or linked enterprise within Recommendation 2003/361/EC
+      basis_segment_ids:
+      - AIA-TEXT-A063-P001
+    - text: simplification is limited to elements identified by Commission guidance
+      basis_segment_ids:
+      - AIA-TEXT-A063-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -55,8 +61,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A063-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -90,8 +96,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A063-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Limits the simplification's legal effect rather than creating an independent product

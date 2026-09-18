@@ -45,7 +45,7 @@ from aiact.llm import DATA_NOT_INSTRUCTIONS, fence, flatten, new_marker, unfence
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.enums import CheckType, Verdict
-from aiact.schemas.norm import ConditionGroup
+from aiact.schemas.norm import ConditionClause, LogicalExpression
 from aiact.schemas.policy import PolicyRule, RuleCriterion
 from aiact.schemas.question import Confidence, clip_reasoning
 from aiact.schemas.report import CriterionFinding
@@ -545,9 +545,9 @@ def _judged(rule: PolicyRule) -> bool:
     return any(criterion.mandatory for criterion in rule.criteria)
 
 
-def _condition_text(condition: str | ConditionGroup) -> str:
-    if isinstance(condition, str):
-        return condition
+def _condition_text(condition: ConditionClause | LogicalExpression) -> str:
+    if isinstance(condition, ConditionClause):
+        return condition.text
     joiner = " AND " if condition.operator == "all_of" else " OR "
     return "(" + joiner.join(_condition_text(item) for item in condition.operands) + ")"
 
@@ -559,8 +559,10 @@ def _criterion_lines(criterion: RuleCriterion) -> str:
         f"    must: {criterion.action}",
         f'    enacted words: "{criterion.norm_text}"',
     ]
-    lines += [f"    only where: {_condition_text(c)}" for c in criterion.conditions]
-    lines += [f"    except: {e}" for e in criterion.exceptions]
+    if criterion.conditions:
+        lines.append(f"    only where: {_condition_text(criterion.conditions)}")
+    if criterion.exceptions:
+        lines.append(f"    except: {_condition_text(criterion.exceptions)}")
     lines += [f"    must include: {m}" for m in criterion.mandatory_content]
     return "\n".join(lines)
 

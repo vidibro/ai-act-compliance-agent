@@ -26,16 +26,32 @@ norms:
   - AIA-TEXT-A083-P007
   - AIA-TEXT-A083-P008
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the CE marking has been affixed in violation of Article 48
-    - the CE marking has not been affixed
-    - the Article 47 EU declaration of conformity has not been drawn up
-    - the Article 47 EU declaration of conformity has not been drawn up correctly
-    - the Article 71 EU-database registration has not been carried out
-    - no authorised representative has been appointed where one is applicable
-    - technical documentation is not available
-  exceptions: []
+    - operator: any_of
+      operands:
+      - text: the CE marking has been affixed in violation of Article 48
+        basis_segment_ids:
+        - AIA-TEXT-A083-P001
+      - text: the CE marking has not been affixed
+        basis_segment_ids:
+        - AIA-TEXT-A083-P001
+      - text: the Article 47 EU declaration of conformity has not been drawn up
+        basis_segment_ids:
+        - AIA-TEXT-A083-P001
+      - text: the Article 47 EU declaration of conformity has not been drawn up correctly
+        basis_segment_ids:
+        - AIA-TEXT-A083-P001
+      - text: the Article 71 EU-database registration has not been carried out
+        basis_segment_ids:
+        - AIA-TEXT-A083-P001
+      - text: no authorised representative has been appointed where one is applicable
+        basis_segment_ids:
+        - AIA-TEXT-A083-P001
+      - text: technical documentation is not available
+        basis_segment_ids:
+        - AIA-TEXT-A083-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The formal defects are already represented by their underlying operator duties;
@@ -72,8 +88,12 @@ norms:
   - AIA-TEXT-A083-P009
   qualifier_spans: []
   conditions:
-  - the formal non-compliance referred to in paragraph 1 persists
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the formal non-compliance referred to in paragraph 1 persists
+      basis_segment_ids:
+      - AIA-TEXT-A083-P009
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -17,8 +17,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -50,8 +50,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P001
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -84,8 +84,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P002
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -118,8 +118,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P003
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - no conflict of interest with conformity assessment bodies
   - objective activities
@@ -155,8 +155,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P004
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -189,8 +189,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - do not offer or provide activities performed by conformity-assessment bodies
   - do not offer or provide consultancy services on a commercial or competitive basis
@@ -224,8 +224,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P006
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -257,8 +257,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -291,8 +291,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P007
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -330,9 +330,13 @@ norms:
   - AIA-TEXT-A028-P008
   qualifier_spans: []
   conditions:
-  - the relevant Section A Annex I legislation provides for the single application and unified assessment
-    procedure
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the relevant Section A Annex I legislation provides for the single application and unified
+        assessment procedure
+      basis_segment_ids:
+      - AIA-TEXT-A028-P008
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -365,9 +369,13 @@ norms:
   - AIA-TEXT-A028-P008
   qualifier_spans: []
   conditions:
-  - the relevant Section A Annex I legislation provides for the single application and unified assessment
-    procedure
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the relevant Section A Annex I legislation provides for the single application and unified
+        assessment procedure
+      basis_segment_ids:
+      - AIA-TEXT-A028-P008
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -403,9 +411,13 @@ norms:
   - AIA-TEXT-A028-P009
   qualifier_spans: []
   conditions:
-  - the relevant Section A Annex I legislation provides for the single application and unified assessment
-    procedure
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the relevant Section A Annex I legislation provides for the single application and unified
+        assessment procedure
+      basis_segment_ids:
+      - AIA-TEXT-A028-P009
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -439,8 +451,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -474,8 +486,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -510,8 +522,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - avoid unnecessary duplication
   - build on existing designation procedures
@@ -550,8 +562,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P012
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -19,8 +19,8 @@ norms:
   - AIA-TEXT-A003-P002
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -55,8 +55,8 @@ norms:
   - AIA-TEXT-A003-P003
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -93,8 +93,8 @@ norms:
   - AIA-TEXT-A003-P004
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -130,9 +130,13 @@ norms:
   - AIA-TEXT-A003-P005
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
+  conditions: null
   exceptions:
-  - personal non-professional use is excluded
+    operator: any_of
+    operands:
+    - text: personal non-professional use is excluded
+      basis_segment_ids:
+      - AIA-TEXT-A003-P005
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -169,8 +173,8 @@ norms:
   - AIA-TEXT-A003-P006
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -206,8 +210,8 @@ norms:
   - AIA-TEXT-A003-P007
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -242,8 +246,8 @@ norms:
   - AIA-TEXT-A003-P008
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -278,8 +282,8 @@ norms:
   - AIA-TEXT-A003-P009
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -314,8 +318,8 @@ norms:
   - AIA-TEXT-A003-P010
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -351,8 +355,8 @@ norms:
   - AIA-TEXT-A003-P011
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -387,8 +391,8 @@ norms:
   - AIA-TEXT-A003-P012
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -425,8 +429,8 @@ norms:
   - AIA-TEXT-A003-P013
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -463,8 +467,8 @@ norms:
   - AIA-TEXT-A003-P014
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -502,8 +506,8 @@ norms:
   - AIA-TEXT-A003-P015
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -538,8 +542,8 @@ norms:
   - AIA-TEXT-A003-P016
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -574,8 +578,8 @@ norms:
   - AIA-TEXT-A003-P017
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -610,8 +614,8 @@ norms:
   - AIA-TEXT-A003-P018
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -646,8 +650,8 @@ norms:
   - AIA-TEXT-A003-P019
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -682,8 +686,8 @@ norms:
   - AIA-TEXT-A003-P020
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -718,8 +722,8 @@ norms:
   - AIA-TEXT-A003-P021
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -755,8 +759,8 @@ norms:
   - AIA-TEXT-A003-P022
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -791,8 +795,8 @@ norms:
   - AIA-TEXT-A003-P023
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -827,8 +831,8 @@ norms:
   - AIA-TEXT-A003-P024
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -863,8 +867,8 @@ norms:
   - AIA-TEXT-A003-P025
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -902,8 +906,8 @@ norms:
   - AIA-TEXT-A003-P026
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -939,8 +943,8 @@ norms:
   - AIA-TEXT-A003-P027
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -977,8 +981,8 @@ norms:
   - AIA-TEXT-A003-P028
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1013,8 +1017,8 @@ norms:
   - AIA-TEXT-A003-P029
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1049,8 +1053,8 @@ norms:
   - AIA-TEXT-A003-P030
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1086,8 +1090,8 @@ norms:
   - AIA-TEXT-A003-P031
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1122,8 +1126,8 @@ norms:
   - AIA-TEXT-A003-P032
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1159,8 +1163,8 @@ norms:
   - AIA-TEXT-A003-P033
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1195,8 +1199,8 @@ norms:
   - AIA-TEXT-A003-P034
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1232,8 +1236,8 @@ norms:
   - AIA-TEXT-A003-P035
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1268,8 +1272,8 @@ norms:
   - AIA-TEXT-A003-P036
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1305,8 +1309,8 @@ norms:
   - AIA-TEXT-A003-P037
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1343,8 +1347,8 @@ norms:
   - AIA-TEXT-A003-P038
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1380,8 +1384,8 @@ norms:
   - AIA-TEXT-A003-P039
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1417,8 +1421,8 @@ norms:
   - AIA-TEXT-A003-P040
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1454,8 +1458,8 @@ norms:
   - AIA-TEXT-A003-P041
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1490,8 +1494,8 @@ norms:
   - AIA-TEXT-A003-P042
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1527,10 +1531,14 @@ norms:
   - AIA-TEXT-A003-P043
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
+  conditions: null
   exceptions:
-  - categorisation ancillary to another commercial service and strictly necessary for objective technical
-    reasons is excluded
+    operator: any_of
+    operands:
+    - text: categorisation ancillary to another commercial service and strictly necessary for objective
+        technical reasons is excluded
+      basis_segment_ids:
+      - AIA-TEXT-A003-P043
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1566,8 +1574,8 @@ norms:
   - AIA-TEXT-A003-P044
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1604,8 +1612,8 @@ norms:
   - AIA-TEXT-A003-P045
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1640,8 +1648,8 @@ norms:
   - AIA-TEXT-A003-P046
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1678,8 +1686,8 @@ norms:
   - AIA-TEXT-A003-P047
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1716,9 +1724,17 @@ norms:
   - AIA-TEXT-A003-P049
   - AIA-TEXT-A003-P050
   conditions:
-  - the entity is a public authority competent for the listed criminal-law or public-security functions
-  - or the entity is entrusted by Member State law to exercise public authority and powers for those functions
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the entity is a public authority competent for the listed criminal-law or public-security
+        functions
+      basis_segment_ids:
+      - AIA-TEXT-A003-P048
+    - text: or the entity is entrusted by Member State law to exercise public authority and powers for
+        those functions
+      basis_segment_ids:
+      - AIA-TEXT-A003-P048
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1755,8 +1771,8 @@ norms:
   - AIA-TEXT-A003-P051
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1792,8 +1808,8 @@ norms:
   - AIA-TEXT-A003-P052
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1828,8 +1844,8 @@ norms:
   - AIA-TEXT-A003-P053
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1869,11 +1885,21 @@ norms:
   - AIA-TEXT-A003-P057
   - AIA-TEXT-A003-P058
   conditions:
-  - death or serious harm to a person's health
-  - serious and irreversible disruption of critical-infrastructure management or operation
-  - infringement of Union-law obligations protecting fundamental rights
-  - serious harm to property or the environment
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: death or serious harm to a person's health
+      basis_segment_ids:
+      - AIA-TEXT-A003-P054
+    - text: serious and irreversible disruption of critical-infrastructure management or operation
+      basis_segment_ids:
+      - AIA-TEXT-A003-P054
+    - text: infringement of Union-law obligations protecting fundamental rights
+      basis_segment_ids:
+      - AIA-TEXT-A003-P054
+    - text: serious harm to property or the environment
+      basis_segment_ids:
+      - AIA-TEXT-A003-P054
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1908,8 +1934,8 @@ norms:
   - AIA-TEXT-A003-P059
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1944,8 +1970,8 @@ norms:
   - AIA-TEXT-A003-P060
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -1980,8 +2006,8 @@ norms:
   - AIA-TEXT-A003-P061
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2017,8 +2043,8 @@ norms:
   - AIA-TEXT-A003-P062
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2054,8 +2080,8 @@ norms:
   - AIA-TEXT-A003-P063
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2092,8 +2118,8 @@ norms:
   - AIA-TEXT-A003-P064
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2130,8 +2156,8 @@ norms:
   - AIA-TEXT-A003-P065
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2171,8 +2197,8 @@ norms:
   - AIA-TEXT-A003-P066
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - define the temporary real-world testing activity and its evidentiary and conformity-assessment purposes
   - provide that qualifying testing is neither placing the AI system on the market nor putting it into
@@ -2210,8 +2236,8 @@ norms:
   - AIA-TEXT-A003-P067
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2248,8 +2274,8 @@ norms:
   - AIA-TEXT-A003-P068
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2285,8 +2311,8 @@ norms:
   - AIA-TEXT-A003-P069
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2327,31 +2353,47 @@ norms:
   - AIA-TEXT-A003-P074
   - AIA-TEXT-A003-P075
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - an act or omission is contrary to Union law protecting the interest of individuals
-    - operator: any_of
+    - operator: all_of
       operands:
+      - text: an act or omission is contrary to Union law protecting the interest of individuals
+        basis_segment_ids:
+        - AIA-TEXT-A003-P070
       - operator: any_of
         operands:
-        - the act or omission has harmed or is likely to harm the collective interests of individuals
-          residing in at least two Member States other than the Member State in which the act or omission
-          originated or took place
-        - the act or omission has harmed or is likely to harm the collective interests of individuals
-          residing in at least two Member States other than the Member State in which the provider concerned
-          or, where applicable, its authorised representative is located or established
-        - the act or omission has harmed or is likely to harm the collective interests of individuals
-          residing in at least two Member States other than the Member State in which the deployer is
-          established, when the infringement is committed by the deployer
-      - operator: all_of
-        operands:
-        - the act or omission has caused, causes or is likely to cause harm to the collective interests
-          of individuals
-        - the infringement has common features, including the same unlawful practice or the same interest
-          being infringed
-        - the infringement is occurring concurrently, committed by the same operator, in at least three
-          Member States
-  exceptions: []
+        - operator: any_of
+          operands:
+          - text: the act or omission has harmed or is likely to harm the collective interests of individuals
+              residing in at least two Member States other than the Member State in which the act or omission
+              originated or took place
+            basis_segment_ids:
+            - AIA-TEXT-A003-P070
+          - text: the act or omission has harmed or is likely to harm the collective interests of individuals
+              residing in at least two Member States other than the Member State in which the provider
+              concerned or, where applicable, its authorised representative is located or established
+            basis_segment_ids:
+            - AIA-TEXT-A003-P070
+          - text: the act or omission has harmed or is likely to harm the collective interests of individuals
+              residing in at least two Member States other than the Member State in which the deployer
+              is established, when the infringement is committed by the deployer
+            basis_segment_ids:
+            - AIA-TEXT-A003-P070
+        - operator: all_of
+          operands:
+          - text: the act or omission has caused, causes or is likely to cause harm to the collective
+              interests of individuals
+            basis_segment_ids:
+            - AIA-TEXT-A003-P070
+          - text: the infringement has common features, including the same unlawful practice or the same
+              interest being infringed
+            basis_segment_ids:
+            - AIA-TEXT-A003-P070
+          - text: the infringement is occurring concurrently, committed by the same operator, in at least
+              three Member States
+            basis_segment_ids:
+            - AIA-TEXT-A003-P070
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2386,8 +2428,8 @@ norms:
   - AIA-TEXT-A003-P076
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2426,9 +2468,13 @@ norms:
   - AIA-TEXT-A003-P077
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
+  conditions: null
   exceptions:
-  - models used for research, development, or prototyping before market placement are excluded
+    operator: any_of
+    operands:
+    - text: models used for research, development, or prototyping before market placement are excluded
+      basis_segment_ids:
+      - AIA-TEXT-A003-P077
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2463,8 +2509,8 @@ norms:
   - AIA-TEXT-A003-P078
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2502,8 +2548,8 @@ norms:
   - AIA-TEXT-A003-P079
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2539,8 +2585,8 @@ norms:
   - AIA-TEXT-A003-P080
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2576,8 +2622,8 @@ norms:
   - AIA-TEXT-A003-P081
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2613,8 +2659,8 @@ norms:
   - AIA-TEXT-A003-P082
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
@@ -2648,8 +2694,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A003-P052
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This consequence affects downstream interpretation but creates no independent
@@ -2687,8 +2733,12 @@ norms:
   - AIA-TEXT-A003-P053
   qualifier_spans: []
   conditions:
-  - the AI system is put into service or used by a Union institution, agency, office, or body
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system is put into service or used by a Union institution, agency, office, or body
+      basis_segment_ids:
+      - AIA-TEXT-A003-P053
+  exceptions: null
   mandatory_content: []
   product_scope: dependency_only
   product_scope_reason: This consequence affects downstream interpretation but creates no independent

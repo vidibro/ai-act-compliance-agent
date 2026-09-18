@@ -20,17 +20,30 @@ norms:
   - AIA-TEXT-A093-P003
   - AIA-TEXT-A093-P004
   conditions:
-  - the Commission considers the request necessary and appropriate
-  - operator: any_of
+    operator: all_of
     operands:
-    - the request is to take appropriate measures to comply with Articles 53 and 54
-    - operator: all_of
+    - text: the Commission considers the request necessary and appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A093-P001
+    - operator: any_of
       operands:
-      - the request is to implement mitigation measures
-      - an Article 92 evaluation has given rise to serious and substantiated concern about a systemic
-        risk at Union level
-    - the request is to restrict making the model available on the market, withdraw it, or recall it
-  exceptions: []
+      - text: the request is to take appropriate measures to comply with Articles 53 and 54
+        basis_segment_ids:
+        - AIA-TEXT-A093-P001
+      - operator: all_of
+        operands:
+        - text: the request is to implement mitigation measures
+          basis_segment_ids:
+          - AIA-TEXT-A093-P001
+        - text: an Article 92 evaluation has given rise to serious and substantiated concern about a systemic
+            risk at Union level
+          basis_segment_ids:
+          - AIA-TEXT-A093-P001
+      - text: the request is to restrict making the model available on the market, withdraw it, or recall
+          it
+        basis_segment_ids:
+        - AIA-TEXT-A093-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -62,8 +75,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A093-P005
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -98,9 +111,14 @@ norms:
   - AIA-TEXT-A093-P006
   qualifier_spans: []
   conditions:
-  - during the paragraph 2 structured dialogue, a provider of a general-purpose AI model with systemic
-    risk offers commitments to implement mitigation measures addressing a systemic risk at Union level
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: during the paragraph 2 structured dialogue, a provider of a general-purpose AI model with
+        systemic risk offers commitments to implement mitigation measures addressing a systemic risk at
+        Union level
+      basis_segment_ids:
+      - AIA-TEXT-A093-P006
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -14,8 +14,8 @@ from aiact.norm_loader import load_normative_coverage
 from aiact.norm_metrics import measure_normative_coverage, render_coverage_markdown
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.norm import (
-    ConditionGroup,
     ImplementationMode,
+    LogicalExpression,
     NormRelationKind,
     ProductScope,
     VerificationMode,
@@ -1136,10 +1136,10 @@ def test_article_thirty_six_preserves_triggers_and_alternative_validity_routes()
     assert "suspended, restricted" in provider_notice.conditions[0]
     assert validity.exceptions == ["certificates that were unduly issued"]
     alternatives = validity.conditions[1]
-    assert isinstance(alternatives, ConditionGroup) and alternatives.operator == "any_of"
+    assert isinstance(alternatives, LogicalExpression) and alternatives.operator == "any_of"
     assert len(alternatives.operands) == 2
     assert all(
-        isinstance(route, ConditionGroup) and route.operator == "all_of"
+        isinstance(route, LogicalExpression) and route.operator == "all_of"
         for route in alternatives.operands
     )
 
@@ -1157,7 +1157,7 @@ def test_articles_forty_one_to_forty_six_preserve_gates_and_exceptions():
     assert len(modification.conditions) == 2
     assert "corrective action" in certificate.exceptions[0]
     alternatives = consultation.conditions[0]
-    assert isinstance(alternatives, ConditionGroup) and alternatives.operator == "any_of"
+    assert isinstance(alternatives, LogicalExpression) and alternatives.operator == "any_of"
     assert len(alternatives.operands) == 3
 
 
@@ -1206,12 +1206,12 @@ def test_article_sixty_preserves_alternative_eligibility_and_approval_routes():
     approval = norms["AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT"]
     establishment = norms["AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT"]
 
-    assert isinstance(permission.conditions[0], ConditionGroup)
+    assert isinstance(permission.conditions[0], LogicalExpression)
     assert permission.conditions[0].operator == "any_of"
-    assert isinstance(approval.conditions[0], ConditionGroup)
+    assert isinstance(approval.conditions[0], LogicalExpression)
     assert approval.conditions[0].operator == "any_of"
     assert approval.conditions[0].operands[1].operator == "all_of"
-    assert isinstance(establishment.conditions[0], ConditionGroup)
+    assert isinstance(establishment.conditions[0], LogicalExpression)
     assert establishment.conditions[0].operator == "any_of"
 
 
@@ -3362,14 +3362,14 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     assert public_interest.qualifier_spans == [f"AIA-TEXT-A059-P{n:03}" for n in range(3, 8)]
     assert len(public_interest.conditions) == 1
     requirement = public_interest.conditions[0]
-    assert isinstance(requirement, ConditionGroup) and requirement.operator == "all_of"
+    assert isinstance(requirement, LogicalExpression) and requirement.operator == "all_of"
     assert len(requirement.operands) == 2
     purpose, areas = requirement.operands
     assert purpose == (
         "the AI system is developed for safeguarding substantial public interest by a public "
         "authority or another natural or legal person"
     )
-    assert isinstance(areas, ConditionGroup) and areas.operator == "any_of"
+    assert isinstance(areas, LogicalExpression) and areas.operator == "any_of"
     # Only the five enacted areas are alternatives. Their detail, including the health examples,
     # remains within each area instead of becoming extra alternatives or cumulative obligations.
     assert areas.operands == [
@@ -3475,7 +3475,7 @@ def test_article_sixty_registration_routes_are_alternatives_not_a_checklist():
     assert not register.mandatory_content
     assert len(register.conditions) == 1
     routes = register.conditions[0]
-    assert isinstance(routes, ConditionGroup) and routes.operator == "any_of"
+    assert isinstance(routes, LogicalExpression) and routes.operator == "any_of"
     assert [branch.operator for branch in routes.operands] == ["all_of"] * 3
     general, secure, point_two = routes.operands
     assert general.operands == [
@@ -4488,7 +4488,7 @@ def test_article_eighty_three_keeps_formal_defects_as_one_enforcement_cycle():
     assert not formal.mandatory_content
     assert len(formal.qualifier_spans) == 7
     triggers = formal.conditions[0]
-    assert isinstance(triggers, ConditionGroup) and triggers.operator == "any_of"
+    assert isinstance(triggers, LogicalExpression) and triggers.operator == "any_of"
     assert len(triggers.operands) == 7
 
 
@@ -4583,7 +4583,7 @@ def test_article_ninety_extracts_scientific_panel_alerts():
     alert = norms["AIA-NORM-A090-P1-ISSUE-QUALIFIED-ALERT"]
     assert not alert.mandatory_content
     triggers = alert.conditions[0]
-    assert isinstance(triggers, ConditionGroup) and triggers.operator == "any_of"
+    assert isinstance(triggers, LogicalExpression) and triggers.operator == "any_of"
     assert len(triggers.operands) == 2
     assert len(norms["AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT"].mandatory_content) == 3
 
@@ -4628,7 +4628,7 @@ def test_article_ninety_two_maps_gpai_model_access():
     assert not evaluation.mandatory_content
     assert evaluation.conditions[0] == "the AI Office has consulted the Board"
     purposes = evaluation.conditions[1]
-    assert isinstance(purposes, ConditionGroup) and purposes.operator == "any_of"
+    assert isinstance(purposes, LogicalExpression) and purposes.operator == "any_of"
     assert "Article 91 is insufficient" in purposes.operands[0]
     assert "general-purpose AI models with systemic risk" in purposes.operands[1]
     assert "Article 90(1), point (a)" in purposes.operands[1]
@@ -4646,7 +4646,7 @@ def test_article_ninety_three_extracts_commission_measure_powers():
     request = norms["AIA-NORM-A093-P1-REQUEST-GPAI-MEASURES"]
     assert not request.mandatory_content
     alternatives = request.conditions[1]
-    assert isinstance(alternatives, ConditionGroup) and alternatives.operator == "any_of"
+    assert isinstance(alternatives, LogicalExpression) and alternatives.operator == "any_of"
     assert len(alternatives.operands) == 3
     assert norms["AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING"].kind.value == "power"
 
@@ -4738,7 +4738,7 @@ def test_articles_ninety_six_to_ninety_eight_extract_institutional_procedures():
     extension = by_id["AIA-NORM-A097-P6-EXTEND-OBJECTION-PERIOD"]
     assert len(entry.conditions) == 1
     alternatives = entry.conditions[0]
-    assert isinstance(alternatives, ConditionGroup) and alternatives.operator == "any_of"
+    assert isinstance(alternatives, LogicalExpression) and alternatives.operator == "any_of"
     assert "no objection has been expressed" in alternatives.operands[0]
     assert "will not object" in alternatives.operands[1]
     assert extension.kind.value == "power"
@@ -4768,7 +4768,7 @@ def test_article_ninety_nine_extracts_penalty_framework():
     fine = norms["AIA-NORM-A099-P4-OPERATOR-FINE"]
     assert not fine.mandatory_content
     triggers = fine.conditions[0]
-    assert isinstance(triggers, ConditionGroup) and triggers.operator == "any_of"
+    assert isinstance(triggers, LogicalExpression) and triggers.operator == "any_of"
     assert len(triggers.operands) == 8
     assert "EUR 15 000 000" in fine.action
     assert "3 % of its total worldwide annual turnover" in fine.action
@@ -5205,7 +5205,7 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     # Item 1 is owed unconditionally; only items 2 and 3 carry the where-applicable gate.
     assert len(evaluation.conditions) == 2
     bases = evaluation.conditions[1]
-    assert isinstance(bases, ConditionGroup) and bases.operator == "any_of"
+    assert isinstance(bases, LogicalExpression) and bases.operator == "any_of"
     assert bases.operands == [
         "the evaluation strategies are described on the basis of available public evaluation "
         "protocols and tools",

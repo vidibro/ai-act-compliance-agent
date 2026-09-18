@@ -20,9 +20,13 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A051-P001
   conditions:
-  - appropriate technical tools and methodologies, including indicators and benchmarks, establish high-impact
-    capabilities
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: appropriate technical tools and methodologies, including indicators and benchmarks, establish
+        high-impact capabilities
+      basis_segment_ids:
+      - AIA-TEXT-A051-P002
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -61,10 +65,16 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A051-P001
   conditions:
-  - the Commission decides ex officio or following a qualified scientific-panel alert that the model has
-    equivalent capabilities or impact
-  - the Commission has regard to the Annex XIII criteria
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Commission decides ex officio or following a qualified scientific-panel alert that the
+        model has equivalent capabilities or impact
+      basis_segment_ids:
+      - AIA-TEXT-A051-P003
+    - text: the Commission has regard to the Annex XIII criteria
+      basis_segment_ids:
+      - AIA-TEXT-A051-P003
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -102,8 +112,12 @@ norms:
   - AIA-TEXT-A051-P004
   qualifier_spans: []
   conditions:
-  - cumulative training computation measured in floating-point operations exceeds 10^25
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: cumulative training computation measured in floating-point operations exceeds 10^25
+      basis_segment_ids:
+      - AIA-TEXT-A051-P004
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -140,9 +154,13 @@ norms:
   - AIA-TEXT-A051-P005
   qualifier_spans: []
   conditions:
-  - amendment is necessary for the thresholds to reflect the state of the art in light of technological
-    developments
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: amendment is necessary for the thresholds to reflect the state of the art in light of technological
+        developments
+      basis_segment_ids:
+      - AIA-TEXT-A051-P005
+  exceptions: null
   mandatory_content:
   - amend the thresholds listed in Article 51(1) and (2)
   - supplement benchmarks and indicators in light of evolving technological developments, such as algorithmic

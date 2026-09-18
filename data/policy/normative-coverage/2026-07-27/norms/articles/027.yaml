@@ -30,10 +30,16 @@ norms:
   - AIA-TEXT-A027-P006
   - AIA-TEXT-A027-P007
   conditions:
-  - the system is high-risk under Article 6(2) and is not intended for Annex III point 2
-  - the deployer is governed by public law or provides public services, or the system falls within Annex
-    III point 5(b) or 5(c)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system is high-risk under Article 6(2) and is not intended for Annex III point 2
+      basis_segment_ids:
+      - AIA-TEXT-A027-P001
+    - text: the deployer is governed by public law or provides public services, or the system falls within
+        Annex III point 5(b) or 5(c)
+      basis_segment_ids:
+      - AIA-TEXT-A027-P001
+  exceptions: null
   mandatory_content:
   - deployer processes and intended-purpose use
   - intended period and frequency of use
@@ -73,10 +79,16 @@ norms:
   - AIA-TEXT-A027-P008
   qualifier_spans: []
   conditions:
-  - the system is high-risk under Article 6(2) and is not intended for Annex III point 2
-  - the deployer is governed by public law or provides public services, or the system falls within Annex
-    III point 5(b) or 5(c)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system is high-risk under Article 6(2) and is not intended for Annex III point 2
+      basis_segment_ids:
+      - AIA-TEXT-A027-P008
+    - text: the deployer is governed by public law or provides public services, or the system falls within
+        Annex III point 5(b) or 5(c)
+      basis_segment_ids:
+      - AIA-TEXT-A027-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -110,8 +122,12 @@ norms:
   - AIA-TEXT-A027-P008
   qualifier_spans: []
   conditions:
-  - the prior or provider assessment concerns a similar case
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the prior or provider assessment concerns a similar case
+      basis_segment_ids:
+      - AIA-TEXT-A027-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -148,8 +164,12 @@ norms:
   - AIA-TEXT-A027-P008
   qualifier_spans: []
   conditions:
-  - during use, the deployer considers a paragraph 1 element changed or no longer current
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: during use, the deployer considers a paragraph 1 element changed or no longer current
+      basis_segment_ids:
+      - AIA-TEXT-A027-P008
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -186,8 +206,12 @@ norms:
   - AIA-TEXT-A027-P009
   qualifier_spans: []
   conditions:
-  - the Article 27(1) assessment has been performed
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the Article 27(1) assessment has been performed
+      basis_segment_ids:
+      - AIA-TEXT-A027-P009
+  exceptions: null
   mandatory_content:
   - assessment results
   - completed Article 27(5) template
@@ -224,8 +248,12 @@ norms:
   - AIA-TEXT-A027-P009
   qualifier_spans: []
   conditions:
-  - the deployment falls within Article 46(1)
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployment falls within Article 46(1)
+      basis_segment_ids:
+      - AIA-TEXT-A027-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -262,8 +290,12 @@ norms:
   - AIA-TEXT-A027-P010
   qualifier_spans: []
   conditions:
-  - an applicable DPIA already meets an Article 27 obligation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: an applicable DPIA already meets an Article 27 obligation
+      basis_segment_ids:
+      - AIA-TEXT-A027-P010
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -298,8 +330,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A027-P011
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -333,8 +365,12 @@ norms:
   - AIA-TEXT-A027-P011
   qualifier_spans: []
   conditions:
-  - DPIA reuse under Article 27(4) is relevant
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: DPIA reuse under Article 27(4) is relevant
+      basis_segment_ids:
+      - AIA-TEXT-A027-P011
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

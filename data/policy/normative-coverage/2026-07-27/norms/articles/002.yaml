@@ -20,8 +20,8 @@ norms:
   - AIA-TEXT-A002-P002
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -57,8 +57,8 @@ norms:
   - AIA-TEXT-A002-P003
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -96,8 +96,8 @@ norms:
   - AIA-TEXT-A002-P004
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -133,8 +133,8 @@ norms:
   - AIA-TEXT-A002-P005
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -171,8 +171,8 @@ norms:
   - AIA-TEXT-A002-P006
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -207,8 +207,8 @@ norms:
   - AIA-TEXT-A002-P007
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -243,8 +243,8 @@ norms:
   - AIA-TEXT-A002-P008
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -282,9 +282,16 @@ norms:
   - AIA-TEXT-A002-P009
   qualifier_spans: []
   conditions:
-  - the system is classified as high-risk under Article 6(1)
-  - the related product is covered by Union harmonisation legislation listed in Annex I Section B
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the system is classified as high-risk under Article 6(1)
+      basis_segment_ids:
+      - AIA-TEXT-A002-P009
+    - text: the related product is covered by Union harmonisation legislation listed in Annex I Section
+        B
+      basis_segment_ids:
+      - AIA-TEXT-A002-P009
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -321,8 +328,12 @@ norms:
   - AIA-TEXT-A002-P009
   qualifier_spans: []
   conditions:
-  - the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
+      basis_segment_ids:
+      - AIA-TEXT-A002-P009
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This boundary governs Articles 57 to 59 regulatory-sandbox provisions, which this
@@ -355,8 +366,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This constitutional boundary creates no independent product-facing action.
@@ -391,8 +402,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P010
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves Member State competence without creating an independent
@@ -430,10 +441,16 @@ norms:
   - AIA-TEXT-A002-P011
   qualifier_spans: []
   conditions:
-  - the AI system is placed on the market, put into service, or used exclusively for military, defence,
-    or national-security purposes
-  - the exclusion applies regardless of the type of entity carrying out those activities
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system is placed on the market, put into service, or used exclusively for military,
+        defence, or national-security purposes
+      basis_segment_ids:
+      - AIA-TEXT-A002-P011
+    - text: the exclusion applies regardless of the type of entity carrying out those activities
+      basis_segment_ids:
+      - AIA-TEXT-A002-P011
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -470,11 +487,19 @@ norms:
   - AIA-TEXT-A002-P012
   qualifier_spans: []
   conditions:
-  - the AI system is not placed on the market or put into service in the Union
-  - the AI system output is used in the Union exclusively for military, defence, or national-security
-    purposes
-  - the exclusion applies regardless of the type of entity carrying out those activities
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system is not placed on the market or put into service in the Union
+      basis_segment_ids:
+      - AIA-TEXT-A002-P012
+    - text: the AI system output is used in the Union exclusively for military, defence, or national-security
+        purposes
+      basis_segment_ids:
+      - AIA-TEXT-A002-P012
+    - text: the exclusion applies regardless of the type of entity carrying out those activities
+      basis_segment_ids:
+      - AIA-TEXT-A002-P012
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -515,14 +540,24 @@ norms:
   - AIA-TEXT-A002-P013
   qualifier_spans: []
   conditions:
-  - the public authority is in a third country or the subject is an international organisation otherwise
-    falling within Article 2(1)
-  - the AI system is used under international cooperation or an agreement for law-enforcement and judicial
-    cooperation
-  - the cooperation or agreement is with the Union or one or more Member States
-  - the third country or international organisation provides adequate safeguards for individual fundamental
-    rights and freedoms
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the public authority is in a third country or the subject is an international organisation
+        otherwise falling within Article 2(1)
+      basis_segment_ids:
+      - AIA-TEXT-A002-P013
+    - text: the AI system is used under international cooperation or an agreement for law-enforcement
+        and judicial cooperation
+      basis_segment_ids:
+      - AIA-TEXT-A002-P013
+    - text: the cooperation or agreement is with the Union or one or more Member States
+      basis_segment_ids:
+      - AIA-TEXT-A002-P013
+    - text: the third country or international organisation provides adequate safeguards for individual
+        fundamental rights and freedoms
+      basis_segment_ids:
+      - AIA-TEXT-A002-P013
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -557,8 +592,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P014
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves another legal regime without creating an independent
@@ -595,10 +630,16 @@ norms:
   - AIA-TEXT-A002-P015
   qualifier_spans: []
   conditions:
-  - the AI system or AI model, including its output, is specifically developed for scientific research
-    and development
-  - it is put into service solely for scientific research and development
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the AI system or AI model, including its output, is specifically developed for scientific
+        research and development
+      basis_segment_ids:
+      - AIA-TEXT-A002-P015
+    - text: it is put into service solely for scientific research and development
+      basis_segment_ids:
+      - AIA-TEXT-A002-P015
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -633,8 +674,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P016
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This clause confirms the continued application of external law without creating
@@ -671,8 +712,12 @@ norms:
   - AIA-TEXT-A002-P016
   qualifier_spans: []
   conditions:
-  - the saving clause is without prejudice to Articles 4a and 59 of the Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the saving clause is without prejudice to Articles 4a and 59 of the Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A002-P016
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves other legal regimes without creating an independent
@@ -709,9 +754,15 @@ norms:
   - AIA-TEXT-A002-P017
   qualifier_spans: []
   conditions:
-  - the activity concerns an AI system or AI model
-  - the activity occurs before the system or model is placed on the market or put into service
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the activity concerns an AI system or AI model
+      basis_segment_ids:
+      - AIA-TEXT-A002-P017
+    - text: the activity occurs before the system or model is placed on the market or put into service
+      basis_segment_ids:
+      - AIA-TEXT-A002-P017
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -744,8 +795,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P017
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This general saving clause does not identify a concrete AI Act requirement that
@@ -780,8 +831,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P017
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -814,8 +865,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P018
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves other legal regimes without creating an independent
@@ -852,10 +903,18 @@ norms:
   - AIA-TEXT-A002-P019
   qualifier_spans: []
   conditions:
-  - the deployer is a natural person
-  - the AI system is used in the course of a purely personal activity
-  - the activity is non-professional
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the deployer is a natural person
+      basis_segment_ids:
+      - AIA-TEXT-A002-P019
+    - text: the AI system is used in the course of a purely personal activity
+      basis_segment_ids:
+      - AIA-TEXT-A002-P019
+    - text: the activity is non-professional
+      basis_segment_ids:
+      - AIA-TEXT-A002-P019
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -891,8 +950,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A002-P020
   qualifier_spans: []
-  conditions: []
-  exceptions: []
+  conditions: null
+  exceptions: null
   mandatory_content:
   - maintain or introduce more favourable worker-protection provisions
   - encourage or allow more favourable collective agreements
@@ -931,11 +990,23 @@ norms:
   - AIA-TEXT-A002-P021
   qualifier_spans: []
   conditions:
-  - the AI system is released under a free and open-source licence
+    operator: all_of
+    operands:
+    - text: the AI system is released under a free and open-source licence
+      basis_segment_ids:
+      - AIA-TEXT-A002-P021
   exceptions:
-  - the system is placed on the market or put into service as a high-risk AI system
-  - the system falls under Article 5
-  - the system falls under Article 50
+    operator: any_of
+    operands:
+    - text: the system is placed on the market or put into service as a high-risk AI system
+      basis_segment_ids:
+      - AIA-TEXT-A002-P021
+    - text: the system falls under Article 5
+      basis_segment_ids:
+      - AIA-TEXT-A002-P021
+    - text: the system falls under Article 50
+      basis_segment_ids:
+      - AIA-TEXT-A002-P021
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -975,10 +1046,16 @@ norms:
   - AIA-TEXT-A002-P023
   - AIA-TEXT-A002-P024
   conditions:
-  - Union harmonisation legislation listed in Annex I Section A provides an equivalent or higher level
-    of health, safety, or fundamental-rights protection for the requirement concerned
-  - the limitation does not reduce the overall level of protection provided by the Regulation
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: Union harmonisation legislation listed in Annex I Section A provides an equivalent or higher
+        level of health, safety, or fundamental-rights protection for the requirement concerned
+      basis_segment_ids:
+      - AIA-TEXT-A002-P022
+    - text: the limitation does not reduce the overall level of protection provided by the Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A002-P022
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1043,9 +1120,15 @@ norms:
   - AIA-TEXT-A002-P025
   qualifier_spans: []
   conditions:
-  - the delegated acts are adopted by 2 August 2027
-  - the delegated acts are adopted in accordance with Article 97
-  exceptions: []
+    operator: all_of
+    operands:
+    - text: the delegated acts are adopted by 2 August 2027
+      basis_segment_ids:
+      - AIA-TEXT-A002-P025
+    - text: the delegated acts are adopted in accordance with Article 97
+      basis_segment_ids:
+      - AIA-TEXT-A002-P025
+  exceptions: null
   mandatory_content:
   - the high-risk AI systems concerned
   - the requirements or obligations that may be limited
