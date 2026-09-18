@@ -413,6 +413,18 @@ def _contains_exact_words(text: str, fragment: str) -> bool:
     return " ".join(fragment.split()).casefold() in " ".join(text.split()).casefold()
 
 
+def _requires_condition_expression(text: str) -> bool:
+    """Whether a condition cue is not merely the ``when`` of an exception."""
+    for match in CONDITION.finditer(text):
+        cue = match.group().casefold()
+        if cue == "unless":
+            continue
+        if cue == "when" and re.search(r"\bexcept\s*$", text[: match.start()], re.I):
+            continue
+        return True
+    return False
+
+
 def _requires_calendar_deadline(norm: Norm) -> bool:
     return CALENDAR_DEADLINE.search(norm.norm_text) is not None
 
@@ -899,24 +911,32 @@ def audit_norm_validity(
 
     for source_ref, norms in sorted(norms_by_source.items()):
         segment = segments[source_ref]
+        requirements = (required_field_validations or {}).get(
+            (segment.source.kind, segment.source.document), set()
+        )
+        expression_evidence_required = (
+            FieldValidation.LOGICAL_EXPRESSION_EVIDENCE in requirements
+        )
         for norm in sorted(norms, key=lambda item: item.norm_id):
             semantic = _semantic_text(norm)
             quote = norm.norm_text.lstrip()
             rules: list[str] = []
             if quote and quote[0].islower() and not norm.qualifier_spans:
                 rules.append("fragment_without_qualifier_span")
-            if (
+            if expression_evidence_required:
+                if _requires_condition_expression(norm.norm_text) and not norm.conditions:
+                    rules.append("condition_expression_missing")
+            elif (
                 CONDITION.search(norm.norm_text)
                 and not norm.conditions
                 and not CONDITION.search(norm.action)
             ):
                 rules.append("condition_not_structured_or_retained_in_action")
-            if (
-                EXCEPTION.search(norm.norm_text)
-                and not norm.exceptions
-                and not EXCEPTION.search(semantic)
-            ):
-                rules.append("exception_not_structured_or_retained")
+            if EXCEPTION.search(norm.norm_text) and not norm.exceptions:
+                if expression_evidence_required:
+                    rules.append("exception_expression_missing")
+                elif not EXCEPTION.search(semantic):
+                    rules.append("exception_not_structured_or_retained")
             if DEADLINE.search(norm.norm_text) and not DEADLINE.search(semantic):
                 rules.append("deadline_not_structured_or_retained")
             if _deadline_constraint_count(norm) > 1:

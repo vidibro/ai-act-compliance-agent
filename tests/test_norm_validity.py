@@ -570,6 +570,49 @@ def test_logical_expression_unknown_basis_is_reported_when_the_field_is_enforced
     )
 
 
+def test_logical_expression_gate_requires_detected_conditions_and_exceptions():
+    condition_bundle = load_bundle().model_copy(deep=True)
+    condition_norm = next(
+        item
+        for item in condition_bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION"
+    )
+    condition_norm.conditions = None
+    condition_norm.norm_text = f"{condition_norm.norm_text} where appropriate."
+    condition_requirements = {
+        (SourceKind.ARTICLE, "15"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+    condition_findings = audit_norm_validity(
+        condition_bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=condition_requirements,
+    )
+    assert any(
+        finding.target == condition_norm.norm_id and finding.rule == "condition_expression_missing"
+        for finding in condition_findings
+    )
+
+    exception_bundle = load_bundle().model_copy(deep=True)
+    exception_norm = next(
+        item
+        for item in exception_bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A031-P7-CONFIDENTIALITY-AND-SECRECY"
+    )
+    exception_norm.exceptions = None
+    exception_requirements = {
+        (SourceKind.ARTICLE, "31"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+    exception_findings = audit_norm_validity(
+        exception_bundle,
+        scope={(SourceKind.ARTICLE, "31")},
+        required_field_validations=exception_requirements,
+    )
+    assert any(
+        finding.target == exception_norm.norm_id and finding.rule == "exception_expression_missing"
+        for finding in exception_findings
+    )
+
+
 def test_temporal_assignment_needs_source_bound_adjudication_when_its_date_is_unproven(tmp_path):
     bundle = load_bundle().model_copy(deep=True)
     norm = next(

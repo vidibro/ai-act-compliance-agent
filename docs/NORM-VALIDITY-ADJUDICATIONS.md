@@ -106,9 +106,11 @@ required_field_validations:
 `temporal_regime` makes every norm without `temporal_regime_id` a finding. A norm that states a
 calendar or relative deadline must reference a regime carrying the corresponding deadline form.
 `logical_expression_evidence` enforces the exact source evidence for every condition and exception
-leaf in the document. It is deliberately not enabled while legacy list values are being adapted at
-load time: those temporary citations are inferred from the primary segment, not yet reviewed leaf
-evidence. Rewrite the source records first, then enable the gate and adjudicate its findings.
+leaf in the document. It also rejects a detected condition or exception that has been left only in
+the action prose: it must have its own structured expression. It is deliberately not enabled while
+legacy list values are being adapted at load time: those temporary citations are inferred from the
+primary segment, not yet reviewed leaf evidence. Rewrite the source records first, then enable the
+gate and adjudicate its findings.
 The strict build enforces the declared gate; it is the explicit point at which an article can no
 longer rely on empty staged fields. Do not enable a gate until its source-record changes and their
 adjudications are ready together.
