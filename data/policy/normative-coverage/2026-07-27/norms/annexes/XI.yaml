@@ -32,7 +32,6 @@ norms:
   - AIA-TEXT-ANNEX-XI-P014
   - AIA-TEXT-ANNEX-XI-P015
   - AIA-TEXT-ANNEX-XI-P016
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -82,7 +81,6 @@ norms:
   primary_spans:
   - AIA-TEXT-ANNEX-XI-P011
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the model's energy consumption is unknown
   exceptions: []
@@ -124,7 +122,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-ANNEX-XI-P017
   - AIA-TEXT-ANNEX-XI-P018
-  effective_date_spans: []
   conditions:
   - the general-purpose AI model has systemic risk
   - operator: any_of
@@ -172,7 +169,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-ANNEX-XI-P017
   - AIA-TEXT-ANNEX-XI-P018
-  effective_date_spans: []
   conditions:
   - the general-purpose AI model has systemic risk
   - where applicable
@@ -215,7 +211,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-ANNEX-XI-P017
   - AIA-TEXT-ANNEX-XI-P018
-  effective_date_spans: []
   conditions:
   - the general-purpose AI model has systemic risk
   - where applicable

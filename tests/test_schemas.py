@@ -92,6 +92,33 @@ def test_temporal_regime_labels_dates_without_hiding_a_norm():
     assert regime.status_on(date(2026, 8, 2)) is TemporalStatus.ACTIVE
 
 
+def test_temporal_regime_allows_a_deadline_without_making_a_norm_expire():
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE",
+        deadline=date(2027, 8, 1),
+        legal_basis_spans=["AIA-TEXT-A096-P008"],
+    )
+
+    assert regime.deadline == date(2027, 8, 1)
+    assert regime.status_on(date(2027, 8, 2)) is TemporalStatus.ACTIVE
+
+
+def test_temporal_regime_preserves_a_relative_deadline_and_trigger():
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-A046-P4-OBJECTION-PERIOD",
+        relative_deadline={
+            "operator": "within",
+            "quantity": 15,
+            "unit": "calendar_day",
+            "trigger": "receipt of the information referred to in paragraph 3",
+        },
+        legal_basis_spans=["AIA-TEXT-A046-P004"],
+    )
+
+    assert regime.relative_deadline is not None
+    assert regime.relative_deadline.enacted_period == "within 15 calendar days"
+
+
 # --------------------------------------------------------------------------------------
 # Builders — small helpers so each test states only what it cares about.
 # --------------------------------------------------------------------------------------

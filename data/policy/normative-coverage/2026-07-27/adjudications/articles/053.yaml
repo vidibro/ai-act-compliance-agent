@@ -6,13 +6,13 @@ source:
   required_field_validations:
     - actor_evidence
     - target_evidence
-    - application_timing
+    - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 14
   norms_scanned: 17
   finding_count: 2
-  audit_sha256: b48c4da11f5c96dd0c040a242667fbbb18461af011659a7ac09ca362c7801beb
+  audit_sha256: 64c5ab1d7231959f19b4fad3a7591421a88e09eb2fe0d8962f5091acc61bcdad
 decisions:
 - finding_id: AIA-VALID-C71E7536A753DE32
   target: AIA-NORM-A053-P1-B-PROTECT-RIGHTS

@@ -165,7 +165,6 @@ def load_normative_coverage(
         for span in [
             *norm.qualifier_spans,
             *norm.definition_spans,
-            *norm.effective_date_spans,
         ]:
             qualifying_links[span].add(norm.norm_id)
         for span in (segment for actor in norm.actors for segment in actor.basis_segment_ids):

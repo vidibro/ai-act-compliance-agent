@@ -144,8 +144,6 @@ class NormSourceRecord(BaseModel):
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     qualifier_spans: list[str] = []
-    # Retained while existing source records are migrated to temporal_regime_id.
-    effective_date_spans: list[str] = []
     temporal_regime_id: str | None = Field(
         default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
     )
@@ -554,14 +552,13 @@ def _build_norms(
     for record in source_inventory.records:
         primary = f"AIA-TEXT-{record.source}"
         qualifiers = [f"AIA-TEXT-{span}" for span in record.qualifier_spans]
-        effective = [f"AIA-TEXT-{span}" for span in record.effective_date_spans]
         actor_basis = [segment for actor in record.actors for segment in actor.basis_segment_ids]
         target_basis = [
             segment for target in record.targets for segment in target.basis_segment_ids
         ]
         unknown_spans = [
             span
-            for span in [primary, *qualifiers, *effective, *actor_basis, *target_basis]
+            for span in [primary, *qualifiers, *actor_basis, *target_basis]
             if span not in segments_by_id
         ]
         if unknown_spans:
@@ -574,7 +571,7 @@ def _build_norms(
             raise ValueError(f"{record.norm_id}: unknown implementation rule(s) {unknown_rules}")
         for span, link_field in [
             (primary, "norm_ids"),
-            *((span, "qualifying_norm_ids") for span in [*qualifiers, *effective]),
+            *((span, "qualifying_norm_ids") for span in qualifiers),
             *((span, "qualifying_norm_ids") for span in actor_basis if span != primary),
             *((span, "qualifying_norm_ids") for span in target_basis if span != primary),
         ]:
@@ -607,7 +604,6 @@ def _build_norms(
             "detection_channels": _detection_channels(record),
             "primary_spans": [primary],
             "qualifier_spans": qualifiers,
-            "effective_date_spans": effective,
             "conditions": record.model_dump(mode="json")["conditions"],
             "exceptions": record.exceptions,
             "mandatory_content": mandatory_content,
@@ -693,7 +689,7 @@ def _build_temporal_regimes(
             raise ValueError(
                 f"{regime.regime_id}: legal-basis span(s) are not normative {non_normative}"
             )
-        regimes.append(regime.model_dump(mode="json"))
+        regimes.append(regime.canonical_payload())
     return regimes
 
 

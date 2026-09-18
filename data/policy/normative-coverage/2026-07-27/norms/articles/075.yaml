@@ -23,7 +23,6 @@ norms:
   - AIA-TEXT-A075-P005
   - AIA-TEXT-A075-P006
   - AIA-TEXT-A075-P007
-  effective_date_spans: []
   conditions: []
   exceptions:
   - point (a) only, AI systems related to products covered by the Union harmonisation legislation listed
@@ -74,7 +73,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P008
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -110,7 +108,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P009
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
   exceptions: []
@@ -147,7 +144,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P009
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - a serious incident is reported to the AI Office under Article 75(1a)
   exceptions: []
@@ -185,7 +181,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P009
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -222,7 +217,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P010
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -257,7 +251,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P010
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the authorities assist the AI Office under Article 75(1b)
   exceptions: []
@@ -293,7 +286,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P011
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the AI Office takes investigatory or enforcement action in a Member State involving access to a public
     authority's data or AI system
@@ -332,7 +324,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P012
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - before the AI Office takes a national-market prohibition, restriction, withdrawal or recall decision
   exceptions: []
@@ -367,7 +358,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P012
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -402,7 +392,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - an Article 75(1) AI system is classified as high-risk and subject to third-party conformity assessment
     under Article 43 before market placement or putting into service
@@ -440,7 +429,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the AI Office performs paragraph 1e conformity assessments or tests
   exceptions: []
@@ -474,7 +462,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -507,7 +494,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission entrusts paragraph 1e tests or assessments to the notified body
   exceptions: []
@@ -542,7 +528,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the notified body does not adequately perform the paragraph 1e tasks delegated to it
   exceptions: []
@@ -578,7 +563,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P014
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -614,7 +598,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P014
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -650,7 +633,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P015
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
     deployers for at least one high-risk purpose are non-compliant
@@ -699,7 +681,6 @@ norms:
   - AIA-TEXT-A075-P017
   - AIA-TEXT-A075-P018
   - AIA-TEXT-A075-P019
-  effective_date_spans: []
   conditions:
   - the market-surveillance authority has well-founded and sufficient reasons to suspect that a provider
     or deployer of an Article 75(1) system infringed the Regulation
@@ -737,7 +718,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P020
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -771,7 +751,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P020
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the market-surveillance authority has made an Article 75(2a) assessment request
   exceptions: []
@@ -809,7 +788,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P021
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -846,7 +824,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P021
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the AI Office decides to exercise its powers in accordance with Article 75a
   exceptions: []
@@ -887,7 +864,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the market-surveillance authority cannot conclude its high-risk-system investigation because it cannot
     access general-purpose-model information despite all appropriate efforts to obtain it
@@ -924,7 +900,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the market-surveillance authority submits the reasoned information-access request described in Article
     75(3)
@@ -960,7 +935,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -996,7 +970,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -4704,10 +4705,16 @@ def test_articles_ninety_six_to_ninety_eight_extract_institutional_procedures():
     guidelines = by_id["AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES"]
     publication = by_id["AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES"]
     assert len(guidelines.mandatory_content) == 7
-    assert not guidelines.effective_date_spans
     assert "1 August 2027" not in guidelines.action
-    assert publication.effective_date_spans == ["AIA-TEXT-A096-P008"]
+    assert publication.primary_spans == ["AIA-TEXT-A096-P008"]
     assert "1 August 2027" in publication.action
+    deadline_regime = next(
+        regime
+        for regime in bundle.norm_inventory.temporal_regimes
+        if regime.regime_id == "AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE"
+    )
+    assert publication.temporal_regime_id == deadline_regime.regime_id
+    assert deadline_regime.deadline == date(2027, 8, 1)
     deadline_segment = next(
         segment
         for segment in bundle.text_review.segments

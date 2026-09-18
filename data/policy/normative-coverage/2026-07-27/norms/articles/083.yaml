@@ -25,7 +25,6 @@ norms:
   - AIA-TEXT-A083-P006
   - AIA-TEXT-A083-P007
   - AIA-TEXT-A083-P008
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -72,7 +71,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A083-P009
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the formal non-compliance referred to in paragraph 1 persists
   exceptions: []

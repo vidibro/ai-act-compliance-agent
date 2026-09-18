@@ -1,3 +1,12 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
+  relative_deadline:
+    operator: within
+    quantity: 15
+    unit: calendar_day
+    trigger: receipt of the information referred to in paragraph 3
+  legal_basis_spans:
+  - AIA-TEXT-A046-P004
 records:
 - norm_id: AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
   source: A046-P001
@@ -134,6 +143,7 @@ records:
   actors: []
   targets:
   - target_ref: derogation_authorisation
+  temporal_regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: Defines authorisation status rather than an operator compliance action.

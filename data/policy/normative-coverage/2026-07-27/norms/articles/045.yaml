@@ -20,7 +20,6 @@ norms:
   - AIA-TEXT-A045-P003
   - AIA-TEXT-A045-P004
   - AIA-TEXT-A045-P005
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -65,7 +64,6 @@ norms:
   - AIA-TEXT-A045-P001
   qualifier_spans:
   - AIA-TEXT-A045-P006
-  effective_date_spans: []
   conditions:
   - the notifying authority requests information about the notified body's activities
   exceptions: []
@@ -105,7 +103,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A045-P008
   - AIA-TEXT-A045-P009
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -147,7 +144,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A045-P008
   - AIA-TEXT-A045-P009
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -190,7 +186,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A045-P010
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the information concerns issues relating to negative conformity assessment results
   - the recipient is another notified body carrying out similar conformity assessment activities covering
@@ -230,7 +225,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A045-P010
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the information concerns issues relating to positive conformity assessment results
   - the recipient is another notified body carrying out similar conformity assessment activities covering
@@ -268,7 +262,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A045-P011
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []

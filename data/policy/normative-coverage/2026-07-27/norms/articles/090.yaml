@@ -19,7 +19,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A090-P002
   - AIA-TEXT-A090-P003
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -59,7 +58,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A090-P004
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the scientific panel has provided a qualified alert
   - the Board has been informed
@@ -94,7 +92,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A090-P004
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -131,7 +128,6 @@ norms:
   - AIA-TEXT-A090-P006
   - AIA-TEXT-A090-P007
   - AIA-TEXT-A090-P008
-  effective_date_spans: []
   conditions:
   - the scientific panel provides a qualified alert
   exceptions: []

@@ -64,7 +64,7 @@ enforced_scope:
     required_field_validations:
       - actor_evidence
       - target_evidence
-      - application_timing
+      - temporal_regime
   - kind: article
     document: "42"
   - kind: article

@@ -16,7 +16,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P001
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -59,7 +58,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P002
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions:
   - sensitive operational data of law-enforcement deployers
@@ -98,7 +96,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P003
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -135,7 +132,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P003
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -170,7 +166,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A072-P003
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -212,7 +207,6 @@ norms:
   - AIA-TEXT-A072-P004
   qualifier_spans:
   - AIA-TEXT-A072-P005
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:

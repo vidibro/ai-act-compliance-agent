@@ -140,8 +140,7 @@ qualifier_spans:
   - AIA-TEXT-050-005-01
 definition_spans:
   - AIA-TEXT-003-066-01
-effective_date_spans:
-  - AIA-TEXT-113-B-01
+temporal_regime_id: AIA-TEMP-DEFAULT-APPLICATION
 conditions:
   - direct_interaction_with_natural_person
 exceptions:
@@ -1057,8 +1056,8 @@ it, not a check.
 
 The field is now split by role. `norm_ids` holds norms whose `primary_spans` contains the segment,
 so every id names a norm whose `norm_text` is a substring of that segment's `text`.
-`qualifying_norm_ids` holds norms that reference it as `qualifier_spans`, `definition_spans` or
-`effective_date_spans`. `norm_loader` compares each field against its own map rather than one
+`qualifying_norm_ids` holds norms that reference it as `qualifier_spans` or `definition_spans`.
+`norm_loader` compares each field against its own map rather than one
 conflated set, and the normative-segment validator requires at least one norm across both lists —
 a chapeau legitimately has none of its own.
 

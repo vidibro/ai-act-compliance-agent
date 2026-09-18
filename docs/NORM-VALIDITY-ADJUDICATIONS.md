@@ -44,7 +44,7 @@ deliberately excluded: changing the implementation graph must not reopen a legal
 Changing models does not change the ID when they produce the same audited record. Changing enacted
 source or audited legal content does.
 
-## Actor evidence and application timing
+## Actor, target, and temporal evidence
 
 Two newer fields are audited by the same flow, but are deliberately migrated in batches:
 
@@ -56,13 +56,13 @@ Two newer fields are audited by the same flow, but are deliberately migrated in 
   `target_basis_does_not_name_target`. `target_kind` is a closed application taxonomy and is
   hash-bound with the target assignment rather than inferred from loose keywords.
 - `temporal_regime_id` connects a norm to one shared `TemporalRegime`. The regime records its
-  application start/end dates, any timing condition, and exact legal-basis segments. Each populated
-  assignment is checked: declared dates and timing conditions must occur in the regime's legal
-  basis. Failures are `temporal_application_start_not_in_basis`,
-  `temporal_application_end_not_in_basis`, or `temporal_condition_not_in_basis`.
+  application start/end dates, fixed calendar deadline, relative deadline, any timing condition,
+  and exact legal-basis segments. A relative deadline records its operator, quantity, unit, and
+  trigger. For example, Article 46(4) is `within` 15 `calendar_day` from receipt of the Article
+  46(3) information. Every recorded date, period, and trigger must occur in the legal basis.
 
-An `upcoming`, `expired`, or conditionally timed norm remains reportable. Timing changes the label
-shown for the norm; it never removes the norm from the report.
+An `upcoming`, `expired`, or conditionally timed norm remains reportable. A deadline is likewise
+reportable before and after it passes; timing never removes a norm from the report.
 
 While existing source records have not been migrated, an empty new field is not a finding. Once a
 field is populated, its exact value is included in that article's audit attestation. Thus even a
@@ -76,15 +76,15 @@ and its matching article shard:
 ```yaml
 required_field_validations:
   - actor_evidence
-  - application_timing
+  - temporal_regime
 ```
 
 `actor_evidence` makes every listed actor without `basis_segment_ids` a finding.
 `target_evidence` makes every listed target without `basis_segment_ids` a finding.
-`application_timing` makes every norm without `temporal_regime_id` a finding. The strict build
-enforces the declared gate; it is the explicit point at which an article can no longer rely on
-empty staged fields. It also rejects an article that still uses the ambiguous legacy
-`effective_date_spans` field. Do not enable a gate until its source-record changes and their
+`temporal_regime` makes every norm without `temporal_regime_id` a finding. A norm that states a
+calendar or relative deadline must reference a regime carrying the corresponding deadline form.
+The strict build enforces the declared gate; it is the explicit point at which an article can no
+longer rely on empty staged fields. Do not enable a gate until its source-record changes and their
 adjudications are ready together.
 
 ## Decisions

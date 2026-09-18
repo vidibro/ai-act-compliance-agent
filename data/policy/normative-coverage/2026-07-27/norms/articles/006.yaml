@@ -23,7 +23,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A006-P002
   - AIA-TEXT-A006-P003
-  effective_date_spans: []
   conditions:
   - the AI system is intended as a safety component of a product, or is itself a product, covered by Union
     harmonisation legislation listed in Annex I
@@ -67,7 +66,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P004
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the system is used solely for non-safety aspects of user assistance, performance optimisation, service
     efficiency, automation, convenience, or quality control
@@ -107,7 +105,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P005
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - failure or malfunction of the AI system would endanger health and safety
   exceptions: []
@@ -148,7 +145,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P006
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - third-party conformity assessment is required solely because of risks unrelated to health and safety
   exceptions: []
@@ -185,7 +181,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P007
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -231,7 +226,6 @@ norms:
   - AIA-TEXT-A006-P012
   - AIA-TEXT-A006-P013
   - AIA-TEXT-A006-P014
-  effective_date_spans: []
   conditions:
   - operator: all_of
     operands:
@@ -287,7 +281,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P014
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the AI system performs profiling of natural persons
   exceptions: []
@@ -325,7 +318,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P015
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
   exceptions: []
@@ -361,7 +353,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P015
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
   exceptions: []
@@ -398,7 +389,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P015
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - a national competent authority requests the documentation
   exceptions: []
@@ -438,7 +428,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P016
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -478,7 +467,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P017
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - concrete and reliable evidence shows that AI systems within Annex III do not pose a significant risk
     of harm to natural persons' health, safety, or fundamental rights
@@ -517,7 +505,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P018
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - concrete and reliable evidence shows deletion is necessary to maintain protection of health, safety,
     and fundamental rights
@@ -558,7 +545,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A006-P019
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:

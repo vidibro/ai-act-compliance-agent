@@ -21,7 +21,6 @@ norms:
   - AIA-TEXT-A046-P001
   qualifier_spans:
   - AIA-TEXT-A046-P003
-  effective_date_spans: []
   conditions:
   - a duly justified request invokes public security, life or health, environmental, or key industrial
     or infrastructure protection
@@ -58,7 +57,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P001
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the system is operating under a paragraph 1 derogation
   exceptions: []
@@ -97,7 +95,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P002
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - a duly justified public-security urgency or specific substantial imminent threat to life or physical
     safety exists
@@ -136,7 +133,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P002
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
   exceptions: []
@@ -172,7 +168,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P002
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
   exceptions: []
@@ -207,7 +202,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P003
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the market-surveillance authority has issued an authorisation under paragraph 1 or 2
   exceptions:
@@ -244,7 +238,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P003
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -282,7 +275,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P004
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - neither a Member State nor the Commission raises an objection within 15 calendar days after receiving
     the paragraph 3 information
@@ -303,6 +295,7 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
 - norm_id: AIA-NORM-A046-P5-CONSULT-MEMBER-STATE
   act_version_date: '2026-07-27'
   kind: obligation
@@ -317,7 +310,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -357,7 +349,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission conducts consultations under paragraph 5 about the authorisation
   exceptions: []
@@ -391,7 +382,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission has considered the consultation and the concerned operators' views
   exceptions: []
@@ -426,7 +416,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission has decided whether the authorisation is justified
   exceptions: []
@@ -461,7 +450,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P006
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission considers the authorisation unjustified
   exceptions: []
@@ -499,7 +487,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A046-P007
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []

@@ -36,6 +36,12 @@ DEADLINE = re.compile(
     r"without undue delay|immediately|at least\s+\d+)\b",
     re.I,
 )
+CALENDAR_DEADLINE = re.compile(r"\bby\s+\d{1,2}\s+[A-Z][a-z]+\s+\d{4}\b", re.I)
+RELATIVE_DEADLINE = re.compile(
+    r"\b(?:within|not later than)\s+\d+\s+"
+    r"(?:calendar\s+days?|hours?|days?|weeks?|months?|years?)\b",
+    re.I,
+)
 
 
 class FieldValidation(StrEnum):
@@ -43,7 +49,7 @@ class FieldValidation(StrEnum):
 
     ACTOR_EVIDENCE = "actor_evidence"
     TARGET_EVIDENCE = "target_evidence"
-    APPLICATION_TIMING = "application_timing"
+    TEMPORAL_REGIME = "temporal_regime"
 
 
 class AdjudicationScope(BaseModel):
@@ -325,7 +331,7 @@ def _temporal_assignment_sha256(norm: Norm, regime: TemporalRegime) -> str:
     payload = {
         "norm_id": norm.norm_id,
         "temporal_regime_id": norm.temporal_regime_id,
-        "regime": regime.model_dump(mode="json"),
+        "regime": regime.canonical_payload(),
     }
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode()).hexdigest()
@@ -343,6 +349,14 @@ def _enacted_date(value) -> str:
 
 def _contains_exact_words(text: str, fragment: str) -> bool:
     return " ".join(fragment.split()).casefold() in " ".join(text.split()).casefold()
+
+
+def _requires_calendar_deadline(norm: Norm) -> bool:
+    return CALENDAR_DEADLINE.search(norm.norm_text) is not None
+
+
+def _requires_relative_deadline(norm: Norm) -> bool:
+    return RELATIVE_DEADLINE.search(norm.norm_text) is not None
 
 
 def _new_field_findings(
@@ -434,8 +448,10 @@ def _new_field_findings(
                     )
                 )
 
+        requires_calendar_deadline = _requires_calendar_deadline(norm)
+        requires_relative_deadline = _requires_relative_deadline(norm)
         if norm.temporal_regime_id is None:
-            if FieldValidation.APPLICATION_TIMING in requirements:
+            if FieldValidation.TEMPORAL_REGIME in requirements:
                 target_sha256 = hashlib.sha256(
                     json.dumps(
                         {
@@ -449,7 +465,11 @@ def _new_field_findings(
                 findings.append(
                     _finding(
                         target=f"{norm.norm_id}:temporal",
-                        rule="application_regime_missing",
+                        rule=(
+                            "temporal_deadline_regime_missing"
+                            if requires_calendar_deadline or requires_relative_deadline
+                            else "temporal_regime_missing"
+                        ),
                         source_ref=primary.segment_id,
                         source_sha256=primary.sha256,
                         target_sha256=target_sha256,
@@ -457,20 +477,6 @@ def _new_field_findings(
                     )
                 )
             continue
-        if (
-            FieldValidation.APPLICATION_TIMING in requirements
-            and norm.effective_date_spans
-        ):
-            findings.append(
-                _finding(
-                    target=f"{norm.norm_id}:temporal",
-                    rule="legacy_effective_date_spans_not_migrated",
-                    source_ref=primary.segment_id,
-                    source_sha256=primary.sha256,
-                    target_sha256=_norm_sha256(norm),
-                    evidence=norm.norm_text,
-                )
-            )
         regime = regimes[norm.temporal_regime_id]
         basis_text = "\n".join(segments[span].text for span in regime.legal_basis_spans)
         target = f"{norm.norm_id}:temporal:{regime.regime_id}"
@@ -478,12 +484,67 @@ def _new_field_findings(
         for label, value in (
             ("temporal_application_start_not_in_basis", regime.application_start),
             ("temporal_application_end_not_in_basis", regime.application_end),
+            ("temporal_deadline_not_in_basis", regime.deadline),
         ):
             if value is not None and not _contains_exact_words(basis_text, _enacted_date(value)):
                 findings.append(
                     _finding(
                         target=target,
                         rule=label,
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
+        if (
+            FieldValidation.TEMPORAL_REGIME in requirements
+            and requires_calendar_deadline
+            and regime.deadline is None
+        ):
+            findings.append(
+                _finding(
+                    target=target,
+                    rule="temporal_calendar_deadline_missing",
+                    source_ref=primary.segment_id,
+                    source_sha256=primary.sha256,
+                    target_sha256=target_sha256,
+                    evidence=norm.norm_text,
+                )
+            )
+        if (
+            FieldValidation.TEMPORAL_REGIME in requirements
+            and requires_relative_deadline
+            and regime.relative_deadline is None
+        ):
+            findings.append(
+                _finding(
+                    target=target,
+                    rule="temporal_relative_deadline_missing",
+                    source_ref=primary.segment_id,
+                    source_sha256=primary.sha256,
+                    target_sha256=target_sha256,
+                    evidence=norm.norm_text,
+                )
+            )
+        if regime.relative_deadline is not None:
+            relative = regime.relative_deadline
+            if not _contains_exact_words(basis_text, relative.enacted_period):
+                findings.append(
+                    _finding(
+                        target=target,
+                        rule="temporal_relative_deadline_not_in_basis",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
+            if not _contains_exact_words(basis_text, relative.trigger):
+                findings.append(
+                    _finding(
+                        target=target,
+                        rule="temporal_deadline_trigger_not_in_basis",
                         source_ref=primary.segment_id,
                         source_sha256=primary.sha256,
                         target_sha256=target_sha256,
@@ -759,7 +820,7 @@ def _populated_field_snapshot(
                 {
                     "norm_id": norm.norm_id,
                     "temporal_regime_id": norm.temporal_regime_id,
-                    "regime": regimes[norm.temporal_regime_id].model_dump(mode="json"),
+                    "regime": regimes[norm.temporal_regime_id].canonical_payload(),
                 }
             )
     snapshot: dict[str, object] = {}

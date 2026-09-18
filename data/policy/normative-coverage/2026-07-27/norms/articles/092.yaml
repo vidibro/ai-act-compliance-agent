@@ -19,7 +19,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A092-P002
   - AIA-TEXT-A092-P003
-  effective_date_spans: []
   conditions:
   - the AI Office has consulted the Board
   - operator: any_of
@@ -63,7 +62,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P004
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -98,7 +96,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P005
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - access is requested for an evaluation purpose specified in paragraph 1
   exceptions: []
@@ -135,7 +132,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P006
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -175,7 +171,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P007
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission requested access to the model under Article 92(3)
   exceptions: []
@@ -212,7 +207,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P007
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -253,7 +247,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P008
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -290,7 +283,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A092-P009
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []

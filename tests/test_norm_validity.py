@@ -531,6 +531,107 @@ def test_temporal_assignment_needs_source_bound_adjudication_when_its_date_is_un
         enforce_validity_adjudications(bundle, root)
 
 
+def test_temporal_deadline_must_be_in_its_legal_basis():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-TEST-UNPROVEN-DEADLINE",
+        deadline="2030-01-02",
+        legal_basis_spans=["AIA-TEXT-A015-P002"],
+    )
+    bundle.norm_inventory.temporal_regimes.append(regime)
+    norm.temporal_regime_id = regime.regime_id
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+
+    assert [finding.rule for finding in findings].count("temporal_deadline_not_in_basis") == 1
+
+
+def test_temporal_gate_requires_a_regime_for_a_relative_deadline():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    norm.norm_text = "The provider shall act within 15 calendar days of receipt."
+    norm.action = "act within 15 calendar days of receipt"
+    requirements = {
+        (SourceKind.ARTICLE, "15"): {FieldValidation.TEMPORAL_REGIME},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=requirements,
+    )
+
+    assert [finding.rule for finding in findings].count("temporal_deadline_regime_missing") == 1
+
+
+def test_temporal_gate_requires_a_matching_relative_deadline():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    norm.norm_text = "The provider shall act within 15 calendar days of receipt."
+    norm.action = "act within 15 calendar days of receipt"
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-TEST-APPLICATION-ONLY",
+        application_start="2030-01-02",
+        legal_basis_spans=["AIA-TEXT-A015-P002"],
+    )
+    bundle.norm_inventory.temporal_regimes.append(regime)
+    norm.temporal_regime_id = regime.regime_id
+    requirements = {
+        (SourceKind.ARTICLE, "15"): {FieldValidation.TEMPORAL_REGIME},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=requirements,
+    )
+
+    assert [finding.rule for finding in findings].count("temporal_relative_deadline_missing") == 1
+
+
+def test_article_forty_six_relative_deadline_is_source_backed():
+    bundle = load_bundle()
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "46")})
+
+    assert not [
+        finding
+        for finding in findings
+        if finding.rule
+        in {"temporal_relative_deadline_not_in_basis", "temporal_deadline_trigger_not_in_basis"}
+    ]
+
+
+def test_relative_deadline_trigger_must_be_in_its_legal_basis():
+    bundle = load_bundle().model_copy(deep=True)
+    regime = next(
+        item
+        for item in bundle.norm_inventory.temporal_regimes
+        if item.regime_id == "AIA-TEMP-A046-P4-OBJECTION-PERIOD"
+    )
+    assert regime.relative_deadline is not None
+    regime.relative_deadline.trigger = "receipt of an unrelated notification"
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "46")})
+
+    assert [finding.rule for finding in findings].count(
+        "temporal_deadline_trigger_not_in_basis"
+    ) == 1
+
+
 def test_field_validation_gate_requires_complete_actor_evidence_for_an_article(tmp_path):
     bundle = load_bundle()
     requirements = {

@@ -29,7 +29,6 @@ norms:
   - AIA-TEXT-A059-P014
   - AIA-TEXT-A059-P015
   - AIA-TEXT-A059-P016
-  effective_date_spans: []
   conditions:
   - the personal data were lawfully collected for other purposes
   - processing occurs in an AI regulatory sandbox
@@ -77,7 +76,6 @@ norms:
   - AIA-TEXT-A059-P005
   - AIA-TEXT-A059-P006
   - AIA-TEXT-A059-P007
-  effective_date_spans: []
   conditions:
   - operator: all_of
     operands:
@@ -128,7 +126,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P008
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - anonymised synthetic or other non-personal data cannot effectively fulfil the applicable requirement
   exceptions: []
@@ -168,7 +165,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P009
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -208,7 +204,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P010
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -244,7 +239,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P011
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -281,7 +275,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P012
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -318,7 +311,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P013
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -354,7 +346,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P014
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -391,7 +382,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P015
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -432,7 +422,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P016
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions:
   - sensitive operational data of law-enforcement border-control immigration or asylum authorities
@@ -475,7 +464,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P017
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - processing serves the enacted criminal-justice or public-security purposes
   - processing is under law-enforcement authority control and responsibility
@@ -515,7 +503,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A059-P018
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []

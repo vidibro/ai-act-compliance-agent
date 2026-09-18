@@ -3920,9 +3920,27 @@ interpretations:
     fully_displayed: true
     elapsed_seconds: null
 temporal_regimes:
+- regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
+  application_start: null
+  application_end: null
+  relative_deadline:
+    operator: within
+    quantity: 15
+    unit: calendar_day
+    trigger: receipt of the information referred to in paragraph 3
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A046-P004
 - regime_id: AIA-TEMP-A053-CHAPTER-V
   application_start: '2025-08-02'
   application_end: null
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A113-B
+- regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
+  application_start: null
+  application_end: null
+  deadline: '2027-08-01'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A096-P008

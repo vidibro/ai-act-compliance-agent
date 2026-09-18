@@ -24,7 +24,6 @@ norms:
   - AIA-TEXT-A096-P006
   - AIA-TEXT-A096-P007
   - AIA-TEXT-A096-P008
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -73,8 +72,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A096-P008
   qualifier_spans: []
-  effective_date_spans:
-  - AIA-TEXT-A096-P008
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -93,6 +90,7 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
 - norm_id: AIA-NORM-A096-P1-INVOLVE-BOARD
   act_version_date: '2026-07-27'
   kind: obligation
@@ -110,7 +108,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A096-P009
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission is issuing the implementation guidelines
   exceptions: []
@@ -151,7 +148,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A096-P010
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -185,7 +181,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A096-P011
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission deems an update necessary
   - operator: any_of

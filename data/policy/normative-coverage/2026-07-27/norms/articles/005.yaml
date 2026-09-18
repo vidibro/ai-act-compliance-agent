@@ -23,7 +23,6 @@ norms:
   - AIA-TEXT-A005-P002
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  effective_date_spans: []
   conditions:
   - the techniques have the objective or effect of materially distorting a person or group's behaviour
     by appreciably impairing informed decision-making
@@ -69,7 +68,6 @@ norms:
   - AIA-TEXT-A005-P003
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  effective_date_spans: []
   conditions:
   - the vulnerability arises from age, disability, or a specific social or economic situation
   - exploitation has the objective or effect of materially distorting the behaviour of the vulnerable
@@ -121,7 +119,6 @@ norms:
   - AIA-TEXT-A005-P021
   - AIA-TEXT-A005-P022
   - AIA-TEXT-A005-P023
-  effective_date_spans: []
   conditions:
   - the material realistically depicts an identifiable natural person's intimate parts or sexually explicit
     activities
@@ -172,7 +169,6 @@ norms:
   - AIA-TEXT-A005-P020
   - AIA-TEXT-A005-P021
   - AIA-TEXT-A005-P022
-  effective_date_spans: []
   conditions:
   - the generated or manipulated material or performance falls within Article 2, points (c) or (e), of
     Directive 2011/93/EU
@@ -218,7 +214,6 @@ norms:
   - AIA-TEXT-A005-P001
   - AIA-TEXT-A005-P007
   - AIA-TEXT-A005-P008
-  effective_date_spans: []
   conditions:
   - persons or groups are evaluated or classified over time using social behaviour or known, inferred,
     or predicted personal or personality characteristics
@@ -265,7 +260,6 @@ norms:
   - AIA-TEXT-A005-P009
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  effective_date_spans: []
   conditions: []
   exceptions:
   - an AI system supports a human assessment of a person's involvement in criminal activity already based
@@ -306,7 +300,6 @@ norms:
   - AIA-TEXT-A005-P010
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -346,7 +339,6 @@ norms:
   - AIA-TEXT-A005-P011
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  effective_date_spans: []
   conditions: []
   exceptions:
   - the system is intended to be put in place or on the market for medical or safety reasons
@@ -389,7 +381,6 @@ norms:
   - AIA-TEXT-A005-P012
   qualifier_spans:
   - AIA-TEXT-A005-P001
-  effective_date_spans: []
   conditions: []
   exceptions:
   - labelling or filtering lawfully acquired biometric datasets based on biometric data
@@ -433,7 +424,6 @@ norms:
   - AIA-TEXT-A005-P014
   - AIA-TEXT-A005-P015
   - AIA-TEXT-A005-P016
-  effective_date_spans: []
   conditions: []
   exceptions:
   - targeted searches for specified victims and missing persons
@@ -473,7 +463,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P017
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -516,7 +505,6 @@ norms:
   - AIA-TEXT-A005-P018
   - AIA-TEXT-A005-P020
   - AIA-TEXT-A005-P021
-  effective_date_spans: []
   conditions:
   - generation or manipulation is the intended purpose of the AI system
   - or generation or manipulation is reasonably foreseeable and reproducible without significant technical
@@ -560,7 +548,6 @@ norms:
   - AIA-TEXT-A005-P022
   qualifier_spans:
   - AIA-TEXT-A005-P018
-  effective_date_spans: []
   conditions:
   - the deployer uses the system for the purpose of generating or manipulating the prohibited material
     or performance
@@ -601,7 +588,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P023
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the manipulation does not increase exposure of any depicted intimate parts
   - the manipulation does not alter the nature of depicted sexually explicit activities
@@ -640,7 +626,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P024
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -679,7 +664,6 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A005-P025
   - AIA-TEXT-A005-P026
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -723,7 +707,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -761,7 +744,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -799,7 +781,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - when urgent use begins before registration, complete registration without undue delay
   exceptions:
@@ -841,7 +822,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   exceptions: []
@@ -879,7 +859,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the situation of urgency is duly justified
@@ -917,7 +896,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
@@ -956,7 +934,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
@@ -1001,7 +978,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P029
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the use pursues an Article 5(1)(h) objective identified in the request
   - objective evidence or clear indications establish necessity and proportionality
@@ -1041,7 +1017,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P029
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1078,7 +1053,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P029
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1117,7 +1091,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P030
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1154,7 +1127,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P030
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - a use of a real-time remote biometric identification system in publicly accessible spaces for law
     enforcement purposes is notified under Article 5(4)
@@ -1196,7 +1168,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1233,7 +1204,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1272,7 +1242,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1307,7 +1276,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1342,7 +1310,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P031
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1381,7 +1348,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P032
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the authority has been notified of covered use pursuant to Article 5(4)
   exceptions: []
@@ -1420,7 +1386,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P032
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
@@ -1458,7 +1423,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P033
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1493,7 +1457,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P033
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -1528,7 +1491,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P034
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []

@@ -313,6 +313,46 @@ class NormTarget(BaseModel):
         return self
 
 
+class RelativeDeadlineOperator(StrEnum):
+    WITHIN = "within"
+    NO_LATER_THAN = "no_later_than"
+
+    @property
+    def enacted_text(self) -> str:
+        return self.value.replace("_", " ")
+
+
+class RelativeDeadlineUnit(StrEnum):
+    HOUR = "hour"
+    DAY = "day"
+    CALENDAR_DAY = "calendar_day"
+    WEEK = "week"
+    MONTH = "month"
+    YEAR = "year"
+
+    @property
+    def enacted_text(self) -> str:
+        return self.value.replace("_", " ")
+
+
+class RelativeDeadline(BaseModel):
+    """A source-backed deadline measured from an enacted trigger event."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    operator: RelativeDeadlineOperator
+    quantity: int = Field(ge=1)
+    unit: RelativeDeadlineUnit
+    trigger: str = Field(min_length=1)
+
+    @property
+    def enacted_period(self) -> str:
+        unit = self.unit.enacted_text
+        if self.quantity != 1:
+            unit += "s"
+        return f"{self.operator.enacted_text} {self.quantity} {unit}"
+
+
 class TemporalStatus(StrEnum):
     """How a temporal regime should be presented for a report date.
 
@@ -327,10 +367,11 @@ class TemporalStatus(StrEnum):
 
 
 class TemporalRegime(BaseModel):
-    """One source-backed application-time regime shared by one or more norms.
+    """One source-backed temporal regime shared by one or more norms.
 
     The Regulation's general application date is normally one regime; transitional provisions and
-    time-limited effects are separate regimes. The date and its legal basis live here once rather
+    time-limited effects are separate regimes. A deadline is also a temporal legal effect, but it
+    does not make its norm expire. Each temporal value and its legal basis live here once rather
     than being copied into every norm.
     """
 
@@ -339,6 +380,8 @@ class TemporalRegime(BaseModel):
     regime_id: str = Field(pattern=r"^AIA-TEMP-[A-Z0-9-]+$")
     application_start: date | None = None
     application_end: date | None = None
+    deadline: date | None = None
+    relative_deadline: RelativeDeadline | None = None
     timing_conditions: list[str] = []
     legal_basis_spans: list[NormativeSegmentId] = Field(min_length=1)
 
@@ -347,9 +390,11 @@ class TemporalRegime(BaseModel):
         if (
             self.application_start is None
             and self.application_end is None
+            and self.deadline is None
+            and self.relative_deadline is None
             and not self.timing_conditions
         ):
-            raise ValueError("temporal regime requires an application date or timing condition")
+            raise ValueError("temporal regime requires an application date, deadline, or timing condition")
         if (
             self.application_start is not None
             and self.application_end is not None
@@ -371,6 +416,15 @@ class TemporalRegime(BaseModel):
         if self.timing_conditions:
             return TemporalStatus.CONDITIONAL_TIMING
         return TemporalStatus.ACTIVE
+
+    def canonical_payload(self) -> dict[str, object]:
+        """Serialize temporal facts without inventing an absent deadline in legacy regimes."""
+        payload = self.model_dump(mode="json")
+        if self.deadline is None:
+            payload.pop("deadline")
+        if self.relative_deadline is None:
+            payload.pop("relative_deadline")
+        return payload
 
 
 class ConditionGroup(BaseModel):
@@ -405,9 +459,6 @@ class Norm(BaseModel):
     primary_spans: list[str] = Field(min_length=1)
     qualifier_spans: list[str] = []
     definition_spans: list[str] = []
-    # Legacy source-span field. It currently also contains ordinary deadlines, so it remains
-    # readable until each existing record is migrated to a temporal regime or another field.
-    effective_date_spans: list[str] = []
     temporal_regime_id: str | None = Field(
         default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
     )
@@ -429,7 +480,6 @@ class Norm(BaseModel):
                 self.primary_spans
                 + self.qualifier_spans
                 + self.definition_spans
-                + self.effective_date_spans
                 + [segment for actor in self.actors for segment in actor.basis_segment_ids]
                 + [segment for target in self.targets for segment in target.basis_segment_ids]
             )

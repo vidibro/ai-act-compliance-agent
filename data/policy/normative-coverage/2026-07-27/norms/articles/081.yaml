@@ -21,7 +21,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - operator: any_of
     operands:
@@ -69,7 +68,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the decision is based on the results of the evaluation
   exceptions: []
@@ -103,7 +101,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission has decided whether the national measure is justified
   exceptions: []
@@ -137,7 +134,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
-  effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -174,7 +170,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P002
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission considers the measure taken by the relevant Member State justified
   exceptions: []
@@ -209,7 +204,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P002
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - the Commission considers the national measure unjustified
   exceptions: []
@@ -248,7 +242,6 @@ norms:
   primary_spans:
   - AIA-TEXT-A081-P003
   qualifier_spans: []
-  effective_date_spans: []
   conditions:
   - operator: all_of
     operands:

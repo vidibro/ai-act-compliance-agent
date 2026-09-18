@@ -516,6 +516,20 @@ def test_source_record_rejects_retired_mixed_subject_fields():
         )
 
 
+def test_source_record_rejects_retired_effective_date_spans():
+    with pytest.raises(ValueError, match="effective_date_spans"):
+        NormSourceRecord.model_validate(
+            {
+                "norm_id": "AIA-NORM-A001-P1-DEADLINE",
+                "source": "A001-P1",
+                "quote": "The provider shall publish by 1 August 2030.",
+                "action": "publish by 1 August 2030",
+                "actors": [{"actor_ref": "provider"}],
+                "effective_date_spans": ["A001-P1"],
+            }
+        )
+
+
 def test_target_only_source_record_does_not_invent_an_actor():
     record = NormSourceRecord(
         norm_id="AIA-NORM-A001-P1-CLASSIFICATION",
