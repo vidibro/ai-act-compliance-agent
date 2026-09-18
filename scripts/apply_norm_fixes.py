@@ -11,6 +11,7 @@ from build_normative_coverage import paths_for_version
 
 from aiact.norm_builder import build_artifacts, load_builder_inputs, run_builder
 from aiact.norm_validity import (
+    FieldValidation,
     ValidityAdjudicationLedger,
     apply_recorded_fix,
     audit_attestation,
@@ -19,7 +20,12 @@ from aiact.norm_validity import (
     load_adjudication_ledger,
     load_fix_patch,
 )
-from aiact.schemas.norm import NormativeCoverageBundle, NormInventory, TextReviewInventory
+from aiact.schemas.norm import (
+    NormativeCoverageBundle,
+    NormInventory,
+    SourceKind,
+    TextReviewInventory,
+)
 
 
 def _build_current_bundle(version: str) -> NormativeCoverageBundle:
@@ -40,12 +46,23 @@ def _build_current_bundle(version: str) -> NormativeCoverageBundle:
     )
 
 
+def _required_field_validations(
+    ledger: ValidityAdjudicationLedger,
+) -> dict[tuple[SourceKind, str], set[FieldValidation]]:
+    """Use the ledger's gates for every audit this fix workflow performs."""
+    return {
+        (item.kind, item.document): set(item.required_field_validations)
+        for item in ledger.enforced_scope
+    }
+
+
 def _refresh_decision_shard_audit(
     *,
     ledger_path: Path,
     ledger: ValidityAdjudicationLedger,
     finding_id: str,
     bundle: NormativeCoverageBundle,
+    required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]],
 ) -> tuple[Path, bytes]:
     """Replace only the repaired document's attestation with its rebuilt deterministic snapshot."""
     scope = ledger.shard_scope_by_finding[finding_id]
@@ -60,7 +77,9 @@ def _refresh_decision_shard_audit(
     before = shard_path.read_bytes()
     shard = yaml.safe_load(before)
     shard["audit"] = audit_attestation(
-        bundle, scope={(scope.kind, scope.document)}
+        bundle,
+        scope={(scope.kind, scope.document)},
+        required_field_validations=required_field_validations,
     ).model_dump(mode="json")
     shard_path.write_text(yaml.safe_dump(shard, sort_keys=False), encoding="utf-8")
     return shard_path, before
@@ -71,6 +90,7 @@ def apply_and_verify(version: str, finding_id: str) -> tuple[str, bool]:
     if paths.adjudications is None:
         raise ValueError("norm builder has no adjudication ledger")
     ledger = load_adjudication_ledger(paths.adjudications)
+    required_field_validations = _required_field_validations(ledger)
     decision = next(
         (item for item in ledger.decisions if item.finding_id == finding_id), None
     )
@@ -86,7 +106,10 @@ def apply_and_verify(version: str, finding_id: str) -> tuple[str, bool]:
     current_bundle = _build_current_bundle(version)
     current = {
         finding.finding_id: finding
-        for finding in audit_norm_validity(current_bundle)
+        for finding in audit_norm_validity(
+            current_bundle,
+            required_field_validations=required_field_validations,
+        )
     }
     already_applied = (
         original is not None and hashlib.sha256(original).hexdigest() == patch.after_sha256
@@ -116,6 +139,7 @@ def apply_and_verify(version: str, finding_id: str) -> tuple[str, bool]:
             ledger=ledger,
             finding_id=finding_id,
             bundle=updated_bundle,
+            required_field_validations=required_field_validations,
         )
         enforce_validity_adjudications(updated_bundle, paths.adjudications)
         run_builder(paths, check=False)
