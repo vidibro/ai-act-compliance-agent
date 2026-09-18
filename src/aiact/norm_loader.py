@@ -137,6 +137,23 @@ def load_normative_coverage(
             if relation.source_norm_id in relation.target_norm_ids:
                 raise ValueError(f"{relation.relation_id} makes a norm its own condition")
 
+    for regime in norm_inventory.temporal_regimes:
+        unknown_spans = [span for span in regime.legal_basis_spans if span not in segments_by_id]
+        if unknown_spans:
+            raise ValueError(
+                f"{regime.regime_id} references unknown legal-basis span(s): {unknown_spans}"
+            )
+        non_normative_spans = [
+            span
+            for span in regime.legal_basis_spans
+            if segments_by_id[span].disposition.value != "normative"
+        ]
+        if non_normative_spans:
+            raise ValueError(
+                f"{regime.regime_id} legal-basis span(s) are not normative: "
+                f"{non_normative_spans}"
+            )
+
     primary_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
     qualifying_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
     for norm in norm_inventory.norms:
@@ -151,6 +168,9 @@ def load_normative_coverage(
             *norm.effective_date_spans,
         ]:
             qualifying_links[span].add(norm.norm_id)
+        for span in (segment for actor in norm.actors for segment in actor.basis_segment_ids):
+            if span not in norm.primary_spans:
+                qualifying_links[span].add(norm.norm_id)
         nonmatching_primary_spans = [
             span for span in norm.primary_spans if norm.norm_text not in segments_by_id[span].text
         ]

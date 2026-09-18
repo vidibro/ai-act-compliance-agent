@@ -32,6 +32,8 @@ from aiact.schemas import (
     ReportSummary,
     RiskClass,
     SystemUnderReview,
+    TemporalRegime,
+    TemporalStatus,
     UseCaseClassification,
     Verdict,
 )
@@ -48,6 +50,28 @@ def test_norm_actor_uses_one_closed_role_catalogue_and_derives_its_category():
         NormActor(actor_ref="provider_or_deployer")
     with pytest.raises(ValidationError, match="category"):
         NormActor(actor_ref="provider", category="supported_operator")
+
+
+def test_norm_actor_keeps_its_own_legal_basis_segments():
+    actor = NormActor(actor_ref="provider", basis_segment_ids=["AIA-TEXT-A015-P1"])
+
+    assert actor.basis_segment_ids == ["AIA-TEXT-A015-P1"]
+    with pytest.raises(ValidationError, match="basis_segment_ids"):
+        NormActor(
+            actor_ref="provider",
+            basis_segment_ids=["AIA-TEXT-A015-P1", "AIA-TEXT-A015-P1"],
+        )
+
+
+def test_temporal_regime_labels_dates_without_hiding_a_norm():
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-ARTICLE-113-DEFAULT",
+        application_start=date(2026, 8, 2),
+        legal_basis_spans=["AIA-TEXT-A113-P1"],
+    )
+
+    assert regime.status_on(date(2026, 8, 1)) is TemporalStatus.UPCOMING
+    assert regime.status_on(date(2026, 8, 2)) is TemporalStatus.ACTIVE
 
 
 # --------------------------------------------------------------------------------------

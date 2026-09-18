@@ -11,13 +11,14 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass
+from enum import StrEnum
 from pathlib import Path
 from typing import Literal
 
 import yaml
 from pydantic import BaseModel, Field, model_validator
 
-from aiact.schemas.norm import Norm, NormativeCoverageBundle, SourceKind
+from aiact.schemas.norm import Norm, NormativeCoverageBundle, SourceKind, TemporalRegime
 
 STRUCTURAL_PREFIX = re.compile(r"^\s*(?:Article\s+\S+\s*)?(?:\d+\.|\([a-z]+\))?\s*", re.I)
 LEGAL_EFFECT = re.compile(
@@ -37,9 +38,23 @@ DEADLINE = re.compile(
 )
 
 
+class FieldValidation(StrEnum):
+    """A staged field family that an adjudication scope has fully migrated."""
+
+    ACTOR_EVIDENCE = "actor_evidence"
+    APPLICATION_TIMING = "application_timing"
+
+
 class AdjudicationScope(BaseModel):
     kind: SourceKind
     document: str = Field(min_length=1)
+    required_field_validations: list[FieldValidation] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _field_validations_are_unique(self) -> AdjudicationScope:
+        if len(self.required_field_validations) != len(set(self.required_field_validations)):
+            raise ValueError("duplicate required_field_validations")
+        return self
 
 
 class LegalBasisQuote(BaseModel):
@@ -279,6 +294,171 @@ def _norm_sha256(norm: Norm) -> str:
     return hashlib.sha256(canonical.encode()).hexdigest()
 
 
+def _actor_basis_sha256(norm: Norm, actor_index: int) -> str:
+    """Bind an actor-evidence finding to exactly one actor assignment."""
+    actor = norm.actors[actor_index]
+    payload = {
+        "norm_id": norm.norm_id,
+        "actor_ref": actor.actor_ref.value,
+        "basis_segment_ids": actor.basis_segment_ids,
+    }
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode()).hexdigest()
+
+
+def _temporal_assignment_sha256(norm: Norm, regime: TemporalRegime) -> str:
+    """Bind a timing finding to one norm's selected, source-backed regime."""
+    payload = {
+        "norm_id": norm.norm_id,
+        "application_regime_id": norm.application_regime_id,
+        "regime": regime.model_dump(mode="json"),
+    }
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode()).hexdigest()
+
+
+def _actor_term_is_in_text(term: str, text: str) -> bool:
+    """Match one declared legal label, allowing normal whitespace and a final plural ``s``."""
+    escaped = re.escape(term).replace(r"\ ", r"[\s-]+")
+    return re.search(rf"\b{escaped}s?\b", text, re.I) is not None
+
+
+def _enacted_date(value) -> str:
+    return f"{value.day} {value.strftime('%B')} {value.year}"
+
+
+def _contains_exact_words(text: str, fragment: str) -> bool:
+    return " ".join(fragment.split()).casefold() in " ".join(text.split()).casefold()
+
+
+def _new_field_findings(
+    bundle: NormativeCoverageBundle,
+    *,
+    scope: set[tuple[SourceKind, str]] | None,
+    required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]] | None,
+) -> list[ValidityFinding]:
+    """Audit populated actor-evidence and timing fields without requiring their migration yet.
+
+    Empty new fields are deliberately not findings: the existing inventory is being migrated in
+    controlled batches. Once a field is populated, however, every deterministic check below is
+    enforced and its exact value becomes part of the audit attestation.
+    """
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    regimes = {regime.regime_id: regime for regime in bundle.norm_inventory.temporal_regimes}
+    findings: list[ValidityFinding] = []
+    for norm in bundle.norm_inventory.norms:
+        primary = segments[norm.primary_spans[0]]
+        if scope is not None and (primary.source.kind, primary.source.document) not in scope:
+            continue
+        requirements = (required_field_validations or {}).get(
+            (primary.source.kind, primary.source.document), set()
+        )
+        for actor_index, actor in enumerate(norm.actors):
+            if (
+                FieldValidation.ACTOR_EVIDENCE in requirements
+                and not actor.basis_segment_ids
+            ):
+                findings.append(
+                    _finding(
+                        target=f"{norm.norm_id}:actor:{actor.actor_ref.value}",
+                        rule="actor_basis_missing",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=_actor_basis_sha256(norm, actor_index),
+                        evidence=norm.norm_text,
+                    )
+                )
+            for basis_segment_id in actor.basis_segment_ids:
+                basis = segments[basis_segment_id]
+                if any(
+                    _actor_term_is_in_text(term, basis.text)
+                    for term in actor.actor_ref.legal_reference_terms
+                ):
+                    continue
+                findings.append(
+                    _finding(
+                        target=(
+                            f"{norm.norm_id}:actor:{actor.actor_ref.value}:{basis_segment_id}"
+                        ),
+                        rule="actor_basis_does_not_name_actor",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=_actor_basis_sha256(norm, actor_index),
+                        evidence=basis.text,
+                    )
+                )
+
+        if norm.application_regime_id is None:
+            if FieldValidation.APPLICATION_TIMING in requirements:
+                target_sha256 = hashlib.sha256(
+                    json.dumps(
+                        {
+                            "norm_id": norm.norm_id,
+                            "application_regime_id": None,
+                        },
+                        sort_keys=True,
+                        separators=(",", ":"),
+                    ).encode()
+                ).hexdigest()
+                findings.append(
+                    _finding(
+                        target=f"{norm.norm_id}:temporal",
+                        rule="application_regime_missing",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=norm.norm_text,
+                    )
+                )
+            continue
+        if (
+            FieldValidation.APPLICATION_TIMING in requirements
+            and norm.effective_date_spans
+        ):
+            findings.append(
+                _finding(
+                    target=f"{norm.norm_id}:temporal",
+                    rule="legacy_effective_date_spans_not_migrated",
+                    source_ref=primary.segment_id,
+                    source_sha256=primary.sha256,
+                    target_sha256=_norm_sha256(norm),
+                    evidence=norm.norm_text,
+                )
+            )
+        regime = regimes[norm.application_regime_id]
+        basis_text = "\n".join(segments[span].text for span in regime.legal_basis_spans)
+        target = f"{norm.norm_id}:temporal:{regime.regime_id}"
+        target_sha256 = _temporal_assignment_sha256(norm, regime)
+        for label, value in (
+            ("temporal_application_start_not_in_basis", regime.application_start),
+            ("temporal_application_end_not_in_basis", regime.application_end),
+        ):
+            if value is not None and not _contains_exact_words(basis_text, _enacted_date(value)):
+                findings.append(
+                    _finding(
+                        target=target,
+                        rule=label,
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
+        for condition in regime.timing_conditions:
+            if not _contains_exact_words(basis_text, condition):
+                findings.append(
+                    _finding(
+                        target=f"{target}:condition:{condition}",
+                        rule="temporal_condition_not_in_basis",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
+    return findings
+
+
 def _bytes_sha256(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
 
@@ -410,6 +590,7 @@ def audit_norm_validity(
     bundle: NormativeCoverageBundle,
     *,
     scope: set[tuple[SourceKind, str]] | None = None,
+    required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]] | None = None,
 ) -> list[ValidityFinding]:
     """Return stable, source-bound structural findings in deterministic order."""
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
@@ -478,13 +659,65 @@ def audit_norm_validity(
                     )
                 )
 
+    findings.extend(
+        _new_field_findings(
+            bundle,
+            scope=scope,
+            required_field_validations=required_field_validations,
+        )
+    )
     return sorted(findings, key=lambda item: (item.source_ref, item.target, item.rule))
+
+
+def _populated_field_snapshot(
+    bundle: NormativeCoverageBundle,
+    *,
+    scope: set[tuple[SourceKind, str]],
+) -> dict[str, object]:
+    """Return only new-field values that have actually been migrated into the inventory.
+
+    Omitting empty lists keeps existing Article adjudications valid while their records have no
+    actor evidence or temporal regime yet. A migrated value, by contrast, is hash-bound from its
+    first audit onward.
+    """
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    regimes = {regime.regime_id: regime for regime in bundle.norm_inventory.temporal_regimes}
+    actor_assignments: list[dict[str, object]] = []
+    temporal_assignments: list[dict[str, object]] = []
+    for norm in sorted(bundle.norm_inventory.norms, key=lambda item: item.norm_id):
+        primary = segments[norm.primary_spans[0]]
+        if (primary.source.kind, primary.source.document) not in scope:
+            continue
+        for actor in norm.actors:
+            if actor.basis_segment_ids:
+                actor_assignments.append(
+                    {
+                        "norm_id": norm.norm_id,
+                        "actor_ref": actor.actor_ref.value,
+                        "basis_segment_ids": actor.basis_segment_ids,
+                    }
+                )
+        if norm.application_regime_id is not None:
+            temporal_assignments.append(
+                {
+                    "norm_id": norm.norm_id,
+                    "application_regime_id": norm.application_regime_id,
+                    "regime": regimes[norm.application_regime_id].model_dump(mode="json"),
+                }
+            )
+    snapshot: dict[str, object] = {}
+    if actor_assignments:
+        snapshot["actor_assignments"] = actor_assignments
+    if temporal_assignments:
+        snapshot["temporal_assignments"] = temporal_assignments
+    return snapshot
 
 
 def audit_attestation(
     bundle: NormativeCoverageBundle,
     *,
     scope: set[tuple[SourceKind, str]],
+    required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]] | None = None,
 ) -> ValidityAuditAttestation:
     """Return the exact, hash-bound result of one deterministic structural audit.
 
@@ -504,7 +737,11 @@ def audit_attestation(
         for norm in bundle.norm_inventory.norms
         if (segments_by_id.get(norm.primary_spans[0]) is not None)
     ]
-    findings = audit_norm_validity(bundle, scope=scope)
+    findings = audit_norm_validity(
+        bundle,
+        scope=scope,
+        required_field_validations=required_field_validations,
+    )
     snapshot = {
         "audit_schema_version": 1,
         "segments": [
@@ -517,6 +754,20 @@ def audit_attestation(
         ],
         "findings": [finding.as_dict() for finding in findings],
     }
+    populated_fields = _populated_field_snapshot(bundle, scope=scope)
+    if populated_fields:
+        snapshot["populated_field_validation"] = populated_fields
+    sorted_requirements = sorted(
+        (required_field_validations or {}).items(),
+        key=lambda item: (item[0][0].value, item[0][1]),
+    )
+    scoped_requirements = {
+        f"{kind.value}/{document}": sorted(requirement.value for requirement in requirements)
+        for (kind, document), requirements in sorted_requirements
+        if (kind, document) in scope and requirements
+    }
+    if scoped_requirements:
+        snapshot["required_field_validations"] = scoped_requirements
     encoded = json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return ValidityAuditAttestation(
         audit_schema_version=1,
@@ -583,6 +834,9 @@ def load_adjudication_ledger(path: Path) -> ValidityAdjudicationLedger:
     decisions: list[ValidityAdjudication] = []
     shard_scope_by_finding: dict[str, AdjudicationScope] = {}
     audit_by_scope: dict[tuple[SourceKind, str], ValidityAuditAttestation] = {}
+    manifest_scope_by_address = {
+        (scope.kind, scope.document): scope for scope in manifest.enforced_scope
+    }
     for declared_shard in sorted(manifest.shards, key=lambda item: item.file):
         shard_path = _safe_shard_path(path, declared_shard.file)
         shard = ValidityAdjudicationShard.model_validate(
@@ -592,10 +846,8 @@ def load_adjudication_ledger(path: Path) -> ValidityAdjudicationLedger:
             raise ValueError(
                 f"validity adjudication shard version differs from manifest: {shard_path}"
             )
-        if (
-            shard.source.kind != declared_shard.kind
-            or shard.source.document != declared_shard.document
-        ):
+        expected_scope = manifest_scope_by_address[(declared_shard.kind, declared_shard.document)]
+        if shard.source != expected_scope:
             raise ValueError(
                 f"validity adjudication shard source differs from manifest: {shard_path}"
             )
@@ -630,6 +882,10 @@ def enforce_validity_adjudications(
             f"coverage uses {version}"
         )
     scope = {(item.kind, item.document) for item in ledger.enforced_scope}
+    required_field_validations = {
+        (item.kind, item.document): set(item.required_field_validations)
+        for item in ledger.enforced_scope
+    }
     for item in ledger.enforced_scope:
         document_scope = {(item.kind, item.document)}
         recorded_audit = ledger.audit_by_scope.get((item.kind, item.document))
@@ -637,12 +893,20 @@ def enforce_validity_adjudications(
             raise ValueError(
                 f"validity adjudication {item.kind.value}/{item.document} lacks audit attestation"
             )
-        current_audit = audit_attestation(bundle, scope=document_scope)
+        current_audit = audit_attestation(
+            bundle,
+            scope=document_scope,
+            required_field_validations=required_field_validations,
+        )
         if recorded_audit != current_audit:
             raise ValueError(
                 f"validity audit attestation is stale for {item.kind.value}/{item.document}"
             )
-    findings = audit_norm_validity(bundle, scope=scope)
+    findings = audit_norm_validity(
+        bundle,
+        scope=scope,
+        required_field_validations=required_field_validations,
+    )
     findings_by_id = {finding.finding_id: finding for finding in findings}
     decisions_by_id = {decision.finding_id: decision for decision in ledger.decisions}
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}

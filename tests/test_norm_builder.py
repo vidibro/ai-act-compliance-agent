@@ -27,6 +27,7 @@ from aiact.schemas.norm import (
     NormRelationKind,
     SegmentDisposition,
     SourceKind,
+    TemporalRegime,
 )
 from aiact.yaml_loader import load_yaml_mapping_or_shards
 
@@ -257,7 +258,12 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
                 source="A001-P1",
                 quote="shall keep a record",
                 action="keep a record",
-                actors=[NormActor(actor_ref="provider")],
+                actors=[
+                    NormActor(
+                        actor_ref="provider",
+                        basis_segment_ids=["AIA-TEXT-A001-P1"],
+                    )
+                ],
             )
         ],
     )
@@ -271,6 +277,77 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
     assert norm["act_version_date"] == version
     assert norm["primary_spans"] == ["AIA-TEXT-A001-P1"]
     assert norm["implementation_mode"] == "missing"
+
+
+def test_temporal_regime_is_shared_and_compiled_only_when_explicitly_assigned(tmp_path):
+    version = "2030-01-02"
+    configured_paths = paths(tmp_path)
+    write_article(
+        configured_paths.articles_root,
+        version,
+        "1",
+        "Article 1\nTiming\n\n1. A provider shall keep a record.\n",
+    )
+    (configured_paths.annexes_root / version).mkdir(parents=True)
+    reviewed = ReviewedDocumentInventory(
+        act_version_date=version,
+        review_run_id="temporal-regime",
+        documents=[
+            DocumentSource(
+                kind=SourceKind.ARTICLE,
+                number="1",
+                divisions=[
+                    DivisionSource(
+                        label="HEAD", marker=None, disposition=SegmentDisposition.STRUCTURAL
+                    ),
+                    DivisionSource(
+                        label="P1", marker="1. ", disposition=SegmentDisposition.NORMATIVE
+                    ),
+                ],
+            )
+        ],
+    )
+    sources = NormSourceInventory(
+        act_version_date=version,
+        temporal_regimes=[
+            TemporalRegime(
+                regime_id="AIA-TEMP-TEST-DEFAULT",
+                application_start=date(2030, 1, 2),
+                legal_basis_spans=["AIA-TEXT-A001-P1"],
+            )
+        ],
+        records=[
+            NormSourceRecord(
+                norm_id="AIA-NORM-A001-P1-RECORD",
+                source="A001-P1",
+                quote="shall keep a record",
+                action="keep a record",
+                actors=[
+                    NormActor(
+                        actor_ref="provider",
+                        basis_segment_ids=["AIA-TEXT-A001-P1"],
+                    )
+                ],
+                application_regime_id="AIA-TEMP-TEST-DEFAULT",
+            )
+        ],
+    )
+
+    _text, compiled = build_artifacts(reviewed, sources, configured_paths)
+
+    assert compiled["temporal_regimes"] == [
+        {
+            "regime_id": "AIA-TEMP-TEST-DEFAULT",
+            "application_start": "2030-01-02",
+            "application_end": None,
+            "timing_conditions": [],
+            "legal_basis_spans": ["AIA-TEXT-A001-P1"],
+        }
+    ]
+    assert compiled["norms"][0]["application_regime_id"] == "AIA-TEMP-TEST-DEFAULT"
+    assert compiled["norms"][0]["actors"] == [
+        {"actor_ref": "provider", "basis_segment_ids": ["AIA-TEXT-A001-P1"]}
+    ]
 
 
 def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected(tmp_path):

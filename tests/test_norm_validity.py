@@ -10,12 +10,14 @@ import yaml
 
 from aiact.norm_loader import load_normative_coverage
 from aiact.norm_validity import (
+    FieldValidation,
     apply_recorded_fix,
     audit_attestation,
     audit_norm_validity,
     enforce_validity_adjudications,
     load_adjudication_ledger,
 )
+from aiact.schemas import ActorRole, NormActor, TemporalRegime
 from aiact.schemas.norm import SourceKind
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,12 +67,18 @@ def write_ledger(root: Path, manifest: dict, shard: dict) -> Path:
     return root
 
 
-def refresh_article_fifteen_audit(root: Path, bundle) -> None:
+def refresh_article_fifteen_audit(
+    root: Path,
+    bundle,
+    required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]] | None = None,
+) -> None:
     """A recorded fix changes the audited norm snapshot and therefore requires a fresh audit."""
     shard_path = root / "articles" / "015.yaml"
     shard = yaml.safe_load(shard_path.read_text(encoding="utf-8"))
     shard["audit"] = audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "15")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=required_field_validations,
     ).model_dump(mode="json")
     shard_path.write_text(yaml.safe_dump(shard, sort_keys=False), encoding="utf-8")
 
@@ -430,6 +438,88 @@ def test_changed_norm_record_requires_a_new_adjudication():
 
     with pytest.raises(ValueError, match="audit attestation is stale"):
         enforce_validity_adjudications(bundle, LEDGER)
+
+
+def test_actor_basis_is_checked_deterministically_and_hash_bound():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    norm.actors = [
+        NormActor(
+            actor_ref=ActorRole.COMMISSION,
+            basis_segment_ids=["AIA-TEXT-A015-P002"],
+        )
+    ]
+
+    assert not [
+        finding
+        for finding in audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+        if finding.rule == "actor_basis_does_not_name_actor"
+    ]
+    with pytest.raises(ValueError, match="audit attestation is stale"):
+        enforce_validity_adjudications(bundle, LEDGER)
+
+    norm.actors[0] = NormActor(
+        actor_ref=ActorRole.COMMISSION,
+        basis_segment_ids=["AIA-TEXT-A015-P009"],
+    )
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+
+    assert [finding.rule for finding in findings].count("actor_basis_does_not_name_actor") == 1
+
+
+def test_temporal_assignment_needs_source_bound_adjudication_when_its_date_is_unproven(tmp_path):
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-TEST-UNPROVEN",
+        application_start="2030-01-02",
+        legal_basis_spans=["AIA-TEXT-A015-P002"],
+    )
+    bundle.norm_inventory.temporal_regimes.append(regime)
+    norm.application_regime_id = regime.regime_id
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+    assert [finding.rule for finding in findings].count(
+        "temporal_application_start_not_in_basis"
+    ) == 1
+
+    root, manifest, shard = copied_ledger(tmp_path)
+    refresh_article_fifteen_audit(root, bundle)
+    with pytest.raises(ValueError, match="findings lack adjudication"):
+        enforce_validity_adjudications(bundle, root)
+
+
+def test_field_validation_gate_requires_complete_actor_evidence_for_an_article(tmp_path):
+    bundle = load_bundle()
+    requirements = {
+        (SourceKind.ARTICLE, "15"): {FieldValidation.ACTOR_EVIDENCE},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=requirements,
+    )
+    assert any(finding.rule == "actor_basis_missing" for finding in findings)
+
+    root, manifest, shard = copied_ledger(tmp_path)
+    next(
+        scope for scope in manifest["enforced_scope"] if scope["document"] == "15"
+    )["required_field_validations"] = ["actor_evidence"]
+    shard["source"]["required_field_validations"] = ["actor_evidence"]
+    write_ledger(root, manifest, shard)
+    refresh_article_fifteen_audit(root, bundle, requirements)
+
+    with pytest.raises(ValueError, match="findings lack adjudication"):
+        enforce_validity_adjudications(bundle, root)
 
 
 def test_legal_basis_must_be_an_exact_source_quote(tmp_path):

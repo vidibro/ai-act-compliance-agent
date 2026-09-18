@@ -577,6 +577,34 @@ class ActorRole(StrEnum):
     def is_report_actor(self) -> bool:
         return self in REPORT_ACTOR_ROLES
 
+    @property
+    def legal_reference_terms(self) -> tuple[str, ...]:
+        """Enacted-text labels that can deterministically evidence this actor.
+
+        A term mismatch is an audit finding, not a model decision. The adjudication may retain an
+        unusual lawful formulation with an exact basis, but it cannot silently pass.
+        """
+        return _ACTOR_LEGAL_REFERENCE_TERMS.get(
+            self, (self.value.replace("_", " "),)
+        )
+
+
+_ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
+    ActorRole.GPAI_PROVIDER: (
+        "provider of a general-purpose AI model",
+        "provider of general-purpose AI models",
+        "general-purpose AI model provider",
+    ),
+    ActorRole.GPAI_PROVIDER_CLIENT: (
+        "provider of a general-purpose AI model downstream",
+        "downstream provider",
+    ),
+    ActorRole.UNION_INSTITUTION_OR_BODY: (
+        "Union institution, body, office or agency",
+        "Union institution or body",
+    ),
+}
+
 
 REPORT_ACTOR_ROLES: tuple[ActorRole, ...] = (
     ActorRole.PROVIDER,

@@ -27,6 +27,7 @@ from aiact.schemas.norm import (
     ProductScope,
     SegmentDisposition,
     SourceKind,
+    TemporalRegime,
     VerificationMode,
 )
 from aiact.text_segments import corpus_documents
@@ -143,7 +144,11 @@ class NormSourceRecord(BaseModel):
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     qualifier_spans: list[str] = []
+    # Retained while existing source records are migrated to application_regime_id.
     effective_date_spans: list[str] = []
+    application_regime_id: str | None = Field(
+        default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
+    )
     verified_by: str = ""
 
     @model_validator(mode="after")
@@ -157,6 +162,7 @@ class NormSourceInventory(BaseModel):
     act_version_date: date
     implementation_targets: list[str] = []
     records: list[NormSourceRecord] = []
+    temporal_regimes: list[TemporalRegime] = []
     norm_relations: list[NormRelation] = []
     interpretations: list[InterpretiveLink] = []
 
@@ -167,6 +173,35 @@ class NormSourceInventory(BaseModel):
             raise ValueError("norm source record IDs must be unique")
         if len(self.implementation_targets) != len(set(self.implementation_targets)):
             raise ValueError("implementation target IDs must be unique")
+        temporal_regime_ids = [regime.regime_id for regime in self.temporal_regimes]
+        if len(temporal_regime_ids) != len(set(temporal_regime_ids)):
+            raise ValueError("duplicate temporal regime_id")
+        unknown_temporal_regimes = sorted(
+            {
+                record.application_regime_id
+                for record in self.records
+                if record.application_regime_id is not None
+            }
+            - set(temporal_regime_ids)
+        )
+        if unknown_temporal_regimes:
+            raise ValueError(
+                "norm source records reference unknown temporal regime(s): "
+                f"{unknown_temporal_regimes}"
+            )
+        unused_temporal_regimes = sorted(
+            set(temporal_regime_ids)
+            - {
+                record.application_regime_id
+                for record in self.records
+                if record.application_regime_id is not None
+            }
+        )
+        if unused_temporal_regimes:
+            raise ValueError(
+                "temporal regimes are not used by any norm source record: "
+                f"{unused_temporal_regimes}"
+            )
         referenced = {target for record in self.records for target in record.implementation_refs}
         unknown_targets = sorted(referenced - set(self.implementation_targets))
         if unknown_targets:
@@ -520,8 +555,11 @@ def _build_norms(
         primary = f"AIA-TEXT-{record.source}"
         qualifiers = [f"AIA-TEXT-{span}" for span in record.qualifier_spans]
         effective = [f"AIA-TEXT-{span}" for span in record.effective_date_spans]
+        actor_basis = [segment for actor in record.actors for segment in actor.basis_segment_ids]
         unknown_spans = [
-            span for span in [primary, *qualifiers, *effective] if span not in segments_by_id
+            span
+            for span in [primary, *qualifiers, *effective, *actor_basis]
+            if span not in segments_by_id
         ]
         if unknown_spans:
             raise ValueError(f"{record.norm_id}: unknown source-record span(s) {unknown_spans}")
@@ -534,6 +572,7 @@ def _build_norms(
         for span, link_field in [
             (primary, "norm_ids"),
             *((span, "qualifying_norm_ids") for span in [*qualifiers, *effective]),
+            *((span, "qualifying_norm_ids") for span in actor_basis if span != primary),
         ]:
             segment = segments_by_id[span]
             if segment["disposition"] != SegmentDisposition.NORMATIVE.value:
@@ -553,7 +592,9 @@ def _build_norms(
             "norm_id": record.norm_id,
             "act_version_date": version_text,
             "kind": record.kind.value,
-            "actors": [actor.model_dump(mode="json") for actor in record.actors],
+            "actors": [
+                actor.model_dump(mode="json", exclude_defaults=True) for actor in record.actors
+            ],
             "targets": [target.model_dump(mode="json") for target in record.targets],
             "action": record.action,
             "norm_text": record.quote,
@@ -577,6 +618,8 @@ def _build_norms(
                 record.verified_by,
             ),
         }
+        if record.application_regime_id is not None:
+            norm["application_regime_id"] = record.application_regime_id
         norms.append(norm)
 
     return norms
@@ -624,6 +667,30 @@ def _build_relations(
     return relations
 
 
+def _build_temporal_regimes(
+    source_inventory: NormSourceInventory,
+    segments: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Compile source-backed timing regimes without assigning them to legacy norms."""
+    segments_by_id = {str(segment["segment_id"]): segment for segment in segments}
+    regimes: list[dict[str, object]] = []
+    for regime in source_inventory.temporal_regimes:
+        unknown_spans = sorted(set(regime.legal_basis_spans) - set(segments_by_id))
+        if unknown_spans:
+            raise ValueError(f"{regime.regime_id}: unknown legal-basis span(s) {unknown_spans}")
+        non_normative = sorted(
+            span
+            for span in regime.legal_basis_spans
+            if segments_by_id[span]["disposition"] != SegmentDisposition.NORMATIVE.value
+        )
+        if non_normative:
+            raise ValueError(
+                f"{regime.regime_id}: legal-basis span(s) are not normative {non_normative}"
+            )
+        regimes.append(regime.model_dump(mode="json"))
+    return regimes
+
+
 def build_artifacts(
     reviewed: ReviewedDocumentInventory,
     source_inventory: NormSourceInventory,
@@ -633,20 +700,24 @@ def build_artifacts(
     segments = _build_segments(reviewed, paths)
     norms = _build_norms(reviewed, source_inventory, segments, paths)
     relations = _build_relations(source_inventory, segments)
+    temporal_regimes = _build_temporal_regimes(source_inventory, segments)
+    norm_inventory: dict[str, object] = {
+        "act_version_date": reviewed.act_version_date.isoformat(),
+        "norms": norms,
+        "relations": relations,
+        "interpretations": [
+            link.model_dump(mode="json") for link in source_inventory.interpretations
+        ],
+    }
+    if temporal_regimes:
+        norm_inventory["temporal_regimes"] = temporal_regimes
     return (
         {
             "act_version_date": reviewed.act_version_date.isoformat(),
             "corpus_complete": True,
             "segments": segments,
         },
-        {
-            "act_version_date": reviewed.act_version_date.isoformat(),
-            "norms": norms,
-            "relations": relations,
-            "interpretations": [
-                link.model_dump(mode="json") for link in source_inventory.interpretations
-            ],
-        },
+        norm_inventory,
     )
 
 

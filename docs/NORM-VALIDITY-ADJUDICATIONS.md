@@ -44,6 +44,44 @@ deliberately excluded: changing the implementation graph must not reopen a legal
 Changing models does not change the ID when they produce the same audited record. Changing enacted
 source or audited legal content does.
 
+## Actor evidence and application timing
+
+Two newer fields are audited by the same flow, but are deliberately migrated in batches:
+
+- `actors[].basis_segment_ids` identifies the exact `AIA-TEXT-…` segment that proves one named
+  actor. Each populated segment must contain a declared legal label for that canonical actor role.
+  A mismatch produces `actor_basis_does_not_name_actor`.
+- `application_regime_id` connects a norm to one shared `TemporalRegime`. The regime records its
+  application start/end dates, any timing condition, and exact legal-basis segments. Each populated
+  assignment is checked: declared dates and timing conditions must occur in the regime's legal
+  basis. Failures are `temporal_application_start_not_in_basis`,
+  `temporal_application_end_not_in_basis`, or `temporal_condition_not_in_basis`.
+
+An `upcoming`, `expired`, or conditionally timed norm remains reportable. Timing changes the label
+shown for the norm; it never removes the norm from the report.
+
+While existing source records have not been migrated, an empty new field is not a finding. Once a
+field is populated, its exact value is included in that article's audit attestation. Thus even a
+clean assignment (one that produces no finding) makes an old adjudication shard stale until its
+attestation is refreshed. An invalid assignment additionally requires a normal, source-bound
+adjudication decision. This permits controlled migration without granting a silent bypass.
+
+When an article is fully migrated, declare its completion gate in both its `index.yaml` scope entry
+and its matching article shard:
+
+```yaml
+required_field_validations:
+  - actor_evidence
+  - application_timing
+```
+
+`actor_evidence` makes every listed actor without `basis_segment_ids` a finding.
+`application_timing` makes every norm without `application_regime_id` a finding. The strict build
+enforces the declared gate; it is the explicit point at which an article can no longer rely on
+empty staged fields. It also rejects an article that still uses the ambiguous legacy
+`effective_date_spans` field. Do not enable a gate until its source-record changes and their
+adjudications are ready together.
+
 ## Decisions
 
 - `false_positive` means the deterministic signal does not identify a defect. A nonempty reviewed

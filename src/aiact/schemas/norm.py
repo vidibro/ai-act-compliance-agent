@@ -10,13 +10,15 @@ from __future__ import annotations
 
 from datetime import date
 from enum import StrEnum
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from aiact.schemas.enums import ActorCategory, ActorRole, ProhibitedPractice
 from aiact.schemas.interpretation import InterpretiveLink
 from aiact.schemas.review import ReviewRecord, ReviewStatus
+
+NormativeSegmentId = Annotated[str, Field(pattern=r"^AIA-TEXT-[A-Z0-9-]+$")]
 
 
 class SourceKind(StrEnum):
@@ -281,6 +283,13 @@ class NormActor(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     actor_ref: ActorRole
+    basis_segment_ids: list[NormativeSegmentId] = []
+
+    @model_validator(mode="after")
+    def _basis_spans_are_unique(self) -> NormActor:
+        if len(self.basis_segment_ids) != len(set(self.basis_segment_ids)):
+            raise ValueError("actor basis_segment_ids must not contain duplicates")
+        return self
 
     @property
     def category(self) -> ActorCategory:
@@ -292,6 +301,66 @@ class NormTarget(BaseModel):
     """An object, activity, concept, or legal state to which the norm relates."""
 
     target_ref: str = Field(min_length=1)
+
+
+class TemporalStatus(StrEnum):
+    """How a temporal regime should be presented for a report date.
+
+    A temporal status never suppresses a norm. In particular, UPCOMING duties stay visible so a
+    reader can prepare for them before their application date.
+    """
+
+    ACTIVE = "active"
+    UPCOMING = "upcoming"
+    EXPIRED = "expired"
+    CONDITIONAL_TIMING = "conditional_timing"
+
+
+class TemporalRegime(BaseModel):
+    """One source-backed application-time regime shared by one or more norms.
+
+    The Regulation's general application date is normally one regime; transitional provisions and
+    time-limited effects are separate regimes. The date and its legal basis live here once rather
+    than being copied into every norm.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    regime_id: str = Field(pattern=r"^AIA-TEMP-[A-Z0-9-]+$")
+    application_start: date | None = None
+    application_end: date | None = None
+    timing_conditions: list[str] = []
+    legal_basis_spans: list[NormativeSegmentId] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _is_a_real_and_unambiguous_regime(self) -> TemporalRegime:
+        if (
+            self.application_start is None
+            and self.application_end is None
+            and not self.timing_conditions
+        ):
+            raise ValueError("temporal regime requires an application date or timing condition")
+        if (
+            self.application_start is not None
+            and self.application_end is not None
+            and self.application_end < self.application_start
+        ):
+            raise ValueError("temporal regime application_end must not precede application_start")
+        if len(self.timing_conditions) != len(set(self.timing_conditions)):
+            raise ValueError("temporal regime timing_conditions must not contain duplicates")
+        if len(self.legal_basis_spans) != len(set(self.legal_basis_spans)):
+            raise ValueError("temporal regime legal_basis_spans must not contain duplicates")
+        return self
+
+    def status_on(self, as_of_date: date) -> TemporalStatus:
+        """Return a report label; never use timing to omit a norm from the report."""
+        if self.application_start is not None and as_of_date < self.application_start:
+            return TemporalStatus.UPCOMING
+        if self.application_end is not None and as_of_date > self.application_end:
+            return TemporalStatus.EXPIRED
+        if self.timing_conditions:
+            return TemporalStatus.CONDITIONAL_TIMING
+        return TemporalStatus.ACTIVE
 
 
 class ConditionGroup(BaseModel):
@@ -326,7 +395,12 @@ class Norm(BaseModel):
     primary_spans: list[str] = Field(min_length=1)
     qualifier_spans: list[str] = []
     definition_spans: list[str] = []
+    # Legacy source-span field. It currently also contains ordinary deadlines, so it remains
+    # readable until each existing record is migrated to an application regime or another field.
     effective_date_spans: list[str] = []
+    application_regime_id: str | None = Field(
+        default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
+    )
     conditions: list[str | ConditionGroup] = []
     exceptions: list[str] = []
     mandatory_content: list[str] = []
@@ -346,6 +420,7 @@ class Norm(BaseModel):
                 + self.qualifier_spans
                 + self.definition_spans
                 + self.effective_date_spans
+                + [segment for actor in self.actors for segment in actor.basis_segment_ids]
             )
         )
 
@@ -390,6 +465,7 @@ class Norm(BaseModel):
 class NormInventory(BaseModel):
     act_version_date: date
     norms: list[Norm] = []
+    temporal_regimes: list[TemporalRegime] = []
     relations: list[NormRelation] = []
     interpretations: list[InterpretiveLink] = []
 
@@ -437,6 +513,29 @@ class NormInventory(BaseModel):
         interpretation_ids = [i.interpretation_id for i in self.interpretations]
         if len(norm_ids) != len(set(norm_ids)):
             raise ValueError("duplicate norm_id")
+        regime_ids = [regime.regime_id for regime in self.temporal_regimes]
+        if len(regime_ids) != len(set(regime_ids)):
+            raise ValueError("duplicate temporal regime_id")
+        unknown_regimes = sorted(
+            {
+                norm.application_regime_id
+                for norm in self.norms
+                if norm.application_regime_id is not None
+            }
+            - set(regime_ids)
+        )
+        if unknown_regimes:
+            raise ValueError(f"norms reference unknown temporal regime(s): {unknown_regimes}")
+        unused_regimes = sorted(
+            set(regime_ids)
+            - {
+                norm.application_regime_id
+                for norm in self.norms
+                if norm.application_regime_id is not None
+            }
+        )
+        if unused_regimes:
+            raise ValueError(f"temporal regimes are not used by any norm: {unused_regimes}")
         if len(relation_ids) != len(set(relation_ids)):
             raise ValueError("duplicate norm relation_id")
         unknown_relation_sources = sorted(

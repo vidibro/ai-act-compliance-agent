@@ -9,7 +9,7 @@ from pathlib import Path
 from build_normative_coverage import paths_for_version
 
 from aiact.norm_builder import build_artifacts, load_builder_inputs
-from aiact.norm_validity import audit_attestation, audit_norm_validity
+from aiact.norm_validity import audit_attestation, audit_norm_validity, load_adjudication_ledger
 from aiact.schemas.norm import (
     NormativeCoverageBundle,
     NormInventory,
@@ -39,8 +39,21 @@ def audit(version: str, articles: set[str] | None = None) -> dict[str, object]:
         if articles is not None
         else None
     )
-    findings = audit_norm_validity(bundle, scope=scope)
-    attestation = audit_attestation(bundle, scope=scope or documents)
+    ledger = load_adjudication_ledger(paths.adjudications)
+    required_field_validations = {
+        (item.kind, item.document): set(item.required_field_validations)
+        for item in ledger.enforced_scope
+    }
+    findings = audit_norm_validity(
+        bundle,
+        scope=scope,
+        required_field_validations=required_field_validations,
+    )
+    attestation = audit_attestation(
+        bundle,
+        scope=scope or documents,
+        required_field_validations=required_field_validations,
+    )
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
     norms_in_scope = [
         norm
