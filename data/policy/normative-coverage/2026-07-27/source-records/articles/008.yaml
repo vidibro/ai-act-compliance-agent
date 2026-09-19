@@ -25,6 +25,11 @@ records:
   - actor_ref: provider
   targets: []
   kind: obligation
+  conditions:
+  - operator: all_of
+    operands:
+    - text: when ensuring compliance with those requirements
+      basis_segment_ids: [AIA-TEXT-A008-P001]
   implementation_refs:
   - AIA-RULE-HR-A09
   verification_mode: judged_by_gap_analysis
@@ -42,8 +47,10 @@ records:
   targets: []
   kind: obligation
   conditions:
-  - the product contains an AI system to which both this Regulation and Union harmonisation legislation
-    listed in Annex I Section A apply
+  - operator: all_of
+    operands:
+    - text: Where a product contains an AI system, to which the requirements of this Regulation as well as requirements of the Union harmonisation legislation listed in Section A of Annex I apply
+      basis_segment_ids: [AIA-TEXT-A008-P002]
   implementation_mode: compliance_rule
   implementation_refs:
   - AIA-RULE-PO-A08-2
@@ -64,10 +71,12 @@ records:
   targets: []
   kind: permission
   conditions:
-  - the product contains an AI system to which both this Regulation and Union harmonisation legislation
-    listed in Annex I Section A apply
-  - integration is appropriate for ensuring consistency, avoiding duplication, and minimising additional
-    burdens
+  - operator: all_of
+    operands:
+    - text: Where a product contains an AI system, to which the requirements of this Regulation as well as requirements of the Union harmonisation legislation listed in Section A of Annex I apply
+      basis_segment_ids: [AIA-TEXT-A008-P002]
+    - text: as appropriate
+      basis_segment_ids: [AIA-TEXT-A008-P002]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A08-2

@@ -46,6 +46,11 @@ records:
   - actor_ref: provider
   targets: []
   kind: obligation
+  conditions:
+  - operator: all_of
+    operands:
+    - text: when the high-risk AI system is used in accordance with its intended purpose
+      basis_segment_ids: [AIA-TEXT-A009-P003]
   qualifier_spans:
   - A009-P002
   implementation_refs: *id001
@@ -60,6 +65,11 @@ records:
   - actor_ref: provider
   targets: []
   kind: obligation
+  conditions:
+  - operator: all_of
+    operands:
+    - text: when the high-risk AI system is used in accordance with its intended purpose, and under conditions of reasonably foreseeable misuse
+      basis_segment_ids: [AIA-TEXT-A009-P004]
   qualifier_spans:
   - A009-P002
   implementation_refs: *id001
@@ -121,7 +131,10 @@ records:
   targets: []
   kind: obligation
   conditions:
-  - minimise risks effectively while appropriately balancing implementation of the combined requirements
+  - operator: all_of
+    operands:
+    - text: with a view to minimising risks more effectively while achieving an appropriate balance in implementing the measures to fulfil those requirements
+      basis_segment_ids: [AIA-TEXT-A009-P008]
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -166,6 +179,11 @@ records:
   - actor_ref: provider
   targets: []
   kind: obligation
+  conditions:
+  - operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids: [AIA-TEXT-A009-P012]
   qualifier_spans:
   - A009-P010
   implementation_refs: *id001
@@ -193,7 +211,10 @@ records:
   targets: []
   kind: obligation
   conditions:
-  - deployer training is appropriate
+  - operator: all_of
+    operands:
+    - text: where appropriate, training to deployers
+      basis_segment_ids: [AIA-TEXT-A009-P013]
   qualifier_spans:
   - A009-P010
   implementation_refs: *id001
@@ -249,7 +270,10 @@ records:
   targets: []
   kind: permission
   conditions:
-  - real-world testing complies with Article 60
+  - operator: all_of
+    operands:
+    - text: in accordance with Article 60
+      basis_segment_ids: [AIA-TEXT-A009-P016]
   implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally
@@ -307,8 +331,10 @@ records:
   targets: []
   kind: permission
   conditions:
-  - the provider is already subject to internal risk-management-process requirements under other relevant
-    Union law
+  - operator: all_of
+    operands:
+    - text: providers of high-risk AI systems that are subject to requirements regarding internal risk management processes under other relevant provisions of Union law
+      basis_segment_ids: [AIA-TEXT-A009-P019]
   implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally

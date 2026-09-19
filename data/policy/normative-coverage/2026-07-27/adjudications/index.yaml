@@ -31,10 +31,16 @@ enforced_scope:
       - logical_expression_evidence
   - kind: article
     document: "7"
+    required_field_validations:
+      - logical_expression_evidence
   - kind: article
     document: "8"
+    required_field_validations:
+      - logical_expression_evidence
   - kind: article
     document: "9"
+    required_field_validations:
+      - logical_expression_evidence
   - kind: article
     document: "10"
   - kind: article

@@ -3,12 +3,14 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '7'
+  required_field_validations:
+  - logical_expression_evidence
 audit:
   audit_schema_version: 1
   segments_scanned: 21
   norms_scanned: 4
   finding_count: 1
-  audit_sha256: bdae8c76f92cb5abd2fda7966b297621c5162f3a167f0a5ae497a85fc3b9e34e
+  audit_sha256: 93cd1abb13e7131eb8ebead449e82a3b87e612f44d41ec475dfab22b1d2d0e52
 decisions:
 - finding_id: AIA-VALID-B382E4EBE1A01D32
   target: AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE

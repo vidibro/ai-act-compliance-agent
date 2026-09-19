@@ -98,7 +98,14 @@ norms:
   - AIA-TEXT-A009-P003
   qualifier_spans:
   - AIA-TEXT-A009-P002
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: when the high-risk AI system is used in accordance with its intended purpose
+        basis_segment_ids:
+        - AIA-TEXT-A009-P003
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -135,7 +142,15 @@ norms:
   - AIA-TEXT-A009-P004
   qualifier_spans:
   - AIA-TEXT-A009-P002
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: when the high-risk AI system is used in accordance with its intended purpose, and under
+          conditions of reasonably foreseeable misuse
+        basis_segment_ids:
+        - AIA-TEXT-A009-P004
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -287,9 +302,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: minimise risks effectively while appropriately balancing implementation of the combined requirements
-      basis_segment_ids:
-      - AIA-TEXT-A009-P008
+    - operator: all_of
+      operands:
+      - text: with a view to minimising risks more effectively while achieving an appropriate balance
+          in implementing the measures to fulfil those requirements
+        basis_segment_ids:
+        - AIA-TEXT-A009-P008
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -400,7 +418,14 @@ norms:
   - AIA-TEXT-A009-P012
   qualifier_spans:
   - AIA-TEXT-A009-P010
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: where appropriate
+        basis_segment_ids:
+        - AIA-TEXT-A009-P012
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -473,9 +498,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: deployer training is appropriate
-      basis_segment_ids:
-      - AIA-TEXT-A009-P013
+    - operator: all_of
+      operands:
+      - text: where appropriate, training to deployers
+        basis_segment_ids:
+        - AIA-TEXT-A009-P013
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -622,9 +649,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: real-world testing complies with Article 60
-      basis_segment_ids:
-      - AIA-TEXT-A009-P016
+    - operator: all_of
+      operands:
+      - text: in accordance with Article 60
+        basis_segment_ids:
+        - AIA-TEXT-A009-P016
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -774,10 +803,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider is already subject to internal risk-management-process requirements under other
-        relevant Union law
-      basis_segment_ids:
-      - AIA-TEXT-A009-P019
+    - operator: all_of
+      operands:
+      - text: providers of high-risk AI systems that are subject to requirements regarding internal risk
+          management processes under other relevant provisions of Union law
+        basis_segment_ids:
+        - AIA-TEXT-A009-P019
   exceptions: null
   mandatory_content: []
   product_scope: in_scope

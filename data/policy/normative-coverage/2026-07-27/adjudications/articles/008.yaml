@@ -3,10 +3,12 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '8'
+  required_field_validations:
+  - logical_expression_evidence
 audit:
   audit_schema_version: 1
   segments_scanned: 3
   norms_scanned: 4
   finding_count: 0
-  audit_sha256: 08434543d1f44777bb4b95c8a1717ca3f693f9201c36771c0e90cd36bcab8b46
+  audit_sha256: f065dfc2f8945241b51829b81d5ae9aeefd5ad700659ff34db0d6dca3877fac2
 decisions: []
