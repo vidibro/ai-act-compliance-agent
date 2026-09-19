@@ -407,7 +407,7 @@ def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
 
     WHAT THIS DOES NOT PROVE: that a judge reads the annex, which is a separate and narrower
     claim. `annex_context` reaches a prompt only for a `document_verifiable` rule —
-    otherwise the judge returns NOT_APPLICABLE before building one. Annex IV, through AIA-HR-A11,
+    otherwise the judge returns NOT_APPLICABLE before building one. Annex IV, through AIA-RULE-HR-A11,
     is the only annex any judge is shown. Annexes V and VI and VIII are ruled on by rules that are
     not verifiable, because a declaration of conformity, a conformity assessment procedure and a
     database entry are none of them the file under review — so for those items the claim this test
@@ -586,8 +586,8 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
     fire for the party the provision binds, and the partition cannot see the difference.
 
     That is how an annex comes to be ruled `RULE ...` at every item and reach nobody. Art. 43 is
-    where both halves of it live: AIA-PO-A43-1B is gated to biometrics while Art. 43(3) applies six
-    Annex VII points to an ANNEX I Section A provider, and AIA-PO-A43-2 is gated to Annex III
+    where both halves of it live: AIA-RULE-PO-A43-1B is gated to biometrics while Art. 43(3) applies six
+    Annex VII points to an ANNEX I Section A provider, and AIA-RULE-PO-A43-2 is gated to Annex III
     points 2 to 8 while Art. 43(1)(a) lets a point 1 provider elect Annex VI. Rule one of those
     annexes to one of those rules alone and the ledger reads as covered, `owed` stays at zero, and
     the provider on the route the annex applies to is told the route exists and never told what it
@@ -984,7 +984,7 @@ def _division_text(article: str, division: str) -> str:
 def _roles_bound_at(spec) -> dict[tuple[str, str], set[ActorRole]]:
     """Which roles the rules citing each article address bind.
 
-    A RULE CITING AN ARTICLE WHOLE BINDS EVERY DIVISION OF IT. `AIA-HR-A09` names Art. 9 with no
+    A RULE CITING AN ARTICLE WHOLE BINDS EVERY DIVISION OF IT. `AIA-RULE-HR-A09` names Art. 9 with no
     paragraph and its `requirement` is all ten of them, so the party it binds is bound at 9(5) and
     9(9) as surely as a rule that cited those paragraphs by number. Reading the citation literally
     would put every paragraph of every whole-article rule into the sweep, which is not a population

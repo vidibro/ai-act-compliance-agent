@@ -28,7 +28,7 @@ DOCUMENT = "# Doc\n\n## Human oversight\n\nA panel reviews every recommendation.
 
 
 def a_rule(
-    rule_id: str = "AIA-HR-A14",
+    rule_id: str = "AIA-RULE-HR-A14",
     check_type: CheckType = CheckType.SUBSTANCE,
     document_verifiable: bool = True,
 ) -> PolicyRule:
@@ -234,7 +234,7 @@ def test_a_process_obligation_is_not_applicable_and_costs_no_call(monkeypatch):
     mean retrieving four unrelated paragraphs and inviting a false PASS — so it never reaches the
     model at all. If it did, the stub-free litellm import here would blow up."""
     j = LLMJudge(model="stub/model")
-    rule = a_rule("AIA-PO-A17", check_type=CheckType.PRESENCE, document_verifiable=False)
+    rule = a_rule("AIA-RULE-PO-A17", check_type=CheckType.PRESENCE, document_verifiable=False)
     result = j.judge(rule, DOCUMENT)
     assert result.verdict == Verdict.NOT_APPLICABLE
     assert result.hits == ()

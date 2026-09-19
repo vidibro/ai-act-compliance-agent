@@ -11,7 +11,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47
+  - AIA-RULE-PO-A47
   verification_mode: reported_not_judged
   mandatory_content:
   - draw up the declaration in the prescribed written, machine-readable, physical or electronically signed
@@ -27,7 +27,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47
+  - AIA-RULE-PO-A47
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P1-SUBMIT-ON-REQUEST
@@ -39,7 +39,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47
+  - AIA-RULE-PO-A47
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P2-STATE-SECTION-2-COMPLIANCE
@@ -51,7 +51,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47-2
+  - AIA-RULE-PO-A47-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P2-ANNEX-V-CONTENT
@@ -65,7 +65,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47-2
+  - AIA-RULE-PO-A47-2
   verification_mode: reported_not_judged
   mandatory_content:
   - contain the information set out in Annex V
@@ -83,7 +83,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47-3
+  - AIA-RULE-PO-A47-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
@@ -98,7 +98,7 @@ records:
   - the high-risk AI system is subject to other Union harmonisation legislation which also requires an
     EU declaration of conformity
   implementation_refs:
-  - AIA-PO-A47-3
+  - AIA-RULE-PO-A47-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P4-ASSUME-RESPONSIBILITY
@@ -110,7 +110,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47-4
+  - AIA-RULE-PO-A47-4
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P4-KEEP-CURRENT
@@ -121,7 +121,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A47-4
+  - AIA-RULE-PO-A47-4
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P5-AMEND-ANNEX-V

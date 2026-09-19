@@ -30,7 +30,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A54-1
+  - AIA-RULE-GP-A54-1
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -65,7 +65,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A54-2
+  - AIA-RULE-GP-A54-2
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -100,7 +100,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -140,7 +140,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -177,7 +177,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -218,7 +218,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -261,7 +261,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -304,7 +304,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -341,7 +341,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A54-4
+  - AIA-RULE-GP-A54-4
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -381,7 +381,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-5
+  - AIA-RULE-GPAR-A54-5
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -423,7 +423,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GPAR-A54-5
+  - AIA-RULE-GPAR-A54-5
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -476,11 +476,11 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A54-1
-  - AIA-GP-A54-2
-  - AIA-GPAR-A54-3
-  - AIA-GP-A54-4
-  - AIA-GPAR-A54-5
+  - AIA-RULE-GP-A54-1
+  - AIA-RULE-GP-A54-2
+  - AIA-RULE-GPAR-A54-3
+  - AIA-RULE-GP-A54-4
+  - AIA-RULE-GPAR-A54-5
   implementation_reason: Each Article 54 rule encodes this exception in its activation condition.
   verification_mode: reported_not_judged
   review:

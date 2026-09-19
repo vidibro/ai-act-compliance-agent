@@ -147,7 +147,7 @@ def build_graph(
         #
         # The Art. 25 answer comes in HERE, and it is the only thing `roles` supplies that selection
         # acts on. It adds one obligation and never removes any: Art. 25(2)'s cooperation duty has
-        # no holder until the provider role has moved, so `AIA-IP-A25-2` appears exactly when it
+        # no holder until the provider role has moved, so `AIA-RULE-IP-A25-2` appears exactly when it
         # did. The deployer-type answer is deliberately NOT passed — it resolves a condition on a
         # duty that exists either way, and gating on it would withhold an obligation the Act
         # creates.

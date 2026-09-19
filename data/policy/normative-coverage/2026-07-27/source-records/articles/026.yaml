@@ -10,7 +10,7 @@ records:
   - actor_ref: deployer
   targets: []
   implementation_refs: &id001
-  - AIA-DP-A26
+  - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P2-HUMAN-OVERSIGHT-ASSIGNMENT
@@ -77,7 +77,7 @@ records:
   - actor_ref: deployer
   targets: []
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
   mandatory_content:
   - monitor operation on the basis of the instructions for use
@@ -98,7 +98,7 @@ records:
   - the deployer has reason to consider that use in accordance with the instructions may result in the
     AI system presenting a risk within the meaning of Article 79(1)
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
   mandatory_content:
   - without undue delay inform the provider or distributor and relevant market-surveillance authority
@@ -116,7 +116,7 @@ records:
   conditions:
   - the deployer has identified a serious incident
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P5-FALLBACK
@@ -131,7 +131,7 @@ records:
   - the deployer is not able to reach the provider
   implementation_mode: report_only
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P5-SENSITIVE
@@ -147,7 +147,7 @@ records:
   - the deployer is a law enforcement authority
   implementation_mode: report_only
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-RULE-DP-A26
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P5-FINANCIAL
@@ -166,7 +166,7 @@ records:
     arrangements or processes under Union financial services law
   implementation_mode: report_only
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-RULE-DP-A26
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS
@@ -202,7 +202,7 @@ records:
   - the deployer is a financial institution subject to internal-governance requirements under Union financial-services
     law
   implementation_refs:
-  - AIA-DP-A26-6
+  - AIA-RULE-DP-A26-6
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P7-INFORM-WORKERS
@@ -218,7 +218,7 @@ records:
   conditions:
   - the deployer is an employer putting the high-risk system into service or using it at the workplace
   implementation_refs:
-  - AIA-DP-A26-7
+  - AIA-RULE-DP-A26-7
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES
@@ -234,7 +234,7 @@ records:
   - Union or national worker-information rules and practices apply
   implementation_mode: report_only
   implementation_refs:
-  - AIA-DP-A26-7
+  - AIA-RULE-DP-A26-7
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P8-REGISTER
@@ -248,7 +248,7 @@ records:
   conditions:
   - the deployer is a public authority or a Union institution, body, office, or agency
   implementation_refs: &id003
-  - AIA-DP-A26-8
+  - AIA-RULE-DP-A26-8
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
@@ -264,7 +264,7 @@ records:
   - the deployer satisfies the Article 26(8) public-authority or Union-body condition
   - the envisaged system is not registered in the Article 71 EU database
   implementation_refs:
-  - AIA-DP-A26-8-UNREGISTERED-PROHIBITION
+  - AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P8-INFORM-UNREGISTERED
@@ -276,7 +276,7 @@ records:
   targets: []
   conditions: *id004
   implementation_refs:
-  - AIA-DP-A26-8-UNREGISTERED-NOTICE
+  - AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
@@ -291,7 +291,7 @@ records:
   conditions:
   - the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
   implementation_refs:
-  - AIA-DP-A26-9
+  - AIA-RULE-DP-A26-9
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
@@ -305,7 +305,7 @@ records:
   kind: applicability
   implementation_mode: report_only
   implementation_refs: &id005
-  - AIA-DP-A26-10
+  - AIA-RULE-DP-A26-10
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-REQUEST-AUTHORISATION
@@ -383,7 +383,7 @@ records:
     enforcement purposes
   kind: prohibition
   implementation_refs:
-  - AIA-DP-A26-10-LAW-ENFORCEMENT
+  - AIA-RULE-DP-A26-10-LAW-ENFORCEMENT
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION
@@ -401,7 +401,7 @@ records:
     enforcement purposes
   kind: prohibition
   implementation_refs:
-  - AIA-DP-A26-10-LAW-ENFORCEMENT
+  - AIA-RULE-DP-A26-10-LAW-ENFORCEMENT
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW
@@ -516,7 +516,7 @@ records:
   exceptions:
   - law-enforcement use follows Article 13 of Directive (EU) 2016/680
   implementation_refs: &id008
-  - AIA-DP-A26-11
+  - AIA-RULE-DP-A26-11
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P11-LAW-ENFORCEMENT-NOTICE
@@ -543,6 +543,6 @@ records:
   - actor_ref: deployer
   targets: []
   implementation_refs:
-  - AIA-DP-A26-12
+  - AIA-RULE-DP-A26-12
   verification_mode: reported_not_judged
   verified_by: vidibro

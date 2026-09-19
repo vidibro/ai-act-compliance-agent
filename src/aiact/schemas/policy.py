@@ -149,7 +149,8 @@ class ReportNorm(BaseModel):
 class PolicyRule(BaseModel):
     """One obligation the documentation is checked against."""
 
-    rule_id: str  # "AIA-HR-A06" — stable, human-readable
+    rule_id: str = Field(pattern=r"^AIA-RULE-[A-Za-z0-9-]+$")
+    # Stable, human-readable canonical identifier; distinct from AIA-NORM, AIA-CQ, and AIA-TEXT.
     requirement: str  # the obligation, in the Commission's own wording
     source: LegalSource
     applies_to_risk_class: list[RiskClass] = []

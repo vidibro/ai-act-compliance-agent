@@ -62,7 +62,7 @@ records:
   conditions:
   - the market surveillance authority is carrying out an Article 79(2) evaluation of the AI system
   implementation_refs:
-  - AIA-ALL-A79
+  - AIA-RULE-ALL-A79
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A079-P2-REQUIRE-CORRECTIVE-ACTION
@@ -139,7 +139,7 @@ records:
   - actor_ref: operator
   targets: []
   implementation_refs:
-  - AIA-ALL-A79
+  - AIA-RULE-ALL-A79
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES

@@ -26,22 +26,22 @@
 #                       every role it binds, whoever is reading it.
 #
 # Two families:
-#   AIA-HR-*  Chapter III Section 2 (Art. 9-15) — requirements the system must meet.
+#   AIA-RULE-HR-*  Chapter III Section 2 (Art. 9-15) — requirements the system must meet.
 #             Visible in technical documentation -> document_verifiable: true.
-#   AIA-PO-*  Chapter III Section 3 (Art. 16+) + conformity/registration — provider PROCESS
+#   AIA-RULE-PO-*  Chapter III Section 3 (Art. 16+) + conformity/registration — provider PROCESS
 #             obligations. NOT visible in a system's technical documentation
 #             -> document_verifiable: false -> reported as "confirm separately", never as gaps.
-#   AIA-DP-*  DEPLOYER obligations (Art. 26-27). A different duty-holder, not a different topic:
+#   AIA-RULE-DP-*  DEPLOYER obligations (Art. 26-27). A different duty-holder, not a different topic:
 #             the party operating the system owes these, and no provider file can evidence them.
-#   AIA-IP-*  INITIAL PROVIDER (Art. 25(2)) — the party that placed the system on the market and
+#   AIA-RULE-IP-*  INITIAL PROVIDER (Art. 25(2)) — the party that placed the system on the market and
 #             then stopped being its provider when Art. 25 moved the role. One rule, owed only
 #             where a reallocation actually occurred.
-#   AIA-AR-*  AUTHORISED REPRESENTATIVE (Art. 22), AIA-IM-* IMPORTER (Art. 23), AIA-DI-*
+#   AIA-RULE-AR-*  AUTHORISED REPRESENTATIVE (Art. 22), AIA-RULE-IM-* IMPORTER (Art. 23), AIA-RULE-DI-*
 #             DISTRIBUTOR (Art. 24) — the supply-chain roles, each with duties of its own.
-#   AIA-TR-* TRANSPARENCY (Art. 50). The one family that does not gate on a risk class: it gates
+#   AIA-RULE-TR-* TRANSPARENCY (Art. 50). The one family that does not gate on a risk class: it gates
 #             on the DUTY the classification found, because Art. 50 cuts across the tiers. Split by
 #             role like the Article — (1)(2) provider, (3)(4) deployer.
-#   AIA-ALL-* Obligations binding BOTH provider and deployer — Art. 4 at every governed tier, and
+#   AIA-RULE-ALL-* Obligations binding BOTH provider and deployer — Art. 4 at every governed tier, and
 #             Art. 49(4), which sends the registrations of BOTH parties to the database's secure
 #             non-public section.
 #
@@ -77,7 +77,7 @@ rules:
   # ------------------------------------------------------------------------------------------
   # Art. 8(1) is the chapeau to Arts. 9-15 and is modelled rule by rule below. Paragraph 2 is not a
   # chapeau: it is a duty of its own, and it points OUTSIDE this Regulation.
-  - rule_id: AIA-PO-A08-2
+  - rule_id: AIA-RULE-PO-A08-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 8
@@ -116,7 +116,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-HR-A09
+  - rule_id: AIA-RULE-HR-A09
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 9 # whole article: the risk management system, all 10 paragraphs
@@ -185,7 +185,7 @@ rules:
       - norm_id: AIA-NORM-A009-P8-METRICS-THRESHOLDS
       - norm_id: AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
 
-  - rule_id: AIA-HR-A10
+  - rule_id: AIA-RULE-HR-A10
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 10 # whole article: data and data governance
@@ -262,7 +262,7 @@ rules:
       - norm_id: AIA-NORM-A010-P3-STATISTICAL-PROPERTIES
       - norm_id: AIA-NORM-A010-P4-INTENDED-SETTING
 
-  - rule_id: AIA-HR-A11
+  - rule_id: AIA-RULE-HR-A11
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 11
@@ -310,7 +310,7 @@ rules:
       - norm_id: AIA-NORM-A011-P1-ANNEX-IV
       - norm_id: AIA-NORM-A011-P1-USE-FORM
 
-  - rule_id: AIA-HR-A12
+  - rule_id: AIA-RULE-HR-A12
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 12
@@ -352,10 +352,10 @@ rules:
       - norm_id: AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
       - norm_id: AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
 
-  # ONE FILE, NOT TWO. AIA-HR-A11 carries 11(1) — draw the documentation up, keep it current, cover
+  # ONE FILE, NOT TWO. AIA-RULE-HR-A11 carries 11(1) — draw the documentation up, keep it current, cover
   # Annex IV — and an Annex I Section A provider satisfying it with a separate AI annex bolted to a
   # sectoral file has done what that rule asks and not what 11(2) requires.
-  - rule_id: AIA-HR-A11-2
+  - rule_id: AIA-RULE-HR-A11-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 11
@@ -394,10 +394,10 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  # THE BIOMETRIC MINIMUM. AIA-HR-A12 asks what the logs must be able to record for any high-risk
+  # THE BIOMETRIC MINIMUM. AIA-RULE-HR-A12 asks what the logs must be able to record for any high-risk
   # system; for a remote biometric identification system Art. 12(3) names four specific records, and
   # they are the ones that make an identification auditable after the fact.
-  - rule_id: AIA-HR-A12-3A
+  - rule_id: AIA-RULE-HR-A12-3A
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 12
@@ -421,7 +421,7 @@ rules:
       Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
       IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
       system under point 1(c) is in the same area and is not reached by this paragraph; both still
-      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      owe Art. 12(1) and (2) through AIA-RULE-HR-A12. Point 1(a) also excludes verification whose sole
       purpose is confirming a person is who they claim to be, which is outside the area altogether.
     obligation_status: mandatory
     check_type: presence
@@ -439,7 +439,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-HR-A12-3B
+  - rule_id: AIA-RULE-HR-A12-3B
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 12
@@ -463,7 +463,7 @@ rules:
       Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
       IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
       system under point 1(c) is in the same area and is not reached by this paragraph; both still
-      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      owe Art. 12(1) and (2) through AIA-RULE-HR-A12. Point 1(a) also excludes verification whose sole
       purpose is confirming a person is who they claim to be, which is outside the area altogether.
     obligation_status: mandatory
     check_type: presence
@@ -480,7 +480,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-HR-A12-3C
+  - rule_id: AIA-RULE-HR-A12-3C
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 12
@@ -504,7 +504,7 @@ rules:
       Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
       IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
       system under point 1(c) is in the same area and is not reached by this paragraph; both still
-      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      owe Art. 12(1) and (2) through AIA-RULE-HR-A12. Point 1(a) also excludes verification whose sole
       purpose is confirming a person is who they claim to be, which is outside the area altogether.
     obligation_status: mandatory
     check_type: presence
@@ -521,7 +521,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-HR-A12-3D
+  - rule_id: AIA-RULE-HR-A12-3D
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 12
@@ -545,7 +545,7 @@ rules:
       Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
       IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
       system under point 1(c) is in the same area and is not reached by this paragraph; both still
-      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      owe Art. 12(1) and (2) through AIA-RULE-HR-A12. Point 1(a) also excludes verification whose sole
       purpose is confirming a person is who they claim to be, which is outside the area altogether.
     obligation_status: mandatory
     check_type: presence
@@ -564,7 +564,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-HR-A13
+  - rule_id: AIA-RULE-HR-A13
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 13
@@ -576,7 +576,7 @@ rules:
     # deployer meets it: a system shipped with instructions that are neither concise, complete,
     # correct and clear nor accessible and comprehensible to deployers is not transparent enough
     # for them to interpret its output, whatever the design section says. Supplied rather than
-    # cited, for the same reason 12(2) is supplied to AIA-HR-A12: a system with no instructions at
+    # cited, for the same reason 12(2) is supplied to AIA-RULE-HR-A12: a system with no instructions at
     # all breaches 13(2) and the finding belongs to the paragraph that lists their contents.
     qualified_by:
       - article: 13
@@ -593,7 +593,7 @@ rules:
       are the vehicle: they accompany the system in an appropriate digital format or otherwise, and
       Art. 13(2) makes their quality part of this duty — concise, complete, correct and clear, and
       relevant, accessible and comprehensible TO DEPLOYERS. WHAT they must contain is the separate
-      list in Art. 13(3), which AIA-HR-A13-3 judges.
+      list in Art. 13(3), which AIA-RULE-HR-A13-3 judges.
       TWO ROUTES PRESUME THIS SATISFIED, to the extent they cover it: conformity with a HARMONISED
       STANDARD whose reference is published in the Official Journal (Art. 40(1)), or with a COMMON
       SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
@@ -609,12 +609,12 @@ rules:
       - norm_id: AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
       - norm_id: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
 
-  # THE CONTENTS OF THE INSTRUCTIONS. AIA-HR-A13 asks whether the system is transparent and its
+  # THE CONTENTS OF THE INSTRUCTIONS. AIA-RULE-HR-A13 asks whether the system is transparent and its
   # instructions fit to be read; Art. 13(3) is a list of six items the instructions "shall contain
   # at least", and (b) alone runs to seven sub-points. The same relation Art. 12(3) has to
   # Art. 12(1), and judged the same way: against the list, not against the presence of a section
   # titled "Instructions for Use".
-  - rule_id: AIA-HR-A13-3
+  - rule_id: AIA-RULE-HR-A13-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 13
@@ -673,7 +673,7 @@ rules:
       - norm_id: AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
       - norm_id: AIA-NORM-A013-P3-F-LOG-MECHANISMS
 
-  - rule_id: AIA-HR-A14
+  - rule_id: AIA-RULE-HR-A14
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 14 # whole article: oversight measures, incl. the (a)-(e) capabilities in para 4
@@ -728,7 +728,7 @@ rules:
       - norm_id: AIA-NORM-A014-P4-E-INTERVENE-OR-SAFE-STOP
       - norm_id: AIA-NORM-A014-P5-TWO-PERSON-VERIFICATION
 
-  - rule_id: AIA-HR-A15
+  - rule_id: AIA-RULE-HR-A15
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 15 # whole article: accuracy, robustness and cybersecurity
@@ -800,7 +800,7 @@ rules:
   # those points too would report every finding twice. THREE POINTS CROSS-REFERENCE NOTHING. They
   # are the whole of their own obligation, and until they were written here no rule asked for them.
   # Cited by point, not by article: a rule citing Art. 16 whole would resolve to the entire list.
-  - rule_id: AIA-PO-A16-B
+  - rule_id: AIA-RULE-PO-A16-B
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 16
@@ -826,7 +826,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-PO-A16-K
+  - rule_id: AIA-RULE-PO-A16-K
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 16
@@ -848,7 +848,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-PO-A16-L
+  - rule_id: AIA-RULE-PO-A16-L
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 16
@@ -873,7 +873,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-PO-A17
+  - rule_id: AIA-RULE-PO-A17
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 17
@@ -934,7 +934,7 @@ rules:
       - norm_id: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
       - norm_id: AIA-NORM-A017-P2-RIGOUR-PROTECTION
 
-  - rule_id: AIA-PO-A17-4
+  - rule_id: AIA-RULE-PO-A17-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 17
@@ -957,7 +957,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-PO-A18
+  - rule_id: AIA-RULE-PO-A18
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 18
@@ -987,7 +987,7 @@ rules:
       - norm_id: AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
       - norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
 
-  - rule_id: AIA-PO-A18-3
+  - rule_id: AIA-RULE-PO-A18-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 18
@@ -1013,7 +1013,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
 
-  - rule_id: AIA-PO-A19
+  - rule_id: AIA-RULE-PO-A19
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 19
@@ -1038,7 +1038,7 @@ rules:
       - norm_id: AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
       - norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD
 
-  - rule_id: AIA-PO-A19-2
+  - rule_id: AIA-RULE-PO-A19-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 19
@@ -1063,7 +1063,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
 
-  - rule_id: AIA-PO-A20
+  - rule_id: AIA-RULE-PO-A20
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 20
@@ -1091,7 +1091,7 @@ rules:
       - norm_id: AIA-NORM-A020-P1-CORRECTIVE-RESPONSE
       - norm_id: AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN
 
-  - rule_id: AIA-PO-A20-2
+  - rule_id: AIA-RULE-PO-A20-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 20
@@ -1115,7 +1115,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-PO-A21
+  - rule_id: AIA-RULE-PO-A21
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 21
@@ -1140,7 +1140,7 @@ rules:
       annex_i: 2028-08-02
     status: active
 
-  - rule_id: AIA-PO-A21-2
+  - rule_id: AIA-RULE-PO-A21-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 21
@@ -1166,7 +1166,7 @@ rules:
   # ART. 41 IS A COMMISSION POWER, WITH ONE PARAGRAPH THAT IS NOT. Paragraphs 1 to 4 and 6 are all
   # about adopting, assessing and repealing common specifications; 41(5) turns and binds the
   # provider that does not follow one.
-  - rule_id: AIA-PO-A41-5
+  - rule_id: AIA-RULE-PO-A41-5
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 41
@@ -1212,7 +1212,7 @@ rules:
   # and notified bodies, and every other paragraph of them binds one of those two. Art. 36(8)(b) is
   # the exception: inside a paragraph about when certificates stay valid, its second half turns and
   # binds the provider holding the certificate, in writing and on a three-month clock.
-  - rule_id: AIA-PO-A36-8
+  - rule_id: AIA-RULE-PO-A36-8
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 36
@@ -1254,7 +1254,7 @@ rules:
       Art. 113(b) applies Chapter III Section 4 from 2 August 2025, without any of the route splits
       Art. 113(c) writes for Sections 1 to 3. So this duty has been live since before the
       requirements the certificate attests to bind at all. That is what the dates say; it is the
-      same inversion recorded on AIA-PO-A43-4, and for the same reason — the amending Regulation
+      same inversion recorded on AIA-RULE-PO-A43-4, and for the same reason — the amending Regulation
       moved Sections 1 to 3 and left the rest where it was.
     status: active
 
@@ -1263,7 +1263,7 @@ rules:
   # comment saying "employment is Annex III point 4", and fired it at biometrics and at Annex I
   # systems too — citing the wrong paragraph and the wrong Annex, confidently, to two systems out
   # of three. The comment was the condition; now the condition is the condition.
-  - rule_id: AIA-PO-A43-1
+  - rule_id: AIA-RULE-PO-A43-1
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
@@ -1287,8 +1287,8 @@ rules:
       specification is available; the provider did not apply the harmonised standard, or applied
       only part of it; common specifications exist and the provider did not apply them; or a
       harmonised standard was published WITH A RESTRICTION, and then only on the restricted part.
-      EACH BRANCH CARRIES ITS OWN WORK, and both are selected alongside this rule: AIA-PO-A43-1A
-      sets out what internal control under Annex VI requires, AIA-PO-A43-1B what the Annex VII
+      EACH BRANCH CARRIES ITS OWN WORK, and both are selected alongside this rule: AIA-RULE-PO-A43-1A
+      sets out what internal control under Annex VI requires, AIA-RULE-PO-A43-1B what the Annex VII
       notified-body route requires. WHICH NOTIFIED BODY IS NOT ALWAYS THE PROVIDER'S CHOICE. On the
       Annex VII route the provider may choose any of the notified bodies — except where the system
       is intended to be put into service by LAW ENFORCEMENT, IMMIGRATION OR ASYLUM AUTHORITIES, or
@@ -1310,12 +1310,12 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  # WHAT THE INTERNAL-CONTROL ROUTE CONSISTS OF, and the mirror of AIA-PO-A43-1B. Art. 43(1)(a)
+  # WHAT THE INTERNAL-CONTROL ROUTE CONSISTS OF, and the mirror of AIA-RULE-PO-A43-1B. Art. 43(1)(a)
   # lets an Annex III point 1 provider that applied harmonised standards ELECT Annex VI, and
   # electing it is not a lighter filing — it is three verifications nobody outside the provider's
-  # organisation witnesses. AIA-PO-A43-2 carries the same Annex for points 2 to 8, where Art. 43(2)
+  # organisation witnesses. AIA-RULE-PO-A43-2 carries the same Annex for points 2 to 8, where Art. 43(2)
   # makes it compulsory rather than elected.
-  - rule_id: AIA-PO-A43-1A
+  - rule_id: AIA-RULE-PO-A43-1A
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
@@ -1329,7 +1329,7 @@ rules:
       Owed only where the provider ELECTED internal control, which Art. 43(1)(a) offers only where
       harmonised standards under Art. 40 or common specifications under Art. 41 were applied in
       demonstrating conformity with the Section 2 requirements. Where none were applied, or only
-      part of one was, Annex VII is compulsory and AIA-PO-A43-1B is the rule instead. Which
+      part of one was, Annex VII is compulsory and AIA-RULE-PO-A43-1B is the rule instead. Which
       standards exist is a fact about the Official Journal and which were applied is a fact about
       the provider, so neither is settled by a description of the system.
     obligation_status: mandatory
@@ -1337,7 +1337,7 @@ rules:
     evidence_expected: >-
       THREE VERIFICATIONS THE PROVIDER PERFORMS ITSELF, which together are the whole of the Annex VI
       procedure. That the established QUALITY MANAGEMENT SYSTEM complies with Art. 17 — the same
-      system AIA-PO-A17 checks. That the information contained in the TECHNICAL DOCUMENTATION
+      system AIA-RULE-PO-A17 checks. That the information contained in the TECHNICAL DOCUMENTATION
       supports conformity of the system with the relevant essential requirements of Chapter III
       Section 2. And that the DESIGN AND DEVELOPMENT PROCESS and the Art. 72 post-market monitoring
       are CONSISTENT WITH that technical documentation — a cross-check between what the file says
@@ -1360,14 +1360,14 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  # WHAT THE NOTIFIED-BODY ROUTE CONSISTS OF. AIA-PO-A43-1 carries the CHOICE Art. 43(1) offers and
+  # WHAT THE NOTIFIED-BODY ROUTE CONSISTS OF. AIA-RULE-PO-A43-1 carries the CHOICE Art. 43(1) offers and
   # says nothing about either branch, deliberately — naming one annex there would assert a branch
   # the paragraph leaves open. This rule is the Annex VII branch itself: same paragraph, because
   # Annex VII is reachable only through it, and the two carry different duties. One is "complete a
   # conformity assessment by one of the routes"; this one is "and here is what that route requires
   # of you", which is four applications, two grants of access and a notification duty that runs for
   # as long as the certificate stands.
-  - rule_id: AIA-PO-A43-1B
+  - rule_id: AIA-RULE-PO-A43-1B
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
@@ -1409,7 +1409,7 @@ rules:
       the provider's name and address, another written declaration of exclusivity, and the Annex IV
       documentation. The provider must then grant the body FULL ACCESS to the training, validation
       and testing data sets, through an API or other remote means where appropriate — the
-      notified-body face of the Art. 74(12) duty AIA-PO-A74-12 carries toward an authority. Point
+      notified-body face of the Art. 74(12) duty AIA-RULE-PO-A74-12 carries toward an authority. Point
       4.5 goes further and is the one most often overlooked: on a reasoned request, and only after
       other means of verifying conformity are exhausted, the body must also be given access to the
       TRAINED MODELS AND THEIR PARAMETERS, subject to intellectual property and trade secret law.
@@ -1437,7 +1437,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-PO-A43-2
+  - rule_id: AIA-RULE-PO-A43-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
@@ -1478,7 +1478,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-PO-A43-3
+  - rule_id: AIA-RULE-PO-A43-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
@@ -1538,7 +1538,7 @@ rules:
     status: active
 
   # A STANDING DUTY, where the three rules above are all about the FIRST assessment.
-  - rule_id: AIA-PO-A43-4
+  - rule_id: AIA-RULE-PO-A43-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
@@ -1571,7 +1571,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-PO-A47
+  - rule_id: AIA-RULE-PO-A47
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 47
@@ -1603,7 +1603,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-PO-A47-4
+  - rule_id: AIA-RULE-PO-A47-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 47
@@ -1636,7 +1636,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-PO-A48
+  - rule_id: AIA-RULE-PO-A48
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 48
@@ -1667,11 +1667,11 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  # WHAT IS ON THE PAGE, as against the fact that a page exists. AIA-PO-A47 carries 47(1) — draw
+  # WHAT IS ON THE PAGE, as against the fact that a page exists. AIA-RULE-PO-A47 carries 47(1) — draw
   # one up, keep it ten years — and would be satisfied by a document titled "EU declaration of
   # conformity" saying nothing. This is the paragraph that says what it must say, and it is the one
   # that brings Annex V into the ruleset.
-  - rule_id: AIA-PO-A47-2
+  - rule_id: AIA-RULE-PO-A47-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 47
@@ -1710,10 +1710,10 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  # TWO PARAGRAPHS AIA-PO-A48 DOES NOT REACH. It cites 48(3), which is written for something you
+  # TWO PARAGRAPHS AIA-RULE-PO-A48 DOES NOT REACH. It cites 48(3), which is written for something you
   # can affix a mark to; most systems this tool reviews are supplied digitally, and 48(4) applies
   # wherever a notified body was involved on the Art. 43(1)(b) route.
-  - rule_id: AIA-PO-A48-2
+  - rule_id: AIA-RULE-PO-A48-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 48
@@ -1724,7 +1724,7 @@ rules:
     activation_condition: >-
       Applies to a high-risk AI system PROVIDED DIGITALLY, which is most of them and is not a fact
       the tier settles. Where the system ships as or inside a physical product, Art. 48(3)'s
-      affixing duty is the one that binds and AIA-PO-A48 carries it.
+      affixing duty is the one that binds and AIA-RULE-PO-A48 carries it.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -1748,7 +1748,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-PO-A48-4
+  - rule_id: AIA-RULE-PO-A48-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 48
@@ -1784,7 +1784,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-PO-A49
+  - rule_id: AIA-RULE-PO-A49
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 49
@@ -1816,7 +1816,7 @@ rules:
       under Annex III point 2, critical infrastructure, are excepted here and are registered at
       national level under Art. 49(5). Where the system is in the law enforcement, migration, asylum
       or border control areas, Art. 49(4) puts the entry in a secure non-public section — see
-      AIA-ALL-A49-4. An act against an external registry, not observable from the technical
+      AIA-RULE-ALL-A49-4. An act against an external registry, not observable from the technical
       documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
@@ -1832,10 +1832,10 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  # THE OTHER HALF OF ART. 49, and the reason AIA-PO-A49 excludes critical infrastructure. That rule
+  # THE OTHER HALF OF ART. 49, and the reason AIA-RULE-PO-A49 excludes critical infrastructure. That rule
   # withholds EU-database registration from Annex III point 2 because Art. 49(1) does; it does not
   # follow that such a system owes no registration at all. Paragraph 5 gives it a different one.
-  - rule_id: AIA-PO-A49-5
+  - rule_id: AIA-RULE-PO-A49-5
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 49
@@ -1868,7 +1868,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  - rule_id: AIA-ALL-A49-4
+  - rule_id: AIA-RULE-ALL-A49-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 49
@@ -1878,11 +1878,11 @@ rules:
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider, deployer]
     # NOT a second registration — the same one, lodged somewhere else and carrying less. It stands
-    # beside AIA-PO-A49 and AIA-DP-A49-3 rather than replacing either.
+    # beside AIA-RULE-PO-A49 and AIA-RULE-DP-A49-3 rather than replacing either.
     #
     # BINDS BOTH ROLES, because paragraph 4 governs "the registration referred to in paragraphs 1,
     # 2 and 3" — the deployer's own entry under 49(3) goes to the secure section on the same terms
-    # as the provider's. Hence AIA-ALL-, not AIA-PO-.
+    # as the provider's. Hence AIA-RULE-ALL-, not AIA-RULE-PO-.
     #
     # OVER-INCLUSIVE WITHIN ONE AREA, and said so in the condition. Art. 49(4) reaches Annex III
     # points 1, 6 and 7 "in the areas of law enforcement, migration, asylum and border control
@@ -1890,7 +1890,7 @@ rules:
     # which qualifies only when used FOR those purposes — and `AnnexIIIArea` records the listed
     # area, not the sector a system is deployed in, so nothing in this ruleset tells a police
     # face-matching system from a workplace sign-in one. `biometrics` is named anyway, on the same
-    # terms as AIA-HR-A12-3A to -3D: the rule is selected for every biometric system and the sector
+    # terms as AIA-RULE-HR-A12-3A to -3D: the rule is selected for every biometric system and the sector
     # limit
     # is stated in `activation_condition`, where the reader can apply it. The alternative gates the
     # rule out of the only area where the reader has to decide anything, and a duty withheld from
@@ -1932,7 +1932,7 @@ rules:
   # provider and the system before it is placed on the market; 49(3) registers the deploying
   # authority, the system it selected, and the fact of its use — so a system can be fully
   # registered by its provider and still leave its deployer in breach.
-  - rule_id: AIA-DP-A49-3
+  - rule_id: AIA-RULE-DP-A49-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 49
@@ -1984,11 +1984,11 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  # WHAT THE REGISTRATION CONSISTS OF. AIA-PO-A49, AIA-DP-A49-3 and AIA-NHR-A06-4-REGISTER carry the duty to
+  # WHAT THE REGISTRATION CONSISTS OF. AIA-RULE-PO-A49, AIA-RULE-DP-A49-3 and AIA-RULE-NHR-A06-4-REGISTER carry the duty to
   # register; Art. 71(2) and (3) say what has to be entered. The split between them is by party,
   # and it is not the split Art. 49 uses: 71(2) is the provider's Sections A and B, 71(3) is the
   # public-authority deployer's Section C.
-  - rule_id: AIA-PO-A71-2
+  - rule_id: AIA-RULE-PO-A71-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 71
@@ -2011,7 +2011,7 @@ rules:
         migration,
         justice_democracy,
       ]
-    # THE HIGH-RISK TIER ONLY, and AIA-NHR-A71-2 carries the other. Art. 71(1) has the database hold
+    # THE HIGH-RISK TIER ONLY, and AIA-RULE-NHR-A71-2 carries the other. Art. 71(1) has the database hold
     # Art. 6(2) high-risk systems registered under Art. 49, AND systems a provider concluded are
     # NOT high-risk under Art. 6(3) — Annex VIII Section A is the first, Section B the second. Two
     # rules rather than one because the two tiers do not share an area gate: Art. 49(1) excepts
@@ -2032,7 +2032,7 @@ rules:
       States of placing, a copy of the Art. 47 EU declaration of conformity, and electronic
       instructions for use — withheld for law enforcement, migration, asylum and border control
       systems. Item A/13, a URL for further information, is expressly OPTIONAL. A system registered
-      as NOT high-risk under Art. 6(3) enters Section B instead, which AIA-NHR-A71-2 carries.
+      as NOT high-risk under Art. 6(3) enters Section B instead, which AIA-RULE-NHR-A71-2 carries.
       An external act against a registry, not observable from the technical documentation — confirm
       separately.
     document_verifiable: false
@@ -2045,13 +2045,13 @@ rules:
       it was.
     status: active
 
-  # NO AREA GATE, AND THAT IS THE DIFFERENCE FROM AIA-PO-A71-2. Art. 49(1) and 49(3) each except
+  # NO AREA GATE, AND THAT IS THE DIFFERENCE FROM AIA-RULE-PO-A71-2. Art. 49(1) and 49(3) each except
   # "high-risk AI systems referred to in point 2 of Annex III" and Art. 49(5) registers those
   # nationally; Art. 49(2) enacts NO SUCH EXCEPTION. A provider that derogates an Annex III point 2
   # system under Art. 6(3) registers it in the EU database like any other, so gating this rule on
-  # the seven areas would tell a critical-infrastructure provider to register under AIA-NHR-A06-4
+  # the seven areas would tell a critical-infrastructure provider to register under AIA-RULE-NHR-A06-4
   # and never tell it what to enter — including the two items its whole derogation rests on.
-  - rule_id: AIA-NHR-A71-2
+  - rule_id: AIA-RULE-NHR-A71-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 71
@@ -2084,7 +2084,7 @@ rules:
       it was.
     status: active
 
-  - rule_id: AIA-DP-A71-3
+  - rule_id: AIA-RULE-DP-A71-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 71
@@ -2135,7 +2135,7 @@ rules:
   # Art. 59 — SANDBOX PERSONAL-DATA ROUTE. The permission in paragraph 1 is report-only: it
   # allows further processing only if every separate condition below is met. Those conditions
   # are grouped by the actor the canonical norm names, never flattened into one provider rule.
-  - rule_id: AIA-PP-A59-P1
+  - rule_id: AIA-RULE-PP-A59-P1
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 59
@@ -2167,7 +2167,7 @@ rules:
       - norm_id: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
       - norm_id: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
 
-  - rule_id: AIA-PO-A59-P1-E
+  - rule_id: AIA-RULE-PO-A59-P1-E
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 59
@@ -2191,7 +2191,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
 
-  - rule_id: AIA-SP-A59-P1-J
+  - rule_id: AIA-RULE-SP-A59-P1-J
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 59
@@ -2229,10 +2229,10 @@ rules:
   # outside these rules is that it is addressed to MEMBER STATES: it permits a Member State to
   # allow real-world testing of an Annex I Section B product, and Art. 60a(5)(b) then requires the
   # national framework to ensure compliance with Art. 60(2), (3), (4)(d) to (j) and (5) to (9). A
-  # Section B provider running a trial therefore owes most of what AIA-PO-A60-4 states, but owes it
+  # Section B provider running a trial therefore owes most of what AIA-RULE-PO-A60-4 states, but owes it
   # under the national measure rather than under a provision of this Regulation a rule could cite.
   # The ledger's Art. 60a entries carry that reading.
-  - rule_id: AIA-PO-A60-4
+  - rule_id: AIA-RULE-PO-A60-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 60
@@ -2291,7 +2291,7 @@ rules:
       conditions today, whichever Art. 6 door its system came through.
     status: active
 
-  - rule_id: AIA-PO-A60-7
+  - rule_id: AIA-RULE-PO-A60-7
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 60
@@ -2325,7 +2325,7 @@ rules:
       conditions today, whichever Art. 6 door its system came through.
     status: active
 
-  - rule_id: AIA-PO-A60-8
+  - rule_id: AIA-RULE-PO-A60-8
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 60
@@ -2357,7 +2357,7 @@ rules:
       conditions today, whichever Art. 6 door its system came through.
     status: active
 
-  - rule_id: AIA-PO-A61
+  - rule_id: AIA-RULE-PO-A61
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 61
@@ -2413,7 +2413,7 @@ rules:
       conditions today, whichever Art. 6 door its system came through.
     status: active
 
-  - rule_id: AIA-PO-A72
+  - rule_id: AIA-RULE-PO-A72
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 72
@@ -2428,7 +2428,7 @@ rules:
     # 72(3) is the other half of the same duty: the system must be BASED ON a post-market
     # monitoring plan, and that plan must sit inside the Annex IV technical documentation. The
     # second sentence is separately shown to a judge — Annex IV point 9 names the plan and
-    # AIA-HR-A11 carries Annex IV verbatim — but the first is a requirement on the monitoring
+    # AIA-RULE-HR-A11 carries Annex IV verbatim — but the first is a requirement on the monitoring
     # SYSTEM, which is this rule's subject and nobody else's.
     qualified_by:
       - article: 72
@@ -2447,7 +2447,7 @@ rules:
       collection duty entirely, so a provider serving those deployers is not short of anything by
       not holding it. Art. 72(3) adds that the system must be BASED ON a written post-market
       monitoring plan — monitoring carried on ad hoc, however diligently, is not this — and that the
-      plan belongs inside the Annex IV technical documentation, where AIA-HR-A11 does reach it. The
+      plan belongs inside the Annex IV technical documentation, where AIA-RULE-HR-A11 does reach it. The
       duty is to run it; that is an operational process, not a property of the documentation —
       confirm separately. Art. 72(4) offers a CHOICE rather than a second system: where a post-
       market monitoring system and plan already exist under the Annex I Section A legislation
@@ -2463,10 +2463,10 @@ rules:
   # ART. 73(10) MOVES THE ADDRESSEE, which is why it is a rule and not a narrowing. Read as a limit
   # it only cuts the reportable set down to Art. 3(49)(c) incidents; read whole it also sends the
   # notification somewhere else — to the national competent authority the Member State chose for
-  # medical devices, which is neither the market surveillance authority AIA-ALL-A73 names nor the
-  # AI Office AIA-PO-A75-1a names. A provider of a medical-device AI system that follows either of
+  # medical devices, which is neither the market surveillance authority AIA-RULE-ALL-A73 names nor the
+  # AI Office AIA-RULE-PO-A75-1a names. A provider of a medical-device AI system that follows either of
   # those rules notifies the wrong body.
-  - rule_id: AIA-ALL-A73-10
+  - rule_id: AIA-RULE-ALL-A73-10
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 73
@@ -2487,7 +2487,7 @@ rules:
       under Union law intended to protect fundamental rights. And the recipient MOVES: the
       notification shall be made to the NATIONAL COMPETENT AUTHORITY CHOSEN FOR THAT PURPOSE by the
       Member States where the incident occurred, not to the market surveillance authority under
-      AIA-ALL-A73 and not to the AI Office under AIA-PO-A75-1a. Which body that is comes from the
+      AIA-RULE-ALL-A73 and not to the AI Office under AIA-RULE-PO-A75-1a. Which body that is comes from the
       Member State's own designation, so knowing it in advance is part of having the procedure. The
       Art. 73 deadlines and post-report duties are otherwise unchanged. Not visible in the
       technical documentation — confirm separately.
@@ -2506,8 +2506,8 @@ rules:
   # the provider, and Art. 26(5) closes with "If the deployer is not able to reach the provider,
   # Article 73 shall apply mutatis mutandis" — so a deployer that cannot reach its provider owes
   # this Article directly, on these deadlines. Paragraphs 2 to 5 already write "the provider or,
-  # where applicable, the deployer" into every clock. Hence AIA-ALL-, not AIA-PO-.
-  - rule_id: AIA-ALL-A73
+  # where applicable, the deployer" into every clock. Hence AIA-RULE-ALL-, not AIA-RULE-PO-.
+  - rule_id: AIA-RULE-ALL-A73
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 73 # whole article: report serious incidents, by when, and what follows
@@ -2540,7 +2540,7 @@ rules:
     effective_date: 2026-08-02
     status: active
 
-  - rule_id: AIA-PO-A75-1a
+  - rule_id: AIA-RULE-PO-A75-1a
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 75
@@ -2551,7 +2551,7 @@ rules:
     # A DIFFERENT ADDRESSEE, not a second report. Art. 75(1a) opens "by way of derogation from
     # Article 73", so where it applies it REPLACES that Article's addressee and leaves everything
     # else standing — 73(2) to (9) apply mutatis mutandis, so the deadlines above are unchanged.
-    # Reported beside AIA-ALL-A73 rather than folded into it because the condition is a fact about
+    # Reported beside AIA-RULE-ALL-A73 rather than folded into it because the condition is a fact about
     # the provider, not about the system: whether the high-risk system is built on a general-purpose
     # model the same provider supplies, or is a component of a VLOP or VLOSE under Art. 75(1). That
     # is not derivable from a description of the system, so it is stated for the reader.
@@ -2593,7 +2593,7 @@ rules:
   # fixes the artefact (a description of measures taken) and its timing (upon implementation); the
   # decision settles only which measures. Same shape as Art. 82(2): an authority's act creates the
   # trigger, the Regulation writes the duty.
-  - rule_id: AIA-ALL-A75c-3
+  - rule_id: AIA-RULE-ALL-A75c-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 75c
@@ -2642,10 +2642,10 @@ rules:
   # DATA SETS, and neither says anything about the API or remote-access modality this paragraph
   # names. Annex VII point 4.3 imposes the same data-set access, but only on the notified-body route
   # and only for a provider that takes it.
-  # ONE PARAGRAPH ON FROM AIA-PO-A74-12 AND THE SAME SHAPE. "Shall be granted access" names no
+  # ONE PARAGRAPH ON FROM AIA-RULE-PO-A74-12 AND THE SAME SHAPE. "Shall be granted access" names no
   # grantor and means the provider, exactly as 74(12) does; not documentable is what
   # `document_verifiable: false` records, not a reason to leave a duty unmodelled.
-  - rule_id: AIA-PO-A74-13
+  - rule_id: AIA-RULE-PO-A74-13
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 74
@@ -2676,7 +2676,7 @@ rules:
     effective_date: 2026-08-02
     status: active
 
-  - rule_id: AIA-PO-A74-12
+  - rule_id: AIA-RULE-PO-A74-12
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 74
@@ -2709,9 +2709,9 @@ rules:
   # which is Art. 3(8) — five roles here, product manufacturer left off on the ground the ledger
   # records for that role.
   #
-  # HIGH-RISK ONLY, unlike AIA-ALL-A79: 82(1) names a high-risk AI system, where Art. 79 reaches any
+  # HIGH-RISK ONLY, unlike AIA-RULE-ALL-A79: 82(1) names a high-risk AI system, where Art. 79 reaches any
   # system presenting a risk.
-  - rule_id: AIA-ALL-A82
+  - rule_id: AIA-RULE-ALL-A82
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 82
@@ -2751,7 +2751,7 @@ rules:
   # halfway through. The first subparagraph restricts what they may disclose; the second puts two
   # duties on a PROVIDER — one that happens to be a public authority — and it is the only place in
   # the Act that says where a technical file physically lives.
-  - rule_id: AIA-PO-A78-3
+  - rule_id: AIA-RULE-PO-A78-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 78
@@ -2760,7 +2760,7 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
-    # THE SAME POPULATION AS AIA-ALL-A49-4, and gated the same way. The paragraph names Annex III
+    # THE SAME POPULATION AS AIA-RULE-ALL-A49-4, and gated the same way. The paragraph names Annex III
     # points 1, 6 and 7 held by law enforcement, immigration or asylum authorities: points 6 and 7
     # ARE those areas, and point 1 is biometrics, which qualifies only by who holds the system.
     # `biometrics` is named and the limit stated in the condition, because gating it out would
@@ -2795,12 +2795,12 @@ rules:
       Art. 113(c) moved Chapter III Sections 1 to 3 and nothing else, and Art. 78 is in Chapter IX.
       So the custody duty binds from the general date while the Annex IV documentation it governs
       is not owed until 2 December 2027 for an Annex III system. In force ahead of its own subject,
-      as with AIA-ALL-A49-4.
+      as with AIA-RULE-ALL-A49-4.
     status: active
 
 
   # Art. 79 binds the OPERATOR — Art. 3(8): provider, product manufacturer, deployer, authorised
-  # representative, importer or distributor — which is why this is filed AIA-ALL- and carries five
+  # representative, importer or distributor — which is why this is filed AIA-RULE-ALL- and carries five
   # roles where every other rule carries one or two. The sixth, product manufacturer, is left off on
   # the ground the ledger already gives for the role as a whole: Art. 25(3) makes a manufacturer who
   # places a high-risk system on the market with their product THE PROVIDER, so they are reached
@@ -2812,7 +2812,7 @@ rules:
   # tier, and 79(6)(d) names non-compliance with Art. 50 as a ground — so a minimal-risk generator
   # in breach of Art. 50(2) owes it. Narrowing to high_risk would drop exactly the case the Article
   # names.
-  - rule_id: AIA-ALL-A79
+  - rule_id: AIA-RULE-ALL-A79
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 79
@@ -2863,7 +2863,7 @@ rules:
   # The registration and disclosure-on-request limbs are distinct process rules below: they have
   # different evidence and cannot be hidden in this document check.
   # ------------------------------------------------------------------------------------------
-  - rule_id: AIA-NHR-A06-4
+  - rule_id: AIA-RULE-NHR-A06-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 6
@@ -2873,7 +2873,7 @@ rules:
     applies_to_role: [provider]
     # Art. 6(4)'s last limb IS Art. 49(2): "Such provider shall be subject to the registration
     # obligation set out in Article 49(2)". The cross-reference carries the PROVIDER limb only —
-    # the authorised representative's is AIA-AR-A49-2.
+    # the authorised representative's is AIA-RULE-AR-A49-2.
     qualified_by:
       - article: 49
         paragraph: 2
@@ -2883,8 +2883,8 @@ rules:
       A documented not-high-risk assessment: which Art. 6(3) derogation condition is relied upon and
       why the system does not pose a significant risk. The reasoning IS expected in the
       documentation, hence document-verifiable. Registration and production to an authority on
-      request are separate process duties, reported under AIA-NHR-A06-4-REGISTER and
-      AIA-NHR-A06-4-PROVIDE-ASSESSMENT.
+      request are separate process duties, reported under AIA-RULE-NHR-A06-4-REGISTER and
+      AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT.
     document_verifiable: true
     effective_date: 2027-12-02
     effective_date_note: >-
@@ -2904,7 +2904,7 @@ rules:
 
   # The remaining Art. 6(4) limbs have the same risk and duty-holder gate as the assessment, but
   # their evidence is an external act or a later response, not the assessment document itself.
-  - rule_id: AIA-NHR-A06-4-REGISTER
+  - rule_id: AIA-RULE-NHR-A06-4-REGISTER
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 6
@@ -2925,13 +2925,13 @@ rules:
     document_verifiable: false
     effective_date: 2027-12-02
     effective_date_note: >-
-      This follows the same contested Article 6(4) reading as AIA-NHR-A06-4. Article 49(2) is in
+      This follows the same contested Article 6(4) reading as AIA-RULE-NHR-A06-4. Article 49(2) is in
       Section 5 and otherwise applies from 2 August 2026, but the registration is triggered by the
       Article 6(3) conclusion. A provider relying on the derogation should take advice rather than
       treat the later date as certain.
     status: active
 
-  - rule_id: AIA-NHR-A06-4-PROVIDE-ASSESSMENT
+  - rule_id: AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 6
@@ -2948,7 +2948,7 @@ rules:
     document_verifiable: false
     effective_date: 2027-12-02
     effective_date_note: >-
-      This follows the same contested Article 6(4) reading as AIA-NHR-A06-4: the duty attaches to
+      This follows the same contested Article 6(4) reading as AIA-RULE-NHR-A06-4: the duty attaches to
       a provider's Article 6(3) conclusion, although the alternative reading is that it applies
       from the general date of 2 August 2026.
     status: active
@@ -2963,7 +2963,7 @@ rules:
   # Not listed for `prohibited`: the review gate stops there, and a report telling a provider to
   # train staff on a system that may not be operated at all would be absurd.
   # ------------------------------------------------------------------------------------------
-  - rule_id: AIA-ALL-A04
+  - rule_id: AIA-RULE-ALL-A04
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 4
@@ -3001,7 +3001,7 @@ rules:
   # safeguards for separate confirmation instead of calling a missing statement in a technical
   # file a compliance gap.
   # ------------------------------------------------------------------------------------------
-  - rule_id: AIA-ALL-A04A
+  - rule_id: AIA-RULE-ALL-A04A
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 4a
@@ -3057,7 +3057,7 @@ rules:
   # carry carve-outs of their own. Those are conditions on the DUTY, resolved when the cascade
   # decided the duty attached — not re-litigated here.
   # ------------------------------------------------------------------------------------------
-  - rule_id: AIA-TR-A50-1
+  - rule_id: AIA-RULE-TR-A50-1
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
@@ -3084,7 +3084,7 @@ rules:
     effective_date: 2026-08-02
     status: active
 
-  - rule_id: AIA-TR-A50-2
+  - rule_id: AIA-RULE-TR-A50-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
@@ -3138,7 +3138,7 @@ rules:
     effective_date: 2026-08-02
     status: active
 
-  - rule_id: AIA-TR-A50-3
+  - rule_id: AIA-RULE-TR-A50-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
@@ -3165,7 +3165,7 @@ rules:
     effective_date: 2026-08-02
     status: active
 
-  - rule_id: AIA-TR-A50-4
+  - rule_id: AIA-RULE-TR-A50-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
@@ -3205,7 +3205,7 @@ rules:
   # that operates the system, not the one that built it. Reported so a provider's report names
   # what its customers will owe, and so a deployer reading it is not told only the provider's half.
   # ------------------------------------------------------------------------------------------
-  - rule_id: AIA-DP-A26
+  - rule_id: AIA-RULE-DP-A26
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3216,7 +3216,7 @@ rules:
     check_type: presence
     evidence_expected: >-
       THE DEPLOYER'S CORE OPERATING MEASURES, which are six of this Article's twelve paragraphs.
-      Five more are carried by AIA-DP-A26-8 through -12: 26(8) to (11) are narrowed to particular
+      Five more are carried by AIA-RULE-DP-A26-8 through -12: 26(8) to (11) are narrowed to particular
       deployers or particular systems, and 26(12) is conduct toward an authority rather than an
       operating measure. Art. 26(3) imposes nothing — it is a saving clause preserving the
       deployer's freedom to organise its own resources for the oversight measures in 26(1) and (2).
@@ -3235,7 +3235,7 @@ rules:
       own, not a consequence of the report. Where it has identified a SERIOUS INCIDENT it shall
       immediately inform FIRST the provider, and THEN the importer or distributor and the relevant
       market surveillance authorities, in that order. And if it cannot reach the provider, Art. 73
-      applies mutatis mutandis and the deployer owes the report itself — see AIA-ALL-A73 for the
+      applies mutatis mutandis and the deployer owes the report itself — see AIA-RULE-ALL-A73 for the
       deadlines that then bind it. Sensitive operational data of law-enforcement deployers is
       outside this obligation, and a financial institution meets the monitoring half by complying
       with its internal-governance rules under Union financial services law.
@@ -3258,7 +3258,7 @@ rules:
       - norm_id: AIA-NORM-A026-P5-INCIDENT
       - norm_id: AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS
 
-  - rule_id: AIA-DP-A26-6
+  - rule_id: AIA-RULE-DP-A26-6
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3283,7 +3283,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A026-P6-FINANCIAL-DOCUMENTATION
 
-  - rule_id: AIA-DP-A26-7
+  - rule_id: AIA-RULE-DP-A26-7
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3315,8 +3315,8 @@ rules:
   # into one rule's evidence text it becomes a sentence a reader has to notice and apply to
   # themselves. Art. 26(12) carries no narrowing and is separate for the other reason a rule earns
   # its own entry: it is answered by whoever handles an authority, not by whoever operates the
-  # system. AIA-DP-A26 keeps the core duties that bind every deployer alike.
-  - rule_id: AIA-DP-A26-8
+  # system. AIA-RULE-DP-A26 keeps the core duties that bind every deployer alike.
+  - rule_id: AIA-RULE-DP-A26-8
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3334,7 +3334,7 @@ rules:
     check_type: presence
     evidence_expected: >-
       Compliance with the Art. 49 registration obligations, which for this deployer is Art. 49(3)
-      and AIA-DP-A49-3. This is distinct from the unregistered-system prohibition and notice.
+      and AIA-RULE-DP-A49-3. This is distinct from the unregistered-system prohibition and notice.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -3343,7 +3343,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A026-P8-REGISTER
 
-  - rule_id: AIA-DP-A26-8-UNREGISTERED-PROHIBITION
+  - rule_id: AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3367,7 +3367,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
 
-  - rule_id: AIA-DP-A26-8-UNREGISTERED-NOTICE
+  - rule_id: AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3391,7 +3391,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A026-P8-INFORM-UNREGISTERED
 
-  - rule_id: AIA-DP-A26-9
+  - rule_id: AIA-RULE-DP-A26-9
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3426,7 +3426,7 @@ rules:
   # THE POST-REMOTE BIOMETRIC IDENTIFICATION REGIME, which is one paragraph and six subparagraphs
   # and the densest passage in the Article. Its own rule because it reaches one kind of system used
   # by one kind of deployer, and because a reader who is not that deployer should not be reading it.
-  - rule_id: AIA-DP-A26-10
+  - rule_id: AIA-RULE-DP-A26-10
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3476,7 +3476,7 @@ rules:
       - norm_id: AIA-NORM-A026-P10-DOCUMENT-EACH-USE
       - norm_id: AIA-NORM-A026-P10-ANNUAL-REPORTS
 
-  - rule_id: AIA-DP-A26-10-LAW-ENFORCEMENT
+  - rule_id: AIA-RULE-DP-A26-10-LAW-ENFORCEMENT
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3501,7 +3501,7 @@ rules:
       - norm_id: AIA-NORM-A026-P10-PROHIBIT-UNTARGETED-USE
       - norm_id: AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION
 
-  - rule_id: AIA-DP-A26-11
+  - rule_id: AIA-RULE-DP-A26-11
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3536,7 +3536,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A026-P11-INFORM-NATURAL-PERSONS
 
-  - rule_id: AIA-DP-A26-12
+  - rule_id: AIA-RULE-DP-A26-12
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
@@ -3562,7 +3562,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A026-P12-COOPERATE
 
-  - rule_id: AIA-DP-A27
+  - rule_id: AIA-RULE-DP-A27
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 27
@@ -3629,11 +3629,11 @@ rules:
   # is NOT modelled: it is discharged in a contract with a third party, not in the technical
   # documentation this tool reads, so a document check could only ever report "not found".
   # ------------------------------------------------------------------------------------------
-  # Art. 27 is THREE duties on one assessment: carry it out, keep it current, file it. AIA-DP-A27
+  # Art. 27 is THREE duties on one assessment: carry it out, keep it current, file it. AIA-RULE-DP-A27
   # carries the first and its required contents. The other two are separate obligations with
   # separate failure modes — an assessment that was right at first use and never revisited, and a
   # complete assessment that was never sent — so each is its own rule and its own finding.
-  - rule_id: AIA-DP-A27-2
+  - rule_id: AIA-RULE-DP-A27-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 27
@@ -3677,7 +3677,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A027-P2-UPDATE
 
-  - rule_id: AIA-DP-A27-3
+  - rule_id: AIA-RULE-DP-A27-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 27
@@ -3721,7 +3721,7 @@ rules:
     criteria:
       - norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
 
-  - rule_id: AIA-IP-A25-2
+  - rule_id: AIA-RULE-IP-A25-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 25
@@ -3771,7 +3771,7 @@ rules:
   # provider's technical file can evidence them: document_verifiable is false throughout, and they
   # are reported as confirmations to make rather than as gaps.
   # ------------------------------------------------------------------------------------------
-  - rule_id: AIA-PO-A25-4
+  - rule_id: AIA-RULE-PO-A25-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 25
@@ -3803,10 +3803,10 @@ rules:
   # ART. 22 BINDS TWO PARTIES, and only one of them is the representative. Paragraphs (1) and (2)
   # are duties of the PROVIDER — appoint a representative, enable it to do the job, and ensure the
   # mandate empowers its statutory task set — while
-  # (3) to (5) are the representative's own, which AIA-AR-A22 carries. One rule for both would file
+  # (3) to (5) are the representative's own, which AIA-RULE-AR-A22 carries. One rule for both would file
   # the appointment under the party being appointed, and a third-country provider reading its own
   # column would never see the duty that applies before it may sell at all.
-  - rule_id: AIA-PO-A22
+  - rule_id: AIA-RULE-PO-A22
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 22
@@ -3850,7 +3850,7 @@ rules:
       - norm_id: AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE
       - norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
 
-  - rule_id: AIA-AR-A22
+  - rule_id: AIA-RULE-AR-A22
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 22
@@ -3861,7 +3861,7 @@ rules:
     check_type: presence
     evidence_expected: >-
       Art. 22(3) and (4), the representative's own duties. Art. 22(1) and (2) bind the provider and
-      are carried by AIA-PO-A22. Art. 22(3) OPENS WITH TWO DUTIES BEFORE THE MANDATE LIST. Perform
+      are carried by AIA-RULE-PO-A22. Art. 22(3) OPENS WITH TWO DUTIES BEFORE THE MANDATE LIST. Perform
       the tasks specified in the mandate; and PROVIDE A COPY OF THE MANDATE to the market
       surveillance authorities upon request, in one of the official languages of the institutions of
       the Union AS INDICATED BY THE COMPETENT AUTHORITY. (a) verify that the Art. 47 EU declaration
@@ -3902,7 +3902,7 @@ rules:
       - norm_id: AIA-NORM-A022-P4-TERMINATE-MANDATE
       - norm_id: AIA-NORM-A022-P4-NOTIFY-TERMINATION
 
-  - rule_id: AIA-IM-A23
+  - rule_id: AIA-RULE-IM-A23
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 23
@@ -3954,7 +3954,7 @@ rules:
       - norm_id: AIA-NORM-A023-P6-TECHNICAL-DOCUMENTATION-AVAILABLE
       - norm_id: AIA-NORM-A023-P7-COOPERATE
 
-  - rule_id: AIA-DI-A24
+  - rule_id: AIA-RULE-DI-A24
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 24
@@ -4011,7 +4011,7 @@ rules:
   # person rather than toward an authority. That reasoning stopped applying the moment deployer
   # obligations came in scope: it is a duty of a role this report now covers.
   # ------------------------------------------------------------------------------------------
-  - rule_id: AIA-DP-A86
+  - rule_id: AIA-RULE-DP-A86
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 86
@@ -4064,7 +4064,7 @@ rules:
   # to judge first, on the day a general-purpose model reference document exists.
   # ==============================================================================================
 
-  - rule_id: AIA-GP-A52-1
+  - rule_id: AIA-RULE-GP-A52-1
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 52
@@ -4099,7 +4099,7 @@ rules:
   # free and open-source model by Art. 53(2), while (c) and (d) are owed by every provider. One
   # rule for the paragraph would let a pass on the copyright policy hide a missing Annex XI file,
   # and would have to state a carve-out that applies to half of what it covers.
-  - rule_id: AIA-GP-A53-1A
+  - rule_id: AIA-RULE-GP-A53-1A
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 53
@@ -4144,7 +4144,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A53-1B
+  - rule_id: AIA-RULE-GP-A53-1B
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 53
@@ -4156,7 +4156,7 @@ rules:
     applies_to_role: [provider]
     activation_condition: >-
       Lifted by the same Art. 53(2) open-source carve-out as point (a), on the same four conditions,
-      and disapplied again for a model with systemic risk. See AIA-GP-A53-1A.
+      and disapplied again for a model with systemic risk. See AIA-RULE-GP-A53-1A.
     obligation_status: mandatory
     check_type: completeness
     evidence_expected: >-
@@ -4181,7 +4181,7 @@ rules:
       - norm_id: AIA-NORM-A053-P1-B-ENABLE-DOWNSTREAM-COMPLIANCE
       - norm_id: AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
 
-  - rule_id: AIA-GP-A53-1C
+  - rule_id: AIA-RULE-GP-A53-1C
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 53
@@ -4211,7 +4211,7 @@ rules:
       - norm_id: AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
       - norm_id: AIA-NORM-A053-P1-C-RIGHTS-RESERVATION
 
-  - rule_id: AIA-GP-A53-1D
+  - rule_id: AIA-RULE-GP-A53-1D
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 53
@@ -4240,14 +4240,14 @@ rules:
 
   # THE CHAPTER V TWIN OF ART. 21 AND ART. 74(12), and it is a provider duty on its face —
   # "Providers of general-purpose AI models shall cooperate". Not documentable and modelled anyway,
-  # for the reason AIA-PO-A21 and AIA-PO-A74-12 are: conduct owed to an authority is still owed,
+  # for the reason AIA-RULE-PO-A21 and AIA-RULE-PO-A74-12 are: conduct owed to an authority is still owed,
   # and a rule is how the reader is told about it. Art. 21(3) is the one Art. 21 paragraph with no
   # rule, and only because it binds the RECEIVING AUTHORITY rather than the provider.
   # THE TWO COMMISSION-REQUEST DUTIES OF CHAPTER V. Arts. 91 and 92 are mostly the AI Office's and
   # the Commission's powers, and one paragraph of each turns and binds the provider: supply what is
-  # requested. Art. 101 attaches fines to failing. Modelled for the reason AIA-GP-A53-3 and
-  # AIA-PO-A74-12 are — a duty owed to an authority is owed whether or not a file evidences it.
-  - rule_id: AIA-GP-A91-5
+  # requested. Art. 101 attaches fines to failing. Modelled for the reason AIA-RULE-GP-A53-3 and
+  # AIA-RULE-PO-A74-12 are — a duty owed to an authority is owed whether or not a file evidences it.
+  - rule_id: AIA-RULE-GP-A91-5
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 91
@@ -4276,7 +4276,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A92-5
+  - rule_id: AIA-RULE-GP-A92-5
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 92
@@ -4303,7 +4303,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A53-3
+  - rule_id: AIA-RULE-GP-A53-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 53
@@ -4326,7 +4326,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A53-4
+  - rule_id: AIA-RULE-GP-A53-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 53
@@ -4359,7 +4359,7 @@ rules:
   # appoints and enables, the representative performs and terminates. Filed under two roles for
   # that reason, and Art. 3(5) makes the same `authorised_representative` the duty-holder — it
   # covers a mandate from a provider of an AI system OR of a general-purpose AI model.
-  - rule_id: AIA-GP-A54-1
+  - rule_id: AIA-RULE-GP-A54-1
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 54
@@ -4385,7 +4385,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A54-2
+  - rule_id: AIA-RULE-GP-A54-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 54
@@ -4395,7 +4395,7 @@ rules:
     applies_to_role: [provider]
     activation_condition: >-
       Owed by the same third-country provider that owes Art. 54(1), and lifted by the same
-      Art. 54(6) open-source carve-out. See AIA-GP-A54-1.
+      Art. 54(6) open-source carve-out. See AIA-RULE-GP-A54-1.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -4408,7 +4408,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GPAR-A54-3
+  - rule_id: AIA-RULE-GPAR-A54-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 54
@@ -4439,7 +4439,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A54-4
+  - rule_id: AIA-RULE-GP-A54-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 54
@@ -4465,7 +4465,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GPAR-A54-5
+  - rule_id: AIA-RULE-GPAR-A54-5
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 54
@@ -4500,7 +4500,7 @@ rules:
   # EVERY ONE OF THEM TURNS ON THE ART. 51 LINE, which nothing answers. That is why each carries
   # the same condition rather than a route or an area gate: the ruleset can say what a
   # systemic-risk provider owes without being able to say whether this provider is one.
-  - rule_id: AIA-GP-A55-1A
+  - rule_id: AIA-RULE-GP-A55-1A
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 55
@@ -4532,7 +4532,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A55-1B
+  - rule_id: AIA-RULE-GP-A55-1B
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 55
@@ -4542,7 +4542,7 @@ rules:
     applies_to_risk_class: [gpai_model]
     applies_to_role: [provider]
     activation_condition: >-
-      Owed only by a model with systemic risk under Art. 51(1). See AIA-GP-A55-1A.
+      Owed only by a model with systemic risk under Art. 51(1). See AIA-RULE-GP-A55-1A.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -4563,7 +4563,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A55-1C
+  - rule_id: AIA-RULE-GP-A55-1C
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 55
@@ -4573,7 +4573,7 @@ rules:
     applies_to_risk_class: [gpai_model]
     applies_to_role: [provider]
     activation_condition: >-
-      Owed only by a model with systemic risk under Art. 51(1). See AIA-GP-A55-1A.
+      Owed only by a model with systemic risk under Art. 51(1). See AIA-RULE-GP-A55-1A.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -4589,7 +4589,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A55-1D
+  - rule_id: AIA-RULE-GP-A55-1D
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 55
@@ -4599,7 +4599,7 @@ rules:
     applies_to_risk_class: [gpai_model]
     applies_to_role: [provider]
     activation_condition: >-
-      Owed only by a model with systemic risk under Art. 51(1). See AIA-GP-A55-1A.
+      Owed only by a model with systemic risk under Art. 51(1). See AIA-RULE-GP-A55-1A.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -4615,7 +4615,7 @@ rules:
     effective_date: 2025-08-02
     status: active
 
-  - rule_id: AIA-GP-A55-2
+  - rule_id: AIA-RULE-GP-A55-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 55
@@ -4634,7 +4634,7 @@ rules:
       prepared for assessment by the Commission. Art. 53(4) again, one tier up, and the two are
       separate obligations rather than one: a provider may rely on a code of practice for its
       Art. 53 duties and on nothing for its Art. 55 duties, and would then owe this and not
-      AIA-GP-A53-4. Addressed to the Commission — confirm separately.
+      AIA-RULE-GP-A53-4. Addressed to the Commission — confirm separately.
     document_verifiable: false
     effective_date: 2025-08-02
     status: active
@@ -4658,7 +4658,7 @@ rules:
   # THE DEPLOYER, because Art. 5(2) to (4) address the law enforcement authority USING the system.
   # The provider of such a system owes Chapter III on the ordinary route where the use is lawful;
   # nothing here is a provider duty.
-  - rule_id: AIA-DP-A05-2
+  - rule_id: AIA-RULE-DP-A05-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 5
@@ -4696,7 +4696,7 @@ rules:
       were not moved, so these conditions have bound since the Article began to apply.
     status: active
 
-  - rule_id: AIA-DP-A05-3
+  - rule_id: AIA-RULE-DP-A05-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 5
@@ -4706,7 +4706,7 @@ rules:
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
     activation_condition: >-
-      Owed on the same branch as AIA-DP-A05-2: a use permitted under Art. 5(1), first subparagraph,
+      Owed on the same branch as AIA-RULE-DP-A05-2: a use permitted under Art. 5(1), first subparagraph,
       point (h) and authorised by a Member State under Art. 5(5).
     obligation_status: mandatory
     check_type: presence
@@ -4728,11 +4728,11 @@ rules:
     report_as_public_authority_notice: true
     effective_date: 2025-02-02
     effective_date_note: >-
-      Art. 113(a), same as AIA-DP-A05-2 — Chapter II from 2 February 2025, and this paragraph was
+      Art. 113(a), same as AIA-RULE-DP-A05-2 — Chapter II from 2 February 2025, and this paragraph was
       not among the points the Omnibus deferred.
     status: active
 
-  - rule_id: AIA-DP-A05-4
+  - rule_id: AIA-RULE-DP-A05-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 5
@@ -4742,7 +4742,7 @@ rules:
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
     activation_condition: >-
-      Owed on the same branch as AIA-DP-A05-2, and owed WITHOUT PREJUDICE TO Art. 5(3): the
+      Owed on the same branch as AIA-RULE-DP-A05-2, and owed WITHOUT PREJUDICE TO Art. 5(3): the
       notification is due whether or not the prior authorisation was obtained in advance or on the
       urgency route.
     obligation_status: mandatory
@@ -4762,7 +4762,7 @@ rules:
     report_as_public_authority_notice: true
     effective_date: 2025-02-02
     effective_date_note: >-
-      Art. 113(a), same as AIA-DP-A05-2.
+      Art. 113(a), same as AIA-RULE-DP-A05-2.
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -4772,7 +4772,7 @@ rules:
   # thing that triggers it is a route the tool does not classify to (the Art. 46 derogation), an
   # instrument it does not carry (Art. 47(3)), a limb of a cross-reference (Art. 49(2)) or a cost
   # rather than a document (Art. 75(1e)). None of those is a reason the duty is not owed.
-  - rule_id: AIA-PO-A46-1
+  - rule_id: AIA-RULE-PO-A46-1
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 46
@@ -4806,7 +4806,7 @@ rules:
       procedure applies before the requirements it verifies.
     status: active
 
-  - rule_id: AIA-DP-A46-2
+  - rule_id: AIA-RULE-DP-A46-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 46
@@ -4833,10 +4833,10 @@ rules:
     effective_date: 2026-08-02
     effective_date_note: >-
       Art. 46 sits in Chapter III Section 5, so 2 August 2026, ahead of the 2 December 2027 start
-      of the Section 2 requirements — as AIA-PO-A46-1.
+      of the Section 2 requirements — as AIA-RULE-PO-A46-1.
     status: active
 
-  - rule_id: AIA-PO-A47-3
+  - rule_id: AIA-RULE-PO-A47-3
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 47
@@ -4865,15 +4865,15 @@ rules:
     effective_date_note: >-
       Art. 47 sits in Chapter III Section 5, which Art. 113(c) does not name, so 2 August 2026 —
       ahead of the 2 December 2027 start of the Section 2 requirements the declaration attests to.
-      As AIA-PO-A47.
+      As AIA-RULE-PO-A47.
     status: active
 
   # THE LIMB A CROSS-REFERENCE DROPS. Art. 6(4) sends a provider that self-assessed out of Annex III
-  # to "the registration obligation set out in Article 49(2)", and AIA-NHR-A06-4 carries that. But
+  # to "the registration obligation set out in Article 49(2)", and AIA-RULE-NHR-A06-4 carries that. But
   # Art. 49(2) binds "that provider or, where applicable, the authorised representative", and
   # Art. 6(4) names only the provider — so the representative's limb arrives through neither. It is
   # not covered by Art. 22(3)(e) either, which sends the representative to Art. 49(1).
-  - rule_id: AIA-AR-A49-2
+  - rule_id: AIA-RULE-AR-A49-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 49
@@ -4897,7 +4897,7 @@ rules:
     document_verifiable: false
     effective_date: 2027-12-02
     effective_date_note: >-
-      THIS DATE IS CONTESTED, on exactly the reading AIA-NHR-A06-4 sets out and for the same
+      THIS DATE IS CONTESTED, on exactly the reading AIA-RULE-NHR-A06-4 sets out and for the same
       reason. Art. 49 sits in Chapter III Section 5, which Art. 113 did NOT move, so on the text
       this registration is already due from the general date of 2 August 2026. But what triggers it
       is an Art. 6(3) conclusion, and Art. 6 is in Section 1, which Art. 113(c) defers to 2 December
@@ -4909,7 +4909,7 @@ rules:
       come through, so the Annex I date cannot arise.
     status: active
 
-  - rule_id: AIA-PO-A75-1E
+  - rule_id: AIA-RULE-PO-A75-1E
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 75
@@ -4939,18 +4939,18 @@ rules:
       Art. 75 rules.
     status: active
 
-  # THE OTHER END OF ART. 53(1)(b). AIA-GP-A53-1B binds the MODEL provider to hand the Annex XII
+  # THE OTHER END OF ART. 53(1)(b). AIA-RULE-GP-A53-1B binds the MODEL provider to hand the Annex XII
   # information over; this binds the party that receives it. Art. 53(7) says "any information or
   # documentation obtained pursuant to this Article, including trade secrets, shall be treated in
   # accordance with the confidentiality obligations set out in Article 78" — and a downstream
   # provider is a party that obtains documentation pursuant to Art. 53.
   #
-  # NOT A CHAPTER V RULE, despite citing Art. 53. Every other AIA-GP-* rule names `gpai_model`
+  # NOT A CHAPTER V RULE, despite citing Art. 53. Every other AIA-RULE-GP-* rule names `gpai_model`
   # because it binds the provider OF the model; this one binds the provider of an AI SYSTEM that
   # integrates one, whose own tier is whatever Art. 6 made it. So it names the three governed
   # system tiers instead — a prohibited or out-of-scope system reaches no obligation here for the
   # reasons those tiers reach none anywhere.
-  - rule_id: AIA-PO-A53-7
+  - rule_id: AIA-RULE-PO-A53-7
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 53

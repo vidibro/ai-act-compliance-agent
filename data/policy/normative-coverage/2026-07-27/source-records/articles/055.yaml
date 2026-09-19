@@ -15,7 +15,7 @@ records:
   - conduct adversarial testing of the model with a view to identifying and mitigating systemic risks
   - document adversarial testing of the model with a view to identifying and mitigating systemic risks
   implementation_refs:
-  - AIA-GP-A55-1A
+  - AIA-RULE-GP-A55-1A
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS
@@ -31,7 +31,7 @@ records:
   qualifier_spans:
   - A055-P001
   implementation_refs:
-  - AIA-GP-A55-1B
+  - AIA-RULE-GP-A55-1B
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS
@@ -50,7 +50,7 @@ records:
   - relevant serious-incident information
   - possible corrective measures
   implementation_refs:
-  - AIA-GP-A55-1C
+  - AIA-RULE-GP-A55-1C
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY
@@ -65,7 +65,7 @@ records:
   qualifier_spans:
   - A055-P001
   implementation_refs:
-  - AIA-GP-A55-1D
+  - AIA-RULE-GP-A55-1D
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A055-P2-RELY-ON-CODES
@@ -82,7 +82,7 @@ records:
   product_scope: no_product_action
   product_scope_reason: Provides an optional compliance route rather than an additional product action.
   implementation_refs:
-  - AIA-GP-A55-2
+  - AIA-RULE-GP-A55-2
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION
   source: A055-P006
@@ -96,7 +96,7 @@ records:
   product_scope: no_product_action
   product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
   implementation_refs:
-  - AIA-GP-A55-2
+  - AIA-RULE-GP-A55-2
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P2-ALTERNATIVE-COMPLIANCE
   source: A055-P006
@@ -110,7 +110,7 @@ records:
   conditions:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
   implementation_refs:
-  - AIA-GP-A55-2
+  - AIA-RULE-GP-A55-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A055-P3-CONFIDENTIAL-TREATMENT

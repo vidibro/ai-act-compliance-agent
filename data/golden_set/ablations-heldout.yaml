@@ -42,11 +42,11 @@ default_split: test  # every case here is HELD OUT — the reportable split
 
 cases:
   # --- Art. 9 — risk management ---------------------------------------------------------------
-  - rule_id: AIA-HR-A09
+  - rule_id: AIA-RULE-HR-A09
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A09
+  - rule_id: AIA-RULE-HR-A09
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -57,7 +57,7 @@ cases:
       Product Risk Council reviews the process regularly. Our approach follows recognised
       industry frameworks for trustworthy AI.
 
-  - rule_id: AIA-HR-A09
+  - rule_id: AIA-RULE-HR-A09
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -71,11 +71,11 @@ cases:
       advisory boards on the future of work.
 
   # --- Art. 10 — data and data governance -----------------------------------------------------
-  - rule_id: AIA-HR-A10
+  - rule_id: AIA-RULE-HR-A10
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A10
+  - rule_id: AIA-RULE-HR-A10
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -86,7 +86,7 @@ cases:
       relevant, representative and suitable for the intended purpose. Data quality is reviewed by
       our data engineering team on an ongoing basis.
 
-  - rule_id: AIA-HR-A10
+  - rule_id: AIA-RULE-HR-A10
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -100,11 +100,11 @@ cases:
       Retention is configurable per tenant, and sub-processors are listed publicly.
 
   # --- Art. 11 — technical documentation (Annex IV completeness) ------------------------------
-  - rule_id: AIA-HR-A11
+  - rule_id: AIA-RULE-HR-A11
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A11
+  - rule_id: AIA-RULE-HR-A11
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -116,14 +116,14 @@ cases:
       reasoned request.
 
   # --- Art. 12 — record-keeping / logging -----------------------------------------------------
-  - rule_id: AIA-HR-A12
+  - rule_id: AIA-RULE-HR-A12
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A12
+  - rule_id: AIA-RULE-HR-A12
     ablation: present_but_inadequate
     difficulty: ambiguous
-    # Mirrors the dev set's Art. 12 probe. AIA-HR-A12 is a SUBSTANCE check qualified by Art. 12(2),
+    # Mirrors the dev set's Art. 12 probe. AIA-RULE-HR-A12 is a SUBSTANCE check qualified by Art. 12(2),
     # so the bare assertion below is INADEQUATE and the default expectation stands. What it probes
     # is whether the judge reads past an accurate assertion of the capability to the three purposes
     # Art. 12(2) requires the log to serve.
@@ -134,11 +134,11 @@ cases:
       default and cannot be switched off by the deployer.
 
   # --- Art. 13 — transparency / instructions for use ------------------------------------------
-  - rule_id: AIA-HR-A13
+  - rule_id: AIA-RULE-HR-A13
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A13
+  - rule_id: AIA-RULE-HR-A13
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -153,11 +153,11 @@ cases:
   # The partial list: the items a provider finds easy to write are present in depth, and the three
   # that commit it to something — pre-determined changes, resources and lifetime, log mechanisms —
   # are gone, along with the accuracy figures point (b)(ii) puts in the instructions themselves.
-  - rule_id: AIA-HR-A13-3
+  - rule_id: AIA-RULE-HR-A13-3
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A13-3
+  - rule_id: AIA-RULE-HR-A13-3
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -180,11 +180,11 @@ cases:
       trained staff with authority to overrule.
 
   # --- Art. 14 — human oversight --------------------------------------------------------------
-  - rule_id: AIA-HR-A14
+  - rule_id: AIA-RULE-HR-A14
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A14
+  - rule_id: AIA-RULE-HR-A14
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -194,7 +194,7 @@ cases:
       managers and talent review panels remain fully in control of every mobility and promotion
       decision, and PathFinder only ever advises. No recommendation is ever applied automatically.
 
-  - rule_id: AIA-HR-A14
+  - rule_id: AIA-RULE-HR-A14
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -207,11 +207,11 @@ cases:
       readiness workshop before the first cycle and a retrospective after it.
 
   # --- Art. 15 — accuracy, robustness, cybersecurity (METRICS check) --------------------------
-  - rule_id: AIA-HR-A15
+  - rule_id: AIA-RULE-HR-A15
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A15
+  - rule_id: AIA-RULE-HR-A15
     ablation: present_but_inadequate
     difficulty: buried
     # The canonical metrics failure: confident claims, zero numbers.
@@ -223,7 +223,7 @@ cases:
       employee data and performs reliably throughout its lifecycle. Security is engineered in at
       every layer, following industry best practice for model and data protection.
 
-  - rule_id: AIA-HR-A15
+  - rule_id: AIA-RULE-HR-A15
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -237,11 +237,11 @@ cases:
       page.
 
   # --- Art. 16(b) — provider identification ---------------------------------------------------
-  - rule_id: AIA-PO-A16-B
+  - rule_id: AIA-RULE-PO-A16-B
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-PO-A16-B
+  - rule_id: AIA-RULE-PO-A16-B
     ablation: distractor
     difficulty: buried
     # A registered number and a jurisdiction identify the company but are not what the point asks

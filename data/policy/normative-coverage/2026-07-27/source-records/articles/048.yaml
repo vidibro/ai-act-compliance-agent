@@ -22,7 +22,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A48-2
+  - AIA-RULE-PO-A48-2
   verification_mode: reported_not_judged
   conditions:
   - the marking is easily accessible through the system interface, a machine-readable code, or other electronic
@@ -39,7 +39,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A48
+  - AIA-RULE-PO-A48
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A048-P4-FOLLOW-WITH-BODY-NUMBER
@@ -53,7 +53,7 @@ records:
   conditions:
   - a notified body was responsible for the Article 43 conformity assessment procedures
   implementation_refs:
-  - AIA-PO-A48-4
+  - AIA-RULE-PO-A48-4
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A048-P4-AFFIX-BODY-NUMBER
@@ -68,7 +68,7 @@ records:
   conditions:
   - a notified body was responsible for the Article 43 conformity assessment procedures
   implementation_refs:
-  - AIA-PO-A48-4
+  - AIA-RULE-PO-A48-4
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A048-P4-PROMOTIONAL-BODY-NUMBER
@@ -83,7 +83,7 @@ records:
   - a notified body was responsible for the Article 43 conformity assessment procedures
   - promotional material mentions that the high-risk AI system fulfils the CE marking requirements
   implementation_refs:
-  - AIA-PO-A48-4
+  - AIA-RULE-PO-A48-4
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE

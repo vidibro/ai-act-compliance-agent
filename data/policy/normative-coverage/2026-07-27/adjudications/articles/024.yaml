@@ -93,5 +93,5 @@ decisions:
     conditions. The exact patch binds the audit finding to that correction.
   fix:
     patch_file: fixes/AIA-VALID-63729BED49FFB7B8.patch.yaml
-    patch_sha256: 648ec81f93c4c748c2bd0f481ccae335970b92c0c077accfe25f522dbb0999a3
+    patch_sha256: 9abadb383df3ba575c158ca118177e0fc9b88415174085e319710b0066719ed5
   reviewed_by: vidibro

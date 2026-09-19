@@ -52,7 +52,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A71-2
+  - AIA-RULE-PO-A71-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
@@ -64,7 +64,7 @@ records:
   targets: []
   conditions: [the authorised representative is applicable for the data entry]
   implementation_refs:
-  - AIA-PO-A71-2
+  - AIA-RULE-PO-A71-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
@@ -76,7 +76,7 @@ records:
   targets: []
   conditions: [the deployer is or acts for a public authority agency or body]
   implementation_refs:
-  - AIA-DP-A71-3
+  - AIA-RULE-DP-A71-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A071-P4-DATABASE-ACCESS-RULES

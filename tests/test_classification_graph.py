@@ -1031,7 +1031,7 @@ def test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation():
         f"the Chapter V obligation set changed with the gate answers: {sets}. A model card read "
         f"wrongly on one licence limb must cost a reader a sentence, never an obligation."
     )
-    assert any(r.startswith("AIA-GP-A55") for r in sets[0]), "Art. 55 must be in the set at all"
+    assert any(r.startswith("AIA-RULE-GP-A55") for r in sets[0]), "Art. 55 must be in the set at all"
 
 
 # ==================================================================================================

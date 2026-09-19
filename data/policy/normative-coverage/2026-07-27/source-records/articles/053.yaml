@@ -24,7 +24,7 @@ records:
   qualifier_spans:
   - A053-P001
   implementation_refs:
-  - AIA-GP-A53-1A
+  - AIA-RULE-GP-A53-1A
   verification_mode: reported_not_judged
   verified_by: vidibro
   mandatory_content:
@@ -47,7 +47,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A053-P003]
   temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   verification_mode: reported_not_judged
   verified_by: vidibro
   qualifier_spans:
@@ -67,7 +67,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A053-P003]
   temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   verification_mode: reported_not_judged
   verified_by: vidibro
   qualifier_spans:
@@ -90,7 +90,7 @@ records:
   qualifier_spans:
   - A053-P003
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
@@ -110,7 +110,7 @@ records:
   mandatory_content:
   - the elements set out in Annex XII
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
@@ -128,7 +128,7 @@ records:
   qualifier_spans:
   - A053-P001
   implementation_refs:
-  - AIA-GP-A53-1C
+  - AIA-RULE-GP-A53-1C
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-C-RIGHTS-RESERVATION
@@ -145,7 +145,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A053-P006]
   temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
   implementation_refs:
-  - AIA-GP-A53-1C
+  - AIA-RULE-GP-A53-1C
   verification_mode: reported_not_judged
   verified_by: vidibro
   qualifier_spans:
@@ -166,7 +166,7 @@ records:
   qualifier_spans:
   - A053-P001
   implementation_refs:
-  - AIA-GP-A53-1D
+  - AIA-RULE-GP-A53-1D
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION
@@ -189,8 +189,8 @@ records:
   - the licence permits access, usage, modification, and distribution
   - model parameters including weights, architecture information, and usage information are public
   implementation_refs:
-  - AIA-GP-A53-1A
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1A
+  - AIA-RULE-GP-A53-1B
   implementation_reason: Both rules encode this exception in their activation conditions.
   implementation_mode: report_only
   verification_mode: reported_conditionally
@@ -211,8 +211,8 @@ records:
   conditions:
   - the general-purpose AI model presents systemic risk
   implementation_refs:
-  - AIA-GP-A53-1A
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1A
+  - AIA-RULE-GP-A53-1B
   implementation_reason: Both rules disapply the open-source exception for systemic-risk models.
   implementation_mode: report_only
   verification_mode: reported_conditionally
@@ -232,7 +232,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A053-P009]
   temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
   implementation_refs:
-  - AIA-GP-A53-3
+  - AIA-RULE-GP-A53-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A053-P4-RELY-ON-CODES
@@ -253,7 +253,7 @@ records:
   kind: permission
   implementation_mode: report_only
   implementation_refs:
-  - AIA-GP-A53-4
+  - AIA-RULE-GP-A53-4
   implementation_reason: The rule's activation condition recognises this code-of-practice route.
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -273,7 +273,7 @@ records:
   kind: legal_consequence
   implementation_mode: report_only
   implementation_refs:
-  - AIA-GP-A53-4
+  - AIA-RULE-GP-A53-4
   implementation_reason: The rule's activation condition recognises the harmonised-standard route.
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -294,7 +294,7 @@ records:
   conditions:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
   implementation_refs:
-  - AIA-GP-A53-4
+  - AIA-RULE-GP-A53-4
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A053-P5-DETAIL-METHODOLOGIES
@@ -354,6 +354,6 @@ records:
   conditions:
   - the downstream provider obtains information or documentation under Article 53
   implementation_refs:
-  - AIA-PO-A53-7
+  - AIA-RULE-PO-A53-7
   verification_mode: reported_not_judged
   verified_by: vidibro

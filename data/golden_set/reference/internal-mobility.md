@@ -26,7 +26,7 @@ AUTHORED BEFORE ANY M4 CODE EXISTED, which is what makes it genuinely held out �
 behaviour had been observed and could not have shaped it. Do not tune against it. Run it once,
 at reporting time, and record the date and git sha with the number.
 
-Each section is tagged with the rule it satisfies:  <!-- rule: AIA-HR-Axx --> ... <!-- /rule -->
+Each section is tagged with the rule it satisfies:  <!-- rule: AIA-RULE-HR-Axx --> ... <!-- /rule -->
 The tags are stripped from generated case documents; they never reach the agent.
 -->
 
@@ -34,7 +34,7 @@ The tags are stripped from generated case documents; they never reach the agent.
 
 | | |
 |---|---|
-<!-- rule: AIA-PO-A16-B -->
+<!-- rule: AIA-RULE-PO-A16-B -->
 | **Provider** | Meridian Workforce Intelligence GmbH (trade mark: Meridian WI), Leopoldstraße 210, 80804 Munich, Germany |
 | **Provider contact** | ai-compliance@meridian-wi.example — also shown on the sign-in screen of every PathFinder release |
 <!-- /rule -->
@@ -84,7 +84,7 @@ evidence are recorded in Annex 1.
 
 ---
 
-<!-- rule: AIA-HR-A10 -->
+<!-- rule: AIA-RULE-HR-A10 -->
 ## Part B — Data foundation
 
 **Design choices.** The training population is 1.94 million employee–role–outcome triples drawn
@@ -134,7 +134,7 @@ applicants — a different intended purpose the system was neither trained nor v
 
 ---
 
-<!-- rule: AIA-HR-A09 -->
+<!-- rule: AIA-RULE-HR-A09 -->
 ## Part C — Risk management
 
 Meridian operates a documented risk management system covering the whole PathFinder lifecycle. It
@@ -187,7 +187,7 @@ is carried and monitored rather than closed, since it can only be observed over 
 
 ---
 
-<!-- rule: AIA-HR-A15 -->
+<!-- rule: AIA-RULE-HR-A15 -->
 ## Part D — Performance, resilience and security
 
 **Declared accuracy metrics.** Two are declared, because the system does two things. Retrieval
@@ -243,7 +243,7 @@ January 2026; two medium findings were remediated in R7.2, none outstanding.
 
 ---
 
-<!-- rule: AIA-HR-A14 -->
+<!-- rule: AIA-RULE-HR-A14 -->
 ## Part E — Oversight by managers and panels
 
 PathFinder is built so that the line managers and talent review panels using it can effectively
@@ -285,7 +285,7 @@ without escalation, and works councils receive the same material on request.
 
 ---
 
-<!-- rule: AIA-HR-A12 -->
+<!-- rule: AIA-RULE-HR-A12 -->
 ## Part F — Event records
 
 PathFinder automatically records events over its lifetime. Every recommendation request writes an
@@ -304,7 +304,7 @@ recommendation can be reconstructed and attributed to the exact build that produ
 
 ---
 
-<!-- rule: AIA-HR-A13 -->
+<!-- rule: AIA-RULE-HR-A13 -->
 ## Part G — Instructions for use
 
 PathFinder is designed so that its operation is sufficiently transparent for deployers to
@@ -312,7 +312,7 @@ interpret its output and use it appropriately. The following instructions accomp
 are supplied to every deployer before use.
 <!-- /rule -->
 
-<!-- rule: AIA-HR-A13-3 -->
+<!-- rule: AIA-RULE-HR-A13-3 -->
 ### G.1 — What the instructions contain
 
 **Identity and contact of the provider.** As given in the file header above.
@@ -370,7 +370,7 @@ event records is described in Part F; the export schema is in Annex 3.
 
 ---
 
-<!-- rule: AIA-HR-A11 -->
+<!-- rule: AIA-RULE-HR-A11 -->
 ## Part H — Technical documentation index (Annex IV)
 
 This file and the annexes it references constitute the technical documentation drawn up before

@@ -14,7 +14,7 @@ records:
   - the system is high-risk and listed in Annex III other than point 2
   - registration occurs before placing on the market or putting into service
   implementation_refs:
-  - AIA-PO-A49
+  - AIA-RULE-PO-A49
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER
@@ -33,7 +33,7 @@ records:
   - the representative is applicable for the registration
   - registration occurs before placing on the market or putting into service
   implementation_refs:
-  - AIA-AR-A22
+  - AIA-RULE-AR-A22
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
@@ -71,7 +71,7 @@ records:
   - the representative is applicable for the registration
   - registration occurs before placing on the market or putting into service
   implementation_refs:
-  - AIA-AR-A49-2
+  - AIA-RULE-AR-A49-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A049-P3-DEPLOYER-REGISTER-USE
@@ -90,7 +90,7 @@ records:
   - the system is high-risk and listed in Annex III other than point 2
   - registration occurs before putting into service or use
   implementation_refs:
-  - AIA-DP-A49-3
+  - AIA-RULE-DP-A49-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION
@@ -109,7 +109,7 @@ records:
   - the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or border-control
     management
   implementation_refs:
-  - AIA-ALL-A49-4
+  - AIA-RULE-ALL-A49-4
   verification_mode: reported_not_judged
   mandatory_content:
   - use the secure non-public section of the Article 71 EU database
@@ -161,6 +161,6 @@ records:
   conditions:
   - the high-risk system is referred to in Annex III point 2
   implementation_refs:
-  - AIA-PO-A49-5
+  - AIA-RULE-PO-A49-5
   verification_mode: reported_not_judged
   verified_by: vidibro

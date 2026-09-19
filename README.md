@@ -89,7 +89,7 @@ because that is a legal question rather than a property of either graph:
   unchanged either way: the practice is prohibited, and this is what Art. 5 costs the deployer that
   holds the authorisation.
 - **`gpai_model` proceeds, onto a different track.** Chapter V governs a general-purpose AI model,
-  and the ruleset carries it: sixteen `AIA-GP-*` rules for Arts. 52 to 55, selected by the tier
+  and the ruleset carries it: sixteen `AIA-RULE-GP-*` rules for Arts. 52 to 55, selected by the tier
   alone, so a model gets Chapter V and none of Arts. 9–15. **None of them is judged**, and the
   `scope_note` says so — the two gates that decide who owes what in Chapter V are read from the same
   model card a judge would read, so a card that understates its compute or overstates its licence

@@ -371,7 +371,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-2]
+  implementation_refs: [AIA-RULE-DP-A05-2]
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
@@ -384,7 +384,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-2]
+  implementation_refs: [AIA-RULE-DP-A05-2]
   verification_mode: reported_not_judged
   qualifier_spans:
   - A005-P025
@@ -409,7 +409,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-2]
+  implementation_refs: [AIA-RULE-DP-A05-2]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
@@ -426,7 +426,7 @@ records:
   implementation_mode: report_only
   verification_mode: reported_not_judged
   implementation_refs:
-  - AIA-DP-A05-2
+  - AIA-RULE-DP-A05-2
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
   source: A005-P027
@@ -441,7 +441,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-2]
+  implementation_refs: [AIA-RULE-DP-A05-2]
   verification_mode: reported_not_judged
   exceptions:
   - in a duly justified urgent case, use may begin before registration
@@ -462,7 +462,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_not_judged
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
@@ -477,7 +477,7 @@ records:
   targets: []
   kind: permission
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_conditionally
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
@@ -494,7 +494,7 @@ records:
   - A005-P028
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_conditionally
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
@@ -512,7 +512,7 @@ records:
   - A005-P028
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_conditionally
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
@@ -528,7 +528,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_not_judged
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
@@ -545,7 +545,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_not_judged
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
@@ -568,7 +568,7 @@ records:
   targets: []
   kind: power
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_conditionally
   conditions:
   - the use pursues an Article 5(1)(h) objective identified in the request
@@ -586,7 +586,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
@@ -600,7 +600,7 @@ records:
   targets: []
   kind: prohibition
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-3]
+  implementation_refs: [AIA-RULE-DP-A05-3]
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
@@ -616,7 +616,7 @@ records:
   targets: []
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-4]
+  implementation_refs: [AIA-RULE-DP-A05-4]
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
@@ -633,7 +633,7 @@ records:
     law enforcement purposes is notified under Article 5(4)
   kind: obligation
   implementation_mode: report_only
-  implementation_refs: [AIA-DP-A05-4]
+  implementation_refs: [AIA-RULE-DP-A05-4]
   verification_mode: reported_not_judged
   mandatory_content:
   - include at least the information specified in Article 5(6)

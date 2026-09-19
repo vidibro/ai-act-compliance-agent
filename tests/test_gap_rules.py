@@ -106,7 +106,7 @@ def _an_answer(value, node_id: str, source: LegalSource) -> Answer:
 def _a_rule(**overrides) -> PolicyRule:
     """A minimal valid rule, for testing what the schema REFUSES to build."""
     fields = {
-        "rule_id": "BAD",
+        "rule_id": "AIA-RULE-TEST",
         "requirement": "x",
         "source": LegalSource(
             instrument="Regulation (EU) 2024/1689", article=50, act_version_date=ACT_DATE
@@ -131,25 +131,26 @@ def _rule_ids(spec, use_case, role=ActorRole.PROVIDER) -> set[str]:
 # subtracted rather than folded in, because a system owing one of them beside its route is the
 # correct answer, not a second conformity procedure:
 #
-#   AIA-PO-A43-4 asks when the procedure must be run AGAIN. Route-independent, so it fires beside
-#     whichever of the three was selected.
-#   AIA-PO-A43-1A and -1B say what EACH BRANCH OF THE ART. 43(1) CHOICE CONSISTS OF — -1A the three
-#     internal-control verifications of Annex VI, -1B the Annex VII notified-body route with its two
-#     applications, access duties and surveillance. Neither is a fourth route: both fire beside
-#     AIA-PO-A43-1 for a biometrics system, whose Art. 43(1) choice this tool cannot make on its
-#     behalf, and each carries the branch condition as its activation_condition. They are a pair
+#   AIA-RULE-PO-A43-4 asks when the procedure must be run AGAIN. Route-independent, so it fires
+#     beside whichever of the three was selected.
+#   AIA-RULE-PO-A43-1A and -1B say what EACH BRANCH OF THE ART. 43(1) CHOICE CONSISTS OF — -1A
+#     the three internal-control verifications of Annex VI, -1B the Annex VII notified-body route
+#     with its two applications, access duties and surveillance. Neither is a fourth route: both
+#     fire beside AIA-RULE-PO-A43-1 for a biometrics system, whose Art. 43(1) choice this tool
+#     cannot make on its behalf, and each carries the branch condition as its activation_condition.
+#     They are a pair
 #     because the paragraph offers a pair, and listing only one would assert the branch it leaves
 #     open.
-_ART_43_NOT_A_ROUTE_CHOICE = {"AIA-PO-A43-4", "AIA-PO-A43-1A", "AIA-PO-A43-1B"}
+_ART_43_NOT_A_ROUTE_CHOICE = {"AIA-RULE-PO-A43-4", "AIA-RULE-PO-A43-1A", "AIA-RULE-PO-A43-1B"}
 
 
 @pytest.mark.parametrize(
     "area,expected",
     [
-        (AnnexIIIArea.BIOMETRICS, "AIA-PO-A43-1"),
-        (AnnexIIIArea.EMPLOYMENT, "AIA-PO-A43-2"),
-        (AnnexIIIArea.CRITICAL_INFRASTRUCTURE, "AIA-PO-A43-2"),
-        (AnnexIIIArea.JUSTICE_DEMOCRACY, "AIA-PO-A43-2"),
+        (AnnexIIIArea.BIOMETRICS, "AIA-RULE-PO-A43-1"),
+        (AnnexIIIArea.EMPLOYMENT, "AIA-RULE-PO-A43-2"),
+        (AnnexIIIArea.CRITICAL_INFRASTRUCTURE, "AIA-RULE-PO-A43-2"),
+        (AnnexIIIArea.JUSTICE_DEMOCRACY, "AIA-RULE-PO-A43-2"),
     ],
 )
 def test_the_conformity_route_follows_the_annex_iii_point(spec, area, expected):
@@ -157,8 +158,8 @@ def test_the_conformity_route_follows_the_annex_iii_point(spec, area, expected):
     never the other — a system told to self-assess when it needs a notified body has been given a
     clean bill of health it did not earn."""
     ids = _rule_ids(spec, a_use_case(area=area))
-    art43 = {r for r in ids if r.startswith("AIA-PO-A43")}
-    assert "AIA-PO-A43-4" in art43, "Art. 43(4) binds whichever route was taken"
+    art43 = {r for r in ids if r.startswith("AIA-RULE-PO-A43")}
+    assert "AIA-RULE-PO-A43-4" in art43, "Art. 43(4) binds whichever route was taken"
     assert art43 - _ART_43_NOT_A_ROUTE_CHOICE == {expected}
 
 
@@ -166,8 +167,8 @@ def test_an_annex_i_system_follows_its_own_legislation(spec):
     """Art. 43(3): the sectoral act supplies the procedure, not this Regulation. Both Annex III
     branches are silent here — neither was written for a system with no Annex III area at all."""
     ids = _rule_ids(spec, a_use_case(product=AnnexIProduct.MEDICAL_DEVICES))
-    art43 = {r for r in ids if r.startswith("AIA-PO-A43")}
-    assert art43 - _ART_43_NOT_A_ROUTE_CHOICE == {"AIA-PO-A43-3"}
+    art43 = {r for r in ids if r.startswith("AIA-RULE-PO-A43")}
+    assert art43 - _ART_43_NOT_A_ROUTE_CHOICE == {"AIA-RULE-PO-A43-3"}
 
 
 def test_every_high_risk_system_owes_exactly_one_conformity_rule(spec):
@@ -178,7 +179,7 @@ def test_every_high_risk_system_owes_exactly_one_conformity_rule(spec):
     ]
     for uc in cases:
         art43 = {
-            r for r in _rule_ids(spec, uc) if r.startswith("AIA-PO-A43")
+            r for r in _rule_ids(spec, uc) if r.startswith("AIA-RULE-PO-A43")
         } - _ART_43_NOT_A_ROUTE_CHOICE
         label = uc.annex_iii_area or uc.annex_i_product
         assert len(art43) == 1, f"{label}: expected one Art. 43 route rule, got {sorted(art43)}"
@@ -194,25 +195,27 @@ def test_critical_infrastructure_owes_no_registration(spec):
     taken from this test on its own."""
     critical = _rule_ids(spec, a_use_case(area=AnnexIIIArea.CRITICAL_INFRASTRUCTURE))
     employment = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT))
-    assert "AIA-PO-A49" not in critical
-    assert "AIA-PO-A49" in employment
-    assert "AIA-PO-A49-5" in critical, "point 2 registers at national level under Art. 49(5)"
-    assert "AIA-PO-A49-5" not in employment, "Art. 49(5) reaches point 2 and nothing else"
+    assert "AIA-RULE-PO-A49" not in critical
+    assert "AIA-RULE-PO-A49" in employment
+    assert "AIA-RULE-PO-A49-5" in critical, "point 2 registers at national level under Art. 49(5)"
+    assert "AIA-RULE-PO-A49-5" not in employment, "Art. 49(5) reaches point 2 and nothing else"
 
 
 def test_an_annex_i_system_is_not_registered_under_article_49(spec):
     """49(1) reaches systems "listed in Annex III". An Annex I one is not."""
-    assert "AIA-PO-A49" not in _rule_ids(spec, a_use_case(product=AnnexIProduct.MEDICAL_DEVICES))
+    assert "AIA-RULE-PO-A49" not in _rule_ids(
+        spec, a_use_case(product=AnnexIProduct.MEDICAL_DEVICES)
+    )
 
 
 def test_law_enforcement_registers_in_the_non_public_section(spec):
     """Art. 49(4) does not replace the registration — it says where it goes and how little it
     carries. Both rules fire, and only in the areas the paragraph names."""
     police = _rule_ids(spec, a_use_case(area=AnnexIIIArea.LAW_ENFORCEMENT))
-    assert {"AIA-PO-A49", "AIA-ALL-A49-4"} <= police
+    assert {"AIA-RULE-PO-A49", "AIA-RULE-ALL-A49-4"} <= police
 
     hiring = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT))
-    assert "AIA-ALL-A49-4" not in hiring
+    assert "AIA-RULE-ALL-A49-4" not in hiring
 
 
 # --- the mechanism itself -------------------------------------------------------------------------
@@ -226,7 +229,7 @@ def test_a_rule_with_no_conditions_still_fires_everywhere(spec):
         a_use_case(product=AnnexIProduct.MEDICAL_DEVICES),
     ):
         ids = _rule_ids(spec, uc)
-        assert {"AIA-HR-A09", "AIA-HR-A15", "AIA-PO-A17"} <= ids
+        assert {"AIA-RULE-HR-A09", "AIA-RULE-HR-A15", "AIA-RULE-PO-A17"} <= ids
 
 
 def test_an_area_condition_cannot_also_claim_the_annex_i_route():
@@ -234,7 +237,7 @@ def test_an_area_condition_cannot_also_claim_the_annex_i_route():
     that never fires is indistinguishable in a report from an obligation nobody owes."""
     with pytest.raises(ValueError, match="could never activate"):
         PolicyRule(
-            rule_id="BAD",
+            rule_id="AIA-RULE-TEST",
             requirement="x",
             source=LegalSource(
                 instrument="Regulation (EU) 2024/1689", article=43, act_version_date=ACT_DATE
@@ -276,11 +279,11 @@ def test_art_27_is_reported_under_the_deployer_role_like_any_other(spec):
     role because no ruleset was written for it."""
     active = select_rules(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT), ActorRole.DEPLOYER)
 
-    assert "AIA-DP-A27" in {r.rule_id for r in active.not_document_verifiable}
+    assert "AIA-RULE-DP-A27" in {r.rule_id for r in active.not_document_verifiable}
 
 
 # --- Art. 60 — the elective route ---------------------------------------------------------------
-_TESTING_RULES = {"AIA-PO-A60-4", "AIA-PO-A60-7", "AIA-PO-A60-8", "AIA-PO-A61"}
+_TESTING_RULES = {"AIA-RULE-PO-A60-4", "AIA-RULE-PO-A60-7", "AIA-RULE-PO-A60-8", "AIA-RULE-PO-A61"}
 
 
 def test_only_a_document_that_rules_out_testing_withholds_the_testing_duties(spec):
@@ -340,7 +343,7 @@ def test_a_narrowed_duty_names_the_organisations_it_binds(spec):
     about the parties, not about "you". This report describes what the Act requires of each role
     for this system; it is not addressed to whoever happens to be reading, and the deployer it
     describes is often not the organisation that wrote the document."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-DP-A27")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-DP-A27")
     condition = rule.activation_condition
 
     assert condition is not None
@@ -356,7 +359,7 @@ def test_art_27_never_reaches_the_systems_it_excludes(spec):
         a_use_case(area=AnnexIIIArea.CRITICAL_INFRASTRUCTURE),
         a_use_case(product=AnnexIProduct.MEDICAL_DEVICES),
     ):
-        assert "AIA-DP-A27" not in _rule_ids(spec, uc, ActorRole.DEPLOYER)
+        assert "AIA-RULE-DP-A27" not in _rule_ids(spec, uc, ActorRole.DEPLOYER)
 
 
 def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
@@ -372,15 +375,11 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
         # reach only the practice point (h) banned. Supplying all three answers isolates what is
         # under test — that STATING a condition never withholds — from the mechanisms that do.
         moved = (
-            ProviderReallocation.NAME_OR_TRADEMARK
-            if rule.requires_provider_reallocation
-            else None
+            ProviderReallocation.NAME_OR_TRADEMARK if rule.requires_provider_reallocation else None
         )
         testing = RealWorldTesting.UNDERWAY if rule.requires_real_world_testing else None
         practice = (
-            rule.applies_to_prohibited_practice[0]
-            if rule.applies_to_prohibited_practice
-            else None
+            rule.applies_to_prohibited_practice[0] if rule.applies_to_prohibited_practice else None
         )
         # THE USE CASE THIS RULE IS FOR, not an arbitrary one. The TIER, the ROUTE and the AREA
         # are gates on the SYSTEM, and withholding on them is correct: Art. 11(2) reaches an
@@ -441,7 +440,7 @@ def test_a_reallocation_creates_the_cooperation_duty(spec, limb):
         ActorRole.INITIAL_PROVIDER,
         reallocation=limb,
     )
-    assert {r.rule_id for r in active.all_rules} == {"AIA-IP-A25-2"}
+    assert {r.rule_id for r in active.all_rules} == {"AIA-RULE-IP-A25-2"}
     assert active.not_document_verifiable, "a relational duty between two organisations"
 
 
@@ -455,7 +454,7 @@ def test_the_cooperation_duty_is_not_the_current_provider_s(spec):
         ActorRole.PROVIDER,
         reallocation=ProviderReallocation.NAME_OR_TRADEMARK,
     )
-    assert "AIA-IP-A25-2" not in {r.rule_id for r in provider.all_rules}
+    assert "AIA-RULE-IP-A25-2" not in {r.rule_id for r in provider.all_rules}
 
 
 def test_a_reallocation_adds_an_obligation_and_removes_none(spec):
@@ -479,7 +478,7 @@ def test_only_one_rule_is_gated_on_the_reallocation(spec):
     should stay one: every other rule must activate from the classification alone, or a run whose
     Art. 25 question failed would silently under-report."""
     gated = {r.rule_id for r in spec.rules if r.requires_provider_reallocation}
-    assert gated == {"AIA-IP-A25-2"}
+    assert gated == {"AIA-RULE-IP-A25-2"}
 
 
 # --- Art. 50 — the activation axis that is not a tier ------------------------------------------
@@ -497,14 +496,14 @@ def _a_minimal_use_case() -> UseCaseClassification:
 
 def _tr_ids(spec, use_case, role, duties) -> set[str]:
     active = select_rules(spec, use_case, role, transparency_duties=duties)
-    return {r.rule_id for r in active.all_rules if r.rule_id.startswith("AIA-TR-")}
+    return {r.rule_id for r in active.all_rules if r.rule_id.startswith("AIA-RULE-TR-")}
 
 
 def test_a_minimal_system_owes_a_transparency_duty(spec):
     """The direction a tier-gated rule gets wrong. A text generator can be minimal risk and still
     owe 50(2) — that is the whole reason Art. 50 is answered on its own axis."""
     duties = [TransparencyDuty.SYNTHETIC_CONTENT_MARKING]
-    assert _tr_ids(spec, _a_minimal_use_case(), ActorRole.PROVIDER, duties) == {"AIA-TR-A50-2"}
+    assert _tr_ids(spec, _a_minimal_use_case(), ActorRole.PROVIDER, duties) == {"AIA-RULE-TR-A50-2"}
 
 
 def test_a_high_risk_system_owing_no_duty_owes_no_transparency_rule(spec):
@@ -522,7 +521,7 @@ def test_the_tier_never_narrows_a_duty_that_attached(spec):
         use_case = a_use_case(area=AnnexIIIArea.EMPLOYMENT).model_copy(
             update={"risk_class": risk_class}
         )
-        assert _tr_ids(spec, use_case, ActorRole.PROVIDER, duties) == {"AIA-TR-A50-1"}
+        assert _tr_ids(spec, use_case, ActorRole.PROVIDER, duties) == {"AIA-RULE-TR-A50-1"}
 
 
 def test_a_transparency_duty_is_added_to_chapter_iii_never_instead_of_it(spec):
@@ -539,7 +538,7 @@ def test_a_transparency_duty_is_added_to_chapter_iii_never_instead_of_it(spec):
         ).all_rules
     }
     assert without < with_duty, "the duty removed a Chapter III obligation"
-    assert with_duty - without == {"AIA-TR-A50-2"}
+    assert with_duty - without == {"AIA-RULE-TR-A50-2"}
 
 
 def test_transparency_rules_are_filed_under_the_role_that_owes_them(spec):
@@ -561,7 +560,7 @@ def test_both_duties_of_paragraph_four_reach_the_same_rule(spec):
         TransparencyDuty.DEEP_FAKE_DISCLOSURE,
         TransparencyDuty.PUBLIC_INTEREST_TEXT_DISCLOSURE,
     ):
-        assert _tr_ids(spec, use_case, ActorRole.DEPLOYER, [duty]) == {"AIA-TR-A50-4"}
+        assert _tr_ids(spec, use_case, ActorRole.DEPLOYER, [duty]) == {"AIA-RULE-TR-A50-4"}
 
 
 def test_an_out_of_scope_system_owes_no_transparency_duty_either(spec):
@@ -615,8 +614,8 @@ def test_the_deployer_owes_its_own_registration(spec):
     provider = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT), ActorRole.PROVIDER)
     deployer = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT), ActorRole.DEPLOYER)
 
-    assert "AIA-PO-A49" in provider and "AIA-PO-A49" not in deployer
-    assert "AIA-DP-A49-3" in deployer and "AIA-DP-A49-3" not in provider
+    assert "AIA-RULE-PO-A49" in provider and "AIA-RULE-PO-A49" not in deployer
+    assert "AIA-RULE-DP-A49-3" in deployer and "AIA-RULE-DP-A49-3" not in provider
 
 
 def test_deployer_registration_carries_the_same_annex_iii_exception(spec):
@@ -627,8 +626,8 @@ def test_deployer_registration_carries_the_same_annex_iii_exception(spec):
     )
     annex_i = _rule_ids(spec, a_use_case(product=AnnexIProduct.MEDICAL_DEVICES), ActorRole.DEPLOYER)
 
-    assert "AIA-DP-A49-3" not in critical
-    assert "AIA-DP-A49-3" not in annex_i
+    assert "AIA-RULE-DP-A49-3" not in critical
+    assert "AIA-RULE-DP-A49-3" not in annex_i
 
 
 def test_the_secure_section_covers_the_deployer_registration_too(spec):
@@ -643,8 +642,8 @@ def test_the_secure_section_covers_the_deployer_registration_too(spec):
         spec, a_use_case(area=AnnexIIIArea.LAW_ENFORCEMENT), ActorRole.PROVIDER
     )
 
-    assert "AIA-ALL-A49-4" in police_deployer
-    assert "AIA-ALL-A49-4" in police_provider
+    assert "AIA-RULE-ALL-A49-4" in police_deployer
+    assert "AIA-RULE-ALL-A49-4" in police_provider
 
 
 def test_the_authority_that_is_its_own_provider_is_told_where_its_file_lives(spec):
@@ -654,7 +653,7 @@ def test_the_authority_that_is_its_own_provider_is_told_where_its_file_lives(spe
     A DEPLOYER MUST NOT SELECT IT. The paragraph binds "law enforcement, immigration or asylum
     authorities [that] are providers" — the file is kept by whoever drew it up, and telling a
     deploying police force to hold Annex IV documentation it never wrote sends it looking for a
-    document that is not its to keep. The mirror of `AIA-ALL-A49-4`, which binds both roles
+    document that is not its to keep. The mirror of `AIA-RULE-ALL-A49-4`, which binds both roles
     because Art. 49(4) governs the deployer's own registration too; the difference is in the
     paragraphs, not in the population.
 
@@ -665,10 +664,10 @@ def test_the_authority_that_is_its_own_provider_is_told_where_its_file_lives(spe
     """
     for area in (AnnexIIIArea.BIOMETRICS, AnnexIIIArea.LAW_ENFORCEMENT, AnnexIIIArea.MIGRATION):
         use_case = a_use_case(area=area)
-        assert "AIA-PO-A78-3" in _rule_ids(spec, use_case, ActorRole.PROVIDER), area.value
-        assert "AIA-PO-A78-3" not in _rule_ids(spec, use_case, ActorRole.DEPLOYER), area.value
+        assert "AIA-RULE-PO-A78-3" in _rule_ids(spec, use_case, ActorRole.PROVIDER), area.value
+        assert "AIA-RULE-PO-A78-3" not in _rule_ids(spec, use_case, ActorRole.DEPLOYER), area.value
     outside = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
-    assert "AIA-PO-A78-3" not in _rule_ids(spec, outside, ActorRole.PROVIDER)
+    assert "AIA-RULE-PO-A78-3" not in _rule_ids(spec, outside, ActorRole.PROVIDER)
 
 
 # --- Art. 113 — when each obligation starts ----------------------------------------------------
@@ -692,9 +691,9 @@ def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
     assert len(split) == 50, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
     for rule in split:
         if rule.rule_id in {
-            "AIA-NHR-A06-4",
-            "AIA-NHR-A06-4-REGISTER",
-            "AIA-NHR-A06-4-PROVIDE-ASSESSMENT",
+            "AIA-RULE-NHR-A06-4",
+            "AIA-RULE-NHR-A06-4-REGISTER",
+            "AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT",
         }:
             continue  # not a high-risk system at all — see its comment in spec.yaml
         assert rule.effective_date is None, f"{rule.rule_id} states a single date"
@@ -707,7 +706,13 @@ def test_the_sections_the_omnibus_left_alone_keep_the_general_date(spec):
     from 2 August 2026. Conformity assessment and registration therefore apply BEFORE the
     requirements they attest to — the Article's own result, and the reason this is pinned rather
     than smoothed over."""
-    for rule_id in ("AIA-PO-A43-1", "AIA-PO-A47", "AIA-PO-A49", "AIA-DP-A49-3", "AIA-ALL-A49-4"):
+    for rule_id in (
+        "AIA-RULE-PO-A43-1",
+        "AIA-RULE-PO-A47",
+        "AIA-RULE-PO-A49",
+        "AIA-RULE-DP-A49-3",
+        "AIA-RULE-ALL-A49-4",
+    ):
         rule = next(r for r in spec.rules if r.rule_id == rule_id)
         assert rule.effective_date == _GENERAL_DATE, rule_id
         assert not rule.effective_date_by_route, f"{rule_id} was not moved by the Omnibus"
@@ -736,7 +741,7 @@ def test_a_rule_may_not_state_its_date_twice():
 def test_an_unknown_route_resolves_to_the_earlier_date(spec):
     """Deliberately the earlier one. Telling a reader they have until 2028 when the answer might
     have been 2027 is the direction that costs them a deadline."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A09")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-HR-A09")
     assert rule.effective_date_for(None) == _ANNEX_III_DATE
 
 
@@ -751,17 +756,16 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
     tool is broken, and the damaging response is to disregard the date rather than the note. So the
     explanation travels WITH the obligation instead of living in a comment only we read."""
     section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
-    assert len(section_5) == 21, (
-        "Arts. 41, 43 and 46-49 are the whole of Section 5 in this ruleset"
-    )
+    assert len(section_5) == 21, "Arts. 41, 43 and 46-49 are the whole of Section 5 in this ruleset"
     for rule in section_5:
         # ONE RULE IN SECTION 5 TAKES THE OTHER DATE, and it is the same contested reading
-        # AIA-NHR-A06-4 carries: Art. 49(2) registers an Art. 6(3) conclusion, and Art. 6 sits in
+        # AIA-RULE-NHR-A06-4 carries: Art. 49(2) registers an Art. 6(3) conclusion, and Art. 6
+        # sits in
         # Section 1, which Art. 113(c) DID move. Splitting the paragraph — the provider on the
         # deferred date, its authorised representative on the general one — would put the two
         # parties to one registration on dates sixteen months apart. Its note argues the choice and
         # names the reading not taken, which is what this test exists to require.
-        if rule.rule_id == "AIA-AR-A49-2":
+        if rule.rule_id == "AIA-RULE-AR-A49-2":
             continue
         assert rule.effective_date == _GENERAL_DATE, rule.rule_id
         note = rule.effective_date_note or ""
@@ -774,7 +778,7 @@ def test_the_contested_date_names_the_reading_it_did_not_take(spec):
     systems that are — so no limb reaches it and a date had to be chosen. Choosing silently would
     present our reading as the Act's, and the two readings are sixteen months apart in the direction
     that matters: the alternative means the duty is owed NOW."""
-    for rule_id in ("AIA-NHR-A06-4", "AIA-AR-A49-2"):
+    for rule_id in ("AIA-RULE-NHR-A06-4", "AIA-RULE-AR-A49-2"):
         rule = next(r for r in spec.rules if r.rule_id == rule_id)
         note = rule.effective_date_note or ""
 
@@ -845,7 +849,7 @@ def test_only_chapter_iii_sections_1_to_3_carry_two_start_dates(spec):
 
 # --- Art. 5(1)(h) — the one prohibition with a lawful branch --------------------------------------
 
-_ART_5_LAWFUL_BRANCH = {"AIA-DP-A05-2", "AIA-DP-A05-3", "AIA-DP-A05-4"}
+_ART_5_LAWFUL_BRANCH = {"AIA-RULE-DP-A05-2", "AIA-RULE-DP-A05-3", "AIA-RULE-DP-A05-4"}
 
 
 def test_the_lawful_branch_duties_reach_only_the_practice_that_has_one(spec):

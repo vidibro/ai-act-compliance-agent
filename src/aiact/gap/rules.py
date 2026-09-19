@@ -88,7 +88,7 @@ def _route_of(use_case: UseCaseClassification) -> HighRiskRoute | None:
     Art. 6(1) is a conjunction, so a NAMED PRODUCT IS NOT THE ANNEX I ROUTE. A product whose
     manufacturer self-assesses fails condition (b), and the cascade carries it on to Annex III —
     where Art. 6(2) can make it high-risk by the other door. Reading the product alone would send
-    such a use case down the sectoral conformity rule (`AIA-PO-A43-3`) instead of Art. 43(1)/(2)."""
+    such a use case down the sectoral conformity rule (`AIA-RULE-PO-A43-3`) instead of Art. 43(1)/(2)."""
     if use_case.high_risk_under_article_6_1:
         return HighRiskRoute.ANNEX_I
     if use_case.annex_iii_area is not None:

@@ -7,7 +7,7 @@ data/policy/spec.yaml. Ablated variants are generated FROM this file by
 scripts/make_golden_set.py — because we know exactly what was degraded, ground truth is exact
 rather than judged.
 
-Each section is tagged with the rule it satisfies:  <!-- rule: AIA-HR-Axx --> ... <!-- /rule -->
+Each section is tagged with the rule it satisfies:  <!-- rule: AIA-RULE-HR-Axx --> ... <!-- /rule -->
 The tags are stripped from generated case documents; they never reach the agent.
 
 Written to be realistic, not ideal: it reads like a real vendor's technical file, with concrete
@@ -16,7 +16,7 @@ figures and named measures, because a checker that only passes on perfect prose 
 
 # TalentRank Candidate Scoring — Technical Documentation
 
-<!-- rule: AIA-PO-A16-B -->
+<!-- rule: AIA-RULE-PO-A16-B -->
 **Provider:** Northwind Analytics B.V., trading as Northwind Analytics, Keizersgracht 100,
 1015 CS Amsterdam, Netherlands. Contact: compliance@northwind-analytics.example.
 The same details are affixed to the product's start-up screen and its packaging.
@@ -36,7 +36,7 @@ recruiter in the applicant tracking system; the recruiter decides whom to advanc
 The system evaluates natural persons and produces an assessment used in the selection of
 candidates. It is therefore treated by the provider as high-risk under Annex III, point 4(a).
 
-<!-- rule: AIA-HR-A09 -->
+<!-- rule: AIA-RULE-HR-A09 -->
 ## 2. Risk management system
 
 A risk management system is established, implemented, documented and maintained across the whole
@@ -68,7 +68,7 @@ selection-rate ratio 0.94 (see §8), with per-release re-testing. Residual autom
 carried and addressed through oversight measures in §7.
 <!-- /rule -->
 
-<!-- rule: AIA-HR-A10 -->
+<!-- rule: AIA-RULE-HR-A10 -->
 ## 3. Data and data governance
 
 **Design choices.** Training data comprises 412,000 historical application–outcome pairs from 38
@@ -100,7 +100,7 @@ declared intended purpose.
 families; the API rejects requisitions outside them.
 <!-- /rule -->
 
-<!-- rule: AIA-HR-A11 -->
+<!-- rule: AIA-RULE-HR-A11 -->
 ## 4. Technical documentation (Annex IV coverage)
 
 This file, together with its referenced annexes, constitutes the technical documentation drawn up
@@ -130,7 +130,7 @@ TalentRank uses a gradient-boosted ranking model over 84 engineered features der
 structured application fields and a sentence-transformer encoding of CV free text. Training runs
 are versioned; each release is reproducible from a pinned dataset snapshot and config hash.
 
-<!-- rule: AIA-HR-A12 -->
+<!-- rule: AIA-RULE-HR-A12 -->
 ## 6. Record-keeping and logging
 
 The system automatically records events (logs) over its lifetime. Each scoring request emits an
@@ -144,7 +144,7 @@ an append-only store with integrity hashing. The reference period of each log re
 model version make it possible to reconstruct which model produced any historic score.
 <!-- /rule -->
 
-<!-- rule: AIA-HR-A14 -->
+<!-- rule: AIA-RULE-HR-A14 -->
 ## 7. Human oversight
 
 TalentRank is designed so that natural persons can effectively oversee it while in use.
@@ -172,7 +172,7 @@ deployer is instructed (§9) to assign oversight only to trained staff with auth
 the ranking.
 <!-- /rule -->
 
-<!-- rule: AIA-HR-A15 -->
+<!-- rule: AIA-RULE-HR-A15 -->
 ## 8. Accuracy, robustness and cybersecurity
 
 **Accuracy.** Declared metric: ranking quality measured as NDCG@10 against the "advanced to
@@ -206,7 +206,7 @@ dataset snapshots. Rate limiting and anomaly detection guard against model-extra
 Penetration test: annual, latest February 2026, no critical findings outstanding.
 <!-- /rule -->
 
-<!-- rule: AIA-HR-A13 -->
+<!-- rule: AIA-RULE-HR-A13 -->
 ## 9. Transparency and instructions for use
 
 TalentRank is designed so that its operation is sufficiently transparent for deployers to
@@ -214,7 +214,7 @@ interpret its output and use it appropriately. The following instructions for us
 system.
 <!-- /rule -->
 
-<!-- rule: AIA-HR-A13-3 -->
+<!-- rule: AIA-RULE-HR-A13-3 -->
 ### 9.1 Contents of the instructions for use
 
 **Provider identity and contact.** As stated in the header of this document.

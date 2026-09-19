@@ -219,7 +219,7 @@ def spec():
 def test_the_query_is_the_evidence_hint_not_the_enacted_text(spec):
     """Legislative register retrieves badly against product prose. `evidence_expected` was written
     in the register of documentation, which is what is being searched."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A14")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-HR-A14")
     assert query_for(rule) == rule.evidence_expected
     assert query_for(rule) != rule.requirement
 
@@ -227,7 +227,7 @@ def test_the_query_is_the_evidence_hint_not_the_enacted_text(spec):
 def test_process_obligations_are_never_searched_for(spec):
     """Art. 17's quality management system cannot be evidenced by a technical file. Retrieval would
     still return four paragraphs, and a checker would have every chance to talk itself into PASS."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-PO-A17")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-PO-A17")
     assert not rule.document_verifiable
     with pytest.raises(ValueError, match="not document-verifiable"):
         find_evidence(object(), rule)  # type: ignore[arg-type]  # never reaches the index
@@ -237,7 +237,7 @@ def test_find_evidence_returns_passages_for_a_document_verifiable_rule(client, s
     """k is a FLOOR. Art. 14 names more duties than the k asked for, and each takes a slot, so the
     result is as long as the facet count — the alternative is duties the judge rules on without
     being shown anything."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A14")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-HR-A14")
     index = _index(DEV_DOC.read_text(encoding="utf-8"), client)
     hits = find_evidence(index, rule, k=3)
     assert len(hits) == len(queries_for(rule))
@@ -248,7 +248,7 @@ def test_a_rule_with_few_duties_still_gets_the_whole_budget(client, spec):
     """The floor cuts one way only: a rule naming fewer duties than k asked for keeps k passages,
     because k answers a different question — how much of the document the judge needs to see to
     read a section in context."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-PO-A16-B")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-PO-A16-B")
     assert len(queries_for(rule)) < 6
     index = _index(DEV_DOC.read_text(encoding="utf-8"), client)
     assert len(find_evidence(index, rule, k=6)) == 6
@@ -267,7 +267,7 @@ def test_every_duty_the_evidence_text_names_gets_a_passage_of_its_own(spec):
     round-robin rather than of how MiniLM ranks a paragraph. A fake index gives each query its own
     ranking, so a merge by distance and a merge by facet produce visibly different sets.
     """
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A15")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-HR-A15")
     facets = queries_for(rule)
     assert len(facets) > 3, "Art. 15 names accuracy, robustness, feedback loops and five attacks"
 

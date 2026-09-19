@@ -48,7 +48,7 @@ from aiact.schemas.eval import (  # noqa: E402
 GOLDEN_DIR = Path("data/golden_set")
 SPEC_PATH = Path("data/policy/spec.yaml")
 
-# <!-- rule: AIA-HR-A14 --> ... <!-- /rule -->
+# <!-- rule: AIA-RULE-HR-A14 --> ... <!-- /rule -->
 _SECTION = re.compile(
     r"<!--\s*rule:\s*(?P<rule>[A-Za-z0-9\-]+)\s*-->\n(?P<body>.*?)\n<!--\s*/rule\s*-->\n",
     re.S,

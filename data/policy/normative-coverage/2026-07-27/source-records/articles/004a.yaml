@@ -27,7 +27,7 @@ records:
   - every safeguard and condition in Article 4a(1), points (b) to (f), is satisfied
   implementation_mode: report_only
   implementation_refs:
-  - AIA-HR-A10
+  - AIA-RULE-HR-A10
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P1-B-REUSE-SECURITY
@@ -47,7 +47,7 @@ records:
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
   implementation_refs: &id001
-  - AIA-ALL-A04A
+  - AIA-RULE-ALL-A04A
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
@@ -151,7 +151,7 @@ records:
   - all Article 4a(1) conditions and safeguards are applied
   implementation_mode: report_only
   implementation_refs:
-  - AIA-ALL-A04A
+  - AIA-RULE-ALL-A04A
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P2-NO-BIAS-DETECTION-DUTY

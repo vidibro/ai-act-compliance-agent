@@ -15,7 +15,7 @@ records:
   conditions:
   - a competent authority makes a reasoned request
   implementation_refs: &id002
-  - AIA-PO-A21
+  - AIA-RULE-PO-A21
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
@@ -32,7 +32,7 @@ records:
   - a competent authority makes a reasoned request
   - "the applicable automatically generated logs are under the provider\u2019s control"
   implementation_refs:
-  - AIA-PO-A21-2
+  - AIA-RULE-PO-A21-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A021-P3-CONFIDENTIALITY
@@ -45,7 +45,7 @@ records:
   targets: []
   implementation_mode: report_only
   implementation_refs:
-  - AIA-PO-A21
-  - AIA-PO-A21-2
+  - AIA-RULE-PO-A21
+  - AIA-RULE-PO-A21-2
   verification_mode: reported_not_judged
   verified_by: vidibro

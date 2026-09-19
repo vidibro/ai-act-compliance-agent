@@ -8,7 +8,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A72
+  - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
@@ -32,7 +32,7 @@ records:
   exceptions:
   - sensitive operational data of law-enforcement deployers
   implementation_refs:
-  - AIA-PO-A72
+  - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
@@ -43,7 +43,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A72
+  - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
@@ -56,7 +56,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A72
+  - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P3-COMMISSION-PLAN-GUIDANCE
@@ -105,6 +105,6 @@ records:
   qualifier_spans:
   - A072-P005
   implementation_refs:
-  - AIA-PO-A72
+  - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro

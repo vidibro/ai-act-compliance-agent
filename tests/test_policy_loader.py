@@ -96,7 +96,7 @@ def test_shipped_spec_loads():
     # requested and to grant access to the model.
     #
     # ONE pays annexes_awaiting_rules: Art. 43(1)'s Annex VII branch, which says what the
-    # notified-body route consists of where AIA-PO-A43-1 carries only the choice between it and
+    # notified-body route consists of where AIA-RULE-PO-A43-1 carries only the choice between it and
     # internal control.
     #
     # Several Articles are more than one rule because they hold more than one duty, and a single
@@ -106,7 +106,7 @@ def test_shipped_spec_loads():
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
     #
     # ART. 26 IS SIX, and it is the widest split in the ruleset because the Article is the widest
-    # duty set. Six of its twelve paragraphs bind every deployer alike and are AIA-DP-A26; the other
+    # duty set. Six of its twelve paragraphs bind every deployer alike and are AIA-RULE-DP-A26; the other
     # six narrow the duty-holder or the system, and a narrowing is only rendered where it sits on a
     # rule of its own — public-authority registration and the bar on using an unregistered system
     # (26(8)), the data protection impact assessment (26(9)), the post-remote biometric
@@ -438,10 +438,10 @@ def test_provider_process_obligations_are_not_document_verifiable():
     in this family is a process at the provider or a duty under law this tool does not read, and
     checking a document for it would manufacture gaps out of a scope limit."""
     spec = _spec()
-    process = [r for r in spec.rules if r.rule_id.startswith("AIA-PO-")]
+    process = [r for r in spec.rules if r.rule_id.startswith("AIA-RULE-PO-")]
     assert process, "expected provider process obligations in the spec"
     checkable = {r.rule_id for r in process if r.document_verifiable}
-    assert checkable == {"AIA-PO-A16-B"}
+    assert checkable == {"AIA-RULE-PO-A16-B"}
 
 
 def test_high_risk_requirements_are_document_verifiable():
@@ -450,7 +450,7 @@ def test_high_risk_requirements_are_document_verifiable():
     # Art. 11(2)'s single documentation set and Art. 13(3)'s instructions-for-use contents, each
     # judged on its own terms, and Art. 12(3)'s biometric logging minimum as one rule per lettered
     # record so a missing record is named rather than folded into one verdict over the list.
-    reqs = [r for r in spec.rules if r.rule_id.startswith("AIA-HR-")]
+    reqs = [r for r in spec.rules if r.rule_id.startswith("AIA-RULE-HR-")]
     assert len(reqs) == 13
     assert all(r.document_verifiable for r in reqs)
 
@@ -503,7 +503,7 @@ def test_a_relief_reaches_the_reader_the_duty_reaches():
     renders it by existing — Art. 8(2) is its own rule. Otherwise SOME rule must name the paragraph
     by number in its evidence text, which is what makes the reader able to look it up. The naming
     rule need not sit in the same article: Art. 42(2) presumes the cybersecurity limb of Art. 15
-    satisfied, and the place a reader meets that is AIA-HR-A15, which cites Art. 15."""
+    satisfied, and the place a reader meets that is AIA-RULE-HR-A15, which cites Art. 15."""
     spec = _spec()
     for rule_ids, article, paragraph in _relief_paragraphs():
         by_id = {r.rule_id: r for r in spec.rules}
@@ -599,18 +599,18 @@ def test_both_duty_holders_are_covered():
         role: [r.rule_id for r in spec.rules if role in r.applies_to_role]
         for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER)
     }
-    assert "AIA-DP-A26" in by_role[ActorRole.DEPLOYER]
-    assert "AIA-DP-A27" in by_role[ActorRole.DEPLOYER]
+    assert "AIA-RULE-DP-A26" in by_role[ActorRole.DEPLOYER]
+    assert "AIA-RULE-DP-A27" in by_role[ActorRole.DEPLOYER]
     # Articles 4 and 4a bind both roles.
-    assert "AIA-ALL-A04" in by_role[ActorRole.PROVIDER]
-    assert "AIA-ALL-A04" in by_role[ActorRole.DEPLOYER]
-    assert "AIA-ALL-A04A" in by_role[ActorRole.PROVIDER]
-    assert "AIA-ALL-A04A" in by_role[ActorRole.DEPLOYER]
+    assert "AIA-RULE-ALL-A04" in by_role[ActorRole.PROVIDER]
+    assert "AIA-RULE-ALL-A04" in by_role[ActorRole.DEPLOYER]
+    assert "AIA-RULE-ALL-A04A" in by_role[ActorRole.PROVIDER]
+    assert "AIA-RULE-ALL-A04A" in by_role[ActorRole.DEPLOYER]
 
 
 def test_article_four_a_reports_its_conditional_route_without_judging_it():
     spec = _spec()
-    safeguards = next(rule for rule in spec.rules if rule.rule_id == "AIA-ALL-A04A")
+    safeguards = next(rule for rule in spec.rules if rule.rule_id == "AIA-RULE-ALL-A04A")
 
     assert safeguards.document_verifiable is False
     assert [criterion.norm_id for criterion in safeguards.criteria] == [
@@ -623,11 +623,11 @@ def test_article_four_a_reports_its_conditional_route_without_judging_it():
     assert not any(criterion.mandatory for criterion in safeguards.criteria)
     report_norms = {norm.norm_id: norm for norm in spec.report_norms}
     assert report_norms["AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING"].activation_rule_ids == [
-        "AIA-HR-A10"
+        "AIA-RULE-HR-A10"
     ]
     assert report_norms[
         "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING"
-    ].activation_rule_ids == ["AIA-ALL-A04A"]
+    ].activation_rule_ids == ["AIA-RULE-ALL-A04A"]
 
 
 def test_substance_rules_are_document_verifiable():
@@ -639,7 +639,7 @@ def test_substance_rules_are_document_verifiable():
 
 def test_derogation_rule_targets_not_high_risk():
     spec = _spec()
-    art6 = next(r for r in spec.rules if r.rule_id == "AIA-NHR-A06-4")
+    art6 = next(r for r in spec.rules if r.rule_id == "AIA-RULE-NHR-A06-4")
     assert art6.applies_to_risk_class == [RiskClass.NOT_HIGH_RISK]
 
 

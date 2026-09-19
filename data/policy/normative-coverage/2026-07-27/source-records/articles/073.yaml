@@ -47,7 +47,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P2-REPORT-IMMEDIATELY
@@ -62,7 +62,7 @@ records:
   targets: []
   temporal_regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
   source: A073-P002
@@ -80,7 +80,7 @@ records:
   - a deployer is applicable
   temporal_regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P3-REPORT-IMMEDIATELY
   source: A073-P004
@@ -96,7 +96,7 @@ records:
   - a widespread infringement or Article 3(49)(b) serious incident occurs
   temporal_regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS
   source: A073-P004
@@ -113,7 +113,7 @@ records:
   - a widespread infringement or Article 3(49)(b) serious incident occurs
   temporal_regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P4-REPORT-IMMEDIATELY
@@ -130,7 +130,7 @@ records:
   - a person has died in the serious incident
   temporal_regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P4-REPORT-NO-LATER-THAN-TEN-DAYS
@@ -148,7 +148,7 @@ records:
   - a person has died in the serious incident
   temporal_regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT
@@ -162,7 +162,7 @@ records:
   targets: []
   kind: permission
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P6-INVESTIGATE
@@ -180,7 +180,7 @@ records:
   mandatory_content:
   - necessary investigation of the serious incident and the AI system concerned
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION
   source: A073-P007
@@ -195,7 +195,7 @@ records:
   - risk assessment of the incident
   - corrective action
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
   source: A073-P008
@@ -207,7 +207,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
@@ -222,7 +222,7 @@ records:
   targets: []
   kind: prohibition
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P7-INFORM-FUNDAMENTAL-RIGHTS-AUTHORITIES
@@ -284,7 +284,7 @@ records:
   targets: []
   kind: legal_consequence
   implementation_refs:
-  - AIA-ALL-A73
+  - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING
@@ -300,7 +300,7 @@ records:
   - actor_ref: deployer
   targets: []
   implementation_refs:
-  - AIA-ALL-A73-10
+  - AIA-RULE-ALL-A73-10
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P11-NOTIFY-COMMISSION

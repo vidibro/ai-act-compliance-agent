@@ -9,7 +9,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A71-2
+  - AIA-RULE-PO-A71-2
   verification_mode: reported_not_judged
   exceptions:
   - entry 12 only, the electronic instructions for use are not provided for high-risk AI systems in
@@ -26,7 +26,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-NHR-A71-2
+  - AIA-RULE-NHR-A71-2
   verification_mode: reported_not_judged
   mandatory_content_source: numbered_items
   verified_by: vidibro
@@ -38,7 +38,7 @@ records:
   - actor_ref: deployer
   targets: []
   implementation_refs:
-  - AIA-DP-A71-3
+  - AIA-RULE-DP-A71-3
   verification_mode: reported_not_judged
   mandatory_content_source: numbered_items
   verified_by: vidibro

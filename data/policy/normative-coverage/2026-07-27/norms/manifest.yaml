@@ -103,20 +103,20 @@ relations:
   source_norm_id: AIA-NORM-A016-A-SECTION-2-COMPLIANCE
   kind: allocates_duty_to_policy_rules
   target_rule_ids:
-  - AIA-PO-A08-2
-  - AIA-HR-A09
-  - AIA-HR-A10
-  - AIA-HR-A11
-  - AIA-HR-A11-2
-  - AIA-HR-A12
-  - AIA-HR-A12-3A
-  - AIA-HR-A12-3B
-  - AIA-HR-A12-3C
-  - AIA-HR-A12-3D
-  - AIA-HR-A13
-  - AIA-HR-A13-3
-  - AIA-HR-A14
-  - AIA-HR-A15
+  - AIA-RULE-PO-A08-2
+  - AIA-RULE-HR-A09
+  - AIA-RULE-HR-A10
+  - AIA-RULE-HR-A11
+  - AIA-RULE-HR-A11-2
+  - AIA-RULE-HR-A12
+  - AIA-RULE-HR-A12-3A
+  - AIA-RULE-HR-A12-3B
+  - AIA-RULE-HR-A12-3C
+  - AIA-RULE-HR-A12-3D
+  - AIA-RULE-HR-A13
+  - AIA-RULE-HR-A13-3
+  - AIA-RULE-HR-A14
+  - AIA-RULE-HR-A15
   target_norm_ids: []
   external_requirements: []
   guidance_refs: []
@@ -127,12 +127,12 @@ relations:
   source_norm_id: AIA-NORM-A016-F-CONFORMITY-ASSESSMENT
   kind: carried_by_policy_rules
   target_rule_ids:
-  - AIA-PO-A43-1
-  - AIA-PO-A43-1A
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-2
-  - AIA-PO-A43-3
-  - AIA-PO-A43-4
+  - AIA-RULE-PO-A43-1
+  - AIA-RULE-PO-A43-1A
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-2
+  - AIA-RULE-PO-A43-3
+  - AIA-RULE-PO-A43-4
   target_norm_ids: []
   external_requirements: []
   guidance_refs: []
@@ -143,8 +143,8 @@ relations:
   source_norm_id: AIA-NORM-A016-G-EU-DECLARATION
   kind: carried_by_policy_rules
   target_rule_ids:
-  - AIA-PO-A47
-  - AIA-PO-A47-4
+  - AIA-RULE-PO-A47
+  - AIA-RULE-PO-A47-4
   target_norm_ids: []
   external_requirements: []
   guidance_refs: []
@@ -155,7 +155,7 @@ relations:
   source_norm_id: AIA-NORM-A016-H-CE-MARKING
   kind: carried_by_policy_rules
   target_rule_ids:
-  - AIA-PO-A48
+  - AIA-RULE-PO-A48
   target_norm_ids: []
   external_requirements: []
   guidance_refs: []
@@ -166,7 +166,7 @@ relations:
   source_norm_id: AIA-NORM-A016-I-REGISTRATION
   kind: carried_by_policy_rules
   target_rule_ids:
-  - AIA-PO-A49
+  - AIA-RULE-PO-A49
   target_norm_ids: []
   external_requirements: []
   guidance_refs: []
@@ -1034,7 +1034,7 @@ relations:
   source_norm_id: AIA-NORM-A010-P6-TESTING-DATA-ONLY
   kind: carried_by_policy_rules
   target_rule_ids:
-  - AIA-HR-A10
+  - AIA-RULE-HR-A10
   target_norm_ids: []
   external_requirements: []
   guidance_refs: []
@@ -3961,7 +3961,7 @@ interpretations:
   - AIA-NORM-A050-P2-MARK-DETECT
   targets:
   - kind: policy_rule
-    target_id: AIA-TR-A50-2
+    target_id: AIA-RULE-TR-A50-2
   effect: defines_mechanism
   effect_explanation: Explains machine readability and the separate detection mechanism.
   review_scope: passage_with_context

@@ -21,7 +21,7 @@ from aiact.eval.grounding import UNGRADED, Grounding, ReasoningGrader, report
 # Stands in for a real prompt: instructions, enacted text and material in one block — the shape
 # `Judgement.prompt` and `LLMBrain._user_content` both produce.
 SHOWN = (
-    "Obligation under review: AIA-HR-A15 (Article 15).\n"
+    "Obligation under review: AIA-RULE-HR-A15 (Article 15).\n"
     "Enacted text: High-risk AI systems shall achieve an appropriate level of accuracy.\n"
     "Answer as JSON with keys: verdict, reasoning.\n"
     'Excerpts:\n"""\nThe panel reviews every recommendation. Accuracy was 91% on a held-out set.'
@@ -63,9 +63,9 @@ def _json(**fields) -> str:
 # --- reading a verdict ---------------------------------------------------------------------------
 def test_a_supported_reasoning_is_read(grader, reply):
     reply(_json())
-    result = grader.grade(REASONING, SHOWN, label="AIA-HR-A15")
+    result = grader.grade(REASONING, SHOWN, label="AIA-RULE-HR-A15")
     assert result.supported is True
-    assert result.label == "AIA-HR-A15"
+    assert result.label == "AIA-RULE-HR-A15"
 
 
 def test_an_unsupported_reasoning_carries_the_claim(grader, reply):

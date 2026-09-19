@@ -54,8 +54,8 @@ records:
   - ANNEX-VII-P011
   - ANNEX-VII-P012
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   mandatory_content:
   - the name and address of the provider
@@ -80,8 +80,8 @@ records:
   conditions:
   - the notified body approved the quality management system
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
@@ -96,8 +96,8 @@ records:
   - the notified body approved the quality management system
   - the provider intends to change that system or the list of AI systems it covers
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-ASSESS
@@ -215,8 +215,8 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   conditions:
   - access is relevant and limited to what is necessary for the notified body to fulfil its tasks
@@ -232,8 +232,8 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   conditions:
   - the notified body requires the evidence or tests while examining the technical documentation
@@ -266,8 +266,8 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   conditions:
   - access is necessary to assess compliance with Chapter III Section 2
@@ -285,8 +285,8 @@ records:
   conditions:
   - the AI system does not meet the requirement relating to the data used to train it
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
@@ -404,8 +404,8 @@ records:
   - a notified body issued a Union technical documentation assessment certificate for the AI system
   - the change could affect the AI system's compliance with the requirements or its intended purpose
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
@@ -453,8 +453,8 @@ records:
   conditions:
   - the notified body carries out point 5 surveillance of the approved quality management system
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
@@ -467,8 +467,8 @@ records:
   conditions:
   - the notified body carries out point 5 surveillance of the approved quality management system
   implementation_refs:
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-AUDIT

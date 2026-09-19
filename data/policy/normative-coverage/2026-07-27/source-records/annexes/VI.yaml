@@ -22,7 +22,7 @@ records:
   targets: []
   verification_mode: reported_not_judged
   implementation_refs:
-  - AIA-PO-A17
+  - AIA-RULE-PO-A17
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
   source: ANNEX-VI-P003
@@ -33,7 +33,7 @@ records:
   targets: []
   verification_mode: judged_by_gap_analysis
   implementation_refs:
-  - AIA-HR-A11
+  - AIA-RULE-HR-A11
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
   source: ANNEX-VI-P004
@@ -44,5 +44,5 @@ records:
   targets: []
   verification_mode: reported_not_judged
   implementation_refs:
-  - AIA-PO-A72
+  - AIA-RULE-PO-A72
   verified_by: vidibro

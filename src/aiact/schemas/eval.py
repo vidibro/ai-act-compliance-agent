@@ -104,7 +104,7 @@ class Difficulty(StrEnum):
 class GoldenCase(BaseModel):
     """One synthetic document plus the verdict every applicable rule should receive."""
 
-    case_id: str  # "AIA-HR-A14__present_but_inadequate"
+    case_id: str  # "AIA-RULE-HR-A14__present_but_inadequate"
     system_id: str  # which reference system this was generated from
     document_path: str  # repo-relative path to the generated case document
     raw_text: str  # the document itself, as the checker will see it

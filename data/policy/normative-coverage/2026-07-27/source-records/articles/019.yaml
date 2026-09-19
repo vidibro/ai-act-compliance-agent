@@ -11,7 +11,7 @@ records:
   conditions:
   - "the automatically generated logs are under the provider\u2019s control"
   implementation_refs: &id001
-  - AIA-PO-A19
+  - AIA-RULE-PO-A19
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD
@@ -47,6 +47,6 @@ records:
   - the provider is a financial institution subject to internal-governance requirements under Union financial-services
     law
   implementation_refs:
-  - AIA-PO-A19-2
+  - AIA-RULE-PO-A19-2
   verification_mode: reported_not_judged
   verified_by: vidibro

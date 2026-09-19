@@ -207,7 +207,7 @@ def a_use_case(**overrides) -> UseCaseClassification:
 
 def a_rule(**overrides) -> PolicyRule:
     kwargs = dict(
-        rule_id="AIA-HR-A14",
+        rule_id="AIA-RULE-HR-A14",
         requirement="High-risk AI systems shall be designed to allow effective human oversight.",
         source=a_source(article=14),
         applies_to_risk_class=[RiskClass.HIGH_RISK],
@@ -250,7 +250,7 @@ def test_policy_rule_and_spec_valid():
         source_note="derived from EC Compliance Checker",
         rules=[a_rule()],
     )
-    assert spec.rules[0].rule_id == "AIA-HR-A14"
+    assert spec.rules[0].rule_id == "AIA-RULE-HR-A14"
 
 
 def test_node_answer_requires_source():
@@ -310,7 +310,7 @@ def test_profiling_carve_back_satisfied():
 def test_finding_gap_requires_reasoning():
     with pytest.raises(ValidationError, match="non-empty reasoning"):
         Finding(
-            rule_id="AIA-HR-A14",
+            rule_id="AIA-RULE-HR-A14",
             use_case_id="candidate_scoring",
             role=ActorRole.PROVIDER,
             verdict=Verdict.GAP,
@@ -323,7 +323,7 @@ def test_finding_gap_requires_reasoning():
 def test_finding_evidence_quote_length_capped():
     with pytest.raises(ValidationError, match="under 300"):
         Finding(
-            rule_id="AIA-HR-A14",
+            rule_id="AIA-RULE-HR-A14",
             use_case_id="candidate_scoring",
             role=ActorRole.PROVIDER,
             verdict=Verdict.PASS,
@@ -370,7 +370,7 @@ def _multi_use_case_report(policy_spec: PolicyRuleset) -> ComplianceReport:
     )
 
     finding = Finding(
-        rule_id="AIA-HR-A14",
+        rule_id="AIA-RULE-HR-A14",
         use_case_id="candidate_scoring",
         role=ActorRole.PROVIDER,
         verdict=Verdict.INADEQUATE,
@@ -425,7 +425,7 @@ def test_report_rejects_finding_with_unknown_use_case():
         rules=[a_rule()],
     )
     bad_finding = Finding(
-        rule_id="AIA-HR-A14",
+        rule_id="AIA-RULE-HR-A14",
         use_case_id="does_not_exist",
         role=ActorRole.PROVIDER,
         verdict=Verdict.PASS,
@@ -463,10 +463,10 @@ def test_report_rejects_finding_with_unknown_rule_id():
         spec_version="0.1.0",
         act_version_date=ACT_DATE,
         source_note="derived from EC Compliance Checker",
-        rules=[a_rule(rule_id="AIA-HR-A14")],
+        rules=[a_rule(rule_id="AIA-RULE-HR-A14")],
     )
     finding = Finding(
-        rule_id="AIA-HR-A99",  # not in the spec
+        rule_id="AIA-RULE-HR-A99",  # not in the spec
         use_case_id="cv_parsing",
         role=ActorRole.PROVIDER,
         verdict=Verdict.PASS,

@@ -14,7 +14,7 @@ records:
   - the provider considers or has reason to consider that a high-risk system it placed on the market or
     put into service is non-conforming
   implementation_refs: &id002
-  - AIA-PO-A20
+  - AIA-RULE-PO-A20
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN
@@ -47,7 +47,7 @@ records:
   conditions: &id003
   - the high-risk AI system presents an Article 79(1) risk and the provider becomes aware of it
   implementation_refs: &id004
-  - AIA-PO-A20-2
+  - AIA-RULE-PO-A20-2
   verification_mode: reported_not_judged
   mandatory_content:
   - investigate the causes, collaborating with the reporting deployer where applicable

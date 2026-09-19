@@ -12,7 +12,7 @@ records:
   conditions:
   - the provider is established in a third country
   implementation_refs:
-  - AIA-GP-A54-1
+  - AIA-RULE-GP-A54-1
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
@@ -24,7 +24,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-GP-A54-2
+  - AIA-RULE-GP-A54-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
@@ -36,7 +36,7 @@ records:
   - actor_ref: authorised_representative
   targets: []
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-PROVIDE-MANDATE
@@ -50,7 +50,7 @@ records:
   conditions:
   - the AI Office requests a copy of the mandate
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
@@ -65,7 +65,7 @@ records:
   qualifier_spans:
   - A054-P003
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
@@ -84,7 +84,7 @@ records:
   - Annex XI technical documentation
   - appointing-provider contact details
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
@@ -101,7 +101,7 @@ records:
   conditions:
   - the AI Office makes a reasoned request
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-D-COOPERATE
@@ -119,7 +119,7 @@ records:
   conditions:
   - the AI Office or a competent authority makes a reasoned request
   implementation_refs:
-  - AIA-GPAR-A54-3
+  - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P4-AUTHORITY-ADDRESS-TERM
@@ -133,7 +133,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-GP-A54-4
+  - AIA-RULE-GP-A54-4
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P5-TERMINATE-MANDATE
@@ -147,7 +147,7 @@ records:
   conditions:
   - the representative considers or has reason to consider the provider non-compliant
   implementation_refs:
-  - AIA-GPAR-A54-5
+  - AIA-RULE-GPAR-A54-5
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
@@ -164,7 +164,7 @@ records:
   - the mandate termination
   - the reasons for termination
   implementation_refs:
-  - AIA-GPAR-A54-5
+  - AIA-RULE-GPAR-A54-5
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION
@@ -186,11 +186,11 @@ records:
   exceptions:
   - the general-purpose AI model presents systemic risk
   implementation_refs:
-  - AIA-GP-A54-1
-  - AIA-GP-A54-2
-  - AIA-GPAR-A54-3
-  - AIA-GP-A54-4
-  - AIA-GPAR-A54-5
+  - AIA-RULE-GP-A54-1
+  - AIA-RULE-GP-A54-2
+  - AIA-RULE-GPAR-A54-3
+  - AIA-RULE-GP-A54-4
+  - AIA-RULE-GPAR-A54-5
   implementation_reason: Each Article 54 rule encodes this exception in its activation condition.
   verification_mode: reported_not_judged
   verified_by: vidibro

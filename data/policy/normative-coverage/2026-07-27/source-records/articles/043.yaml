@@ -12,7 +12,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A43-1
+  - AIA-RULE-PO-A43-1
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
@@ -24,7 +24,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A43-1B
+  - AIA-RULE-PO-A43-1B
   verification_mode: reported_not_judged
   conditions:
   - operator: all_of
@@ -53,7 +53,7 @@ records:
   targets: []
   kind: permission
   implementation_refs:
-  - AIA-PO-A43-1B
+  - AIA-RULE-PO-A43-1B
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
@@ -86,7 +86,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A43-2
+  - AIA-RULE-PO-A43-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
@@ -100,7 +100,7 @@ records:
   - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
     I
   implementation_refs:
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-SECTION2
@@ -114,7 +114,7 @@ records:
   - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
     I
   implementation_refs:
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-QMS
@@ -130,7 +130,7 @@ records:
   - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
     I
   implementation_refs:
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   mandatory_content:
   - assess the Article 17 quality-management system
@@ -181,7 +181,7 @@ records:
   - the manufacturer has applied harmonised standards ensuring compliance with all the requirements of
     that legislation
   implementation_refs:
-  - AIA-PO-A43-3
+  - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-NO-EFFECT
@@ -230,7 +230,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A43-4
+  - AIA-RULE-PO-A43-4
   verification_mode: reported_not_judged
   verified_by: vidibro
   conditions:

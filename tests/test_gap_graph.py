@@ -144,12 +144,12 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     # someone else's general-purpose AI model holds that model's Annex XII documentation in
     # confidence.
     assert sorted(r.rule_id for r in minimal.all_rules) == [
-        "AIA-ALL-A04",
-        "AIA-ALL-A04A",
-        "AIA-ALL-A75c-3",
-            "AIA-ALL-A79",
-            "AIA-PO-A53-7",
-            "AIA-PO-A59-P1-E",
+        "AIA-RULE-ALL-A04",
+        "AIA-RULE-ALL-A04A",
+        "AIA-RULE-ALL-A75c-3",
+            "AIA-RULE-ALL-A79",
+            "AIA-RULE-PO-A53-7",
+            "AIA-RULE-PO-A59-P1-E",
         ]
 
 
@@ -170,31 +170,31 @@ def test_each_role_gets_its_own_obligations(spec):
 
     provider_ids = {r.rule_id for r in provider.all_rules}
     deployer_ids = {r.rule_id for r in deployer.all_rules}
-    assert "AIA-HR-A14" in provider_ids and "AIA-HR-A14" not in deployer_ids
+    assert "AIA-RULE-HR-A14" in provider_ids and "AIA-RULE-HR-A14" not in deployer_ids
     assert deployer_ids == {
-        "AIA-ALL-A04",
-        "AIA-ALL-A04A",
-        "AIA-ALL-A73",
-        "AIA-ALL-A73-10",
-        "AIA-ALL-A75c-3",
-        "AIA-ALL-A79",
-        "AIA-ALL-A82",
-        "AIA-DP-A26",
-            "AIA-DP-A26-11",
-            "AIA-DP-A26-12",
-            "AIA-DP-A26-6",
-            "AIA-DP-A26-7",
-            "AIA-DP-A26-8",
-            "AIA-DP-A26-8-UNREGISTERED-NOTICE",
-            "AIA-DP-A26-8-UNREGISTERED-PROHIBITION",
-            "AIA-DP-A26-9",
-        "AIA-DP-A27",
-        "AIA-DP-A27-2",
-        "AIA-DP-A27-3",
-        "AIA-DP-A46-2",
-        "AIA-DP-A49-3",
-        "AIA-DP-A71-3",
-        "AIA-DP-A86",
+        "AIA-RULE-ALL-A04",
+        "AIA-RULE-ALL-A04A",
+        "AIA-RULE-ALL-A73",
+        "AIA-RULE-ALL-A73-10",
+        "AIA-RULE-ALL-A75c-3",
+        "AIA-RULE-ALL-A79",
+        "AIA-RULE-ALL-A82",
+        "AIA-RULE-DP-A26",
+            "AIA-RULE-DP-A26-11",
+            "AIA-RULE-DP-A26-12",
+            "AIA-RULE-DP-A26-6",
+            "AIA-RULE-DP-A26-7",
+            "AIA-RULE-DP-A26-8",
+            "AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE",
+            "AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION",
+            "AIA-RULE-DP-A26-9",
+        "AIA-RULE-DP-A27",
+        "AIA-RULE-DP-A27-2",
+        "AIA-RULE-DP-A27-3",
+        "AIA-RULE-DP-A46-2",
+        "AIA-RULE-DP-A49-3",
+        "AIA-RULE-DP-A71-3",
+        "AIA-RULE-DP-A86",
     }
     # The rules that bind by something other than the role: Art. 4 by the tier, and Arts. 75c(3),
     # 79 and 82 by an act of an authority — an AI Office non-compliance decision, an opened
@@ -202,13 +202,13 @@ def test_each_role_gets_its_own_obligations(spec):
     # EVENT: the report is the provider's under 73(1), and Art. 26(5) hands it to a deployer that
     # has identified a serious incident and cannot reach the provider.
     assert provider_ids & deployer_ids == {
-            "AIA-ALL-A04",
-            "AIA-ALL-A04A",
-            "AIA-ALL-A73",
-        "AIA-ALL-A73-10",
-        "AIA-ALL-A75c-3",
-        "AIA-ALL-A79",
-        "AIA-ALL-A82",
+            "AIA-RULE-ALL-A04",
+            "AIA-RULE-ALL-A04A",
+            "AIA-RULE-ALL-A73",
+        "AIA-RULE-ALL-A73-10",
+        "AIA-RULE-ALL-A75c-3",
+        "AIA-RULE-ALL-A79",
+        "AIA-RULE-ALL-A82",
     }
 
 
@@ -231,7 +231,7 @@ def test_selection_is_per_use_case(spec):
     scoring = [f.rule_id for f in report.findings if f.use_case_id == "scoring"]
     parsing = [f.rule_id for f in report.findings if f.use_case_id == "parsing"]
     assert len(scoring) > len(parsing), "high-risk activates the Chapter III requirements"
-    assert parsing == ["AIA-NHR-A06-4"], "not_high_risk owes the Art. 6(4) assessment"
+    assert parsing == ["AIA-RULE-NHR-A06-4"], "not_high_risk owes the Art. 6(4) assessment"
 
 
 def test_process_obligations_are_reported_but_never_judged(spec):
@@ -248,7 +248,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         max_workers=1,
     )
     outstanding = report.not_document_verifiable
-    assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
+    assert "AIA-RULE-PO-A17" in outstanding[ActorRole.PROVIDER]
     assert report.permissions[ActorRole.PROVIDER] == [
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
@@ -273,32 +273,32 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         "AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION",
         "AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION",
     ]
-    assert "AIA-PO-A17" not in judge.asked
+    assert "AIA-RULE-PO-A17" not in judge.asked
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.
     assert outstanding[ActorRole.DEPLOYER] == [
-        "AIA-ALL-A04",
-        "AIA-ALL-A04A",
-        "AIA-ALL-A73",
-        "AIA-ALL-A73-10",
-        "AIA-ALL-A75c-3",
-        "AIA-ALL-A79",
-        "AIA-ALL-A82",
-        "AIA-DP-A26",
-        "AIA-DP-A26-11",
-        "AIA-DP-A26-12",
-        "AIA-DP-A26-6",
-        "AIA-DP-A26-7",
-        "AIA-DP-A26-8",
-        "AIA-DP-A26-8-UNREGISTERED-NOTICE",
-        "AIA-DP-A26-8-UNREGISTERED-PROHIBITION",
-        "AIA-DP-A26-9",
-        "AIA-DP-A27",
-        "AIA-DP-A27-2",
-        "AIA-DP-A27-3",
-        "AIA-DP-A46-2",
-        "AIA-DP-A49-3",
-        "AIA-DP-A71-3",
-        "AIA-DP-A86",
+        "AIA-RULE-ALL-A04",
+        "AIA-RULE-ALL-A04A",
+        "AIA-RULE-ALL-A73",
+        "AIA-RULE-ALL-A73-10",
+        "AIA-RULE-ALL-A75c-3",
+        "AIA-RULE-ALL-A79",
+        "AIA-RULE-ALL-A82",
+        "AIA-RULE-DP-A26",
+        "AIA-RULE-DP-A26-11",
+        "AIA-RULE-DP-A26-12",
+        "AIA-RULE-DP-A26-6",
+        "AIA-RULE-DP-A26-7",
+        "AIA-RULE-DP-A26-8",
+        "AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE",
+        "AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION",
+        "AIA-RULE-DP-A26-9",
+        "AIA-RULE-DP-A27",
+        "AIA-RULE-DP-A27-2",
+        "AIA-RULE-DP-A27-3",
+        "AIA-RULE-DP-A46-2",
+        "AIA-RULE-DP-A49-3",
+        "AIA-RULE-DP-A71-3",
+        "AIA-RULE-DP-A86",
     ]
     flat = {r for ids in outstanding.values() for r in ids}
     assert not flat & {f.rule_id for f in report.findings}
@@ -427,14 +427,14 @@ def test_the_supply_chain_roles_each_owe_their_own_article(spec):
         role: {r.rule_id for r in select_rules(spec, scoring, role).all_rules}
         for role in (ActorRole.IMPORTER, ActorRole.DISTRIBUTOR, ActorRole.AUTHORISED_REPRESENTATIVE)
     }
-    shared = {"AIA-ALL-A79", "AIA-ALL-A82"}
+    shared = {"AIA-RULE-ALL-A79", "AIA-RULE-ALL-A82"}
     assert all(shared <= ids for ids in owed.values()), "Arts. 79 and 82 bind every operator"
-    assert owed[ActorRole.IMPORTER] - shared == {"AIA-IM-A23"}
-    assert owed[ActorRole.DISTRIBUTOR] - shared == {"AIA-DI-A24"}
+    assert owed[ActorRole.IMPORTER] - shared == {"AIA-RULE-IM-A23"}
+    assert owed[ActorRole.DISTRIBUTOR] - shared == {"AIA-RULE-DI-A24"}
     # The representative owes one more than its own Article: Art. 71(2) names it in the paragraph
     # — the Annex VIII data is entered "by the provider or, where applicable, by the authorised
     # representative" — so it is a duty-holder there and not merely the provider's agent.
-    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] - shared == {"AIA-AR-A22", "AIA-PO-A71-2"}
+    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] - shared == {"AIA-RULE-AR-A22", "AIA-RULE-PO-A71-2"}
 
 
 def test_the_report_lists_every_role_the_act_binds(spec):
@@ -449,11 +449,11 @@ def test_the_report_lists_every_role_the_act_binds(spec):
         max_workers=1,
     )
     outstanding = report.not_document_verifiable
-    assert "AIA-IM-A23" in outstanding[ActorRole.IMPORTER]
-    assert "AIA-DI-A24" in outstanding[ActorRole.DISTRIBUTOR]
-    assert "AIA-AR-A22" in outstanding[ActorRole.AUTHORISED_REPRESENTATIVE]
-    assert "AIA-DP-A26" in outstanding[ActorRole.DEPLOYER]
-    assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
+    assert "AIA-RULE-IM-A23" in outstanding[ActorRole.IMPORTER]
+    assert "AIA-RULE-DI-A24" in outstanding[ActorRole.DISTRIBUTOR]
+    assert "AIA-RULE-AR-A22" in outstanding[ActorRole.AUTHORISED_REPRESENTATIVE]
+    assert "AIA-RULE-DP-A26" in outstanding[ActorRole.DEPLOYER]
+    assert "AIA-RULE-PO-A17" in outstanding[ActorRole.PROVIDER]
     # Every role the ruleset covers appears — except `initial_provider`, and its absence is the
     # finding rather than an omission: Art. 25(2) has no holder unless the provider role moved, and
     # here it did not. Which roles the ruleset covers is settled by the coverage ledger before
@@ -633,7 +633,7 @@ def test_reading_the_deployer_never_withholds_the_obligation(spec):
     seriously."""
     for kind in DeployerType:
         report = _deployer_report(spec, RiskClass.HIGH_RISK, kind)
-        assert "AIA-DP-A27" in report.not_document_verifiable[ActorRole.DEPLOYER]
+        assert "AIA-RULE-DP-A27" in report.not_document_verifiable[ActorRole.DEPLOYER]
 
 
 def test_silence_is_reported_as_unresolved_not_as_a_clearance(spec):
@@ -717,7 +717,7 @@ def test_deployer_registration_is_never_withheld_from_the_report(spec):
     The condition narrows the duty-holder, not the report."""
     for kind in DeployerType:
         report = _deployer_report(spec, RiskClass.HIGH_RISK, kind)
-        assert "AIA-DP-A49-3" in report.not_document_verifiable[ActorRole.DEPLOYER]
+        assert "AIA-RULE-DP-A49-3" in report.not_document_verifiable[ActorRole.DEPLOYER]
 
 
 def _legacy_report(spec, risk_class, area=AnnexIIIArea.EMPLOYMENT, duties=()):

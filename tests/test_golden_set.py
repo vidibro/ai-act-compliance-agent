@@ -146,7 +146,7 @@ def test_rule_tags_never_leak_into_case_documents(any_golden: GoldenSet):
 
 def test_removed_case_actually_drops_the_section(golden: GoldenSet):
     """Art. 14's oversight detail must be gone when Art. 14 is the removed rule."""
-    case = next(c for c in golden.cases if c.case_id == "AIA-HR-A14__removed")
+    case = next(c for c in golden.cases if c.case_id == "AIA-RULE-HR-A14__removed")
     assert "stop control" not in case.raw_text
     assert "automation bias" not in case.raw_text.lower() or "§7" in case.raw_text
     pristine = next(c for c in golden.cases if c.ablation == AblationType.UNTOUCHED)
@@ -156,7 +156,7 @@ def test_removed_case_actually_drops_the_section(golden: GoldenSet):
 def test_inadequate_case_keeps_the_topic_but_drops_the_substance(golden: GoldenSet):
     """The defining property of PRESENT_BUT_INADEQUATE: the words are there, the substance is not.
     This is precisely what defeats keyword matching."""
-    case = next(c for c in golden.cases if c.case_id == "AIA-HR-A14__present_but_inadequate")
+    case = next(c for c in golden.cases if c.case_id == "AIA-RULE-HR-A14__present_but_inadequate")
     # Topic words survive — this is exactly why a keyword checker says PASS here.
     assert "human oversight" in case.raw_text.lower()
     # ...but every concrete oversight measure Art. 14 actually demands is gone. (Terms are chosen
@@ -180,11 +180,11 @@ def test_ablated_rule_must_carry_an_expectation():
             system_id="s",
             document_path="p",
             raw_text="t",
-            ablated_rule_id="AIA-HR-A14",
+            ablated_rule_id="AIA-RULE-HR-A14",
             ablation=AblationType.REMOVED,
             difficulty="obvious",
             split="dev",
-            expected={"AIA-HR-A09": Verdict.PASS},
+            expected={"AIA-RULE-HR-A09": Verdict.PASS},
         )
 
 
@@ -195,11 +195,11 @@ def test_untouched_case_cannot_name_an_ablated_rule():
             system_id="s",
             document_path="p",
             raw_text="t",
-            ablated_rule_id="AIA-HR-A14",
+            ablated_rule_id="AIA-RULE-HR-A14",
             ablation=AblationType.UNTOUCHED,
             difficulty="obvious",
             split="dev",
-            expected={"AIA-HR-A14": Verdict.PASS},
+            expected={"AIA-RULE-HR-A14": Verdict.PASS},
         )
 
 
@@ -265,7 +265,7 @@ def test_the_two_sets_are_genuinely_different_documents(golden: GoldenSet, heldo
 
 def test_heldout_inadequate_case_keeps_the_topic_but_drops_the_substance(heldout: GoldenSet):
     """The dev set's headline property, re-asserted on the document we actually report from."""
-    case = next(c for c in heldout.cases if c.case_id == "AIA-HR-A14__present_but_inadequate")
+    case = next(c for c in heldout.cases if c.case_id == "AIA-RULE-HR-A14__present_but_inadequate")
     assert "human oversight" in case.raw_text.lower()  # topic survives -> keyword checker passes it
     # Terms unique to Part E. "alphabetically" is NOT usable — it legitimately recurs in Part A,
     # which is itself the lesson: topic words are worthless as evidence of an obligation being met.

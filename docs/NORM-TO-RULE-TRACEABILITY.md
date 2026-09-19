@@ -70,7 +70,7 @@ meaning can be reconstructed from:
 - recorded Article 15(5) chapeau and Article 16(a) provider basis.
 
 This proves norm validity. Article 15's twelve obligation norms now point to the aggregate policy
-rule `AIA-HR-A15` and each gets its own verdict. Its technical-redundancy permission is a canonical
+rule `AIA-RULE-HR-A15` and each gets its own verdict. Its technical-redundancy permission is a canonical
 report-only route instead.
 
 ## Adopted decision rule
@@ -96,7 +96,7 @@ last two. A semantic evidence judge may still be model-based. Its uncertainty mu
 
 ## Pilot design for Article 15
 
-Keep `AIA-HR-A15` as the user-facing aggregate rule, but give it explicit subcriteria. Use norm IDs
+Keep `AIA-RULE-HR-A15` as the user-facing aggregate rule, but give it explicit subcriteria. Use norm IDs
 as the stable criterion IDs. Do not manually duplicate action and condition prose in `spec.yaml` if
 they can be materialised from the normative-coverage inventory; duplicated prose creates a second
 source of truth.
@@ -104,7 +104,7 @@ source of truth.
 Conceptually:
 
 ```yaml
-- rule_id: AIA-HR-A15
+- rule_id: AIA-RULE-HR-A15
   # existing fields remain
   criteria:
     - norm_id: AIA-NORM-A015-P5-DATA-POISONING
@@ -121,7 +121,7 @@ model to perform this mapping.
 
 The strict validator must fail for Article 15 when any of these is true:
 
-- a norm says `implementation_refs: [AIA-HR-A15]` but the rule omits that norm from `criteria`;
+- a norm says `implementation_refs: [AIA-RULE-HR-A15]` but the rule omits that norm from `criteria`;
 - the rule names a missing norm;
 - the rule names a norm that does not point back to that rule;
 - the same norm is listed twice;
@@ -147,7 +147,7 @@ Add one focused fixture for `AIA-NORM-A015-P5-MODEL-FLAWS`:
 - it says nothing substantive about detecting, preventing, responding to, resolving or controlling
   model flaws;
 - expected model-flaws criterion verdict: `gap` or `inadequate`, according to the fixture wording;
-- expected aggregate `AIA-HR-A15` verdict: not `pass`;
+- expected aggregate `AIA-RULE-HR-A15` verdict: not `pass`;
 - the generated report must contain the exact norm ID and a reason identifying model-flaw controls.
 
 Also add a deterministic unit test with a stub criterion judge. Return `pass` for every sibling and
@@ -175,7 +175,7 @@ Do not begin by rewriting all policy rules. Complete and verify Article 15 first
 
 The work is complete only when all of these statements are demonstrated by automated tests:
 
-- Every Article 15 norm implemented by `AIA-HR-A15` has exactly one explicit criterion.
+- Every Article 15 norm implemented by `AIA-RULE-HR-A15` has exactly one explicit criterion.
 - Every Article 15 criterion resolves to exactly one canonical norm that points back to the rule.
 - `AIA-NORM-A015-P5-MODEL-FLAWS` is materialised with the full mitigation action and its condition,
   despite its two-word source slice.
@@ -203,7 +203,7 @@ file. Report any pre-existing unrelated failures separately; do not weaken tests
 
 ## Pilot implementation (Article 15)
 
-- `data/policy/spec.yaml`: `AIA-HR-A15` lists its 13 Article 15 provider norms under `criteria`,
+- `data/policy/spec.yaml`: `AIA-RULE-HR-A15` lists its 13 Article 15 provider norms under `criteria`,
   as `norm_id` only.
 - `src/aiact/policy_loader.py`: resolves each criterion from the generated `norms/` shards into a
   `RuleCriterion` (subjects, kind, action, text, conditions, exceptions, mandatory content, spans,
@@ -232,7 +232,7 @@ file. Report any pre-existing unrelated failures separately; do not weaken tests
   `tests/test_norm_traceability.py` (no model or network calls).
 
 One live run with `gemini-2.5-flash` returned `gap` for `MODEL-FLAWS` and `inadequate` for
-`AIA-HR-A15`; it is an evaluation observation, not a deterministic guarantee. Retrieval per
+`AIA-RULE-HR-A15`; it is an evaluation observation, not a deterministic guarantee. Retrieval per
 criterion is still not implemented: retrieval queries by `evidence_expected` facets.
 
 ## Typed norm relations
@@ -286,7 +286,7 @@ explicitly adjudicated.
    every rule it names, so steps 1 and 2 land together.
 2. Add `criteria` to each rule its norms name, then run the strict build.
 3. Article 16 is the reference case for cross-references. `AIA-NORM-A016-A-SECTION-2-COMPLIANCE`
-   names every Section 2 rule (including `AIA-HR-A15`) as the provider-allocation basis, not as a
+   names every Section 2 rule (including `AIA-RULE-HR-A15`) as the provider-allocation basis, not as a
    separate duty. It is an allocation relation rather than a criterion of fourteen rules. Its other
    cross-references are either carried by named policy rules or by named substantive norms, which
    must themselves resolve to policy rules.

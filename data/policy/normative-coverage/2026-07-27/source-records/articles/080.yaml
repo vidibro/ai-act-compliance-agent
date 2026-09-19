@@ -65,7 +65,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A20
+  - AIA-RULE-PO-A20
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A080-P4-NONCOMPLIANCE-FINE
@@ -96,7 +96,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-PO-A20
+  - AIA-RULE-PO-A20
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A080-P6-APPLY-ARTICLE-79-ESCALATION

@@ -12,7 +12,7 @@ records:
   conditions:
   - the provider is established in a third country
   implementation_refs: &id001
-  - AIA-PO-A22
+  - AIA-RULE-PO-A22
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE
@@ -35,7 +35,7 @@ records:
   - actor_ref: authorised_representative
   targets: []
   implementation_refs: &id002
-  - AIA-AR-A22
+  - AIA-RULE-AR-A22
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A022-P3-PROVIDE-MANDATE

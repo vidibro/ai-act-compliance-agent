@@ -9,7 +9,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-HR-A11
+  - AIA-RULE-HR-A11
   verification_mode: judged_by_gap_analysis
   mandatory_content:
   - draw up the documentation before market placement or putting into service
@@ -27,7 +27,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-HR-A11
+  - AIA-RULE-HR-A11
   verification_mode: judged_by_gap_analysis
   mandatory_content:
   - demonstrate compliance with Chapter III Section 2
@@ -41,7 +41,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-HR-A11
+  - AIA-RULE-HR-A11
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-SIMPLIFY
@@ -57,7 +57,7 @@ records:
   - provider is an SME, start-up, or SMC
   implementation_mode: report_only
   implementation_refs:
-  - AIA-HR-A11
+  - AIA-RULE-HR-A11
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-FORM
@@ -84,7 +84,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs:
-  - AIA-HR-A11
+  - AIA-RULE-HR-A11
   verification_mode: judged_by_gap_analysis
   conditions:
   - provider is an SME, start-up, or SMC and opts for simplified documentation
@@ -117,7 +117,7 @@ records:
   - the high-risk AI system relates to a product covered by Union harmonisation legislation listed in
     Annex I, Section A
   implementation_refs:
-  - AIA-HR-A11-2
+  - AIA-RULE-HR-A11-2
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P3-AMEND

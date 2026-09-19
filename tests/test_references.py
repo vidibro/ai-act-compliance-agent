@@ -15,7 +15,7 @@ from aiact.tools.references import references_in, resolve, resolve_all
 
 ROOT = Path(__file__).resolve().parents[1]
 DEV = ROOT / "data" / "golden_set" / "cases" / "pristine__untouched.md"
-REMOVED = ROOT / "data" / "golden_set" / "cases" / "AIA-HR-A14__removed.md"
+REMOVED = ROOT / "data" / "golden_set" / "cases" / "AIA-RULE-HR-A14__removed.md"
 HELDOUT = ROOT / "data" / "golden_set" / "cases-heldout" / "pristine__untouched.md"
 
 ROMAN_ANNEXES = """\

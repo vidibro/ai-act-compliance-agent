@@ -147,7 +147,7 @@ exceptions:
   - obvious_from_context_to_reasonably_well_informed_person
 product_disposition: implemented
 rule_ids:
-  - AIA-TR-A50-1
+  - AIA-RULE-TR-A50-1
 verification_mode: document_verifiable
 review:
   status: approved
@@ -759,14 +759,14 @@ changed.
 At migration start the golden sets exercise 9 of 14 document-verifiable rules. The known missing
 set is:
 
-- `AIA-HR-A11-2`
-- `AIA-HR-A12-3A`
-- `AIA-HR-A12-3B`
-- `AIA-HR-A12-3C`
-- `AIA-HR-A12-3D`
-- `AIA-NHR-A06-4`
-- `AIA-TR-A50-1`
-- `AIA-TR-A50-2`
+- `AIA-RULE-HR-A11-2`
+- `AIA-RULE-HR-A12-3A`
+- `AIA-RULE-HR-A12-3B`
+- `AIA-RULE-HR-A12-3C`
+- `AIA-RULE-HR-A12-3D`
+- `AIA-RULE-NHR-A06-4`
+- `AIA-RULE-TR-A50-1`
+- `AIA-RULE-TR-A50-2`
 
 **Exit:** every document-verifiable norm has behavioural coverage or explicit evaluation debt.
 
@@ -878,7 +878,7 @@ remediation needs every provision they answer to.
 
 The ledger records the overlap: `carried_by_norm_ids` names the carrier for 20 restatements, and
 65 of the 91 policy rules are the implementation target of more than one norm, covering 369 norms
-in all. `AIA-HR-A09` alone carries norms from Articles 8, 9 and 16.
+in all. `AIA-RULE-HR-A09` alone carries norms from Articles 8, 9 and 16.
 
 Nothing surfaces it. `PolicyRule.source` is a single `LegalSource`, so a verdict cites one article,
 and the norm layer is not imported by the pipeline at all — this is a runtime change, not a ledger
@@ -932,10 +932,10 @@ separately. Article 12(3) is split; two remain:
 
 | Rule | What it checks | Groups | Norms behind it |
 |---|---|---:|---:|
-| `AIA-HR-A11` | Annex IV technical documentation, 26 items in 5901 characters of `annex_context` | 9 | 8 |
-| `AIA-HR-A13-3` | Article 13(3)(a) to (f), the instructions-for-use content | 6 | 18 |
+| `AIA-RULE-HR-A11` | Annex IV technical documentation, 26 items in 5901 characters of `annex_context` | 9 | 8 |
+| `AIA-RULE-HR-A13-3` | Article 13(3)(a) to (f), the instructions-for-use content | 6 | 18 |
 
-`AIA-HR-A12-3` is now `AIA-HR-A12-3A` to `-3D`, one per lettered point, each resolving its own
+`AIA-RULE-HR-A12-3` is now `AIA-RULE-HR-A12-3A` to `-3D`, one per lettered point, each resolving its own
 enacted text through `source.point` and judged `presence` rather than the list's `completeness`.
 It is the shape the remaining two should follow.
 
@@ -947,8 +947,8 @@ The norms are not the problem and splitting them would not help: one provider dr
 document is one duty, and `PolicyRule` owns verdict granularity while the norm layer does not reach
 the pipeline. The fix is a rule per group, each carrying its own slice of the enacted list.
 
-**Deliberately excluded.** The five `substance` rules behind the largest norm counts — `AIA-HR-A09`
-with 32 norms, `AIA-HR-A15` with 20, `AIA-HR-A10` with 19, `AIA-HR-A14` with 15, `AIA-HR-A13` with
+**Deliberately excluded.** The five `substance` rules behind the largest norm counts — `AIA-RULE-HR-A09`
+with 32 norms, `AIA-RULE-HR-A15` with 20, `AIA-RULE-HR-A10` with 19, `AIA-RULE-HR-A14` with 15, `AIA-RULE-HR-A13` with
 11 — judge a system, not a list. Whether a risk management system is adequate is one holistic
 question, and 32 verdicts in its place would be noise. Changing those is a product decision, not
 this defect.
@@ -959,7 +959,7 @@ the right shape. That includes Annex V, Annex XI Section 1, Annex XII and every 
 
 **Sizing what is left.** About 15 sub-rules replace 2, and 26 norms repoint their
 `implementation_refs`. Unlike Article 12(3), which no golden case names, the golden set carries 64
-references each to `AIA-HR-A11` and `AIA-HR-A13-3` across the main, held-out and ablation files,
+references each to `AIA-RULE-HR-A11` and `AIA-RULE-HR-A13-3` across the main, held-out and ablation files,
 including `__present_but_inadequate` and `__removed` cases that must be re-cut per group. Ship the
 golden-set cases with the split, never after it.
 

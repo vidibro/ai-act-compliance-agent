@@ -189,12 +189,12 @@ def test_an_obligation_nobody_judged_still_says_what_would_satisfy_it(spec):
     returns NOT_APPLICABLE before building a prompt otherwise. For every process obligation it is
     therefore the renderer or nobody.
 
-    AIA-ALL-A49-4 is the case that makes this load-bearing rather than cosmetic. The spec declares
+    AIA-RULE-ALL-A49-4 is the case that makes this load-bearing rather than cosmetic. The spec declares
     that rule deliberately under-inclusive — `AnnexIIIArea` cannot express "Annex III point 1 used
     FOR law enforcement", so a police face-matching system is not selected for it — and says the gap
     "is recorded in `evidence_expected` so a biometrics provider is told to check it themselves".
     That sentence is only true if this holds."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-ALL-A49-4")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-ALL-A49-4")
     assert not rule.document_verifiable, "re-derive this test: the rule now reaches the judge"
     text = " ".join(
         render_report(_report(spec, {ActorRole.PROVIDER: [rule.rule_id]}), spec).split()

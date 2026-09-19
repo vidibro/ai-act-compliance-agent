@@ -9,7 +9,7 @@ records:
   - actor_ref: provider
   targets: []
   implementation_refs: &id001
-  - AIA-HR-A13
+  - AIA-RULE-HR-A13
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
@@ -57,7 +57,7 @@ records:
   qualifier_spans: &id002
   - A013-P003
   implementation_refs: &id003
-  - AIA-HR-A13-3
+  - AIA-RULE-HR-A13-3
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS

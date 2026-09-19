@@ -167,7 +167,7 @@ records:
   - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
   verification_mode: judged_by_gap_analysis
   implementation_refs:
-  - AIA-NHR-A06-4
+  - AIA-RULE-NHR-A06-4
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-REGISTER-SYSTEM
   source: A006-P015
@@ -182,7 +182,7 @@ records:
   verification_mode: reported_not_judged
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-NHR-A06-4-REGISTER
+  - AIA-RULE-NHR-A06-4-REGISTER
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-PROVIDE-ASSESSMENT
   source: A006-P015
@@ -198,7 +198,7 @@ records:
   verification_mode: reported_not_judged
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-NHR-A06-4-PROVIDE-ASSESSMENT
+  - AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P5-PROVIDE-GUIDELINES
   source: A006-P016

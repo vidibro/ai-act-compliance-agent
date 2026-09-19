@@ -39,7 +39,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1A
+  - AIA-RULE-GP-A53-1A
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -83,7 +83,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -128,7 +128,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -171,7 +171,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -214,7 +214,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1B
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -256,7 +256,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1C
+  - AIA-RULE-GP-A53-1C
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -299,7 +299,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1C
+  - AIA-RULE-GP-A53-1C
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -342,7 +342,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-1D
+  - AIA-RULE-GP-A53-1D
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -395,8 +395,8 @@ norms:
   product_scope_reason: ''
   implementation_mode: report_only
   implementation_refs:
-  - AIA-GP-A53-1A
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1A
+  - AIA-RULE-GP-A53-1B
   implementation_reason: Both rules encode this exception in their activation conditions.
   verification_mode: reported_conditionally
   review:
@@ -443,8 +443,8 @@ norms:
   product_scope_reason: ''
   implementation_mode: report_only
   implementation_refs:
-  - AIA-GP-A53-1A
-  - AIA-GP-A53-1B
+  - AIA-RULE-GP-A53-1A
+  - AIA-RULE-GP-A53-1B
   implementation_reason: Both rules disapply the open-source exception for systemic-risk models.
   verification_mode: reported_conditionally
   review:
@@ -488,7 +488,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-3
+  - AIA-RULE-GP-A53-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -532,7 +532,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: report_only
   implementation_refs:
-  - AIA-GP-A53-4
+  - AIA-RULE-GP-A53-4
   implementation_reason: The rule's activation condition recognises this code-of-practice route.
   verification_mode: reported_conditionally
   review:
@@ -574,7 +574,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: report_only
   implementation_refs:
-  - AIA-GP-A53-4
+  - AIA-RULE-GP-A53-4
   implementation_reason: The rule's activation condition recognises the harmonised-standard route.
   verification_mode: reported_conditionally
   review:
@@ -622,7 +622,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-GP-A53-4
+  - AIA-RULE-GP-A53-4
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -753,7 +753,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A53-7
+  - AIA-RULE-PO-A53-7
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:

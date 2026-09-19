@@ -24,20 +24,20 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A08-2
-  - AIA-HR-A09
-  - AIA-HR-A10
-  - AIA-HR-A11
-  - AIA-HR-A11-2
-  - AIA-HR-A12
-  - AIA-HR-A12-3A
-  - AIA-HR-A12-3B
-  - AIA-HR-A12-3C
-  - AIA-HR-A12-3D
-  - AIA-HR-A13
-  - AIA-HR-A13-3
-  - AIA-HR-A14
-  - AIA-HR-A15
+  - AIA-RULE-PO-A08-2
+  - AIA-RULE-HR-A09
+  - AIA-RULE-HR-A10
+  - AIA-RULE-HR-A11
+  - AIA-RULE-HR-A11-2
+  - AIA-RULE-HR-A12
+  - AIA-RULE-HR-A12-3A
+  - AIA-RULE-HR-A12-3B
+  - AIA-RULE-HR-A12-3C
+  - AIA-RULE-HR-A12-3D
+  - AIA-RULE-HR-A13
+  - AIA-RULE-HR-A13-3
+  - AIA-RULE-HR-A14
+  - AIA-RULE-HR-A15
   implementation_reason: The existing Section 2 rules carry the substantive compliance checks and prevent
     a duplicate umbrella finding.
   verification_mode: judged_by_gap_analysis
@@ -76,7 +76,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A16-B
+  - AIA-RULE-PO-A16-B
   implementation_reason: ''
   verification_mode: judged_by_gap_analysis
   review:
@@ -221,12 +221,12 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A43-1
-  - AIA-PO-A43-1A
-  - AIA-PO-A43-1B
-  - AIA-PO-A43-2
-  - AIA-PO-A43-3
-  - AIA-PO-A43-4
+  - AIA-RULE-PO-A43-1
+  - AIA-RULE-PO-A43-1A
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-2
+  - AIA-RULE-PO-A43-3
+  - AIA-RULE-PO-A43-4
   implementation_reason: The route-specific Article 43 rules carry the substantive conformity-assessment
     findings.
   verification_mode: reported_not_judged
@@ -262,8 +262,8 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A47
-  - AIA-PO-A47-4
+  - AIA-RULE-PO-A47
+  - AIA-RULE-PO-A47-4
   implementation_reason: The Article 47 rules carry the substantive declaration findings.
   verification_mode: reported_not_judged
   review:
@@ -301,7 +301,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A48
+  - AIA-RULE-PO-A48
   implementation_reason: The Article 48 rule carries the substantive CE-marking finding.
   verification_mode: reported_not_judged
   review:
@@ -336,7 +336,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A49
+  - AIA-RULE-PO-A49
   implementation_reason: The Article 49 rule carries the substantive registration finding.
   verification_mode: reported_not_judged
   review:
@@ -412,7 +412,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A16-K
+  - AIA-RULE-PO-A16-K
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -449,7 +449,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A16-L
+  - AIA-RULE-PO-A16-L
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:

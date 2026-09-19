@@ -258,7 +258,7 @@ def _annex_with_chapeau(
     numbered items, and the items are what `annex_divisions` finds — so the sentence that says what
     the list IS has no address. Annex IV opens "The technical documentation referred to in
     Article 11(1) shall contain at least the following information, AS APPLICABLE TO THE RELEVANT
-    AI SYSTEM": a qualifier governing every one of the nine elements `AIA-HR-A11` is judged on, and
+    AI SYSTEM": a qualifier governing every one of the nine elements `AIA-RULE-HR-A11` is judged on, and
     part of no element.
 
     PER SECTION WHERE THE ANNEX HAS SECTIONS, because each section carries its own introduction and

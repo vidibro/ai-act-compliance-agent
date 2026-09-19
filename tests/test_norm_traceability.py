@@ -1,7 +1,7 @@
 """Norm-to-rule traceability for the Article 15 pilot, proved without a model.
 
 Four links, each held here by a deterministic test: every enforced Article 15 compliance norm is an
-explicit criterion of AIA-HR-A15; each criterion resolves to the canonical norm and is materialised
+explicit criterion of AIA-RULE-HR-A15; each criterion resolves to the canonical norm and is materialised
 from it; each is judged and reported on its own; and the rule passes only when every mandatory
 criterion does. A stub judge stands in for the model — whether a real model judges the fixture
 well is an evaluation question, not what these tests prove.
@@ -54,9 +54,9 @@ LEDGER = COVERAGE / "adjudications"
 SPEC = POLICY / "spec.yaml"
 FIXTURE = ROOT / "data" / "golden_set" / "criteria" / "AIA-NORM-A015-P5-MODEL-FLAWS__omitted.md"
 
-RULE = "AIA-HR-A15"
-ARTICLE_10_RULE = "AIA-HR-A10"
-ARTICLE_17_RULE = "AIA-PO-A17"
+RULE = "AIA-RULE-HR-A15"
+ARTICLE_10_RULE = "AIA-RULE-HR-A10"
+ARTICLE_17_RULE = "AIA-RULE-PO-A17"
 MODEL_FLAWS = "AIA-NORM-A015-P5-MODEL-FLAWS"
 SECTION_2_ALLOCATION = "AIA-REL-A016-A-ALLOCATES-SECTION-2"
 SIBLING_THREATS = {
@@ -97,7 +97,7 @@ def a17(spec: PolicyRuleset) -> PolicyRule:
 
 
 def with_criteria(spec: PolicyRuleset, criteria: list[RuleCriterion]) -> PolicyRuleset:
-    """The spec with AIA-HR-A15's criteria replaced, unvalidated, to test the checker itself."""
+    """The spec with AIA-RULE-HR-A15's criteria replaced, unvalidated, to test the checker itself."""
     rules = [
         rule.model_copy(update={"criteria": criteria}) if rule.rule_id == RULE else rule
         for rule in spec.rules
@@ -134,9 +134,9 @@ def test_article_six_separates_document_and_process_duties(bundle, spec):
     """Each Article 6(4) provider duty has one deterministic, distinct implementation path."""
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     expected = {
-        "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT": "AIA-NHR-A06-4",
-        "AIA-NORM-A006-P4-REGISTER-SYSTEM": "AIA-NHR-A06-4-REGISTER",
-        "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT": "AIA-NHR-A06-4-PROVIDE-ASSESSMENT",
+        "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT": "AIA-RULE-NHR-A06-4",
+        "AIA-NORM-A006-P4-REGISTER-SYSTEM": "AIA-RULE-NHR-A06-4-REGISTER",
+        "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT": "AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT",
     }
     assert {
         norm_id: norms[norm_id].implementation_refs for norm_id in expected
@@ -169,7 +169,7 @@ def test_article_eight_materialises_the_sectoral_integration_permission(bundle, 
     permission_id = "AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES"
     assert norms[permission_id].implementation_mode is ImplementationMode.REPORT_ONLY
     report_norm = next(item for item in spec.report_norms if item.norm_id == permission_id)
-    assert report_norm.activation_rule_ids == ["AIA-PO-A08-2"]
+    assert report_norm.activation_rule_ids == ["AIA-RULE-PO-A08-2"]
     assert norms["AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE"].implementation_mode is (
         ImplementationMode.COMPLIANCE_RULE
     )
@@ -177,7 +177,7 @@ def test_article_eight_materialises_the_sectoral_integration_permission(bundle, 
 
 
 def test_article_nine_separates_its_eighteen_duties_from_scope_and_permission_entries(bundle, spec):
-    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A09")
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-RULE-HR-A09")
     assert len(rule.criteria) == 19
 
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
@@ -197,7 +197,7 @@ def test_article_nine_separates_its_eighteen_duties_from_scope_and_permission_en
 
 
 def test_article_eleven_separates_the_simplified_documentation_permission(bundle, spec):
-    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A11")
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-RULE-HR-A11")
     assert [criterion.norm_id for criterion in rule.criteria] == [
         "AIA-NORM-A011-P1-DRAW",
         "AIA-NORM-A011-P1-DEMONSTRATE",
@@ -213,7 +213,7 @@ def test_article_eleven_separates_the_simplified_documentation_permission(bundle
 
 
 def test_article_twelve_maps_each_general_logging_duty_to_a_criterion(bundle, spec):
-    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A12")
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-RULE-HR-A12")
     assert [criterion.norm_id for criterion in rule.criteria] == [
         "AIA-NORM-A012-P1-AUTOMATIC-LOGGING",
         "AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS",
@@ -225,13 +225,13 @@ def test_article_twelve_maps_each_general_logging_duty_to_a_criterion(bundle, sp
 
 def test_article_thirteen_maps_transparency_and_instruction_contents_separately(bundle, spec):
     rules = {rule.rule_id: rule for rule in spec.rules}
-    assert len(rules["AIA-HR-A13"].criteria) == 3
-    assert len(rules["AIA-HR-A13-3"].criteria) == 13
+    assert len(rules["AIA-RULE-HR-A13"].criteria) == 3
+    assert len(rules["AIA-RULE-HR-A13-3"].criteria) == 13
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
 def test_article_fourteen_separates_oversight_duties_from_its_scope_exception(bundle, spec):
-    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A14")
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-RULE-HR-A14")
     assert len(rule.criteria) == 9
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     assert (
@@ -243,8 +243,8 @@ def test_article_fourteen_separates_oversight_duties_from_its_scope_exception(bu
 
 def test_article_nineteen_maps_each_log_retention_duty_to_a_criterion(bundle, spec):
     rules = {rule.rule_id: rule for rule in spec.rules}
-    assert len(rules["AIA-PO-A19"].criteria) == 2
-    assert [criterion.norm_id for criterion in rules["AIA-PO-A19-2"].criteria] == [
+    assert len(rules["AIA-RULE-PO-A19"].criteria) == 2
+    assert [criterion.norm_id for criterion in rules["AIA-RULE-PO-A19-2"].criteria] == [
         "AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION"
     ]
     assert traceability_errors(bundle, spec, LEDGER) == []
@@ -252,8 +252,8 @@ def test_article_nineteen_maps_each_log_retention_duty_to_a_criterion(bundle, sp
 
 def test_article_twenty_separates_corrective_response_from_risk_investigation(bundle, spec):
     rules = {rule.rule_id: rule for rule in spec.rules}
-    assert len(rules["AIA-PO-A20"].criteria) == 2
-    assert rules["AIA-PO-A20-2"].criteria == []
+    assert len(rules["AIA-RULE-PO-A20"].criteria) == 2
+    assert rules["AIA-RULE-PO-A20-2"].criteria == []
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
@@ -262,18 +262,18 @@ def test_article_twenty_one_reports_receiving_authority_confidentiality(bundle, 
     norm_id = "AIA-NORM-A021-P3-CONFIDENTIALITY"
     assert norms[norm_id].implementation_mode is ImplementationMode.REPORT_ONLY
     report_norm = next(item for item in spec.report_norms if item.norm_id == norm_id)
-    assert report_norm.activation_rule_ids == ["AIA-PO-A21", "AIA-PO-A21-2"]
+    assert report_norm.activation_rule_ids == ["AIA-RULE-PO-A21", "AIA-RULE-PO-A21-2"]
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
 def test_article_twenty_two_separates_mandate_content_from_representative_tasks(bundle, spec):
     rules = {rule.rule_id: rule for rule in spec.rules}
-    assert [criterion.norm_id for criterion in rules["AIA-PO-A22"].criteria] == [
+    assert [criterion.norm_id for criterion in rules["AIA-RULE-PO-A22"].criteria] == [
         "AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE",
         "AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE",
         "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS",
     ]
-    representative_criteria = [criterion.norm_id for criterion in rules["AIA-AR-A22"].criteria]
+    representative_criteria = [criterion.norm_id for criterion in rules["AIA-RULE-AR-A22"].criteria]
     assert "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS" not in representative_criteria
     assert len(representative_criteria) == 11
     task_set = bundle.norm_inventory.target_norm_ids_for(
@@ -292,7 +292,7 @@ def test_article_twenty_two_separates_mandate_content_from_representative_tasks(
 
 
 def test_article_twenty_three_makes_each_importer_duty_a_criterion(bundle, spec):
-    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-IM-A23")
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-RULE-IM-A23")
     assert len(rule.criteria) == 12
     assert {criterion.norm_id for criterion in rule.criteria} == {
         norm.norm_id
@@ -303,7 +303,7 @@ def test_article_twenty_three_makes_each_importer_duty_a_criterion(bundle, spec)
 
 
 def test_article_twenty_four_makes_each_distributor_duty_a_criterion(bundle, spec):
-    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-DI-A24")
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-RULE-DI-A24")
     assert len(rule.criteria) == 10
     assert {criterion.norm_id for criterion in rule.criteria} == {
         norm.norm_id
@@ -318,10 +318,10 @@ def test_article_twenty_five_reports_external_law_constraint_from_role_transfer(
     protection_id = "AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS"
     protection = norms[protection_id]
     assert protection.implementation_mode is ImplementationMode.REPORT_ONLY
-    assert protection.implementation_refs == ["AIA-IP-A25-2"]
+    assert protection.implementation_refs == ["AIA-RULE-IP-A25-2"]
     assert protection.verification_mode.value == "reported_conditionally"
     report_norm = next(item for item in spec.report_norms if item.norm_id == protection_id)
-    assert report_norm.activation_rule_ids == ["AIA-IP-A25-2"]
+    assert report_norm.activation_rule_ids == ["AIA-RULE-IP-A25-2"]
     relation = next(
         relation
         for relation in bundle.norm_inventory.relations
@@ -337,17 +337,17 @@ def test_article_twenty_five_reports_external_law_constraint_from_role_transfer(
 def test_article_twenty_six_splits_distinct_deployer_duties_into_criteria(bundle, spec):
     rules = {rule.rule_id: rule for rule in spec.rules}
     expected = {
-        "AIA-DP-A26": 7,
-        "AIA-DP-A26-6": 1,
-        "AIA-DP-A26-7": 1,
-        "AIA-DP-A26-8": 1,
-        "AIA-DP-A26-8-UNREGISTERED-PROHIBITION": 1,
-        "AIA-DP-A26-8-UNREGISTERED-NOTICE": 1,
-        "AIA-DP-A26-9": 1,
-        "AIA-DP-A26-10": 6,
-        "AIA-DP-A26-10-LAW-ENFORCEMENT": 2,
-        "AIA-DP-A26-11": 1,
-        "AIA-DP-A26-12": 1,
+        "AIA-RULE-DP-A26": 7,
+        "AIA-RULE-DP-A26-6": 1,
+        "AIA-RULE-DP-A26-7": 1,
+        "AIA-RULE-DP-A26-8": 1,
+        "AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION": 1,
+        "AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE": 1,
+        "AIA-RULE-DP-A26-9": 1,
+        "AIA-RULE-DP-A26-10": 6,
+        "AIA-RULE-DP-A26-10-LAW-ENFORCEMENT": 2,
+        "AIA-RULE-DP-A26-11": 1,
+        "AIA-RULE-DP-A26-12": 1,
     }
     assert {rule_id: len(rules[rule_id].criteria) for rule_id in expected} == expected
 
@@ -369,11 +369,11 @@ def test_article_twenty_seven_keeps_fria_duties_separate_from_permissions(bundle
     rules = {rule.rule_id: rule for rule in spec.rules}
     assert {
         rule_id: [criterion.norm_id for criterion in rules[rule_id].criteria]
-        for rule_id in ("AIA-DP-A27", "AIA-DP-A27-2", "AIA-DP-A27-3")
+        for rule_id in ("AIA-RULE-DP-A27", "AIA-RULE-DP-A27-2", "AIA-RULE-DP-A27-3")
     } == {
-        "AIA-DP-A27": ["AIA-NORM-A027-P1-PERFORM-FRIA"],
-        "AIA-DP-A27-2": ["AIA-NORM-A027-P2-UPDATE"],
-        "AIA-DP-A27-3": ["AIA-NORM-A027-P3-NOTIFY-RESULTS"],
+        "AIA-RULE-DP-A27": ["AIA-NORM-A027-P1-PERFORM-FRIA"],
+        "AIA-RULE-DP-A27-2": ["AIA-NORM-A027-P2-UPDATE"],
+        "AIA-RULE-DP-A27-3": ["AIA-NORM-A027-P3-NOTIFY-RESULTS"],
     }
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     for norm_id in (
@@ -389,9 +389,9 @@ def test_article_twenty_seven_keeps_fria_duties_separate_from_permissions(bundle
 def test_article_forty_two_reports_presumptions_against_the_affected_rules(bundle, spec):
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     expected_activation = {
-        "AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION": ["AIA-HR-A10"],
-        "AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION": ["AIA-HR-A15"],
-        "AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING": ["AIA-HR-A15"],
+        "AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION": ["AIA-RULE-HR-A10"],
+        "AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION": ["AIA-RULE-HR-A15"],
+        "AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING": ["AIA-RULE-HR-A15"],
     }
     projected = {item.norm_id: item for item in spec.report_norms}
     for norm_id, rule_ids in expected_activation.items():
@@ -570,14 +570,14 @@ def test_article_sixteen_cross_references_are_typed_relations_not_hidden_criteri
 
     assert allocation.kind is NormRelationKind.ALLOCATES_DUTY_TO_POLICY_RULES
     assert set(allocation.target_rule_ids) == set(source.implementation_refs)
-    assert "AIA-HR-A15" in allocation.target_rule_ids
+    assert "AIA-RULE-HR-A15" in allocation.target_rule_ids
 
     # Article 16 is the hard reference case. Every one of its twelve duties has exactly one
     # explicit handling path; none is an untracked duplicate of a rule-level finding.
     direct = {
-        "AIA-NORM-A016-B-PROVIDER-IDENTIFICATION": "AIA-PO-A16-B",
-        "AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY": "AIA-PO-A16-K",
-        "AIA-NORM-A016-L-ACCESSIBILITY": "AIA-PO-A16-L",
+        "AIA-NORM-A016-B-PROVIDER-IDENTIFICATION": "AIA-RULE-PO-A16-B",
+        "AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY": "AIA-RULE-PO-A16-K",
+        "AIA-NORM-A016-L-ACCESSIBILITY": "AIA-RULE-PO-A16-L",
     }
     policy_relation_sources = {
         relation.source_norm_id
@@ -640,7 +640,7 @@ def test_article_sixteen_allocation_relation_cannot_be_deleted(bundle, spec):
 
     errors = traceability_errors(broken, spec, LEDGER)
     assert (
-        "AIA-HR-A15 omits criterion AIA-NORM-A016-A-SECTION-2-COMPLIANCE, which names it"
+        "AIA-RULE-HR-A15 omits criterion AIA-NORM-A016-A-SECTION-2-COMPLIANCE, which names it"
         in errors
     )
 
@@ -1045,7 +1045,7 @@ def test_a_criterion_the_model_mishandles_is_needs_review(spec, llm_judge, model
 
 
 def test_a_rule_with_criteria_rejects_a_legacy_rule_level_model_reply(spec, llm_judge, model_reply):
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A14")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-HR-A14")
     sent = model_reply(
         {"verdict": "gap", "reasoning": "No oversight.", "confidence": "high"}
     )

@@ -51,7 +51,7 @@ def test_an_unclipped_reason_is_refused(model):
             Answer(value=True, reasoning=long, confidence="high", source=SOURCE)
         else:
             Finding(
-                rule_id="AIA-HR-A14",
+                rule_id="AIA-RULE-HR-A14",
                 use_case_id="u",
                 role=ActorRole.PROVIDER,
                 verdict=Verdict.GAP,
@@ -100,5 +100,5 @@ def test_an_aggregate_of_many_failing_criteria_still_fits():
         )
         for i in range(5)
     ]
-    summary = aggregate_reasoning(SimpleNamespace(rule_id="AIA-HR-A15"), criteria)
+    summary = aggregate_reasoning(SimpleNamespace(rule_id="AIA-RULE-HR-A15"), criteria)
     assert len(summary) <= REASONING_MAX

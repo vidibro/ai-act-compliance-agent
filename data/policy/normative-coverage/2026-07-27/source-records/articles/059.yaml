@@ -11,9 +11,9 @@ records:
   qualifier_spans: [A059-P002, A059-P008, A059-P009, A059-P010, A059-P011, A059-P012, A059-P013, A059-P014, A059-P015, A059-P016]
   implementation_mode: report_only
   implementation_refs:
-  - AIA-PP-A59-P1
-  - AIA-PO-A59-P1-E
-  - AIA-SP-A59-P1-J
+  - AIA-RULE-PP-A59-P1
+  - AIA-RULE-PO-A59-P1-E
+  - AIA-RULE-SP-A59-P1-J
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
@@ -39,7 +39,7 @@ records:
       - safety and resilience of transport systems and mobility, critical infrastructure and networks
       - efficiency and quality of public administration and public services
   qualifier_spans: [A059-P003, A059-P004, A059-P005, A059-P006, A059-P007]
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-B-DATA-NECESSITY
@@ -50,7 +50,7 @@ records:
   - actor_ref: prospective_provider
   targets: []
   conditions: [anonymised synthetic or other non-personal data cannot effectively fulfil the applicable requirement]
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
@@ -61,7 +61,7 @@ records:
   - actor_ref: prospective_provider
   targets: []
   mandatory_content: [effective high-risk monitoring, prompt risk response and mitigation, processing stoppage where necessary]
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
@@ -71,7 +71,7 @@ records:
   actors:
   - actor_ref: prospective_provider
   targets: []
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
@@ -81,7 +81,7 @@ records:
   actors:
   - actor_ref: provider
   targets: []
-  implementation_refs: [AIA-PO-A59-P1-E]
+  implementation_refs: [AIA-RULE-PO-A59-P1-E]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
@@ -91,7 +91,7 @@ records:
   actors:
   - actor_ref: prospective_provider
   targets: []
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
@@ -101,7 +101,7 @@ records:
   actors:
   - actor_ref: prospective_provider
   targets: []
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
@@ -111,7 +111,7 @@ records:
   actors:
   - actor_ref: prospective_provider
   targets: []
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
@@ -122,7 +122,7 @@ records:
   - actor_ref: prospective_provider
   targets: []
   mandatory_content: [process and rationale for training testing and validation, testing results]
-  implementation_refs: [AIA-PP-A59-P1]
+  implementation_refs: [AIA-RULE-PP-A59-P1]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
@@ -134,7 +134,7 @@ records:
   targets: []
   mandatory_content: [AI project summary, project objectives, expected results]
   exceptions: [sensitive operational data of law-enforcement border-control immigration or asylum authorities]
-  implementation_refs: [AIA-SP-A59-P1-J]
+  implementation_refs: [AIA-RULE-SP-A59-P1-J]
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS

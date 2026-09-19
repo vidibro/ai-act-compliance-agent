@@ -146,7 +146,7 @@ def test_every_snippet_names_a_document_that_exists():
 
 # --- Art. 50 transparency guidance -------------------------------------------------------------
 def test_the_marking_snippet_loads_and_is_verbatim():
-    """C(2026) 5054 para (71) is what grounds AIA-TR-A50-2's `evidence_expected`, which until now
+    """C(2026) 5054 para (71) is what grounds AIA-RULE-TR-A50-2's `evidence_expected`, which until now
     asserted on our own authority that a human-readable "AI-generated" label does not discharge
     Art. 50(2). It does not — but the passage also says such labels are not EXCLUDED, they are a
     complement, and that second half is the part an interpretation written from the bare Article
@@ -167,7 +167,7 @@ def test_the_marking_rule_resolves_its_guidance_at_load():
     by the loader, exactly as `requirement` is filled from `source`. So a rule cannot hand-write an
     interpretation any more than it can hand-write the law."""
     spec = load_policy_spec()
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-TR-A50-2")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-TR-A50-2")
 
     assert rule.guidance_refs == [
         "C-2026-5054/machine-readable-marking-defined",
@@ -190,7 +190,7 @@ def test_the_marking_rule_carries_the_detection_half_of_the_paragraph():
 
     Both halves are pinned here: the enacted conjunction, which comes from the resolved law, and
     the guidance that says one element does not suffice, which comes from the store."""
-    rule = next(r for r in load_policy_spec().rules if r.rule_id == "AIA-TR-A50-2")
+    rule = next(r for r in load_policy_spec().rules if r.rule_id == "AIA-RULE-TR-A50-2")
 
     assert "detectable as artificially generated or manipulated" in rule.requirement
     assert "will not suffice to comply" in rule.guidance_context
@@ -206,7 +206,7 @@ def test_no_other_rule_leans_on_interpretation():
     grounded in the Article they cite."""
     spec = load_policy_spec()
     citing = {r.rule_id for r in spec.rules if r.guidance_refs}
-    assert citing == {"AIA-TR-A50-2"}
+    assert citing == {"AIA-RULE-TR-A50-2"}
 
 
 def test_a_dangling_rule_guidance_ref_fails_the_spec_load(tmp_path):
@@ -237,7 +237,7 @@ def test_the_judge_sees_guidance_labelled_and_apart_from_the_law():
     would weigh an interpretation as enacted text and the finding could not say which it rested
     on."""
     spec = load_policy_spec()
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-TR-A50-2")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-TR-A50-2")
     judge = LLMJudge.__new__(LLMJudge)
     judge.profile = SimpleNamespace(caches=lambda _: False)
     prompt = judge._user_content(rule, hits=())
@@ -254,7 +254,7 @@ def test_a_finding_records_the_interpretation_it_was_reached_with():
     the RULE — what the judge was shown — rather than from the model's reply, because the model is
     never asked and a self-report would be the wrong evidence anyway."""
     spec = load_policy_spec()
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-TR-A50-2")
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-TR-A50-2")
     finding = Finding(
         rule_id=rule.rule_id,
         use_case_id="uc",

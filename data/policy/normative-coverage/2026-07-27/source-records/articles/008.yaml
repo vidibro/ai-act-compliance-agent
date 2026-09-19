@@ -26,7 +26,7 @@ records:
   targets: []
   kind: obligation
   implementation_refs:
-  - AIA-HR-A09
+  - AIA-RULE-HR-A09
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
@@ -46,7 +46,7 @@ records:
     listed in Annex I Section A apply
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A08-2
+  - AIA-RULE-PO-A08-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES
@@ -70,6 +70,6 @@ records:
     burdens
   implementation_mode: report_only
   implementation_refs:
-  - AIA-PO-A08-2
+  - AIA-RULE-PO-A08-2
   verification_mode: reported_conditionally
   verified_by: vidibro

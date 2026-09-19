@@ -220,7 +220,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-IP-A25-2
+  - AIA-RULE-IP-A25-2
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -277,7 +277,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-IP-A25-2
+  - AIA-RULE-IP-A25-2
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -321,7 +321,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: report_only
   implementation_refs:
-  - AIA-IP-A25-2
+  - AIA-RULE-IP-A25-2
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -461,7 +461,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A25-4
+  - AIA-RULE-PO-A25-4
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -503,7 +503,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: report_only
   implementation_refs:
-  - AIA-PO-A25-4
+  - AIA-RULE-PO-A25-4
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -646,7 +646,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: report_only
   implementation_refs:
-  - AIA-IP-A25-2
+  - AIA-RULE-IP-A25-2
   implementation_reason: Article 25(2)'s role-transfer rule is active whenever paragraphs 2 or 3 make
     this external-law protection constraint relevant.
   verification_mode: reported_conditionally

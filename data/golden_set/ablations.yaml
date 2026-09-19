@@ -33,11 +33,11 @@ default_split: dev  # all current cases are dev; test set to be authored later (
 
 cases:
   # --- Art. 9 — risk management ---------------------------------------------------------------
-  - rule_id: AIA-HR-A09
+  - rule_id: AIA-RULE-HR-A09
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A09
+  - rule_id: AIA-RULE-HR-A09
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -47,7 +47,7 @@ cases:
       identified, assessed and mitigated on an ongoing basis throughout the product lifecycle,
       in line with industry best practice. Our Responsible AI board oversees this process.
 
-  - rule_id: AIA-HR-A09
+  - rule_id: AIA-RULE-HR-A09
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -60,11 +60,11 @@ cases:
       We believe AI should empower people, never replace human judgement.
 
   # --- Art. 10 — data and data governance -----------------------------------------------------
-  - rule_id: AIA-HR-A10
+  - rule_id: AIA-RULE-HR-A10
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A10
+  - rule_id: AIA-RULE-HR-A10
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -74,7 +74,7 @@ cases:
       appropriate data governance practices and our data sets are relevant and representative for
       the intended purpose. Data quality is a priority for our engineering team.
 
-  - rule_id: AIA-HR-A10
+  - rule_id: AIA-RULE-HR-A10
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -86,11 +86,11 @@ cases:
       exercise their data subject rights through our privacy portal at any time.
 
   # --- Art. 11 — technical documentation (Annex IV completeness) ------------------------------
-  - rule_id: AIA-HR-A11
+  - rule_id: AIA-RULE-HR-A11
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A11
+  - rule_id: AIA-RULE-HR-A11
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -101,16 +101,16 @@ cases:
       authorities on request.
 
   # --- Art. 12 — record-keeping / logging -----------------------------------------------------
-  - rule_id: AIA-HR-A12
+  - rule_id: AIA-RULE-HR-A12
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A12
+  - rule_id: AIA-RULE-HR-A12
     ablation: present_but_inadequate
     difficulty: ambiguous
     # A SUBSTANCE CHECK, so the bare assertion below is INADEQUATE and the default expectation
     # stands. Art. 12(1) requires the logging capability and Art. 12(2) fixes the three purposes it
-    # must serve, which AIA-HR-A12 carries as a qualifier — its `evidence_expected` ends by saying
+    # must serve, which AIA-RULE-HR-A12 carries as a qualifier — its `evidence_expected` ends by saying
     # in terms that "the system writes logs", with nothing about what is in them, does not answer
     # the rule. Marked `ambiguous` because the replacement asserts the capability accurately and
     # only the content is missing: what it probes is whether the judge reads past the assertion to
@@ -122,11 +122,11 @@ cases:
       default and cannot be disabled by the deployer.
 
   # --- Art. 13 — transparency / instructions for use ------------------------------------------
-  - rule_id: AIA-HR-A13
+  - rule_id: AIA-RULE-HR-A13
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A13
+  - rule_id: AIA-RULE-HR-A13
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -140,11 +140,11 @@ cases:
   # A COMPLETENESS RULE, so the interesting case is the partial list rather than the empty claim:
   # three of the six items answered in real depth and three absent is a document that reads well
   # and is short by half the paragraph.
-  - rule_id: AIA-HR-A13-3
+  - rule_id: AIA-RULE-HR-A13-3
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A13-3
+  - rule_id: AIA-RULE-HR-A13-3
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -167,11 +167,11 @@ cases:
       to trained recruiters with authority to overrule the ranking.
 
   # --- Art. 14 — human oversight (the canonical case from the brief) --------------------------
-  - rule_id: AIA-HR-A14
+  - rule_id: AIA-RULE-HR-A14
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A14
+  - rule_id: AIA-RULE-HR-A14
     ablation: present_but_inadequate
     difficulty: buried
     replacement: |
@@ -180,7 +180,7 @@ cases:
       We ensure appropriate human oversight of TalentRank. A human is always in the loop, and
       recruiters remain in control of all hiring decisions at every stage of the process.
 
-  - rule_id: AIA-HR-A14
+  - rule_id: AIA-RULE-HR-A14
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -192,11 +192,11 @@ cases:
       team gets the most out of the platform.
 
   # --- Art. 15 — accuracy, robustness, cybersecurity (METRICS check) --------------------------
-  - rule_id: AIA-HR-A15
+  - rule_id: AIA-RULE-HR-A15
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-HR-A15
+  - rule_id: AIA-RULE-HR-A15
     ablation: present_but_inadequate
     difficulty: buried
     # The canonical metrics failure: confident claims, zero numbers.
@@ -207,7 +207,7 @@ cases:
       conditions. The system performs consistently throughout its lifecycle. We take security
       seriously and follow industry-standard practices to protect the model and its data.
 
-  - rule_id: AIA-HR-A15
+  - rule_id: AIA-RULE-HR-A15
     ablation: distractor
     difficulty: buried
     replacement: |
@@ -221,11 +221,11 @@ cases:
   # The shortest obligation in the ruleset and the easiest to leave out of a technical file. Its
   # section is the header block; the instructions for use point at it rather than repeating it, so
   # removing it takes the provider's contact details out of the document altogether.
-  - rule_id: AIA-PO-A16-B
+  - rule_id: AIA-RULE-PO-A16-B
     ablation: removed
     difficulty: obvious
 
-  - rule_id: AIA-PO-A16-B
+  - rule_id: AIA-RULE-PO-A16-B
     ablation: distractor
     difficulty: buried
     # Names the company everywhere and gives no address anywhere — the common real failure, and

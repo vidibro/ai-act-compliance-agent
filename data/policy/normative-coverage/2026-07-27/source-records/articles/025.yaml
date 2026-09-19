@@ -106,7 +106,7 @@ records:
   exceptions: &id003
   - the initial provider clearly specified that its system must not be changed into a high-risk system
   implementation_refs: &id004
-  - AIA-IP-A25-2
+  - AIA-RULE-IP-A25-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
@@ -209,7 +209,7 @@ records:
   - actor_ref: third_party_supplier
   targets: []
   implementation_refs: &id006
-  - AIA-PO-A25-4
+  - AIA-RULE-PO-A25-4
   verification_mode: reported_not_judged
   mandatory_content:
   - necessary information
@@ -291,7 +291,7 @@ records:
   targets: []
   implementation_mode: report_only
   implementation_refs:
-  - AIA-IP-A25-2
+  - AIA-RULE-IP-A25-2
   implementation_reason: Article 25(2)'s role-transfer rule is active whenever paragraphs 2 or 3 make this external-law protection constraint relevant.
   verification_mode: reported_conditionally
   verified_by: vidibro

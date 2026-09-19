@@ -106,7 +106,7 @@ records:
   - A060-P016
   - A060-P017
   implementation_refs:
-  - AIA-PO-A60-4
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_not_judged
   mandatory_content:
   - testing plan submitted
@@ -256,7 +256,7 @@ records:
   targets: []
   kind: permission
   implementation_refs:
-  - AIA-PO-A60-4
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_not_judged
   conditions:
   - prior authority notification
@@ -294,7 +294,7 @@ records:
   - all aspects of the testing relevant to the deployer's decision to participate
   - Article 13 instructions for use of the AI system
   implementation_refs:
-  - AIA-PO-A60-4
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_not_judged
   qualifier_spans:
   - A060-P006
@@ -315,7 +315,7 @@ records:
   - the provider or prospective provider organises the testing in real world conditions in cooperation
     with one or more deployers or prospective deployers
   implementation_refs:
-  - AIA-PO-A60-4
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_not_judged
   qualifier_spans:
   - A060-P006
