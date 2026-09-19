@@ -425,6 +425,20 @@ def _requires_condition_expression(text: str) -> bool:
     return False
 
 
+def _is_self_contained_scope_effect(norm: Norm) -> bool:
+    """Whether an applicability norm's apparent exception language is its whole legal effect."""
+    if norm.kind.value != "applicability":
+        return False
+    return bool(
+        re.search(
+            r"\bthis regulation\s+(?:does not apply|applies neither|shall not affect|"
+            r"is without prejudice to)\b",
+            norm.norm_text,
+            re.I,
+        )
+    )
+
+
 def _requires_calendar_deadline(norm: Norm) -> bool:
     return CALENDAR_DEADLINE.search(norm.norm_text) is not None
 
@@ -932,7 +946,11 @@ def audit_norm_validity(
                 and not CONDITION.search(norm.action)
             ):
                 rules.append("condition_not_structured_or_retained_in_action")
-            if EXCEPTION.search(norm.norm_text) and not norm.exceptions:
+            if (
+                EXCEPTION.search(norm.norm_text)
+                and not norm.exceptions
+                and not _is_self_contained_scope_effect(norm)
+            ):
                 if expression_evidence_required:
                     rules.append("exception_expression_missing")
                 elif not EXCEPTION.search(semantic):

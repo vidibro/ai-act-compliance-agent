@@ -96,7 +96,12 @@ norms:
   - AIA-TEXT-A002-P004
   qualifier_spans:
   - AIA-TEXT-A002-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where the output produced by the AI system is used in the Union
+      basis_segment_ids:
+      - AIA-TEXT-A002-P004
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -284,11 +289,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the system is classified as high-risk under Article 6(1)
+    - text: AI systems classified as high-risk AI systems in accordance with Article 6(1)
       basis_segment_ids:
       - AIA-TEXT-A002-P009
-    - text: the related product is covered by Union harmonisation legislation listed in Annex I Section
-        B
+    - text: products covered by the Union harmonisation legislation listed in Section B of Annex I
       basis_segment_ids:
       - AIA-TEXT-A002-P009
   exceptions: null
@@ -330,7 +334,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
+    - text: the requirements for high-risk AI systems under this Regulation have been integrated in that
+        Union harmonisation legislation
       basis_segment_ids:
       - AIA-TEXT-A002-P009
   exceptions: null
@@ -443,11 +448,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system is placed on the market, put into service, or used exclusively for military,
-        defence, or national-security purposes
+    - text: they are placed on the market, put into service, or used with or without modification exclusively
+        for military, defence or national security purposes
       basis_segment_ids:
       - AIA-TEXT-A002-P011
-    - text: the exclusion applies regardless of the type of entity carrying out those activities
+    - text: regardless of the type of entity carrying out those activities
       basis_segment_ids:
       - AIA-TEXT-A002-P011
   exceptions: null
@@ -489,14 +494,13 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system is not placed on the market or put into service in the Union
+    - text: not placed on the market or put into service in the Union
       basis_segment_ids:
       - AIA-TEXT-A002-P012
-    - text: the AI system output is used in the Union exclusively for military, defence, or national-security
-        purposes
+    - text: the output is used in the Union exclusively for military, defence or national security purposes
       basis_segment_ids:
       - AIA-TEXT-A002-P012
-    - text: the exclusion applies regardless of the type of entity carrying out those activities
+    - text: regardless of the type of entity carrying out those activities
       basis_segment_ids:
       - AIA-TEXT-A002-P012
   exceptions: null
@@ -542,19 +546,21 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the public authority is in a third country or the subject is an international organisation
-        otherwise falling within Article 2(1)
+    - operator: any_of
+      operands:
+      - text: public authorities in a third country
+        basis_segment_ids:
+        - AIA-TEXT-A002-P013
+      - text: international organisations falling within the scope of this Regulation pursuant to paragraph
+          1
+        basis_segment_ids:
+        - AIA-TEXT-A002-P013
+    - text: use AI systems in the framework of international cooperation or agreements for law enforcement
+        and judicial cooperation with the Union or with one or more Member States
       basis_segment_ids:
       - AIA-TEXT-A002-P013
-    - text: the AI system is used under international cooperation or an agreement for law-enforcement
-        and judicial cooperation
-      basis_segment_ids:
-      - AIA-TEXT-A002-P013
-    - text: the cooperation or agreement is with the Union or one or more Member States
-      basis_segment_ids:
-      - AIA-TEXT-A002-P013
-    - text: the third country or international organisation provides adequate safeguards for individual
-        fundamental rights and freedoms
+    - text: such a third country or international organisation provides adequate safeguards with respect
+        to the protection of fundamental rights and freedoms of individuals
       basis_segment_ids:
       - AIA-TEXT-A002-P013
   exceptions: null
@@ -632,11 +638,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system or AI model, including its output, is specifically developed for scientific
-        research and development
+    - text: specifically developed
       basis_segment_ids:
       - AIA-TEXT-A002-P015
-    - text: it is put into service solely for scientific research and development
+    - text: put into service for the sole purpose of scientific research and development
       basis_segment_ids:
       - AIA-TEXT-A002-P015
   exceptions: null
@@ -714,7 +719,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the saving clause is without prejudice to Articles 4a and 59 of the Regulation
+    - text: Without prejudice to Articles 4a and 59 of this Regulation
       basis_segment_ids:
       - AIA-TEXT-A002-P016
   exceptions: null
@@ -756,10 +761,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the activity concerns an AI system or AI model
+    - text: research, testing or development activity regarding AI systems or AI models
       basis_segment_ids:
       - AIA-TEXT-A002-P017
-    - text: the activity occurs before the system or model is placed on the market or put into service
+    - text: prior to their being placed on the market or put into service
       basis_segment_ids:
       - AIA-TEXT-A002-P017
   exceptions: null
@@ -905,13 +910,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the deployer is a natural person
+    - text: deployers who are natural persons
       basis_segment_ids:
       - AIA-TEXT-A002-P019
-    - text: the AI system is used in the course of a purely personal activity
-      basis_segment_ids:
-      - AIA-TEXT-A002-P019
-    - text: the activity is non-professional
+    - text: using AI systems in the course of a purely personal non-professional activity
       basis_segment_ids:
       - AIA-TEXT-A002-P019
   exceptions: null
@@ -992,19 +994,16 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system is released under a free and open-source licence
+    - text: AI systems released under free and open-source licences
       basis_segment_ids:
       - AIA-TEXT-A002-P021
   exceptions:
     operator: any_of
     operands:
-    - text: the system is placed on the market or put into service as a high-risk AI system
+    - text: they are placed on the market or put into service as high-risk AI systems
       basis_segment_ids:
       - AIA-TEXT-A002-P021
-    - text: the system falls under Article 5
-      basis_segment_ids:
-      - AIA-TEXT-A002-P021
-    - text: the system falls under Article 50
+    - text: as an AI system that falls under Article 5 or 50
       basis_segment_ids:
       - AIA-TEXT-A002-P021
   mandatory_content: []
@@ -1048,13 +1047,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: Union harmonisation legislation listed in Annex I Section A provides an equivalent or higher
-        level of health, safety, or fundamental-rights protection for the requirement concerned
+    - text: Union harmonisation legislation listed in Section A of Annex I lays down requirements or obligations
+        providing an equivalent or higher level of protection of health, safety or fundamental rights
+        as the requirement or obligation concerned
       basis_segment_ids:
-      - AIA-TEXT-A002-P022
-    - text: the limitation does not reduce the overall level of protection provided by the Regulation
+      - AIA-TEXT-A002-P023
+    - text: such limitation does not reduce the overall level of protection provided for by this Regulation
       basis_segment_ids:
-      - AIA-TEXT-A002-P022
+      - AIA-TEXT-A002-P024
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -1122,10 +1122,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the delegated acts are adopted by 2 August 2027
+    - text: By 2 August 2027
       basis_segment_ids:
       - AIA-TEXT-A002-P025
-    - text: the delegated acts are adopted in accordance with Article 97
+    - text: in accordance with Article 97
       basis_segment_ids:
       - AIA-TEXT-A002-P025
   exceptions: null

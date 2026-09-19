@@ -96,7 +96,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (74, 78)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (67, 71)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -108,7 +108,7 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (74, 78)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (67, 71)
 
 
 def test_article_ten_findings_are_recorded_in_its_own_shard():
@@ -357,12 +357,21 @@ def test_article_seventeen_findings_are_recorded_in_its_own_shard():
 
 def test_article_two_scope_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
-    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "2")})
+    requirements = {
+        (SourceKind.ARTICLE, "2"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "2")},
+        required_field_validations=requirements,
+    )
 
-    assert len(findings) == 8
+    assert len(findings) == 1
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "2")] == audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "2")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "2")},
+        required_field_validations=requirements,
     )
 
 
@@ -655,6 +664,31 @@ def test_logical_expression_gate_does_not_duplicate_an_except_clause_as_a_condit
         finding
         for finding in findings
         if finding.target == norm.norm_id and finding.rule == "condition_expression_missing"
+    ]
+
+
+def test_logical_expression_gate_does_not_treat_an_applicability_exclusion_as_its_own_exception():
+    bundle = load_bundle()
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A002-P3-MILITARY-EXCLUSION"
+    )
+    assert norm.exceptions is None
+    requirements = {
+        (SourceKind.ARTICLE, "2"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "2")},
+        required_field_validations=requirements,
+    )
+
+    assert not [
+        finding
+        for finding in findings
+        if finding.target == norm.norm_id and finding.rule == "exception_expression_missing"
     ]
 
 
