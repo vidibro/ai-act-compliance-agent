@@ -131,9 +131,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: provider is an SME, start-up, or SMC
-      basis_segment_ids:
-      - AIA-TEXT-A011-P1
+    - operator: all_of
+      operands:
+      - text: SMEs, including start-ups, and SMCs
+        basis_segment_ids:
+        - AIA-TEXT-A011-P1
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -205,9 +207,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: provider is an SME, start-up, or SMC and opts for simplified documentation
-      basis_segment_ids:
-      - AIA-TEXT-A011-P1
+    - operator: all_of
+      operands:
+      - text: Where an SME, including a start-up, or an SMC, opts to provide the information required
+          in Annex IV in a simplified manner
+        basis_segment_ids:
+        - AIA-TEXT-A011-P1
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -280,10 +285,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system relates to a product covered by Union harmonisation legislation listed
-        in Annex I, Section A
-      basis_segment_ids:
-      - AIA-TEXT-A011-P2
+    - operator: all_of
+      operands:
+      - text: Where a high-risk AI system related to a product covered by the Union harmonisation legislation
+          listed in Section A of Annex I is placed on the market or put into service
+        basis_segment_ids:
+        - AIA-TEXT-A011-P2
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -323,10 +330,13 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: an Annex IV amendment is necessary in light of technical progress to ensure the technical
-        documentation provides all information needed to assess Section 2 compliance
-      basis_segment_ids:
-      - AIA-TEXT-A011-P3
+    - operator: all_of
+      operands:
+      - text: where necessary, to ensure that, in light of technical progress, the technical documentation
+          provides all the information necessary to assess the compliance of the system with the requirements
+          set out in this Section
+        basis_segment_ids:
+        - AIA-TEXT-A011-P3
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor

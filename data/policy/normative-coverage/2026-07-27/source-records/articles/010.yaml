@@ -107,7 +107,10 @@ records:
   kind: obligation
   qualifier_spans: *id002
   conditions:
-  - give particular attention where data outputs influence inputs for future operations
+  - operator: all_of
+    operands:
+    - text: especially where data outputs influence inputs for future operations
+      basis_segment_ids: [AIA-TEXT-A010-P008]
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -217,10 +220,14 @@ records:
   - A010-P018
   - A010-P019
   conditions:
-  - processing is strictly necessary for Article 10(2)(f) and (g) bias detection and correction
-  - bias detection and correction cannot be effectively achieved using other data, including synthetic
-    or anonymised data
-  - appropriate safeguards protect natural persons' fundamental rights and freedoms
+  - operator: all_of
+    operands:
+    - text: To the extent that it is strictly necessary for the purpose of ensuring bias detection and correction in relation to the high-risk AI systems in accordance with paragraph (2), points (f) and (g) of this Article
+      basis_segment_ids: [AIA-TEXT-A010-P013]
+    - text: the bias detection and correction cannot be effectively fulfilled by processing other data, including synthetic or anonymised data
+      basis_segment_ids: [AIA-TEXT-A010-P014]
+    - text: subject to appropriate safeguards for the fundamental rights and freedoms of natural persons
+      basis_segment_ids: [AIA-TEXT-A010-P013]
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1) carries the same exceptional high-risk bias-data-processing permission
     and conditions.
@@ -238,6 +245,11 @@ records:
   kind: obligation
   qualifier_spans:
   - A010-P013
+  conditions:
+  - operator: all_of
+    operands:
+    - text: all the following conditions must be met in order for such processing to occur
+      basis_segment_ids: [AIA-TEXT-A010-P013]
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(b) carries the same safeguard.
   verification_mode: reported_conditionally
@@ -256,6 +268,11 @@ records:
   kind: obligation
   qualifier_spans:
   - A010-P013
+  conditions:
+  - operator: all_of
+    operands:
+    - text: all the following conditions must be met in order for such processing to occur
+      basis_segment_ids: [AIA-TEXT-A010-P013]
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(c) carries the same safeguard.
   verification_mode: reported_conditionally
@@ -272,6 +289,11 @@ records:
   kind: obligation
   qualifier_spans:
   - A010-P013
+  conditions:
+  - operator: all_of
+    operands:
+    - text: all the following conditions must be met in order for such processing to occur
+      basis_segment_ids: [AIA-TEXT-A010-P013]
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(d) carries the same safeguard.
   verification_mode: reported_conditionally
@@ -288,6 +310,11 @@ records:
   kind: obligation
   qualifier_spans:
   - A010-P013
+  conditions:
+  - operator: all_of
+    operands:
+    - text: all the following conditions must be met in order for such processing to occur
+      basis_segment_ids: [AIA-TEXT-A010-P013]
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(e) carries the same safeguard.
   verification_mode: reported_conditionally
@@ -306,6 +333,11 @@ records:
   kind: obligation
   qualifier_spans:
   - A010-P013
+  conditions:
+  - operator: all_of
+    operands:
+    - text: all the following conditions must be met in order for such processing to occur
+      basis_segment_ids: [AIA-TEXT-A010-P013]
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(f) carries the same recordkeeping safeguard.
   verification_mode: reported_conditionally
@@ -322,7 +354,10 @@ records:
   targets: []
   kind: applicability
   conditions:
-  - the high-risk AI system is developed without techniques involving training an AI model
+  - operator: all_of
+    operands:
+    - text: For the development of high-risk AI systems not using techniques involving the training of AI models
+      basis_segment_ids: [AIA-TEXT-A010-P020]
   implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally

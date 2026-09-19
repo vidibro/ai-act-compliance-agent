@@ -54,7 +54,10 @@ records:
   targets: []
   kind: permission
   conditions:
-  - provider is an SME, start-up, or SMC
+  - operator: all_of
+    operands:
+    - text: SMEs, including start-ups, and SMCs
+      basis_segment_ids: [AIA-TEXT-A011-P1]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-HR-A11
@@ -87,7 +90,10 @@ records:
   - AIA-RULE-HR-A11
   verification_mode: judged_by_gap_analysis
   conditions:
-  - provider is an SME, start-up, or SMC and opts for simplified documentation
+  - operator: all_of
+    operands:
+    - text: Where an SME, including a start-up, or an SMC, opts to provide the information required in Annex IV in a simplified manner
+      basis_segment_ids: [AIA-TEXT-A011-P1]
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-ACCEPT-FORM
   source: A011-P1
@@ -114,8 +120,10 @@ records:
   - actor_ref: provider
   targets: []
   conditions:
-  - the high-risk AI system relates to a product covered by Union harmonisation legislation listed in
-    Annex I, Section A
+  - operator: all_of
+    operands:
+    - text: Where a high-risk AI system related to a product covered by the Union harmonisation legislation listed in Section A of Annex I is placed on the market or put into service
+      basis_segment_ids: [AIA-TEXT-A011-P2]
   implementation_refs:
   - AIA-RULE-HR-A11-2
   verification_mode: judged_by_gap_analysis
@@ -133,8 +141,10 @@ records:
   targets: []
   kind: power
   conditions:
-  - an Annex IV amendment is necessary in light of technical progress to ensure the technical documentation
-    provides all information needed to assess Section 2 compliance
+  - operator: all_of
+    operands:
+    - text: where necessary, to ensure that, in light of technical progress, the technical documentation provides all the information necessary to assess the compliance of the system with the requirements set out in this Section
+      basis_segment_ids: [AIA-TEXT-A011-P3]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

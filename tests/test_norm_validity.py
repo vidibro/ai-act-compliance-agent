@@ -96,7 +96,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (63, 67)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (62, 66)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -108,23 +108,31 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (63, 67)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (62, 66)
 
 
 def test_article_ten_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
+    requirements = {
+        (SourceKind.ARTICLE, "10"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
 
-    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "10")})
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "10")},
+        required_field_validations=requirements,
+    )
     assert {finding.finding_id for finding in findings} == {
-        "AIA-VALID-3055859FD804996F",
+        "AIA-VALID-E4F9CC743A0C1F82",
         "AIA-VALID-CD1D0313E0D42BCD",
+        "AIA-VALID-510C405ED6DEB890",
         "AIA-VALID-3649F8849C42880C",
-        "AIA-VALID-6D85A1D563F40FFA",
-        "AIA-VALID-A9EC122C931BAB2F",
     }
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "10")] == audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "10")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "10")},
+        required_field_validations=requirements,
     )
 
 
@@ -239,19 +247,43 @@ def test_article_nine_structural_findings_are_recorded_in_its_own_shard():
 
 def test_article_eleven_is_closed_with_an_explicit_empty_adjudication_shard():
     bundle = load_bundle()
-    assert audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "11")}) == []
+    requirements = {
+        (SourceKind.ARTICLE, "11"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+    assert (
+        audit_norm_validity(
+            bundle,
+            scope={(SourceKind.ARTICLE, "11")},
+            required_field_validations=requirements,
+        )
+        == []
+    )
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "11")] == audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "11")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "11")},
+        required_field_validations=requirements,
     )
 
 
 def test_article_twelve_is_closed_with_an_explicit_empty_adjudication_shard():
     bundle = load_bundle()
-    assert audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "12")}) == []
+    requirements = {
+        (SourceKind.ARTICLE, "12"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+    assert (
+        audit_norm_validity(
+            bundle,
+            scope={(SourceKind.ARTICLE, "12")},
+            required_field_validations=requirements,
+        )
+        == []
+    )
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "12")] == audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "12")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "12")},
+        required_field_validations=requirements,
     )
 
 

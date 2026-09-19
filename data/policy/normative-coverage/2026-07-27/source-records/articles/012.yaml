@@ -63,8 +63,10 @@ records:
   qualifier_spans:
   - A012-P006
   conditions:
-  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
-    1(a)
+  - operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+      basis_segment_ids: [AIA-TEXT-A012-P006]
   implementation_refs:
   - AIA-RULE-HR-A12-3A
   verification_mode: judged_by_gap_analysis
@@ -79,8 +81,10 @@ records:
   qualifier_spans:
   - A012-P006
   conditions:
-  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
-    1(a)
+  - operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+      basis_segment_ids: [AIA-TEXT-A012-P006]
   implementation_refs:
   - AIA-RULE-HR-A12-3B
   verification_mode: judged_by_gap_analysis
@@ -95,8 +99,10 @@ records:
   qualifier_spans:
   - A012-P006
   conditions:
-  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
-    1(a)
+  - operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+      basis_segment_ids: [AIA-TEXT-A012-P006]
   implementation_refs:
   - AIA-RULE-HR-A12-3C
   verification_mode: judged_by_gap_analysis
@@ -112,8 +118,10 @@ records:
   qualifier_spans:
   - A012-P006
   conditions:
-  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
-    1(a)
+  - operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+      basis_segment_ids: [AIA-TEXT-A012-P006]
   implementation_refs:
   - AIA-RULE-HR-A12-3D
   verification_mode: judged_by_gap_analysis

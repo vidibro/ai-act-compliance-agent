@@ -3,23 +3,27 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '10'
+  required_field_validations:
+  - logical_expression_evidence
 audit:
   audit_schema_version: 1
   segments_scanned: 21
   norms_scanned: 21
-  finding_count: 5
-  audit_sha256: aec038867d1fadd625cff634933131043b18f92b8e7740d6dd1f63ae92361941
+  finding_count: 4
+  audit_sha256: 9872f111d4fcee6dc8481aad050e2ed344ac930e616db3fc2dbb5087bf56285d
 decisions:
-- finding_id: AIA-VALID-3055859FD804996F
+- finding_id: AIA-VALID-E4F9CC743A0C1F82
   target: AIA-NORM-A010-P2-GOVERN-DATASETS
-  rule: condition_not_structured_or_retained_in_action
+  rule: condition_expression_missing
   source_ref: AIA-TEXT-A010-P002
   source_sha256: 7a6e82114b214a9b8e0c243a98d5f7c654e471483021fabe45d1f7df6aaf6ff4
   target_sha256: 42ac17d89f822166aff9a5d8e7a358464422220022d48559a98a69b8a693b220
   decision: false_positive
-  reason: 'The norm''s action preserves the qualifying condition: its data governance
-    and management practices must be appropriate for the intended purpose. No condition
-    is missing.'
+  reason: '"Shall be subject to" is the verb of the duty itself: the data sets are made
+    subject to data governance and management practices. It states no gate on when the
+    duty applies. The "appropriate for the intended purpose" qualifier is retained in
+    the action, and paragraph 2 binds every training, validation and testing data set
+    without condition.'
   reviewed_by: vidibro
 - finding_id: AIA-VALID-CD1D0313E0D42BCD
   target: AIA-TEXT-A010-P002
@@ -28,13 +32,25 @@ decisions:
   source_sha256: 7a6e82114b214a9b8e0c243a98d5f7c654e471483021fabe45d1f7df6aaf6ff4
   target_sha256: 71089fdb52ade4477a0eca92f9c8217a6a3c95e4efc115035dbda7c58b4b2982
   decision: accepted_with_basis
-  reason: This is the chapeau for the Article 10(2)(a) to (h) list, not a separate
-    provider action. The general data-governance norm and its eight explicitly structured
-    items reconstruct its legal effect.
+  reason: This is the chapeau for the Article 10(2)(a) to (h) list, not a separate provider
+    action. The general data-governance norm and its eight explicitly structured items
+    reconstruct its legal effect.
   legal_basis:
   - span_id: AIA-TEXT-A010-P002
     source_sha256: 7a6e82114b214a9b8e0c243a98d5f7c654e471483021fabe45d1f7df6aaf6ff4
     quote: 'Those practices shall concern in particular:'
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-510C405ED6DEB890
+  target: AIA-NORM-A010-P3-STATISTICAL-PROPERTIES
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A010-P011
+  source_sha256: 9aeb070f249d226b8b1fc7e6f8ed38398f0248bb19d2fcda07c3d6f39a93dc8c
+  target_sha256: df56e30738b7cddccd13908b75ddd7f91bd4ed67a0aadc0154a8c7879004db4e
+  decision: false_positive
+  reason: The statistical-properties duty is unconditional. "Where applicable" sits inside
+    the "including ..." limb and qualifies only the persons or groups the system is
+    intended to be used on; it does not gate the duty to have appropriate statistical
+    properties. The limb and its qualifier are retained in the action.
   reviewed_by: vidibro
 - finding_id: AIA-VALID-3649F8849C42880C
   target: AIA-TEXT-A010-P013
@@ -43,36 +59,14 @@ decisions:
   source_sha256: 6fc9584a03c1754b915ad7782b6a58bddc47532e0728605809d67f1832c9baaf
   target_sha256: fcedf2b327809766cc3124c2699c7ae1bb069a40d34f1795ba9b277aa5189634
   decision: accepted_with_basis
-  reason: This is the chapeau for the exceptional special-category-data processing
-    route, not a separate action. Its permission and safeguards are canonically carried
-    by Article 4a(1), whose recorded external-law relation preserves the "in addition
-    to" boundary.
+  reason: This is the chapeau for the exceptional special-category-data processing route,
+    not a separate action. Its permission and safeguards are canonically carried by
+    Article 4a(1), whose recorded external-law relation preserves the "in addition to"
+    boundary. Points (b) to (f) now carry the chapeau condition as structured evidence.
   legal_basis:
   - span_id: AIA-TEXT-A010-P013
     source_sha256: 6fc9584a03c1754b915ad7782b6a58bddc47532e0728605809d67f1832c9baaf
-    quote: 'In addition to the provisions set out in Regulations (EU) 2016/679 and
-      (EU) 2018/1725 and Directive (EU) 2016/680, all the following conditions must
-      be met in order for such processing to occur:'
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-6D85A1D563F40FFA
-  target: AIA-NORM-A010-P5-B-REUSE-SECURITY
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A010-P015
-  source_sha256: 21119edfbe3963c4d92bc77073acc68674d176afe0c7bc5d5b28b6289046dead
-  target_sha256: fe374049611205bbfe6ebe36b9879d59e6cf21de88c1bff2aff90a44806a4db0
-  decision: false_positive
-  reason: 'The action retains both required elements: technical limitations on reuse
-    and state-of-the-art security and privacy-preserving measures, including pseudonymisation.
-    Article 4a(1)(b) is the canonical carrier of the same safeguard.'
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-A9EC122C931BAB2F
-  target: AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A010-P016
-  source_sha256: d71ee49767b7375e8ca791a102ad28bdc08cefcd715602dbd4e8ece34adf9d7b
-  target_sha256: c4200a675dc5f5c94f385e567d252ab0b104c9ec75a75c4d39df917f5cac6022
-  decision: false_positive
-  reason: The action retains the security, protection, safeguards, documented strict
-    access controls, authorised-access, and confidentiality requirements. Article
-    4a(1)(c) is the canonical carrier of the same safeguard.
+    quote: 'In addition to the provisions set out in Regulations (EU) 2016/679 and (EU)
+      2018/1725 and Directive (EU) 2016/680, all the following conditions must be met
+      in order for such processing to occur:'
   reviewed_by: vidibro

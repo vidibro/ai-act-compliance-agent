@@ -163,10 +163,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is a remote biometric identification system referred to in Annex III,
-        point 1(a)
-      basis_segment_ids:
-      - AIA-TEXT-A012-P007
+    - operator: all_of
+      operands:
+      - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+        basis_segment_ids:
+        - AIA-TEXT-A012-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -204,10 +205,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is a remote biometric identification system referred to in Annex III,
-        point 1(a)
-      basis_segment_ids:
-      - AIA-TEXT-A012-P008
+    - operator: all_of
+      operands:
+      - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+        basis_segment_ids:
+        - AIA-TEXT-A012-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -245,10 +247,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is a remote biometric identification system referred to in Annex III,
-        point 1(a)
-      basis_segment_ids:
-      - AIA-TEXT-A012-P009
+    - operator: all_of
+      operands:
+      - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+        basis_segment_ids:
+        - AIA-TEXT-A012-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -287,10 +290,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is a remote biometric identification system referred to in Annex III,
-        point 1(a)
-      basis_segment_ids:
-      - AIA-TEXT-A012-P010
+    - operator: all_of
+      operands:
+      - text: For high-risk AI systems referred to in point 1 (a), of Annex III
+        basis_segment_ids:
+        - AIA-TEXT-A012-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope

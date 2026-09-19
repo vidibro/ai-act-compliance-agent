@@ -17,7 +17,11 @@ from __future__ import annotations
 from pathlib import Path
 
 from aiact.classify.graph import QUESTIONS
-from aiact.norm_validity import audit_norm_validity, load_adjudication_ledger
+from aiact.norm_validity import (
+    FieldValidation,
+    audit_norm_validity,
+    load_adjudication_ledger,
+)
 from aiact.policy_loader import criterion_from_norm, load_policy_spec, report_norm_from_norm
 from aiact.schemas.enums import ActorCategory
 from aiact.schemas.norm import (
@@ -90,6 +94,13 @@ def traceability_errors(
     ledger = load_adjudication_ledger(ledger_path)
     scope: set[tuple[SourceKind, str]] = {
         (item.kind, item.document) for item in ledger.enforced_scope
+    }
+    # The audit is recomputed below against the SAME gates the ledger declares. Without them a
+    # migrated article is re-audited ungated, and the rule -> norm direction then demands
+    # decisions for finding ids the gated audit no longer produces.
+    required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]] = {
+        (item.kind, item.document): set(item.required_field_validations)
+        for item in ledger.enforced_scope
     }
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
@@ -341,7 +352,9 @@ def traceability_errors(
     for decision in ledger.decisions:
         decisions.setdefault(decision.finding_id, []).append(decision.decision)
     findings_by_target: dict[str, list[str]] = {}
-    for finding in audit_norm_validity(bundle, scope=scope):
+    for finding in audit_norm_validity(
+        bundle, scope=scope, required_field_validations=required_field_validations
+    ):
         decided = decisions.get(finding.finding_id, [])
         if not decided or not set(decided) <= _ACCEPTED_DECISIONS:
             findings_by_target.setdefault(finding.target, []).append(finding.finding_id)
