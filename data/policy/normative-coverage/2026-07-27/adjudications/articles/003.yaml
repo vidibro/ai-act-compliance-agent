@@ -3,35 +3,15 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '3'
+  required_field_validations:
+  - logical_expression_evidence
 audit:
   audit_schema_version: 1
   segments_scanned: 83
   norms_scanned: 72
-  finding_count: 8
-  audit_sha256: 5770111a650e20d95a74d59d7422beaa9debcafdc15d49cfd0e28712232a2ed7
+  finding_count: 3
+  audit_sha256: e28f7a7c3ca0dd61986930383b001f3c5c00da30eacdbb80db19aac931a7dece
 decisions:
-- finding_id: AIA-VALID-79E7C2E5E2B7FF9B
-  target: AIA-NORM-A003-D004-DEPLOYER
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A003-P005
-  source_sha256: 9749230acc7b4b44553df60b1e9fd2ad6bded8a8094ca83b9e22618ec404291a
-  target_sha256: 452ec3dffe84f50e916bd794e5519c476d7cad2b76d0141fffdbf334d90d2e43
-  decision: false_positive
-  reason: This is a definition, not a duty. Its personal non-professional exclusion
-    is explicitly retained in `exceptions`; the term is then consumed by the role
-    and Article 2(10) scope logic.
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-58A2D04A43DCE82D
-  target: AIA-NORM-A003-D014-SAFETY-COMPONENT
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A003-P015
-  source_sha256: d549c92be456be0e1086315f8507b2be39fc1ad94599394299af14d704c2bda3
-  target_sha256: 160d8c5b0f586ef4cd71183846b56e614907e80f8fcc079307c0f43948d9d002
-  decision: false_positive
-  reason: The “where its intended purpose” words complete the definition's safety-function
-    limb; they do not condition an actor action. The full exact definition is retained
-    and supplied to the Annex I and Annex III classifier nodes.
-  reviewed_by: vidibro
 - finding_id: AIA-VALID-61D514A571ED1ED3
   target: AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
   rule: deadline_not_structured_or_retained
@@ -39,20 +19,9 @@ decisions:
   source_sha256: 1d009d006b950530fe6b5ea5e5db1816f746cdf776de36ca7a54f6456125ba53
   target_sha256: 45d7284af80bcb82e9e7f82d5a1ea26605e31e288661c298c86d0c088bc80db8
   decision: false_positive
-  reason: “Immediately” describes the corrective-action need that a post-market monitoring
-    system identifies; it is not a deadline imposed by this definition. Article 72
-    supplies the provider duty that uses this defined term.
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-BC510701CE557488
-  target: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A003-P043
-  source_sha256: ac0372cbff6686f7b15f37e13959b020dd3f8f2757ad432cdfd1a733a8125c28
-  target_sha256: e6a58eb7fcd7a1962147a516eb66028dcb0c710f42b4530ba27f64d7edbf5699
-  decision: false_positive
-  reason: This is a definition, not a duty. Its ancillary-service exclusion is explicitly
-    retained in `exceptions`, and the full definition is supplied to the transparency
-    classifier.
+  reason: "\u201CImmediately\u201D describes the corrective-action need that a post-market\
+    \ monitoring system identifies; it is not a deadline imposed by this definition.\
+    \ Article 72 supplies the provider duty that uses this defined term."
   reviewed_by: vidibro
 - finding_id: AIA-VALID-EB817DB3E62A43ED
   target: AIA-NORM-A003-D047-AI-OFFICE-REFERENCE
@@ -65,37 +34,14 @@ decisions:
     not a slice of another sentence. It creates no product-facing action and is retained
     verbatim for downstream interpretation.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-F5A19D75DC5E0E69
+- finding_id: AIA-VALID-B11B63DC3F68A164
   target: AIA-NORM-A003-D048-EDPS-REFERENCE
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A003-P053
   source_sha256: 118bfd2afcb6a8e4c3b2f007ed5ed4eafaf593aa49bf11df1a8484412d0da53a
-  target_sha256: d001429e61b6dcd0c23eb59007d563ffefb5bc7359887bfafcb82cd2dafcf460
+  target_sha256: 8d70a8f5feec01cb796b7abf5dbaa51d40a9678e9a7ec168985178aea4aea1ac
   decision: false_positive
   reason: The lower-case opening is the complete enacted interpretation consequence.
     Its Union-body scope is explicitly retained in `conditions`; it creates no independent
     actor duty.
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-DCFB97EA311C4805
-  target: AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A003-P064
-  source_sha256: d0b105dd928690c17c6165de5d742dbd51b2442c814a9d64f2d18d2920aeea40
-  target_sha256: f78f8c5f8830ab2badc0f5ee32c812f789dcdffe60ccb055cece1fa3a07677bf
-  decision: false_positive
-  reason: “Where appropriate” describes one possible testing setting inside the definition;
-    it does not condition a duty. Article 59's sandbox permission now canonically
-    relies on this complete exact definition, while Articles 57 and 58 remain outside
-    the supported-actor scope.
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-0500E650CA1D6127
-  target: AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A003-P077
-  source_sha256: cc633d3fd3ac9fe45c8392e6e7c6836a857710c2b4d6b9cbda31990b6efc4d2c
-  target_sha256: f461048c59fb5916a76c7646bece74e0fa32dc6438fa282acc66497beb86dbb4
-  decision: false_positive
-  reason: This is a definition, not a duty. Its pre-market research, development and
-    prototyping exclusion is explicitly retained in `exceptions`, and the full definition
-    is supplied to the general-purpose-AI-model classifier node.
   reviewed_by: vidibro

@@ -134,7 +134,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: personal non-professional use is excluded
+    - text: the AI system is used in the course of a personal non-professional activity
       basis_segment_ids:
       - AIA-TEXT-A003-P005
   mandatory_content: []
@@ -506,7 +506,12 @@ norms:
   - AIA-TEXT-A003-P015
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: its intended purpose is to prevent or mitigate risks to health and safety of persons or property
+      basis_segment_ids:
+      - AIA-TEXT-A003-P015
   exceptions: null
   mandatory_content: []
   product_scope: dependency_only
@@ -1535,8 +1540,8 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: categorisation ancillary to another commercial service and strictly necessary for objective
-        technical reasons is excluded
+    - text: it is ancillary to another commercial service and strictly necessary for objective technical
+        reasons
       basis_segment_ids:
       - AIA-TEXT-A003-P043
   mandatory_content: []
@@ -1724,16 +1729,19 @@ norms:
   - AIA-TEXT-A003-P049
   - AIA-TEXT-A003-P050
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: the entity is a public authority competent for the listed criminal-law or public-security
-        functions
+    - text: any public authority competent for the prevention, investigation, detection or prosecution
+        of criminal offences or the execution of criminal penalties, including the safeguarding against
+        and the prevention of threats to public security
       basis_segment_ids:
-      - AIA-TEXT-A003-P048
-    - text: or the entity is entrusted by Member State law to exercise public authority and powers for
-        those functions
+      - AIA-TEXT-A003-P049
+    - text: any other body or entity entrusted by Member State law to exercise public authority and public
+        powers for the purposes of the prevention, investigation, detection or prosecution of criminal
+        offences or the execution of criminal penalties, including the safeguarding against and the prevention
+        of threats to public security
       basis_segment_ids:
-      - AIA-TEXT-A003-P048
+      - AIA-TEXT-A003-P050
   exceptions: null
   mandatory_content: []
   product_scope: dependency_only
@@ -1885,20 +1893,20 @@ norms:
   - AIA-TEXT-A003-P057
   - AIA-TEXT-A003-P058
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: death or serious harm to a person's health
+    - text: "the death of a person, or serious harm to a person\u2019s health"
       basis_segment_ids:
-      - AIA-TEXT-A003-P054
-    - text: serious and irreversible disruption of critical-infrastructure management or operation
+      - AIA-TEXT-A003-P055
+    - text: a serious and irreversible disruption of the management or operation of critical infrastructure
       basis_segment_ids:
-      - AIA-TEXT-A003-P054
-    - text: infringement of Union-law obligations protecting fundamental rights
+      - AIA-TEXT-A003-P056
+    - text: the infringement of obligations under Union law intended to protect fundamental rights
       basis_segment_ids:
-      - AIA-TEXT-A003-P054
+      - AIA-TEXT-A003-P057
     - text: serious harm to property or the environment
       basis_segment_ids:
-      - AIA-TEXT-A003-P054
+      - AIA-TEXT-A003-P058
   exceptions: null
   mandatory_content: []
   product_scope: dependency_only
@@ -2118,7 +2126,12 @@ norms:
   - AIA-TEXT-A003-P064
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where appropriate in real-world conditions
+      basis_segment_ids:
+      - AIA-TEXT-A003-P064
   exceptions: null
   mandatory_content: []
   product_scope: dependency_only
@@ -2197,7 +2210,12 @@ norms:
   - AIA-TEXT-A003-P066
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: all the conditions laid down in Article 57 or 60 are fulfilled
+      basis_segment_ids:
+      - AIA-TEXT-A003-P066
   exceptions: null
   mandatory_content:
   - define the temporary real-world testing activity and its evidentiary and conformity-assessment purposes
@@ -2355,44 +2373,40 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
+    - text: any act or omission contrary to Union law protecting the interest of individuals
+      basis_segment_ids:
+      - AIA-TEXT-A003-P070
+    - operator: any_of
       operands:
-      - text: an act or omission is contrary to Union law protecting the interest of individuals
-        basis_segment_ids:
-        - AIA-TEXT-A003-P070
-      - operator: any_of
+      - operator: all_of
         operands:
+        - text: has harmed or is likely to harm the collective interests of individuals residing in at
+            least two Member States other than the Member State in which
+          basis_segment_ids:
+          - AIA-TEXT-A003-P071
         - operator: any_of
           operands:
-          - text: the act or omission has harmed or is likely to harm the collective interests of individuals
-              residing in at least two Member States other than the Member State in which the act or omission
-              originated or took place
+          - text: the act or omission originated or took place
             basis_segment_ids:
-            - AIA-TEXT-A003-P070
-          - text: the act or omission has harmed or is likely to harm the collective interests of individuals
-              residing in at least two Member States other than the Member State in which the provider
-              concerned or, where applicable, its authorised representative is located or established
+            - AIA-TEXT-A003-P072
+          - text: the provider concerned, or, where applicable, its authorised representative is located
+              or established
             basis_segment_ids:
-            - AIA-TEXT-A003-P070
-          - text: the act or omission has harmed or is likely to harm the collective interests of individuals
-              residing in at least two Member States other than the Member State in which the deployer
-              is established, when the infringement is committed by the deployer
+            - AIA-TEXT-A003-P073
+          - text: the deployer is established, when the infringement is committed by the deployer
             basis_segment_ids:
-            - AIA-TEXT-A003-P070
-        - operator: all_of
-          operands:
-          - text: the act or omission has caused, causes or is likely to cause harm to the collective
-              interests of individuals
-            basis_segment_ids:
-            - AIA-TEXT-A003-P070
-          - text: the infringement has common features, including the same unlawful practice or the same
-              interest being infringed
-            basis_segment_ids:
-            - AIA-TEXT-A003-P070
-          - text: the infringement is occurring concurrently, committed by the same operator, in at least
-              three Member States
-            basis_segment_ids:
-            - AIA-TEXT-A003-P070
+            - AIA-TEXT-A003-P074
+      - operator: all_of
+        operands:
+        - text: has caused, causes or is likely to cause harm to the collective interests of individuals
+          basis_segment_ids:
+          - AIA-TEXT-A003-P075
+        - text: has common features, including the same unlawful practice or the same interest being infringed
+          basis_segment_ids:
+          - AIA-TEXT-A003-P075
+        - text: is occurring concurrently, committed by the same operator, in at least three Member States
+          basis_segment_ids:
+          - AIA-TEXT-A003-P075
   exceptions: null
   mandatory_content: []
   product_scope: dependency_only
@@ -2468,11 +2482,17 @@ norms:
   - AIA-TEXT-A003-P077
   qualifier_spans:
   - AIA-TEXT-A003-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where such an AI model is trained with a large amount of data using self-supervision at scale
+      basis_segment_ids:
+      - AIA-TEXT-A003-P077
   exceptions:
     operator: any_of
     operands:
-    - text: models used for research, development, or prototyping before market placement are excluded
+    - text: AI models that are used for research, development or prototyping activities before they are
+        placed on the market
       basis_segment_ids:
       - AIA-TEXT-A003-P077
   mandatory_content: []
@@ -2735,7 +2755,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system is put into service or used by a Union institution, agency, office, or body
+    - text: AI systems put into service or used by Union institutions, agencies, offices and bodies
       basis_segment_ids:
       - AIA-TEXT-A003-P053
   exceptions: null

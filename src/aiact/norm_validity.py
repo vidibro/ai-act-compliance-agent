@@ -414,12 +414,12 @@ def _contains_exact_words(text: str, fragment: str) -> bool:
 
 
 def _requires_condition_expression(text: str) -> bool:
-    """Whether a condition cue is not merely the ``when`` of an exception."""
+    """Whether a condition cue is not part of an exception expression."""
     for match in CONDITION.finditer(text):
         cue = match.group().casefold()
         if cue == "unless":
             continue
-        if cue == "when" and re.search(r"\bexcept\s*$", text[: match.start()], re.I):
+        if re.search(r"\bexcept\s*$", text[: match.start()], re.I):
             continue
         return True
     return False

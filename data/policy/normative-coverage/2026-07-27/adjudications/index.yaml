@@ -9,6 +9,8 @@ enforced_scope:
     document: "2"
   - kind: article
     document: "3"
+    required_field_validations:
+      - logical_expression_evidence
   - kind: article
     document: "4"
   - kind: article

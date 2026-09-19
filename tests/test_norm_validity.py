@@ -96,7 +96,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (79, 83)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (74, 78)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -108,7 +108,7 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (79, 83)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (74, 78)
 
 
 def test_article_ten_findings_are_recorded_in_its_own_shard():
@@ -368,12 +368,21 @@ def test_article_two_scope_findings_are_recorded_in_its_own_shard():
 
 def test_article_three_definition_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
-    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "3")})
+    requirements = {
+        (SourceKind.ARTICLE, "3"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "3")},
+        required_field_validations=requirements,
+    )
 
-    assert len(findings) == 8
+    assert len(findings) == 3
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "3")] == audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "3")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "3")},
+        required_field_validations=requirements,
     )
 
 
@@ -611,6 +620,33 @@ def test_logical_expression_gate_requires_detected_conditions_and_exceptions():
         finding.target == exception_norm.norm_id and finding.rule == "exception_expression_missing"
         for finding in exception_findings
     )
+
+
+@pytest.mark.parametrize("cue", ["if", "where", "when"])
+def test_logical_expression_gate_does_not_duplicate_an_except_clause_as_a_condition(cue):
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A031-P7-CONFIDENTIALITY-AND-SECRECY"
+    )
+    norm.norm_text = f"{norm.norm_text} except {cue} the exception applies."
+    assert norm.exceptions is not None
+    requirements = {
+        (SourceKind.ARTICLE, "31"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "31")},
+        required_field_validations=requirements,
+    )
+
+    assert not [
+        finding
+        for finding in findings
+        if finding.target == norm.norm_id and finding.rule == "condition_expression_missing"
+    ]
 
 
 def test_temporal_assignment_needs_source_bound_adjudication_when_its_date_is_unproven(tmp_path):
@@ -858,7 +894,7 @@ def test_article_eighty_one_objection_windows_are_conditions_not_deadlines():
         and finding.rule == "multiple_deadline_constraints_in_norm"
     ]
 
-    consultation.conditions = []
+    consultation.conditions = None
     findings_without_conditions = audit_norm_validity(
         bundle, scope={(SourceKind.ARTICLE, "81")}
     )
