@@ -96,7 +96,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (67, 71)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (65, 69)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -108,7 +108,7 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (67, 71)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (65, 69)
 
 
 def test_article_ten_findings_are_recorded_in_its_own_shard():
@@ -130,35 +130,51 @@ def test_article_ten_findings_are_recorded_in_its_own_shard():
 
 def test_article_five_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
+    requirements = {
+        (SourceKind.ARTICLE, "5"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
 
-    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "5")})
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "5")},
+        required_field_validations=requirements,
+    )
     assert {finding.finding_id for finding in findings} == {
-        "AIA-VALID-5B7FCD27DF45309C",
-        "AIA-VALID-DC823E5A83D8EE0D",
+        "AIA-VALID-6AB4108E5A6666D2",
         "AIA-VALID-D2ABA6D6C6B42844",
-        "AIA-VALID-62C9635045474CEA",
         "AIA-VALID-BF5D52A6D881F67C",
-        "AIA-VALID-3B5963DF02D90B91",
-        "AIA-VALID-FFFAA9BB86305D59",
-        "AIA-VALID-CC024E9D9725C0ED",
-        "AIA-VALID-60DB1D9CF0CAF668",
-        "AIA-VALID-F92BDFB651B38558",
+        "AIA-VALID-6DE4C532D9D415CD",
+        "AIA-VALID-6B1F2D84882D55D6",
+        "AIA-VALID-E42B3D994AD868EC",
+        "AIA-VALID-E148175866D4DB50",
+        "AIA-VALID-044A33B10BD1021C",
         "AIA-VALID-2F3A48673D9CF580",
     }
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "5")] == audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "5")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "5")},
+        required_field_validations=requirements,
     )
 
 
 def test_article_six_profiling_override_finding_is_adjudicated():
     bundle = load_bundle()
+    requirements = {
+        (SourceKind.ARTICLE, "6"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+    }
 
-    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "6")})
-    assert {finding.finding_id for finding in findings} == {"AIA-VALID-F54275A92121A610"}
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "6")},
+        required_field_validations=requirements,
+    )
+    assert {finding.finding_id for finding in findings} == {"AIA-VALID-19A7298D3BF8F911"}
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "6")] == audit_attestation(
-        bundle, scope={(SourceKind.ARTICLE, "6")}
+        bundle,
+        scope={(SourceKind.ARTICLE, "6")},
+        required_field_validations=requirements,
     )
 
 

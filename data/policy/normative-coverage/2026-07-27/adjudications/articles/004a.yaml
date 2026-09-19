@@ -3,12 +3,14 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: 4a
+  required_field_validations:
+  - logical_expression_evidence
 audit:
   audit_schema_version: 1
   segments_scanned: 12
   norms_scanned: 8
   finding_count: 1
-  audit_sha256: dffcb02bec8062693a2d886e4188aa3e1dbaf07dfb0802f07bac3a3e05d05f0f
+  audit_sha256: c64d345610f0063e3228c10090103642e07234a57d94e6997b68179dd69fd266
 decisions:
 - finding_id: AIA-VALID-B5BAD92714FABB3B
   target: AIA-TEXT-A004A-P001

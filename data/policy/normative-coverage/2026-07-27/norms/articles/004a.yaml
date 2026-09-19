@@ -29,21 +29,38 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the processing is strictly necessary for bias detection and correction under Article 10(2),
-        points (f) and (g)
+    - text: To the extent strictly necessary to ensure bias detection and correction in relation to high-risk
+        AI systems in accordance with Article 10(2), points (f) and (g)
       basis_segment_ids:
       - AIA-TEXT-A004A-P001
-    - text: the processing is subject to appropriate safeguards for natural persons' fundamental rights
-        and freedoms
+    - text: subject to appropriate safeguards for the fundamental rights and freedoms of natural persons
       basis_segment_ids:
       - AIA-TEXT-A004A-P001
-    - text: processing other data, including synthetic or anonymised data, cannot effectively achieve
-        the bias detection and correction
+    - text: the bias detection and correction cannot be effectively fulfilled by processing other data,
+        including synthetic or anonymised data
       basis_segment_ids:
-      - AIA-TEXT-A004A-P001
-    - text: every safeguard and condition in Article 4a(1), points (b) to (f), is satisfied
+      - AIA-TEXT-A004A-P002
+    - text: the special categories of personal data are subject to technical limitations on the re-use
+        of personal data
       basis_segment_ids:
-      - AIA-TEXT-A004A-P001
+      - AIA-TEXT-A004A-P003
+    - text: the special categories of personal data are subject to measures to ensure that the personal
+        data processed are secured and protected
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P004
+    - text: the special categories of personal data are not transmitted, transferred or otherwise accessed
+        by other parties
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P005
+    - text: the special categories of personal data are deleted once the bias has been corrected or the
+        personal data has reached the end of its retention period, whichever comes first
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P006
+    - text: the records of processing activities pursuant to Regulations (EU) 2016/679 and (EU) 2018/1725
+        and Directive (EU) 2016/680 include the reasons why the processing of special categories of personal
+        data was strictly necessary to detect and correct biases
+      basis_segment_ids:
+      - AIA-TEXT-A004A-P007
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -85,10 +102,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
-        permission
+    - text: all the following conditions shall be met in order for such processing to occur
       basis_segment_ids:
-      - AIA-TEXT-A004A-P003
+      - AIA-TEXT-A004A-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -132,10 +148,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
-        permission
+    - text: all the following conditions shall be met in order for such processing to occur
       basis_segment_ids:
-      - AIA-TEXT-A004A-P004
+      - AIA-TEXT-A004A-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -177,10 +192,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
-        permission
+    - text: all the following conditions shall be met in order for such processing to occur
       basis_segment_ids:
-      - AIA-TEXT-A004A-P005
+      - AIA-TEXT-A004A-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -222,10 +236,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
-        permission
+    - text: all the following conditions shall be met in order for such processing to occur
       basis_segment_ids:
-      - AIA-TEXT-A004A-P006
+      - AIA-TEXT-A004A-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -269,10 +282,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional
-        permission
+    - text: all the following conditions shall be met in order for such processing to occur
       basis_segment_ids:
-      - AIA-TEXT-A004A-P007
+      - AIA-TEXT-A004A-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -315,14 +327,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the processing is strictly necessary for bias detection and correction concerning biases likely
-        to affect health or safety, negatively affect fundamental rights, or cause discrimination prohibited
-        by Union law
+    - text: such processing is strictly necessary to ensure bias detection and correction in view of possible
+        biases that are likely to affect the health and safety of persons, have a negative impact on fundamental
+        rights or lead to discrimination prohibited pursuant to Union law
       basis_segment_ids:
-      - AIA-TEXT-A004A-P008
-    - text: all Article 4a(1) conditions and safeguards are applied
+      - AIA-TEXT-A004A-P009
+    - text: all of the conditions and safeguards set out in paragraph 1 are applied
       basis_segment_ids:
-      - AIA-TEXT-A004A-P008
+      - AIA-TEXT-A004A-P010
   exceptions: null
   mandatory_content: []
   product_scope: in_scope

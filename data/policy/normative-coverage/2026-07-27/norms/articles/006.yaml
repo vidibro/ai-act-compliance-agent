@@ -26,14 +26,16 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system is intended as a safety component of a product, or is itself a product, covered
-        by Union harmonisation legislation listed in Annex I
-      basis_segment_ids:
-      - AIA-TEXT-A006-P001
-    - text: the relevant product is required to undergo third-party conformity assessment for market placement
-        or putting into service under that Annex I legislation
-      basis_segment_ids:
-      - AIA-TEXT-A006-P001
+    - operator: all_of
+      operands:
+      - text: the AI system is intended to be used as a safety component of a product, or the AI system
+          is itself a product
+        basis_segment_ids:
+        - AIA-TEXT-A006-P002
+      - text: the product whose safety component pursuant to point (a) is the AI system, or the AI system
+          itself as a product, is required to undergo a third-party conformity assessment
+        basis_segment_ids:
+        - AIA-TEXT-A006-P003
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -75,10 +77,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the system is used solely for non-safety aspects of user assistance, performance optimisation,
-        service efficiency, automation, convenience, or quality control
-      basis_segment_ids:
-      - AIA-TEXT-A006-P004
+    - operator: all_of
+      operands:
+      - text: solely used for non-safety related aspects of user assistance, performance optimisation,
+          service efficiency, automation or convenience or quality control
+        basis_segment_ids:
+        - AIA-TEXT-A006-P004
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -118,9 +122,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: failure or malfunction of the AI system would endanger health and safety
-      basis_segment_ids:
-      - AIA-TEXT-A006-P005
+    - operator: all_of
+      operands:
+      - text: the failure or malfunctioning of which would endanger health and safety
+        basis_segment_ids:
+        - AIA-TEXT-A006-P005
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -162,10 +168,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: third-party conformity assessment is required solely because of risks unrelated to health
-        and safety
-      basis_segment_ids:
-      - AIA-TEXT-A006-P006
+    - operator: all_of
+      operands:
+      - text: required to undergo a third-party conformity assessment solely due to risks other than risks
+          to health and safety
+        basis_segment_ids:
+        - AIA-TEXT-A006-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -250,39 +258,41 @@ norms:
     operands:
     - operator: all_of
       operands:
-      - text: the system does not pose a significant risk of harm to natural persons' health, safety,
-          or fundamental rights, including by not materially influencing the outcome of decision making
+      - text: it does not pose a significant risk of harm to the health, safety or fundamental rights
+          of natural persons, including by not materially influencing the outcome of decision making
         basis_segment_ids:
         - AIA-TEXT-A006-P008
       - operator: any_of
         operands:
         - text: the AI system is intended to perform a narrow procedural task
           basis_segment_ids:
-          - AIA-TEXT-A006-P008
+          - AIA-TEXT-A006-P010
         - text: the AI system is intended to improve the result of a previously completed human activity
           basis_segment_ids:
-          - AIA-TEXT-A006-P008
+          - AIA-TEXT-A006-P011
         - operator: all_of
           operands:
           - text: the AI system is intended to detect decision-making patterns or deviations from prior
               decision-making patterns
             basis_segment_ids:
-            - AIA-TEXT-A006-P008
-          - text: the AI system is not meant to replace or influence the previously completed human assessment
+            - AIA-TEXT-A006-P012
+          - text: and is not meant to replace or influence the previously completed human assessment,
               without proper human review
             basis_segment_ids:
-            - AIA-TEXT-A006-P008
+            - AIA-TEXT-A006-P012
         - text: the AI system is intended to perform a preparatory task to an assessment relevant for
             the purposes of the use cases listed in Annex III
           basis_segment_ids:
-          - AIA-TEXT-A006-P008
+          - AIA-TEXT-A006-P013
   exceptions:
     operator: any_of
     operands:
-    - text: an Annex III AI system performing profiling of natural persons is always high-risk, notwithstanding
-        this exception
-      basis_segment_ids:
-      - AIA-TEXT-A006-P008
+    - operator: all_of
+      operands:
+      - text: an AI system referred to in Annex III shall always be considered to be high-risk where the
+          AI system performs profiling of natural persons
+        basis_segment_ids:
+        - AIA-TEXT-A006-P014
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -321,9 +331,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system performs profiling of natural persons
-      basis_segment_ids:
-      - AIA-TEXT-A006-P014
+    - operator: all_of
+      operands:
+      - text: the AI system performs profiling of natural persons
+        basis_segment_ids:
+        - AIA-TEXT-A006-P014
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -362,9 +374,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider considers an Annex III AI system not to be high-risk under Article 6(3)
-      basis_segment_ids:
-      - AIA-TEXT-A006-P015
+    - operator: all_of
+      operands:
+      - text: A provider who considers that an AI system referred to in Annex III is not high-risk
+        basis_segment_ids:
+        - AIA-TEXT-A006-P015
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -401,9 +415,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
-      basis_segment_ids:
-      - AIA-TEXT-A006-P015
+    - operator: all_of
+      operands:
+      - text: Such provider
+        basis_segment_ids:
+        - AIA-TEXT-A006-P015
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -441,9 +457,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a national competent authority requests the documentation
-      basis_segment_ids:
-      - AIA-TEXT-A006-P015
+    - operator: all_of
+      operands:
+      - text: Upon request of national competent authorities
+        basis_segment_ids:
+        - AIA-TEXT-A006-P015
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -523,10 +541,13 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: concrete and reliable evidence shows that AI systems within Annex III do not pose a significant
-        risk of harm to natural persons' health, safety, or fundamental rights
-      basis_segment_ids:
-      - AIA-TEXT-A006-P017
+    - operator: all_of
+      operands:
+      - text: there is concrete and reliable evidence of the existence of AI systems that fall under the
+          scope of Annex III, but do not pose a significant risk of harm to the health, safety or fundamental
+          rights of natural persons
+        basis_segment_ids:
+        - AIA-TEXT-A006-P017
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -565,10 +586,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: concrete and reliable evidence shows deletion is necessary to maintain protection of health,
-        safety, and fundamental rights
-      basis_segment_ids:
-      - AIA-TEXT-A006-P018
+    - operator: all_of
+      operands:
+      - text: there is concrete and reliable evidence that this is necessary to maintain the level of
+          protection of health, safety and fundamental rights provided for by this Regulation
+        basis_segment_ids:
+        - AIA-TEXT-A006-P018
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor

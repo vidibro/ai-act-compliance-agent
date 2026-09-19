@@ -26,17 +26,19 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the techniques have the objective or effect of materially distorting a person or group's behaviour
-        by appreciably impairing informed decision-making
-      basis_segment_ids:
-      - AIA-TEXT-A005-P002
-    - text: the distortion causes a decision that would not otherwise have been taken
-      basis_segment_ids:
-      - AIA-TEXT-A005-P002
-    - text: the decision causes or is reasonably likely to cause significant harm to that person, another
-        person, or a group
-      basis_segment_ids:
-      - AIA-TEXT-A005-P002
+    - operator: all_of
+      operands:
+      - text: with the objective, or the effect of materially distorting the behaviour of a person or
+          a group of persons by appreciably impairing their ability to make an informed decision
+        basis_segment_ids:
+        - AIA-TEXT-A005-P002
+      - text: thereby causing them to take a decision that they would not have otherwise taken
+        basis_segment_ids:
+        - AIA-TEXT-A005-P002
+      - text: in a manner that causes or is reasonably likely to cause that person, another person or
+          group of persons significant harm
+        basis_segment_ids:
+        - AIA-TEXT-A005-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -79,17 +81,20 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the vulnerability arises from age, disability, or a specific social or economic situation
-      basis_segment_ids:
-      - AIA-TEXT-A005-P003
-    - text: exploitation has the objective or effect of materially distorting the behaviour of the vulnerable
-        person or group member
-      basis_segment_ids:
-      - AIA-TEXT-A005-P003
-    - text: the distortion causes or is reasonably likely to cause significant harm to that person or
-        another person
-      basis_segment_ids:
-      - AIA-TEXT-A005-P003
+    - operator: all_of
+      operands:
+      - text: vulnerabilities of a natural person or a specific group of persons due to their age, disability
+          or a specific social or economic situation
+        basis_segment_ids:
+        - AIA-TEXT-A005-P003
+      - text: with the objective, or the effect, of materially distorting the behaviour of that person
+          or a person belonging to that group
+        basis_segment_ids:
+        - AIA-TEXT-A005-P003
+      - text: in a manner that causes or is reasonably likely to cause that person or another person significant
+          harm
+        basis_segment_ids:
+        - AIA-TEXT-A005-P003
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -138,24 +143,44 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the material realistically depicts an identifiable natural person's intimate parts or sexually
-        explicit activities
-      basis_segment_ids:
-      - AIA-TEXT-A005-P004
-    - text: the depicted person did not give freely-given, specific, informed, unambiguous, and explicit
-        consent to the generation or manipulation
-      basis_segment_ids:
-      - AIA-TEXT-A005-P004
-    - text: the relevant placing, service, or use condition in Article 5(1a) is satisfied
-      basis_segment_ids:
-      - AIA-TEXT-A005-P004
+    - operator: all_of
+      operands:
+      - text: "generates or manipulates realistic images, videos, audio or similar material of an identifiable\
+          \ natural person\u2019s intimate parts, or of an identifiable natural person engaged in sexually\
+          \ explicit activities"
+        basis_segment_ids:
+        - AIA-TEXT-A005-P004
+      - text: "without that person\u2019s freely-given, specific, informed, unambiguous and explicit consent\
+          \ for that generation or manipulation"
+        basis_segment_ids:
+        - AIA-TEXT-A005-P004
+      - operator: any_of
+        operands:
+        - text: that generation or manipulation is the intended purpose of the AI system
+          basis_segment_ids:
+          - AIA-TEXT-A005-P020
+        - operator: all_of
+          operands:
+          - text: "the system\u2019s design, training, architecture, capabilities or user-facing functionalities\
+              \ make that generation or manipulation a reasonably foreseeable and reproducible outcome"
+            basis_segment_ids:
+            - AIA-TEXT-A005-P021
+          - text: without requiring significant technical modification
+            basis_segment_ids:
+            - AIA-TEXT-A005-P021
+          - text: the system does not have reasonable and adequate technical safety measures and other
+              safeguards to reliably prevent that generation or manipulation
+            basis_segment_ids:
+            - AIA-TEXT-A005-P021
   exceptions:
-    operator: any_of
+    operator: all_of
     operands:
-    - text: manipulation that neither increases exposure of depicted intimate parts nor alters the nature
-        of depicted sexually explicit activities does not constitute manipulation
+    - text: does not increase the exposure of any depicted intimate parts
       basis_segment_ids:
-      - AIA-TEXT-A005-P004
+      - AIA-TEXT-A005-P023
+    - text: or alter the nature of any depicted sexually explicit activities
+      basis_segment_ids:
+      - AIA-TEXT-A005-P023
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -200,19 +225,38 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the generated or manipulated material or performance falls within Article 2, points (c) or
-        (e), of Directive 2011/93/EU
-      basis_segment_ids:
-      - AIA-TEXT-A005-P005
-    - text: the relevant placing, service, or use condition in Article 5(1a) is satisfied
-      basis_segment_ids:
-      - AIA-TEXT-A005-P005
+    - operator: all_of
+      operands:
+      - text: material or performance within the meaning of Article 2, points (c) and (e), of Directive
+          2011/93/EU
+        basis_segment_ids:
+        - AIA-TEXT-A005-P005
+      - operator: any_of
+        operands:
+        - text: that generation or manipulation is the intended purpose of the AI system
+          basis_segment_ids:
+          - AIA-TEXT-A005-P020
+        - operator: all_of
+          operands:
+          - text: "the system\u2019s design, training, architecture, capabilities or user-facing functionalities\
+              \ make that generation or manipulation a reasonably foreseeable and reproducible outcome"
+            basis_segment_ids:
+            - AIA-TEXT-A005-P021
+          - text: without requiring significant technical modification
+            basis_segment_ids:
+            - AIA-TEXT-A005-P021
+          - text: the system does not have reasonable and adequate technical safety measures and other
+              safeguards to reliably prevent that generation or manipulation
+            basis_segment_ids:
+            - AIA-TEXT-A005-P021
   exceptions:
     operator: any_of
     operands:
-    - text: a without-right defence applies under national law
-      basis_segment_ids:
-      - AIA-TEXT-A005-P005
+    - operator: all_of
+      operands:
+      - text: "a \u2018without right\u2019 defence applies under national law"
+        basis_segment_ids:
+        - AIA-TEXT-A005-P005
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -255,14 +299,24 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: persons or groups are evaluated or classified over time using social behaviour or known, inferred,
-        or predicted personal or personality characteristics
-      basis_segment_ids:
-      - AIA-TEXT-A005-P006
-    - text: the social score leads to treatment in an unrelated context or treatment that is unjustified
-        or disproportionate to the social behaviour or its gravity
-      basis_segment_ids:
-      - AIA-TEXT-A005-P006
+    - operator: all_of
+      operands:
+      - text: evaluation or classification of natural persons or groups of persons over a certain period
+          of time based on their social behaviour or known, inferred or predicted personal or personality
+          characteristics
+        basis_segment_ids:
+        - AIA-TEXT-A005-P006
+      - operator: any_of
+        operands:
+        - text: detrimental or unfavourable treatment of certain natural persons or groups of persons
+            in social contexts that are unrelated to the contexts in which the data was originally generated
+            or collected
+          basis_segment_ids:
+          - AIA-TEXT-A005-P007
+        - text: detrimental or unfavourable treatment of certain natural persons or groups of persons
+            that is unjustified or disproportionate to their social behaviour or its gravity
+          basis_segment_ids:
+          - AIA-TEXT-A005-P008
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -308,10 +362,13 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: an AI system supports a human assessment of a person's involvement in criminal activity already
-        based on objective and verifiable facts directly linked to criminal activity
-      basis_segment_ids:
-      - AIA-TEXT-A005-P009
+    - operator: all_of
+      operands:
+      - text: AI systems used to support the human assessment of the involvement of a person in a criminal
+          activity, which is already based on objective and verifiable facts directly linked to a criminal
+          activity
+        basis_segment_ids:
+        - AIA-TEXT-A005-P009
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -391,9 +448,12 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: the system is intended to be put in place or on the market for medical or safety reasons
-      basis_segment_ids:
-      - AIA-TEXT-A005-P011
+    - operator: all_of
+      operands:
+      - text: the use of the AI system is intended to be put in place or into the market for medical or
+          safety reasons
+        basis_segment_ids:
+        - AIA-TEXT-A005-P011
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -437,10 +497,11 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: labelling or filtering lawfully acquired biometric datasets based on biometric data
+    - text: labelling or filtering of lawfully acquired biometric datasets, such as images, based on biometric
+        data
       basis_segment_ids:
       - AIA-TEXT-A005-P012
-    - text: categorising biometric data in the area of law enforcement
+    - text: categorizing of biometric data in the area of law enforcement
       basis_segment_ids:
       - AIA-TEXT-A005-P012
   mandatory_content: []
@@ -486,16 +547,19 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: targeted searches for specified victims and missing persons
+    - text: the targeted search for specific victims of abduction, trafficking in human beings or sexual
+        exploitation of human beings, as well as the search for missing persons
       basis_segment_ids:
-      - AIA-TEXT-A005-P013
-    - text: prevention of the specified substantial and imminent safety threat or terrorist-attack threat
+      - AIA-TEXT-A005-P014
+    - text: the prevention of a specific, substantial and imminent threat to the life or physical safety
+        of natural persons or a genuine and present or genuine and foreseeable threat of a terrorist attack
       basis_segment_ids:
-      - AIA-TEXT-A005-P013
-    - text: localisation or identification of a criminal suspect for investigation, prosecution, or penalty
-        execution concerning qualifying Annex II offences
+      - AIA-TEXT-A005-P015
+    - text: localisation or identification of a person suspected of having committed a criminal offence,
+        for the purpose of conducting a criminal investigation or prosecution or executing a criminal
+        penalty
       basis_segment_ids:
-      - AIA-TEXT-A005-P013
+      - AIA-TEXT-A005-P016
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -574,14 +638,24 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: generation or manipulation is the intended purpose of the AI system
-      basis_segment_ids:
-      - AIA-TEXT-A005-P019
-    - text: or generation or manipulation is reasonably foreseeable and reproducible without significant
-        technical modification and the system lacks reasonable and adequate safeguards to reliably prevent
-        and correct it
-      basis_segment_ids:
-      - AIA-TEXT-A005-P019
+    - operator: any_of
+      operands:
+      - text: that generation or manipulation is the intended purpose of the AI system
+        basis_segment_ids:
+        - AIA-TEXT-A005-P020
+      - operator: all_of
+        operands:
+        - text: "the system\u2019s design, training, architecture, capabilities or user-facing functionalities\
+            \ make that generation or manipulation a reasonably foreseeable and reproducible outcome"
+          basis_segment_ids:
+          - AIA-TEXT-A005-P021
+        - text: without requiring significant technical modification
+          basis_segment_ids:
+          - AIA-TEXT-A005-P021
+        - text: the system does not have reasonable and adequate technical safety measures and other safeguards
+            to reliably prevent that generation or manipulation
+          basis_segment_ids:
+          - AIA-TEXT-A005-P021
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -623,10 +697,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the deployer uses the system for the purpose of generating or manipulating the prohibited
-        material or performance
-      basis_segment_ids:
-      - AIA-TEXT-A005-P022
+    - operator: all_of
+      operands:
+      - text: the deployer uses the system for the purpose of generating or manipulating such material
+          or performance
+        basis_segment_ids:
+        - AIA-TEXT-A005-P022
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -667,12 +743,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the manipulation does not increase exposure of any depicted intimate parts
-      basis_segment_ids:
-      - AIA-TEXT-A005-P023
-    - text: the manipulation does not alter the nature of depicted sexually explicit activities
-      basis_segment_ids:
-      - AIA-TEXT-A005-P023
+    - operator: all_of
+      operands:
+      - text: does not increase the exposure of any depicted intimate parts
+        basis_segment_ids:
+        - AIA-TEXT-A005-P023
+      - text: or alter the nature of any depicted sexually explicit activities
+        basis_segment_ids:
+        - AIA-TEXT-A005-P023
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -826,7 +904,15 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: only if the law enforcement authority has completed a fundamental rights impact assessment
+          as provided for in Article 27
+        basis_segment_ids:
+        - AIA-TEXT-A005-P027
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -866,15 +952,20 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: when urgent use begins before registration, complete registration without undue delay
-      basis_segment_ids:
-      - AIA-TEXT-A005-P027
+    - operator: all_of
+      operands:
+      - text: provided that such registration is completed without undue delay
+        basis_segment_ids:
+        - AIA-TEXT-A005-P027
   exceptions:
     operator: any_of
     operands:
-    - text: in a duly justified urgent case, use may begin before registration
-      basis_segment_ids:
-      - AIA-TEXT-A005-P027
+    - operator: all_of
+      operands:
+      - text: in duly justified cases of urgency, the use of such systems may be commenced without the
+          registration in the EU database
+        basis_segment_ids:
+        - AIA-TEXT-A005-P027
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -915,9 +1006,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
+    - operator: all_of
+      operands:
+      - text: each use for the purposes of law enforcement
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -955,12 +1048,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
-    - text: the situation of urgency is duly justified
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
+    - operator: all_of
+      operands:
+      - text: each use for the purposes of law enforcement
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
+      - text: in a duly justified situation of urgency
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -998,12 +1093,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
-    - text: the situation of urgency is duly justified
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
+    - operator: all_of
+      operands:
+      - text: each use for the purposes of law enforcement
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
+      - text: in a duly justified situation of urgency
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -1042,12 +1139,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
-    - text: the situation of urgency is duly justified
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
+    - operator: all_of
+      operands:
+      - text: each use for the purposes of law enforcement
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
+      - text: in a duly justified situation of urgency
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -1085,12 +1184,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
-    - text: the requested authorisation is rejected
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
+    - operator: all_of
+      operands:
+      - text: each use for the purposes of law enforcement
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
+      - text: If such authorisation is rejected
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -1129,12 +1230,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
-    - text: the requested authorisation is rejected
-      basis_segment_ids:
-      - AIA-TEXT-A005-P028
+    - operator: all_of
+      operands:
+      - text: each use for the purposes of law enforcement
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
+      - text: If such authorisation is rejected
+        basis_segment_ids:
+        - AIA-TEXT-A005-P028
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -1179,15 +1282,19 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the use pursues an Article 5(1)(h) objective identified in the request
-      basis_segment_ids:
-      - AIA-TEXT-A005-P029
-    - text: objective evidence or clear indications establish necessity and proportionality
-      basis_segment_ids:
-      - AIA-TEXT-A005-P029
-    - text: the time period and geographic and personal scope are limited to what is strictly necessary
-      basis_segment_ids:
-      - AIA-TEXT-A005-P029
+    - operator: all_of
+      operands:
+      - text: achieving one of the objectives specified in paragraph 1, first subparagraph, point (h),
+          as identified in the request
+        basis_segment_ids:
+        - AIA-TEXT-A005-P029
+      - text: on the basis of objective evidence or clear indications presented to it
+        basis_segment_ids:
+        - AIA-TEXT-A005-P029
+      - text: remains limited to what is strictly necessary concerning the period of time as well as the
+          geographic and personal scope
+        basis_segment_ids:
+        - AIA-TEXT-A005-P029
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -1336,10 +1443,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a use of a real-time remote biometric identification system in publicly accessible spaces
-        for law enforcement purposes is notified under Article 5(4)
-      basis_segment_ids:
-      - AIA-TEXT-A005-P030
+    - operator: all_of
+      operands:
+      - text: "each use of a \u2018 real-time \u2019 remote biometric identification system in publicly\
+          \ accessible spaces for law enforcement purposes shall be notified"
+        basis_segment_ids:
+        - AIA-TEXT-A005-P030
   exceptions: null
   mandatory_content:
   - include at least the information specified in Article 5(6)
@@ -1561,9 +1670,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the authority has been notified of covered use pursuant to Article 5(4)
-      basis_segment_ids:
-      - AIA-TEXT-A005-P032
+    - operator: all_of
+      operands:
+      - text: that have been notified of the use of
+        basis_segment_ids:
+        - AIA-TEXT-A005-P032
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -1705,7 +1816,14 @@ norms:
   primary_spans:
   - AIA-TEXT-A005-P034
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: where an AI practice infringes other Union law
+        basis_segment_ids:
+        - AIA-TEXT-A005-P034
   exceptions: null
   mandatory_content: []
   product_scope: dependency_only

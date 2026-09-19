@@ -3,31 +3,24 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '5'
+  required_field_validations:
+  - logical_expression_evidence
 audit:
   audit_schema_version: 1
   segments_scanned: 35
   norms_scanned: 40
-  finding_count: 11
-  audit_sha256: 0bd8c0e0dd4c624faf10389fa8d0bf5e97f026b6192f7f2b9452360eaa7d2890
+  finding_count: 9
+  audit_sha256: 7cc1820f53c85bf19f01d6af2d354c4ab5362195524dcfaea60400a73debc127
 decisions:
-- finding_id: AIA-VALID-5B7FCD27DF45309C
-  target: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A005-P011
-  source_sha256: 0ea6448036c959f1f56f1e9db399bcb853167373901f834d7a540781dcf23443
-  target_sha256: 226cac6d4bb0edcadbf7b1f26ff5043bf93a9e5d15c8da5befd182416c839c66
-  decision: false_positive
-  reason: The medical-or-safety exception is retained in the norm's structured exceptions.
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-DC823E5A83D8EE0D
+- finding_id: AIA-VALID-6AB4108E5A6666D2
   target: AIA-NORM-A005-P1-H-GDPR-SAVING
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A005-P017
   source_sha256: 460a50a68caf61b4701830de8b185d9423f64e2168f40cf7793cf73176c5e2ec
   target_sha256: b5f731a1b5d602228f8ddf62f148a90f5008792c3bcf37fa5b3ed775a0931f92
   decision: false_positive
-  reason: The saving clause preserves GDPR Article 9; it is not an exception to an
-    AI Act duty.
+  reason: The GDPR saving clause preserves a concurrent external-law rule; it is not
+    an exception branch of this AI Act norm.
   reviewed_by: vidibro
 - finding_id: AIA-VALID-D2ABA6D6C6B42844
   target: AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
@@ -38,16 +31,6 @@ decisions:
   decision: false_positive
   reason: 'The action retains both qualifiers: a permitted Article 5(1)(h) objective
     and the specifically targeted individual.'
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-62C9635045474CEA
-  target: AIA-NORM-A005-P2-COMPLETE-FRIA
-  rule: condition_not_structured_or_retained_in_action
-  source_ref: AIA-TEXT-A005-P027
-  source_sha256: 74e5ca943839bdc628ea5023d2df007148cc9889e78b138f22158f2fed65c2da
-  target_sha256: 967e710e6194124c8570b4c8afd9a4da9d189a934256adec3f1ac72c5683d095
-  decision: false_positive
-  reason: The action retains the condition by requiring the Article 27 assessment
-    before authorisation.
   reviewed_by: vidibro
 - finding_id: AIA-VALID-BF5D52A6D881F67C
   target: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
@@ -60,55 +43,55 @@ decisions:
     and personal limitations; the canonical national-law relation records the external
     boundary.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-3B5963DF02D90B91
+- finding_id: AIA-VALID-6DE4C532D9D415CD
   target: AIA-NORM-A005-P2-REGISTER-SYSTEM
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A005-P027
   source_sha256: 74e5ca943839bdc628ea5023d2df007148cc9889e78b138f22158f2fed65c2da
-  target_sha256: 6adf0506c108afad114ce40f3824b4cab6a5f3ee56a8f86328d609d204300876
+  target_sha256: feb75ddf283ed659a89d74b6c61c0c339dc7220efa785912ea52235c7e9724f5
   decision: false_positive
   reason: The action and structured exception retain registration before authorisation
     and the urgent-use completion requirement.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-FFFAA9BB86305D59
+- finding_id: AIA-VALID-6B1F2D84882D55D6
   target: AIA-NORM-A005-P3-DELETE-ON-REJECTION
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A005-P028
   source_sha256: 4bda6bfdd93dddf04aa2ece7ac5c7c91aae51a0ec32b60c3eb4bff0b2efc918f
-  target_sha256: 886d621e01e9aff8c4e73c255bd30942e0fc4cbfdbcd61d05bc9d371513c2685
+  target_sha256: 89f3f3a53fa89969df717c51b5eb1c219d97b837be03bf45da67764a74fa7d59
   decision: false_positive
   reason: The action and conditions retain the rejected-authorisation trigger and
     immediate deletion requirement.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-CC024E9D9725C0ED
+- finding_id: AIA-VALID-E42B3D994AD868EC
   target: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A005-P028
   source_sha256: 4bda6bfdd93dddf04aa2ece7ac5c7c91aae51a0ec32b60c3eb4bff0b2efc918f
-  target_sha256: 3162d829163f851553a9fa0c47c9e56ebeb76a1b59c0d51ceb71406953ff5996
+  target_sha256: 5f34fccb348f727521979f83419c9238232270d1aa467762275077d9df33b2de
   decision: false_positive
   reason: The action retains prior, per-use, judicial-or-binding-authority authorisation,
     the reasoned request, and applicable national rules.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-60DB1D9CF0CAF668
+- finding_id: AIA-VALID-E148175866D4DB50
   target: AIA-NORM-A005-P3-URGENT-USE
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A005-P028
   source_sha256: 4bda6bfdd93dddf04aa2ece7ac5c7c91aae51a0ec32b60c3eb4bff0b2efc918f
-  target_sha256: 205581f50a130ae9dcb74cdc967804e130a367b8f41a946723d4eabb12e4acd2
+  target_sha256: e70efab3f6a7cd14ee60da06e374a501b735d2bc5830fdebd29eb87cd10da62c
   decision: false_positive
   reason: The structured conditions retain the permitted-use branch, duly justified
     urgency, and the absence of a prior authorisation.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-F92BDFB651B38558
+- finding_id: AIA-VALID-044A33B10BD1021C
   target: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A005-P030
   source_sha256: 1dc7b193fbb93b6b79a21116da0f3992f55fa1d6669abbad51fe591a48c40eb6
   target_sha256: 6f458bdaa357bf3eb6b5b38c6c7de2f11ce97f6d53d206b8ce606a532e5ddad3
   decision: false_positive
-  reason: “Without prejudice to paragraph 3” preserves the concurrent authorisation
-    duty; it creates no exception to notification.
+  reason: "\u201CWithout prejudice to paragraph 3\u201D preserves the concurrent authorisation\
+    \ duty; it creates no exception to notification."
   reviewed_by: vidibro
 - finding_id: AIA-VALID-2F3A48673D9CF580
   target: AIA-NORM-A005-P6-PROVIDE-TEMPLATE

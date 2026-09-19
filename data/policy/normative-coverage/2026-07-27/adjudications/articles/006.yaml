@@ -3,19 +3,21 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '6'
+  required_field_validations:
+  - logical_expression_evidence
 audit:
   audit_schema_version: 1
   segments_scanned: 20
   norms_scanned: 14
   finding_count: 1
-  audit_sha256: db0b01b32a60674b3c10951409e160c1e3ce5534079983b39554eab77c1d308c
+  audit_sha256: 04f1093e2c54b5aae03b085f6aad6b87de510fd17271c89cb796b05fc2db98e7
 decisions:
-- finding_id: AIA-VALID-F54275A92121A610
+- finding_id: AIA-VALID-19A7298D3BF8F911
   target: AIA-NORM-A006-P3-PROFILING-OVERRIDE
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A006-P014
   source_sha256: ab6501b9df58ccc5bea83da331d423b5db569ebffbb4fb184e02f87b62c3675d
-  target_sha256: 43b434fb5bf16779e925ccca7ffd7879008f7cdb5fae16f38d7f1f0b2878a010
+  target_sha256: a2dcc96f0998c0d5e363c9fdc202de0b5645b225eb3bb14c1d17448d2269476d
   decision: false_positive
   reason: 'This is a complete, standalone override to the Article 6(3) exception:
     an Annex III system that profiles natural persons is always high-risk. Its action
