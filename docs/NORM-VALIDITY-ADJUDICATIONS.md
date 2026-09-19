@@ -17,24 +17,34 @@ norms, but they do not determine whether an existing audit finding is closed.
 
 3. If it is not a defect, use `false_positive` or `accepted_with_basis`. Nothing is edited.
 
-4. If it is a real defect, record `decision: fixed` and an exact patch under `fixes/`, then apply it:
+4. If it is a real defect, record `decision: fixed` and an exact patch under `fixes/`. Once all
+   decisions for that article are ready, reconcile the article as one transaction:
 
    ```sh
-   .venv/bin/python scripts/apply_norm_fixes.py \
+   .venv/bin/python scripts/reconcile_article_adjudications.py \
      --act-version 2026-07-27 \
-     --finding-id AIA-VALID-XXXXXXXXXXXXXXXX
+     --article 15 \
+     --apply-fixed
    ```
 
-   The command edits the canonical file under `source-records/`, rebuilds generated artifacts,
-   refreshes that document's hash-bound audit attestation, and runs the strict build. If
-   verification fails, it restores the original canonical file, audit attestation, and generated
-   artifacts.
+   The command applies every recorded fix for that article, rebuilds generated artifacts once,
+   refreshes that document's hash-bound audit attestation once, and runs the strict build. If
+   verification fails, it restores the original canonical files, audit attestation, and generated
+   artifacts. `apply_norm_fixes.py` remains available only for investigating one historical fix;
+   do not use it to reconcile a newly reviewed article one finding at a time.
 
 5. Enforce the complete closed decision set at any later time:
 
    ```sh
    .venv/bin/python scripts/build_normative_coverage.py \
      --act-version 2026-07-27 --check
+   ```
+
+   To check one article and the complete strict build without changing files:
+
+   ```sh
+   .venv/bin/python scripts/reconcile_article_adjudications.py \
+     --act-version 2026-07-27 --article 15 --check
    ```
 
 The audit derives each `finding_id` from its target, rule, source segment, source hash, and a
