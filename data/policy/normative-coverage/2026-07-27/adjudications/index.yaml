@@ -13,6 +13,8 @@ enforced_scope:
       - logical_expression_evidence
   - kind: article
     document: "4"
+    required_field_validations:
+      - logical_expression_evidence
   - kind: article
     document: "4a"
   - kind: article

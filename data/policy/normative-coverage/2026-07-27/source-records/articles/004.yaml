@@ -15,12 +15,23 @@ records:
   targets: []
   kind: obligation
   conditions:
-  - account for the covered persons' technical knowledge, experience, education, and training
-  - account for the context in which the AI systems are to be used
-  - consider the persons or groups on whom the AI systems are to be used
+    operator: all_of
+    operands:
+    - text: their technical knowledge, experience, education and training
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
+    - text: the context the AI systems are to be used in
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
+    - text: the persons or groups of persons on whom the AI systems are to be used
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
   exceptions:
-  - the obligation does not require a guaranteed specific AI-literacy level for any particular individual
-    among the covered staff or other persons
+    operator: any_of
+    operands:
+    - text: This obligation does not require providers or deployers to guarantee any specific level of AI literacy of any individual
+      basis_segment_ids:
+      - AIA-TEXT-A004-P001
   verification_mode: reported_not_judged
   implementation_refs:
   - AIA-RULE-ALL-A04
@@ -69,7 +80,11 @@ records:
   targets: []
   kind: obligation
   conditions:
-  - take European competence frameworks into account
+    operator: all_of
+    operands:
+    - text: taking into account European competence frameworks
+      basis_segment_ids:
+      - AIA-TEXT-A004-P003
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Board.
   implementation_mode: none_required

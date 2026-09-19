@@ -25,20 +25,20 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: account for the covered persons' technical knowledge, experience, education, and training
+    - text: their technical knowledge, experience, education and training
       basis_segment_ids:
       - AIA-TEXT-A004-P001
-    - text: account for the context in which the AI systems are to be used
+    - text: the context the AI systems are to be used in
       basis_segment_ids:
       - AIA-TEXT-A004-P001
-    - text: consider the persons or groups on whom the AI systems are to be used
+    - text: the persons or groups of persons on whom the AI systems are to be used
       basis_segment_ids:
       - AIA-TEXT-A004-P001
   exceptions:
     operator: any_of
     operands:
-    - text: the obligation does not require a guaranteed specific AI-literacy level for any particular
-        individual among the covered staff or other persons
+    - text: This obligation does not require providers or deployers to guarantee any specific level of
+        AI literacy of any individual
       basis_segment_ids:
       - AIA-TEXT-A004-P001
   mandatory_content: []
@@ -148,7 +148,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: take European competence frameworks into account
+    - text: taking into account European competence frameworks
       basis_segment_ids:
       - AIA-TEXT-A004-P003
   exceptions: null
