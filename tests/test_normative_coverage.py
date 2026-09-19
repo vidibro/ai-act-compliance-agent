@@ -76,7 +76,7 @@ def norm(norm_id: str, spans: list[str]) -> dict:
         "norm_id": norm_id,
         "act_version_date": VERSION,
         "kind": "obligation",
-        "actors": [{"actor_ref": "provider", "category": "supported_operator"}],
+        "actors": [{"actor_ref": "provider"}],
         "targets": [],
         "action": "perform the reviewed action",
         "norm_text": "Article 32",
@@ -149,7 +149,7 @@ def test_repository_coverage_artifacts_load_without_touching_runtime():
     assert bundle.text_review.corpus_complete is True
     assert bundle.validated_documents == 133
     assert bundle.validated_segments == 1530
-    assert bundle.validated_norms == 1391
+    assert bundle.validated_norms == 1400
 
 
 def test_exact_source_body_preserves_characters_that_rule_text_strips():

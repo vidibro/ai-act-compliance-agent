@@ -434,7 +434,7 @@ def test_article_five_public_authority_norms_are_reported_without_becoming_repor
         or norm.norm_id.startswith("AIA-NORM-A005-P3-")
         or norm.norm_id.startswith("AIA-NORM-A005-P4-")
     ]
-    assert len(statements) == 14
+    assert len(statements) == 16
     assert all(
         "public_authority" in {category.value for category in norm.actor_categories}
         for norm in statements
