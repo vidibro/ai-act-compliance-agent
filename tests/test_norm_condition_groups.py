@@ -65,18 +65,23 @@ def test_article_three_preserves_both_routes_and_cross_border_threshold(correcte
         for n in corrected_bundle.norm_inventory.norms
         if n.norm_id.endswith("A003-D061-WIDESPREAD-INFRINGEMENT")
     )
-    root = norm.conditions[0]
+    root = norm.conditions
     assert isinstance(root, LogicalExpression) and root.operator == "all_of"
     assert "contrary to Union law" in root.operands[0]
     routes = root.operands[1]
     assert isinstance(routes, LogicalExpression) and routes.operator == "any_of"
     assert len(routes.operands) == 2
     connections, concurrent = routes.operands
-    assert connections.operator == "any_of" and len(connections.operands) == 3
-    assert all("at least two Member States other than" in item for item in connections.operands)
-    assert "originated or took place" in connections.operands[0]
-    assert "authorised representative" in connections.operands[1]
-    assert "when the infringement is committed by the deployer" in connections.operands[2]
+    # The two-Member-State threshold is stated ONCE and shared by the three connecting factors,
+    # rather than repeated inside each: the enacted sentence reads "residing in at least two
+    # Member States other than the Member State in which" and then lists where.
+    assert connections.operator == "all_of" and len(connections.operands) == 2
+    threshold, where = connections.operands
+    assert "at least two Member States other than" in threshold
+    assert where.operator == "any_of" and len(where.operands) == 3
+    assert "originated or took place" in where.operands[0]
+    assert "authorised representative" in where.operands[1]
+    assert "when the infringement is committed by the deployer" in where.operands[2]
     assert concurrent.operator == "all_of" and len(concurrent.operands) == 3
     assert "common features" in concurrent.operands[1]
     assert "same operator, in at least three" in concurrent.operands[2]
@@ -102,7 +107,9 @@ def test_article_six_keeps_four_alternatives_and_human_review_qualification(corr
     assert "deviations from prior decision-making patterns" in patterns.operands[0]
     assert "without proper human review" in patterns.operands[1]
     assert "preparatory task" in alternatives.operands[3]
-    assert "profiling of natural persons is always high-risk" in norm.exceptions[0]
+    assert (
+        "performs profiling of natural persons" in norm.exceptions[0].operands[0]
+    )
     assert "AIA-TEXT-A006-P014" in norm.qualifier_spans
     # The norm and its spans carry separate approvals, taken at different times against different
     # questions: the spans that this is the enacted text, the norm that these four alternatives are

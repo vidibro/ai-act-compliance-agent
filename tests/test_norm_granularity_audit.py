@@ -23,10 +23,10 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     candidates = scan_granularity(bundle)
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
-    assert len(bundle.text_review.segments) == 1505
+    assert len(bundle.text_review.segments) == 1530
     # Count only norms yielded by the segment itself. Qualifier-only links no longer suppress the
     # multiple-modal signal merely because several child norms depend on the same chapeau.
-    assert len(candidates) == 58
+    assert len(candidates) == 56
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -60,6 +60,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting.add("AIA-TEXT-A085-P002")
     closed_by_splitting |= {"AIA-TEXT-A097-P003", "AIA-TEXT-A097-P006"}
     closed_by_splitting.add("AIA-TEXT-A099-P002")
+    closed_by_splitting |= {"AIA-TEXT-ANNEX-VII-I3", "AIA-TEXT-ANNEX-VII-I4"}
     closed_by_splitting |= {f"AIA-TEXT-A100-P{p:03}" for p in (11, 12, 13)}
     # These signals were previously hidden because qualifier links inflated the segment's apparent
     # extraction count. The role split exposes them without changing their reviewed legal content.
@@ -77,7 +78,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         "AIA-TEXT-A073-P010",
         "AIA-TEXT-A075-P015",
         "AIA-TEXT-A085-P002",
-        "AIA-TEXT-A099-P002",
     }
     assert (set(ids) - closed_by_splitting) | exposed_by_link_role_split == {
         candidate.segment_id for candidate in candidates
@@ -114,6 +114,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION"] = 2
     baseline_content.pop("AIA-NORM-A049-P4-RESTRICTED-INFORMATION", None)
     baseline_content.pop("AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT", None)
+    # Art. 22(3)'s mandate norm was renamed when its tasks were separated from addressability.
+    baseline_content["AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS"] = 6
     baseline_content["AIA-NORM-A005-P2-CONSIDER-IMPACTS"] = 2
     baseline_content["AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN"] = 4
     baseline_content["AIA-NORM-A009-P2-LIFECYCLE-PROCESS"] = 2
@@ -212,7 +214,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES"] = 2
     baseline_content["AIA-NORM-A096-P1-INVOLVE-BOARD"] = 4
     baseline_content.pop("AIA-NORM-A099-P4-OPERATOR-FINE", None)
-    baseline_content["AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES"] = 2
+    # Art. 99(2) became three norms when its deadlines were split, so the single one is gone.
+    baseline_content.pop("AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES", None)
     baseline_content["AIA-NORM-A101-P1-FIX-FINE-AMOUNT"] = 3
     baseline_content.pop("AIA-NORM-A101-P1-IMPOSE-GPAI-FINES", None)
     baseline_content["AIA-NORM-ANNEX-VII-QMS-APPLICATION"] = 7

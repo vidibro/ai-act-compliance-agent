@@ -220,7 +220,11 @@ def test_the_report_covers_both_duty_holders(spec):
         "AIA-RULE-DP-A26",
         "AIA-RULE-DP-A26-11",
         "AIA-RULE-DP-A26-12",
+        "AIA-RULE-DP-A26-6",
+        "AIA-RULE-DP-A26-7",
         "AIA-RULE-DP-A26-8",
+        "AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE",
+        "AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION",
         "AIA-RULE-DP-A26-9",
         "AIA-RULE-DP-A27",
         "AIA-RULE-DP-A27-2",
@@ -290,8 +294,10 @@ def test_a_gpai_model_owes_chapter_v_and_none_of_the_art_6_track(spec):
 
     assert report.classification.overall_risk_class == RiskClass.GPAI_MODEL
     owed = report.not_document_verifiable
-    provider = owed[ActorRole.PROVIDER]
-    assert all(r.startswith("AIA-GP") for r in provider), provider
+    # Chapter V is reported under the model provider's own role, not folded into `provider`.
+    provider = owed[ActorRole.GPAI_PROVIDER]
+    assert ActorRole.PROVIDER not in owed, "the Art. 6 track owes a model nothing"
+    assert all(r.startswith("AIA-RULE-GP") for r in provider), provider
     assert {"AIA-RULE-GP-A53-1A", "AIA-RULE-GP-A53-1D", "AIA-RULE-GP-A55-1A"} <= set(provider)
     assert owed[ActorRole.AUTHORISED_REPRESENTATIVE], "Art. 54 binds the representative too"
 
@@ -388,6 +394,8 @@ def test_article_5_public_authority_statements_are_not_mislabelled_as_deployer_d
         "AIA-NORM-A005-P3-DELETE-ON-REJECTION",
         "AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION",
         "AIA-NORM-A005-P3-PRIOR-AUTHORISATION",
+        "AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS",
+        "AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY",
         "AIA-NORM-A005-P3-RESTRICT-AUTHORISATION",
         "AIA-NORM-A005-P3-STOP-ON-REJECTION",
         "AIA-NORM-A005-P3-URGENT-USE",
