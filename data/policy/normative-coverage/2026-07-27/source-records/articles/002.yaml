@@ -1,6 +1,7 @@
 records:
 - norm_id: AIA-NORM-A002-P1-A-PROVIDER
   source: A002-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: providers placing on the market or putting into service AI systems or placing on the market general-purpose
     AI models in the Union, irrespective of whether those providers are established or located within
     the Union or in a third country
@@ -8,7 +9,7 @@ records:
     market or putting AI systems into service in the Union, regardless of establishment
   actors:
   - actor_ref: provider
-  - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A002-P002]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -20,10 +21,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P1-B-DEPLOYER
   source: A002-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: deployers of AI systems that have their place of establishment or are located within the Union
   action: apply the Regulation to deployers established or located within the Union
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A002-P003]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -35,13 +38,16 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT
   source: A002-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: providers and deployers of AI systems that have their place of establishment or are located in
     a third country, where the output produced by the AI system is used in the Union
   action: apply the Regulation to third-country providers and deployers where the AI system output is
     used in the Union
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A002-P004]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A002-P004]
   targets: []
   kind: applicability
   conditions:
@@ -59,11 +65,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE
   source: A002-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: importers and distributors of AI systems
   action: apply the Regulation to importers and distributors of AI systems
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A002-P005]
   - actor_ref: distributor
+    basis_segment_ids: [AIA-TEXT-A002-P005]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -75,12 +84,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER
   source: A002-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: product manufacturers placing on the market or putting into service an AI system together with
     their product and under their own name or trademark
   action: apply the Regulation to product manufacturers placing an AI system on the market or putting
     it into service with their product under their name or trademark
   actors:
   - actor_ref: product_manufacturer
+    basis_segment_ids: [AIA-TEXT-A002-P006]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -92,10 +103,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE
   source: A002-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: authorised representatives of providers, which are not established in the Union
   action: apply the Regulation to authorised representatives of providers not established in the Union
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A002-P007]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -107,10 +120,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P1-G-AFFECTED-PERSON
   source: A002-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: affected persons that are located in the Union
   action: apply the Regulation to affected persons located in the Union
   actors:
   - actor_ref: affected_person
+    basis_segment_ids: [AIA-TEXT-A002-P008]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -122,6 +137,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P2-SECTION-B-LIMIT
   source: A002-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: For AI systems classified as high-risk AI systems in accordance with Article 6(1) related to
     products covered by the Union harmonisation legislation listed in Section B of Annex I, only Article
     6(1), Article 60a and Articles 102 to 112 shall apply.
@@ -129,7 +145,8 @@ records:
     Section B products to Articles 6(1), 60a, and 102 to 112
   actors: []
   targets:
-  - target_ref: annex_i_section_b_high_risk_system
+  - target_ref: AI systems classified as high-risk AI systems in accordance with Article 6(1) related to products covered by the Union harmonisation legislation listed in Section B of Annex I
+    basis_segment_ids: [AIA-TEXT-A002-P009]
   kind: applicability
   conditions:
     operator: all_of
@@ -148,13 +165,15 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS
   source: A002-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Articles 57, 58 and 59 shall apply only in so far as the requirements for high-risk AI systems
     under this Regulation have been integrated in that Union harmonisation legislation.
   action: apply Articles 57 to 59 to Annex I Section B systems only where the AI Act high-risk requirements
     have been integrated into the applicable sectoral legislation
   actors: []
   targets:
-  - target_ref: annex_i_section_b_high_risk_system
+  - target_ref: AI systems classified as high-risk AI systems in accordance with Article 6(1) related to products covered by the Union harmonisation legislation listed in Section B of Annex I
+    basis_segment_ids: [AIA-TEXT-A002-P009]
   kind: applicability
   conditions:
     operator: all_of
@@ -174,11 +193,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
   source: A002-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to areas outside the scope of Union law
   action: exclude areas outside the scope of Union law from the Regulation
   actors: []
   targets:
   - target_ref: regulation
+    basis_segment_ids: [AIA-TEXT-A002-P010]
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This constitutional boundary creates no independent product-facing action.
@@ -187,6 +208,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A002-P3-NATIONAL-SECURITY-COMPETENCE
   source: A002-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: shall not, in any event, affect the competences of the Member States concerning national security,
     regardless of the type of entity entrusted by the Member States with carrying out tasks in relation
     to those competences
@@ -194,6 +216,7 @@ records:
     with the relevant tasks
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A002-P010]
   targets: []
   kind: applicability
   product_scope: no_product_action
@@ -205,6 +228,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A002-P3-MILITARY-EXCLUSION
   source: A002-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to AI systems where and in so far they are placed on the market,
     put into service, or used with or without modification exclusively for military, defence or national
     security purposes, regardless of the type of entity carrying out those activities.
@@ -212,7 +236,8 @@ records:
     defence, or national-security purposes
   actors: []
   targets:
-  - target_ref: military_defence_or_national_security_ai_system
+  - target_ref: AI systems where and in so far they are placed on the market, put into service, or used with or without modification exclusively for military, defence or national security purposes
+    basis_segment_ids: [AIA-TEXT-A002-P011]
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -230,6 +255,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION
   source: A002-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to AI systems which are not placed on the market or put into service
     in the Union, where the output is used in the Union exclusively for military, defence or national
     security purposes, regardless of the type of entity carrying out those activities.
@@ -237,7 +263,8 @@ records:
     defence, or national-security purposes
   actors: []
   targets:
-  - target_ref: third_country_military_defence_or_national_security_ai_system
+  - target_ref: AI systems which are not placed on the market or put into service in the Union, where the output is used in the Union exclusively for military, defence or national security purposes
+    basis_segment_ids: [AIA-TEXT-A002-P012]
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -258,6 +285,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION
   source: A002-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation applies neither to public authorities in a third country nor to international
     organisations falling within the scope of this Regulation pursuant to paragraph 1, where those authorities
     or organisations use AI systems in the framework of international cooperation or agreements for law
@@ -269,7 +297,8 @@ records:
     safeguards
   actors: []
   targets:
-  - target_ref: third_country_public_authority_or_international_organisation
+  - target_ref: public authorities in a third country nor to international organisations falling within the scope of this Regulation pursuant to paragraph 1
+    basis_segment_ids: [AIA-TEXT-A002-P013]
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -295,13 +324,16 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P5-INTERMEDIARY-LIABILITY-SAVING
   source: A002-P014
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation shall not affect the application of the provisions on the liability of providers
     of intermediary services as set out in Chapter II of Regulation (EU) 2022/2065.
   action: preserve the application of intermediary-service provider liability rules under Chapter II of
     Regulation (EU) 2022/2065
-  actors:
-  - actor_ref: intermediary_service_provider
-  targets: []
+  actors: []
+  targets:
+  - target_ref: providers of intermediary services
+    target_kind: legal_status
+    basis_segment_ids: [AIA-TEXT-A002-P014]
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves another legal regime without creating an independent
@@ -312,13 +344,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION
   source: A002-P015
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to AI systems or AI models, including their output, specifically
     developed and put into service for the sole purpose of scientific research and development.
   action: exclude AI systems and AI models, including their output, specifically developed and put into
     service solely for scientific research and development
   actors: []
   targets:
-  - target_ref: scientific_research_and_development_ai_system_or_model
+  - target_ref: AI systems or AI models, including their output, specifically developed and put into service for the sole purpose of scientific research and development
+    basis_segment_ids: [AIA-TEXT-A002-P015]
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -336,6 +370,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P7-DATA-PROTECTION-APPLICATION
   source: A002-P016
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Union law on the protection of personal data, privacy and the confidentiality of communications
     applies to personal data processed in connection with the rights and obligations laid down in this
     Regulation.
@@ -343,7 +378,8 @@ records:
     law to personal data processed under the Regulation
   actors: []
   targets:
-  - target_ref: personal_data_processing_under_the_regulation
+  - target_ref: personal data processed in connection with the rights and obligations laid down in this Regulation
+    basis_segment_ids: [AIA-TEXT-A002-P016]
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This clause confirms the continued application of external law without creating
@@ -354,6 +390,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A002-P7-PRIVACY-LAW-SAVING
   source: A002-P016
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Without prejudice to Articles 4a and 59 of this Regulation, this Regulation shall not affect
     Regulation (EU) 2016/679 or (EU) 2018/1725, or Directive 2002/58/EC or (EU) 2016/680.
   action: preserve the application of the listed Union data-protection and privacy instruments, subject
@@ -361,6 +398,7 @@ records:
   actors: []
   targets:
   - target_ref: regulation
+    basis_segment_ids: [AIA-TEXT-A002-P016]
   kind: applicability
   conditions:
     operator: all_of
@@ -377,13 +415,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
   source: A002-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to any research, testing or development activity regarding AI
     systems or AI models prior to their being placed on the market or put into service.
   action: exclude research, testing, and development activities concerning AI systems or AI models before
     they are placed on the market or put into service
   actors: []
   targets:
-  - target_ref: pre_market_ai_research_testing_or_development_activity
+  - target_ref: research, testing or development activity regarding AI systems or AI models prior to their being placed on the market or put into service
+    basis_segment_ids: [AIA-TEXT-A002-P017]
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -401,12 +441,15 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P8-RD-UNION-LAW-COMPLIANCE
   source: A002-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Such activities shall be conducted in accordance with applicable Union law.
   action: conduct pre-market AI research, testing, and development activities in accordance with applicable
     Union law
-  actors:
-  - actor_ref: natural_or_legal_person
-  targets: []
+  actors: []
+  targets:
+  - target_ref: Such activities
+    target_kind: activity
+    basis_segment_ids: [AIA-TEXT-A002-P017]
   kind: obligation
   product_scope: no_product_action
   product_scope_reason: This general saving clause does not identify a concrete AI Act requirement that
@@ -416,12 +459,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT
   source: A002-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Testing in real world conditions shall not be covered by that exclusion.
   action: keep testing in real-world conditions outside the pre-market research, testing, and development
     exclusion
   actors: []
   targets:
-  - target_ref: real_world_testing_activity
+  - target_ref: Testing in real world conditions
+    basis_segment_ids: [AIA-TEXT-A002-P017]
   kind: applicability
   verification_mode: answered_by_classification
   implementation_mode: applicability_question
@@ -430,12 +475,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
   source: A002-P018
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation is without prejudice to the rules laid down by other Union legal acts related
     to consumer protection and product safety.
   action: preserve the application of other Union consumer-protection and product-safety rules
   actors: []
   targets:
   - target_ref: regulation
+    basis_segment_ids: [AIA-TEXT-A002-P018]
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves other legal regimes without creating an independent
@@ -446,12 +493,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION
   source: A002-P019
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to obligations of deployers who are natural persons using AI systems
     in the course of a purely personal non-professional activity.
   action: exclude deployer obligations for natural persons using AI systems in a purely personal non-professional
     activity
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A002-P019]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -470,6 +519,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P11-MORE-FAVOURABLE-WORKER-RULES
   source: A002-P020
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not preclude the Union or Member States from maintaining or introducing
     laws, regulations or administrative provisions which are more favourable to workers in terms of protecting
     their rights in respect of the use of AI systems by employers, or from encouraging or allowing the
@@ -478,7 +528,9 @@ records:
     workers regarding employers' use of AI systems, or encourage or allow more favourable collective agreements
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A002-P020]
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A002-P020]
   targets: []
   kind: permission
   product_scope: no_product_action
@@ -493,6 +545,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION
   source: A002-P021
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to AI systems released under free and open-source licences, unless
     they are placed on the market or put into service as high-risk AI systems or as an AI system that
     falls under Article 5 or 50.
@@ -500,7 +553,8 @@ records:
     exception applies
   actors: []
   targets:
-  - target_ref: free_and_open_source_ai_system
+  - target_ref: AI systems released under free and open-source licences
+    basis_segment_ids: [AIA-TEXT-A002-P021]
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -524,6 +578,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
   source: A002-P022
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: For high-risk AI systems referred to in Article 6(1), the application of specific requirements
     or obligations laid down in Articles 9 to 15 and 17 to 25 may be limited, where and to the extent
     that
@@ -531,7 +586,8 @@ records:
     when both protective conditions are satisfied
   actors: []
   targets:
-  - target_ref: article_6_1_high_risk_ai_system
+  - target_ref: high-risk AI systems referred to in Article 6(1)
+    basis_segment_ids: [AIA-TEXT-A002-P022]
   kind: permission
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -580,6 +636,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS
   source: A002-P025
+  temporal_regime_id: AIA-TEMP-A002-P13-COMMISSION-DELEGATED-ACTS-DEADLINE
   quote: By 2 August 2027, the Commission shall adopt delegated acts in accordance with Article 97 in
     order to supplement this Regulation by specifying the high-risk AI systems concerned, the requirements
     or obligations that may be limited, the conditions under which such limitation applies, and the scope
@@ -587,6 +644,7 @@ records:
   action: adopt delegated acts by 2 August 2027 specifying how the Article 2(13) limitation operates
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A002-P025]
   targets: []
   kind: obligation
   conditions:

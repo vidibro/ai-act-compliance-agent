@@ -630,6 +630,7 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
         "competent authority",
     ),
     ActorRole.UNION_INSTITUTION_OR_BODY: (
+        "Union",
         "Union institution, body, office or agency",
         "Union institution or body",
     ),

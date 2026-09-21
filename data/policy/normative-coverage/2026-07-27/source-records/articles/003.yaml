@@ -1,6 +1,7 @@
 records:
 - norm_id: AIA-NORM-A003-D001-AI-SYSTEM
   source: A003-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018AI system\u2019 means a machine-based system that is designed to operate with varying\
     \ levels of autonomy and that may exhibit adaptiveness after deployment, and that, for explicit or\
     \ implicit objectives, infers, from the input it receives, how to generate outputs such as predictions,\
@@ -8,7 +9,8 @@ records:
   action: define AI system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: ai_system
+  - target_ref: ai system
+    basis_segment_ids: [AIA-TEXT-A003-P002]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -21,12 +23,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D002-RISK
   source: A003-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018risk\u2019 means the combination of the probability of an occurrence of harm and the severity\
     \ of that harm"
   action: define risk for the purposes of the Regulation
   actors: []
   targets:
   - target_ref: risk
+    basis_segment_ids: [AIA-TEXT-A003-P003]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -39,6 +43,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D003-PROVIDER
   source: A003-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018provider\u2019 means a natural or legal person, public authority, agency or other body\
     \ that develops an AI system or a general-purpose AI model or that has an AI system or a general-purpose\
     \ AI model developed and places it on the market or puts the AI system into service under its own\
@@ -47,6 +52,7 @@ records:
   actors: []
   targets:
   - target_ref: provider
+    basis_segment_ids: [AIA-TEXT-A003-P004]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -59,6 +65,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D004-DEPLOYER
   source: A003-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018deployer\u2019 means a natural or legal person, public authority, agency or other body\
     \ using an AI system under its authority except where the AI system is used in the course of a personal\
     \ non-professional activity"
@@ -66,6 +73,7 @@ records:
   actors: []
   targets:
   - target_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A003-P005]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -84,6 +92,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D005-AUTHORISED-REPRESENTATIVE
   source: A003-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018authorised representative\u2019 means a natural or legal person located or established\
     \ in the Union who has received and accepted a written mandate from a provider of an AI system or\
     \ a general-purpose AI model to, respectively, perform and carry out on its behalf the obligations\
@@ -91,7 +100,8 @@ records:
   action: define authorised representative for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: authorised_representative
+  - target_ref: authorised representative
+    basis_segment_ids: [AIA-TEXT-A003-P006]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -104,6 +114,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D006-IMPORTER
   source: A003-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018importer\u2019 means a natural or legal person located or established in the Union that\
     \ places on the market an AI system that bears the name or trademark of a natural or legal person\
     \ established in a third country"
@@ -111,6 +122,7 @@ records:
   actors: []
   targets:
   - target_ref: importer
+    basis_segment_ids: [AIA-TEXT-A003-P007]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -123,12 +135,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D007-DISTRIBUTOR
   source: A003-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018distributor\u2019 means a natural or legal person in the supply chain, other than the\
     \ provider or the importer, that makes an AI system available on the Union market"
   action: define distributor for the purposes of the Regulation
   actors: []
   targets:
   - target_ref: distributor
+    basis_segment_ids: [AIA-TEXT-A003-P008]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -141,12 +155,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D008-OPERATOR
   source: A003-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018operator\u2019 means a provider, product manufacturer, deployer, authorised representative,\
     \ importer or distributor"
   action: define operator for the purposes of the Regulation
   actors: []
   targets:
   - target_ref: operator
+    basis_segment_ids: [AIA-TEXT-A003-P009]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -159,12 +175,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D009-PLACING-ON-THE-MARKET
   source: A003-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018placing on the market\u2019 means the first making available of an AI system or a general-purpose\
     \ AI model on the Union market"
   action: define placing on the market for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: placing_on_the_market
+  - target_ref: placing on the market
+    basis_segment_ids: [AIA-TEXT-A003-P010]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -177,13 +195,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D010-MAKING-AVAILABLE-ON-THE-MARKET
   source: A003-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018making available on the market\u2019 means the supply of an AI system or a general-purpose\
     \ AI model for distribution or use on the Union market in the course of a commercial activity, whether\
     \ in return for payment or free of charge"
   action: define making available on the market for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: making_available_on_the_market
+  - target_ref: making available on the market
+    basis_segment_ids: [AIA-TEXT-A003-P011]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -196,12 +216,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D011-PUTTING-INTO-SERVICE
   source: A003-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018putting into service\u2019 means the supply of an AI system for first use directly to\
     \ the deployer or for own use in the Union for its intended purpose"
   action: define putting into service for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: putting_into_service
+  - target_ref: putting into service
+    basis_segment_ids: [AIA-TEXT-A003-P012]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -214,6 +236,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D012-INTENDED-PURPOSE
   source: A003-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018intended purpose\u2019 means the use for which an AI system is intended by the provider,\
     \ including the specific context and conditions of use, as specified in the information supplied by\
     \ the provider in the instructions for use, promotional or sales materials and statements, as well\
@@ -221,7 +244,8 @@ records:
   action: define intended purpose for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: intended_purpose
+  - target_ref: intended purpose
+    basis_segment_ids: [AIA-TEXT-A003-P013]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -234,13 +258,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D013-REASONABLY-FORESEEABLE-MISUSE
   source: A003-P014
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018reasonably foreseeable misuse\u2019 means the use of an AI system in a way that is not\
     \ in accordance with its intended purpose, but which may result from reasonably foreseeable human\
     \ behaviour or interaction with other systems, including other AI systems"
   action: define reasonably foreseeable misuse for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: reasonably_foreseeable_misuse
+  - target_ref: reasonably foreseeable misuse
+    basis_segment_ids: [AIA-TEXT-A003-P014]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -253,6 +279,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D014-SAFETY-COMPONENT
   source: A003-P015
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018safety component\u2019 means a component of a product or of an AI system which fulfils\
     \ a safety function for that product or AI system, or the failure or malfunctioning of which endangers\
     \ the health and safety of persons or property; for the purposes of this definition, a component fulfils\
@@ -261,7 +288,8 @@ records:
   action: define safety component for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: safety_component
+  - target_ref: safety component
+    basis_segment_ids: [AIA-TEXT-A003-P015]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -280,12 +308,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE
   source: A003-P016
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018micro, small and medium-sized enterprise\u2019 or \u2018SME\u2019 means a micro, small\
     \ or medium-sized enterprise as defined in Article 2 of the Annex to Recommendation 2003/361/EC"
   action: define micro, small and medium-sized enterprise for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: micro_small_and_medium_sized_enterprise
+  - target_ref: micro, small and medium-sized enterprise
+    basis_segment_ids: [AIA-TEXT-A003-P016]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -298,12 +328,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D014B-SMALL-MID-CAP-ENTERPRISE
   source: A003-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018small mid-cap enterprise\u2019 or \u2018SMC\u2019 means a small mid-cap enterprise as\
     \ defined in point (2) of the Annex to Recommendation (EU) 2025/1099"
   action: define small mid-cap enterprise for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: small_mid_cap_enterprise
+  - target_ref: small mid-cap enterprise
+    basis_segment_ids: [AIA-TEXT-A003-P017]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -316,12 +348,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D015-INSTRUCTIONS-FOR-USE
   source: A003-P018
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018instructions for use\u2019 means the information provided by the provider to inform the\
     \ deployer of, in particular, an AI system\u2019s intended purpose and proper use"
   action: define instructions for use for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: instructions_for_use
+  - target_ref: instructions for use
+    basis_segment_ids: [AIA-TEXT-A003-P018]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -334,12 +368,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D016-RECALL-OF-AN-AI-SYSTEM
   source: A003-P019
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018recall of an AI system\u2019 means any measure aiming to achieve the return to the provider\
     \ or taking out of service or disabling the use of an AI system made available to deployers"
   action: define recall of an AI system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: recall_of_an_ai_system
+  - target_ref: recall of an ai system
+    basis_segment_ids: [AIA-TEXT-A003-P019]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -352,12 +388,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D017-WITHDRAWAL-OF-AN-AI-SYSTEM
   source: A003-P020
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018withdrawal of an AI system\u2019 means any measure aiming to prevent an AI system in the\
     \ supply chain being made available on the market"
   action: define withdrawal of an AI system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: withdrawal_of_an_ai_system
+  - target_ref: withdrawal of an ai system
+    basis_segment_ids: [AIA-TEXT-A003-P020]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -370,12 +408,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D018-PERFORMANCE-OF-AN-AI-SYSTEM
   source: A003-P021
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018performance of an AI system\u2019 means the ability of an AI system to achieve its intended\
     \ purpose"
   action: define performance of an AI system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: performance_of_an_ai_system
+  - target_ref: performance of an ai system
+    basis_segment_ids: [AIA-TEXT-A003-P021]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -388,13 +428,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D019-NOTIFYING-AUTHORITY
   source: A003-P022
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018notifying authority\u2019 means the national authority responsible for setting up and\
     \ carrying out the necessary procedures for the assessment, designation and notification of conformity\
     \ assessment bodies and for their monitoring"
   action: define notifying authority for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: notifying_authority
+  - target_ref: notifying authority
+    basis_segment_ids: [AIA-TEXT-A003-P022]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -407,12 +449,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D020-CONFORMITY-ASSESSMENT
   source: A003-P023
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018conformity assessment\u2019 means the process of demonstrating whether the requirements\
     \ set out in Chapter III, Section 2 relating to a high-risk AI system have been fulfilled"
   action: define conformity assessment for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: conformity_assessment
+  - target_ref: conformity assessment
+    basis_segment_ids: [AIA-TEXT-A003-P023]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -425,12 +469,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D021-CONFORMITY-ASSESSMENT-BODY
   source: A003-P024
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018conformity assessment body\u2019 means a body that performs third-party conformity assessment\
     \ activities, including testing, certification and inspection"
   action: define conformity assessment body for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: conformity_assessment_body
+  - target_ref: conformity assessment body
+    basis_segment_ids: [AIA-TEXT-A003-P024]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -443,12 +489,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D022-NOTIFIED-BODY
   source: A003-P025
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018notified body\u2019 means a conformity assessment body notified in accordance with this\
     \ Regulation and other relevant Union harmonisation legislation"
   action: define notified body for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: notified_body
+  - target_ref: notified body
+    basis_segment_ids: [AIA-TEXT-A003-P025]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -461,6 +509,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D023-SUBSTANTIAL-MODIFICATION
   source: A003-P026
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018substantial modification\u2019 means a change to an AI system after its placing on the\
     \ market or putting into service which is not foreseen or planned in the initial conformity assessment\
     \ carried out by the provider and as a result of which the compliance of the AI system with the requirements\
@@ -469,7 +518,8 @@ records:
   action: define substantial modification for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: substantial_modification
+  - target_ref: substantial modification
+    basis_segment_ids: [AIA-TEXT-A003-P026]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -482,13 +532,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D024-CE-MARKING
   source: A003-P027
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018CE marking\u2019 means a marking by which a provider indicates that an AI system is in\
     \ conformity with the requirements set out in Chapter III, Section 2 and other applicable Union harmonisation\
     \ legislation providing for its affixing"
   action: define CE marking for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: ce_marking
+  - target_ref: ce marking
+    basis_segment_ids: [AIA-TEXT-A003-P027]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -501,6 +553,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
   source: A003-P028
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018post-market monitoring system\u2019 means all activities carried out by providers of AI\
     \ systems to collect and review experience gained from the use of AI systems they place on the market\
     \ or put into service for the purpose of identifying any need to immediately apply any necessary corrective\
@@ -508,7 +561,8 @@ records:
   action: define post-market monitoring system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: post_market_monitoring_system
+  - target_ref: post-market monitoring system
+    basis_segment_ids: [AIA-TEXT-A003-P028]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -521,12 +575,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D026-MARKET-SURVEILLANCE-AUTHORITY
   source: A003-P029
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018market surveillance authority\u2019 means the national authority carrying out the activities\
     \ and taking the measures pursuant to Regulation (EU) 2019/1020"
   action: define market surveillance authority for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: market_surveillance_authority
+  - target_ref: market surveillance authority
+    basis_segment_ids: [AIA-TEXT-A003-P029]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -539,12 +595,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D027-HARMONISED-STANDARD
   source: A003-P030
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018harmonised standard\u2019 means a harmonised standard as defined in Article 2(1), point\
     \ (c), of Regulation (EU) No 1025/2012"
   action: define harmonised standard for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: harmonised_standard
+  - target_ref: harmonised standard
+    basis_segment_ids: [AIA-TEXT-A003-P030]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -557,13 +615,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D028-COMMON-SPECIFICATION
   source: A003-P031
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018common specification\u2019 means a set of technical specifications as defined in Article\
     \ 2, point (4) of Regulation (EU) No 1025/2012, providing means to comply with certain requirements\
     \ established under this Regulation"
   action: define common specification for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: common_specification
+  - target_ref: common specification
+    basis_segment_ids: [AIA-TEXT-A003-P031]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -576,12 +636,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D029-TRAINING-DATA
   source: A003-P032
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018training data\u2019 means data used for training an AI system through fitting its learnable\
     \ parameters"
   action: define training data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: training_data
+  - target_ref: training data
+    basis_segment_ids: [AIA-TEXT-A003-P032]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -594,13 +656,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D030-VALIDATION-DATA
   source: A003-P033
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018validation data\u2019 means data used for providing an evaluation of the trained AI system\
     \ and for tuning its non-learnable parameters and its learning process in order, inter alia, to prevent\
     \ underfitting or overfitting"
   action: define validation data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: validation_data
+  - target_ref: validation data
+    basis_segment_ids: [AIA-TEXT-A003-P033]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -613,12 +677,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D031-VALIDATION-DATA-SET
   source: A003-P034
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018validation data set\u2019 means a separate data set or part of the training data set,\
     \ either as a fixed or variable split"
   action: define validation data set for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: validation_data_set
+  - target_ref: validation data set
+    basis_segment_ids: [AIA-TEXT-A003-P034]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -631,13 +697,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D032-TESTING-DATA
   source: A003-P035
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018testing data\u2019 means data used for providing an independent evaluation of the AI system\
     \ in order to confirm the expected performance of that system before its placing on the market or\
     \ putting into service"
   action: define testing data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: testing_data
+  - target_ref: testing data
+    basis_segment_ids: [AIA-TEXT-A003-P035]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -650,12 +718,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D033-INPUT-DATA
   source: A003-P036
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018input data\u2019 means data provided to or directly acquired by an AI system on the basis\
     \ of which the system produces an output"
   action: define input data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: input_data
+  - target_ref: input data
+    basis_segment_ids: [AIA-TEXT-A003-P036]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -668,13 +738,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D034-BIOMETRIC-DATA
   source: A003-P037
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018biometric data\u2019 means personal data resulting from specific technical processing\
     \ relating to the physical, physiological or behavioural characteristics of a natural person, such\
     \ as facial images or dactyloscopic data"
   action: define biometric data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: biometric_data
+  - target_ref: biometric data
+    basis_segment_ids: [AIA-TEXT-A003-P037]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -687,6 +759,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D035-BIOMETRIC-IDENTIFICATION
   source: A003-P038
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018biometric identification\u2019 means the automated recognition of physical, physiological,\
     \ behavioural, or psychological human features for the purpose of establishing the identity of a natural\
     \ person by comparing biometric data of that individual to biometric data of individuals stored in\
@@ -694,7 +767,8 @@ records:
   action: define biometric identification for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: biometric_identification
+  - target_ref: biometric identification
+    basis_segment_ids: [AIA-TEXT-A003-P038]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -707,13 +781,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D036-BIOMETRIC-VERIFICATION
   source: A003-P039
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018biometric verification\u2019 means the automated, one-to-one verification, including authentication,\
     \ of the identity of natural persons by comparing their biometric data to previously provided biometric\
     \ data"
   action: define biometric verification for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: biometric_verification
+  - target_ref: biometric verification
+    basis_segment_ids: [AIA-TEXT-A003-P039]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -726,13 +802,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
   source: A003-P040
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018special categories of personal data\u2019 means the categories of personal data referred\
     \ to in Article 9(1) of Regulation (EU) 2016/679, Article 10 of Directive (EU) 2016/680 and Article\
     \ 10(1) of Regulation (EU) 2018/1725"
   action: define special categories of personal data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: special_categories_of_personal_data
+  - target_ref: special categories of personal data
+    basis_segment_ids: [AIA-TEXT-A003-P040]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -745,13 +823,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D038-SENSITIVE-OPERATIONAL-DATA
   source: A003-P041
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018sensitive operational data\u2019 means operational data related to activities of prevention,\
     \ detection, investigation or prosecution of criminal offences, the disclosure of which could jeopardise\
     \ the integrity of criminal proceedings"
   action: define sensitive operational data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: sensitive_operational_data
+  - target_ref: sensitive operational data
+    basis_segment_ids: [AIA-TEXT-A003-P041]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -764,12 +844,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D039-EMOTION-RECOGNITION-SYSTEM
   source: A003-P042
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018emotion recognition system\u2019 means an AI system for the purpose of identifying or\
     \ inferring emotions or intentions of natural persons on the basis of their biometric data"
   action: define emotion recognition system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: emotion_recognition_system
+  - target_ref: emotion recognition system
+    basis_segment_ids: [AIA-TEXT-A003-P042]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -782,13 +864,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
   source: A003-P043
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018biometric categorisation system\u2019 means an AI system for the purpose of assigning\
     \ natural persons to specific categories on the basis of their biometric data, unless it is ancillary\
     \ to another commercial service and strictly necessary for objective technical reasons"
   action: define biometric categorisation system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: biometric_categorisation_system
+  - target_ref: biometric categorisation system
+    basis_segment_ids: [AIA-TEXT-A003-P043]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -807,13 +891,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D041-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   source: A003-P044
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018remote biometric identification system\u2019 means an AI system for the purpose of identifying\
     \ natural persons, without their active involvement, typically at a distance through the comparison\
     \ of a person\u2019s biometric data with the biometric data contained in a reference database"
   action: define remote biometric identification system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: remote_biometric_identification_system
+  - target_ref: remote biometric identification system
+    basis_segment_ids: [AIA-TEXT-A003-P044]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -826,6 +912,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   source: A003-P045
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018real-time remote biometric identification system\u2019 means a remote biometric identification\
     \ system, whereby the capturing of biometric data, the comparison and the identification all occur\
     \ without a significant delay, comprising not only instant identification, but also limited short\
@@ -833,7 +920,8 @@ records:
   action: define real-time remote biometric identification system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: real_time_remote_biometric_identification_system
+  - target_ref: real-time remote biometric identification system
+    basis_segment_ids: [AIA-TEXT-A003-P045]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -846,12 +934,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D043-POST-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   source: A003-P046
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018post-remote biometric identification system\u2019 means a remote biometric identification\
     \ system other than a real-time remote biometric identification system"
   action: define post-remote biometric identification system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: post_remote_biometric_identification_system
+  - target_ref: post-remote biometric identification system
+    basis_segment_ids: [AIA-TEXT-A003-P046]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -864,13 +954,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
   source: A003-P047
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018publicly accessible space\u2019 means any publicly or privately owned physical place accessible\
     \ to an undetermined number of natural persons, regardless of whether certain conditions for access\
     \ may apply, and regardless of the potential capacity restrictions"
   action: define publicly accessible space for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: publicly_accessible_space
+  - target_ref: publicly accessible space
+    basis_segment_ids: [AIA-TEXT-A003-P047]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -883,11 +975,13 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   source: A003-P048
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018law enforcement authority\u2019 means:"
   action: define law enforcement authority for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: law_enforcement_authority
+  - target_ref: law enforcement authority
+    basis_segment_ids: [AIA-TEXT-A003-P048]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -911,6 +1005,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D046-LAW-ENFORCEMENT
   source: A003-P051
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018law enforcement\u2019 means activities carried out by law enforcement authorities or on\
     \ their behalf for the prevention, investigation, detection or prosecution of criminal offences or\
     \ the execution of criminal penalties, including safeguarding against and preventing threats to public\
@@ -918,7 +1013,8 @@ records:
   action: define law enforcement for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: law_enforcement
+  - target_ref: law enforcement
+    basis_segment_ids: [AIA-TEXT-A003-P051]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -931,13 +1027,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D047-AI-OFFICE
   source: A003-P052
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018AI Office\u2019 means the Commission\u2019s function of contributing to the implementation,\
     \ monitoring and supervision of AI systems and general-purpose AI models, and AI governance, provided\
     \ for in Commission Decision of 24 January 2024"
   action: define AI Office for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: ai_office
+  - target_ref: ai office
+    basis_segment_ids: [AIA-TEXT-A003-P052]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -950,12 +1048,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D048-NATIONAL-COMPETENT-AUTHORITY
   source: A003-P053
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018national competent authority\u2019 means a notifying authority or a market surveillance\
     \ authority"
   action: define national competent authority for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: national_competent_authority
+  - target_ref: national competent authority
+    basis_segment_ids: [AIA-TEXT-A003-P053]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -968,12 +1068,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D049-SERIOUS-INCIDENT
   source: A003-P054
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018serious incident\u2019 means an incident or malfunctioning of an AI system that directly\
     \ or indirectly leads to any of the following:"
   action: define serious incident for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: serious_incident
+  - target_ref: serious incident
+    basis_segment_ids: [AIA-TEXT-A003-P054]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1005,12 +1107,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D050-PERSONAL-DATA
   source: A003-P059
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018personal data\u2019 means personal data as defined in Article 4, point (1), of Regulation\
     \ (EU) 2016/679"
   action: define personal data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: personal_data
+  - target_ref: personal data
+    basis_segment_ids: [AIA-TEXT-A003-P059]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1023,12 +1127,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D051-NON-PERSONAL-DATA
   source: A003-P060
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018non-personal data\u2019 means data other than personal data as defined in Article 4, point\
     \ (1), of Regulation (EU) 2016/679"
   action: define non-personal data for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: non_personal_data
+  - target_ref: non-personal data
+    basis_segment_ids: [AIA-TEXT-A003-P060]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1041,12 +1147,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D052-PROFILING
   source: A003-P061
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018profiling\u2019 means profiling as defined in Article 4, point (4), of Regulation (EU)\
     \ 2016/679"
   action: define profiling for the purposes of the Regulation
   actors: []
   targets:
   - target_ref: profiling
+    basis_segment_ids: [AIA-TEXT-A003-P061]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1059,13 +1167,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D053-REAL-WORLD-TESTING-PLAN
   source: A003-P062
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018real-world testing plan\u2019 means a document that describes the objectives, methodology,\
     \ geographical, population and temporal scope, monitoring, organisation and conduct of testing in\
     \ real-world conditions"
   action: define real-world testing plan for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: real_world_testing_plan
+  - target_ref: real-world testing plan
+    basis_segment_ids: [AIA-TEXT-A003-P062]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1078,13 +1188,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D054-SANDBOX-PLAN
   source: A003-P063
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018sandbox plan\u2019 means a document agreed between the participating provider and the\
     \ competent authority describing the objectives, conditions, timeframe, methodology and requirements\
     \ for the activities carried out within the sandbox"
   action: define sandbox plan for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: sandbox_plan
+  - target_ref: sandbox plan
+    basis_segment_ids: [AIA-TEXT-A003-P063]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1097,6 +1209,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
   source: A003-P064
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018AI regulatory sandbox\u2019 means a controlled framework set up by a competent authority\
     \ which offers providers or prospective providers of AI systems the possibility to develop, train,\
     \ validate and test, where appropriate in real-world conditions, an innovative AI system, pursuant\
@@ -1104,7 +1217,8 @@ records:
   action: define AI regulatory sandbox for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: ai_regulatory_sandbox
+  - target_ref: ai regulatory sandbox
+    basis_segment_ids: [AIA-TEXT-A003-P064]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1123,6 +1237,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D056-AI-LITERACY
   source: A003-P065
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018AI literacy\u2019 means skills, knowledge and understanding that allow providers, deployers\
     \ and affected persons, taking into account their respective rights and obligations in the context\
     \ of this Regulation, to make an informed deployment of AI systems, as well as to gain awareness about\
@@ -1130,7 +1245,8 @@ records:
   action: define AI literacy for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: ai_literacy
+  - target_ref: ai literacy
+    basis_segment_ids: [AIA-TEXT-A003-P065]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1143,6 +1259,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS
   source: A003-P066
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018testing in real-world conditions\u2019 means the temporary testing of an AI system for\
     \ its intended purpose in real-world conditions outside a laboratory or otherwise simulated environment,\
     \ with a view to gathering reliable and robust data and to assessing and verifying the conformity\
@@ -1153,7 +1270,8 @@ records:
     treat it as neither placing the AI system on the market nor putting it into service
   actors: []
   targets:
-  - target_ref: testing_in_real_world_conditions
+  - target_ref: testing in real-world conditions
+    basis_segment_ids: [AIA-TEXT-A003-P066]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1176,12 +1294,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A003-D058-SUBJECT
   source: A003-P067
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018subject\u2019, for the purpose of real-world testing, means a natural person who participates\
     \ in testing in real-world conditions"
   action: define subject for the purposes of the Regulation
   actors: []
   targets:
   - target_ref: subject
+    basis_segment_ids: [AIA-TEXT-A003-P067]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1194,6 +1314,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D059-INFORMED-CONSENT
   source: A003-P068
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018informed consent\u2019 means a subject\u2019s freely given, specific, unambiguous and\
     \ voluntary expression of his or her willingness to participate in a particular testing in real-world\
     \ conditions, after having been informed of all aspects of the testing that are relevant to the subject\u2019\
@@ -1201,7 +1322,8 @@ records:
   action: define informed consent for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: informed_consent
+  - target_ref: informed consent
+    basis_segment_ids: [AIA-TEXT-A003-P068]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1214,13 +1336,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D060-DEEP-FAKE
   source: A003-P069
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018deep fake\u2019 means AI-generated or manipulated image, audio or video content that resembles\
     \ existing persons, objects, places, entities or events and would falsely appear to a person to be\
     \ authentic or truthful"
   action: define deep fake for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: deep_fake
+  - target_ref: deep fake
+    basis_segment_ids: [AIA-TEXT-A003-P069]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1233,12 +1357,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   source: A003-P070
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018widespread infringement\u2019 means any act or omission contrary to Union law protecting\
     \ the interest of individuals, which:"
   action: define widespread infringement for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: widespread_infringement
+  - target_ref: widespread infringement
+    basis_segment_ids: [AIA-TEXT-A003-P070]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1291,12 +1417,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
   source: A003-P076
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018critical infrastructure\u2019 means critical infrastructure as defined in Article 2, point\
     \ (4), of Directive (EU) 2022/2557"
   action: define critical infrastructure for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: critical_infrastructure
+  - target_ref: critical infrastructure
+    basis_segment_ids: [AIA-TEXT-A003-P076]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1309,6 +1437,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL
   source: A003-P077
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018general-purpose AI model\u2019 means an AI model, including where such an AI model is\
     \ trained with a large amount of data using self-supervision at scale, that displays significant generality\
     \ and is capable of competently performing a wide range of distinct tasks regardless of the way the\
@@ -1318,7 +1447,8 @@ records:
   action: define general-purpose AI model for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids: [AIA-TEXT-A003-P077]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1343,12 +1473,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D064-HIGH-IMPACT-CAPABILITIES
   source: A003-P078
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018high-impact capabilities\u2019 means capabilities that match or exceed the capabilities\
     \ recorded in the most advanced general-purpose AI models"
   action: define high-impact capabilities for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: high_impact_capabilities
+  - target_ref: high-impact capabilities
+    basis_segment_ids: [AIA-TEXT-A003-P078]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1361,6 +1493,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D065-SYSTEMIC-RISK
   source: A003-P079
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018systemic risk\u2019 means a risk that is specific to the high-impact capabilities of general-purpose\
     \ AI models, having a significant impact on the Union market due to their reach, or due to actual\
     \ or reasonably foreseeable negative effects on public health, safety, public security, fundamental\
@@ -1368,7 +1501,8 @@ records:
   action: define systemic risk for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: systemic_risk
+  - target_ref: systemic risk
+    basis_segment_ids: [AIA-TEXT-A003-P079]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1381,13 +1515,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D066-GENERAL-PURPOSE-AI-SYSTEM
   source: A003-P080
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018general-purpose AI system\u2019 means an AI system which is based on a general-purpose\
     \ AI model and which has the capability to serve a variety of purposes, both for direct use as well\
     \ as for integration in other AI systems"
   action: define general-purpose AI system for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: general_purpose_ai_system
+  - target_ref: general-purpose AI system
+    basis_segment_ids: [AIA-TEXT-A003-P080]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1400,13 +1536,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D067-FLOATING-POINT-OPERATION
   source: A003-P081
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018floating-point operation\u2019 means any mathematical operation or assignment involving\
     \ floating-point numbers, which are a subset of the real numbers typically represented on computers\
     \ by an integer of fixed precision scaled by an integer exponent of a fixed base"
   action: define floating-point operation for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: floating_point_operation
+  - target_ref: floating-point operation
+    basis_segment_ids: [AIA-TEXT-A003-P081]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1419,13 +1557,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D068-DOWNSTREAM-PROVIDER
   source: A003-P082
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018downstream provider\u2019 means a provider of an AI system, including a general-purpose\
     \ AI system, which integrates an AI model, regardless of whether the AI model is provided by themselves\
     \ and vertically integrated or provided by another entity based on contractual relations."
   action: define downstream provider for the purposes of the Regulation
   actors: []
   targets:
-  - target_ref: downstream_provider
+  - target_ref: downstream provider
+    basis_segment_ids: [AIA-TEXT-A003-P082]
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1438,11 +1578,13 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D047-AI-OFFICE-REFERENCE
   source: A003-P052
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: references in this Regulation to the AI Office shall be construed as references to the Commission
   action: construe references to the AI Office as references to the Commission
   actors: []
   targets:
-  - target_ref: ai_office_reference
+  - target_ref: references in this Regulation to the AI Office
+    basis_segment_ids: [AIA-TEXT-A003-P052]
   kind: legal_consequence
   product_scope: dependency_only
   product_scope_reason: This consequence affects downstream interpretation but creates no independent
@@ -1453,6 +1595,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D048-EDPS-REFERENCE
   source: A003-P053
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: as regards AI systems put into service or used by Union institutions, agencies, offices and bodies,
     references to national competent authorities or market surveillance authorities in this Regulation
     shall be construed as references to the European Data Protection Supervisor
@@ -1460,6 +1603,7 @@ records:
     European Data Protection Supervisor for Union-body AI systems
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A003-P053]
   targets: []
   kind: legal_consequence
   conditions:
