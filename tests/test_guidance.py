@@ -146,8 +146,8 @@ def test_every_snippet_names_a_document_that_exists():
 
 # --- Art. 50 transparency guidance -------------------------------------------------------------
 def test_the_marking_snippet_loads_and_is_verbatim():
-    """C(2026) 5054 para (71) is what grounds AIA-RULE-TR-A50-2's `evidence_expected`, which until now
-    asserted on our own authority that a human-readable "AI-generated" label does not discharge
+    """C(2026) 5054 para (71) is what grounds AIA-RULE-TR-A50-2's `evidence_expected`, which until
+    now asserted on our own authority that a human-readable "AI-generated" label does not discharge
     Art. 50(2). It does not — but the passage also says such labels are not EXCLUDED, they are a
     complement, and that second half is the part an interpretation written from the bare Article
     was most likely to get wrong."""

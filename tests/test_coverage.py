@@ -406,13 +406,13 @@ def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
     So a ledger entry claiming a rule checks an annex item is only true where the rule cites THAT
     annex.
 
-    WHAT THIS DOES NOT PROVE: that a judge reads the annex, which is a separate and narrower
-    claim. `annex_context` reaches a prompt only for a `document_verifiable` rule —
-    otherwise the judge returns NOT_APPLICABLE before building one. Annex IV, through AIA-RULE-HR-A11,
-    is the only annex any judge is shown. Annexes V and VI and VIII are ruled on by rules that are
-    not verifiable, because a declaration of conformity, a conformity assessment procedure and a
-    database entry are none of them the file under review — so for those items the claim this test
-    enforces is that the rule carries the annex and states what the item requires, not that
+    WHAT THIS DOES NOT PROVE: that a judge reads the annex, which is a separate and narrower claim.
+    `annex_context` reaches a prompt only for a `document_verifiable` rule — otherwise the judge
+    returns NOT_APPLICABLE before building one. Annex IV, through AIA-RULE-HR-A11, is the only annex
+    any judge is shown. Annexes V and VI and VIII are ruled on by rules that are not verifiable,
+    because a declaration of conformity, a conformity assessment procedure and a database entry are
+    none of them the file under review — so for those items the claim this test enforces is that the
+    rule carries the annex and states what the item requires, not that
     anything has read it against a document."""
     unsupplied: dict[str, str] = {}
     for annex, value in (ledger["annex_rulings"] or {}).items():
@@ -587,9 +587,9 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
     fire for the party the provision binds, and the partition cannot see the difference.
 
     That is how an annex comes to be ruled `RULE ...` at every item and reach nobody. Art. 43 is
-    where both halves of it live: AIA-RULE-PO-A43-1B is gated to biometrics while Art. 43(3) applies six
-    Annex VII points to an ANNEX I Section A provider, and AIA-RULE-PO-A43-2 is gated to Annex III
-    points 2 to 8 while Art. 43(1)(a) lets a point 1 provider elect Annex VI. Rule one of those
+    where both halves of it live: AIA-RULE-PO-A43-1B is gated to biometrics while Art. 43(3) applies
+    six Annex VII points to an ANNEX I Section A provider, and AIA-RULE-PO-A43-2 is gated to Annex
+    III points 2 to 8 while Art. 43(1)(a) lets a point 1 provider elect Annex VI. Rule one of those
     annexes to one of those rules alone and the ledger reads as covered, `owed` stays at zero, and
     the provider on the route the annex applies to is told the route exists and never told what it
     consists of.
@@ -1019,10 +1019,11 @@ def _roles_that_answer(role: ActorRole, text: str, article: str) -> set[ActorRol
 def _roles_bound_at(spec) -> dict[tuple[str, str], set[ActorRole]]:
     """Which roles the rules citing each article address bind.
 
-    A RULE CITING AN ARTICLE WHOLE BINDS EVERY DIVISION OF IT. `AIA-RULE-HR-A09` names Art. 9 with no
-    paragraph and its `requirement` is all ten of them, so the party it binds is bound at 9(5) and
-    9(9) as surely as a rule that cited those paragraphs by number. Reading the citation literally
-    would put every paragraph of every whole-article rule into the sweep, which is not a population
+    A RULE CITING AN ARTICLE WHOLE BINDS EVERY DIVISION OF IT. `AIA-RULE-HR-A09` names Art. 9 with
+    no paragraph and its `requirement` is all ten of them, so the party it binds is bound at 9(5)
+    and 9(9) as surely as a rule that cited those paragraphs by number. Reading the citation
+    literally would put every paragraph of every whole-article rule into the sweep, which is not a
+    population
     of unanswered questions but a population of answered ones filed one level up."""
     bound: dict[tuple[str, str], set[ActorRole]] = {}
     for rule in spec.rules:

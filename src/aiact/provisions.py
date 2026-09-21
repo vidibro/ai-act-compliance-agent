@@ -256,10 +256,10 @@ def _annex_with_chapeau(
 
     THE SAME GAP AS `_with_unnumbered`, on the other half of the Act. An annex is a chapeau plus
     numbered items, and the items are what `annex_divisions` finds — so the sentence that says what
-    the list IS has no address. Annex IV opens "The technical documentation referred to in
-    Article 11(1) shall contain at least the following information, AS APPLICABLE TO THE RELEVANT
-    AI SYSTEM": a qualifier governing every one of the nine elements `AIA-RULE-HR-A11` is judged on, and
-    part of no element.
+    the list IS has no address. Annex IV opens "The technical documentation referred to in Article
+    11(1) shall contain at least the following information, AS APPLICABLE TO THE RELEVANT AI
+    SYSTEM": a qualifier governing every one of the nine elements `AIA-RULE-HR-A11` is judged on,
+    and part of no element.
 
     PER SECTION WHERE THE ANNEX HAS SECTIONS, because each section carries its own introduction and
     they are not interchangeable — Annex VIII Section A is submitted by providers under Art. 49(1)

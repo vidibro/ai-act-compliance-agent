@@ -479,11 +479,11 @@ class ComplianceReport(BaseModel):
     def _article_111_3_note(self) -> str | None:
         """The Chapter V limb, and the only one that fires on a general-purpose AI MODEL.
 
-        The relief is a DEFERRAL rather than a carve-out: a model placed on the market before
-        2 August 2025 owes everything the AIA-RULE-GP-* rules carry and owes it by 2 August 2027. That
+        The relief is a DEFERRAL rather than a carve-out: a model placed on the market before 2
+        August 2025 owes everything the AIA-RULE-GP-* rules carry and owes it by 2 August 2027. That
         is the one date in this ruleset later than the obligation it defers, which is why it is
-        worth saying out loud — every Chapter V rule below carries `effective_date: 2025-08-02`,
-        and a provider reading that date against a model it shipped in 2024 would conclude it is
+        worth saying out loud — every Chapter V rule below carries `effective_date: 2025-08-02`, and
+        a provider reading that date against a model it shipped in 2024 would conclude it is
         two years in breach."""
         if not any(uc.risk_class is RiskClass.GPAI_MODEL for uc in self.classification.use_cases):
             return None

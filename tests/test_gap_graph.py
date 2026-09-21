@@ -435,7 +435,10 @@ def test_the_supply_chain_roles_each_owe_their_own_article(spec):
     # The representative owes one more than its own Article: Art. 71(2) names it in the paragraph
     # — the Annex VIII data is entered "by the provider or, where applicable, by the authorised
     # representative" — so it is a duty-holder there and not merely the provider's agent.
-    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] - shared == {"AIA-RULE-AR-A22", "AIA-RULE-PO-A71-2"}
+    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] - shared == {
+        "AIA-RULE-AR-A22",
+        "AIA-RULE-PO-A71-2",
+    }
 
 
 def test_the_report_lists_every_role_the_act_binds(spec):

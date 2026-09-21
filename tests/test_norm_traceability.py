@@ -1,10 +1,10 @@
 """Norm-to-rule traceability for the Article 15 pilot, proved without a model.
 
 Four links, each held here by a deterministic test: every enforced Article 15 compliance norm is an
-explicit criterion of AIA-RULE-HR-A15; each criterion resolves to the canonical norm and is materialised
-from it; each is judged and reported on its own; and the rule passes only when every mandatory
-criterion does. A stub judge stands in for the model — whether a real model judges the fixture
-well is an evaluation question, not what these tests prove.
+explicit criterion of AIA-RULE-HR-A15; each criterion resolves to the canonical norm and is
+materialised from it; each is judged and reported on its own; and the rule passes only when every
+mandatory criterion does. A stub judge stands in for the model — whether a real model judges the
+fixture well is an evaluation question, not what these tests prove.
 """
 
 from __future__ import annotations
@@ -97,7 +97,8 @@ def a17(spec: PolicyRuleset) -> PolicyRule:
 
 
 def with_criteria(spec: PolicyRuleset, criteria: list[RuleCriterion]) -> PolicyRuleset:
-    """The spec with AIA-RULE-HR-A15's criteria replaced, unvalidated, to test the checker itself."""
+    """The spec with AIA-RULE-HR-A15's criteria replaced, unvalidated, to test the checker
+    itself."""
     rules = [
         rule.model_copy(update={"criteria": criteria}) if rule.rule_id == RULE else rule
         for rule in spec.rules

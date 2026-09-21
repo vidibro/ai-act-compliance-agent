@@ -106,10 +106,10 @@ def test_shipped_spec_loads():
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
     #
     # ART. 26 IS SIX, and it is the widest split in the ruleset because the Article is the widest
-    # duty set. Six of its twelve paragraphs bind every deployer alike and are AIA-RULE-DP-A26; the other
-    # six narrow the duty-holder or the system, and a narrowing is only rendered where it sits on a
-    # rule of its own — public-authority registration and the bar on using an unregistered system
-    # (26(8)), the data protection impact assessment (26(9)), the post-remote biometric
+    # duty set. Six of its twelve paragraphs bind every deployer alike and are AIA-RULE-DP-A26; the
+    # other six narrow the duty-holder or the system, and a narrowing is only rendered where it sits
+    # on a rule of its own — public-authority registration and the bar on using an unregistered
+    # system (26(8)), the data protection impact assessment (26(9)), the post-remote biometric
     # identification regime (26(10)), informing the people subject to an Annex III system (26(11)),
     # and cooperation with authorities (26(12)).
     #
