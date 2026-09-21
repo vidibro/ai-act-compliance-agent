@@ -623,6 +623,12 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
         "provider of a general-purpose AI model downstream",
         "downstream provider",
     ),
+    # The Act names this actor in full in Art. 3(48) and then uses the short form in the operative
+    # Articles — Art. 21 says "a competent authority" throughout. Both are the enacted label.
+    ActorRole.NATIONAL_COMPETENT_AUTHORITY: (
+        "national competent authority",
+        "competent authority",
+    ),
     ActorRole.UNION_INSTITUTION_OR_BODY: (
         "Union institution, body, office or agency",
         "Union institution or body",

@@ -11,9 +11,14 @@ records:
     by the relevant Member State
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A021-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - a competent authority makes a reasoned request
+  - operator: all_of
+    operands:
+    - text: upon a reasoned request by a competent authority
+      basis_segment_ids: [AIA-TEXT-A021-P001]
   implementation_refs: &id002
   - AIA-RULE-PO-A21
   verification_mode: reported_not_judged
@@ -27,10 +32,16 @@ records:
     s control"
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A021-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - a competent authority makes a reasoned request
-  - "the applicable automatically generated logs are under the provider\u2019s control"
+  - operator: all_of
+    operands:
+    - text: Upon a reasoned request by a competent authority
+      basis_segment_ids: [AIA-TEXT-A021-P002]
+    - text: to the extent such logs are under their control
+      basis_segment_ids: [AIA-TEXT-A021-P002]
   implementation_refs:
   - AIA-RULE-PO-A21-2
   verification_mode: reported_not_judged
@@ -42,7 +53,9 @@ records:
   action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A021-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A21

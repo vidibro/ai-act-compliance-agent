@@ -5,6 +5,11 @@ act_version_date: "2026-07-27"
 enforced_scope:
   - kind: article
     document: "1"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "2"
     required_field_validations:
@@ -33,10 +38,16 @@ enforced_scope:
     document: "7"
     required_field_validations:
       - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "8"
     required_field_validations:
       - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "9"
     required_field_validations:
@@ -69,8 +80,18 @@ enforced_scope:
     document: "19"
   - kind: article
     document: "20"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "21"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "22"
   - kind: article

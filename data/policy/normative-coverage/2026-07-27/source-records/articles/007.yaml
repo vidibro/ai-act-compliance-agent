@@ -8,8 +8,10 @@ records:
     statutory conditions are fulfilled
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A007-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   qualifier_spans:
   - A007-P002
   - A007-P003
@@ -32,8 +34,10 @@ records:
     meets Article 7(1)(b)
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A007-P004]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   qualifier_spans:
   - A007-P005
   - A007-P006
@@ -90,8 +94,11 @@ records:
     or reversible in the Article 7 assessment
   actors: []
   targets:
-  - target_ref: annex_iii_amendment_risk_assessment
+  - target_ref: outcomes having an adverse impact on health, safety or fundamental rights
+    target_kind: legal_status
+    basis_segment_ids: [AIA-TEXT-A007-P013]
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   product_scope: dependency_only
   product_scope_reason: This assessment rule constrains the Commission's Annex III amendment analysis
     without creating an independent product-facing action.
@@ -107,8 +114,10 @@ records:
     are fulfilled
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A007-P018]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   qualifier_spans:
   - A007-P019
   - A007-P020

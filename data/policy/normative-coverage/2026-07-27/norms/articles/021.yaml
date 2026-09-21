@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A021-P001
   targets: []
   action: provide a requesting competent authority with all information and documentation necessary to
     demonstrate Section 2 conformity, in an easily understood official EU-institution language indicated
@@ -24,9 +26,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a competent authority makes a reasoned request
-      basis_segment_ids:
-      - AIA-TEXT-A021-P001
+    - operator: all_of
+      operands:
+      - text: upon a reasoned request by a competent authority
+        basis_segment_ids:
+        - AIA-TEXT-A021-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -45,11 +49,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A021-P002
   targets: []
   action: "give a requesting competent authority access to applicable Article 12(1) logs under the provider\u2019\
     s control"
@@ -66,12 +73,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a competent authority makes a reasoned request
-      basis_segment_ids:
-      - AIA-TEXT-A021-P002
-    - text: "the applicable automatically generated logs are under the provider\u2019s control"
-      basis_segment_ids:
-      - AIA-TEXT-A021-P002
+    - operator: all_of
+      operands:
+      - text: Upon a reasoned request by a competent authority
+        basis_segment_ids:
+        - AIA-TEXT-A021-P002
+      - text: to the extent such logs are under their control
+        basis_segment_ids:
+        - AIA-TEXT-A021-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -90,11 +99,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A021-P3-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A021-P003
   targets: []
   action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
   norm_text: Any information obtained by a competent authority pursuant to this Article shall be treated
@@ -126,3 +138,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

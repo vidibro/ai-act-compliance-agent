@@ -5,12 +5,15 @@ source:
   document: '7'
   required_field_validations:
   - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 21
   norms_scanned: 4
   finding_count: 1
-  audit_sha256: 93cd1abb13e7131eb8ebead449e82a3b87e612f44d41ec475dfab22b1d2d0e52
+  audit_sha256: 2fdf8aa7937c995e02ba83d1910ff6082b19078d43babc93a70a0e3bb6556476
 decisions:
 - finding_id: AIA-VALID-B382E4EBE1A01D32
   target: AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE

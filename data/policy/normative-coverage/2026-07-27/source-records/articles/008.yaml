@@ -1,3 +1,11 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
+  timing_conditions:
+  - 2 December 2027 as regards AI systems classified as high-risk pursuant to Article 6(2) and Annex
+    III
+  - 2 August 2028 as regards AI systems classified as high-risk pursuant to Article 6(1) and Annex I
+  legal_basis_spans:
+  - AIA-TEXT-A113-C
 records:
 - norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
   source: A008-P001
@@ -10,6 +18,7 @@ records:
   - actor_ref: provider
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   implementation_mode: carried_by_other_norm
   implementation_reason: The Article 16(a) provider duty states the same Section 2 compliance requirement
     and carries the substantive checks, so reporting both would duplicate every Section 2 finding.
@@ -25,6 +34,7 @@ records:
   - actor_ref: provider
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
   - operator: all_of
     operands:
@@ -44,8 +54,10 @@ records:
     the relevant Union harmonisation legislation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A008-P002]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
   - operator: all_of
     operands:
@@ -68,8 +80,10 @@ records:
     and procedures required by Annex I Section A legislation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A008-P002]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
   - operator: all_of
     operands:
