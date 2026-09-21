@@ -613,6 +613,10 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
     ActorRole.GPAI_PROVIDER: (
         "provider of a general-purpose AI model",
         "provider of general-purpose AI models",
+        # Art. 53(1) and Art. 55(1) open on the plural SUBJECT — "Providers of general-purpose AI
+        # models shall" — which the trailing-plural allowance cannot reach, because the "s" falls
+        # on the first word rather than the last.
+        "providers of general-purpose AI models",
         "general-purpose AI model provider",
     ),
     ActorRole.GPAI_PROVIDER_CLIENT: (
@@ -636,6 +640,10 @@ REPORT_ACTOR_ROLES: tuple[ActorRole, ...] = (
     ActorRole.DISTRIBUTOR,
     ActorRole.AUTHORISED_REPRESENTATIVE,
     ActorRole.PRODUCT_MANUFACTURER,
+    # Chapter V is reported under its own duty-holder rather than folded into `provider`: the
+    # AIA-RULE-GP-* rules gate on this role, so a model provider reads its Arts. 52 to 55, 91 and
+    # 92 duties under a heading that names them.
+    ActorRole.GPAI_PROVIDER,
 )
 
 

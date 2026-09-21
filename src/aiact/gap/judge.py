@@ -548,6 +548,10 @@ def _judged(rule: PolicyRule) -> bool:
 def _condition_text(condition: ConditionClause | LogicalExpression) -> str:
     if isinstance(condition, ConditionClause):
         return condition.text
+    # A single operand carries no logical structure to convey, and the brackets around it read as
+    # part of the enacted wording. Only a real conjunction or disjunction is bracketed.
+    if len(condition.operands) == 1:
+        return _condition_text(condition.operands[0])
     joiner = " AND " if condition.operator == "all_of" else " OR "
     return "(" + joiner.join(_condition_text(item) for item in condition.operands) + ")"
 

@@ -6,7 +6,7 @@ records:
   action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical
     documentation, proportionate to model size and risk profile
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
@@ -49,7 +49,7 @@ records:
     may be based on information about computational resources used.
   action: base unknown model energy consumption on information about computational resources used
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: permission
   conditions:
@@ -69,7 +69,7 @@ records:
   action: include a detailed description of the evaluation strategies, with their results, in the technical
     documentation for a general-purpose AI model with systemic risk
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
@@ -97,7 +97,7 @@ records:
   action: include a detailed description of the adversarial-testing measures and the model adaptations
     in the technical documentation for a general-purpose AI model with systemic risk
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
@@ -120,7 +120,7 @@ records:
     build or feed into each other and integrate into the overall processing, in the technical documentation
     for a general-purpose AI model with systemic risk
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.

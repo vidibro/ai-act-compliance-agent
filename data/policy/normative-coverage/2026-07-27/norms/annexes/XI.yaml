@@ -4,7 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical
     documentation, proportionate to model size and risk profile
@@ -69,7 +69,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: base unknown model energy consumption on information about computational resources used
   norm_text: With regard to point (e), where the energy consumption of the model is unknown, the energy
@@ -109,7 +109,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: include a detailed description of the evaluation strategies, with their results, in the technical
     documentation for a general-purpose AI model with systemic risk
@@ -166,7 +166,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: include a detailed description of the adversarial-testing measures and the model adaptations
     in the technical documentation for a general-purpose AI model with systemic risk
@@ -214,7 +214,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: include a detailed description of the system architecture, explaining how software components
     build or feed into each other and integrate into the overall processing, in the technical documentation

@@ -82,6 +82,27 @@ roles_out_of_scope:
     risk whether Art. 25(1)(a)-(c) or 25(3) has moved the provider's duties onto another party, and
     answers with the provider ruleset this spec already holds.
 
+  operator: >-
+    "Operator" IS NOT A PARTY, it is the Act's collective noun for six of them. Art. 3(8) defines it
+    as the provider, product manufacturer, deployer, authorised representative, importer or
+    distributor, so every duty the Act addresses to operators is owed by one of those roles and by
+    nobody else. A rule gated on `operator` would therefore not add a duty-holder; it would report
+    the same duty a second time, under a name no reader identifies as themselves.
+
+    THE DUTIES ARE CARRIED, per role rather than under the collective noun. The norms whose actor is
+    `operator` resolve to rules addressed to the concrete roles: Art. 79(2) cooperation and 79(4)
+    Union-wide correction, and Art. 82(2) correction, to AIA-RULE-ALL-A79 and AIA-RULE-ALL-A82, both
+    binding provider, deployer, importer, distributor and authorised representative — the Art. 3(8)
+    list less the product manufacturer, which has its own entry above; and Art. 49(4)'s non-public
+    registration section to AIA-RULE-ALL-A49-4. The Art. 5(1) prohibitions name operators too, and
+    are asked instead of reported: they reach the reader through the `prohibited` cascade node,
+    before any role selection happens.
+
+    WHAT IS NOT CARRIED, stated rather than hidden: the Arts. 75a to 75d procedural provisions and
+    Art. 99(3) fines address an operator under investigation by an authority. They are enforcement
+    procedure and penalty exposure, not a compliance action a document can evidence, and this tool
+    reports neither. Art. 46(5)'s right to be heard is the authority's duty, not the operator's.
+
 # --- ARTICLES ---------------------------------------------------------------------------------
 # HOW EACH PROVISION IS ACCOUNTED FOR — not only the ones the tool ignores. An entry says which of
 # the four it is, and `src/aiact/coverage.py` reads that back out:

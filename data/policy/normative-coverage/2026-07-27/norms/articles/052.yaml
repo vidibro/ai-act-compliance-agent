@@ -4,7 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: notify the Commission without delay and within two weeks of meeting or anticipating the Article
     51(1)(a) condition
@@ -46,7 +46,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
   norm_text: That notification shall include the information necessary to demonstrate that the relevant
@@ -127,7 +127,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: present substantiated model-specific arguments with the notification against systemic-risk classification
   norm_text: The provider of a general-purpose AI model that meets the condition referred to in Article
@@ -404,7 +404,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: include objective, detailed, and new post-designation reasons in a reassessment request
   norm_text: Such a request shall contain objective, detailed and new reasons that have arisen since the
@@ -445,7 +445,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: request reassessment no earlier than six months after the applicable designation or maintenance
     decision

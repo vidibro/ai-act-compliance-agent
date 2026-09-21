@@ -5,6 +5,7 @@ norms:
   kind: applicability
   actors:
   - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: apply the Regulation to providers placing AI systems or general-purpose AI models on the Union
     market or putting AI systems into service in the Union, regardless of establishment

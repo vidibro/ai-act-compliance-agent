@@ -8,6 +8,7 @@ records:
     market or putting AI systems into service in the Union, regardless of establishment
   actors:
   - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: applicability
   verification_mode: answered_by_classification

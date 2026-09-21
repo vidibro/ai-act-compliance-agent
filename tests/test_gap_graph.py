@@ -412,6 +412,7 @@ def test_the_covered_roles_come_from_the_spec(spec):
         ActorRole.IMPORTER,
         ActorRole.DISTRIBUTOR,
         ActorRole.AUTHORISED_REPRESENTATIVE,
+        ActorRole.GPAI_PROVIDER,
     ]
 
 
@@ -458,7 +459,13 @@ def test_the_report_lists_every_role_the_act_binds(spec):
     # finding rather than an omission: Art. 25(2) has no holder unless the provider role moved, and
     # here it did not. Which roles the ruleset covers is settled by the coverage ledger before
     # shipping, not narrated in the report — see test_policy_loader.
-    assert set(outstanding) == set(roles_with_rules(spec)) - {ActorRole.INITIAL_PROVIDER}
+    # `gpai_provider` joins `initial_provider` in the same way: the AIA-RULE-GP-* rules gate on the
+    # `gpai_model` class, which a high-risk SYSTEM is not, so the role is covered by the ruleset and
+    # owes nothing on this run.
+    assert set(outstanding) == set(roles_with_rules(spec)) - {
+        ActorRole.INITIAL_PROVIDER,
+        ActorRole.GPAI_PROVIDER,
+    }
 
 
 def test_article_59_permission_is_rendered_only_for_its_prospective_provider(spec):

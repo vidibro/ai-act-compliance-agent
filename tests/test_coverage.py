@@ -39,6 +39,7 @@ from aiact.policy_loader import (
 from aiact.provisions import Provision, all_provisions, annex_instruments, provision_labels
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
 from aiact.schemas.enums import (
+    ActorCategory,
     ActorRole,
     AnnexIIIArea,
     DerogationCondition,
@@ -788,7 +789,9 @@ def test_a_rule_reaches_every_role_the_divisions_it_covers_bind(spec, ledger):
             except (KeyError, ValueError):
                 continue
             for word, role in _ROLE_OPENINGS:
-                if enacted.startswith(word) and role not in roles:
+                if enacted.startswith(word) and not (
+                    _roles_that_answer(role, enacted, str(article)) & roles
+                ):
                     wrong.append(
                         f"Art. {article}({division}) opens {word!r} but "
                         f"{sorted(r.rule_id for r in named)} reach {sorted(x.value for x in roles)}"
@@ -842,7 +845,13 @@ def test_every_role_has_rules_or_a_written_reason(spec, ledger):
     nothing else in the output hints the other side exists."""
     named = set(roles_with_rules(spec))
     dismissed = ledger.get("roles_out_of_scope") or {}
+    # SUPPORTED OPERATORS ONLY, because they are the roles a report is generated for. `ActorRole`
+    # is the Act's whole cast — authorities, Union bodies, affected persons — so that a norm can
+    # name its actual duty-holder; a market surveillance authority is never selected for and can
+    # contribute no empty column. The failure this guards is a REPORTABLE party carrying nothing.
     for role in ActorRole:
+        if role.category is not ActorCategory.SUPPORTED_OPERATOR:
+            continue
         assert role in named or role.value in dismissed, (
             f"{role.value} has no rule in the spec and no entry in roles_out_of_scope. It is "
             f"selected for in every report and contributes nothing, which reads as a party that "
@@ -981,6 +990,32 @@ def _division_text(article: str, division: str) -> str:
     return body[opens.start() : min(following) if following else len(body)]
 
 
+# Art. 3(3) defines the provider by what it places on the market — an AI system OR A GENERAL-PURPOSE
+# AI MODEL — so a Chapter V duty-holder is a provider of a particular kind, and `AIA-RULE-GP-*`
+# rules bind it under `gpai_provider` rather than folding Chapter V into the Art. 6 track. Where a
+# division is about such a model, a rule reaching that role therefore answers for the provider the
+# words name. Scoped to those divisions deliberately: elsewhere a provider mention is unanswered
+# unless an ordinary provider rule binds it.
+def _article_heading(article: str) -> str:
+    """The article's number and title, which is where Chapter V names its duty-holder.
+
+    Art. 54(2) says only "The provider shall" — the general-purpose AI model is in the title,
+    "Authorised representatives of providers of general-purpose AI models". Reading the heading
+    keeps the division in its own article's subject; reading the whole body instead would let one
+    passing mention of a model anywhere in an article answer for every provider duty in it."""
+    body = provision_text(ARTICLES_DIR / article_filename(article))
+    return "\n".join(body.splitlines()[:2])
+
+
+def _roles_that_answer(role: ActorRole, text: str, article: str) -> set[ActorRole]:
+    if role is ActorRole.PROVIDER and (
+        "general-purpose AI model" in text
+        or "general-purpose AI model" in _article_heading(article)
+    ):
+        return {ActorRole.PROVIDER, ActorRole.GPAI_PROVIDER}
+    return {role}
+
+
 def _roles_bound_at(spec) -> dict[tuple[str, str], set[ActorRole]]:
     """Which roles the rules citing each article address bind.
 
@@ -1021,7 +1056,10 @@ def _unbound_role_mentions(spec) -> dict[str, list[str]]:
         key = (provision.document, str(provision.division))
         text = _division_text(key[0], key[1])
         named = {_ROLE_OF_WORD[m.lower()] for m in _ROLE_WORD.findall(text)}
-        missing = named - bound.get(key, set())
+        here = bound.get(key, set())
+        missing = {
+            role for role in named if not _roles_that_answer(role, text, key[0]) & here
+        }
         if missing:
             unbound[f"{key[0]}({key[1]})"] = sorted(r.value for r in missing)
     return unbound

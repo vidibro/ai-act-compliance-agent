@@ -4,7 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: evaluate the model using standardised state-of-the-art protocols and tools, including conducting
     and documenting adversarial testing to identify and mitigate systemic risks
@@ -44,7 +44,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: assess and mitigate possible Union-level systemic risks and their sources across development,
     market placement, and use
@@ -83,7 +83,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: keep track of and document relevant serious-incident information and possible corrective measures,
     and report them without undue delay to the AI Office and, as appropriate, national competent authorities
@@ -123,7 +123,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model and
     its physical infrastructure
@@ -160,7 +160,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: rely on Article 56 codes to demonstrate Article 55(1) compliance until a harmonised standard
     is published
@@ -197,7 +197,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: presume conformity to the extent European harmonised standards cover Article 55 obligations
   norm_text: Compliance with European harmonised standards grants providers the presumption of conformity
@@ -232,7 +232,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: demonstrate alternative adequate means of compliance for Commission assessment
   norm_text: Providers of general-purpose AI models with systemic risks who do not adhere to an approved

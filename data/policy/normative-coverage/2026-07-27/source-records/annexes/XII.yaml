@@ -4,7 +4,7 @@ records:
   quote: shall contain at least the following
   action: include all Annex XII model-description, integration, interaction, software, architecture, input-output, licence, and development-data information in documentation for downstream providers
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(b) Annex XII content norm.

@@ -4,7 +4,7 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: include all Annex XII model-description, integration, interaction, software, architecture, input-output,
     licence, and development-data information in documentation for downstream providers

@@ -14,7 +14,7 @@ records:
     containing at least the Annex XI information, for provision on request to the AI Office and national
     competent authorities
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: technical documentation of the model
@@ -39,7 +39,7 @@ records:
   action: draw up, keep current, and make available information and documentation to providers intending
     to integrate the model into their AI systems
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: information and documentation
@@ -59,7 +59,7 @@ records:
   action: observe and protect intellectual-property rights, confidential business information, and trade
     secrets when providing downstream documentation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: intellectual property rights
@@ -80,7 +80,7 @@ records:
   action: enable downstream providers to understand model capabilities and limitations and comply with
     the Regulation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: capabilities and limitations
@@ -98,7 +98,7 @@ records:
   quote: contain, at a minimum, the elements set out in Annex XII
   action: include at least all Annex XII elements in the downstream information and documentation
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: elements set out in Annex XII
@@ -118,7 +118,7 @@ records:
   quote: put in place a policy to comply with Union law on copyright and related rights
   action: put in place a policy for compliance with Union copyright and related-rights law
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: policy
@@ -137,7 +137,7 @@ records:
     expressed pursuant to Article 4(3) of Directive (EU) 2019/790
   action: identify and comply through state-of-the-art technologies with Article 4(3) rights reservations
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: reservation of rights
@@ -156,7 +156,7 @@ records:
     training of the general-purpose AI model, according to a template provided by the AI Office.
   action: draw up and publish a sufficiently detailed AI-Office-template summary of model training content
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P001]
   targets:
   - target_ref: summary about the content used for training
@@ -177,7 +177,7 @@ records:
     model architecture, and the information on model usage, are made publicly available.
   action: disapply Article 53(1)(a) and (b) where every enacted free-and-open-source condition is met
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P008]
   targets:
   - target_ref: free and open-source licence
@@ -200,7 +200,7 @@ records:
   quote: This exception shall not apply to general-purpose AI models with systemic risks.
   action: restore Article 53(1)(a) and (b) obligations for general-purpose AI models with systemic risk
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P008]
   targets:
   - target_ref: general-purpose AI models with systemic risks
@@ -224,7 +224,7 @@ records:
   action: cooperate as necessary with the Commission and national competent authorities exercising regulatory
     powers
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P009]
   targets:
   - target_ref: national competent authorities
@@ -243,7 +243,7 @@ records:
   action: rely on Article 56 codes of practice to demonstrate Article 53(1) compliance until a harmonised
     standard is published
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P010]
   targets:
   - target_ref: codes of practice
@@ -263,7 +263,7 @@ records:
     to the extent that those standards cover those obligations.
   action: presume conformity to the extent a European harmonised standard covers the Article 53 obligations
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P010]
   targets:
   - target_ref: European harmonised standards
@@ -284,7 +284,7 @@ records:
     for assessment by the Commission.
   action: demonstrate alternative adequate means of compliance for Commission assessment
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A053-P010]
   targets:
   - target_ref: alternative adequate means of compliance

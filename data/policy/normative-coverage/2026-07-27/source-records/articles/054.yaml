@@ -7,7 +7,7 @@ records:
   action: appoint by written mandate a Union-established authorised representative before placing the
     model on the Union market
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   conditions:
   - the provider is established in a third country
@@ -21,7 +21,7 @@ records:
     mandate received from the provider.
   action: enable the authorised representative to perform every task specified in its mandate
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   implementation_refs:
   - AIA-RULE-GP-A54-2
@@ -130,7 +130,7 @@ records:
   action: empower the representative to be addressed in addition to or instead of the provider on all
     compliance issues
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   implementation_refs:
   - AIA-RULE-GP-A54-4
@@ -177,7 +177,7 @@ records:
   action: disapply Article 54 where every enacted free-and-open-source condition is met, except for general-purpose
     AI models presenting systemic risk
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: applicability
   conditions:

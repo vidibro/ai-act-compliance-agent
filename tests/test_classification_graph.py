@@ -1023,7 +1023,10 @@ def test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation():
         sets.append(
             frozenset(
                 r.rule_id
-                for role in (ActorRole.PROVIDER, ActorRole.AUTHORISED_REPRESENTATIVE)
+                for role in (
+                    ActorRole.GPAI_PROVIDER,
+                    ActorRole.AUTHORISED_REPRESENTATIVE,
+                )
                 for r in select_rules(spec, result.use_cases[0], role).all_rules
             )
         )

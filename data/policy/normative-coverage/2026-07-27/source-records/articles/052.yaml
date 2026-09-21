@@ -7,7 +7,7 @@ records:
   action: notify the Commission without delay and within two weeks of meeting or anticipating the Article
     51(1)(a) condition
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   conditions:
   - the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
@@ -21,7 +21,7 @@ records:
     has been met.
   action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   conditions:
   - the provider submits the Article 52(1) notification
@@ -57,7 +57,7 @@ records:
     AI model with systemic risk.
   action: present substantiated model-specific arguments with the notification against systemic-risk classification
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: permission
   conditions:
@@ -169,7 +169,7 @@ records:
     decision.
   action: include objective, detailed, and new post-designation reasons in a reassessment request
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   conditions:
   - the provider requests reassessment under Article 52(5)
@@ -189,7 +189,7 @@ records:
   action: request reassessment no earlier than six months after the applicable designation or maintenance
     decision
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: permission
   conditions:

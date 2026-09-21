@@ -213,7 +213,7 @@ records:
   action: limit adherence to Article 53 for non-systemic-risk models unless the provider opts into the
     full code
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: permission
   product_scope: no_product_action

@@ -147,12 +147,14 @@ records:
     are not followed
   actors:
   - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   verification_mode: reported_not_judged
   conditions:
   - the provider does not comply with the paragraph 1 common specifications
   implementation_refs:
   - AIA-RULE-PO-A41-5
+  - AIA-RULE-GP-A41-5
   verified_by: vidibro
 - norm_id: AIA-NORM-A041-P6-MEMBER-STATE-NOTICE
   source: A041-P014

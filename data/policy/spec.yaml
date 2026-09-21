@@ -1212,6 +1212,46 @@ rules:
   # and notified bodies, and every other paragraph of them binds one of those two. Art. 36(8)(b) is
   # the exception: inside a paragraph about when certificates stay valid, its second half turns and
   # binds the provider holding the certificate, in writing and on a three-month clock.
+  # Art. 41(5) IS A DISJUNCTION — "providers of high-risk AI systems OR general-purpose AI models"
+  # — and the two limbs reach different readers under different classes. One rule cannot express
+  # it: `applies_to_risk_class` is what selects, so a single rule naming both roles would raise the
+  # duty against a model provider on a HIGH-RISK SYSTEM run and still never reach a model, which is
+  # the half that was missing. Split by duty-holder, as Art. 22 and Art. 54 are.
+  - rule_id: AIA-RULE-GP-A41-5
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 41
+      paragraph: 5 # the general-purpose AI model limb of the same paragraph
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [gpai_provider]
+    activation_condition: >-
+      The duty exists only where the Commission has actually ADOPTED a common specification under
+      Art. 41(1) that covers the Chapter V obligation in question, and the provider has chosen not
+      to comply with it. Which obligations are covered at any moment is a fact about the Official
+      Journal rather than about this model, so the obligation is listed with the condition attached
+      rather than asserted of every model provider or dropped.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A written justification that the technical solutions actually adopted comply with the
+      obligations set out in SECTIONS 2 AND 3 OF CHAPTER V — Arts. 53 to 55 — TO A LEVEL AT LEAST
+      EQUIVALENT to the common specification not followed. The standard is equivalence, not
+      reasonableness. "Duly justify" means the argument is recorded, so a provider that departed
+      from a common specification and wrote nothing down cannot satisfy this after the fact. Which
+      specifications are in force is not visible in the documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      SECTION 5 WAS NOT MOVED. Regulation (EU) 2026/1744 deferred Chapter III Sections 1, 2 and 3 —
+      Art. 113(c) names those three — to 2 December 2027 for an Annex III system and 2 August 2028
+      for an Annex I one, and left Section 5 on the general date of 2 August 2026. This rule
+      therefore applies from 2 August 2026, as its high-risk twin AIA-RULE-PO-A41-5 does. What does
+      NOT carry over is that twin's inversion: the obligations this limb measures equivalence
+      against are Arts. 53 to 55, which have applied since 2 August 2025, so here the duty follows
+      the obligations it rests on instead of preceding them.
+    status: active
+
   - rule_id: AIA-RULE-PO-A36-8
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -4071,7 +4111,7 @@ rules:
       paragraph: 1 # notify the Commission within two weeks
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Owed only where the model meets the Art. 51(1)(a) condition — high impact capabilities, which
       Art. 51(2) PRESUMES above 10^25 cumulative training FLOP. That is the one limb a model card
@@ -4108,7 +4148,7 @@ rules:
       annex: "XI"
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       LIFTED BY ART. 53(2) for a model released under a free and open-source licence that allows
       access, usage, modification and distribution AND whose parameters — the weights included —
@@ -4153,7 +4193,7 @@ rules:
       annex: "XII"
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Lifted by the same Art. 53(2) open-source carve-out as point (a), on the same four conditions,
       and disapplied again for a model with systemic risk. See AIA-RULE-GP-A53-1A.
@@ -4189,7 +4229,7 @@ rules:
       point: "c" # a copyright policy, including a rights reservation
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     # NO CONDITION. Art. 53(2) lifts points (a) and (b) only, so this is owed by every provider of
     # a general-purpose AI model — open-source, closed, systemic-risk or not. One of the two rules
     # in this chapter with no gate anyone has to answer first.
@@ -4219,7 +4259,7 @@ rules:
       point: "d" # the public training-content summary
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     # NO CONDITION, as with point (c): Art. 53(2) does not reach it. The other rule in this chapter
     # that every provider owes outright, and the one whose artefact is most nearly a document a
     # judge could read — it is public by definition.
@@ -4254,7 +4294,7 @@ rules:
       paragraph: 5 # supply the information the Commission requests
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider, authorised_representative]
+    applies_to_role: [gpai_provider, authorised_representative]
     activation_condition: >-
       Owed once the Commission makes a request under Art. 91(1) or (3) — the second of which follows
       a substantiated request from the scientific panel. Art. 91(2) lets the AI Office open a
@@ -4283,7 +4323,7 @@ rules:
       paragraph: 5 # grant the access the Commission requests
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider, authorised_representative]
+    applies_to_role: [gpai_provider, authorised_representative]
     activation_condition: >-
       Owed once the Commission requests access under Art. 92(3), which it may do to conduct an
       evaluation under Art. 92(1) on either of that paragraph's grounds. Art. 92(7) lets the AI
@@ -4310,7 +4350,7 @@ rules:
       paragraph: 3 # cooperate with the Commission and national competent authorities
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -4333,7 +4373,7 @@ rules:
       paragraph: 4 # demonstrate alternative adequate means of compliance
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Owed by a provider that adheres to NEITHER an approved code of practice under Art. 56 NOR a
       European harmonised standard covering the Art. 53(1) obligations. A provider that does either
@@ -4366,7 +4406,7 @@ rules:
       paragraph: 1 # appoint an authorised representative before placing on the market
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Binds providers ESTABLISHED IN THIRD COUNTRIES, and nobody else — a provider established in
       the Union needs no representative and owes nothing here. Art. 54(6) then lifts the whole
@@ -4392,7 +4432,7 @@ rules:
       paragraph: 2 # enable the representative to perform the mandate
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Owed by the same third-country provider that owes Art. 54(1), and lifted by the same
       Art. 54(6) open-source carve-out. See AIA-RULE-GP-A54-1.
@@ -4446,7 +4486,7 @@ rules:
       paragraph: 4 # the mandate empowers the representative to be addressed
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider, authorised_representative]
+    applies_to_role: [gpai_provider, authorised_representative]
     # BOTH PARTIES, because the paragraph binds the mandate rather than a person. The provider
     # draws it and the representative accepts it, and a mandate missing this term fails whichever
     # of them is asked about it — so filing it under one would tell the other their copy is fine.
@@ -4508,7 +4548,7 @@ rules:
       point: "a" # model evaluation and adversarial testing
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       OWED ONLY BY A MODEL WITH SYSTEMIC RISK under Art. 51(1) — either high impact capabilities,
       which Art. 51(2) presumes above 10^25 cumulative training FLOP, or a Commission designation
@@ -4540,7 +4580,7 @@ rules:
       point: "b" # assess and mitigate systemic risks at Union level
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Owed only by a model with systemic risk under Art. 51(1). See AIA-RULE-GP-A55-1A.
     obligation_status: mandatory
@@ -4571,7 +4611,7 @@ rules:
       point: "c" # serious incident reporting to the AI Office
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Owed only by a model with systemic risk under Art. 51(1). See AIA-RULE-GP-A55-1A.
     obligation_status: mandatory
@@ -4597,7 +4637,7 @@ rules:
       point: "d" # cybersecurity of the model and its physical infrastructure
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Owed only by a model with systemic risk under Art. 51(1). See AIA-RULE-GP-A55-1A.
     obligation_status: mandatory
@@ -4622,7 +4662,7 @@ rules:
       paragraph: 2 # demonstrate alternative adequate means, for the systemic-risk duties
       act_version_date: 2026-07-27
     applies_to_risk_class: [gpai_model]
-    applies_to_role: [provider]
+    applies_to_role: [gpai_provider]
     activation_condition: >-
       Two conditions, and both must hold: the model carries systemic risk under Art. 51(1), and the
       provider adheres to neither an approved Art. 56 code of practice nor a European harmonised

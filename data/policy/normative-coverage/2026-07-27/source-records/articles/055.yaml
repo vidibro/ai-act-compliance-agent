@@ -7,7 +7,7 @@ records:
   action: evaluate the model using standardised state-of-the-art protocols and tools, including conducting
     and documenting adversarial testing to identify and mitigate systemic risks
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   qualifier_spans:
   - A055-P001
@@ -26,7 +26,7 @@ records:
   action: assess and mitigate possible Union-level systemic risks and their sources across development,
     market placement, and use
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   qualifier_spans:
   - A055-P001
@@ -42,7 +42,7 @@ records:
   action: keep track of and document relevant serious-incident information and possible corrective measures,
     and report them without undue delay to the AI Office and, as appropriate, national competent authorities
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   qualifier_spans:
   - A055-P001
@@ -60,7 +60,7 @@ records:
   action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model and
     its physical infrastructure
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   qualifier_spans:
   - A055-P001
@@ -76,7 +76,7 @@ records:
   action: rely on Article 56 codes to demonstrate Article 55(1) compliance until a harmonised standard
     is published
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: permission
   product_scope: no_product_action
@@ -90,7 +90,7 @@ records:
     to the extent that those standards cover those obligations.
   action: presume conformity to the extent European harmonised standards cover Article 55 obligations
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   kind: legal_consequence
   product_scope: no_product_action
@@ -105,7 +105,7 @@ records:
     means of compliance for assessment by the Commission.
   action: demonstrate alternative adequate means of compliance for Commission assessment
   actors:
-  - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   conditions:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard

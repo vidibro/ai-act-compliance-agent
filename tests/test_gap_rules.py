@@ -756,7 +756,7 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
     tool is broken, and the damaging response is to disregard the date rather than the note. So the
     explanation travels WITH the obligation instead of living in a comment only we read."""
     section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
-    assert len(section_5) == 21, "Arts. 41, 43 and 46-49 are the whole of Section 5 in this ruleset"
+    assert len(section_5) == 22, "Arts. 41, 43 and 46-49 are the whole of Section 5 in this ruleset"
     for rule in section_5:
         # ONE RULE IN SECTION 5 TAKES THE OTHER DATE, and it is the same contested reading
         # AIA-RULE-NHR-A06-4 carries: Art. 49(2) registers an Art. 6(3) conclusion, and Art. 6

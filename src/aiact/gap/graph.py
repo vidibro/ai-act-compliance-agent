@@ -259,10 +259,16 @@ def build_graph(
                 # duties split across a prospective provider, a provider, and a sandbox
                 # participant. Rendering it under every activating duty-holder would silently
                 # change who is allowed to use the route.
+                # Only a SUPPORTED-OPERATOR actor narrows the audience, because only those roles
+                # are ever reported for. A statement whose actor is an external party — Art.
+                # 25(4)'s open-source carve-out addresses the third-party supplier — qualifies the
+                # reader's own activated duty, and filtering on that actor would delete it from
+                # every report instead of moving it to another one.
                 exact_actor_roles = {
                     ActorRole(actor)
                     for actor in report_norm.actors
                     if actor in {role.value for role in ActorRole}
+                    and ActorRole(actor).category is ActorCategory.SUPPORTED_OPERATOR
                 }
                 if exact_actor_roles and active.role not in exact_actor_roles:
                     continue

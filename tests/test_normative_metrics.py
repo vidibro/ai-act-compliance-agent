@@ -2692,7 +2692,7 @@ def test_article_forty_one_preserves_common_specification_workflow():
     justification = norms["AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS"]
     assert presumption.implementation_mode.value == "missing"
     assert justification.implementation_mode.value == "compliance_rule"
-    assert justification.implementation_refs == ["AIA-RULE-PO-A41-5"]
+    assert justification.implementation_refs == ["AIA-RULE-PO-A41-5", "AIA-RULE-GP-A41-5"]
 
 
 def test_article_forty_two_keeps_three_conformity_presumptions_distinct():

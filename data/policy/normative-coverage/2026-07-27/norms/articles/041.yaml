@@ -312,6 +312,7 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+  - actor_ref: gpai_provider
   targets: []
   action: duly justify technical solutions providing at least equivalent compliance when common specifications
     are not followed
@@ -339,6 +340,7 @@ norms:
   implementation_mode: compliance_rule
   implementation_refs:
   - AIA-RULE-PO-A41-5
+  - AIA-RULE-GP-A41-5
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
