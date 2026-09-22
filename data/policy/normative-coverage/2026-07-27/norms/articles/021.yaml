@@ -26,11 +26,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: upon a reasoned request by a competent authority
-        basis_segment_ids:
-        - AIA-TEXT-A021-P001
+    - text: upon a reasoned request by a competent authority
+      basis_segment_ids:
+      - AIA-TEXT-A021-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -73,14 +71,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: Upon a reasoned request by a competent authority
-        basis_segment_ids:
-        - AIA-TEXT-A021-P002
-      - text: to the extent such logs are under their control
-        basis_segment_ids:
-        - AIA-TEXT-A021-P002
+    - text: Upon a reasoned request by a competent authority
+      basis_segment_ids:
+      - AIA-TEXT-A021-P002
+    - text: to the extent such logs are under their control
+      basis_segment_ids:
+      - AIA-TEXT-A021-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope

@@ -138,6 +138,11 @@ enforced_scope:
       - temporal_regime
   - kind: article
     document: "19"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "20"
     required_field_validations:

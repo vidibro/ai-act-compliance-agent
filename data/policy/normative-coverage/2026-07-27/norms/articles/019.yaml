@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A019-P001
   targets: []
   action: "keep automatically generated Article 12(1) logs to the extent they are under the provider\u2019\
     s control"
@@ -20,7 +22,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: "the automatically generated logs are under the provider\u2019s control"
+    - text: to the extent such logs are under their control
       basis_segment_ids:
       - AIA-TEXT-A019-P001
   exceptions: null
@@ -41,11 +43,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A019-P001
   targets: []
   action: "retain controlled logs for a period appropriate to the system\u2019s intended purpose and for\
     \ at least six months"
@@ -62,14 +67,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: "the automatically generated logs are under the provider\u2019s control"
+    - text: to the extent such logs are under their control
       basis_segment_ids:
       - AIA-TEXT-A019-P001
   exceptions:
-    operator: any_of
+    operator: all_of
     operands:
-    - text: applicable Union or national law, particularly personal-data law, provides a different retention
-        period
+    - text: unless provided otherwise in the applicable Union or national law, in particular in Union
+        law on the protection of personal data
       basis_segment_ids:
       - AIA-TEXT-A019-P001
   mandatory_content: []
@@ -89,11 +94,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A019-P001
   targets: []
   action: maintain automatically generated high-risk-system logs within documentation kept under applicable
     Union financial-services law
@@ -111,8 +119,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider is a financial institution subject to internal-governance requirements under
-        Union financial-services law
+    - text: Providers that are financial institutions subject to requirements regarding their internal
+        governance, arrangements or processes under Union financial services law
       basis_segment_ids:
       - AIA-TEXT-A019-P002
   exceptions: null
@@ -133,3 +141,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

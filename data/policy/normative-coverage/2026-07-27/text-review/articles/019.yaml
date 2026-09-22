@@ -48,7 +48,8 @@ segments:
   norm_ids:
   - AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
   - AIA-NORM-A019-P1-RETENTION-PERIOD
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

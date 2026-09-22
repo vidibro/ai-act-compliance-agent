@@ -3,19 +3,24 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '19'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 3
   norms_scanned: 3
   finding_count: 1
-  audit_sha256: 6b1c8a106d312ce494f7744be90c3c573a8c4baa5805e95d5517dc9969b5d2ac
+  audit_sha256: 69e07ffa78d68e84eaf867475fbb9ef989b8ffbb7e77c88476a8b431eb44176a
 decisions:
-- finding_id: AIA-VALID-89C0BE07A90B8058
+- finding_id: AIA-VALID-F1704384C834572D
   target: AIA-NORM-A019-P1-RETENTION-PERIOD
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A019-P001
   source_sha256: e29d01e413d34e25e1363c0bf128ade6fea8cf532ec8bb1a502a61061c357820
-  target_sha256: 3f180ee0c56c764bd27eada3a3eab04af8705f619eeb2c3081cc1c96b6a0e625
+  target_sha256: ee8956ea6d631262cb438230495019cdc636362dbba64b44db59e0fc4a5de9cd
   decision: accepted_with_basis
   reason: This is the second sentence of the same Article 19(1) provider duty. Its
     action, control condition, minimum period, and Union/national-law exception fully
