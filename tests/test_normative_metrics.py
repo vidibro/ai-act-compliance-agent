@@ -1166,7 +1166,7 @@ def test_articles_forty_one_to_forty_six_preserve_gates_and_exceptions():
     assert "is adopted by a European standardisation organisation" in standard.conditions[0]
     assert len(modification.conditions) == 2
     assert "corrective action" in certificate.exceptions[0]
-    alternatives = consultation.conditions[0]
+    alternatives = consultation.conditions
     assert isinstance(alternatives, LogicalExpression) and alternatives.operator == "any_of"
     assert len(alternatives.operands) == 3
 
@@ -2190,16 +2190,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2109,
+        "approved": 2111,
         "proposed": 822,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2932
+    assert metrics.total_review_records == 2934
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 544
-    assert metrics.shall_token_candidate_recall == pytest.approx(857 / 1401)
+    assert metrics.shall_token_candidate_recall == pytest.approx(859 / 1403)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2215,14 +2215,14 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
     assert metrics.mapping_shape.one_norm_to_one_target == 38
-    assert metrics.mapping_shape.many_norms_to_one_target == 431
+    assert metrics.mapping_shape.many_norms_to_one_target == 433
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
-    assert metrics.mapping_shape.many_to_many == 23
-    assert metrics.mapping_shape.unmapped == 907
-    assert metrics.semantic_vs_existing_implementation_disagreements == 80
+    assert metrics.mapping_shape.many_to_many == 26
+    assert metrics.mapping_shape.unmapped == 904
+    assert metrics.semantic_vs_existing_implementation_disagreements == 75
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2235,11 +2235,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-D-KEEP-DOCUMENTATION",
         "AIA-NORM-A016-E-KEEP-LOGS",
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
-        "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
-        "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
-        "AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY",
-        "AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY",
-        "AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
         "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
@@ -2306,11 +2301,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
-        "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
-        "AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY",
-        "AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY",
-        "AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY",
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
         "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
         "AIA-NORM-A050-P3-DATA",
@@ -2763,11 +2753,17 @@ def test_article_forty_four_keeps_corrective_action_as_the_measure_exception():
     assert len(norms) == 7
     assert len(segments[2].norm_ids) == 3
     assert len(segments[3].norm_ids) == 2
-    missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
-    assert len(missing) == 3
-    assert all(norm.product_scope.value == "in_scope" for norm in missing)
+    reported = [
+        norm for norm in norms.values() if norm.implementation_mode.value == "report_only"
+    ]
+    assert len(reported) == 3
+    assert all(norm.product_scope.value == "in_scope" for norm in reported)
+    assert all(
+        norm.implementation_refs == ["AIA-RULE-PO-A43-1B", "AIA-RULE-PO-A43-3"]
+        for norm in reported
+    )
     extension = norms["AIA-NORM-A044-P2-EXTEND-CERTIFICATE"]
-    assert extension.kind.value == "entitlement"
+    assert extension.kind.value == "permission"
     assert len(extension.conditions) == 2
     measure = norms["AIA-NORM-A044-P3-CERTIFICATE-MEASURE"]
     assert "corrective action" in measure.exceptions[0]
@@ -2796,34 +2792,34 @@ def test_article_forty_five_separates_event_notices_from_request_only_disclosure
     authority = norms["AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY"]
     assert authority.qualifier_spans == [f"AIA-TEXT-A045-P{p:03}" for p in range(2, 6)]
     assert authority.mandatory_content == []  # Events are alternatives, not cumulative content.
-    events = authority.conditions[0]
+    events = authority.conditions
     assert events.operator == "any_of" and len(events.operands) == 4
-    assert "supplement" in events.operands[0]
-    assert "restricted" in events.operands[1]
+    assert "supplements" in events.operands[0]
+    assert "restriction" in events.operands[1]
     assert "circumstances" in events.operands[2]
-    assert "received a market-surveillance-authority information request" in events.operands[3]
+    assert "request for information which they have received" in events.operands[3]
     activities = norms["AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST"]
     assert activities.qualifier_spans == ["AIA-TEXT-A045-P006"]
-    assert "notifying authority requests" in activities.conditions[0]
+    assert "conformity assessment activities performed" in activities.conditions[0]
     assert activities.mandatory_content == [
         "conformity assessment activities performed within the scope of the notification",
         "other activities performed, including cross-border activities and subcontracting",
     ]
     peers = norms["AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES"]
     assert len(peers.qualifier_spans) == 2
-    adverse = peers.conditions[0]
+    adverse = peers.conditions
     assert adverse.operator == "any_of" and len(adverse.operands) == 2
     assert (
-        "refused, suspended or withdrawn a quality management system approval"
+        "quality management system approvals which it has refused, suspended or withdrawn"
         in adverse.operands[0]
     )
     assert "restricted" not in adverse.operands[0]  # Paragraph 2(a) does not list restriction.
-    assert "restricted" in adverse.operands[1] and "supplement" in adverse.operands[1]
+    assert "restricted" in adverse.operands[1] and "supplements" in adverse.operands[1]
     assert peers.mandatory_content == []
     issued = norms["AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST"]
-    assert issued.conditions[0].operator == "any_of"
-    assert len(issued.conditions[0].operands) == 2
-    assert all("requests information" in item for item in issued.conditions[0].operands)
+    assert issued.conditions.operator == "any_of"
+    assert len(issued.conditions.operands) == 2
+    assert all("upon request" in item for item in issued.conditions.operands)
     negative = norms["AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS"]
     positive = norms["AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST"]
     assert "negative" in negative.conditions[0] and "positive" in positive.conditions[0]
@@ -2831,7 +2827,9 @@ def test_article_forty_five_separates_event_notices_from_request_only_disclosure
     assert "similar conformity assessment activities" in negative.conditions[1]
     assert "same types of AI systems" in negative.conditions[1]
     assert len(negative.conditions) == 2
-    assert positive.conditions[2] == "that recipient requests the information"
+    # The request limb is enacted inside the positive branch itself: "on request, positive".
+    assert "on request" in positive.conditions[0]
+    assert len(positive.conditions) == 2
     assert norms["AIA-NORM-A045-P4-CONFIDENTIALITY"].action == (
         "safeguard obtained information confidentiality under Article 78"
     )
@@ -2852,18 +2850,20 @@ def test_article_forty_six_preserves_derogation_lifecycle():
 
     assert len(segments) == 8
     assert_segments_are_independently_approved(segments)
-    assert len(norms) == 14
+    # Paragraph 1's period limit and paragraph 3's compliance gate gained the norms they never had.
+    assert len(norms) == 16
+    assert "AIA-NORM-A046-P1-LIMITED-PERIOD" in norms
+    assert "AIA-NORM-A046-P3-COMPLIANCE-GATE" in norms
     authorisation = norms["AIA-NORM-A046-P1-DEROGATION-AUTHORISATION"]
     assert authorisation.kind.value == "power"
     assert authorisation.qualifier_spans == ["AIA-TEXT-A046-P003"]
-    assert len(authorisation.conditions) == 3
+    assert len(authorisation.conditions) == 2
     refusal = norms["AIA-NORM-A046-P2-REFUSAL-RESPONSE"]
     discard = norms["AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS"]
-    assert (
-        refusal.conditions
-        == discard.conditions
-        == ["the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused"]
-    )
+    assert refusal.conditions == discard.conditions
+    assert [operand.text for operand in refusal.conditions.operands] == [
+        "If the authorisation referred to in paragraph 1 is refused"
+    ]
     assert refusal.actors == discard.actors
     assert refusal.actors[0].actor_ref == "law_enforcement_authority"
     assert "stop use" in refusal.action and "immediate effect" in refusal.action
@@ -2879,11 +2879,13 @@ def test_article_forty_six_preserves_derogation_lifecycle():
     assert permission.kind.value == "permission"
     assert len(permission.conditions) == 2
     assert "without undue delay" in permission.conditions[1]
-    missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
-    assert {norm.norm_id for norm in missing} == {
-        "AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY",
-        "AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY",
-    }
+    # Article 46(1)'s provider duty has a rule of its own; 46(7) limits how far that rule reaches.
+    completion = norms["AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY"]
+    assert completion.implementation_mode.value == "compliance_rule"
+    assert completion.implementation_refs == ["AIA-RULE-PO-A46-1"]
+    sectoral = norms["AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY"]
+    assert sectoral.implementation_mode.value == "report_only"
+    assert sectoral.implementation_refs == ["AIA-RULE-PO-A46-1"]
 
 
 def test_article_forty_seven_maps_complete_declaration_workflow():

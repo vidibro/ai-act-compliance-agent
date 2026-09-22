@@ -48,6 +48,7 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
+  - AIA-NORM-A046-P1-LIMITED-PERIOD
   - AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
   - AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY
   qualifying_norm_ids: []
@@ -83,7 +84,8 @@ segments:
   - AIA-NORM-A046-P2-URGENT-USE-PERMISSION
   - AIA-NORM-A046-P2-REFUSAL-RESPONSE
   - AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -111,6 +113,7 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
+  - AIA-NORM-A046-P3-COMPLIANCE-GATE
   - AIA-NORM-A046-P3-NOTIFY-AUTHORISATION
   - AIA-NORM-A046-P3-SENSITIVE-DATA-EXCEPTION
   qualifying_norm_ids:
@@ -178,7 +181,8 @@ segments:
   - AIA-NORM-A046-P5-OPERATOR-HEARING
   - AIA-NORM-A046-P5-DECIDE-JUSTIFICATION
   - AIA-NORM-A046-P5-ADDRESS-DECISION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A046-P5-CONSULT-MEMBER-STATE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

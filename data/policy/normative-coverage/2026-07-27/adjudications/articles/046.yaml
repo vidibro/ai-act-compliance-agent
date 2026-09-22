@@ -1,0 +1,42 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '46'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 8
+  norms_scanned: 16
+  finding_count: 2
+  audit_sha256: 6e643b36ae96c16472d4181b43bd69b3e6d7cc71111fd10e5eb5629b6225649c
+decisions:
+- finding_id: AIA-VALID-895E75B4F1AC6BDF
+  target: AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A046-P001
+  source_sha256: dd8ac9c0491be89ca914aa0d908c48d647dd73f7dd9079d97f67e09043ac4708
+  target_sha256: fa43e02921ec8cc0cc6ec27e331a07a6d29ad708bf21ca5a0dc8d5399e110bd4
+  decision: false_positive
+  reason: >-
+    The cue is "By way of derogation from Article 43", which says what this power derogates FROM.
+    It is not an exception to the power itself. An exception expression here would name a case in
+    which the market surveillance authority may not authorise, and the opening words do the
+    opposite: they are what lets the authority act at all, outside the Article 43 procedures.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-D87627BB0D0D8048
+  target: AIA-NORM-A046-P1-LIMITED-PERIOD
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A046-P001
+  source_sha256: dd8ac9c0491be89ca914aa0d908c48d647dd73f7dd9079d97f67e09043ac4708
+  target_sha256: f0f4987e3cd6300685785494eb405a6435ed9c04c0dec57cb9f5206611ca15bf
+  decision: false_positive
+  reason: >-
+    The same cue, in the phrase "the exceptional reasons justifying the derogation". Here the word
+    names the thing whose duration this sentence limits, so it is the subject-matter of the norm
+    rather than a carve-out from it. The sentence takes nothing out of the duty; it is the duty.
+  reviewed_by: vidibro

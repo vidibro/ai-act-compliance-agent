@@ -6,7 +6,9 @@ records:
     circumstance or information-request event without requiring a prior request for disclosure
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A045-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -18,15 +20,16 @@ records:
   - A045-P004
   - A045-P005
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - the notified body has issued an Annex VII Union technical documentation assessment certificate,
-      a supplement to such a certificate or a quality management system approval
-    - the notified body has refused, restricted, suspended or withdrawn an Annex VII Union technical
-      documentation assessment certificate or quality management system approval
-    - circumstances affect the scope of or conditions for notification
-    - the notified body has received a market-surveillance-authority information request regarding
-      conformity assessment activities
+    - text: any Union technical documentation assessment certificates, any supplements to those certificates, and any quality management system approvals issued in accordance with the requirements of Annex VII
+      basis_segment_ids: [AIA-TEXT-A045-P002]
+    - text: any refusal, restriction, suspension or withdrawal of a Union technical documentation assessment certificate or a quality management system approval issued in accordance with the requirements of Annex VII
+      basis_segment_ids: [AIA-TEXT-A045-P003]
+    - text: any circumstances affecting the scope of or conditions for notification
+      basis_segment_ids: [AIA-TEXT-A045-P004]
+    - text: any request for information which they have received from market surveillance authorities regarding conformity assessment activities
+      basis_segment_ids: [AIA-TEXT-A045-P005]
 - norm_id: AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
   source: A045-P001
   quote: Notified bodies shall inform the notifying authority of the following
@@ -34,7 +37,9 @@ records:
     notification scope and other activities performed, including cross-border activities and subcontracting
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A045-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -43,7 +48,10 @@ records:
   qualifier_spans:
   - A045-P006
   conditions:
-  - the notifying authority requests information about the notified body's activities
+    operator: all_of
+    operands:
+    - text: on request, conformity assessment activities performed within the scope of their notification and any other activity performed, including cross-border activities and subcontracting
+      basis_segment_ids: [AIA-TEXT-A045-P006]
   mandatory_content:
   - conformity assessment activities performed within the scope of the notification
   - other activities performed, including cross-border activities and subcontracting
@@ -54,7 +62,9 @@ records:
     technical-documentation certificate outcome without requiring a prior request for disclosure
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A045-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -64,11 +74,12 @@ records:
   - A045-P008
   - A045-P009
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - the notified body has refused, suspended or withdrawn a quality management system approval
-    - the notified body has refused, withdrawn, suspended or otherwise restricted a Union technical
-      documentation assessment certificate or supplement
+    - text: quality management system approvals which it has refused, suspended or withdrawn
+      basis_segment_ids: [AIA-TEXT-A045-P008]
+    - text: Union technical documentation assessment certificates or any supplements thereto which it has refused, withdrawn, suspended or otherwise restricted
+      basis_segment_ids: [AIA-TEXT-A045-P009]
 - norm_id: AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
   source: A045-P007
   quote: Each notified body shall inform the other notified bodies of
@@ -76,7 +87,9 @@ records:
     documentation assessment certificates and supplements that the notified body has issued
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A045-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -86,12 +99,12 @@ records:
   - A045-P008
   - A045-P009
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - another notified body requests information about quality-system approvals that the notified body
-      has issued
-    - another notified body requests information about Union technical documentation assessment
-      certificates or supplements that the notified body has issued
+    - text: upon request, of quality system approvals which it has issued
+      basis_segment_ids: [AIA-TEXT-A045-P008]
+    - text: upon request, of the certificates and/or supplements thereto which it has issued
+      basis_segment_ids: [AIA-TEXT-A045-P009]
 - norm_id: AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS
   source: A045-P010
   quote: Each notified body shall provide the other notified bodies carrying out similar conformity assessment
@@ -101,12 +114,17 @@ records:
     to other notified bodies carrying out similar conformity assessment activities covering the same
     types of AI systems, without requiring a prior request
   conditions:
-  - the information concerns issues relating to negative conformity assessment results
-  - the recipient is another notified body carrying out similar conformity assessment activities
-    covering the same types of AI systems
+    operator: all_of
+    operands:
+    - text: relevant information on issues relating to negative
+      basis_segment_ids: [AIA-TEXT-A045-P010]
+    - text: the other notified bodies carrying out similar conformity assessment activities covering the same types of AI systems
+      basis_segment_ids: [AIA-TEXT-A045-P010]
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A045-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -122,17 +140,21 @@ records:
     the same types of AI systems
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A045-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the information concerns issues relating to positive conformity assessment results
-  - the recipient is another notified body carrying out similar conformity assessment activities
-    covering the same types of AI systems
-  - that recipient requests the information
+    operator: all_of
+    operands:
+    - text: on request, positive conformity assessment results
+      basis_segment_ids: [AIA-TEXT-A045-P010]
+    - text: the other notified bodies carrying out similar conformity assessment activities covering the same types of AI systems
+      basis_segment_ids: [AIA-TEXT-A045-P010]
 - norm_id: AIA-NORM-A045-P4-CONFIDENTIALITY
   source: A045-P011
   quote: Notified bodies shall safeguard the confidentiality of the information that they obtain, in accordance
@@ -140,7 +162,9 @@ records:
   action: safeguard obtained information confidentiality under Article 78
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A045-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

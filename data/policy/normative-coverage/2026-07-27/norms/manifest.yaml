@@ -4182,6 +4182,46 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A046-P004
+- regime_id: AIA-TEMP-A046-P1-COMPLETE-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A046-P001
+- regime_id: AIA-TEMP-A046-P2-REQUEST-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: during or after the use
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A046-P002
+- regime_id: AIA-TEMP-A046-P2-IMMEDIATE-DISCARD
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: If the authorisation referred to in paragraph 1 is refused
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A046-P002
+- regime_id: AIA-TEMP-A046-P5-CONSULT-WITHOUT-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A046-P005
 - regime_id: AIA-TEMP-A053-CHAPTER-V
   application_start: '2025-08-02'
   application_end: null

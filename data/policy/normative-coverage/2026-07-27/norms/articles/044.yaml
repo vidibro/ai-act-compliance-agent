@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A044-P001
   targets: []
   action: issue Annex VII certificates in a language easily understood by the relevant establishment-state
     authorities
@@ -35,12 +37,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors:
-  - actor_ref: certificate_holder
-  targets: []
+  actors: none
+  targets:
+  - target_ref: Certificates
+    basis_segment_ids:
+    - AIA-TEXT-A044-P002
   action: limit indicated certificate validity to five years for Annex I systems and four years for Annex
     III systems
   norm_text: Certificates shall be valid for the period they indicate, which shall not exceed five years
@@ -49,17 +54,26 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A044-P002
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: Certificates shall be valid for the period they indicate
+      basis_segment_ids:
+      - AIA-TEXT-A044-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
+  implementation_reason: An Annex VII certificate is what the two conformity-assessment rules citing that
+    Annex produce, so this consequence is reported alongside them.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -70,11 +84,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A044-P2-EXTEND-CERTIFICATE
   act_version_date: '2026-07-27'
-  kind: entitlement
+  kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A044-P002
   targets: []
   action: extend certificate validity after provider request and applicable reassessment within the enacted
     duration caps
@@ -85,25 +102,29 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A044-P002
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the provider requests the extension
+    - text: At the request of the provider
       basis_segment_ids:
       - AIA-TEXT-A044-P002
-    - text: applicable conformity-assessment procedures are used for reassessment
+    - text: based on a re-assessment in accordance with the applicable conformity assessment procedures
       basis_segment_ids:
       - AIA-TEXT-A044-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
+  implementation_reason: An Annex VII certificate is what the two conformity-assessment rules citing that
+    Annex produce, so this consequence is reported alongside them.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -114,12 +135,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors:
-  - actor_ref: certificate_holder
-  targets: []
+  actors: none
+  targets:
+  - target_ref: Any supplement to a certificate
+    basis_segment_ids:
+    - AIA-TEXT-A044-P002
   action: preserve a certificate supplement's validity while its underlying certificate remains valid
   norm_text: Any supplement to a certificate shall remain valid, provided that the certificate which it
     supplements is valid.
@@ -127,22 +151,26 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A044-P002
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the underlying certificate remains valid
+    - text: provided that the certificate which it supplements is valid
       basis_segment_ids:
       - AIA-TEXT-A044-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A43-1B
+  - AIA-RULE-PO-A43-3
+  implementation_reason: An Annex VII certificate is what the two conformity-assessment rules citing that
+    Annex produce, so this consequence is reported alongside them.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -153,11 +181,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A044-P3-CERTIFICATE-MEASURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A044-P003
   targets: []
   action: proportionately suspend, withdraw, or restrict a certificate after Section 2 noncompliance unless
     timely corrective action restores compliance
@@ -175,14 +206,15 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body finds that the AI system no longer meets Chapter III Section 2 requirements
+    - text: Where a notified body finds that an AI system no longer meets the requirements set out in
+        Section 2
       basis_segment_ids:
       - AIA-TEXT-A044-P003
   exceptions:
     operator: any_of
     operands:
-    - text: the provider ensures compliance through appropriate corrective action within an appropriate
-        deadline set by the notified body
+    - text: unless compliance with those requirements is ensured by appropriate corrective action taken
+        by the provider of the system within an appropriate deadline set by the notified body
       basis_segment_ids:
       - AIA-TEXT-A044-P003
   mandatory_content: []
@@ -201,11 +233,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A044-P3-GIVE-REASONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A044-P003
   targets: []
   action: give reasons for the certificate decision
   norm_text: The notified body shall give reasons for its decision.
@@ -233,11 +268,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A044-P3-APPEAL-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A044-P003
   targets: []
   action: make an appeal procedure available against notified-body decisions, including certificate decisions
   norm_text: An appeal procedure against decisions of the notified bodies, including on conformity certificates
@@ -266,3 +304,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
