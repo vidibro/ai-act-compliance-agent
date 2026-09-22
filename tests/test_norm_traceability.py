@@ -452,10 +452,8 @@ def test_model_flaws_is_materialised_with_its_full_action_and_condition(spec):
     for verb in ("prevent", "detect", "respond to", "resolve", "control"):
         assert verb in criterion.action
     assert "model flaws" in criterion.action
-    assert criterion.conditions == [
-        "measures addressing the AI-specific vulnerability are appropriate"
-    ]
-    assert criterion.source_spans == ["AIA-TEXT-A015-P009"]
+    assert criterion.conditions == ["where appropriate"]
+    assert criterion.source_spans == ["AIA-TEXT-A015-P009", "AIA-TEXT-A016-P001"]
 
 
 def test_permissions_are_materialised_separately_from_obligation_criteria(spec):
@@ -1020,7 +1018,7 @@ def test_the_judge_rules_per_criterion_and_computes_the_rule(spec, llm_judge, mo
     assert f"- {MODEL_FLAWS}" in prompt
     action = "implement measures to prevent, detect, respond to, resolve, and control model flaws"
     assert action in prompt
-    assert "only where: measures addressing the AI-specific vulnerability are appropriate" in prompt
+    assert "only where: where appropriate" in prompt
     assert "AIA-NORM-A015-P4-REDUNDANCY" not in prompt
 
 

@@ -108,7 +108,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: High-risk AI systems that continue to learn after being placed on the market or put into service
       basis_segment_ids: [AIA-TEXT-A015-P006]
@@ -153,7 +153,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   conditions: &id003
-  - operator: all_of
+    operator: all_of
     operands:
     - text: where appropriate
       basis_segment_ids: [AIA-TEXT-A015-P009]

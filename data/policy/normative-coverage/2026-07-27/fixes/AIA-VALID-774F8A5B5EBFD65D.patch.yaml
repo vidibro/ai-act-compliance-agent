@@ -1,17 +1,9 @@
 schema_version: 1
 finding_id: AIA-VALID-774F8A5B5EBFD65D
 target_file: source-records/articles/018.yaml
-before_sha256: 5b9627f47f60bc529c5bf5c9bcc3d97c47fd3b018e12c513e3cbf69bbe20d03b
-after_sha256: 4588c62fefb29e20f05ea1ddce1540283caa481571e264abd6c8778b2c9c6006
+before_sha256: 9fdecb62c910da27e3407790afc125cee26da653f055afcbc79b86387e973a70
+after_sha256: 848c92e090a1145b4a67af21739742480160d0f115e5ec209ef9de428ee03658
 replacements:
-- old: "  action: determine conditions preserving authority access to Article 18(1)\
-    \ documentation after a locally\n    established provider or authorised representative\
-    \ becomes bankrupt or ceases activity early\n  actors:\n  - actor_ref: member_state\n\
-    \  targets: []"
-  new: "  action: determine conditions preserving authority access to Article 18(1)\
-    \ documentation after a locally\n    established provider or authorised representative\
-    \ becomes bankrupt or ceases activity early\n  conditions:\n  - a locally established\
-    \ provider or authorised representative becomes bankrupt or ceases activity before\n\
-    \    the ten-year period ends\n  actors:\n  - actor_ref: member_state\n  targets:\
-    \ []"
+- old: "  action: determine conditions preserving authority access to Article 18(1) documentation after a locally\n    established provider or authorised representative becomes bankrupt or ceases activity early\n  actors:\n  - actor_ref: member_state\n    basis_segment_ids: [AIA-TEXT-A018-P007]\n  targets: []"
+  new: "  action: determine conditions preserving authority access to Article 18(1) documentation after a locally\n    established provider or authorised representative becomes bankrupt or ceases activity early\n  conditions:\n    operator: all_of\n    operands:\n    - text: for the cases when a provider or its authorised representative established on its territory goes bankrupt or ceases its activity prior to the end of that period\n      basis_segment_ids: [AIA-TEXT-A018-P007]\n  actors:\n  - actor_ref: member_state\n    basis_segment_ids: [AIA-TEXT-A018-P007]\n  targets: []"
   expected_occurrences: 1

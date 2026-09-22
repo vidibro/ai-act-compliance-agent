@@ -13,7 +13,7 @@ audit:
   segments_scanned: 14
   norms_scanned: 10
   finding_count: 0
-  audit_sha256: 7b322e006a5fc824b7bbca6a9502c5e4f20609e68ac345117ff72e3804f3a883
+  audit_sha256: 39e63480dafafc7580b1aac4fff80ccef92b02c4ef2fb3efec993d6f1c6bb69e
 decisions:
 - finding_id: AIA-VALID-83E43D172407920D
   target: AIA-NORM-A014-P2-RISK-PREVENTION
@@ -27,5 +27,5 @@ decisions:
     patch proves the structural audit's preimage and correction.
   fix:
     patch_file: fixes/AIA-VALID-83E43D172407920D.patch.yaml
-    patch_sha256: 83197d39456e205218c6d75de1ce322e07d35fc5f17e0310f3aaeaf156f1b3b5
+    patch_sha256: 8d35e348d324284cc88c0fec58793b8bc007b69c01a209d4e7d183e72088d57c
   reviewed_by: vidibro

@@ -117,10 +117,25 @@ enforced_scope:
       - temporal_regime
   - kind: article
     document: "16"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "17"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "18"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "19"
   - kind: article

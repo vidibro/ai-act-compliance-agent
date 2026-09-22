@@ -66,12 +66,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: when a high-risk AI system is used in accordance with its intended purpose or under conditions
-          of reasonably foreseeable misuse
-        basis_segment_ids:
-        - AIA-TEXT-A014-P002
+    - text: when a high-risk AI system is used in accordance with its intended purpose or under conditions
+        of reasonably foreseeable misuse
+      basis_segment_ids:
+      - AIA-TEXT-A014-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -364,20 +362,16 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: For high-risk AI systems referred to in point 1(a) of Annex III
-        basis_segment_ids:
-        - AIA-TEXT-A014-P012
+    - text: For high-risk AI systems referred to in point 1(a) of Annex III
+      basis_segment_ids:
+      - AIA-TEXT-A014-P012
   exceptions:
-    operator: any_of
+    operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: unless that identification has been separately verified and confirmed by at least two natural
-          persons with the necessary competence, training and authority
-        basis_segment_ids:
-        - AIA-TEXT-A014-P012
+    - text: unless that identification has been separately verified and confirmed by at least two natural
+        persons with the necessary competence, training and authority
+      basis_segment_ids:
+      - AIA-TEXT-A014-P012
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -420,23 +414,19 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: high-risk AI systems used for the purposes of law enforcement, migration, border control
-          or asylum
-        basis_segment_ids:
-        - AIA-TEXT-A014-P013
-      - text: where Union or national law considers the application of this requirement to be disproportionate
-        basis_segment_ids:
-        - AIA-TEXT-A014-P013
+    - text: high-risk AI systems used for the purposes of law enforcement, migration, border control or
+        asylum
+      basis_segment_ids:
+      - AIA-TEXT-A014-P013
+    - text: where Union or national law considers the application of this requirement to be disproportionate
+      basis_segment_ids:
+      - AIA-TEXT-A014-P013
   exceptions:
-    operator: any_of
+    operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: shall not apply
-        basis_segment_ids:
-        - AIA-TEXT-A014-P013
+    - text: shall not apply
+      basis_segment_ids:
+      - AIA-TEXT-A014-P013
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''

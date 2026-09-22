@@ -149,11 +149,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where applicable
-        basis_segment_ids:
-        - AIA-TEXT-A013-P004
+    - text: where applicable
+      basis_segment_ids:
+      - AIA-TEXT-A013-P004
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -363,11 +361,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where applicable
-        basis_segment_ids:
-        - AIA-TEXT-A013-P009
+    - text: where applicable
+      basis_segment_ids:
+      - AIA-TEXT-A013-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -411,11 +407,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: when appropriate
-        basis_segment_ids:
-        - AIA-TEXT-A013-P010
+    - text: when appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A013-P010
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -460,11 +454,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: when appropriate
-        basis_segment_ids:
-        - AIA-TEXT-A013-P011
+    - text: when appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A013-P011
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -507,11 +499,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where applicable
-        basis_segment_ids:
-        - AIA-TEXT-A013-P012
+    - text: where applicable
+      basis_segment_ids:
+      - AIA-TEXT-A013-P012
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -553,11 +543,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: if any
-        basis_segment_ids:
-        - AIA-TEXT-A013-P013
+    - text: if any
+      basis_segment_ids:
+      - AIA-TEXT-A013-P013
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -686,11 +674,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where relevant
-        basis_segment_ids:
-        - AIA-TEXT-A013-P016
+    - text: where relevant
+      basis_segment_ids:
+      - AIA-TEXT-A013-P016
   exceptions: null
   mandatory_content: []
   product_scope: in_scope

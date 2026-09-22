@@ -1,11 +1,13 @@
 records:
 - norm_id: AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
   source: A018-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the technical documentation referred to in Article 11
   action: keep the Article 11 technical documentation available to national competent authorities until
     ten years after market placement or being put into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A018-P001]
   targets: []
   qualifier_spans: &id001
   - A018-P001
@@ -15,11 +17,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
   source: A018-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the documentation concerning the quality management system referred to in Article 17
   action: keep the Article 17 quality-management-system documentation available to national competent
     authorities until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A018-P001]
   targets: []
   qualifier_spans: *id001
   implementation_refs: *id002
@@ -27,39 +31,51 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A018-P1-C-APPROVED-CHANGES
   source: A018-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the documentation concerning the changes approved by notified bodies, where applicable
   action: keep documentation of changes approved by notified bodies available to national competent authorities
     until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A018-P001]
   targets: []
   qualifier_spans: *id001
   conditions:
-  - a notified body approved changes to the high-risk AI system
+    operator: all_of
+    operands:
+    - text: where applicable
+      basis_segment_ids: [AIA-TEXT-A018-P004]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
   source: A018-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the decisions and other documents issued by the notified bodies, where applicable
   action: keep notified-body decisions and other documents available to national competent authorities
     until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A018-P001]
   targets: []
   qualifier_spans: *id001
   conditions:
-  - a notified body issued decisions or other documents concerning the high-risk AI system
+    operator: all_of
+    operands:
+    - text: where applicable
+      basis_segment_ids: [AIA-TEXT-A018-P005]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
   source: A018-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the EU declaration of conformity referred to in Article 47
   action: keep the Article 47 EU declaration of conformity available to national competent authorities
     until ten years after market placement or being put into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A018-P001]
   targets: []
   qualifier_spans: *id001
   implementation_refs: *id002
@@ -67,6 +83,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS
   source: A018-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Each Member State shall determine conditions under which the documentation referred to in paragraph
     1 remains at the disposal of the national competent authorities for the period indicated in that paragraph
     for the cases when a provider or its authorised representative established on its territory goes bankrupt
@@ -74,10 +91,13 @@ records:
   action: determine conditions preserving authority access to Article 18(1) documentation after a locally
     established provider or authorised representative becomes bankrupt or ceases activity early
   conditions:
-  - a locally established provider or authorised representative becomes bankrupt or ceases activity before
-    the ten-year period ends
+    operator: all_of
+    operands:
+    - text: for the cases when a provider or its authorised representative established on its territory goes bankrupt or ceases its activity prior to the end of that period
+      basis_segment_ids: [AIA-TEXT-A018-P007]
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A018-P007]
   targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -86,6 +106,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
   source: A018-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Providers that are financial institutions subject to requirements regarding their internal governance,
     arrangements or processes under Union financial services law shall maintain the technical documentation
     as part of the documentation kept under the relevant Union financial services law.
@@ -93,10 +114,13 @@ records:
     financial-services law
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A018-P001]
   targets: []
   conditions:
-  - the provider is a financial institution subject to internal-governance requirements under Union financial-services
-    law
+    operator: all_of
+    operands:
+    - text: Providers that are financial institutions subject to requirements regarding their internal governance, arrangements or processes under Union financial services law
+      basis_segment_ids: [AIA-TEXT-A018-P008]
   implementation_refs:
   - AIA-RULE-PO-A18-3
   verification_mode: reported_not_judged

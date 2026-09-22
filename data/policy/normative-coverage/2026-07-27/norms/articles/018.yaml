@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A018-P001
   targets: []
   action: keep the Article 11 technical documentation available to national competent authorities until
     ten years after market placement or being put into service
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A018-P001
   targets: []
   action: keep the Article 17 quality-management-system documentation available to national competent
     authorities until ten years after market placement or being put into service
@@ -72,11 +77,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A018-P1-C-APPROVED-CHANGES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A018-P001
   targets: []
   action: keep documentation of changes approved by notified bodies available to national competent authorities
     until ten years after market placement or being put into service
@@ -92,7 +100,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a notified body approved changes to the high-risk AI system
+    - text: where applicable
       basis_segment_ids:
       - AIA-TEXT-A018-P004
   exceptions: null
@@ -113,11 +121,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A018-P001
   targets: []
   action: keep notified-body decisions and other documents available to national competent authorities
     until ten years after market placement or being put into service
@@ -133,7 +144,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a notified body issued decisions or other documents concerning the high-risk AI system
+    - text: where applicable
       basis_segment_ids:
       - AIA-TEXT-A018-P005
   exceptions: null
@@ -154,11 +165,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A018-P001
   targets: []
   action: keep the Article 47 EU declaration of conformity available to national competent authorities
     until ten years after market placement or being put into service
@@ -190,11 +204,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A018-P007
   targets: []
   action: determine conditions preserving authority access to Article 18(1) documentation after a locally
     established provider or authorised representative becomes bankrupt or ceases activity early
@@ -211,8 +228,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a locally established provider or authorised representative becomes bankrupt or ceases activity
-        before the ten-year period ends
+    - text: for the cases when a provider or its authorised representative established on its territory
+        goes bankrupt or ceases its activity prior to the end of that period
       basis_segment_ids:
       - AIA-TEXT-A018-P007
   exceptions: null
@@ -232,11 +249,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A018-P001
   targets: []
   action: maintain Article 11 technical documentation within the documentation kept under applicable Union
     financial-services law
@@ -253,8 +273,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider is a financial institution subject to internal-governance requirements under
-        Union financial-services law
+    - text: Providers that are financial institutions subject to requirements regarding their internal
+        governance, arrangements or processes under Union financial services law
       basis_segment_ids:
       - AIA-TEXT-A018-P008
   exceptions: null
@@ -275,3 +295,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

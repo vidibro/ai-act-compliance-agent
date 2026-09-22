@@ -13,7 +13,7 @@ audit:
   segments_scanned: 10
   norms_scanned: 14
   finding_count: 7
-  audit_sha256: 51edbeefd2375b3383544cd1f89a78ca7a3bcfe8b632532d18d61653d4168347
+  audit_sha256: 60b58fe191a4572d201cf14b6b505b3a5c5086f606c0b6c44ebefd8fffbc6907
 decisions:
 - finding_id: AIA-VALID-135096E293C37A15
   target: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
@@ -26,12 +26,12 @@ decisions:
     contains the Commission duty-holder, shall modality, cooperation qualifier, action,
     and object.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-D54121BFA6D1DD72
+- finding_id: AIA-VALID-FDFA4CE4FD72CF6F
   target: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: 03a6e7bce48d3fdc7677eae541aaea81f35c90a65741b5bf922ca018e42ed4d2
+  target_sha256: 55e2e9cd91cad21d29ce74ce17831d37b15e89ef914118d823285f695117353e
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
@@ -47,48 +47,48 @@ decisions:
     quote: ensure that their high-risk AI systems are compliant with the requirements
       set out in Section 2
   reviewed_by: vidibro
-- finding_id: AIA-VALID-644EE32A83383040
+- finding_id: AIA-VALID-3177D9B97DCB25F9
   target: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: f528318e85fe2db27eda637a0fbe57b5978b3d80944702bddd73dea0d09d6e31
+  target_sha256: e9ea7e6310188644e1553e0637488793f0f66da448bd32c707d172ec8bc518e1
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
     16(a).
   legal_basis: *id001
   reviewed_by: vidibro
-- finding_id: AIA-VALID-192A1B39B8E7DF8D
+- finding_id: AIA-VALID-A743489D3F54FE2C
   target: AIA-NORM-A015-P5-DATA-POISONING
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: 158ef8c2b71194335043e5dfa05085cff9d22eef441bec720ba33750420d5009
+  target_sha256: 3f8d0e30134b8ee6911b137655b1e66e4f06cc1c1fc85eef15be60c62dda9261
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
     16(a).
   legal_basis: *id001
   reviewed_by: vidibro
-- finding_id: AIA-VALID-7152BE4101451924
+- finding_id: AIA-VALID-0D56B4DF9D8A2F85
   target: AIA-NORM-A015-P5-MODEL-FLAWS
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: 39f651c6cfd233c6c15413ab46605d51c6102677d9f71f4ac3f7b891da9043e7
+  target_sha256: 56a70ded067cedc6fe1d9341af056f2b1d2da183de7617b694e52c37419d2f9a
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
     16(a).
   legal_basis: *id001
   reviewed_by: vidibro
-- finding_id: AIA-VALID-613A3793175131A0
+- finding_id: AIA-VALID-89C4CAB93D337F76
   target: AIA-NORM-A015-P5-MODEL-POISONING
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: 0a20519b9c3576b66f20c11b41344e2d8ca7a3e5a8e25c73e3747eaad0938c3c
+  target_sha256: f7542f802f0d18d46e2cd1b35b830793963cf1b141140e7433ab9363fb5fd488
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article

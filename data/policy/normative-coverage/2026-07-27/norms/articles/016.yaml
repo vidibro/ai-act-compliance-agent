@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: ensure high-risk AI systems comply with the requirements in Chapter III, Section 2
   norm_text: ensure that their high-risk AI systems are compliant with the requirements set out in Section
@@ -50,11 +52,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-B-PROVIDER-IDENTIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: "display the provider\u2019s name, registered trade name or registered trade mark, and contact\
     \ address on the system or, when that is not possible, on its packaging or accompanying documentation"
@@ -69,7 +74,12 @@ norms:
   - AIA-TEXT-A016-P003
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where that is not possible
+      basis_segment_ids:
+      - AIA-TEXT-A016-P003
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -88,11 +98,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-C-QUALITY-MANAGEMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: maintain a quality-management system complying with Article 17
   norm_text: have a quality management system in place which complies with Article 17
@@ -122,11 +135,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-D-KEEP-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: keep the documentation required by Article 18
   norm_text: keep the documentation referred to in Article 18
@@ -156,11 +172,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-E-KEEP-LOGS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: "keep automatically generated high-risk-system logs when they are under the provider\u2019s\
     \ control"
@@ -176,7 +195,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: "the automatically generated logs are under the provider\u2019s control"
+    - text: when under their control
       basis_segment_ids:
       - AIA-TEXT-A016-P006
   exceptions: null
@@ -196,11 +215,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-F-CONFORMITY-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: ensure the system completes the applicable Article 43 conformity-assessment procedure before
     market placement or being put into service
@@ -239,11 +261,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-G-EU-DECLARATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: draw up the Article 47 EU declaration of conformity
   norm_text: draw up an EU declaration of conformity in accordance with Article 47
@@ -275,11 +300,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-H-CE-MARKING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: affix the CE marking to the system or, when that is not possible, its packaging or accompanying
     documentation in accordance with Article 48
@@ -294,7 +322,12 @@ norms:
   - AIA-TEXT-A016-P009
   qualifier_spans:
   - AIA-TEXT-A016-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where that is not possible
+      basis_segment_ids:
+      - AIA-TEXT-A016-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -313,11 +346,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-I-REGISTRATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: comply with the Article 49(1) registration obligations
   norm_text: comply with the registration obligations referred to in Article 49(1)
@@ -348,11 +384,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-J-CORRECTIVE-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: take necessary corrective actions and provide the information required by Article 20
   norm_text: take the necessary corrective actions and provide information as required in Article 20
@@ -382,11 +421,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: demonstrate system conformity with Section 2 upon a reasoned request from a national competent
     authority
@@ -403,7 +445,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a national competent authority makes a reasoned request
+    - text: upon a reasoned request of a national competent authority
       basis_segment_ids:
       - AIA-TEXT-A016-P012
   exceptions: null
@@ -424,11 +466,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A016-L-ACCESSIBILITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: ensure the high-risk AI system complies with the applicable accessibility requirements in Directives
     (EU) 2016/2102 and (EU) 2019/882
@@ -461,3 +506,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

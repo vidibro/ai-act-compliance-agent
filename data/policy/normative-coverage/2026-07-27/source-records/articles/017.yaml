@@ -1,11 +1,13 @@
 records:
 - norm_id: AIA-NORM-A017-P1-QMS
   source: A017-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Providers of high-risk AI systems shall put a quality management system in place that ensures
     compliance with this Regulation.
   action: establish a quality-management system that ensures compliance with the Regulation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   implementation_refs: &id001
   - AIA-RULE-PO-A17
@@ -13,24 +15,28 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
   source: A017-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: That system shall be documented in a systematic and orderly manner in the form of written policies,
     procedures and instructions
   action: document the quality-management system systematically and orderly through written policies,
     procedures, and instructions
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-A-REGULATORY-STRATEGY
   source: A017-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: a strategy for regulatory compliance, including compliance with conformity assessment procedures
     and procedures for the management of modifications to the high-risk AI system
   action: include a regulatory-compliance strategy covering conformity assessment and management of system
     modifications
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: &id002
   - A017-P001
@@ -39,12 +45,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-B-DESIGN-PROCESSES
   source: A017-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: techniques, procedures and systematic actions to be used for the design, design control and design
     verification of the high-risk AI system
   action: include techniques, procedures, and systematic actions for system design, design control, and
     design verification
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -52,12 +60,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-C-DEVELOPMENT-PROCESSES
   source: A017-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: techniques, procedures and systematic actions to be used for the development, quality control
     and quality assurance of the high-risk AI system
   action: include techniques, procedures, and systematic actions for system development, quality control,
     and quality assurance
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -65,12 +75,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-D-TESTING-PROCESSES
   source: A017-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: examination, test and validation procedures to be carried out before, during and after the development
     of the high-risk AI system, and the frequency with which they have to be carried out
   action: include examination, testing, and validation procedures covering the periods before, during,
     and after development and specifying their frequency
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -78,6 +90,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-E-SPECIFICATIONS
   source: A017-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: technical specifications, including standards, to be applied and, where the relevant harmonised
     standards are not applied in full or do not cover all of the relevant requirements set out in Section
     2, the means to be used to ensure that the high-risk AI system complies with those requirements
@@ -85,13 +98,20 @@ records:
     Section 2 compliance where harmonised standards are incomplete or insufficient
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
+  conditions:
+    operator: all_of
+    operands:
+    - text: where the relevant harmonised standards are not applied in full or do not cover all of the relevant requirements set out in Section 2
+      basis_segment_ids: [AIA-TEXT-A017-P006]
   implementation_refs: *id001
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-F-DATA-MANAGEMENT
   source: A017-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: systems and procedures for data management, including data acquisition, data collection, data
     analysis, data labelling, data storage, data filtration, data mining, data aggregation, data retention
     and any other operation regarding the data that is performed before and for the purpose of the placing
@@ -100,6 +120,7 @@ records:
     or pre-service data operations
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -107,10 +128,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-G-RISK-MANAGEMENT
   source: A017-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the risk management system referred to in Article 9
   action: include the Article 9 risk-management system in the quality-management system
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -118,12 +141,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
   source: A017-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the setting-up, implementation and maintenance of a post-market monitoring system, in accordance
     with Article 72
   action: include the establishment, implementation, and maintenance of an Article 72 post-market monitoring
     system
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -131,10 +156,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-I-INCIDENT-REPORTING
   source: A017-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: procedures related to the reporting of a serious incident in accordance with Article 73
   action: include procedures for reporting serious incidents under Article 73
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -142,6 +169,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-J-COMMUNICATION
   source: A017-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the handling of communication with national competent authorities, other relevant authorities,
     including those providing or supporting the access to data, notified bodies, other operators, customers
     or other interested parties
@@ -149,6 +177,7 @@ records:
     customers, and interested parties
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -156,10 +185,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-K-RECORD-KEEPING
   source: A017-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: systems and procedures for record-keeping of all relevant documentation and information
   action: include systems and procedures for keeping all relevant documentation and information
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -167,10 +198,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-L-RESOURCE-MANAGEMENT
   source: A017-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: resource management, including security-of-supply related measures
   action: include resource management and security-of-supply measures
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -178,12 +211,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-M-ACCOUNTABILITY
   source: A017-P014
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: an accountability framework setting out the responsibilities of the management and other staff
     with regard to all the aspects listed in this paragraph
   action: include an accountability framework assigning management and staff responsibilities for every
     Article 17(1) aspect
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -191,6 +226,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
   source: A017-P015
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: "The implementation of the aspects referred to in paragraph 1 shall be proportionate to the size\
     \ of the provider\u2019s organisation, in particular, if the provider is an SME, including a start-up,\
     \ or an SMC."
@@ -198,24 +234,28 @@ records:
     \ particularly for SMEs, start-ups, and SMCs"
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P2-RIGOUR-PROTECTION
   source: A017-P015
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Providers shall, in any event, respect the degree of rigour and the level of protection required
     to ensure the compliance of their high-risk AI systems with this Regulation.
   action: preserve the degree of rigour and protection required for system compliance regardless of provider
     size
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   implementation_refs: *id001
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P3-SECTORAL-INTEGRATION
   source: A017-P016
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Providers of high-risk AI systems that are subject to obligations regarding quality management
     systems or an equivalent function under relevant sectoral Union law may include the aspects listed
     in paragraph 1 as part of the quality management systems pursuant to that law.
@@ -223,11 +263,14 @@ records:
     Union law
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   kind: permission
   conditions:
-  - the provider is subject to quality-management-system or equivalent obligations under relevant sectoral
-    Union law
+    operator: all_of
+    operands:
+    - text: Providers of high-risk AI systems that are subject to obligations regarding quality management systems or an equivalent function under relevant sectoral Union law
+      basis_segment_ids: [AIA-TEXT-A017-P016]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A17
@@ -235,6 +278,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P4-FINANCIAL-DEEMING
   source: A017-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the obligation to put in place a quality management system, with the exception of paragraph 1,
     points (g), (h) and (i) of this Article, shall be deemed to be fulfilled by complying with the rules
     on internal governance arrangements or processes pursuant to the relevant Union financial services
@@ -243,13 +287,19 @@ records:
     governance rules, except for points (g), (h), and (i)
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   kind: legal_consequence
   conditions:
-  - the provider is a financial institution subject to internal-governance requirements under Union financial-services
-    law
+    operator: all_of
+    operands:
+    - text: For providers that are financial institutions subject to requirements regarding their internal governance, arrangements or processes under Union financial services law
+      basis_segment_ids: [AIA-TEXT-A017-P017]
   exceptions:
-  - Article 17(1)(g), (h), and (i) remain independently required
+    operator: all_of
+    operands:
+    - text: with the exception of paragraph 1, points (g), (h) and (i) of this Article
+      basis_segment_ids: [AIA-TEXT-A017-P017]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A17
@@ -257,15 +307,19 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P4-HARMONISED-STANDARDS
   source: A017-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: To that end, any harmonised standards referred to in Article 40 shall be taken into account.
   action: take applicable Article 40 harmonised standards into account when relying on the financial-institution
     governance route
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A017-P001]
   targets: []
   conditions:
-  - the provider relies on Union financial-services governance compliance to fulfil the Article 17 QMS
-    obligation
+    operator: all_of
+    operands:
+    - text: For providers that are financial institutions subject to requirements regarding their internal governance, arrangements or processes under Union financial services law
+      basis_segment_ids: [AIA-TEXT-A017-P017]
   implementation_refs:
   - AIA-RULE-PO-A17-4
   verification_mode: reported_not_judged

@@ -3,12 +3,17 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '17'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 18
   norms_scanned: 20
   finding_count: 3
-  audit_sha256: 553ca10f264313820f14289c7115be07b25d94f9e6be47c0600eb3e2e9be3f3e
+  audit_sha256: 25496036c760f49b47045fa9501830f937d58fce00c154ecaf783e7a963fa47d
 decisions:
 - finding_id: AIA-VALID-61D9AC963E66CBF0
   target: AIA-TEXT-A017-P001
@@ -28,9 +33,9 @@ decisions:
       the form of written policies, procedures and instructions, and shall include
       at least the following aspects:'
   reviewed_by: vidibro
-- finding_id: AIA-VALID-C96B327A7FEA05BA
+- finding_id: AIA-VALID-85449D081403A790
   target: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
-  rule: condition_not_structured_or_retained_in_action
+  rule: condition_expression_missing
   source_ref: AIA-TEXT-A017-P015
   source_sha256: 510f9c76714481f23e99914760fc62ee46091684dd2c70c256a34fb8f2bdd05a
   target_sha256: 46f1cc11f8ca4a4091b7a936b9dd09bd4f3edf32c7bed6ccf681bd952da7a5f1
@@ -40,12 +45,12 @@ decisions:
     \ obligation conditional. The action retains proportionality and expressly names\
     \ SMEs, start-ups and SMCs."
   reviewed_by: vidibro
-- finding_id: AIA-VALID-87FF392123F03574
+- finding_id: AIA-VALID-A53C7320B8E7F72F
   target: AIA-NORM-A017-P4-FINANCIAL-DEEMING
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A017-P017
   source_sha256: d41d3cac84501cac7b0999fbed08417d53d7e5772289a62c91b9fb6500ee0a54
-  target_sha256: 9b39e60d64750a5419c0d65382e037822452ba85491d54e1e54ecbe0483a4e04
+  target_sha256: 1a4c932b6324b21caf155b5139f04f27a1ffc87828677872dd3ab5ff3fc31677
   decision: accepted_with_basis
   reason: "The norm\u2019s structured condition retains the financial-institution\
     \ gate and its exception retains points (g), (h) and (i). Together with the recorded\

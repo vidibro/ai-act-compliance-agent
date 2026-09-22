@@ -3,12 +3,17 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '18'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 9
   norms_scanned: 7
   finding_count: 0
-  audit_sha256: 391d4eb08284626ffed2e67a19a86e28d697356296ad4adb3aed7bc28577d779
+  audit_sha256: 085477defc439582c90579271680e9c0b987197d5e9e1c79a5106ec04f8db042
 decisions:
 - finding_id: AIA-VALID-774F8A5B5EBFD65D
   target: AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS
@@ -22,5 +27,5 @@ decisions:
     scope without relying on a paraphrase in the action.
   fix:
     patch_file: fixes/AIA-VALID-774F8A5B5EBFD65D.patch.yaml
-    patch_sha256: 6b685dba797b9b2f8c9ec9ddcf8cfaafb05a2309d4f0b290e71341be955bda3f
+    patch_sha256: 4cb58a88858d3d88d5cdeb00dc84aa6b08d0885fad9637ffce9d9d5335673a94
   reviewed_by: vidibro

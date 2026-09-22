@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: establish a quality-management system that ensures compliance with the Regulation
   norm_text: Providers of high-risk AI systems shall put a quality management system in place that ensures
@@ -35,11 +37,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: document the quality-management system systematically and orderly through written policies,
     procedures, and instructions
@@ -71,11 +76,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-A-REGULATORY-STRATEGY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include a regulatory-compliance strategy covering conformity assessment and management of system
     modifications
@@ -108,11 +116,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-B-DESIGN-PROCESSES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include techniques, procedures, and systematic actions for system design, design control, and
     design verification
@@ -145,11 +156,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-C-DEVELOPMENT-PROCESSES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include techniques, procedures, and systematic actions for system development, quality control,
     and quality assurance
@@ -182,11 +196,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-D-TESTING-PROCESSES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include examination, testing, and validation procedures covering the periods before, during,
     and after development and specifying their frequency
@@ -219,11 +236,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-E-SPECIFICATIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include applicable technical specifications and standards and the alternative means used for
     Section 2 compliance where harmonised standards are incomplete or insufficient
@@ -238,7 +258,13 @@ norms:
   - AIA-TEXT-A017-P006
   qualifier_spans:
   - AIA-TEXT-A017-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where the relevant harmonised standards are not applied in full or do not cover all of the
+        relevant requirements set out in Section 2
+      basis_segment_ids:
+      - AIA-TEXT-A017-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -257,11 +283,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-F-DATA-MANAGEMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include data-management systems and procedures covering all listed and other relevant pre-market
     or pre-service data operations
@@ -296,11 +325,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-G-RISK-MANAGEMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include the Article 9 risk-management system in the quality-management system
   norm_text: the risk management system referred to in Article 9
@@ -331,11 +363,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include the establishment, implementation, and maintenance of an Article 72 post-market monitoring
     system
@@ -368,11 +403,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-I-INCIDENT-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include procedures for reporting serious incidents under Article 73
   norm_text: procedures related to the reporting of a serious incident in accordance with Article 73
@@ -403,11 +441,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-J-COMMUNICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include processes for handling communication with all listed authorities, bodies, operators,
     customers, and interested parties
@@ -441,11 +482,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-K-RECORD-KEEPING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include systems and procedures for keeping all relevant documentation and information
   norm_text: systems and procedures for record-keeping of all relevant documentation and information
@@ -476,11 +520,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-L-RESOURCE-MANAGEMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include resource management and security-of-supply measures
   norm_text: resource management, including security-of-supply related measures
@@ -511,11 +558,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P1-M-ACCOUNTABILITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: include an accountability framework assigning management and staff responsibilities for every
     Article 17(1) aspect
@@ -548,11 +598,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: "implement the Article 17(1) aspects proportionately to the provider\u2019s organisational size,\
     \ particularly for SMEs, start-ups, and SMCs"
@@ -585,11 +638,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P2-RIGOUR-PROTECTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: preserve the degree of rigour and protection required for system compliance regardless of provider
     size
@@ -621,11 +677,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P3-SECTORAL-INTEGRATION
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: integrate the Article 17(1) aspects into a quality-management system required by relevant sectoral
     Union law
@@ -642,8 +701,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider is subject to quality-management-system or equivalent obligations under relevant
-        sectoral Union law
+    - text: Providers of high-risk AI systems that are subject to obligations regarding quality management
+        systems or an equivalent function under relevant sectoral Union law
       basis_segment_ids:
       - AIA-TEXT-A017-P016
   exceptions: null
@@ -664,11 +723,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P4-FINANCIAL-DEEMING
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: deem the Article 17 QMS obligation fulfilled through compliance with applicable Union financial-services
     governance rules, except for points (g), (h), and (i)
@@ -687,14 +749,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider is a financial institution subject to internal-governance requirements under
-        Union financial-services law
+    - text: For providers that are financial institutions subject to requirements regarding their internal
+        governance, arrangements or processes under Union financial services law
       basis_segment_ids:
       - AIA-TEXT-A017-P017
   exceptions:
-    operator: any_of
+    operator: all_of
     operands:
-    - text: Article 17(1)(g), (h), and (i) remain independently required
+    - text: with the exception of paragraph 1, points (g), (h) and (i) of this Article
       basis_segment_ids:
       - AIA-TEXT-A017-P017
   mandatory_content: []
@@ -714,11 +776,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A017-P4-HARMONISED-STANDARDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: take applicable Article 40 harmonised standards into account when relying on the financial-institution
     governance route
@@ -733,8 +798,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider relies on Union financial-services governance compliance to fulfil the Article
-        17 QMS obligation
+    - text: For providers that are financial institutions subject to requirements regarding their internal
+        governance, arrangements or processes under Union financial services law
       basis_segment_ids:
       - AIA-TEXT-A017-P017
   exceptions: null
@@ -755,3 +820,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

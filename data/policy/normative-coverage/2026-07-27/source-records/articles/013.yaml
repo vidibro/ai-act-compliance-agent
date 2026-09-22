@@ -65,7 +65,7 @@ records:
   qualifier_spans: &id002
   - A013-P003
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: where applicable
       basis_segment_ids: [AIA-TEXT-A013-P004]
@@ -150,7 +150,7 @@ records:
   targets: []
   qualifier_spans: *id004
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: where applicable
       basis_segment_ids: [AIA-TEXT-A013-P009]
@@ -170,7 +170,7 @@ records:
   targets: []
   qualifier_spans: *id004
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: when appropriate
       basis_segment_ids: [AIA-TEXT-A013-P010]
@@ -191,7 +191,7 @@ records:
   targets: []
   qualifier_spans: *id004
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: when appropriate
       basis_segment_ids: [AIA-TEXT-A013-P011]
@@ -210,7 +210,7 @@ records:
   targets: []
   qualifier_spans: *id004
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: where applicable
       basis_segment_ids: [AIA-TEXT-A013-P012]
@@ -229,7 +229,7 @@ records:
   targets: []
   qualifier_spans: *id002
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: if any
       basis_segment_ids: [AIA-TEXT-A013-P013]
@@ -287,7 +287,7 @@ records:
   targets: []
   qualifier_spans: *id002
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
     - text: where relevant
       basis_segment_ids: [AIA-TEXT-A013-P016]

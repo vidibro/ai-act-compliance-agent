@@ -261,12 +261,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: High-risk AI systems that continue to learn after being placed on the market or put into
-          service
-        basis_segment_ids:
-        - AIA-TEXT-A015-P006
+    - text: High-risk AI systems that continue to learn after being placed on the market or put into service
+      basis_segment_ids:
+      - AIA-TEXT-A015-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -383,11 +380,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where appropriate
-        basis_segment_ids:
-        - AIA-TEXT-A015-P009
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -427,11 +422,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where appropriate
-        basis_segment_ids:
-        - AIA-TEXT-A015-P009
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -471,11 +464,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where appropriate
-        basis_segment_ids:
-        - AIA-TEXT-A015-P009
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -514,11 +505,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where appropriate
-        basis_segment_ids:
-        - AIA-TEXT-A015-P009
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -557,11 +546,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: where appropriate
-        basis_segment_ids:
-        - AIA-TEXT-A015-P009
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A015-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
