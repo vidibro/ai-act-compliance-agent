@@ -3,10 +3,15 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '22'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 10
   norms_scanned: 14
   finding_count: 0
-  audit_sha256: 09947b4db8c1c9fda95474774fa722cfa60c293409943c996ecf7484a0c18d87
+  audit_sha256: cda5514ff0e44261c13dc76a511f79e4c0db41e27beadc7b3e997414d1debde0
 decisions: []

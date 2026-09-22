@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: verify the required CE marking before making a high-risk AI system available on the market
   norm_text: Before making a high-risk AI system available on the market, distributors shall verify that
@@ -19,7 +21,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: before making the high-risk AI system available on the market
+    - text: Before making a high-risk AI system available on the market
       basis_segment_ids:
       - AIA-TEXT-A024-P001
   exceptions: null
@@ -40,11 +42,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P1-VERIFY-ACCOMPANYING-DOCUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: verify that the system is accompanied by its EU declaration of conformity and instructions for
     use
@@ -59,7 +64,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: before making the high-risk AI system available on the market
+    - text: Before making a high-risk AI system available on the market
       basis_segment_ids:
       - AIA-TEXT-A024-P001
   exceptions: null
@@ -82,11 +87,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: verify applicable provider and importer compliance with the three specified identification and
     quality-management duties
@@ -101,7 +109,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: before making the high-risk AI system available on the market
+    - text: Before making a high-risk AI system available on the market
       basis_segment_ids:
       - AIA-TEXT-A024-P001
   exceptions: null
@@ -125,11 +133,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P2-WITHHOLD-NONCONFORMING-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: withhold a suspected Section 2 non-conforming system from the market until it has been brought
     into conformity
@@ -147,8 +158,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the distributor considers or has reason to consider from its information that the system is
-        not Section 2 compliant
+    - text: Where a distributor considers or has reason to consider, on the basis of the information in
+        its possession, that a high-risk AI system is not in conformity with the requirements set out
+        in Section 2
       basis_segment_ids:
       - AIA-TEXT-A024-P002
   exceptions: null
@@ -169,11 +181,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P2-INFORM-RISK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: inform the provider or importer, as applicable, that the system presents an Article 79(1) risk
   norm_text: where the high-risk AI system presents a risk within the meaning of Article 79(1), the distributor
@@ -188,7 +203,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system presents a risk within the meaning of Article 79(1)
+    - text: where the high-risk AI system presents a risk within the meaning of Article 79(1)
       basis_segment_ids:
       - AIA-TEXT-A024-P002
   exceptions: null
@@ -209,11 +224,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P3-PRESERVE-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while
     the system is under the distributor's responsibility
@@ -230,10 +248,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is under the distributor's responsibility
+    - text: while a high-risk AI system is under their responsibility
       basis_segment_ids:
       - AIA-TEXT-A024-P003
-    - text: storage or transport conditions are applicable
+    - text: where applicable
       basis_segment_ids:
       - AIA-TEXT-A024-P003
   exceptions: null
@@ -254,11 +272,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P4-CORRECTIVE-RESPONSE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: take the necessary conformity, withdrawal, or recall action, or ensure an appropriate relevant
     operator takes it
@@ -275,8 +296,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the distributor considers or has reason to consider from its information that a system it
-        made available is not Section 2 compliant
+    - text: A distributor that considers or has reason to consider, on the basis of the information in
+        its possession, a high-risk AI system which it has made available on the market not to be in conformity
+        with the requirements set out in Section 2
       basis_segment_ids:
       - AIA-TEXT-A024-P004
   exceptions: null
@@ -297,11 +319,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P4-NOTIFY-RISK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: immediately notify the provider or importer and competent authorities of the risk, non-compliance,
     and corrective actions
@@ -319,7 +344,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system presents a risk within the meaning of Article 79(1)
+    - text: Where the high-risk AI system presents a risk within the meaning of Article 79(1)
       basis_segment_ids:
       - AIA-TEXT-A024-P004
   exceptions: null
@@ -344,11 +369,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A024-P4-IMMEDIATE-RISK-NOTICE
 - norm_id: AIA-NORM-A024-P5-PROVIDE-ACTION-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: provide a requesting authority with information and documentation about paragraph 1 to 4 actions
     necessary to demonstrate Section 2 conformity
@@ -366,7 +394,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a relevant competent authority makes a reasoned request
+    - text: Upon a reasoned request from a relevant competent authority
       basis_segment_ids:
       - AIA-TEXT-A024-P005
   exceptions: null
@@ -387,11 +415,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A024-P6-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A024-P001
   targets: []
   action: cooperate in competent-authority actions concerning systems the distributor made available,
     particularly risk reduction or mitigation
@@ -424,3 +455,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

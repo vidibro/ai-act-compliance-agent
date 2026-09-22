@@ -3,19 +3,24 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '24'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 7
   norms_scanned: 10
   finding_count: 4
-  audit_sha256: 29b814fe291a5460b6da69ccc281efdb1893d99f91608c8227a9db737b222fa1
+  audit_sha256: c58853b0ba6862fd70bdfd69a7eaee05b9491f69da9429fe4290095c29afdcf4
 decisions:
-- finding_id: AIA-VALID-B71C206EA220FC8A
+- finding_id: AIA-VALID-195139F0F4F9FFD7
   target: AIA-NORM-A024-P1-VERIFY-ACCOMPANYING-DOCUMENTS
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A024-P001
   source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
-  target_sha256: 57f53d864250056f120209e6ffc6e5f9656c97820d6e832aeabd2c785af11ba5
+  target_sha256: 047345f82736d572824013884ecfa83c00ed7b043d300e37699c9d3584c0ee17
   decision: accepted_with_basis
   reason: "The canonical norm retains the distributor, pre-market condition, verification\
     \ action, and both mandatory accompanying documents. The leading \u201Cthat\u201D\
@@ -27,12 +32,12 @@ decisions:
     quote: that it is accompanied by a copy of the EU declaration of conformity referred
       to in Article 47 and instructions for use
   reviewed_by: vidibro
-- finding_id: AIA-VALID-946E85650B0AA4EC
+- finding_id: AIA-VALID-C4F494AA0C78771F
   target: AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A024-P001
   source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
-  target_sha256: 27e5bdf23711f8c8b1c97b5a05d221bdce6b0b66bec7db007c5404f239d0cd62
+  target_sha256: 366548711bf2c1c178b23183cbdf717774c61902ea04d422a62244248b439636
   decision: accepted_with_basis
   reason: "The canonical norm retains the distributor and pre-market verification\
     \ duty, with every one of the three exhaustive Article 16(b), 16(c), and 23(3)\
@@ -45,12 +50,12 @@ decisions:
       complied with their respective obligations as laid down in Article 16, points
       (b) and (c) and Article 23(3)
   reviewed_by: vidibro
-- finding_id: AIA-VALID-332B5BFC3925B813
+- finding_id: AIA-VALID-40E67F133161BB69
   target: AIA-NORM-A024-P2-INFORM-RISK
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A024-P002
   source_sha256: 0a9ef7ff3a2cce77f01dc42c26dfe5885cee4900bb1ca38dc6aeb2c3eef0a92a
-  target_sha256: 6318944bffca49b7cb02b8fc056acbc6eba94620cc57f07967017a8fd7bb5ea5
+  target_sha256: c9b43aa6bdbda40abd742f2c55a20775a472cb423eee454798a9fa001938b08c
   decision: accepted_with_basis
   reason: The canonical norm retains the Article 79(1) risk trigger, notification
     action, and the applicable provider-or-importer recipient. The fragment is a complete
@@ -62,12 +67,12 @@ decisions:
       79(1), the distributor shall inform the provider or the importer of the system,
       as applicable, to that effect
   reviewed_by: vidibro
-- finding_id: AIA-VALID-F67496A9B784CBD5
+- finding_id: AIA-VALID-AC5B709D61DB39A9
   target: AIA-NORM-A024-P4-CORRECTIVE-RESPONSE
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A024-P004
   source_sha256: 20aa331a960d7dfb2f378a1d54b60ab73f368bcc3cf38834154044cd7f02cfeb
-  target_sha256: f6d939ba557526f3f16ab49ddcebe15b7d397d3d64b081e139376c0c8da909f5
+  target_sha256: bae9d2538edf51e40891f4f36647fa542fc088ffd14ac08dab1ca7c4b1059e4e
   decision: accepted_with_basis
   reason: 'The canonical action retains every allowed corrective route: the distributor
     acts itself to restore conformity, withdraw, or recall; alternatively it ensures
@@ -93,5 +98,5 @@ decisions:
     \ as structured conditions. The exact patch binds the audit finding to that correction."
   fix:
     patch_file: fixes/AIA-VALID-63729BED49FFB7B8.patch.yaml
-    patch_sha256: 9abadb383df3ba575c158ca118177e0fc9b88415174085e319710b0066719ed5
+    patch_sha256: 7a9cc2bc14e7c695fff452e56af4f499a7a5aeac64dc2084c8656920162ca445
   reviewed_by: vidibro

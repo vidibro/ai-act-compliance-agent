@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: appoint an authorised representative established in the Union by written mandate before making
     a high-risk AI system available on the Union market
@@ -21,7 +23,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider is established in a third country
+    - text: providers established in third countries
       basis_segment_ids:
       - AIA-TEXT-A022-P001
   exceptions: null
@@ -42,11 +44,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: enable the authorised representative to perform every task specified in its mandate
   norm_text: The provider shall enable its authorised representative to perform the tasks specified in
@@ -77,11 +82,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-PERFORM-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: perform the tasks specified in the mandate received from the provider
   norm_text: The authorised representative shall perform the tasks specified in the mandate received from
@@ -112,11 +120,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-PROVIDE-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: provide a copy of the mandate to market-surveillance authorities on request in an official EU-institution
     language indicated by the competent authority
@@ -132,7 +143,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a market-surveillance authority requests a copy of the mandate
+    - text: upon request
       basis_segment_ids:
       - AIA-TEXT-A022-P003
   exceptions: null
@@ -153,11 +164,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: ensure the written mandate empowers the authorised representative to perform every Article 22(3)(a)
     to (e) task and to be addressed by competent authorities on all compliance issues alongside or instead
@@ -176,7 +190,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider appoints an authorised representative under Article 22(1)
+    - text: For the purposes of this Regulation
       basis_segment_ids:
       - AIA-TEXT-A022-P003
   exceptions: null
@@ -204,11 +218,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-A-VERIFY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: verify that the EU declaration and technical documentation exist and that the provider completed
     an appropriate conformity assessment
@@ -242,11 +259,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-B-KEEP-RECORDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: keep the listed provider, conformity, technical, and applicable certification records available
     to the specified authorities for 10 years after the high-risk AI system is placed on the market or
@@ -267,8 +287,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the 10-year retention period begins after the high-risk AI system is placed on the market
-        or put into service
+    - text: for a period of 10 years after the high-risk AI system has been placed on the market or put
+        into service
       basis_segment_ids:
       - AIA-TEXT-A022-P005
   exceptions: null
@@ -293,11 +313,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: provide a requesting competent authority with all information and documentation necessary to
     demonstrate Section 2 conformity
@@ -315,7 +338,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a competent authority makes a reasoned request
+    - text: upon a reasoned request
       basis_segment_ids:
       - AIA-TEXT-A022-P006
   exceptions: null
@@ -336,11 +359,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: provide the requesting authority access to Article 12(1) logs under the provider's control
   norm_text: including access to the logs, as referred to in Article 12(1), automatically generated by
@@ -356,10 +382,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a competent authority makes a reasoned request
+    - text: upon a reasoned request
       basis_segment_ids:
       - AIA-TEXT-A022-P006
-    - text: the applicable automatically generated logs are under the provider's control
+    - text: to the extent such logs are under the control of the provider
       basis_segment_ids:
       - AIA-TEXT-A022-P006
   exceptions: null
@@ -380,11 +406,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-D-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: cooperate in requested authority actions concerning the system, particularly risk reduction
     and mitigation
@@ -402,7 +431,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a competent authority makes a reasoned request
+    - text: upon a reasoned request
       basis_segment_ids:
       - AIA-TEXT-A022-P007
   exceptions: null
@@ -423,11 +452,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-E-REGISTER
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: comply with the applicable Article 49(1) registration obligations
   norm_text: where applicable, comply with the registration obligations referred to in Article 49(1)
@@ -442,7 +474,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: Article 49(1) registration obligations apply to the representative
+    - text: where applicable
       basis_segment_ids:
       - AIA-TEXT-A022-P008
   exceptions: null
@@ -463,11 +495,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: ensure the provider's Annex VIII Section A point 3 registration information is correct
   norm_text: if the registration is carried out by the provider itself, ensure that the information referred
@@ -483,7 +518,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider carries out the registration itself
+    - text: if the registration is carried out by the provider itself
       basis_segment_ids:
       - AIA-TEXT-A022-P008
   exceptions: null
@@ -504,11 +539,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P4-TERMINATE-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: terminate the mandate when the provider is considered to be acting contrary to its obligations
     under the Regulation
@@ -524,8 +562,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the representative considers or has reason to consider that the provider is acting contrary
-        to its obligations under the Regulation
+    - text: if it considers or has reason to consider the provider to be acting contrary to its obligations
+        pursuant to this Regulation
       basis_segment_ids:
       - AIA-TEXT-A022-P009
   exceptions: null
@@ -546,11 +584,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A022-P4-NOTIFY-TERMINATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A022-P001
   targets: []
   action: immediately inform the relevant market-surveillance authority and applicable notified body of
     the mandate termination and its reasons
@@ -567,8 +608,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the representative considers or has reason to consider that the provider is acting contrary
-        to its obligations under the Regulation
+    - text: if it considers or has reason to consider the provider to be acting contrary to its obligations
+        pursuant to this Regulation
       basis_segment_ids:
       - AIA-TEXT-A022-P009
   exceptions: null
@@ -589,3 +630,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A022-P4-IMMEDIATE-TERMINATION-NOTICE

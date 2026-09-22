@@ -1,15 +1,20 @@
 records:
 - norm_id: AIA-NORM-A023-P1-A-VERIFY-CONFORMITY-ASSESSMENT
   source: A023-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the relevant conformity assessment procedure referred to in Article 43 has been carried out by
     the provider of the high-risk AI system
   action: verify that the provider carried out the relevant Article 43 conformity-assessment procedure
     before the system is placed on the market
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions: &id001
-  - before placing the high-risk AI system on the market
+    operator: all_of
+    operands:
+    - text: Before placing a high-risk AI system on the market
+      basis_segment_ids: [AIA-TEXT-A023-P001]
   implementation_refs: &id002
   - AIA-RULE-IM-A23
   verification_mode: reported_not_judged
@@ -18,12 +23,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P1-B-VERIFY-TECHNICAL-DOCUMENTATION
   source: A023-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the provider has drawn up the technical documentation in accordance with Article 11 and Annex
     IV
   action: verify that the provider drew up technical documentation compliant with Article 11 and Annex
     IV before the system is placed on the market
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions: *id001
   implementation_refs: *id002
@@ -32,12 +39,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P1-C-VERIFY-MARKING-AND-DOCUMENTS
   source: A023-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the system bears the required CE marking and is accompanied by the EU declaration of conformity
     referred to in Article 47 and instructions for use
   action: verify that the system has the required CE marking and is accompanied by its EU declaration
     and instructions before market placement
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions: *id001
   implementation_refs: *id002
@@ -50,11 +59,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P1-D-VERIFY-REPRESENTATIVE
   source: A023-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the provider has appointed an authorised representative in accordance with Article 22(1)
   action: verify that the provider appointed an authorised representative under Article 22(1) before the
     system is placed on the market
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions: *id001
   implementation_refs: *id002
@@ -63,6 +74,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM
   source: A023-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Where an importer has sufficient reason to consider that a high-risk AI system is not in conformity
     with this Regulation, or is falsified, or accompanied by falsified documentation, it shall not place
     the system on the market until it has been brought into conformity.
@@ -70,15 +82,19 @@ records:
     into conformity
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions:
-  - the importer has sufficient reason to consider the system non-conforming or falsified, or its documentation
-    falsified
+    operator: all_of
+    operands:
+    - text: Where an importer has sufficient reason to consider that a high-risk AI system is not in conformity with this Regulation, or is falsified, or accompanied by falsified documentation
+      basis_segment_ids: [AIA-TEXT-A023-P006]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P2-INFORM-RISK
   source: A023-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Where the high-risk AI system presents a risk within the meaning of Article 79(1), the importer
     shall inform the provider of the system, the authorised representative and the market surveillance
     authorities to that effect.
@@ -86,9 +102,13 @@ records:
     system presents an Article 79(1) risk
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions:
-  - the high-risk AI system presents a risk within the meaning of Article 79(1)
+    operator: all_of
+    operands:
+    - text: Where the high-risk AI system presents a risk within the meaning of Article 79(1)
+      basis_segment_ids: [AIA-TEXT-A023-P006]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   mandatory_content:
@@ -98,6 +118,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P3-IDENTIFY-IMPORTER
   source: A023-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Importers shall indicate their name, registered trade name or registered trade mark, and the
     address at which they can be contacted on the high-risk AI system and on its packaging or its accompanying
     documentation, where applicable.
@@ -105,7 +126,13 @@ records:
     its packaging or accompanying documentation
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: where applicable
+      basis_segment_ids: [AIA-TEXT-A023-P007]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   mandatory_content:
@@ -114,6 +141,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P4-PRESERVE-COMPLIANCE
   source: A023-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Importers shall ensure that, while a high-risk AI system is under their responsibility, storage
     or transport conditions, where applicable, do not jeopardise its compliance with the requirements
     set out in Section 2.
@@ -121,15 +149,21 @@ records:
     the system is under the importer's responsibility
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions:
-  - the high-risk AI system is under the importer's responsibility
-  - storage or transport conditions are applicable
+    operator: all_of
+    operands:
+    - text: while a high-risk AI system is under their responsibility
+      basis_segment_ids: [AIA-TEXT-A023-P008]
+    - text: where applicable
+      basis_segment_ids: [AIA-TEXT-A023-P008]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P5-KEEP-DOCUMENTS
   source: A023-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Importers shall keep, for a period of 10 years after the high-risk AI system has been placed
     on the market or put into service, a copy of the certificate issued by the notified body, where applicable,
     of the instructions for use, and of the EU declaration of conformity referred to in Article 47.
@@ -137,9 +171,13 @@ records:
     placement or putting into service
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions:
-  - the 10-year retention period begins after the high-risk AI system is placed on the market or put into service
+    operator: all_of
+    operands:
+    - text: for a period of 10 years after the high-risk AI system has been placed on the market or put into service
+      basis_segment_ids: [AIA-TEXT-A023-P009]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   mandatory_content:
@@ -149,6 +187,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION
   source: A023-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Importers shall provide the relevant competent authorities, upon a reasoned request, with all
     the necessary information and documentation, including that referred to in paragraph 5, to demonstrate
     the conformity of a high-risk AI system with the requirements set out in Section 2 in a language which
@@ -157,19 +196,25 @@ records:
     demonstrate Section 2 conformity in a language easily understood by them
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions: &id004
-  - a relevant competent authority makes a reasoned request
+    operator: all_of
+    operands:
+    - text: upon a reasoned request
+      basis_segment_ids: [AIA-TEXT-A023-P010]
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P6-TECHNICAL-DOCUMENTATION-AVAILABLE
   source: A023-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: For this purpose, they shall also ensure that the technical documentation can be made available
     to those authorities.
   action: ensure the technical documentation can be made available to the requesting authorities
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   conditions: *id004
   implementation_refs: *id002
@@ -177,6 +222,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P7-COOPERATE
   source: A023-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Importers shall cooperate with the relevant competent authorities in any action those authorities
     take in relation to a high-risk AI system placed on the market by the importers, in particular to
     reduce and mitigate the risks posed by it.
@@ -184,6 +230,7 @@ records:
     particularly risk reduction and mitigation
   actors:
   - actor_ref: importer
+    basis_segment_ids: [AIA-TEXT-A023-P001]
   targets: []
   implementation_refs: *id002
   verification_mode: reported_not_judged
