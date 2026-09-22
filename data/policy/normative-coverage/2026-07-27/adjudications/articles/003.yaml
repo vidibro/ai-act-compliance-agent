@@ -12,20 +12,9 @@ audit:
   audit_schema_version: 1
   segments_scanned: 83
   norms_scanned: 72
-  finding_count: 3
-  audit_sha256: e28f7a7c3ca0dd61986930383b001f3c5c00da30eacdbb80db19aac931a7dece
+  finding_count: 2
+  audit_sha256: 3c9840ade577afad4ffb6dca8bc70e598e0580894f05b8676a94176775c26381
 decisions:
-- finding_id: AIA-VALID-61D514A571ED1ED3
-  target: AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
-  rule: deadline_not_structured_or_retained
-  source_ref: AIA-TEXT-A003-P028
-  source_sha256: 1d009d006b950530fe6b5ea5e5db1816f746cdf776de36ca7a54f6456125ba53
-  target_sha256: 45d7284af80bcb82e9e7f82d5a1ea26605e31e288661c298c86d0c088bc80db8
-  decision: false_positive
-  reason: "\u201CImmediately\u201D describes the corrective-action need that a post-market\
-    \ monitoring system identifies; it is not a deadline imposed by this definition.\
-    \ Article 72 supplies the provider duty that uses this defined term."
-  reviewed_by: vidibro
 - finding_id: AIA-VALID-EB817DB3E62A43ED
   target: AIA-NORM-A003-D047-AI-OFFICE-REFERENCE
   rule: fragment_without_qualifier_span

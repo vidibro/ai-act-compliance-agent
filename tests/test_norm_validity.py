@@ -139,7 +139,12 @@ def test_article_ten_findings_are_recorded_in_its_own_shard():
 def test_article_five_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
     requirements = {
-        (SourceKind.ARTICLE, "5"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+        (SourceKind.ARTICLE, "5"): {
+            FieldValidation.LOGICAL_EXPRESSION_EVIDENCE,
+            FieldValidation.ACTOR_EVIDENCE,
+            FieldValidation.TARGET_EVIDENCE,
+            FieldValidation.TEMPORAL_REGIME,
+        },
     }
 
     findings = audit_norm_validity(
@@ -169,7 +174,12 @@ def test_article_five_findings_are_recorded_in_its_own_shard():
 def test_article_six_profiling_override_finding_is_adjudicated():
     bundle = load_bundle()
     requirements = {
-        (SourceKind.ARTICLE, "6"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+        (SourceKind.ARTICLE, "6"): {
+            FieldValidation.LOGICAL_EXPRESSION_EVIDENCE,
+            FieldValidation.ACTOR_EVIDENCE,
+            FieldValidation.TARGET_EVIDENCE,
+            FieldValidation.TEMPORAL_REGIME,
+        },
     }
 
     findings = audit_norm_validity(
@@ -482,7 +492,12 @@ def test_article_seventeen_findings_are_recorded_in_its_own_shard():
 def test_article_two_scope_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
     requirements = {
-        (SourceKind.ARTICLE, "2"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+        (SourceKind.ARTICLE, "2"): {
+            FieldValidation.LOGICAL_EXPRESSION_EVIDENCE,
+            FieldValidation.ACTOR_EVIDENCE,
+            FieldValidation.TARGET_EVIDENCE,
+            FieldValidation.TEMPORAL_REGIME,
+        },
     }
     findings = audit_norm_validity(
         bundle,
@@ -502,7 +517,12 @@ def test_article_two_scope_findings_are_recorded_in_its_own_shard():
 def test_article_three_definition_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
     requirements = {
-        (SourceKind.ARTICLE, "3"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+        (SourceKind.ARTICLE, "3"): {
+            FieldValidation.LOGICAL_EXPRESSION_EVIDENCE,
+            FieldValidation.ACTOR_EVIDENCE,
+            FieldValidation.TARGET_EVIDENCE,
+            FieldValidation.TEMPORAL_REGIME,
+        },
     }
     findings = audit_norm_validity(
         bundle,
@@ -510,7 +530,10 @@ def test_article_three_definition_findings_are_recorded_in_its_own_shard():
         required_field_validations=requirements,
     )
 
-    assert len(findings) == 3
+    assert {finding.finding_id for finding in findings} == {
+        "AIA-VALID-EB817DB3E62A43ED",
+        "AIA-VALID-B11B63DC3F68A164",
+    }
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "3")] == audit_attestation(
         bundle,
@@ -522,7 +545,12 @@ def test_article_three_definition_findings_are_recorded_in_its_own_shard():
 def test_article_four_literacy_finding_is_recorded_in_its_own_shard():
     bundle = load_bundle()
     requirements = {
-        (SourceKind.ARTICLE, "4"): {FieldValidation.LOGICAL_EXPRESSION_EVIDENCE},
+        (SourceKind.ARTICLE, "4"): {
+            FieldValidation.LOGICAL_EXPRESSION_EVIDENCE,
+            FieldValidation.ACTOR_EVIDENCE,
+            FieldValidation.TARGET_EVIDENCE,
+            FieldValidation.TEMPORAL_REGIME,
+        },
     }
     findings = audit_norm_validity(
         bundle,

@@ -610,6 +610,14 @@ class ActorRole(StrEnum):
 
 
 _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
+    ActorRole.MARKET_SURVEILLANCE_AUTHORITY: (
+        "market surveillance authority",
+        "market surveillance authorities",
+    ),
+    ActorRole.DATA_PROTECTION_AUTHORITY: (
+        "data protection authority",
+        "data protection authorities",
+    ),
     ActorRole.GPAI_PROVIDER: (
         "provider of a general-purpose AI model",
         "provider of general-purpose AI models",

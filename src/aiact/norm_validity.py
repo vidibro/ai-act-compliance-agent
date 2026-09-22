@@ -23,6 +23,7 @@ from aiact.schemas.norm import (
     LogicalExpression,
     Norm,
     NormativeCoverageBundle,
+    NormKind,
     SourceKind,
     TemporalRegime,
 )
@@ -447,19 +448,30 @@ def _is_self_contained_scope_effect(norm: Norm) -> bool:
 
 
 def _requires_calendar_deadline(norm: Norm) -> bool:
-    return CALENDAR_DEADLINE.search(norm.norm_text) is not None
+    return (
+        norm.kind is not NormKind.DEFINITION
+        and CALENDAR_DEADLINE.search(norm.norm_text) is not None
+    )
 
 
 def _requires_relative_deadline(norm: Norm) -> bool:
-    return RELATIVE_DEADLINE.search(norm.norm_text) is not None
+    return (
+        norm.kind is not NormKind.DEFINITION
+        and RELATIVE_DEADLINE.search(norm.norm_text) is not None
+    )
 
 
 def _requires_qualitative_deadline(norm: Norm) -> bool:
-    return QUALITATIVE_DEADLINE.search(norm.norm_text) is not None
+    return (
+        norm.kind is not NormKind.DEFINITION
+        and QUALITATIVE_DEADLINE.search(norm.norm_text) is not None
+    )
 
 
 def _deadline_constraint_count(norm: Norm) -> int:
     """Count deadlines imposed by this norm, excluding its structured timing conditions."""
+    if norm.kind is NormKind.DEFINITION:
+        return 0
     condition_text = json.dumps(norm.model_dump(mode="json")["conditions"], ensure_ascii=False)
     return sum(
         sum(
@@ -979,7 +991,11 @@ def audit_norm_validity(
                     rules.append("exception_expression_missing")
                 elif not EXCEPTION.search(semantic):
                     rules.append("exception_not_structured_or_retained")
-            if DEADLINE.search(norm.norm_text) and not DEADLINE.search(semantic):
+            if (
+                norm.kind is not NormKind.DEFINITION
+                and DEADLINE.search(norm.norm_text)
+                and not DEADLINE.search(semantic)
+            ):
                 rules.append("deadline_not_structured_or_retained")
             if _deadline_constraint_count(norm) > 1:
                 rules.append("multiple_deadline_constraints_in_norm")

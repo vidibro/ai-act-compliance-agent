@@ -3,9 +3,39 @@ temporal_regimes:
   application_start: 2025-02-02
   legal_basis_spans:
   - AIA-TEXT-A113-A
+- regime_id: AIA-TEMP-A005-P1-BA-BB-LATE-APPLICATION
+  application_start: 2026-12-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-A
+- regime_id: AIA-TEMP-A005-P2-URGENT-REGISTRATION-WITHOUT-UNDUE-DELAY
+  application_start: 2025-02-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-A
+  - AIA-TEXT-A005-P027
+- regime_id: AIA-TEMP-A005-P3-DELETE-ON-REJECTION-IMMEDIATELY
+  application_start: 2025-02-02
+  qualitative_deadline:
+    kind: immediately
+  legal_basis_spans:
+  - AIA-TEXT-A113-A
+  - AIA-TEXT-A005-P028
 - regime_id: AIA-TEMP-A002-P13-COMMISSION-DELEGATED-ACTS-DEADLINE
   application_start: 2025-02-02
   deadline: 2027-08-02
   legal_basis_spans:
-  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A113-A
   - AIA-TEXT-A002-P025
+- regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
+  application_start: 2027-12-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-C
+- regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
+  application_start: 2028-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-C
+- regime_id: AIA-TEMP-A006-P5-GUIDELINES-DEADLINE
+  deadline: 2026-02-02
+  legal_basis_spans:
+  - AIA-TEXT-A006-P016

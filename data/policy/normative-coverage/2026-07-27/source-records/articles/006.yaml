@@ -1,6 +1,7 @@
 records:
 - norm_id: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
   source: A006-P001
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
   quote: Irrespective of whether an AI system is placed on the market or put into service independently
     of the products referred to in points (a) and (b), that AI system shall be considered to be high-risk
     where both of the following conditions are fulfilled
@@ -9,7 +10,8 @@ records:
     condition and the third-party conformity-assessment condition are fulfilled
   actors: none
   targets:
-  - target_ref: ai_system
+  - target_ref: AI system
+    basis_segment_ids: [AIA-TEXT-A006-P001]
   kind: applicability
   qualifier_spans:
   - A006-P002
@@ -29,6 +31,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
   source: A006-P004
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
   quote: AI systems that are solely used for non-safety related aspects of user assistance, performance
     optimisation, service efficiency, automation or convenience or quality control shall not qualify as
     safety components.
@@ -36,7 +39,8 @@ records:
     components
   actors: none
   targets:
-  - target_ref: ai_system
+  - target_ref: AI system
+    basis_segment_ids: [AIA-TEXT-A006-P004]
   kind: applicability
   conditions:
   - operator: all_of
@@ -50,13 +54,15 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
   source: A006-P005
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
   quote: Notwithstanding paragraph 1a, AI systems the failure or malfunctioning of which would endanger
     health and safety shall qualify as safety components.
   action: classify an AI system as a safety component when its failure or malfunction would endanger health
     and safety
   actors: none
   targets:
-  - target_ref: ai_system
+  - target_ref: AI system
+    basis_segment_ids: [AIA-TEXT-A006-P005]
   kind: applicability
   conditions:
   - operator: all_of
@@ -70,6 +76,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT
   source: A006-P006
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
   quote: A product that is required to undergo a third-party conformity assessment solely due to risks
     other than risks to health and safety, in particular risks relating to the distribution of radio spectrum
     or electromagnetic interference that do not affect health and safety, shall not be considered as fulfilling
@@ -78,7 +85,8 @@ records:
     from satisfying Article 6(1)(b)
   actors: none
   targets:
-  - target_ref: ai_system_or_product
+  - target_ref: A product
+    basis_segment_ids: [AIA-TEXT-A006-P006]
   kind: applicability
   conditions:
   - operator: all_of
@@ -92,11 +100,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
   source: A006-P007
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: AI systems referred to in Annex III shall be considered to be high-risk.
   action: classify AI systems referred to in Annex III as high-risk
   actors: none
   targets:
-  - target_ref: annex_iii_ai_system
+  - target_ref: AI systems referred to in Annex III
+    basis_segment_ids: [AIA-TEXT-A006-P007]
   kind: applicability
   verification_mode: answered_by_classification
   implementation_mode: applicability_question
@@ -105,6 +115,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   source: A006-P008
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: an AI system referred to in Annex III shall not be considered to be high-risk where it does not
     pose a significant risk of harm to the health, safety or fundamental rights of natural persons, including
     by not materially influencing the outcome of decision making.
@@ -112,7 +123,8 @@ records:
     risk and satisfies at least one listed condition
   actors: none
   targets:
-  - target_ref: annex_iii_ai_system
+  - target_ref: an AI system referred to in Annex III
+    basis_segment_ids: [AIA-TEXT-A006-P008]
   kind: applicability
   qualifier_spans:
   - A006-P009
@@ -153,12 +165,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
   source: A006-P014
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: an AI system referred to in Annex III shall always be considered to be high-risk where the AI
     system performs profiling of natural persons.
   action: classify an Annex III AI system as high-risk whenever it profiles natural persons
   actors: none
   targets:
-  - target_ref: annex_iii_ai_system
+  - target_ref: an AI system referred to in Annex III
+    basis_segment_ids: [AIA-TEXT-A006-P014]
   kind: applicability
   conditions:
   - operator: all_of
@@ -172,12 +186,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT
   source: A006-P015
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: A provider who considers that an AI system referred to in Annex III is not high-risk shall document
     its assessment before that system is placed on the market or put into service.
   action: document the Article 6(3) non-high-risk assessment before placing the system on the market or
     putting it into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A006-P015]
   targets: []
   kind: obligation
   conditions:
@@ -191,10 +207,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-REGISTER-SYSTEM
   source: A006-P015
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: Such provider shall be subject to the registration obligation set out in Article 49(2).
   action: register the provider and non-high-risk system as required by Article 49(2)
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A006-P015]
   targets: []
   kind: obligation
   conditions:
@@ -209,11 +227,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-PROVIDE-ASSESSMENT
   source: A006-P015
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: Upon request of national competent authorities, the provider shall provide the documentation
     of the assessment.
   action: provide the documented non-high-risk assessment to national competent authorities upon request
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A006-P015]
   targets: []
   kind: obligation
   conditions:
@@ -228,6 +248,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P5-PROVIDE-GUIDELINES
   source: A006-P016
+  temporal_regime_id: AIA-TEMP-A006-P5-GUIDELINES-DEADLINE
   quote: "The Commission shall, after consulting the European Artificial Intelligence Board (the \u2018\
     \ Board \u2019), and no later than 2 February 2026, provide guidelines specifying the practical implementation\
     \ of this Article in line with Article 96 together with a comprehensive list of practical examples\
@@ -237,6 +258,7 @@ records:
     AI-system use cases
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A006-P016]
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -250,6 +272,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P6-AMEND-EXCEPTIONS
   source: A006-P017
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
     amend paragraph 3, second subparagraph, of this Article by adding new conditions to those laid down
     therein, or by modifying them, where there is concrete and reliable evidence of the existence of AI
@@ -259,6 +282,7 @@ records:
     by concrete and reliable evidence
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A006-P017]
   targets: []
   kind: power
   conditions:
@@ -274,6 +298,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P7-DELETE-EXCEPTIONS
   source: A006-P018
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: The Commission shall adopt delegated acts in accordance with Article 97 in order to amend paragraph
     3, second subparagraph, of this Article by deleting any of the conditions laid down therein, where
     there is concrete and reliable evidence that this is necessary to maintain the level of protection
@@ -282,6 +307,7 @@ records:
     maintain the required protection
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A006-P018]
   targets: []
   kind: obligation
   conditions:
@@ -297,6 +323,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P8-NO-REDUCED-PROTECTION
   source: A006-P019
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   quote: Any amendment to the conditions laid down in paragraph 3, second subparagraph, adopted in accordance
     with paragraphs 6 and 7 of this Article shall not decrease the overall level of protection of health,
     safety and fundamental rights provided for by this Regulation and shall ensure consistency with the
@@ -304,9 +331,10 @@ records:
   action: ensure Article 6(3) condition amendments do not decrease the Regulation's overall protection
     of health, safety and fundamental rights, remain consistent with Article 7(1) delegated acts, and
     account for market and technological developments
-  actors:
-  - actor_ref: commission
-  targets: []
+  actors: none
+  targets:
+  - target_ref: Any amendment to the conditions laid down in paragraph 3, second subparagraph
+    basis_segment_ids: [AIA-TEXT-A006-P019]
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.

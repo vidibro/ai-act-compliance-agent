@@ -1,15 +1,19 @@
 temporal_regimes:
 - regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  application_start: 2025-02-02
   qualitative_deadline:
     kind: without_undue_delay
   legal_basis_spans:
+  - AIA-TEXT-A113-A
   - AIA-TEXT-A005-P028
 - regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-TWENTY-FOUR-HOURS
+  application_start: 2025-02-02
   relative_deadline:
     quantity: 24
     unit: hour
     trigger: the use of such system may be commenced without an authorisation
   legal_basis_spans:
+  - AIA-TEXT-A113-A
   - AIA-TEXT-A005-P028
 norm_relations:
 - relation_id: AIA-REL-A005-P3-URGENT-USE-CONDITIONAL-ON-AUTHORISATION-REQUEST-DEADLINES
@@ -23,6 +27,7 @@ norm_relations:
 records:
 - norm_id: AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   source: A005-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "the placing on the market, the putting into service or the use of an AI system that deploys\
     \ subliminal techniques beyond a person\u2019s consciousness or purposefully manipulative or deceptive\
     \ techniques, with the objective, or the effect of materially distorting the behaviour of a person\
@@ -53,6 +58,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
   source: A005-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: the placing on the market, the putting into service or the use of an AI system that exploits
     any of the vulnerabilities of a natural person or a specific group of persons due to their age, disability
     or a specific social or economic situation, with the objective, or the effect, of materially distorting
@@ -81,6 +87,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   source: A005-P004
+  temporal_regime_id: AIA-TEMP-A005-P1-BA-BB-LATE-APPLICATION
   quote: "the placing on the market, the putting into service or the use of an AI system that generates\
     \ or manipulates realistic images, videos, audio or similar material of an identifiable natural person\u2019\
     s intimate parts, or of an identifiable natural person engaged in sexually explicit activities, without\
@@ -132,6 +139,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   source: A005-P005
+  temporal_regime_id: AIA-TEMP-A005-P1-BA-BB-LATE-APPLICATION
   quote: "the placing on the market, the putting into service or the use of an AI system that generates\
     \ or manipulates material or performance within the meaning of Article 2, points (c) and (e), of Directive\
     \ 2011/93/EU, except where a \u2018without right\u2019 defence applies under national law"
@@ -176,6 +184,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-C-SOCIAL-SCORING
   source: A005-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: 'the placing on the market, the putting into service or the use of AI systems for the evaluation
     or classification of natural persons or groups of persons over a certain period of time based on their
     social behaviour or known, inferred or predicted personal or personality characteristics, with the
@@ -207,6 +216,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
   source: A005-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
     an AI system for making risk assessments of natural persons in order to assess or predict the risk
     of a natural person committing a criminal offence, based solely on the profiling of a natural person
@@ -232,6 +242,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
   source: A005-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
     AI systems that create or expand facial recognition databases through the untargeted scraping of facial
     images from the internet or CCTV footage
@@ -249,6 +260,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
   source: A005-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
     AI systems to infer emotions of a natural person in the areas of workplace and education institutions,
     except where the use of the AI system is intended to be put in place or into the market for medical
@@ -272,6 +284,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
   source: A005-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
     biometric categorisation systems that categorise individually natural persons based on their biometric
     data to deduce or infer their race, political opinions, trade union membership, religious or philosophical
@@ -299,14 +312,16 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
   source: A005-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "the use of \u2018real-time\u2019 remote biometric identification systems in publicly accessible\
     \ spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary\
     \ for one of the following objectives:"
   action: prohibit law-enforcement use of real-time remote biometric identification in publicly accessible
     spaces unless strictly necessary for a listed objective
-  actors:
-  - actor_ref: law_enforcement_authority
-  targets: []
+  actors: none
+  targets:
+  - target_ref: the use of ‘real-time’ remote biometric identification systems
+    basis_segment_ids: [AIA-TEXT-A005-P013]
   kind: prohibition
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -329,13 +344,15 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1-H-GDPR-SAVING
   source: A005-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Point (h) of the first subparagraph is without prejudice to Article 9 of Regulation (EU) 2016/679
     for the processing of biometric data for purposes other than law enforcement.
   action: preserve GDPR Article 9 for biometric-data processing conducted for purposes other than law
     enforcement
   actors: none
   targets:
-  - target_ref: non_law_enforcement_biometric_data_processing
+  - target_ref: processing of biometric data for purposes other than law enforcement
+    basis_segment_ids: [AIA-TEXT-A005-P017]
   kind: legal_consequence
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains interpretation without creating an independent AI
@@ -346,14 +363,16 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
   source: A005-P019
+  temporal_regime_id: AIA-TEMP-A005-P1-BA-BB-LATE-APPLICATION
   quote: 'the placing on the market or putting into service of an AI system that generates or manipulates
     the material or performance referred to in paragraph 1, first subparagraph, point (ba) or (bb) is
     only prohibited where:'
   action: limit the point (ba) and (bb) market-placement and putting-into-service prohibitions to the
     two specified system-purpose or foreseeable-outcome cases
-  actors:
-  - actor_ref: provider
-  targets: []
+  actors: none
+  targets:
+  - target_ref: the placing on the market or putting into service of an AI system
+    basis_segment_ids: [AIA-TEXT-A005-P019]
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -379,6 +398,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
   source: A005-P022
+  temporal_regime_id: AIA-TEMP-A005-P1-BA-BB-LATE-APPLICATION
   quote: the use of an AI system that generates or manipulates the material or performance referred to
     in paragraph 1, first subparagraph, points (ba) and (bb) is only prohibited where the deployer uses
     the system for the purpose of generating or manipulating such material or performance.
@@ -386,6 +406,7 @@ records:
     deployer
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A005-P022]
   targets: []
   kind: applicability
   verification_mode: answered_by_classification
@@ -402,6 +423,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P1B-NON-MANIPULATION
   source: A005-P023
+  temporal_regime_id: AIA-TEMP-A005-P1-BA-BB-LATE-APPLICATION
   quote: For the purposes of paragraph 1, first subparagraph, point (ba), an AI system that manipulates
     material in a way that does not increase the exposure of any depicted intimate parts or alter the
     nature of any depicted sexually explicit activities shall not constitute manipulation.
@@ -409,7 +431,8 @@ records:
     alters the nature of depicted sexually explicit activities
   actors: none
   targets:
-  - target_ref: intimate_material_manipulation
+  - target_ref: an AI system that manipulates material
+    basis_segment_ids: [AIA-TEXT-A005-P023]
   kind: legal_consequence
   verification_mode: answered_by_classification
   conditions:
@@ -425,12 +448,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
   source: A005-P024
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: shall be deployed for the purposes set out in that point only to confirm the identity of the
     specifically targeted individual
   action: deploy real-time remote biometric identification for a permitted Article 5(1)(h) objective only
     to confirm the specifically targeted individual's identity
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -439,11 +464,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
   source: A005-P024
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: 'it shall take into account the following elements:'
   action: consider both the non-use harm and the rights-and-freedoms consequences before using real-time
     remote biometric identification
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -460,6 +487,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
   source: A005-P027
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "the use of \u2018 real-time \u2019 remote biometric identification systems in publicly accessible\
     \ spaces for the purposes of law enforcement for any of the objectives referred to in paragraph 1,\
     \ first subparagraph, point (h), of this Article shall comply with necessary and proportionate safeguards\
@@ -469,6 +497,7 @@ records:
     temporal, geographic, and personal limits
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -477,6 +506,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
   source: A005-P027
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly accessible\
     \ spaces shall be authorised only if the law enforcement authority has completed a fundamental rights\
     \ impact assessment as provided for in Article 27"
@@ -484,6 +514,7 @@ records:
     remote biometric identification use
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   conditions:
@@ -498,6 +529,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
   source: A005-P027
+  temporal_regime_id: AIA-TEMP-A005-P2-URGENT-REGISTRATION-WITHOUT-UNDUE-DELAY
   quote: "has registered the system in the EU database\
     \ according to Article 49. However, in duly justified cases of urgency, the use of such systems may\
     \ be commenced without the registration in the EU database, provided that such registration is completed\
@@ -506,6 +538,7 @@ records:
     or without undue delay after urgent use begins
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -524,6 +557,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
   source: A005-P028
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "each use for the purposes of law enforcement of a \u2018 real-time \u2019 remote biometric identification\
     \ system in publicly accessible spaces shall be subject to a prior authorisation granted by a judicial\
     \ authority or an independent administrative authority whose decision is binding of the Member State\
@@ -533,6 +567,7 @@ records:
     and under applicable national rules, for each covered use
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -546,11 +581,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-URGENT-USE
   source: A005-P028
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: in a duly justified situation of urgency, the use of such system may be commenced without an
     authorisation
   action: commence urgent use without prior authorisation
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: permission
   implementation_mode: report_only
@@ -570,6 +607,7 @@ records:
   action: request the paragraph 3 authorisation without undue delay after commencing urgent use
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   qualifier_spans:
   - A005-P028
@@ -592,6 +630,7 @@ records:
   action: request the paragraph 3 authorisation within 24 hours after commencing urgent use
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   qualifier_spans:
   - A005-P028
@@ -610,10 +649,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
   source: A005-P028
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: If such authorisation is rejected, the use shall be stopped with immediate effect
   action: stop the use immediately if authorisation is rejected
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -629,12 +670,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
   source: A005-P028
+  temporal_regime_id: AIA-TEMP-A005-P3-DELETE-ON-REJECTION-IMMEDIATELY
   quote: all the data, as well as the results and outputs of that use shall be immediately discarded and
     deleted.
   action: immediately discard and delete all data, results, and outputs from the use if authorisation
     is rejected
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -650,6 +693,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
   source: A005-P029
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "The competent judicial authority or an independent administrative authority whose decision is\
     \ binding shall grant the authorisation only where it is satisfied, on the basis of objective evidence\
     \ or clear indications presented to it, that the use of the \u2018 real-time \u2019 remote biometric\
@@ -661,7 +705,9 @@ records:
     necessary, proportionate, and strictly limited in time and geographic and personal scope
   actors:
   - actor_ref: judicial_authority
+    basis_segment_ids: [AIA-TEXT-A005-P029]
   - actor_ref: independent_administrative_authority
+    basis_segment_ids: [AIA-TEXT-A005-P029]
   targets: []
   kind: power
   implementation_mode: report_only
@@ -679,12 +725,15 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
   source: A005-P029
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: In deciding on the request, that authority shall take into account the elements referred to in
     paragraph 2.
   action: take the Article 5(2) elements into account when deciding an authorisation request
   actors:
   - actor_ref: judicial_authority
+    basis_segment_ids: [AIA-TEXT-A005-P029]
   - actor_ref: independent_administrative_authority
+    basis_segment_ids: [AIA-TEXT-A005-P029]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -693,13 +742,15 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
   source: A005-P029
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "No decision that produces an adverse legal effect on a person may be taken based solely on the\
     \ output of the \u2018 real-time \u2019 remote biometric identification system."
   action: prohibit decisions producing an adverse legal effect on a person based solely on real-time remote
     biometric identification output
-  actors:
-  - actor_ref: public_authority
-  targets: []
+  actors: none
+  targets:
+  - target_ref: decision that produces an adverse legal effect on a person
+    basis_segment_ids: [AIA-TEXT-A005-P029]
   kind: prohibition
   implementation_mode: report_only
   implementation_refs: [AIA-RULE-DP-A05-3]
@@ -707,6 +758,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
   source: A005-P030
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "Without prejudice to paragraph 3, each use of a \u2018 real-time \u2019 remote biometric identification\
     \ system in publicly accessible spaces for law enforcement purposes shall be notified to the relevant\
     \ market surveillance authority and the national data protection authority in accordance with the\
@@ -715,6 +767,7 @@ records:
     each covered use in accordance with applicable national rules
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   kind: obligation
   implementation_mode: report_only
@@ -723,12 +776,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
   source: A005-P030
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: The notification shall, as a minimum, contain the information specified under paragraph 6 and
     shall not include sensitive operational data.
   action: include at least the Article 5(6) information in each use notification while excluding sensitive
     operational data
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets: []
   conditions:
   - operator: all_of
@@ -745,6 +800,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P5-AUTHORISE-USE
   source: A005-P031
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "A Member State may decide to provide for the possibility to fully or partially authorise the\
     \ use of \u2018 real-time \u2019 remote biometric identification systems in publicly accessible spaces\
     \ for the purposes of law enforcement within the limits and under the conditions listed in paragraph\
@@ -753,6 +809,7 @@ records:
     use within the limits and conditions of Article 5(1)(h), (2), and (3)
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A005-P031]
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -763,6 +820,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-LAY-DOWN-RULES
   source: A005-P031
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Member States concerned shall lay down in their national law the necessary detailed rules for
     the request, issuance and exercise of, as well as supervision and reporting relating to, the authorisations
     referred to in paragraph 3.
@@ -770,6 +828,7 @@ records:
     5(3) authorisations
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A005-P031]
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -780,6 +839,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-SPECIFY-OBJECTIVES
   source: A005-P031
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Those rules shall also specify in respect of which of the objectives listed in paragraph 1, first
     subparagraph, point (h), including which of the criminal offences referred to in point (h)(iii) thereof,
     the competent authorities may be authorised to use those systems for the purposes of law enforcement.
@@ -787,6 +847,7 @@ records:
     authorities may receive authorisation
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A005-P031]
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -797,11 +858,13 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-NOTIFY-COMMISSION
   source: A005-P031
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Member States shall notify those rules to the Commission at the latest 30 days following the
     adoption thereof.
   action: notify the Commission of the national rules no later than 30 days after their adoption
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A005-P031]
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -811,12 +874,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-MORE-RESTRICTIVE-LAWS
   source: A005-P031
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Member States may introduce, in accordance with Union law, more restrictive laws on the use of
     remote biometric identification systems.
   action: introduce more restrictive laws on remote biometric identification use in accordance with Union
     law
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A005-P031]
   targets: []
   kind: power
   product_scope: outside_supported_actor
@@ -827,6 +892,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
   source: A005-P032
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "National market surveillance authorities and the national data protection authorities of Member\
     \ States that have been notified of the use of \u2018 real-time \u2019 remote biometric identification\
     \ systems in publicly accessible spaces for law enforcement purposes pursuant to paragraph 4 shall\
@@ -835,7 +901,9 @@ records:
     use
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A005-P032]
   - actor_ref: data_protection_authority
+    basis_segment_ids: [AIA-TEXT-A005-P032]
   targets: []
   kind: obligation
   conditions:
@@ -850,6 +918,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P6-PROVIDE-TEMPLATE
   source: A005-P032
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: the Commission shall provide Member States and national market surveillance and data protection
     authorities with a template, including information on the number of the decisions taken by competent
     judicial authorities or an independent administrative authority whose decision is binding upon requests
@@ -859,6 +928,7 @@ records:
     authorisation requests
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A005-P032]
   targets: []
   kind: obligation
   mandatory_content:
@@ -872,6 +942,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
   source: A005-P033
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: The Commission shall publish annual reports on the use of real-time remote biometric identification
     systems in publicly accessible spaces for law enforcement purposes, based on aggregated data in Member
     States on the basis of the annual reports referred to in paragraph 6.
@@ -879,6 +950,7 @@ records:
     Member State data from Article 5(6) reports
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A005-P033]
   targets: []
   kind: obligation
   product_scope: outside_supported_actor
@@ -888,12 +960,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P7-EXCLUDE-SENSITIVE-DATA
   source: A005-P033
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: Those annual reports shall not include sensitive operational data of the related law enforcement
     activities.
   action: exclude sensitive operational data about related law-enforcement activities from the Commission's
     annual reports
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A005-P033]
   targets: []
   kind: prohibition
   product_scope: outside_supported_actor
@@ -903,12 +977,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P8-OTHER-UNION-LAW
   source: A005-P034
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Article shall not affect the prohibitions that apply where an AI practice infringes other
     Union law.
   action: preserve prohibitions under other Union law where an AI practice infringes that law
   actors: none
   targets:
-  - target_ref: ai_practice_subject_to_other_union_law
+  - target_ref: an AI practice
+    basis_segment_ids: [AIA-TEXT-A005-P034]
   kind: legal_consequence
   conditions:
   - operator: all_of
