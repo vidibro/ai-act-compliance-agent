@@ -1,12 +1,14 @@
 records:
 - norm_id: AIA-NORM-A013-P1-TRANSPARENT-OPERATION
   source: A013-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: "High-risk AI systems shall be designed and developed in such a way as to ensure that their operation\
     \ is sufficiently transparent to enable deployers to interpret a system\u2019s output and use it appropriately."
   action: design and develop the high-risk AI system so its operation is sufficiently transparent for
     deployers to interpret its output and use it appropriately
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   implementation_refs: &id001
   - AIA-RULE-HR-A13
@@ -14,18 +16,21 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
   source: A013-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: An appropriate type and degree of transparency shall be ensured with a view to achieving compliance
     with the relevant obligations of the provider and deployer set out in Section 3.
   action: ensure a type and degree of transparency appropriate for provider and deployer compliance with
     Section 3
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
   source: A013-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
     or otherwise that include concise, complete, correct and clear information that is relevant, accessible
     and comprehensible to deployers.
@@ -33,6 +38,7 @@ records:
     format containing concise, complete, correct, clear, relevant, accessible, and comprehensible information
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   mandatory_content:
   - concise information
@@ -47,26 +53,35 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-A-CONTACT-DETAILS
   source: A013-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the identity and the contact details of the provider and, where applicable, of its authorised
     representative
   action: "include the provider\u2019s identity and contact details and, where applicable, those of its\
     \ authorised representative in the instructions"
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: &id002
   - A013-P003
+  conditions:
+  - operator: all_of
+    operands:
+    - text: where applicable
+      basis_segment_ids: [AIA-TEXT-A013-P004]
   implementation_refs: &id003
   - AIA-RULE-HR-A13-3
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
   source: A013-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the characteristics, capabilities and limitations of performance of the high-risk AI system
   action: "include the system\u2019s characteristics, capabilities, and performance limitations in the\
     \ instructions"
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id003
@@ -74,10 +89,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
   source: A013-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: its intended purpose
   action: "include the system\u2019s intended purpose in the instructions"
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: &id004
   - A013-P003
@@ -87,6 +104,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
   source: A013-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the level of accuracy, including its metrics, robustness and cybersecurity referred to in Article
     15 against which the high-risk AI system has been tested and validated and which can be expected,
     and any known and foreseeable circumstances that may have an impact on that expected level of accuracy,
@@ -95,6 +113,7 @@ records:
     plus known and foreseeable circumstances that may affect that expected performance
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id004
   mandatory_content:
@@ -105,6 +124,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   source: A013-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: any known or foreseeable circumstance, related to the use of the high-risk AI system in accordance
     with its intended purpose or under conditions of reasonably foreseeable misuse, which may lead to
     risks to the health and safety or fundamental rights referred to in Article 9(2)
@@ -112,6 +132,7 @@ records:
     or fundamental-rights risks
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id004
   implementation_refs: *id003
@@ -119,35 +140,46 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
   source: A013-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: where applicable, the technical capabilities and characteristics of the high-risk AI system to
     provide information that is relevant to explain its output
   action: include technical capabilities and characteristics relevant to explaining system outputs
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id004
   conditions:
-  - the system has technical capabilities or characteristics relevant to explaining its output
+  - operator: all_of
+    operands:
+    - text: where applicable
+      basis_segment_ids: [AIA-TEXT-A013-P009]
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
   source: A013-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: when appropriate, its performance regarding specific persons or groups of persons on which the
     system is intended to be used
   action: include performance concerning specific persons or groups on which the system is intended to
     be used
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id004
   conditions:
-  - information about performance for intended persons or groups is appropriate
+  - operator: all_of
+    operands:
+    - text: when appropriate
+      basis_segment_ids: [AIA-TEXT-A013-P010]
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-VI-INPUT-DATA
   source: A013-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: when appropriate, specifications for the input data, or any other relevant information in terms
     of the training, validation and testing data sets used, taking into account the intended purpose of
     the high-risk AI system
@@ -155,49 +187,65 @@ records:
     and testing datasets used
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id004
   conditions:
-  - input-data specifications or dataset information is appropriate for the intended purpose
+  - operator: all_of
+    operands:
+    - text: when appropriate
+      basis_segment_ids: [AIA-TEXT-A013-P011]
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
   source: A013-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: where applicable, information to enable deployers to interpret the output of the high-risk AI
     system and use it appropriately
   action: include information enabling deployers to interpret system outputs and use them appropriately
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id004
   conditions:
-  - information is applicable to deployer interpretation and appropriate use of system outputs
+  - operator: all_of
+    operands:
+    - text: where applicable
+      basis_segment_ids: [AIA-TEXT-A013-P012]
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
   source: A013-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the changes to the high-risk AI system and its performance which have been pre-determined by
     the provider at the moment of the initial conformity assessment, if any
   action: include system and performance changes predetermined at the initial conformity assessment
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   conditions:
-  - the provider predetermined changes to the system or its performance at the initial conformity assessment
+  - operator: all_of
+    operands:
+    - text: if any
+      basis_segment_ids: [AIA-TEXT-A013-P013]
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
   source: A013-P014
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the human oversight measures referred to in Article 14, including the technical measures put
     in place to facilitate the interpretation of the outputs of the high-risk AI systems by the deployers
   action: include the Article 14 human-oversight measures, including technical measures facilitating deployer
     interpretation of high-risk AI-system outputs, in the instructions
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   mandatory_content:
@@ -208,6 +256,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
   source: A013-P015
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system
     and any necessary maintenance and care measures, including their frequency, to ensure the proper functioning
     of that AI system, including as regards software updates
@@ -215,6 +264,7 @@ records:
     maintenance and care measures, their frequency, and software-update needs for proper functioning
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   mandatory_content:
@@ -226,16 +276,21 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-F-LOG-MECHANISMS
   source: A013-P016
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: where relevant, a description of the mechanisms included within the high-risk AI system that
     allows deployers to properly collect, store and interpret the logs in accordance with Article 12
   action: describe relevant system mechanisms that let deployers properly collect, store, and interpret
     Article 12 logs
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   conditions:
-  - the system includes mechanisms relevant to deployer collection, storage, or interpretation of logs
+  - operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids: [AIA-TEXT-A013-P016]
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro

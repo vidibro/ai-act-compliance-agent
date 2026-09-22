@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: design and develop the high-risk AI system, including appropriate human-machine interfaces,
     for effective natural-person oversight throughout use
@@ -37,11 +39,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P2-RISK-PREVENTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks that
     emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including
@@ -58,7 +63,15 @@ norms:
   primary_spans:
   - AIA-TEXT-A014-P002
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: when a high-risk AI system is used in accordance with its intended purpose or under conditions
+          of reasonably foreseeable misuse
+        basis_segment_ids:
+        - AIA-TEXT-A014-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -77,11 +90,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P3-COMMENSURATE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: make human-oversight measures commensurate with the system's risks, autonomy and context of
     use and ensure them through either or both Article 14(3) measure routes
@@ -119,11 +135,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P4-A-UNDERSTAND-AND-MONITOR
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: "enable assigned overseers to understand the system\u2019s relevant capabilities and limitations,\
     \ monitor its operation, and detect and address anomalies, dysfunctions, and unexpected performance"
@@ -157,11 +176,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P4-B-AUTOMATION-BIAS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: enable assigned overseers to remain aware of possible automation bias, especially where system
     information or recommendations inform human decisions
@@ -195,11 +217,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P4-C-INTERPRET-OUTPUT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: enable assigned overseers to correctly interpret system outputs using available interpretation
     tools and methods
@@ -232,11 +257,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P4-D-DECLINE-USE-OR-CONTROL-OUTPUT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: enable assigned overseers to decide not to use the system in a particular situation or otherwise
     disregard, override, or reverse its output
@@ -269,11 +297,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P4-E-INTERVENE-OR-SAFE-STOP
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: enable assigned overseers to intervene in system operation or interrupt it through a stop control
     or similar procedure that brings it to a safe halt
@@ -307,11 +338,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P5-TWO-PERSON-VERIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: ensure no deployer action or decision relies on a system identification unless at least two
     competent, trained, and authorised natural persons separately verify and confirm it
@@ -330,11 +364,20 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is a remote biometric identification system referred to in Annex III,
-        point 1(a)
-      basis_segment_ids:
-      - AIA-TEXT-A014-P012
-  exceptions: null
+    - operator: all_of
+      operands:
+      - text: For high-risk AI systems referred to in point 1(a) of Annex III
+        basis_segment_ids:
+        - AIA-TEXT-A014-P012
+  exceptions:
+    operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: unless that identification has been separately verified and confirmed by at least two natural
+          persons with the necessary competence, training and authority
+        basis_segment_ids:
+        - AIA-TEXT-A014-P012
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -352,11 +395,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: disapply the two-person verification requirement for specified public-authority uses where Union
     or national law considers it disproportionate
@@ -374,13 +420,23 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is used for law enforcement, migration, border control, or asylum
-      basis_segment_ids:
-      - AIA-TEXT-A014-P013
-    - text: Union or national law considers two-person verification disproportionate for that use
-      basis_segment_ids:
-      - AIA-TEXT-A014-P013
-  exceptions: null
+    - operator: all_of
+      operands:
+      - text: high-risk AI systems used for the purposes of law enforcement, migration, border control
+          or asylum
+        basis_segment_ids:
+        - AIA-TEXT-A014-P013
+      - text: where Union or national law considers the application of this requirement to be disproportionate
+        basis_segment_ids:
+        - AIA-TEXT-A014-P013
+  exceptions:
+    operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - text: shall not apply
+        basis_segment_ids:
+        - AIA-TEXT-A014-P013
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -398,3 +454,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

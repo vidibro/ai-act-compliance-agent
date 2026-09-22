@@ -3,12 +3,17 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '14'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 14
   norms_scanned: 10
   finding_count: 0
-  audit_sha256: f16cfffe1502f4fda6972c0dd8570ac688efddbc163a2c00aff7a8e878cfab34
+  audit_sha256: 7b322e006a5fc824b7bbca6a9502c5e4f20609e68ac345117ff72e3804f3a883
 decisions:
 - finding_id: AIA-VALID-83E43D172407920D
   target: AIA-NORM-A014-P2-RISK-PREVENTION
@@ -22,5 +27,5 @@ decisions:
     patch proves the structural audit's preimage and correction.
   fix:
     patch_file: fixes/AIA-VALID-83E43D172407920D.patch.yaml
-    patch_sha256: 130a87b9bf33c5fedcf109bbba460a39660d4346c056b5b4ad9cc50af1bf44e1
+    patch_sha256: 83197d39456e205218c6d75de1ce322e07d35fc5f17e0310f3aaeaf156f1b3b5
   reviewed_by: vidibro

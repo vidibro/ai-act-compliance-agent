@@ -588,9 +588,6 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
     status: active
     criteria:
       - norm_id: AIA-NORM-A013-P1-TRANSPARENT-OPERATION
@@ -642,9 +639,6 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
     status: active
     criteria:
       - norm_id: AIA-NORM-A013-P3-A-CONTACT-DETAILS
@@ -699,9 +693,6 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
     status: active
     # Each mandatory oversight capability is judged separately. The disproportionate-use exception
     # is a report-only conditional scope limit, not a pass/fail criterion.
@@ -757,9 +748,6 @@ rules:
       the scope of Regulation (EU) 2024/2847 meeting the conditions of its Art. 12(1) is DEEMED to
       comply with them (Art. 42(3)). Accuracy and robustness are untouched by both.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
     status: active
     # Each Article 15 provider norm is judged and reported on its own; the rule passes only when
     # every mandatory one does. Meaning is resolved from the norm inventory at load, and

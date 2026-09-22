@@ -3,12 +3,17 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '15'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 10
   norms_scanned: 14
   finding_count: 7
-  audit_sha256: feaac117f9cdce4fc68c1a882c75d01b030df8dc74f0d337279d239955e8706b
+  audit_sha256: 51edbeefd2375b3383544cd1f89a78ca7a3bcfe8b632532d18d61653d4168347
 decisions:
 - finding_id: AIA-VALID-135096E293C37A15
   target: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
@@ -21,12 +26,12 @@ decisions:
     contains the Commission duty-holder, shall modality, cooperation qualifier, action,
     and object.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-9EC25FA4CC5D0B6C
+- finding_id: AIA-VALID-D54121BFA6D1DD72
   target: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: 252697ee76d86dd268c47c6023a01bd4896ef478a91064aa178214ab5fabc422
+  target_sha256: 03a6e7bce48d3fdc7677eae541aaea81f35c90a65741b5bf922ca018e42ed4d2
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
@@ -42,48 +47,48 @@ decisions:
     quote: ensure that their high-risk AI systems are compliant with the requirements
       set out in Section 2
   reviewed_by: vidibro
-- finding_id: AIA-VALID-6368468E67B41E10
+- finding_id: AIA-VALID-644EE32A83383040
   target: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: a3254556e68f7cf09f0dafb2f574877935d4c33a3da4fb2c93bc24e5b3d3650f
+  target_sha256: f528318e85fe2db27eda637a0fbe57b5978b3d80944702bddd73dea0d09d6e31
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
     16(a).
   legal_basis: *id001
   reviewed_by: vidibro
-- finding_id: AIA-VALID-37D8E4202A80F45B
+- finding_id: AIA-VALID-192A1B39B8E7DF8D
   target: AIA-NORM-A015-P5-DATA-POISONING
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: fc7817d3d2bc0d3a48809ec87657836c85cc28ddfa4e7d50781a5fd6adfaec94
+  target_sha256: 158ef8c2b71194335043e5dfa05085cff9d22eef441bec720ba33750420d5009
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
     16(a).
   legal_basis: *id001
   reviewed_by: vidibro
-- finding_id: AIA-VALID-9315A03614CD290E
+- finding_id: AIA-VALID-7152BE4101451924
   target: AIA-NORM-A015-P5-MODEL-FLAWS
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: 55be08a4dd304688f0ea256d10e150a3f5e8b0800ea6b6f7c81c2168788fc039
+  target_sha256: 39f651c6cfd233c6c15413ab46605d51c6102677d9f71f4ac3f7b891da9043e7
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article
     16(a).
   legal_basis: *id001
   reviewed_by: vidibro
-- finding_id: AIA-VALID-68BAAE428CB98553
+- finding_id: AIA-VALID-613A3793175131A0
   target: AIA-NORM-A015-P5-MODEL-POISONING
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A015-P009
   source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-  target_sha256: 704f2cc322189019d1a19754eeb9588dbf351ef7eb652435411b199e0c02151e
+  target_sha256: 0a20519b9c3576b66f20c11b41344e2d8ca7a3e5a8e25c73e3747eaad0938c3c
   decision: accepted_with_basis
   reason: The threat target is separately checkable but inherits the shared cybersecurity
     action and condition in Article 15(5), with the provider duty allocated by Article

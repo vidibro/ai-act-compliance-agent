@@ -1,6 +1,7 @@
 records:
 - norm_id: AIA-NORM-A014-P1-EFFECTIVE-OVERSIGHT
   source: A014-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: High-risk AI systems shall be designed and developed in such a way, including with appropriate
     human-machine interface tools, that they can be effectively overseen by natural persons during the
     period in which they are in use.
@@ -8,6 +9,7 @@ records:
     for effective natural-person oversight throughout use
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   implementation_refs: &id001
   - AIA-RULE-HR-A14
@@ -15,6 +17,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P2-RISK-PREVENTION
   source: A014-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Human oversight shall aim to prevent or minimise the risks to health, safety or fundamental rights
     that may emerge when a high-risk AI system is used in accordance with its intended purpose or under
     conditions of reasonably foreseeable misuse, in particular where such risks persist despite the application
@@ -23,12 +26,19 @@ records:
     emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including risks that persist despite other Section 2 requirements
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
+  conditions:
+  - operator: all_of
+    operands:
+    - text: when a high-risk AI system is used in accordance with its intended purpose or under conditions of reasonably foreseeable misuse
+      basis_segment_ids: [AIA-TEXT-A014-P002]
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P3-COMMENSURATE-MEASURES
   source: A014-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: The oversight measures shall be commensurate with the risks, level of autonomy and context of
     use of the high-risk AI system, and shall be ensured through either one or both of the following types
     of measures
@@ -36,6 +46,7 @@ records:
     use and ensure them through either or both Article 14(3) measure routes
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -48,6 +59,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-A-UNDERSTAND-AND-MONITOR
   source: A014-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: to properly understand the relevant capacities and limitations of the high-risk AI system and
     be able to duly monitor its operation, including in view of detecting and addressing anomalies, dysfunctions
     and unexpected performance
@@ -55,6 +67,7 @@ records:
     monitor its operation, and detect and address anomalies, dysfunctions, and unexpected performance"
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: &id002
   - A014-P006
@@ -63,6 +76,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-B-AUTOMATION-BIAS
   source: A014-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: to remain aware of the possible tendency of automatically relying or over-relying on the output
     produced by a high-risk AI system (automation bias), in particular for high-risk AI systems used to
     provide information or recommendations for decisions to be taken by natural persons
@@ -70,6 +84,7 @@ records:
     information or recommendations inform human decisions
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -77,12 +92,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-C-INTERPRET-OUTPUT
   source: A014-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: "to correctly interpret the high-risk AI system\u2019s output, taking into account, for example,\
     \ the interpretation tools and methods available"
   action: enable assigned overseers to correctly interpret system outputs using available interpretation
     tools and methods
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -90,12 +107,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-D-DECLINE-USE-OR-CONTROL-OUTPUT
   source: A014-P010
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: to decide, in any particular situation, not to use the high-risk AI system or to otherwise disregard,
     override or reverse the output of the high-risk AI system
   action: enable assigned overseers to decide not to use the system in a particular situation or otherwise
     disregard, override, or reverse its output
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -103,12 +122,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-E-INTERVENE-OR-SAFE-STOP
   source: A014-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: "to intervene in the operation of the high-risk AI system or interrupt the system through a \u2018\
     stop\u2019 button or a similar procedure that allows the system to come to a halt in a safe state"
   action: enable assigned overseers to intervene in system operation or interrupt it through a stop control
     or similar procedure that brings it to a safe halt
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
@@ -116,6 +137,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P5-TWO-PERSON-VERIFICATION
   source: A014-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: For high-risk AI systems referred to in point 1(a) of Annex III, the measures referred to in
     paragraph 3 of this Article shall be such as to ensure that, in addition, no action or decision is
     taken by the deployer on the basis of the identification resulting from the system unless that identification
@@ -125,15 +147,24 @@ records:
     competent, trained, and authorised natural persons separately verify and confirm it
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   conditions:
-  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
-    1(a)
+  - operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in point 1(a) of Annex III
+      basis_segment_ids: [AIA-TEXT-A014-P012]
+  exceptions:
+  - operator: all_of
+    operands:
+    - text: unless that identification has been separately verified and confirmed by at least two natural persons with the necessary competence, training and authority
+      basis_segment_ids: [AIA-TEXT-A014-P012]
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION
   source: A014-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: The requirement for a separate verification by at least two natural persons shall not apply to
     high-risk AI systems used for the purposes of law enforcement, migration, border control or asylum,
     where Union or national law considers the application of this requirement to be disproportionate.
@@ -141,11 +172,21 @@ records:
     or national law considers it disproportionate
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: applicability
   conditions:
-  - the high-risk AI system is used for law enforcement, migration, border control, or asylum
-  - Union or national law considers two-person verification disproportionate for that use
+  - operator: all_of
+    operands:
+    - text: high-risk AI systems used for the purposes of law enforcement, migration, border control or asylum
+      basis_segment_ids: [AIA-TEXT-A014-P013]
+    - text: where Union or national law considers the application of this requirement to be disproportionate
+      basis_segment_ids: [AIA-TEXT-A014-P013]
+  exceptions:
+  - operator: all_of
+    operands:
+    - text: shall not apply
+      basis_segment_ids: [AIA-TEXT-A014-P013]
   implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally
