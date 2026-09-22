@@ -45,7 +45,10 @@ segments:
   norm_ids:
   - AIA-NORM-A033-P1-SUBCONTRACTOR-ARTICLE-31-COMPLIANCE
   - AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A033-P1-SUBCONTRACTOR-ARTICLE-31-COMPLIANCE
+  - AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
+  - AIA-NORM-A033-P4-RETAIN-SUBCONTRACTING-DOCUMENTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -5,6 +5,8 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A032-P001
   targets: []
   action: presume Article 31 compliance where demonstrated conformity with published harmonised standards
     covers the applicable requirements
@@ -22,15 +24,14 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the conformity-assessment body demonstrates conformity with the relevant harmonised standards
-        or parts thereof
+    - text: Where a conformity assessment body demonstrates its conformity with the criteria laid down
+        in the relevant harmonised standards or parts thereof
       basis_segment_ids:
       - AIA-TEXT-A032-P001
-    - text: references to those standards or parts have been published in the Official Journal of the
-        European Union
+    - text: the references of which have been published in the Official Journal of the European Union
       basis_segment_ids:
       - AIA-TEXT-A032-P001
-    - text: the standards cover the relevant Article 31 requirements
+    - text: in so far as the applicable harmonised standards cover those requirements
       basis_segment_ids:
       - AIA-TEXT-A032-P001
   exceptions: null
@@ -50,3 +51,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

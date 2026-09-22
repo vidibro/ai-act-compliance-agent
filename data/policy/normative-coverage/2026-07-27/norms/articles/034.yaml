@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A034-P001
   targets: []
   action: verify high-risk AI-system conformity using the Article 43 conformity-assessment procedures
   norm_text: Notified bodies shall verify the conformity of high-risk AI systems in accordance with the
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A034-P2-AVOID-UNNECESSARY-BURDENS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A034-P002
   targets: []
   action: avoid unnecessary provider burdens and account for provider size, sector, structure, and system
     complexity to minimise administrative burdens and compliance costs, particularly for micro and small
@@ -53,7 +58,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A034-P002
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: when performing their activities
+      basis_segment_ids:
+      - AIA-TEXT-A034-P002
   exceptions: null
   mandatory_content:
   - provider size
@@ -75,11 +85,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A034-P2-PRESERVE-RIGOUR-AND-PROTECTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A034-P002
   targets: []
   action: preserve the rigor and protection required for the high-risk system's compliance with the Regulation
   norm_text: The notified body shall, nevertheless, respect the degree of rigour and the level of protection
@@ -108,11 +121,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A034-P3-PROVIDE-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A034-P003
   targets: []
   action: make available and submit all relevant documentation to the Article 28 notifying authority upon
     request
@@ -129,7 +145,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Article 28 notifying authority requests the documentation
+    - text: upon request
       basis_segment_ids:
       - AIA-TEXT-A034-P003
   exceptions: null
@@ -151,3 +167,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

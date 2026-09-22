@@ -1,3 +1,11 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A033-P4-FIVE-YEAR-RETENTION
+  application_start: 2025-08-02
+  timing_conditions:
+  - for a period of five years from the termination date of the subcontracting
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A033-P004
 records:
 - norm_id: AIA-NORM-A033-P1-SUBCONTRACTOR-ARTICLE-31-COMPLIANCE
   source: A033-P001
@@ -7,14 +15,21 @@ records:
     requirements
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A033-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A033-P001
   conditions:
-  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+    operator: all_of
+    operands:
+    - text: Where a notified body subcontracts specific tasks connected with the conformity assessment or has recourse to a subsidiary
+      basis_segment_ids: [AIA-TEXT-A033-P001]
 - norm_id: AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
   source: A033-P001
   quote: shall inform the notifying authority accordingly.
@@ -22,14 +37,21 @@ records:
     tasks
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A033-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A033-P001
   conditions:
-  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+    operator: all_of
+    operands:
+    - text: Where a notified body subcontracts specific tasks connected with the conformity assessment or has recourse to a subsidiary
+      basis_segment_ids: [AIA-TEXT-A033-P001]
 - norm_id: AIA-NORM-A033-P2-FULL-RESPONSIBILITY
   source: A033-P002
   quote: Notified bodies shall take full responsibility for the tasks performed by any subcontractors
@@ -37,7 +59,9 @@ records:
   action: take full responsibility for tasks performed by subcontractors or subsidiaries
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A033-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -50,22 +74,29 @@ records:
   action: subcontract activities or use a subsidiary only with the provider's agreement
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A033-P003]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the provider agrees to the subcontracting or subsidiary arrangement
+    operator: all_of
+    operands:
+    - text: only with the agreement of the provider
+      basis_segment_ids: [AIA-TEXT-A033-P003]
 - norm_id: AIA-NORM-A033-P3-PUBLISH-SUBSIDIARIES
   source: A033-P003
   quote: Notified bodies shall make a list of their subsidiaries publicly available.
   action: make the list of subsidiaries publicly available
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A033-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -80,7 +111,9 @@ records:
     authority for five years after subcontracting ends
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A033-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-A033-P4-FIVE-YEAR-RETENTION
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -89,5 +122,3 @@ records:
   mandatory_content:
   - documents assessing the qualifications of the subcontractor or subsidiary
   - documents concerning work performed by the subcontractor or subsidiary under the Regulation
-  conditions:
-  - retain the documents for five years from termination of the subcontracting

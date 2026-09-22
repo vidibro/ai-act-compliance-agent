@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A033-P001
   targets: []
   action: ensure subcontractors and subsidiaries used for conformity-assessment tasks meet Article 31
     requirements
@@ -13,13 +15,16 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A033-P001
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A033-P001
   conditions:
     operator: all_of
     operands:
-    - text: the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+    - text: Where a notified body subcontracts specific tasks connected with the conformity assessment
+        or has recourse to a subsidiary
       basis_segment_ids:
       - AIA-TEXT-A033-P001
   exceptions: null
@@ -39,11 +44,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A033-P001
   targets: []
   action: inform the notifying authority when using a subcontractor or subsidiary for conformity-assessment
     tasks
@@ -51,13 +59,16 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A033-P001
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A033-P001
   conditions:
     operator: all_of
     operands:
-    - text: the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+    - text: Where a notified body subcontracts specific tasks connected with the conformity assessment
+        or has recourse to a subsidiary
       basis_segment_ids:
       - AIA-TEXT-A033-P001
   exceptions: null
@@ -77,11 +88,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A033-P2-FULL-RESPONSIBILITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A033-P002
   targets: []
   action: take full responsibility for tasks performed by subcontractors or subsidiaries
   norm_text: Notified bodies shall take full responsibility for the tasks performed by any subcontractors
@@ -110,11 +124,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A033-P3-PROVIDER-AGREEMENT
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A033-P003
   targets: []
   action: subcontract activities or use a subsidiary only with the provider's agreement
   norm_text: Activities may be subcontracted or carried out by a subsidiary only with the agreement of
@@ -128,7 +145,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider agrees to the subcontracting or subsidiary arrangement
+    - text: only with the agreement of the provider
       basis_segment_ids:
       - AIA-TEXT-A033-P003
   exceptions: null
@@ -148,11 +165,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A033-P3-PUBLISH-SUBSIDIARIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A033-P003
   targets: []
   action: make the list of subsidiaries publicly available
   norm_text: Notified bodies shall make a list of their subsidiaries publicly available.
@@ -180,11 +200,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A033-P4-RETAIN-SUBCONTRACTING-DOCUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A033-P001
   targets: []
   action: keep subcontractor or subsidiary qualification and work documents available to the notifying
     authority for five years after subcontracting ends
@@ -197,12 +220,7 @@ norms:
   primary_spans:
   - AIA-TEXT-A033-P004
   qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: retain the documents for five years from termination of the subcontracting
-      basis_segment_ids:
-      - AIA-TEXT-A033-P004
+  conditions: null
   exceptions: null
   mandatory_content:
   - documents assessing the qualifications of the subcontractor or subsidiary
@@ -222,3 +240,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A033-P4-FIVE-YEAR-RETENTION

@@ -9,16 +9,21 @@ records:
     covers the applicable requirements
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A032-P001]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the conformity-assessment body demonstrates conformity with the relevant harmonised standards or parts
-    thereof
-  - references to those standards or parts have been published in the Official Journal of the European
-    Union
-  - the standards cover the relevant Article 31 requirements
+    operator: all_of
+    operands:
+    - text: Where a conformity assessment body demonstrates its conformity with the criteria laid down in the relevant harmonised standards or parts thereof
+      basis_segment_ids: [AIA-TEXT-A032-P001]
+    - text: the references of which have been published in the Official Journal of the European Union
+      basis_segment_ids: [AIA-TEXT-A032-P001]
+    - text: in so far as the applicable harmonised standards cover those requirements
+      basis_segment_ids: [AIA-TEXT-A032-P001]

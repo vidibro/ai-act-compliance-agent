@@ -2430,8 +2430,15 @@ def test_article_thirty_three_separates_subcontracting_legal_effects():
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     retention = norms["AIA-NORM-A033-P4-RETAIN-SUBCONTRACTING-DOCUMENTS"]
     assert len(retention.mandatory_content) == 2
-    assert retention.conditions == [
-        "retain the documents for five years from termination of the subcontracting"
+    # The five-year period is how long the duty runs, not a condition that switches it on.
+    assert retention.conditions is None
+    regime = next(
+        item
+        for item in bundle.norm_inventory.temporal_regimes
+        if item.regime_id == retention.temporal_regime_id
+    )
+    assert regime.timing_conditions == [
+        "for a period of five years from the termination date of the subcontracting"
     ]
 
 
@@ -2459,9 +2466,7 @@ def test_article_thirty_four_separates_operational_obligations():
         "all relevant documentation",
         "provider documentation",
     ]
-    assert documentation.conditions == [
-        "the Article 28 notifying authority requests the documentation"
-    ]
+    assert [operand.text for operand in documentation.conditions.operands] == ["upon request"]
 
 
 def test_article_thirty_five_keeps_publication_and_currency_separate():

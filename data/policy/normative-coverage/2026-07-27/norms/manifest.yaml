@@ -4050,6 +4050,14 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-B
   - AIA-TEXT-A030-P006
+- regime_id: AIA-TEMP-A033-P4-FIVE-YEAR-RETENTION
+  application_start: '2025-08-02'
+  application_end: null
+  timing_conditions:
+  - for a period of five years from the termination date of the subcontracting
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A033-P004
 - regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
   application_start: null
   application_end: null

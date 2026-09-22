@@ -6,7 +6,9 @@ records:
   action: verify high-risk AI-system conformity using the Article 43 conformity-assessment procedures
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A034-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -24,7 +26,9 @@ records:
     enterprises
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A034-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -35,6 +39,11 @@ records:
   - provider sector
   - provider structure
   - high-risk AI-system complexity
+  conditions:
+    operator: all_of
+    operands:
+    - text: when performing their activities
+      basis_segment_ids: [AIA-TEXT-A034-P002]
   verified_by: vidibro
 - norm_id: AIA-NORM-A034-P2-PRESERVE-RIGOUR-AND-PROTECTION
   source: A034-P002
@@ -43,7 +52,9 @@ records:
   action: preserve the rigor and protection required for the high-risk system's compliance with the Regulation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A034-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -59,7 +70,9 @@ records:
     request
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A034-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -69,4 +82,7 @@ records:
   - all relevant documentation
   - provider documentation
   conditions:
-  - the Article 28 notifying authority requests the documentation
+    operator: all_of
+    operands:
+    - text: upon request
+      basis_segment_ids: [AIA-TEXT-A034-P003]
