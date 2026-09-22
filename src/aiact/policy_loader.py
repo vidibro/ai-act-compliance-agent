@@ -320,7 +320,8 @@ def criterion_from_norm(norm: Norm) -> RuleCriterion:
     return RuleCriterion(
         norm_id=norm.norm_id,
         kind=norm.kind,
-        actors=[actor.actor_ref for actor in norm.actors],
+        actors=[actor.actor_ref for actor in norm.assigned_actors],
+        applies_to_all_actors=norm.applies_to_all_actors,
         targets=[target.target_ref for target in norm.targets],
         action=norm.action,
         norm_text=norm.norm_text,
@@ -337,8 +338,9 @@ def report_norm_from_norm(norm: Norm) -> ReportNorm:
     return ReportNorm(
         norm_id=norm.norm_id,
         kind=norm.kind,
-        actors=[actor.actor_ref for actor in norm.actors],
-        actor_categories=[actor.category for actor in norm.actors],
+        actors=[actor.actor_ref for actor in norm.assigned_actors],
+        actor_categories=[actor.category for actor in norm.assigned_actors],
+        applies_to_all_actors=norm.applies_to_all_actors,
         targets=[target.target_ref for target in norm.targets],
         action=norm.action,
         norm_text=norm.norm_text,

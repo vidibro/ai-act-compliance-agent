@@ -3,7 +3,7 @@ norms:
 - norm_id: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system
   action: classify an AI system as high-risk, regardless of whether it is placed on the market or put
@@ -58,7 +58,7 @@ norms:
 - norm_id: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system
   action: exclude AI systems used solely for the listed non-safety functions from qualification as safety
@@ -104,7 +104,7 @@ norms:
 - norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system
   action: classify an AI system as a safety component when its failure or malfunction would endanger health
@@ -148,7 +148,7 @@ norms:
 - norm_id: AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system_or_product
   action: exclude a third-party conformity assessment required solely for non-health-and-safety risks
@@ -195,7 +195,7 @@ norms:
 - norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_iii_ai_system
   action: classify AI systems referred to in Annex III as high-risk
@@ -230,7 +230,7 @@ norms:
 - norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_iii_ai_system
   action: exclude an Annex III AI system from high-risk classification when it poses no significant harm
@@ -314,7 +314,7 @@ norms:
 - norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_iii_ai_system
   action: classify an Annex III AI system as high-risk whenever it profiles natural persons

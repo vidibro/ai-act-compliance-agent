@@ -99,7 +99,8 @@ class RuleCriterion(BaseModel):
 
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     kind: NormKind
-    actors: list[str] = Field(min_length=1)
+    actors: list[str] = []
+    applies_to_all_actors: bool = False
     targets: list[str]
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
@@ -108,6 +109,12 @@ class RuleCriterion(BaseModel):
     mandatory_content: list[str]
     source_spans: list[str] = Field(min_length=1)
     verification_mode: VerificationMode
+
+    @model_validator(mode="after")
+    def _actor_scope_is_unambiguous(self) -> RuleCriterion:
+        if self.actors and self.applies_to_all_actors:
+            raise ValueError("criterion cannot name actors and apply to all actors")
+        return self
 
     @property
     def mandatory(self) -> bool:
@@ -136,6 +143,7 @@ class ReportNorm(BaseModel):
     kind: NormKind
     actors: list[str]
     actor_categories: list[ActorCategory]
+    applies_to_all_actors: bool = False
     targets: list[str]
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
@@ -144,6 +152,14 @@ class ReportNorm(BaseModel):
     source_spans: list[str] = Field(min_length=1)
     activation_rule_ids: list[str] = Field(min_length=1)
     verification_mode: VerificationMode
+
+    @model_validator(mode="after")
+    def _actor_scope_is_unambiguous(self) -> ReportNorm:
+        if self.actors and self.applies_to_all_actors:
+            raise ValueError("report norm cannot name actors and apply to all actors")
+        if self.actor_categories and self.applies_to_all_actors:
+            raise ValueError("universal report norm cannot name actor categories")
+        return self
 
 
 class PolicyRule(BaseModel):
@@ -376,7 +392,10 @@ class PolicyRule(BaseModel):
                 "deterministic "
                 "assessment treatment."
             )
-        actor_sets = {tuple(criterion.actors) for criterion in self.criteria}
+        actor_sets = {
+            (tuple(criterion.actors), criterion.applies_to_all_actors)
+            for criterion in self.criteria
+        }
         if len(actor_sets) > 1:
             raise ValueError(
                 f"PolicyRule {self.rule_id!r}: criteria name different actors. Split rules by "

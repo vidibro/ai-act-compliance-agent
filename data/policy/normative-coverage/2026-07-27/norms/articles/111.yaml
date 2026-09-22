@@ -86,7 +86,7 @@ norms:
 - norm_id: AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: regulation
   action: apply the Regulation to legacy high-risk systems other than paragraph 1 systems only when their

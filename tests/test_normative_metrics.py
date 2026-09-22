@@ -756,7 +756,7 @@ def test_article_four_literacy_norm_keeps_context_and_individual_guarantee_limit
         if norm.norm_id == "AIA-NORM-A004-P1-AI-LITERACY-MEASURES"
     )
 
-    assert [actor.actor_ref for actor in norm.actors] == ["provider", "deployer"]
+    assert [actor.actor_ref for actor in norm.assigned_actors] == ["provider", "deployer"]
     assert norm.product_scope.value == "in_scope"
     assert norm.implementation_mode.value == "compliance_rule"
     assert len(norm.conditions) == 3
@@ -2147,7 +2147,9 @@ def test_article_twenty_seven_keeps_fria_contents_in_one_assessment_norm():
     assert len(by_target["AIA-RULE-DP-A27-3"]) == 2
 
     ai_office_norms = {
-        norm_id for norm_id, norm in norms.items() if norm.actors[0].actor_ref == "ai_office"
+        norm_id
+        for norm_id, norm in norms.items()
+        if norm.assigned_actors and norm.assigned_actors[0].actor_ref == "ai_office"
     }
     assert len(ai_office_norms) == 2
     assert all(
@@ -2477,7 +2479,8 @@ def test_article_thirty_five_keeps_publication_and_currency_separate():
     assert len(segments[2].norm_ids) == 2
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert all(
-        norm.actors[0].category.value == "union_institution_or_body" for norm in norms.values()
+        norm.assigned_actors[0].category.value == "union_institution_or_body"
+        for norm in norms.values()
     )
     publication = norms["AIA-NORM-A035-P2-PUBLISH-NOTIFIED-BODY-LIST"]
     assert publication.mandatory_content == [
@@ -2567,7 +2570,7 @@ def test_article_thirty_eight_captures_coordination_duties():
     assert len(norms) == 3
     assert all(norm.kind.value == "obligation" for norm in norms)
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
-    assert {norm.actors[0].category.value for norm in norms} == {
+    assert {norm.assigned_actors[0].category.value for norm in norms} == {
         "union_institution_or_body",
         "public_authority",
     }
@@ -2676,7 +2679,7 @@ def test_article_forty_two_keeps_three_conformity_presumptions_distinct():
     assert all(norm.product_scope.value == "in_scope" for norm in norms)
     assert all(norm.implementation_mode.value == "report_only" for norm in norms)
     assert all(norm.verification_mode.value == "reported_conditionally" for norm in norms)
-    assert all(not norm.actors for norm in norms)
+    assert all(norm.has_no_actor for norm in norms)
     assert all(
         [target.target_ref for target in norm.targets] == ["high_risk_ai_system"] for norm in norms
     )
@@ -3036,7 +3039,7 @@ def test_article_fifty_one_extracts_systemic_risk_classification_gates():
     delegated_acts = [
         norm
         for norm in norms.values()
-        if norm.actors and norm.actors[0].actor_ref == "commission"
+        if norm.assigned_actors and norm.assigned_actors[0].actor_ref == "commission"
     ]
     assert len(delegated_acts) == 1
     assert all(norm.implementation_mode.value == "none_required" for norm in delegated_acts)
@@ -3142,7 +3145,9 @@ def test_article_fifty_four_maps_representative_mandate_lifecycle():
     assert len(exception.implementation_refs) == 5
     assert exception.exceptions == ["the general-purpose AI model presents systemic risk"]
     representative = [
-        norm for norm in norms.values() if norm.actors[0].actor_ref == "authorised_representative"
+        norm
+        for norm in norms.values()
+        if norm.assigned_actors and norm.assigned_actors[0].actor_ref == "authorised_representative"
     ]
     assert len(representative) == 8
 
@@ -3241,7 +3246,9 @@ def test_article_fifty_seven_extracts_complete_sandbox_lifecycle():
     assert len(objectives.mandatory_content) == 5
     assert len(objectives.qualifier_spans) == 5
     provider_consequences = [
-        norm for norm in norms.values() if norm.actors[0].category.value == "supported_operator"
+        norm
+        for norm in norms.values()
+        if norm.assigned_actors and norm.assigned_actors[0].category.value == "supported_operator"
     ]
     assert len(provider_consequences) == 4
     assert all(norm.product_scope.value == "no_product_action" for norm in provider_consequences)
@@ -3538,7 +3545,8 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     assert not recall.conditions
     assert "upon such termination" in recall.action
     assert all(
-        [actor.actor_ref for actor in norm.actors] == ["provider", "prospective_provider"]
+        [actor.actor_ref for actor in norm.assigned_actors]
+        == ["provider", "prospective_provider"]
         for norm in (report, mitigate, recall)
     )
 
@@ -3762,7 +3770,10 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     assert convene.conditions == ["the Chair requests the meeting"]
     assert not agenda.conditions
     assert "rules of procedure" in agenda.action
-    assert all(norm.actors[0].actor_ref == "ai_office" for norm in (secretariat, convene, agenda))
+    assert all(
+        norm.assigned_actors[0].actor_ref == "ai_office"
+        for norm in (secretariat, convene, agenda)
+    )
     assert_extraction_never_approves(norms.values())
 
 
@@ -4076,7 +4087,9 @@ def test_article_seventy_two_maps_post_market_monitoring_effects():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 6
     provider_norms = [
-        norm for norm in norms.values() if norm.actors[0].category.value == "supported_operator"
+        norm
+        for norm in norms.values()
+        if norm.assigned_actors and norm.assigned_actors[0].category.value == "supported_operator"
     ]
     assert len(provider_norms) == 5
     assert all(norm.implementation_refs == ["AIA-RULE-PO-A72"] for norm in provider_norms)
@@ -4410,7 +4423,7 @@ def test_article_eighty_one_extracts_union_safeguard_procedure():
 
     assert len(norms) == 8
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
-    assert {norm.actors[0].category.value for norm in norms} == {
+    assert {norm.assigned_actors[0].category.value for norm in norms} == {
         "member_state",
         "union_institution_or_body",
     }
@@ -4471,7 +4484,9 @@ def test_article_eighty_four_extracts_testing_support_structure_duties():
     ]
 
     assert len(norms) == 2
-    assert all(norm.actors[0].category.value == "union_institution_or_body" for norm in norms)
+    assert all(
+        norm.assigned_actors[0].category.value == "union_institution_or_body" for norm in norms
+    )
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
 
 
@@ -4956,7 +4971,11 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
         norm for norm in norms.values() if norm.primary_spans[0].startswith("AIA-TEXT-ANNEX-VII-")
     ]
     assert len(annex_vii) == 31
-    assert {norm.actors[0].category.value for norm in annex_vii if norm.actors} >= {
+    assert {
+        norm.assigned_actors[0].category.value
+        for norm in annex_vii
+        if norm.assigned_actors
+    } >= {
         "supported_operator",
         "notified_or_conformity_body",
     }
@@ -5073,7 +5092,7 @@ def test_annex_six_internal_control_defines_and_applies_all_three_checks():
     assert procedure.kind.value == "applicability"
     assert procedure.qualifier_spans == [f"AIA-TEXT-ANNEX-VI-P{index:03d}" for index in range(2, 5)]
     provider_checks = [norm for key, norm in norms.items() if "P1" not in key]
-    assert all(norm.actors[0].actor_ref == "provider" for norm in provider_checks)
+    assert all(norm.assigned_actors[0].actor_ref == "provider" for norm in provider_checks)
 
 
 def test_annex_seven_completion_covers_change_control_and_certificate_content():

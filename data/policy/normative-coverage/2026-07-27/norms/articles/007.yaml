@@ -151,7 +151,7 @@ norms:
 - norm_id: AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: outcomes having an adverse impact on health, safety or fundamental rights
     target_kind: legal_status

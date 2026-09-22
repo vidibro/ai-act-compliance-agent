@@ -3,7 +3,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: remote_biometric_identification_system
   action: classify remote biometric identification systems as an Annex III high-risk use case
@@ -54,7 +54,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: biometric_categorisation_system
   action: classify biometric categorisation based on inferred sensitive or protected attributes or characteristics
@@ -98,7 +98,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: emotion_recognition_system
   action: classify emotion-recognition systems as an Annex III high-risk use case
@@ -140,7 +140,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: critical_infrastructure_ai_system
   action: classify safety-component use in managing or operating listed critical infrastructure as an
@@ -178,7 +178,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-3A-EDUCATION-ACCESS
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: education_access_ai_system
   action: classify determining access, admission, or assignment to education or vocational-training institutions
@@ -217,7 +217,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: learning_outcome_ai_system
   action: classify evaluating learning outcomes, including steering learning, as an Annex III high-risk
@@ -257,7 +257,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-3C-EDUCATION-LEVEL
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: education_level_ai_system
   action: classify assessing the education level a person will receive or can access as an Annex III high-risk
@@ -297,7 +297,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-3D-TEST-BEHAVIOUR
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: student_test_monitoring_ai_system
   action: classify monitoring or detecting prohibited student behaviour during tests as an Annex III high-risk
@@ -336,7 +336,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-4A-RECRUITMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: recruitment_ai_system
   action: classify recruitment or selection uses, including targeted advertising, application filtering,
@@ -375,7 +375,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-4B-WORKER-MANAGEMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: worker_management_ai_system
   action: classify listed worker-management decisions, task allocation, monitoring, and evaluation as
@@ -416,7 +416,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-5A-ESSENTIAL-BENEFITS
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: essential_public_benefits_ai_system
   action: classify public-authority evaluation and decisions concerning essential assistance benefits
@@ -456,7 +456,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-5B-CREDITWORTHINESS
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: creditworthiness_ai_system
   action: classify evaluating a person's creditworthiness or establishing their credit score as an Annex
@@ -500,7 +500,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-5C-LIFE-HEALTH-INSURANCE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: life_health_insurance_ai_system
   action: classify risk assessment or pricing for natural persons in life or health insurance as an Annex
@@ -539,7 +539,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-5D-EMERGENCY-RESPONSE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: emergency_response_ai_system
   action: classify emergency-call evaluation, emergency-response dispatch or prioritisation, and emergency
@@ -580,7 +580,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-6A-VICTIM-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: crime_victim_risk_ai_system
   action: classify law-enforcement assessment of a person's risk of becoming a crime victim as an Annex
@@ -625,7 +625,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: law_enforcement_polygraph_ai_system
   action: classify law-enforcement polygraphs or similar tools as an Annex III high-risk use case
@@ -669,7 +669,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-6C-EVIDENCE-RELIABILITY
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: evidence_reliability_ai_system
   action: classify law-enforcement evaluation of evidence reliability during criminal investigation or
@@ -714,7 +714,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-6D-OFFENDING-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: offending_risk_ai_system
   action: classify listed law-enforcement offending-risk, personality, characteristic, or criminal-behaviour
@@ -764,7 +764,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: law_enforcement_profiling_ai_system
   action: classify profiling during criminal detection, investigation, or prosecution as an Annex III
@@ -810,7 +810,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-7A-BORDER-POLYGRAPH
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: border_polygraph_ai_system
   action: classify migration, asylum, or border-control polygraphs or similar tools as an Annex III high-risk
@@ -854,7 +854,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-7B-BORDER-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: border_risk_ai_system
   action: classify assessment of security, irregular-migration, or health risks posed by a person entering
@@ -900,7 +900,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: asylum_visa_residence_ai_system
   action: classify assistance with asylum, visa, or residence applications, associated complaints, eligibility,
@@ -947,7 +947,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-7D-BORDER-IDENTIFICATION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: border_identification_ai_system
   action: classify detecting, recognising, or identifying people in migration, asylum, or border-control
@@ -998,7 +998,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-8A-JUSTICE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: justice_ai_system
   action: classify AI assistance with judicial or alternative-dispute-resolution fact finding, legal interpretation,
@@ -1038,7 +1038,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: election_influence_ai_system
   action: classify AI systems used to influence election or referendum outcomes or voting behaviour as

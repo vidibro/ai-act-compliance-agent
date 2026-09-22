@@ -32,8 +32,7 @@ records:
   action: prohibit placing on the market, putting into service, or using AI systems employing subliminal,
     purposefully manipulative, or deceptive techniques that materially distort decisions and cause or
     are reasonably likely to cause significant harm
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -61,8 +60,7 @@ records:
     likely to cause that person or another person significant harm
   action: prohibit placing on the market, putting into service, or using AI systems that exploit vulnerabilities
     and materially distort behaviour in a significantly harmful or likely harmful manner
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -90,8 +88,7 @@ records:
     \ or manipulation"
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating realistic
     intimate or sexually explicit material of an identifiable natural person without explicit consent
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -140,8 +137,7 @@ records:
     \ 2011/93/EU, except where a \u2018without right\u2019 defence applies under national law"
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating material
     or performances covered by Directive 2011/93/EU
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -186,8 +182,7 @@ records:
     social score leading to either or both of the following:'
   action: prohibit placing on the market, putting into service, or using AI systems for social scoring
     that leads to either prohibited form of detrimental or unfavourable treatment
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -220,8 +215,7 @@ records:
     which is already based on objective and verifiable facts directly linked to a criminal activity
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -243,8 +237,7 @@ records:
     images from the internet or CCTV footage
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems that
     create or expand facial-recognition databases through untargeted scraping from the internet or CCTV
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -262,8 +255,7 @@ records:
     or safety reasons
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     infer emotions in workplaces or educational institutions
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -288,8 +280,7 @@ records:
     biometric data in the area of law enforcement
   action: prohibit placing on the market, putting into service for the purpose, or using biometric categorisation
     systems to infer the listed sensitive characteristics of individuals
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   kind: prohibition
   verification_mode: answered_by_classification
@@ -342,7 +333,7 @@ records:
     for the processing of biometric data for purposes other than law enforcement.
   action: preserve GDPR Article 9 for biometric-data processing conducted for purposes other than law
     enforcement
-  actors: []
+  actors: none
   targets:
   - target_ref: non_law_enforcement_biometric_data_processing
   kind: legal_consequence
@@ -416,7 +407,7 @@ records:
     nature of any depicted sexually explicit activities shall not constitute manipulation.
   action: treat manipulation as outside point (ba) where it neither increases intimate-part exposure nor
     alters the nature of depicted sexually explicit activities
-  actors: []
+  actors: none
   targets:
   - target_ref: intimate_material_manipulation
   kind: legal_consequence
@@ -915,7 +906,7 @@ records:
   quote: This Article shall not affect the prohibitions that apply where an AI practice infringes other
     Union law.
   action: preserve prohibitions under other Union law where an AI practice infringes that law
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_practice_subject_to_other_union_law
   kind: legal_consequence

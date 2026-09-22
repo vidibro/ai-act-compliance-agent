@@ -1114,6 +1114,41 @@ def test_field_validation_gate_requires_complete_actor_evidence_for_an_article(t
         enforce_validity_adjudications(bundle, root)
 
 
+def test_universal_actor_scope_requires_the_enacted_prohibition_chapeau():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES"
+    )
+    requirements = {(SourceKind.ARTICLE, "5"): {FieldValidation.ACTOR_EVIDENCE}}
+
+    assert norm.applies_to_all_actors
+    assert not [
+        finding
+        for finding in audit_norm_validity(
+            bundle,
+            scope={(SourceKind.ARTICLE, "5")},
+            required_field_validations=requirements,
+        )
+        if finding.target == f"{norm.norm_id}:actor:universal"
+    ]
+
+    norm.qualifier_spans = []
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "5")},
+        required_field_validations=requirements,
+    )
+
+    universal_rules = [
+        finding.rule
+        for finding in findings
+        if finding.target == f"{norm.norm_id}:actor:universal"
+    ]
+    assert universal_rules == ["universal_actor_scope_not_evidenced"]
+
+
 def test_target_evidence_gate_requires_a_basis_for_every_listed_target():
     bundle = load_bundle().model_copy(deep=True)
     norm = next(

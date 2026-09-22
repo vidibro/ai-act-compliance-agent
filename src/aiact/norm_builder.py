@@ -131,7 +131,9 @@ class NormSourceRecord(BaseModel):
     source: str = Field(pattern=r"^[A-Z0-9-]+$")
     quote: str = Field(min_length=1)
     action: str = Field(min_length=1)
-    actors: list[NormActor] = []
+    # Authoring must choose one of the three actor meanings explicitly.  The compiled Norm keeps a
+    # conservative default only for backwards-compatible readers of older generated inventories.
+    actors: list[NormActor] | Literal["none"]
     targets: list[NormTarget] = []
     kind: NormKind = NormKind.OBLIGATION
     product_scope: ProductScope = ProductScope.IN_SCOPE
@@ -149,6 +151,14 @@ class NormSourceRecord(BaseModel):
         default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
     )
     verified_by: str = ""
+
+    @property
+    def assigned_actors(self) -> list[NormActor]:
+        return self.actors if isinstance(self.actors, list) else []
+
+    @property
+    def applies_to_all_actors(self) -> bool:
+        return isinstance(self.actors, list) and not self.actors
 
     @model_validator(mode="before")
     @classmethod
@@ -168,8 +178,10 @@ class NormSourceRecord(BaseModel):
 
     @model_validator(mode="after")
     def _has_actor_or_target(self) -> NormSourceRecord:
-        if not self.actors and not self.targets:
+        if self.actors == "none" and not self.targets:
             raise ValueError("norm source record requires at least one actor or target")
+        if self.applies_to_all_actors and self.kind is not NormKind.PROHIBITION:
+            raise ValueError("universal actors [] are allowed only for prohibitions")
         return self
 
 
@@ -569,7 +581,9 @@ def _build_norms(
     for record in source_inventory.records:
         primary = f"AIA-TEXT-{record.source}"
         qualifiers = [f"AIA-TEXT-{span}" for span in record.qualifier_spans]
-        actor_basis = [segment for actor in record.actors for segment in actor.basis_segment_ids]
+        actor_basis = [
+            segment for actor in record.assigned_actors for segment in actor.basis_segment_ids
+        ]
         target_basis = [
             segment for target in record.targets for segment in target.basis_segment_ids
         ]
@@ -615,9 +629,14 @@ def _build_norms(
             "norm_id": record.norm_id,
             "act_version_date": version_text,
             "kind": record.kind.value,
-            "actors": [
-                actor.model_dump(mode="json", exclude_defaults=True) for actor in record.actors
-            ],
+            "actors": (
+                [
+                    actor.model_dump(mode="json", exclude_defaults=True)
+                    for actor in record.assigned_actors
+                ]
+                if isinstance(record.actors, list)
+                else "none"
+            ),
             "targets": [
                 target.model_dump(mode="json", exclude_defaults=True) for target in record.targets
             ],

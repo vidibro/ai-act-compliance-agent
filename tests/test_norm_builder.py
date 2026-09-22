@@ -537,11 +537,35 @@ def test_target_only_source_record_does_not_invent_an_actor():
         source="A001-P1",
         quote="An AI system is classified.",
         action="classify the AI system",
+        actors="none",
         targets=[{"target_ref": "ai_system"}],
     )
 
-    assert record.actors == []
+    assert record.actors == "none"
     assert [target.target_ref for target in record.targets] == ["ai_system"]
+
+
+def test_source_record_actor_scope_has_three_explicit_states():
+    common = {
+        "norm_id": "AIA-NORM-A001-P1-PROHIBITION",
+        "source": "A001-P1",
+        "quote": "The following AI practices shall be prohibited.",
+        "action": "prohibit the practice",
+        "kind": "prohibition",
+    }
+
+    universal = NormSourceRecord(**common, actors=[])
+    actorless = NormSourceRecord(**common, actors="none", targets=[{"target_ref": "practice"}])
+    named = NormSourceRecord(**common, actors=[{"actor_ref": "provider"}])
+
+    assert universal.applies_to_all_actors
+    assert actorless.actors == "none"
+    assert named.assigned_actors[0].actor_ref == "provider"
+
+    with pytest.raises(ValueError, match="only for prohibitions"):
+        NormSourceRecord(**{**common, "kind": "obligation"}, actors=[])
+    with pytest.raises(ValueError, match="Field required"):
+        NormSourceRecord(**common)
 
 
 def test_document_verifier_approves_all_non_debt_segments(tmp_path):

@@ -270,7 +270,11 @@ def build_graph(
                     if actor in {role.value for role in ActorRole}
                     and ActorRole(actor).category is ActorCategory.SUPPORTED_OPERATOR
                 }
-                if exact_actor_roles and active.role not in exact_actor_roles:
+                if (
+                    not report_norm.applies_to_all_actors
+                    and exact_actor_roles
+                    and active.role not in exact_actor_roles
+                ):
                     continue
                 destination = (
                     permissions

@@ -3,7 +3,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_vii_conformity_assessment
   action: define the Annex VII conformity-assessment procedure as comprising points 2 to 5
@@ -38,7 +38,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_vii_conformity_assessment
   action: examine the approved Article 17 quality management system under Annex VII point 3 and subject
@@ -76,7 +76,7 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_vii_conformity_assessment
   action: examine the AI system's technical documentation under Annex VII point 4

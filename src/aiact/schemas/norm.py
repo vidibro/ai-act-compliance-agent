@@ -588,7 +588,12 @@ class Norm(BaseModel):
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     act_version_date: date
     kind: NormKind
-    actors: list[NormActor] = []
+    # The three values deliberately mean different legal things:
+    #   [roles...] -- named legal addressees;
+    #   []         -- a universal prohibition, owed by every actor;
+    #   "none"     -- the proposition assigns no legal actor (for example a definition).
+    # An omitted value is therefore conservative: it does not invent a universal duty.
+    actors: list[NormActor] | Literal["none"] = "none"
     targets: list[NormTarget] = []
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
@@ -633,20 +638,41 @@ class Norm(BaseModel):
                 self.primary_spans
                 + self.qualifier_spans
                 + self.definition_spans
-                + [segment for actor in self.actors for segment in actor.basis_segment_ids]
+                + [
+                    segment
+                    for actor in self.assigned_actors
+                    for segment in actor.basis_segment_ids
+                ]
                 + [segment for target in self.targets for segment in target.basis_segment_ids]
                 + _condition_basis_segments(self.conditions)
                 + _condition_basis_segments(self.exceptions)
             )
         )
 
+    @property
+    def assigned_actors(self) -> list[NormActor]:
+        """The named legal addressees, excluding universal and actorless propositions."""
+        return self.actors if isinstance(self.actors, list) else []
+
+    @property
+    def applies_to_all_actors(self) -> bool:
+        """Whether the enacted prohibition binds everyone, not a named role."""
+        return isinstance(self.actors, list) and not self.actors
+
+    @property
+    def has_no_actor(self) -> bool:
+        """Whether the proposition has no legal addressee at all."""
+        return self.actors == "none"
+
     @model_validator(mode="after")
     def _scope_and_implementation_are_explained(self) -> Norm:
         if not self.norm_text.strip():
             raise ValueError("norm_text must contain an exact enacted quotation")
-        if not self.actors and not self.targets:
+        if self.has_no_actor and not self.targets:
             raise ValueError("norm requires at least one actor or target")
-        actor_refs = [actor.actor_ref for actor in self.actors]
+        if self.applies_to_all_actors and self.kind is not NormKind.PROHIBITION:
+            raise ValueError("universal actors [] are allowed only for prohibitions")
+        actor_refs = [actor.actor_ref for actor in self.assigned_actors]
         if len(actor_refs) != len(set(actor_refs)):
             raise ValueError("actors must not contain duplicate actor_ref values")
         target_refs = [target.target_ref for target in self.targets]

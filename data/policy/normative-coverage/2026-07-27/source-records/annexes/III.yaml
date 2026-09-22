@@ -5,7 +5,7 @@ records:
     for biometric verification the sole purpose of which is to confirm that a specific natural person
     is the person he or she claims to be;
   action: classify remote biometric identification systems as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: remote_biometric_identification_system
   kind: applicability
@@ -27,7 +27,7 @@ records:
     attributes or characteristics based on the inference of those attributes or characteristics;
   action: classify biometric categorisation based on inferred sensitive or protected attributes or characteristics
     as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: biometric_categorisation_system
   kind: applicability
@@ -45,7 +45,7 @@ records:
   source: ANNEX-III-P005
   quote: AI systems intended to be used for emotion recognition.
   action: classify emotion-recognition systems as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: emotion_recognition_system
   kind: applicability
@@ -65,7 +65,7 @@ records:
     digital infrastructure, road traffic, or in the supply of water, gas, heating or electricity.
   action: classify safety-component use in managing or operating listed critical infrastructure as an
     Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: critical_infrastructure_ai_system
   kind: applicability
@@ -82,7 +82,7 @@ records:
     to educational and vocational training institutions at all levels;
   action: classify determining access, admission, or assignment to education or vocational-training institutions
     as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: education_access_ai_system
   kind: applicability
@@ -101,7 +101,7 @@ records:
     at all levels;
   action: classify evaluating learning outcomes, including steering learning, as an Annex III high-risk
     use case
-  actors: []
+  actors: none
   targets:
   - target_ref: learning_outcome_ai_system
   kind: applicability
@@ -120,7 +120,7 @@ records:
     and vocational training institutions at all levels;
   action: classify assessing the education level a person will receive or can access as an Annex III high-risk
     use case
-  actors: []
+  actors: none
   targets:
   - target_ref: education_level_ai_system
   kind: applicability
@@ -138,7 +138,7 @@ records:
     during tests in the context of or within educational and vocational training institutions at all levels.
   action: classify monitoring or detecting prohibited student behaviour during tests as an Annex III high-risk
     use case
-  actors: []
+  actors: none
   targets:
   - target_ref: student_test_monitoring_ai_system
   kind: applicability
@@ -156,7 +156,7 @@ records:
     to place targeted job advertisements, to analyse and filter job applications, and to evaluate candidates;
   action: classify recruitment or selection uses, including targeted advertising, application filtering,
     and candidate evaluation, as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: recruitment_ai_system
   kind: applicability
@@ -176,7 +176,7 @@ records:
     and behaviour of persons in such relationships.
   action: classify listed worker-management decisions, task allocation, monitoring, and evaluation as
     an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: worker_management_ai_system
   kind: applicability
@@ -195,7 +195,7 @@ records:
     healthcare services, as well as to grant, reduce, revoke, or reclaim such benefits and services;
   action: classify public-authority evaluation and decisions concerning essential assistance benefits
     and services as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: essential_public_benefits_ai_system
   kind: applicability
@@ -213,7 +213,7 @@ records:
     their credit score, with the exception of AI systems used for the purpose of detecting financial fraud;
   action: classify evaluating a person's creditworthiness or establishing their credit score as an Annex
     III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: creditworthiness_ai_system
   kind: applicability
@@ -233,7 +233,7 @@ records:
     in the case of life and health insurance;
   action: classify risk assessment or pricing for natural persons in life or health insurance as an Annex
     III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: life_health_insurance_ai_system
   kind: applicability
@@ -252,7 +252,7 @@ records:
     by police, firefighters and medical aid, as well as of emergency healthcare patient triage systems.
   action: classify emergency-call evaluation, emergency-response dispatch or prioritisation, and emergency
     healthcare triage as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: emergency_response_ai_system
   kind: applicability
@@ -271,7 +271,7 @@ records:
     the risk of a natural person becoming the victim of criminal offences;
   action: classify law-enforcement assessment of a person's risk of becoming a crime victim as an Annex
     III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: crime_victim_risk_ai_system
   kind: applicability
@@ -290,7 +290,7 @@ records:
   quote: AI systems intended to be used by or on behalf of law enforcement authorities or by Union institutions,
     bodies, offices or agencies in support of law enforcement authorities as polygraphs or similar tools;
   action: classify law-enforcement polygraphs or similar tools as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: law_enforcement_polygraph_ai_system
   kind: applicability
@@ -311,7 +311,7 @@ records:
     of evidence in the course of the investigation or prosecution of criminal offences;
   action: classify law-enforcement evaluation of evidence reliability during criminal investigation or
     prosecution as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: evidence_reliability_ai_system
   kind: applicability
@@ -334,7 +334,7 @@ records:
     traits and characteristics or past criminal behaviour of natural persons or groups;
   action: classify listed law-enforcement offending-risk, personality, characteristic, or criminal-behaviour
     assessment as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: offending_risk_ai_system
   kind: applicability
@@ -357,7 +357,7 @@ records:
     investigation or prosecution of criminal offences.
   action: classify profiling during criminal detection, investigation, or prosecution as an Annex III
     high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: law_enforcement_profiling_ai_system
   kind: applicability
@@ -377,7 +377,7 @@ records:
     bodies, offices or agencies as polygraphs or similar tools;
   action: classify migration, asylum, or border-control polygraphs or similar tools as an Annex III high-risk
     use case
-  actors: []
+  actors: none
   targets:
   - target_ref: border_polygraph_ai_system
   kind: applicability
@@ -399,7 +399,7 @@ records:
     of a Member State;
   action: classify assessment of security, irregular-migration, or health risks posed by a person entering
     a Member State as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: border_risk_ai_system
   kind: applicability
@@ -422,7 +422,7 @@ records:
     evidence;
   action: classify assistance with asylum, visa, or residence applications, associated complaints, eligibility,
     or evidence reliability as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: asylum_visa_residence_ai_system
   kind: applicability
@@ -444,7 +444,7 @@ records:
     of travel documents.
   action: classify detecting, recognising, or identifying people in migration, asylum, or border-control
     management as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: border_identification_ai_system
   kind: applicability
@@ -467,7 +467,7 @@ records:
     set of facts, or to be used in a similar way in alternative dispute resolution;
   action: classify AI assistance with judicial or alternative-dispute-resolution fact finding, legal interpretation,
     or application of law as an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: justice_ai_system
   kind: applicability
@@ -488,7 +488,7 @@ records:
     point of view.
   action: classify AI systems used to influence election or referendum outcomes or voting behaviour as
     an Annex III high-risk use case
-  actors: []
+  actors: none
   targets:
   - target_ref: election_influence_ai_system
   kind: applicability

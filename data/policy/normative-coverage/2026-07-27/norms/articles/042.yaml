@@ -3,7 +3,7 @@ norms:
 - norm_id: AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: high_risk_ai_system
   action: presume Article 10(4) compliance from training and testing data reflecting the intended-use
@@ -47,7 +47,7 @@ norms:
 - norm_id: AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: high_risk_ai_system
   action: presume covered Article 15 cybersecurity compliance from a published Regulation 2019/881 certificate
@@ -96,7 +96,7 @@ norms:
 - norm_id: AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: high_risk_ai_system
   action: deem Article 15 cybersecurity requirements satisfied when Regulation 2024/2847 and its Article

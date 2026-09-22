@@ -559,7 +559,8 @@ def _condition_text(condition: ConditionClause | LogicalExpression) -> str:
 def _criterion_lines(criterion: RuleCriterion) -> str:
     lines = [
         f"- {criterion.norm_id}",
-        f"    duty-holder: {', '.join(criterion.actors)}",
+        "    duty-holder: "
+        + ("all actors" if criterion.applies_to_all_actors else ", ".join(criterion.actors)),
         f"    must: {criterion.action}",
         f'    enacted words: "{criterion.norm_text}"',
     ]

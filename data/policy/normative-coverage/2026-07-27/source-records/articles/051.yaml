@@ -5,7 +5,7 @@ records:
     including indicators and benchmarks
   action: classify a general-purpose AI model with evaluated high-impact capabilities as a model with
     systemic risk
-  actors: []
+  actors: none
   targets:
   - target_ref: general_purpose_ai_model
   kind: applicability
@@ -26,7 +26,7 @@ records:
     the criteria set out in Annex XIII
   action: classify a general-purpose AI model with Commission-determined equivalent capabilities or impact
     as a model with systemic risk
-  actors: []
+  actors: none
   targets:
   - target_ref: general_purpose_ai_model
   kind: applicability
@@ -48,7 +48,7 @@ records:
     point operations is greater than 10 25.
   action: presume a general-purpose AI model has high-impact capabilities when its training computation
     exceeds 10^25 floating-point operations
-  actors: []
+  actors: none
   targets:
   - target_ref: general_purpose_ai_model
   kind: applicability

@@ -3,7 +3,7 @@ norms:
 - norm_id: AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: general_purpose_ai_model
   action: classify a general-purpose AI model with evaluated high-impact capabilities as a model with
@@ -47,7 +47,7 @@ norms:
 - norm_id: AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: general_purpose_ai_model
   action: classify a general-purpose AI model with Commission-determined equivalent capabilities or impact
@@ -95,7 +95,7 @@ norms:
 - norm_id: AIA-NORM-A051-P2-COMPUTE-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: general_purpose_ai_model
   action: presume a general-purpose AI model has high-impact capabilities when its training computation

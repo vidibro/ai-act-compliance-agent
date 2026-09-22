@@ -143,7 +143,7 @@ records:
     6(1), Article 60a and Articles 102 to 112 shall apply.
   action: limit the applicable AI Act provisions for Article 6(1) high-risk systems related to Annex I
     Section B products to Articles 6(1), 60a, and 102 to 112
-  actors: []
+  actors: none
   targets:
   - target_ref: AI systems classified as high-risk AI systems in accordance with Article 6(1) related to products covered by the Union harmonisation legislation listed in Section B of Annex I
     basis_segment_ids: [AIA-TEXT-A002-P009]
@@ -170,7 +170,7 @@ records:
     under this Regulation have been integrated in that Union harmonisation legislation.
   action: apply Articles 57 to 59 to Annex I Section B systems only where the AI Act high-risk requirements
     have been integrated into the applicable sectoral legislation
-  actors: []
+  actors: none
   targets:
   - target_ref: AI systems classified as high-risk AI systems in accordance with Article 6(1) related to products covered by the Union harmonisation legislation listed in Section B of Annex I
     basis_segment_ids: [AIA-TEXT-A002-P009]
@@ -196,7 +196,7 @@ records:
   temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: This Regulation does not apply to areas outside the scope of Union law
   action: exclude areas outside the scope of Union law from the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: regulation
     basis_segment_ids: [AIA-TEXT-A002-P010]
@@ -234,7 +234,7 @@ records:
     security purposes, regardless of the type of entity carrying out those activities.
   action: exclude AI systems placed on the market, put into service, or used exclusively for military,
     defence, or national-security purposes
-  actors: []
+  actors: none
   targets:
   - target_ref: AI systems where and in so far they are placed on the market, put into service, or used with or without modification exclusively for military, defence or national security purposes
     basis_segment_ids: [AIA-TEXT-A002-P011]
@@ -261,7 +261,7 @@ records:
     security purposes, regardless of the type of entity carrying out those activities.
   action: exclude AI systems outside the Union whose output is used in the Union exclusively for military,
     defence, or national-security purposes
-  actors: []
+  actors: none
   targets:
   - target_ref: AI systems which are not placed on the market or put into service in the Union, where the output is used in the Union exclusively for military, defence or national security purposes
     basis_segment_ids: [AIA-TEXT-A002-P012]
@@ -295,7 +295,7 @@ records:
   action: exclude qualifying third-country public authorities and international organisations using AI
     systems under law-enforcement or judicial-cooperation arrangements with adequate fundamental-rights
     safeguards
-  actors: []
+  actors: none
   targets:
   - target_ref: public authorities in a third country nor to international organisations falling within the scope of this Regulation pursuant to paragraph 1
     basis_segment_ids: [AIA-TEXT-A002-P013]
@@ -329,7 +329,7 @@ records:
     of intermediary services as set out in Chapter II of Regulation (EU) 2022/2065.
   action: preserve the application of intermediary-service provider liability rules under Chapter II of
     Regulation (EU) 2022/2065
-  actors: []
+  actors: none
   targets:
   - target_ref: providers of intermediary services
     target_kind: legal_status
@@ -349,7 +349,7 @@ records:
     developed and put into service for the sole purpose of scientific research and development.
   action: exclude AI systems and AI models, including their output, specifically developed and put into
     service solely for scientific research and development
-  actors: []
+  actors: none
   targets:
   - target_ref: AI systems or AI models, including their output, specifically developed and put into service for the sole purpose of scientific research and development
     basis_segment_ids: [AIA-TEXT-A002-P015]
@@ -376,7 +376,7 @@ records:
     Regulation.
   action: preserve the application of Union data-protection, privacy, and communications-confidentiality
     law to personal data processed under the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: personal data processed in connection with the rights and obligations laid down in this Regulation
     basis_segment_ids: [AIA-TEXT-A002-P016]
@@ -395,7 +395,7 @@ records:
     Regulation (EU) 2016/679 or (EU) 2018/1725, or Directive 2002/58/EC or (EU) 2016/680.
   action: preserve the application of the listed Union data-protection and privacy instruments, subject
     to Articles 4a and 59 of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: regulation
     basis_segment_ids: [AIA-TEXT-A002-P016]
@@ -420,7 +420,7 @@ records:
     systems or AI models prior to their being placed on the market or put into service.
   action: exclude research, testing, and development activities concerning AI systems or AI models before
     they are placed on the market or put into service
-  actors: []
+  actors: none
   targets:
   - target_ref: research, testing or development activity regarding AI systems or AI models prior to their being placed on the market or put into service
     basis_segment_ids: [AIA-TEXT-A002-P017]
@@ -445,7 +445,7 @@ records:
   quote: Such activities shall be conducted in accordance with applicable Union law.
   action: conduct pre-market AI research, testing, and development activities in accordance with applicable
     Union law
-  actors: []
+  actors: none
   targets:
   - target_ref: Such activities
     target_kind: activity
@@ -463,7 +463,7 @@ records:
   quote: Testing in real world conditions shall not be covered by that exclusion.
   action: keep testing in real-world conditions outside the pre-market research, testing, and development
     exclusion
-  actors: []
+  actors: none
   targets:
   - target_ref: Testing in real world conditions
     basis_segment_ids: [AIA-TEXT-A002-P017]
@@ -479,7 +479,7 @@ records:
   quote: This Regulation is without prejudice to the rules laid down by other Union legal acts related
     to consumer protection and product safety.
   action: preserve the application of other Union consumer-protection and product-safety rules
-  actors: []
+  actors: none
   targets:
   - target_ref: regulation
     basis_segment_ids: [AIA-TEXT-A002-P018]
@@ -551,7 +551,7 @@ records:
     falls under Article 5 or 50.
   action: exclude AI systems released under free and open-source licences unless a listed regulated-use
     exception applies
-  actors: []
+  actors: none
   targets:
   - target_ref: AI systems released under free and open-source licences
     basis_segment_ids: [AIA-TEXT-A002-P021]
@@ -584,7 +584,7 @@ records:
     that
   action: limit specific Article 9 to 15 and 17 to 25 requirements for Article 6(1) high-risk AI systems
     when both protective conditions are satisfied
-  actors: []
+  actors: none
   targets:
   - target_ref: high-risk AI systems referred to in Article 6(1)
     basis_segment_ids: [AIA-TEXT-A002-P022]

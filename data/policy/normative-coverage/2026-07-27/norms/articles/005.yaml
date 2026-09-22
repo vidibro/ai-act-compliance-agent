@@ -3,8 +3,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit placing on the market, putting into service, or using AI systems employing subliminal,
     purposefully manipulative, or deceptive techniques that materially distort decisions and cause or
@@ -60,8 +59,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit placing on the market, putting into service, or using AI systems that exploit vulnerabilities
     and materially distort behaviour in a significantly harmful or likely harmful manner
@@ -116,8 +114,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating realistic
     intimate or sexually explicit material of an identifiable natural person without explicit consent
@@ -201,8 +198,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating material
     or performances covered by Directive 2011/93/EU
@@ -277,8 +273,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-C-SOCIAL-SCORING
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit placing on the market, putting into service, or using AI systems for social scoring
     that leads to either prohibited form of detrimental or unfavourable treatment
@@ -338,8 +333,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
@@ -389,8 +383,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems that
     create or expand facial-recognition databases through untargeted scraping from the internet or CCTV
@@ -427,8 +420,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     infer emotions in workplaces or educational institutions
@@ -474,8 +466,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors:
-  - actor_ref: operator
+  actors: []
   targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using biometric categorisation
     systems to infer the listed sensitive characteristics of individuals
@@ -580,7 +571,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1-H-GDPR-SAVING
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: non_law_enforcement_biometric_data_processing
   action: preserve GDPR Article 9 for biometric-data processing conducted for purposes other than law
@@ -724,7 +715,7 @@ norms:
 - norm_id: AIA-NORM-A005-P1B-NON-MANIPULATION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: intimate_material_manipulation
   action: treat manipulation as outside point (ba) where it neither increases intimate-part exposure nor
@@ -1803,7 +1794,7 @@ norms:
 - norm_id: AIA-NORM-A005-P8-OTHER-UNION-LAW
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_practice_subject_to_other_union_law
   action: preserve prohibitions under other Union law where an AI practice infringes that law

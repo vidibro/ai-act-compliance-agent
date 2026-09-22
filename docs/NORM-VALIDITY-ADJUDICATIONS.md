@@ -56,7 +56,17 @@ source or audited legal content does.
 
 ## Actor, target, temporal, and logical-expression evidence
 
-Two newer fields are audited by the same flow, but are deliberately migrated in batches:
+The actor, target, temporal, and logical-expression fields are audited by the same flow, but are
+deliberately migrated in batches:
+
+`actors` has three closed meanings. A non-empty list names the legal addressee(s), and each named
+actor needs its own `basis_segment_ids`. `actors: []` means a universal prohibition: it binds every
+actor, rather than the artificial `operator` role. It is valid only for a `prohibition`, and, once
+the actor-evidence gate is enabled, the audit requires the cited enacted text to say `shall be
+prohibited`. `actors: none` means the norm assigns no actor (for example, a definition or legal
+consequence about a system). It is neither universal nor missing data.
+Every source record must declare one of these values explicitly; omission is rejected during the
+build.
 
 - `actors[].basis_segment_ids` identifies the exact `AIA-TEXT-…` segment that proves one named
   actor. Each populated segment must contain a declared legal label for that canonical actor role.
@@ -96,8 +106,9 @@ An `upcoming`, `expired`, or conditionally timed norm remains reportable. A dead
 reportable before and after it passes; timing never removes a norm from the report.
 
 While existing source records have not been migrated, an empty new field is not a finding. Once a
-field is populated, its exact value is included in that article's audit attestation. Thus even a
-clean assignment (one that produces no finding) makes an old adjudication shard stale until its
+field is populated, its exact value is included in that article's audit attestation. A universal
+actor assignment is included when that article enables `actor_evidence`. Thus even a clean
+assignment (one that produces no finding) makes an old adjudication shard stale until its
 attestation is refreshed. An invalid assignment additionally requires a normal, source-bound
 adjudication decision. This permits controlled migration without granting a silent bypass.
 
@@ -111,7 +122,8 @@ required_field_validations:
   - logical_expression_evidence
 ```
 
-`actor_evidence` makes every listed actor without `basis_segment_ids` a finding.
+`actor_evidence` makes every listed actor without `basis_segment_ids` a finding. It also verifies
+each universal `actors: []` prohibition against the enacted `shall be prohibited` wording.
 `target_evidence` makes every listed target without `basis_segment_ids` a finding.
 `temporal_regime` makes every norm without `temporal_regime_id` a finding. A norm that states a
 calendar or relative deadline must reference a regime carrying the corresponding deadline form.

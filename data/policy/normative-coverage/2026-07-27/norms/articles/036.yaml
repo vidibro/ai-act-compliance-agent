@@ -146,7 +146,7 @@ norms:
 - norm_id: AIA-NORM-A036-P3-NINE-MONTH-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: affected_certificates
   action: preserve certificate validity for up to nine months after cessation when a replacement notified
@@ -780,7 +780,7 @@ norms:
 - norm_id: AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: affected_certificates
   action: preserve non-unduly-issued certificate validity during suspension or restriction when either
@@ -892,7 +892,7 @@ norms:
 - norm_id: AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: affected_certificates
   action: preserve non-unduly-issued certificate validity for nine months after withdrawal when both enacted

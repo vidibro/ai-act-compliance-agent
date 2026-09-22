@@ -329,12 +329,19 @@ def _norm_sha256(norm: Norm) -> str:
 
 def _actor_basis_sha256(norm: Norm, actor_index: int) -> str:
     """Bind an actor-evidence finding to exactly one actor assignment."""
-    actor = norm.actors[actor_index]
+    actor = norm.assigned_actors[actor_index]
     payload = {
         "norm_id": norm.norm_id,
         "actor_ref": actor.actor_ref.value,
         "basis_segment_ids": actor.basis_segment_ids,
     }
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode()).hexdigest()
+
+
+def _universal_actor_scope_sha256(norm: Norm) -> str:
+    """Bind universal-scope evidence to the one explicit ``actors: []`` decision."""
+    payload = {"norm_id": norm.norm_id, "actors": [], "kind": norm.kind.value}
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode()).hexdigest()
 
@@ -521,7 +528,24 @@ def _new_field_findings(
                                 evidence=basis.text,
                             )
                         )
-        for actor_index, actor in enumerate(norm.actors):
+        if (
+            FieldValidation.ACTOR_EVIDENCE in requirements
+            and norm.applies_to_all_actors
+        ):
+            scope_text = "\n".join(segments[span].text for span in norm.all_spans)
+            if not _contains_exact_words(scope_text, "shall be prohibited"):
+                findings.append(
+                    _finding(
+                        target=f"{norm.norm_id}:actor:universal",
+                        rule="universal_actor_scope_not_evidenced",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=_universal_actor_scope_sha256(norm),
+                        evidence=scope_text,
+                    )
+                )
+
+        for actor_index, actor in enumerate(norm.assigned_actors):
             if (
                 FieldValidation.ACTOR_EVIDENCE in requirements
                 and not actor.basis_segment_ids
@@ -985,6 +1009,7 @@ def _populated_field_snapshot(
     bundle: NormativeCoverageBundle,
     *,
     scope: set[tuple[SourceKind, str]],
+    required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]] | None = None,
 ) -> dict[str, object]:
     """Return only new-field values that have actually been migrated into the inventory.
 
@@ -999,9 +1024,18 @@ def _populated_field_snapshot(
     temporal_assignments: list[dict[str, object]] = []
     for norm in sorted(bundle.norm_inventory.norms, key=lambda item: item.norm_id):
         primary = segments[norm.primary_spans[0]]
-        if (primary.source.kind, primary.source.document) not in scope:
+        document = (primary.source.kind, primary.source.document)
+        if document not in scope:
             continue
-        for actor in norm.actors:
+        requirements = (required_field_validations or {}).get(document, set())
+        if (
+            FieldValidation.ACTOR_EVIDENCE in requirements
+            and norm.applies_to_all_actors
+        ):
+            actor_assignments.append(
+                {"norm_id": norm.norm_id, "actors": [], "universal": True}
+            )
+        for actor in norm.assigned_actors:
             if actor.basis_segment_ids:
                 actor_assignments.append(
                     {
@@ -1079,7 +1113,11 @@ def audit_attestation(
         ],
         "findings": [finding.as_dict() for finding in findings],
     }
-    populated_fields = _populated_field_snapshot(bundle, scope=scope)
+    populated_fields = _populated_field_snapshot(
+        bundle,
+        scope=scope,
+        required_field_validations=required_field_validations,
+    )
     if populated_fields:
         snapshot["populated_field_validation"] = populated_fields
     sorted_requirements = sorted(

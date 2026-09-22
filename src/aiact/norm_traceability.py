@@ -51,7 +51,7 @@ def _reconstruction_errors(norm: Norm) -> list[str]:
         errors.append(f"product_scope is {norm.product_scope.value}")
     if norm.verification_mode is VerificationMode.UNRESOLVED:
         errors.append("verification_mode is unresolved")
-    if any(actor.category is ActorCategory.UNRESOLVED for actor in norm.actors):
+    if any(actor.category is ActorCategory.UNRESOLVED for actor in norm.assigned_actors):
         errors.append("an actor is unresolved")
     return errors
 
@@ -75,12 +75,14 @@ def _report_reconstruction_errors(
             NormKind.APPLICABILITY,
         }
         and not external_conditional_obligation
-        and not any(actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors)
+        and not any(
+            actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.assigned_actors
+        )
     ):
         errors.append(f"kind is {norm.kind.value}, not reportable")
     if norm.verification_mode is VerificationMode.UNRESOLVED:
         errors.append("verification_mode is unresolved")
-    if any(actor.category is ActorCategory.UNRESOLVED for actor in norm.actors):
+    if any(actor.category is ActorCategory.UNRESOLVED for actor in norm.assigned_actors):
         errors.append("an actor is unresolved")
     return errors
 
@@ -198,7 +200,10 @@ def traceability_errors(
                 NormKind.APPLICABILITY,
             }
             and not external_conditional_obligation
-            and not any(actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors)
+            and not any(
+                actor.category is ActorCategory.PUBLIC_AUTHORITY
+                for actor in norm.assigned_actors
+            )
         ):
             errors.append(
                 f"{norm.norm_id} is report_only but has non-reportable kind {norm.kind.value}"

@@ -183,7 +183,7 @@ norms:
 - norm_id: AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors: []
+  actors: none
   targets:
   - target_ref: high_risk_ai_system_or_general_purpose_ai_model
   action: presume covered Chapter III Section 2 or Chapter V Sections 2 and 3 conformity from compliance

@@ -7,7 +7,7 @@ records:
     \ implicit objectives, infers, from the input it receives, how to generate outputs such as predictions,\
     \ content, recommendations, or decisions that can influence physical or virtual environments"
   action: define AI system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: ai system
     basis_segment_ids: [AIA-TEXT-A003-P002]
@@ -27,7 +27,7 @@ records:
   quote: "\u2018risk\u2019 means the combination of the probability of an occurrence of harm and the severity\
     \ of that harm"
   action: define risk for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: risk
     basis_segment_ids: [AIA-TEXT-A003-P003]
@@ -49,7 +49,7 @@ records:
     \ AI model developed and places it on the market or puts the AI system into service under its own\
     \ name or trademark, whether for payment or free of charge"
   action: define provider for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: provider
     basis_segment_ids: [AIA-TEXT-A003-P004]
@@ -70,7 +70,7 @@ records:
     \ using an AI system under its authority except where the AI system is used in the course of a personal\
     \ non-professional activity"
   action: define deployer for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: deployer
     basis_segment_ids: [AIA-TEXT-A003-P005]
@@ -98,7 +98,7 @@ records:
     \ a general-purpose AI model to, respectively, perform and carry out on its behalf the obligations\
     \ and procedures established by this Regulation"
   action: define authorised representative for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: authorised representative
     basis_segment_ids: [AIA-TEXT-A003-P006]
@@ -119,7 +119,7 @@ records:
     \ places on the market an AI system that bears the name or trademark of a natural or legal person\
     \ established in a third country"
   action: define importer for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: importer
     basis_segment_ids: [AIA-TEXT-A003-P007]
@@ -139,7 +139,7 @@ records:
   quote: "\u2018distributor\u2019 means a natural or legal person in the supply chain, other than the\
     \ provider or the importer, that makes an AI system available on the Union market"
   action: define distributor for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: distributor
     basis_segment_ids: [AIA-TEXT-A003-P008]
@@ -159,7 +159,7 @@ records:
   quote: "\u2018operator\u2019 means a provider, product manufacturer, deployer, authorised representative,\
     \ importer or distributor"
   action: define operator for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: operator
     basis_segment_ids: [AIA-TEXT-A003-P009]
@@ -179,7 +179,7 @@ records:
   quote: "\u2018placing on the market\u2019 means the first making available of an AI system or a general-purpose\
     \ AI model on the Union market"
   action: define placing on the market for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: placing on the market
     basis_segment_ids: [AIA-TEXT-A003-P010]
@@ -200,7 +200,7 @@ records:
     \ AI model for distribution or use on the Union market in the course of a commercial activity, whether\
     \ in return for payment or free of charge"
   action: define making available on the market for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: making available on the market
     basis_segment_ids: [AIA-TEXT-A003-P011]
@@ -220,7 +220,7 @@ records:
   quote: "\u2018putting into service\u2019 means the supply of an AI system for first use directly to\
     \ the deployer or for own use in the Union for its intended purpose"
   action: define putting into service for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: putting into service
     basis_segment_ids: [AIA-TEXT-A003-P012]
@@ -242,7 +242,7 @@ records:
     \ the provider in the instructions for use, promotional or sales materials and statements, as well\
     \ as in the technical documentation"
   action: define intended purpose for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: intended purpose
     basis_segment_ids: [AIA-TEXT-A003-P013]
@@ -263,7 +263,7 @@ records:
     \ in accordance with its intended purpose, but which may result from reasonably foreseeable human\
     \ behaviour or interaction with other systems, including other AI systems"
   action: define reasonably foreseeable misuse for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: reasonably foreseeable misuse
     basis_segment_ids: [AIA-TEXT-A003-P014]
@@ -286,7 +286,7 @@ records:
     \ a safety function where its intended purpose is to prevent or mitigate risks to health and safety\
     \ of persons or property"
   action: define safety component for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: safety component
     basis_segment_ids: [AIA-TEXT-A003-P015]
@@ -312,7 +312,7 @@ records:
   quote: "\u2018micro, small and medium-sized enterprise\u2019 or \u2018SME\u2019 means a micro, small\
     \ or medium-sized enterprise as defined in Article 2 of the Annex to Recommendation 2003/361/EC"
   action: define micro, small and medium-sized enterprise for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: micro, small and medium-sized enterprise
     basis_segment_ids: [AIA-TEXT-A003-P016]
@@ -332,7 +332,7 @@ records:
   quote: "\u2018small mid-cap enterprise\u2019 or \u2018SMC\u2019 means a small mid-cap enterprise as\
     \ defined in point (2) of the Annex to Recommendation (EU) 2025/1099"
   action: define small mid-cap enterprise for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: small mid-cap enterprise
     basis_segment_ids: [AIA-TEXT-A003-P017]
@@ -352,7 +352,7 @@ records:
   quote: "\u2018instructions for use\u2019 means the information provided by the provider to inform the\
     \ deployer of, in particular, an AI system\u2019s intended purpose and proper use"
   action: define instructions for use for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: instructions for use
     basis_segment_ids: [AIA-TEXT-A003-P018]
@@ -372,7 +372,7 @@ records:
   quote: "\u2018recall of an AI system\u2019 means any measure aiming to achieve the return to the provider\
     \ or taking out of service or disabling the use of an AI system made available to deployers"
   action: define recall of an AI system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: recall of an ai system
     basis_segment_ids: [AIA-TEXT-A003-P019]
@@ -392,7 +392,7 @@ records:
   quote: "\u2018withdrawal of an AI system\u2019 means any measure aiming to prevent an AI system in the\
     \ supply chain being made available on the market"
   action: define withdrawal of an AI system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: withdrawal of an ai system
     basis_segment_ids: [AIA-TEXT-A003-P020]
@@ -412,7 +412,7 @@ records:
   quote: "\u2018performance of an AI system\u2019 means the ability of an AI system to achieve its intended\
     \ purpose"
   action: define performance of an AI system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: performance of an ai system
     basis_segment_ids: [AIA-TEXT-A003-P021]
@@ -433,7 +433,7 @@ records:
     \ carrying out the necessary procedures for the assessment, designation and notification of conformity\
     \ assessment bodies and for their monitoring"
   action: define notifying authority for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: notifying authority
     basis_segment_ids: [AIA-TEXT-A003-P022]
@@ -453,7 +453,7 @@ records:
   quote: "\u2018conformity assessment\u2019 means the process of demonstrating whether the requirements\
     \ set out in Chapter III, Section 2 relating to a high-risk AI system have been fulfilled"
   action: define conformity assessment for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: conformity assessment
     basis_segment_ids: [AIA-TEXT-A003-P023]
@@ -473,7 +473,7 @@ records:
   quote: "\u2018conformity assessment body\u2019 means a body that performs third-party conformity assessment\
     \ activities, including testing, certification and inspection"
   action: define conformity assessment body for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: conformity assessment body
     basis_segment_ids: [AIA-TEXT-A003-P024]
@@ -493,7 +493,7 @@ records:
   quote: "\u2018notified body\u2019 means a conformity assessment body notified in accordance with this\
     \ Regulation and other relevant Union harmonisation legislation"
   action: define notified body for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: notified body
     basis_segment_ids: [AIA-TEXT-A003-P025]
@@ -516,7 +516,7 @@ records:
     \ set out in Chapter III, Section 2 is affected or results in a modification to the intended purpose\
     \ for which the AI system has been assessed"
   action: define substantial modification for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: substantial modification
     basis_segment_ids: [AIA-TEXT-A003-P026]
@@ -537,7 +537,7 @@ records:
     \ conformity with the requirements set out in Chapter III, Section 2 and other applicable Union harmonisation\
     \ legislation providing for its affixing"
   action: define CE marking for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: ce marking
     basis_segment_ids: [AIA-TEXT-A003-P027]
@@ -559,7 +559,7 @@ records:
     \ or put into service for the purpose of identifying any need to immediately apply any necessary corrective\
     \ or preventive actions"
   action: define post-market monitoring system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: post-market monitoring system
     basis_segment_ids: [AIA-TEXT-A003-P028]
@@ -579,7 +579,7 @@ records:
   quote: "\u2018market surveillance authority\u2019 means the national authority carrying out the activities\
     \ and taking the measures pursuant to Regulation (EU) 2019/1020"
   action: define market surveillance authority for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: market surveillance authority
     basis_segment_ids: [AIA-TEXT-A003-P029]
@@ -599,7 +599,7 @@ records:
   quote: "\u2018harmonised standard\u2019 means a harmonised standard as defined in Article 2(1), point\
     \ (c), of Regulation (EU) No 1025/2012"
   action: define harmonised standard for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: harmonised standard
     basis_segment_ids: [AIA-TEXT-A003-P030]
@@ -620,7 +620,7 @@ records:
     \ 2, point (4) of Regulation (EU) No 1025/2012, providing means to comply with certain requirements\
     \ established under this Regulation"
   action: define common specification for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: common specification
     basis_segment_ids: [AIA-TEXT-A003-P031]
@@ -640,7 +640,7 @@ records:
   quote: "\u2018training data\u2019 means data used for training an AI system through fitting its learnable\
     \ parameters"
   action: define training data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: training data
     basis_segment_ids: [AIA-TEXT-A003-P032]
@@ -661,7 +661,7 @@ records:
     \ and for tuning its non-learnable parameters and its learning process in order, inter alia, to prevent\
     \ underfitting or overfitting"
   action: define validation data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: validation data
     basis_segment_ids: [AIA-TEXT-A003-P033]
@@ -681,7 +681,7 @@ records:
   quote: "\u2018validation data set\u2019 means a separate data set or part of the training data set,\
     \ either as a fixed or variable split"
   action: define validation data set for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: validation data set
     basis_segment_ids: [AIA-TEXT-A003-P034]
@@ -702,7 +702,7 @@ records:
     \ in order to confirm the expected performance of that system before its placing on the market or\
     \ putting into service"
   action: define testing data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: testing data
     basis_segment_ids: [AIA-TEXT-A003-P035]
@@ -722,7 +722,7 @@ records:
   quote: "\u2018input data\u2019 means data provided to or directly acquired by an AI system on the basis\
     \ of which the system produces an output"
   action: define input data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: input data
     basis_segment_ids: [AIA-TEXT-A003-P036]
@@ -743,7 +743,7 @@ records:
     \ relating to the physical, physiological or behavioural characteristics of a natural person, such\
     \ as facial images or dactyloscopic data"
   action: define biometric data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: biometric data
     basis_segment_ids: [AIA-TEXT-A003-P037]
@@ -765,7 +765,7 @@ records:
     \ person by comparing biometric data of that individual to biometric data of individuals stored in\
     \ a database"
   action: define biometric identification for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: biometric identification
     basis_segment_ids: [AIA-TEXT-A003-P038]
@@ -786,7 +786,7 @@ records:
     \ of the identity of natural persons by comparing their biometric data to previously provided biometric\
     \ data"
   action: define biometric verification for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: biometric verification
     basis_segment_ids: [AIA-TEXT-A003-P039]
@@ -807,7 +807,7 @@ records:
     \ to in Article 9(1) of Regulation (EU) 2016/679, Article 10 of Directive (EU) 2016/680 and Article\
     \ 10(1) of Regulation (EU) 2018/1725"
   action: define special categories of personal data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: special categories of personal data
     basis_segment_ids: [AIA-TEXT-A003-P040]
@@ -828,7 +828,7 @@ records:
     \ detection, investigation or prosecution of criminal offences, the disclosure of which could jeopardise\
     \ the integrity of criminal proceedings"
   action: define sensitive operational data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: sensitive operational data
     basis_segment_ids: [AIA-TEXT-A003-P041]
@@ -848,7 +848,7 @@ records:
   quote: "\u2018emotion recognition system\u2019 means an AI system for the purpose of identifying or\
     \ inferring emotions or intentions of natural persons on the basis of their biometric data"
   action: define emotion recognition system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: emotion recognition system
     basis_segment_ids: [AIA-TEXT-A003-P042]
@@ -869,7 +869,7 @@ records:
     \ natural persons to specific categories on the basis of their biometric data, unless it is ancillary\
     \ to another commercial service and strictly necessary for objective technical reasons"
   action: define biometric categorisation system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: biometric categorisation system
     basis_segment_ids: [AIA-TEXT-A003-P043]
@@ -896,7 +896,7 @@ records:
     \ natural persons, without their active involvement, typically at a distance through the comparison\
     \ of a person\u2019s biometric data with the biometric data contained in a reference database"
   action: define remote biometric identification system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: remote biometric identification system
     basis_segment_ids: [AIA-TEXT-A003-P044]
@@ -918,7 +918,7 @@ records:
     \ without a significant delay, comprising not only instant identification, but also limited short\
     \ delays in order to avoid circumvention"
   action: define real-time remote biometric identification system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: real-time remote biometric identification system
     basis_segment_ids: [AIA-TEXT-A003-P045]
@@ -938,7 +938,7 @@ records:
   quote: "\u2018post-remote biometric identification system\u2019 means a remote biometric identification\
     \ system other than a real-time remote biometric identification system"
   action: define post-remote biometric identification system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: post-remote biometric identification system
     basis_segment_ids: [AIA-TEXT-A003-P046]
@@ -959,7 +959,7 @@ records:
     \ to an undetermined number of natural persons, regardless of whether certain conditions for access\
     \ may apply, and regardless of the potential capacity restrictions"
   action: define publicly accessible space for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: publicly accessible space
     basis_segment_ids: [AIA-TEXT-A003-P047]
@@ -978,7 +978,7 @@ records:
   temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: "\u2018law enforcement authority\u2019 means:"
   action: define law enforcement authority for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: law enforcement authority
     basis_segment_ids: [AIA-TEXT-A003-P048]
@@ -1011,7 +1011,7 @@ records:
     \ the execution of criminal penalties, including safeguarding against and preventing threats to public\
     \ security"
   action: define law enforcement for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: law enforcement
     basis_segment_ids: [AIA-TEXT-A003-P051]
@@ -1032,7 +1032,7 @@ records:
     \ monitoring and supervision of AI systems and general-purpose AI models, and AI governance, provided\
     \ for in Commission Decision of 24 January 2024"
   action: define AI Office for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: ai office
     basis_segment_ids: [AIA-TEXT-A003-P052]
@@ -1052,7 +1052,7 @@ records:
   quote: "\u2018national competent authority\u2019 means a notifying authority or a market surveillance\
     \ authority"
   action: define national competent authority for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: national competent authority
     basis_segment_ids: [AIA-TEXT-A003-P053]
@@ -1072,7 +1072,7 @@ records:
   quote: "\u2018serious incident\u2019 means an incident or malfunctioning of an AI system that directly\
     \ or indirectly leads to any of the following:"
   action: define serious incident for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: serious incident
     basis_segment_ids: [AIA-TEXT-A003-P054]
@@ -1111,7 +1111,7 @@ records:
   quote: "\u2018personal data\u2019 means personal data as defined in Article 4, point (1), of Regulation\
     \ (EU) 2016/679"
   action: define personal data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: personal data
     basis_segment_ids: [AIA-TEXT-A003-P059]
@@ -1131,7 +1131,7 @@ records:
   quote: "\u2018non-personal data\u2019 means data other than personal data as defined in Article 4, point\
     \ (1), of Regulation (EU) 2016/679"
   action: define non-personal data for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: non-personal data
     basis_segment_ids: [AIA-TEXT-A003-P060]
@@ -1151,7 +1151,7 @@ records:
   quote: "\u2018profiling\u2019 means profiling as defined in Article 4, point (4), of Regulation (EU)\
     \ 2016/679"
   action: define profiling for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: profiling
     basis_segment_ids: [AIA-TEXT-A003-P061]
@@ -1172,7 +1172,7 @@ records:
     \ geographical, population and temporal scope, monitoring, organisation and conduct of testing in\
     \ real-world conditions"
   action: define real-world testing plan for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: real-world testing plan
     basis_segment_ids: [AIA-TEXT-A003-P062]
@@ -1193,7 +1193,7 @@ records:
     \ competent authority describing the objectives, conditions, timeframe, methodology and requirements\
     \ for the activities carried out within the sandbox"
   action: define sandbox plan for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: sandbox plan
     basis_segment_ids: [AIA-TEXT-A003-P063]
@@ -1215,7 +1215,7 @@ records:
     \ validate and test, where appropriate in real-world conditions, an innovative AI system, pursuant\
     \ to a sandbox plan for a limited time under regulatory supervision"
   action: define AI regulatory sandbox for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: ai regulatory sandbox
     basis_segment_ids: [AIA-TEXT-A003-P064]
@@ -1243,7 +1243,7 @@ records:
     \ of this Regulation, to make an informed deployment of AI systems, as well as to gain awareness about\
     \ the opportunities and risks of AI and possible harm it can cause"
   action: define AI literacy for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: ai literacy
     basis_segment_ids: [AIA-TEXT-A003-P065]
@@ -1268,7 +1268,7 @@ records:
     \ that all the conditions laid down in Article 57 or 60 are fulfilled"
   action: define testing in real-world conditions and, where all Article 57 or 60 conditions are fulfilled,
     treat it as neither placing the AI system on the market nor putting it into service
-  actors: []
+  actors: none
   targets:
   - target_ref: testing in real-world conditions
     basis_segment_ids: [AIA-TEXT-A003-P066]
@@ -1298,7 +1298,7 @@ records:
   quote: "\u2018subject\u2019, for the purpose of real-world testing, means a natural person who participates\
     \ in testing in real-world conditions"
   action: define subject for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: subject
     basis_segment_ids: [AIA-TEXT-A003-P067]
@@ -1320,7 +1320,7 @@ records:
     \ conditions, after having been informed of all aspects of the testing that are relevant to the subject\u2019\
     s decision to participate"
   action: define informed consent for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: informed consent
     basis_segment_ids: [AIA-TEXT-A003-P068]
@@ -1341,7 +1341,7 @@ records:
     \ existing persons, objects, places, entities or events and would falsely appear to a person to be\
     \ authentic or truthful"
   action: define deep fake for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: deep fake
     basis_segment_ids: [AIA-TEXT-A003-P069]
@@ -1361,7 +1361,7 @@ records:
   quote: "\u2018widespread infringement\u2019 means any act or omission contrary to Union law protecting\
     \ the interest of individuals, which:"
   action: define widespread infringement for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: widespread infringement
     basis_segment_ids: [AIA-TEXT-A003-P070]
@@ -1421,7 +1421,7 @@ records:
   quote: "\u2018critical infrastructure\u2019 means critical infrastructure as defined in Article 2, point\
     \ (4), of Directive (EU) 2022/2557"
   action: define critical infrastructure for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: critical infrastructure
     basis_segment_ids: [AIA-TEXT-A003-P076]
@@ -1445,7 +1445,7 @@ records:
     \ applications, except AI models that are used for research, development or prototyping activities\
     \ before they are placed on the market"
   action: define general-purpose AI model for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: general-purpose AI model
     basis_segment_ids: [AIA-TEXT-A003-P077]
@@ -1477,7 +1477,7 @@ records:
   quote: "\u2018high-impact capabilities\u2019 means capabilities that match or exceed the capabilities\
     \ recorded in the most advanced general-purpose AI models"
   action: define high-impact capabilities for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: high-impact capabilities
     basis_segment_ids: [AIA-TEXT-A003-P078]
@@ -1499,7 +1499,7 @@ records:
     \ or reasonably foreseeable negative effects on public health, safety, public security, fundamental\
     \ rights, or the society as a whole, that can be propagated at scale across the value chain"
   action: define systemic risk for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: systemic risk
     basis_segment_ids: [AIA-TEXT-A003-P079]
@@ -1520,7 +1520,7 @@ records:
     \ AI model and which has the capability to serve a variety of purposes, both for direct use as well\
     \ as for integration in other AI systems"
   action: define general-purpose AI system for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: general-purpose AI system
     basis_segment_ids: [AIA-TEXT-A003-P080]
@@ -1541,7 +1541,7 @@ records:
     \ floating-point numbers, which are a subset of the real numbers typically represented on computers\
     \ by an integer of fixed precision scaled by an integer exponent of a fixed base"
   action: define floating-point operation for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: floating-point operation
     basis_segment_ids: [AIA-TEXT-A003-P081]
@@ -1562,7 +1562,7 @@ records:
     \ AI system, which integrates an AI model, regardless of whether the AI model is provided by themselves\
     \ and vertically integrated or provided by another entity based on contractual relations."
   action: define downstream provider for the purposes of the Regulation
-  actors: []
+  actors: none
   targets:
   - target_ref: downstream provider
     basis_segment_ids: [AIA-TEXT-A003-P082]
@@ -1581,7 +1581,7 @@ records:
   temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   quote: references in this Regulation to the AI Office shall be construed as references to the Commission
   action: construe references to the AI Office as references to the Commission
-  actors: []
+  actors: none
   targets:
   - target_ref: references in this Regulation to the AI Office
     basis_segment_ids: [AIA-TEXT-A003-P052]

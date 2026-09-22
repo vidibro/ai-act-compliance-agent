@@ -7,7 +7,7 @@ records:
   action: classify an AI system as high-risk, regardless of whether it is placed on the market or put
     into service independently of the relevant product, when both the Annex I product or safety-component
     condition and the third-party conformity-assessment condition are fulfilled
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system
   kind: applicability
@@ -34,7 +34,7 @@ records:
     safety components.
   action: exclude AI systems used solely for the listed non-safety functions from qualification as safety
     components
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system
   kind: applicability
@@ -54,7 +54,7 @@ records:
     health and safety shall qualify as safety components.
   action: classify an AI system as a safety component when its failure or malfunction would endanger health
     and safety
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system
   kind: applicability
@@ -76,7 +76,7 @@ records:
     the condition in paragraph 1, point (b).
   action: exclude a third-party conformity assessment required solely for non-health-and-safety risks
     from satisfying Article 6(1)(b)
-  actors: []
+  actors: none
   targets:
   - target_ref: ai_system_or_product
   kind: applicability
@@ -94,7 +94,7 @@ records:
   source: A006-P007
   quote: AI systems referred to in Annex III shall be considered to be high-risk.
   action: classify AI systems referred to in Annex III as high-risk
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_iii_ai_system
   kind: applicability
@@ -110,7 +110,7 @@ records:
     by not materially influencing the outcome of decision making.
   action: exclude an Annex III AI system from high-risk classification when it poses no significant harm
     risk and satisfies at least one listed condition
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_iii_ai_system
   kind: applicability
@@ -156,7 +156,7 @@ records:
   quote: an AI system referred to in Annex III shall always be considered to be high-risk where the AI
     system performs profiling of natural persons.
   action: classify an Annex III AI system as high-risk whenever it profiles natural persons
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_iii_ai_system
   kind: applicability

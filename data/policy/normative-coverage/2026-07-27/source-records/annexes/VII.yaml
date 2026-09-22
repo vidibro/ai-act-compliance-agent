@@ -4,7 +4,7 @@ records:
   quote: Conformity based on an assessment of the quality management system and an assessment of the technical
     documentation is the conformity assessment procedure based on points 2 to 5.
   action: define the Annex VII conformity-assessment procedure as comprising points 2 to 5
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_vii_conformity_assessment
   kind: applicability
@@ -19,7 +19,7 @@ records:
     as specified in point 5
   action: examine the approved Article 17 quality management system under Annex VII point 3 and subject
     it to surveillance under point 5
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_vii_conformity_assessment
   kind: applicability
@@ -31,7 +31,7 @@ records:
   source: ANNEX-VII-P004
   quote: The technical documentation of the AI system shall be examined in accordance with point 4.
   action: examine the AI system's technical documentation under Annex VII point 4
-  actors: []
+  actors: none
   targets:
   - target_ref: annex_vii_conformity_assessment
   kind: applicability

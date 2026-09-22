@@ -130,7 +130,7 @@ records:
   action: expose non-compliance with the enacted operator and notified-body provisions, other than those
     laid down in Article 5, to administrative fines of up to EUR 15 000 000 or, for an undertaking, up
     to 3 % of its total worldwide annual turnover for the preceding financial year, whichever is higher
-  actors: []
+  actors: none
   targets:
   - target_ref: infringing_operator_or_notified_body
   kind: legal_consequence
@@ -171,7 +171,7 @@ records:
     the preceding financial year, whichever is higher.
   action: expose an incorrect incomplete or misleading requested reply to a fine up to EUR 7 500 000 or,
     for an undertaking, 1 % of preceding-year worldwide annual turnover, whichever is higher
-  actors: []
+  actors: none
   targets:
   - target_ref: information_supplier
   kind: legal_consequence

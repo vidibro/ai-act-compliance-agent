@@ -50,7 +50,7 @@ records:
     the European Parliament or the Council opposes such extension no later than three months before the
     end of each period.
   action: extend delegated power automatically unless Parliament or Council timely opposes
-  actors: []
+  actors: none
   targets:
   - target_ref: delegation_of_power
   kind: legal_consequence
@@ -147,7 +147,7 @@ records:
   action: enter into force only where neither the European Parliament nor the Council objects within three
     months of notification, or where both inform the Commission before that period expires that they will
     not object
-  actors: []
+  actors: none
   targets:
   - target_ref: delegated_act
   kind: legal_consequence

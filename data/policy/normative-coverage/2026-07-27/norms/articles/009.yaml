@@ -244,7 +244,7 @@ norms:
 - norm_id: AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE
   act_version_date: '2026-07-27'
   kind: applicability
-  actors: []
+  actors: none
   targets:
   - target_ref: article_9_risk
   action: limit Article 9 risk treatment to risks reasonably mitigable or eliminable through development,

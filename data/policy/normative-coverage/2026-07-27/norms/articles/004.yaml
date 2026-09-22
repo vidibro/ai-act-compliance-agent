@@ -5,7 +5,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004-P001
   targets: []
   action: take context-sensitive measures supporting AI literacy among staff and other persons operating
     or using AI systems on the provider's or deployer's behalf
@@ -58,12 +62,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004-P2-SUPPORT-PROVIDERS-DEPLOYERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A004-P002
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A004-P002
   targets: []
   action: support and facilitate provider and deployer efforts, particularly those of SMEs, to fulfil
     the Article 4(1) AI-literacy obligation
@@ -94,11 +103,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004-P2-PUBLISH-PRACTICAL-EXAMPLES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A004-P002
   targets: []
   action: publish practical examples of compliance with the Article 4(1) obligation on the single information
     platform
@@ -128,11 +140,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004-P3-BOARD-RECOMMENDATIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A004-P003
   targets: []
   action: adopt recommendations supporting the Commission and Member States in promoting the AI literacy
     required by Article 4(1), including through common objectives
@@ -168,3 +183,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
