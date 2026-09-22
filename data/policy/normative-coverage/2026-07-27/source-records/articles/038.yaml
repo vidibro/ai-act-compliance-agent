@@ -9,7 +9,9 @@ records:
     conformity assessment
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A038-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -23,7 +25,9 @@ records:
     group
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A038-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -36,7 +40,9 @@ records:
   action: provide for exchange of knowledge and best practices among notifying authorities
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A038-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

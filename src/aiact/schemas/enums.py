@@ -611,6 +611,12 @@ class ActorRole(StrEnum):
 
 _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
     ActorRole.NOTIFIED_BODY: ("notified body", "notified bodies"),
+    # Art. 40(3) names this party by what it does, not by a noun: "The participants in the
+    # standardisation process".
+    ActorRole.STANDARDISATION_PARTICIPANT: (
+        "standardisation participant",
+        "participants in the standardisation process",
+    ),
     # The Act never uses one label for this party. Art. 31(5) names it by function — "the personnel
     # responsible for carrying out its conformity assessment tasks" — and Art. 31(7) by employer.
     ActorRole.CONFORMITY_ASSESSMENT_BODY_PERSONNEL: (

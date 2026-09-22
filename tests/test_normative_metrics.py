@@ -2220,9 +2220,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
-    assert metrics.mapping_shape.many_to_many == 21
-    assert metrics.mapping_shape.unmapped == 909
-    assert metrics.semantic_vs_existing_implementation_disagreements == 82
+    assert metrics.mapping_shape.many_to_many == 22
+    assert metrics.mapping_shape.unmapped == 908
+    assert metrics.semantic_vs_existing_implementation_disagreements == 81
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2235,7 +2235,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-D-KEEP-DOCUMENTATION",
         "AIA-NORM-A016-E-KEEP-LOGS",
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
-        "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
         "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
         "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
@@ -2308,7 +2307,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
         "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
         "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
@@ -2631,7 +2629,11 @@ def test_article_forty_separates_presumption_and_standardisation_duties():
     assert len(segments[2].norm_ids) == 3
     presumption = norms["AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION"]
     assert presumption.product_scope.value == "in_scope"
-    assert presumption.implementation_mode.value == "missing"
+    # Reported alongside the thirteen Section 2 requirement rules that record this route. The
+    # Chapter V limb of Art. 40(1) is not carried by any rule yet.
+    assert presumption.implementation_mode.value == "report_only"
+    assert len(presumption.implementation_refs) == 13
+    assert presumption.verification_mode.value == "reported_conditionally"
     assert len(presumption.conditions) == 2
     objectives = norms["AIA-NORM-A040-P3-STANDARDISATION-OBJECTIVES"]
     assert len(objectives.mandatory_content) == 4

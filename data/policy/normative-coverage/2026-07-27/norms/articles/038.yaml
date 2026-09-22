@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A038-P001
   targets: []
   action: establish and properly operate a sectoral group coordinating notified bodies for high-risk AI-system
     conformity assessment
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A038-P2-ENSURE-GROUP-PARTICIPATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A038-P002
   targets: []
   action: ensure its notified bodies participate directly or through representatives in the sectoral coordination
     group
@@ -70,11 +75,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A038-P3-KNOWLEDGE-EXCHANGE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A038-P003
   targets: []
   action: provide for exchange of knowledge and best practices among notifying authorities
   norm_text: The Commission shall provide for the exchange of knowledge and best practices between notifying
@@ -103,3 +111,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

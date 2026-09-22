@@ -5,6 +5,8 @@ norms:
   kind: permission
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A039-P001
   targets: []
   action: authorise an eligible third-country conformity-assessment body to perform notified-body activities
   norm_text: Conformity assessment bodies established under the law of a third country with which the
@@ -20,12 +22,18 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the body is established in a third country that has concluded an agreement with the Union
+    - text: Conformity assessment bodies established under the law of a third country with which the Union
+        has concluded an agreement
       basis_segment_ids:
       - AIA-TEXT-A039-P001
-    - text: the body meets Article 31 requirements or ensures an equivalent level of compliance
-      basis_segment_ids:
-      - AIA-TEXT-A039-P001
+    - operator: any_of
+      operands:
+      - text: they meet the requirements laid down in Article 31
+        basis_segment_ids:
+        - AIA-TEXT-A039-P001
+      - text: they ensure an equivalent level of compliance
+        basis_segment_ids:
+        - AIA-TEXT-A039-P001
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -43,3 +51,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

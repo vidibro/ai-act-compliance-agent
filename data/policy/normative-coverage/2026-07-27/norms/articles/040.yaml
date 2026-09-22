@@ -5,7 +5,9 @@ norms:
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
+  - target_ref: High-risk AI systems or general-purpose AI models
+    basis_segment_ids:
+    - AIA-TEXT-A040-P001
   action: presume covered Chapter III Section 2 or Chapter V Sections 2 and 3 conformity from compliance
     with published harmonised standards
   norm_text: High-risk AI systems or general-purpose AI models which are in conformity with harmonised
@@ -18,26 +20,43 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A040-P001
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the system or model conforms to a harmonised standard or part whose reference is published
-        in the Official Journal
+    - text: which are in conformity with harmonised standards or parts thereof the references of which
+        have been published in the Official Journal of the European Union in accordance with Regulation
+        (EU) No 1025/2012
       basis_segment_ids:
       - AIA-TEXT-A040-P001
-    - text: the harmonised standard covers the relevant requirement or obligation
+    - text: to the extent that those standards cover those requirements or obligations
       basis_segment_ids:
       - AIA-TEXT-A040-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-HR-A09
+  - AIA-RULE-HR-A10
+  - AIA-RULE-HR-A11
+  - AIA-RULE-HR-A11-2
+  - AIA-RULE-HR-A12
+  - AIA-RULE-HR-A12-3A
+  - AIA-RULE-HR-A12-3B
+  - AIA-RULE-HR-A12-3C
+  - AIA-RULE-HR-A12-3D
+  - AIA-RULE-HR-A13
+  - AIA-RULE-HR-A13-3
+  - AIA-RULE-HR-A14
+  - AIA-RULE-HR-A15
+  implementation_reason: Reported alongside the Chapter III Section 2 requirement rules, which are the
+    rules that record this route. Article 40(1) also presumes conformity with the Chapter V Sections 2
+    and 3 obligations, and no rule carries that limb yet.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -48,11 +67,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A040-P2-ISSUE-STANDARDISATION-REQUESTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A040-P002
   targets: []
   action: issue without undue delay standardisation requests covering all relevant Chapter III and Chapter
     V requirements and obligations
@@ -84,11 +106,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A040-P2-STANDARDISATION-REQUESTS-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A040-P002
   targets: []
   action: request reporting and documentation deliverables improving system resource performance and energy-efficient
     GPAI development
@@ -123,11 +148,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A040-P2-CONSULT-STAKEHOLDERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A040-P002
   targets: []
   action: consult the Board and relevant stakeholders, including the advisory forum, when preparing a
     standardisation request
@@ -139,7 +167,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P002
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: When preparing a standardisation request
+      basis_segment_ids:
+      - AIA-TEXT-A040-P002
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -157,11 +190,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A040-P2-SPECIFY-STANDARD-OBJECTIVES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A040-P003
   targets: []
   action: specify clarity, cross-sector consistency, and Regulation-compliance objectives in standardisation
     requests
@@ -177,7 +213,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A040-P003
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: When issuing a standardisation request to European standardisation organisations
+      basis_segment_ids:
+      - AIA-TEXT-A040-P003
   exceptions: null
   mandatory_content:
   - clear standards
@@ -198,11 +239,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A040-P2-REQUEST-EFFORT-EVIDENCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A040-P004
   targets: []
   action: request evidence of standardisation organisations' best efforts to fulfil the paragraph 2 objectives
   norm_text: The Commission shall request the European standardisation organisations to provide evidence
@@ -232,11 +276,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A040-P2-JOINT-COMPLIANCE-DELIVERABLES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A040-P005
   targets: []
   action: request without undue delay deliverables facilitating joint AI Act and Annex I harmonisation-law
     compliance and conformity presumptions
@@ -275,11 +322,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A040-P2-JOINT-DELIVERABLES-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A040-P3-STANDARDISATION-OBJECTIVES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: standardisation_participant
+    basis_segment_ids:
+    - AIA-TEXT-A040-P006
   targets: []
   action: pursue the enacted investment, innovation, cooperation, standards, and inclusive-governance
     objectives in the standardisation process
@@ -319,3 +369,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5

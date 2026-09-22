@@ -8,13 +8,23 @@ records:
   action: authorise an eligible third-country conformity-assessment body to perform notified-body activities
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A039-P001]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the body is established in a third country that has concluded an agreement with the Union
-  - the body meets Article 31 requirements or ensures an equivalent level of compliance
+    operator: all_of
+    operands:
+    - text: Conformity assessment bodies established under the law of a third country with which the Union has concluded an agreement
+      basis_segment_ids: [AIA-TEXT-A039-P001]
+    - operator: any_of
+      operands:
+      - text: they meet the requirements laid down in Article 31
+        basis_segment_ids: [AIA-TEXT-A039-P001]
+      - text: they ensure an equivalent level of compliance
+        basis_segment_ids: [AIA-TEXT-A039-P001]

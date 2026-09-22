@@ -1,3 +1,22 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  application_start: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A040-P2-STANDARDISATION-REQUESTS-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A040-P002
+- regime_id: AIA-TEMP-A040-P2-JOINT-DELIVERABLES-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A040-P005
 records:
 - norm_id: AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION
   source: A040-P001
@@ -11,14 +30,36 @@ records:
     with published harmonised standards
   actors: none
   targets:
-  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
+  - target_ref: High-risk AI systems or general-purpose AI models
+    basis_segment_ids: [AIA-TEXT-A040-P001]
   kind: legal_consequence
-  implementation_mode: missing
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-HR-A09
+  - AIA-RULE-HR-A10
+  - AIA-RULE-HR-A11
+  - AIA-RULE-HR-A11-2
+  - AIA-RULE-HR-A12
+  - AIA-RULE-HR-A12-3A
+  - AIA-RULE-HR-A12-3B
+  - AIA-RULE-HR-A12-3C
+  - AIA-RULE-HR-A12-3D
+  - AIA-RULE-HR-A13
+  - AIA-RULE-HR-A13-3
+  - AIA-RULE-HR-A14
+  - AIA-RULE-HR-A15
+  implementation_reason: Reported alongside the Chapter III Section 2 requirement rules, which are the
+    rules that record this route. Article 40(1) also presumes conformity with the Chapter V Sections 2
+    and 3 obligations, and no rule carries that limb yet.
   verification_mode: reported_conditionally
   conditions:
-  - the system or model conforms to a harmonised standard or part whose reference is published in the
-    Official Journal
-  - the harmonised standard covers the relevant requirement or obligation
+    operator: all_of
+    operands:
+    - text: which are in conformity with harmonised standards or parts thereof the references of which have been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012
+      basis_segment_ids: [AIA-TEXT-A040-P001]
+    - text: to the extent that those standards cover those requirements or obligations
+      basis_segment_ids: [AIA-TEXT-A040-P001]
   verified_by: vidibro
 - norm_id: AIA-NORM-A040-P2-ISSUE-STANDARDISATION-REQUESTS
   source: A040-P002
@@ -30,7 +71,9 @@ records:
     V requirements and obligations
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A040-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-A040-P2-STANDARDISATION-REQUESTS-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -46,7 +89,9 @@ records:
     GPAI development
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A040-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -62,9 +107,16 @@ records:
     stakeholders, including the advisory forum.
   action: consult the Board and relevant stakeholders, including the advisory forum, when preparing a
     standardisation request
+  conditions:
+    operator: all_of
+    operands:
+    - text: When preparing a standardisation request
+      basis_segment_ids: [AIA-TEXT-A040-P002]
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A040-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -80,9 +132,16 @@ records:
     in this Regulation.
   action: specify clarity, cross-sector consistency, and Regulation-compliance objectives in standardisation
     requests
+  conditions:
+    operator: all_of
+    operands:
+    - text: When issuing a standardisation request to European standardisation organisations
+      basis_segment_ids: [AIA-TEXT-A040-P003]
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A040-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -100,7 +159,9 @@ records:
   action: request evidence of standardisation organisations' best efforts to fulfil the paragraph 2 objectives
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A040-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -123,7 +184,9 @@ records:
     compliance and conformity presumptions
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A040-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-A040-P2-JOINT-DELIVERABLES-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -142,7 +205,9 @@ records:
     objectives in the standardisation process
   actors:
   - actor_ref: standardisation_participant
+    basis_segment_ids: [AIA-TEXT-A040-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
