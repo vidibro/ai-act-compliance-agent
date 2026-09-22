@@ -1408,7 +1408,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
   act_version_date: '2026-07-27'
   kind: prohibition
-  actors: none
+  actors:
+  - actor_ref: law_enforcement_authority
+    basis_segment_ids:
+    - AIA-TEXT-A005-P027
   targets:
   - target_ref: decision that produces an adverse legal effect on a person
     basis_segment_ids:

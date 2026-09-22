@@ -244,7 +244,13 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A004A-P1-B-REUSE-SECURITY
+  - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
+  - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
+  - AIA-NORM-A004A-P1-E-DELETE-DATA
+  - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
+  - AIA-NORM-A004A-P2-NO-BIAS-DETECTION-DUTY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

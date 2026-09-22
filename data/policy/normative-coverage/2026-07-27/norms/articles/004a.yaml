@@ -5,6 +5,8 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P001
   targets: []
   action: exceptionally process special categories of personal data where strictly necessary for bias
     detection and correction in high-risk AI systems
@@ -79,12 +81,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004A-P1-B-REUSE-SECURITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   targets: []
   action: apply technical reuse limitations and state-of-the-art security and privacy-preserving measures,
     including pseudonymisation, to special-category personal data
@@ -123,12 +130,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   targets: []
   action: secure and protect special-category personal data with suitable safeguards, documented strict
     access controls, authorised access, and appropriate confidentiality obligations
@@ -169,12 +181,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   targets: []
   action: prevent special-category personal data from being transmitted, transferred, or otherwise accessed
     by other parties
@@ -213,12 +230,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004A-P1-E-DELETE-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   targets: []
   action: delete special-category personal data when the bias is corrected or the retention period ends,
     whichever occurs first
@@ -257,12 +279,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004A-P1-F-RECORD-NECESSITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   targets: []
   action: record why special-category processing was strictly necessary for bias detection and correction
     and why other data could not achieve that objective
@@ -303,12 +330,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   targets: []
   action: exceptionally process special categories of personal data for qualifying bias detection and
     correction involving other AI systems and models or deployment of high-risk AI systems
@@ -353,12 +385,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-A004A-P2-NO-BIAS-DETECTION-DUTY
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A004A-P008
   targets: []
   action: prevent Article 4a(2) from being construed as requiring bias detection and correction
   norm_text: This paragraph does not create any obligation to conduct such bias detection and correction.
@@ -388,3 +425,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION

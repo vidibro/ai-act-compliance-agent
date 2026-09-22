@@ -747,7 +747,9 @@ records:
     \ output of the \u2018 real-time \u2019 remote biometric identification system."
   action: prohibit decisions producing an adverse legal effect on a person based solely on real-time remote
     biometric identification output
-  actors: none
+  actors:
+  - actor_ref: law_enforcement_authority
+    basis_segment_ids: [AIA-TEXT-A005-P027]
   targets:
   - target_ref: decision that produces an adverse legal effect on a person
     basis_segment_ids: [AIA-TEXT-A005-P029]
