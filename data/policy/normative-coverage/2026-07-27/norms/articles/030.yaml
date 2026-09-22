@@ -5,6 +5,8 @@ norms:
   kind: prohibition
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A030-P001
   targets: []
   action: notify only conformity-assessment bodies satisfying Article 31
   norm_text: Notifying authorities may notify only conformity assessment bodies which have satisfied the
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A030-P002
   targets: []
   action: notify the Commission and other Member States of qualifying bodies using Annex XIV classifications
     and the Commission tool
@@ -69,11 +74,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A030-P2-AMEND-ANNEX-XIV
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A030-P003
   targets: []
   action: amend Annex XIV classifications by delegated act in response to technical, knowledge, or scientific
     developments
@@ -106,11 +114,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A030-P3-NOTIFICATION-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A030-P004
   targets: []
   action: include complete assessment scope and competence information in the body notification
   norm_text: The notification referred to in paragraph 2 of this Article shall include full details of
@@ -144,11 +155,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A030-P3-NONACCREDITED-EVIDENCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A030-P004
   targets: []
   action: provide competence and continuing-monitoring evidence for a notification not based on accreditation
   norm_text: Where a notification is not based on an accreditation certificate as referred to in Article
@@ -165,7 +179,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notification is not based on an Article 29(2) accreditation certificate
+    - text: Where a notification is not based on an accreditation certificate as referred to in Article
+        29(2)
       basis_segment_ids:
       - AIA-TEXT-A030-P004
   exceptions: null
@@ -185,11 +200,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A030-P4-NO-OBJECTION-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A030-P005
   targets: []
   action: permit notified-body activities only after the applicable no-objection period expires
   norm_text: The conformity assessment body concerned may perform the activities of a notified body only
@@ -204,10 +222,15 @@ norms:
   - AIA-TEXT-A030-P005
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: no Commission or Member-State objection within two weeks for an accredited notification or
-        two months for an evidence-based notification
+    - text: no objections are raised by the Commission or the other Member States within two weeks of
+        a notification by a notifying authority where it includes an accreditation certificate referred
+        to in Article 29(2)
+      basis_segment_ids:
+      - AIA-TEXT-A030-P005
+    - text: within two months of a notification by the notifying authority where it includes documentary
+        evidence referred to in Article 29(3)
       basis_segment_ids:
       - AIA-TEXT-A030-P005
   exceptions: null
@@ -227,11 +250,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A030-P5-CONSULT-ON-OBJECTIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A030-P006
   targets: []
   action: promptly consult the relevant Member States and conformity body when objections arise
   norm_text: Where objections are raised, the Commission shall, without delay, enter into consultations
@@ -245,7 +271,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: objections are raised to the notification
+    - text: Where objections are raised
       basis_segment_ids:
       - AIA-TEXT-A030-P006
   exceptions: null
@@ -265,11 +291,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A030-P5-CONSULT-WITHOUT-DELAY
 - norm_id: AIA-NORM-A030-P5-DECIDE-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A030-P006
   targets: []
   action: decide whether the disputed authorisation is justified
   norm_text: In view thereof, the Commission shall decide whether the authorisation is justified.
@@ -282,7 +311,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: objections are raised to the notification
+    - text: Where objections are raised
       basis_segment_ids:
       - AIA-TEXT-A030-P006
   exceptions: null
@@ -302,11 +331,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A030-P5-ADDRESS-DECISION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A030-P006
   targets: []
   action: address the authorisation decision to the concerned Member State and conformity body
   norm_text: The Commission shall address its decision to the Member State concerned and to the relevant
@@ -320,7 +352,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: objections are raised to the notification
+    - text: Where objections are raised
       basis_segment_ids:
       - AIA-TEXT-A030-P006
   exceptions: null
@@ -340,3 +372,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

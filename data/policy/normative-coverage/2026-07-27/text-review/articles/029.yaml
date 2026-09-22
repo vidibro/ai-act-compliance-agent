@@ -72,7 +72,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P2-APPLICATION-CONTENT
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A029-P2-EXISTING-DESIGNATION-DOCUMENTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

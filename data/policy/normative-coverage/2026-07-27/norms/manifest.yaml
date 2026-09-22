@@ -4040,6 +4040,16 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A113-B
+- regime_id: AIA-TEMP-A030-P5-CONSULT-WITHOUT-DELAY
+  application_start: '2025-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: Where objections are raised
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A030-P006
 - regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
   application_start: null
   application_end: null

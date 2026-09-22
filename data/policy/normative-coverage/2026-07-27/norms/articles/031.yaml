@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P001
   targets: []
   action: be established under Member-State law and possess legal personality
   norm_text: A notified body shall be established under the national law of a Member State and shall have
@@ -35,11 +37,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P2-OPERATING-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P002
   targets: []
   action: satisfy all organisational, quality-management, resource, process, and cybersecurity requirements
     necessary for notified-body tasks
@@ -69,11 +74,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P3-PERFORMANCE-CONFIDENCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P003
   targets: []
   action: structure responsibilities, reporting, and operations to ensure confidence in performance and
     assessment results
@@ -104,11 +112,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P4-INDEPENDENCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P004
   targets: []
   action: remain independent from assessed-system providers, economically interested operators, and provider
     competitors
@@ -140,11 +151,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P4-NECESSARY-USE-ALLOWED
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P004
   targets: []
   action: allow necessary operational or personal use of assessed high-risk systems despite the independence
     rule
@@ -175,12 +189,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P5-CONFLICTING-ACTIVITIES-PROHIBITED
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P005
   - actor_ref: conformity_assessment_body_personnel
+    basis_segment_ids:
+    - AIA-TEXT-A031-P005
   targets: []
   action: prohibit the conformity assessment body, its top-level management and assessment personnel from
     activities conflicting with independence of judgement or assessment integrity, in particular consultancy
@@ -211,11 +230,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P6-IMPARTIALITY-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P006
   targets: []
   action: document and implement structures and procedures safeguarding impartiality and promoting and
     applying its principles throughout the organisation, personnel and assessment activities
@@ -246,11 +268,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P7-CONFIDENTIALITY-AND-SECRECY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P007
   targets: []
   action: maintain documented procedures ensuring Article 78 confidentiality for personnel, committees,
     subsidiaries, subcontractors and associated external bodies or personnel during conformity assessment
@@ -269,7 +294,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: disclosure required by law
+    - text: except when its disclosure is required by law
       basis_segment_ids:
       - AIA-TEXT-A031-P007
   mandatory_content: []
@@ -288,11 +313,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P8-PROPORTIONATE-PROCEDURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P008
   targets: []
   action: use assessment procedures proportionate to provider size, sector, structure, and system complexity
   norm_text: Notified bodies shall have procedures for the performance of activities which take due account
@@ -322,11 +350,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P9-LIABILITY-INSURANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P009
   targets: []
   action: obtain appropriate assessment liability insurance unless the establishment Member State assumes
     liability or responsibility
@@ -343,7 +374,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: liability is assumed by the Member State in which the notified body is established in accordance
+    - text: unless liability is assumed by the Member State in which they are established in accordance
         with national law
       basis_segment_ids:
       - AIA-TEXT-A031-P009
@@ -366,11 +397,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P10-INTEGRITY-AND-COMPETENCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P010
   targets: []
   action: ensure every task is performed with the highest professional integrity and requisite field competence
   norm_text: Notified bodies shall be capable of carrying out all their tasks under this Regulation with
@@ -400,11 +434,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P11-INTERNAL-COMPETENCE-AND-STAFF
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P011
   targets: []
   action: maintain sufficient internal competence to evaluate effectively the tasks conducted by external
     parties on the notified body's behalf
@@ -434,11 +471,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P12-COORDINATION-AND-STANDARDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P012
   targets: []
   action: participate in the coordination activities referred to in Article 38
   norm_text: Notified bodies shall participate in coordination activities as referred to in Article 38.
@@ -466,12 +506,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P5-DIRECT-INVOLVEMENT-PROHIBITED
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P005
   - actor_ref: conformity_assessment_body_personnel
+    basis_segment_ids:
+    - AIA-TEXT-A031-P005
   targets: []
   action: prohibit the conformity assessment body, its top-level management and assessment personnel from
     direct involvement in high-risk AI-system design, development, marketing or use and from representing
@@ -505,11 +550,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P6-INDEPENDENT-OPERATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P006
   targets: []
   action: organise and operate the notified body to safeguard the independence, objectivity and impartiality
     of its activities
@@ -539,11 +587,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P7-STAFF-PROFESSIONAL-SECRECY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body_personnel
+    basis_segment_ids:
+    - AIA-TEXT-A031-P007
   targets: []
   action: observe professional secrecy for all information obtained in carrying out tasks under the Regulation
   norm_text: The staff of notified bodies shall be bound to observe professional secrecy with regard to
@@ -559,7 +610,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: in relation to the notifying authorities of the Member State in which the staff's activities
+    - text: except in relation to the notifying authorities of the Member State in which their activities
         are carried out
       basis_segment_ids:
       - AIA-TEXT-A031-P007
@@ -579,11 +630,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P11-PERMANENT-EXPERT-STAFF
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P011
   targets: []
   action: maintain permanent availability of sufficient administrative, technical, legal and scientific
     staff with experience and knowledge of the relevant AI-system types, data and data computing, and
@@ -615,11 +669,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A031-P12-STANDARDISATION-OR-STANDARDS-CURRENCY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A031-P012
   targets: []
   action: take part directly in European standardisation organisations, be represented in them, or ensure
     awareness and current knowledge of relevant standards
@@ -649,3 +706,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

@@ -1,3 +1,12 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A030-P5-CONSULT-WITHOUT-DELAY
+  application_start: 2025-08-02
+  qualitative_deadline:
+    kind: without_delay
+    trigger: Where objections are raised
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A030-P006
 records:
 - norm_id: AIA-NORM-A030-P1-ARTICLE-31-GATE
   source: A030-P001
@@ -6,8 +15,10 @@ records:
   action: notify only conformity-assessment bodies satisfying Article 31
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A030-P001]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -23,7 +34,9 @@ records:
     and the Commission tool
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A030-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -40,8 +53,10 @@ records:
     developments
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A030-P003]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -55,7 +70,9 @@ records:
   action: include complete assessment scope and competence information in the body notification
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A030-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -76,9 +93,14 @@ records:
   action: provide competence and continuing-monitoring evidence for a notification not based on accreditation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A030-P004]
   targets: []
   conditions:
-  - the notification is not based on an Article 29(2) accreditation certificate
+    operator: all_of
+    operands:
+    - text: Where a notification is not based on an accreditation certificate as referred to in Article 29(2)
+      basis_segment_ids: [AIA-TEXT-A030-P004]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -94,11 +116,17 @@ records:
   action: permit notified-body activities only after the applicable no-objection period expires
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A030-P005]
   targets: []
   kind: permission
   conditions:
-  - no Commission or Member-State objection within two weeks for an accredited notification or two months
-    for an evidence-based notification
+    operator: any_of
+    operands:
+    - text: no objections are raised by the Commission or the other Member States within two weeks of a notification by a notifying authority where it includes an accreditation certificate referred to in Article 29(2)
+      basis_segment_ids: [AIA-TEXT-A030-P005]
+    - text: within two months of a notification by the notifying authority where it includes documentary evidence referred to in Article 29(3)
+      basis_segment_ids: [AIA-TEXT-A030-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -111,9 +139,14 @@ records:
   action: promptly consult the relevant Member States and conformity body when objections arise
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A030-P006]
   targets: []
   conditions: &id001
-  - objections are raised to the notification
+    operator: all_of
+    operands:
+    - text: Where objections are raised
+      basis_segment_ids: [AIA-TEXT-A030-P006]
+  temporal_regime_id: AIA-TEMP-A030-P5-CONSULT-WITHOUT-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -125,8 +158,10 @@ records:
   action: decide whether the disputed authorisation is justified
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A030-P006]
   targets: []
   conditions: *id001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -139,8 +174,10 @@ records:
   action: address the authorisation decision to the concerned Member State and conformity body
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A030-P006]
   targets: []
   conditions: *id001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

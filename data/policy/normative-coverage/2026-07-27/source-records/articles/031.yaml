@@ -6,7 +6,9 @@ records:
   action: be established under Member-State law and possess legal personality
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -23,7 +25,9 @@ records:
     necessary for notified-body tasks
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,7 +42,9 @@ records:
     assessment results
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -54,7 +60,9 @@ records:
     competitors
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -68,8 +76,10 @@ records:
     rule
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P004]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -84,9 +94,12 @@ records:
     from activities conflicting with independence of judgement or assessment integrity, in particular consultancy
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A031-P005]
   - actor_ref: conformity_assessment_body_personnel
+    basis_segment_ids: [AIA-TEXT-A031-P005]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -101,7 +114,9 @@ records:
     and applying its principles throughout the organisation, personnel and assessment activities
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,10 +132,15 @@ records:
   action: maintain documented procedures ensuring Article 78 confidentiality for personnel, committees,
     subsidiaries, subcontractors and associated external bodies or personnel during conformity assessment
   exceptions:
-  - disclosure required by law
+    operator: any_of
+    operands:
+    - text: except when its disclosure is required by law
+      basis_segment_ids: [AIA-TEXT-A031-P007]
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -134,7 +154,9 @@ records:
   action: use assessment procedures proportionate to provider size, sector, structure, and system complexity
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -149,16 +171,21 @@ records:
     liability or responsibility
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   exceptions:
-  - liability is assumed by the Member State in which the notified body is established in accordance
-    with national law
-  - that Member State is itself directly responsible for the conformity assessment
+    operator: any_of
+    operands:
+    - text: unless liability is assumed by the Member State in which they are established in accordance with national law
+      basis_segment_ids: [AIA-TEXT-A031-P009]
+    - text: that Member State is itself directly responsible for the conformity assessment
+      basis_segment_ids: [AIA-TEXT-A031-P009]
   verified_by: vidibro
 - norm_id: AIA-NORM-A031-P10-INTEGRITY-AND-COMPETENCE
   source: A031-P010
@@ -168,7 +195,9 @@ records:
   action: ensure every task is performed with the highest professional integrity and requisite field competence
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -182,7 +211,9 @@ records:
     parties on the notified body's behalf
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -194,7 +225,9 @@ records:
   action: participate in the coordination activities referred to in Article 38
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -211,9 +244,12 @@ records:
     parties engaged in those activities
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A031-P005]
   - actor_ref: conformity_assessment_body_personnel
+    basis_segment_ids: [AIA-TEXT-A031-P005]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -231,8 +267,10 @@ records:
     impartiality of its activities
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P006]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -247,10 +285,15 @@ records:
     Regulation
   actors:
   - actor_ref: conformity_assessment_body_personnel
+    basis_segment_ids: [AIA-TEXT-A031-P007]
   targets: []
   kind: obligation
   exceptions:
-  - in relation to the notifying authorities of the Member State in which the staff's activities are carried out
+    operator: any_of
+    operands:
+    - text: except in relation to the notifying authorities of the Member State in which their activities are carried out
+      basis_segment_ids: [AIA-TEXT-A031-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -267,8 +310,10 @@ records:
     computing, and Section 2 requirements
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P011]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -282,8 +327,10 @@ records:
     ensure awareness and current knowledge of relevant standards
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A031-P012]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

@@ -6,7 +6,9 @@ records:
   action: submit a notification application to the notifying authority of the establishment Member State
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A029-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -23,7 +25,9 @@ records:
     accreditation certificate
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A029-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -42,7 +46,9 @@ records:
     legislation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A029-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -57,9 +63,14 @@ records:
     no accreditation certificate is available
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A029-P004]
   targets: []
   conditions:
-  - the body cannot provide an accreditation certificate
+    operator: all_of
+    operands:
+    - text: Where the conformity assessment body concerned cannot provide an accreditation certificate
+      basis_segment_ids: [AIA-TEXT-A029-P004]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -74,8 +85,10 @@ records:
     AI Act designation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A029-P005]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -91,9 +104,16 @@ records:
     the relevant harmonisation legislation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A029-P006]
   targets: []
   conditions:
-  - the body has a Section A Annex I designation and undergoes the Article 28(8) unified assessment
+    operator: all_of
+    operands:
+    - text: which are designated pursuant to any of the Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A029-P006]
+    - text: which undergo the unified assessment procedure referred to in Article 28(8)
+      basis_segment_ids: [AIA-TEXT-A029-P006]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -107,9 +127,14 @@ records:
   action: update application and compliance evidence whenever relevant changes occur
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A029-P007]
   targets: []
   conditions:
-  - relevant changes occur
+    operator: all_of
+    operands:
+    - text: whenever relevant changes occur
+      basis_segment_ids: [AIA-TEXT-A029-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

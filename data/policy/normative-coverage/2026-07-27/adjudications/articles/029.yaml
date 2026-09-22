@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '29'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 8
+  norms_scanned: 7
+  finding_count: 1
+  audit_sha256: b443578f31a18bdd2ceb29ec193f6486b53ba9fa17387e5d8dc7f3539efde491
+decisions:
+- finding_id: AIA-VALID-62EB6D40869F9C5F
+  target: AIA-NORM-A029-P2-APPLICATION-CONTENT
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A029-P002
+  source_sha256: b9be655fb740503dca6059ee94d071f55ac3334d373fa5030e7cb6dea2467144
+  target_sha256: 613cc08b17a270c44dc1f35c4802e082d69efcea6d2b4859e7cebcc9f043d27e
+  decision: false_positive
+  reason: >-
+    The cue the heuristic found is "where one exists", and it does not condition the duty. The
+    application must always be accompanied by the description of activities, the modules and the
+    system types; only the fourth item, the accreditation certificate, depends on one existing.
+    That limit is already carried by the mandatory_content entry for it, which reads "available
+    national accreditation certificate attesting Article 31 compliance". A condition on the norm
+    would say the whole duty falls away where no certificate exists, which paragraph 3 contradicts:
+    a body without a certificate still files, and owes documentary evidence instead.
+  reviewed_by: vidibro

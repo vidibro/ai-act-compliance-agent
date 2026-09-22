@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A029-P001
   targets: []
   action: submit a notification application to the notifying authority of the establishment Member State
   norm_text: Conformity assessment bodies shall submit an application for notification to the notifying
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A029-P2-APPLICATION-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A029-P002
   targets: []
   action: accompany the notification application with the required scope description and available qualifying
     accreditation certificate
@@ -74,11 +79,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A029-P2-EXISTING-DESIGNATION-DOCUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A029-P002
   targets: []
   action: add valid documents relating to the applicant's existing designations under other Union harmonisation
     legislation
@@ -108,11 +116,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A029-P3-NONACCREDITED-EVIDENCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A029-P004
   targets: []
   action: provide all evidence necessary to verify, recognise, and monitor Article 31 compliance when
     no accreditation certificate is available
@@ -128,7 +139,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the body cannot provide an accreditation certificate
+    - text: Where the conformity assessment body concerned cannot provide an accreditation certificate
       basis_segment_ids:
       - AIA-TEXT-A029-P004
   exceptions: null
@@ -148,11 +159,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A029-P4-REUSE-DESIGNATION-DOCUMENTS
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A029-P005
   targets: []
   action: reuse existing harmonisation-law designation documents and certificates to support and expedite
     AI Act designation
@@ -183,11 +197,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A029-P4-SINGLE-APPLICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A029-P006
   targets: []
   action: submit the unified-assessment single application to the notifying authority designated under
     the relevant harmonisation legislation
@@ -204,7 +221,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the body has a Section A Annex I designation and undergoes the Article 28(8) unified assessment
+    - text: which are designated pursuant to any of the Union harmonisation legislation listed in Section
+        A of Annex I
+      basis_segment_ids:
+      - AIA-TEXT-A029-P006
+    - text: which undergo the unified assessment procedure referred to in Article 28(8)
       basis_segment_ids:
       - AIA-TEXT-A029-P006
   exceptions: null
@@ -224,11 +245,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A029-P4-UPDATE-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A029-P007
   targets: []
   action: update application and compliance evidence whenever relevant changes occur
   norm_text: The notified body shall update the documentation referred to in paragraphs 2 and 3 of this
@@ -244,7 +268,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: relevant changes occur
+    - text: whenever relevant changes occur
       basis_segment_ids:
       - AIA-TEXT-A029-P007
   exceptions: null
@@ -264,3 +288,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
