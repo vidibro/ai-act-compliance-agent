@@ -1454,6 +1454,8 @@ rules:
       did not carry it across, is a question for advice rather than for this tool — which reports
       the date the Article gives and says plainly that it looks inverted.
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
 
   - rule_id: AIA-RULE-PO-A43-2
     source:
@@ -1554,6 +1556,13 @@ rules:
       did not carry it across, is a question for advice rather than for this tool — which reports
       the date the Article gives and says plainly that it looks inverted.
     status: active
+    # Article 43(3) puts four separate duties on the provider, and the sectoral route would
+    # otherwise report one verdict covering all of them.
+    criteria:
+      - norm_id: AIA-NORM-A043-P3-PROCEDURE
+      - norm_id: AIA-NORM-A043-P3-SECTION2
+      - norm_id: AIA-NORM-A043-P3-QMS
+      - norm_id: AIA-NORM-A043-P3-DUAL-COVERAGE-PROCEDURE
 
   # A STANDING DUTY, where the three rules above are all about the FIRST assessment.
   - rule_id: AIA-RULE-PO-A43-4

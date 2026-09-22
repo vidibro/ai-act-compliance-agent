@@ -1,0 +1,30 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '43'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 7
+  norms_scanned: 19
+  finding_count: 1
+  audit_sha256: 9244644b656b31c41a6782f6d21a8f1fec80403ae2cc6ca051651e6829b5572e
+decisions:
+- finding_id: AIA-VALID-928C4790EB794023
+  target: AIA-NORM-A043-P3-DESIGNATE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A043-P3
+  source_sha256: 8f5aa200b05108bf00413eda15d366e87e542fd7b56a5f4cf7031714ca8cc44d
+  target_sha256: 0ad16622d8257a6eb3b66780fc2b4bcd215489b2da012853f1d94cc16d28f9d7
+  decision: false_positive
+  reason: >-
+    The cue is "Without prejudice to Article 28", a saving clause opening the sentence. It takes
+    nothing out of the duty to apply for designation by 28 January 2028; it preserves Article 28's
+    notifying-authority regime alongside it. An exception expression here would say the designation
+    duty falls away where Article 28 applies, which is the opposite of what the words do.
+  reviewed_by: vidibro

@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A041-P001
   targets: []
   action: adopt implementing acts establishing common specifications when the enacted standardisation
     conditions are fulfilled
@@ -27,36 +29,36 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
+    - text: the Commission has requested, pursuant to Article 10(1) of Regulation (EU) No 1025/2012, one
+        or more European standardisation organisations to draft a harmonised standard for the requirements
+        set out in Section 2 of this Chapter, or, as applicable, for the obligations set out in Sections
+        2 and 3 of Chapter V
+      basis_segment_ids:
+      - AIA-TEXT-A041-P002
+    - operator: any_of
       operands:
-      - text: the Commission has requested one or more European standardisation organisations, pursuant
-          to Article 10(1) of Regulation (EU) No 1025/2012, to draft a harmonised standard for Chapter
-          III Section 2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+      - text: the request has not been accepted by any of the European standardisation organisations
         basis_segment_ids:
-        - AIA-TEXT-A041-P001
-      - operator: any_of
-        operands:
-        - text: the request has not been accepted by any of the European standardisation organisations
-          basis_segment_ids:
-          - AIA-TEXT-A041-P001
-        - text: the harmonised standards addressing the request are not delivered within the deadline
-            set in accordance with Article 10(1) of Regulation (EU) No 1025/2012
-          basis_segment_ids:
-          - AIA-TEXT-A041-P001
-        - text: the relevant harmonised standards insufficiently address fundamental rights concerns
-          basis_segment_ids:
-          - AIA-TEXT-A041-P001
-        - text: the harmonised standards do not comply with the request
-          basis_segment_ids:
-          - AIA-TEXT-A041-P001
-      - text: no reference to harmonised standards covering those requirements or obligations has been
-          published in the Official Journal of the European Union in accordance with Regulation (EU) No
-          1025/2012
+        - AIA-TEXT-A041-P003
+      - text: the harmonised standards addressing that request are not delivered within the deadline set
+          in accordance with Article 10(1) of Regulation (EU) No 1025/2012
         basis_segment_ids:
-        - AIA-TEXT-A041-P001
-      - text: no such reference is expected to be published within a reasonable period
+        - AIA-TEXT-A041-P004
+      - text: the relevant harmonised standards insufficiently address fundamental rights concerns
         basis_segment_ids:
-        - AIA-TEXT-A041-P001
+        - AIA-TEXT-A041-P005
+      - text: the harmonised standards do not comply with the request
+        basis_segment_ids:
+        - AIA-TEXT-A041-P006
+    - text: no reference to harmonised standards covering the requirements referred to in Section 2 of
+        this Chapter or, as applicable, the obligations referred to in Sections 2 and 3 of Chapter V has
+        been published in the Official Journal of the European Union in accordance with Regulation (EU)
+        No 1025/2012
+      basis_segment_ids:
+      - AIA-TEXT-A041-P007
+    - text: no such reference is expected to be published within a reasonable period
+      basis_segment_ids:
+      - AIA-TEXT-A041-P007
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -74,11 +76,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P1-CONSULT-ADVISORY-FORUM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A041-P008
   targets: []
   action: consult the Article 67 advisory forum when drafting common specifications
   norm_text: When drafting the common specifications, the Commission shall consult the advisory forum
@@ -92,7 +97,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission is drafting common specifications under paragraph 1
+    - text: When drafting the common specifications
       basis_segment_ids:
       - AIA-TEXT-A041-P008
   exceptions: null
@@ -112,11 +117,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P1-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A041-P001
   targets: []
   action: adopt common-specification implementing acts under the Article 98(2) examination procedure
   norm_text: The implementing acts referred to in the first subparagraph of this paragraph shall be adopted
@@ -145,11 +153,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P2-INFORM-STANDARDISATION-COMMITTEE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A041-P010
   targets: []
   action: inform the Article 22 standardisation committee that paragraph 1 conditions are fulfilled before
     drafting the act
@@ -180,12 +191,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
+  - target_ref: High-risk AI systems or general-purpose AI models
+    basis_segment_ids:
+    - AIA-TEXT-A041-P011
   action: presume covered Chapter III Section 2 or Chapter V Sections 2 and 3 conformity from compliance
     with common specifications
   norm_text: High-risk AI systems or general-purpose AI models which are in conformity with the common
@@ -197,25 +211,42 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A041-P011
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the system or model conforms to the relevant common specification or part
+    - text: which are in conformity with the common specifications referred to in paragraph 1, or parts
+        of those specifications
       basis_segment_ids:
       - AIA-TEXT-A041-P011
-    - text: the common specification covers the relevant requirement or obligation
+    - text: to the extent those common specifications cover those requirements or those obligations
       basis_segment_ids:
       - AIA-TEXT-A041-P011
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-HR-A09
+  - AIA-RULE-HR-A10
+  - AIA-RULE-HR-A11
+  - AIA-RULE-HR-A11-2
+  - AIA-RULE-HR-A12
+  - AIA-RULE-HR-A12-3A
+  - AIA-RULE-HR-A12-3B
+  - AIA-RULE-HR-A12-3C
+  - AIA-RULE-HR-A12-3D
+  - AIA-RULE-HR-A13
+  - AIA-RULE-HR-A13-3
+  - AIA-RULE-HR-A14
+  - AIA-RULE-HR-A15
+  implementation_reason: Reported alongside the Chapter III Section 2 requirement rules, which are the
+    rules that record this route. Article 41(3) also presumes conformity with the Chapter V Sections 2
+    and 3 obligations, and no rule carries that limb yet.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -226,11 +257,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P4-ASSESS-HARMONISED-STANDARD
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A041-P012
   targets: []
   action: assess a proposed harmonised standard under Regulation 1025/2012 before reference publication
   norm_text: Where a harmonised standard is adopted by a European standardisation organisation and proposed
@@ -245,48 +279,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a European standardisation organisation has adopted a harmonised standard and proposed publication
-        of its reference in the Official Journal of the European Union
-      basis_segment_ids:
-      - AIA-TEXT-A041-P012
-  exceptions: null
-  mandatory_content: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A041-P4-REPEAL-OVERLAPPING-SPECIFICATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  actors:
-  - actor_ref: commission
-  targets: []
-  action: repeal common-specification acts or parts overlapping a published harmonised standard
-  norm_text: When reference to a harmonised standard is published in the Official Journal of the European
-    Union, the Commission shall repeal the implementing acts referred to in paragraph 1, or parts thereof
-    which cover the same requirements set out in Section 2 of this Chapter or, as applicable, the same
-    obligations set out in Sections 2 and 3 of Chapter V.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A041-P012
-  qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the reference to a harmonised standard is published in the Official Journal of the European
+    - text: Where a harmonised standard is adopted by a European standardisation organisation and proposed
+        to the Commission for the publication of its reference in the Official Journal of the European
         Union
       basis_segment_ids:
       - AIA-TEXT-A041-P012
@@ -307,12 +301,61 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+- norm_id: AIA-NORM-A041-P4-REPEAL-OVERLAPPING-SPECIFICATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A041-P012
+  targets: []
+  action: repeal common-specification acts or parts overlapping a published harmonised standard
+  norm_text: When reference to a harmonised standard is published in the Official Journal of the European
+    Union, the Commission shall repeal the implementing acts referred to in paragraph 1, or parts thereof
+    which cover the same requirements set out in Section 2 of this Chapter or, as applicable, the same
+    obligations set out in Sections 2 and 3 of Chapter V.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A041-P012
+  qualifier_spans: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: When reference to a harmonised standard is published in the Official Journal of the European
+        Union
+      basis_segment_ids:
+      - AIA-TEXT-A041-P012
+  exceptions: null
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A041-P013
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A041-P013
   targets: []
   action: duly justify technical solutions providing at least equivalent compliance when common specifications
     are not followed
@@ -330,7 +373,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider does not comply with the paragraph 1 common specifications
+    - text: Where providers of high-risk AI systems or general-purpose AI models do not comply with the
+        common specifications referred to in paragraph 1
       basis_segment_ids:
       - AIA-TEXT-A041-P013
   exceptions: null
@@ -352,11 +396,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P6-MEMBER-STATE-NOTICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A041-P014
   targets: []
   action: inform the Commission with a detailed explanation of deficiencies in a common specification
   norm_text: Where a Member State considers that a common specification does not entirely meet the requirements
@@ -371,8 +418,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Member State considers that a common specification does not entirely meet Chapter III
-        Section 2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+    - text: Where a Member State considers that a common specification does not entirely meet the requirements
+        set out in Section 2 or, as applicable, comply with obligations set out in Sections 2 and 3 of
+        Chapter V
       basis_segment_ids:
       - AIA-TEXT-A041-P014
   exceptions: null
@@ -392,11 +440,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A041-P6-ASSESS-DEFICIENCY-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A041-P014
   targets: []
   action: assess Member-State information about a deficient common specification and, if appropriate,
     amend the implementing act establishing it
@@ -411,8 +462,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a Member State has submitted detailed information that a common specification does not entirely
-        meet the applicable requirements or obligations
+    - text: it shall inform the Commission thereof with a detailed explanation
       basis_segment_ids:
       - AIA-TEXT-A041-P014
   exceptions: null
@@ -434,3 +484,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5

@@ -1,16 +1,30 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A043-P3-DESIGNATION-DEADLINE
+  application_start: 2026-08-02
+  deadline: 2028-01-28
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A043-P3
 records:
 - norm_id: AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
   source: A043-P1
   quote: the provider shall opt for one of the following conformity assessment procedures based on
   action: choose either Annex VI internal control or Annex VII notified-body assessment for a high-risk
     Annex III point 1 system when the applicable standards or common specifications were applied
+  qualifier_spans:
+  - A043-P1
   conditions:
-  - the high-risk AI system is listed in point 1 of Annex III
-  - the provider has applied Article 40 harmonised standards or, where applicable, Article 41 common specifications
-    in demonstrating compliance with Section 2 requirements
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems listed in point 1 of Annex III
+      basis_segment_ids: [AIA-TEXT-A043-P1]
+    - text: the provider has applied harmonised standards referred to in Article 40, or, where applicable, common specifications referred to in Article 41
+      basis_segment_ids: [AIA-TEXT-A043-P1]
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P1]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A43-1
   verification_mode: reported_not_judged
@@ -22,20 +36,29 @@ records:
     or restricted
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P1]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A43-1B
   verification_mode: reported_not_judged
+  qualifier_spans:
+  - A043-P1
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the high-risk AI system is listed in point 1 of Annex III
+    - text: For high-risk AI systems listed in point 1 of Annex III
+      basis_segment_ids: [AIA-TEXT-A043-P1]
     - operator: any_of
       operands:
-      - harmonised standards under Article 40 do not exist and Article 41 common specifications are unavailable
-      - the provider did not apply, or applied only part of, the harmonised standard
-      - available common specifications were not applied by the provider
-      - a harmonised standard was published with a restriction, only for the part that was restricted
+      - text: harmonised standards referred to in Article 40 do not exist, and common specifications referred to in Article 41 are not available
+        basis_segment_ids: [AIA-TEXT-A043-P1]
+      - text: the provider has not applied, or has applied only part of, the harmonised standard
+        basis_segment_ids: [AIA-TEXT-A043-P1]
+      - text: the common specifications referred to in point (a) exist, but the provider has not applied them
+        basis_segment_ids: [AIA-TEXT-A043-P1]
+      - text: one or more of the harmonised standards referred to in point (a) has been published with a restriction, and only on the part of the standard that was restricted
+        basis_segment_ids: [AIA-TEXT-A043-P1]
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
   source: A043-P1
@@ -43,15 +66,22 @@ records:
     may choose any of the notified bodies.
   action: choose any notified body for the Annex VII conformity-assessment procedure
   conditions:
-  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
+    operator: all_of
+    operands:
+    - text: For the purposes of the conformity assessment procedure referred to in Annex VII
+      basis_segment_ids: [AIA-TEXT-A043-P1]
   exceptions:
-  - where the system is intended to be put into service by law enforcement, immigration or asylum authorities,
-    or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market surveillance authority,
-    as applicable, shall act as the notified body
+    operator: any_of
+    operands:
+    - text: where the high-risk AI system is intended to be put into service by law enforcement, immigration or asylum authorities or by Union institutions, bodies, offices or agencies, the market surveillance authority referred to in Article 74(8) or (9), as applicable, shall act as a notified body
+      basis_segment_ids: [AIA-TEXT-A043-P1]
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P1]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A43-1B
   verification_mode: reported_not_judged
@@ -63,13 +93,20 @@ records:
     authority referred to in Article 74(8) or (9), as applicable, shall act as a notified body.
   action: act as the notified body for systems intended for the specified public-authority or Union-body
     use
+  qualifier_spans:
+  - A043-P1
   conditions:
-  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
-  - the system is intended to be put into service by law enforcement, immigration or asylum authorities,
-    or Union institutions, bodies, offices or agencies
+    operator: all_of
+    operands:
+    - text: For the purposes of the conformity assessment procedure referred to in Annex VII
+      basis_segment_ids: [AIA-TEXT-A043-P1]
+    - text: where the high-risk AI system is intended to be put into service by law enforcement, immigration or asylum authorities or by Union institutions, bodies, offices or agencies
+      basis_segment_ids: [AIA-TEXT-A043-P1]
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A043-P1]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -84,35 +121,52 @@ records:
     points 2 to 8
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P2]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A43-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
-  quote: shall follow the relevant conformity assessment procedure
+  quote: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A
+    of Annex I, the provider of the system shall follow the relevant conformity assessment procedure as
+    required in accordance with the relevant Union harmonisation legislation.
   action: follow the applicable Section A Annex I conformity-assessment procedure
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-SECTION2
   source: A043-P3
-  quote: shall be part of that assessment
+  quote: The requirements set out in Section 2 of this Chapter shall apply to those high-risk AI systems
+    and shall be part of that assessment.
   action: include Chapter III Section 2 requirements in that assessment
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
@@ -125,10 +179,16 @@ records:
     VII procedural requirements
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
@@ -138,16 +198,29 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-BODY-POWER
   source: A043-P3
-  quote: shall have the power to assess the conformity of high-risk AI systems
+  quote: For the purposes of that conformity assessment, notified bodies which have been notified under
+    the Union harmonisation legislation listed in Section A of Annex I shall have the power to assess
+    the conformity of high-risk AI systems with the requirements set out in Section 2 of this Chapter,
+    provided that the compliance of those notified bodies with the requirements laid down in Article 31(4),
+    (5), (10) and (11) has been assessed in the context of the notification procedure in accordance with
+    the relevant Union harmonisation legislation, which is evidenced through the assessment as part of
+    the existing notification.
   action: assess conformity with Chapter III Section 2
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
   kind: power
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
-  - the body's compliance with Article 31(4), (5), (10) and (11) has been assessed in the context of the
-    notification procedure in accordance with the relevant Union harmonisation legislation
+    operator: all_of
+    operands:
+    - text: notified bodies which have been notified under the Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+    - text: provided that the compliance of those notified bodies with the requirements laid down in Article 31(4), (5), (10) and (11) has been assessed in the context of the notification procedure in accordance with the relevant Union harmonisation legislation
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -155,13 +228,22 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P3-DESIGNATE
   source: A043-P3
-  quote: shall apply for designation in accordance with Section 4 of this Chapter by 28 January 2028
+  quote: Without prejudice to Article 28, such notified bodies which have been notified under the Union
+    harmonisation legislation in Section A of Annex I, shall apply for designation in accordance with
+    Section 4 of this Chapter by 28 January 2028.
   action: apply for AI Act designation by 28 January 2028
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
+    operator: all_of
+    operands:
+    - text: such notified bodies which have been notified under the Union harmonisation legislation in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-A043-P3-DESIGNATION-DEADLINE
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -169,32 +251,55 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P3-OPTION
   source: A043-P3
-  quote: that manufacturer may use that option only if it has also applied harmonised standards
+  quote: Where Union harmonisation legislation listed in Section A of Annex I provides the product manufacturer
+    with an option to rely on a conformity assessment that does not involve a third-party, provided that
+    that manufacturer has applied harmonised standards to ensure compliance with all the relevant requirements,
+    that manufacturer may use that option only if it has also applied harmonised standards or, where applicable,
+    common specifications referred to in Article 41, covering all requirements set out in Section 2 of
+    this Chapter.
   action: use a no-third-party sectoral route only after applying standards covering all Section 2 requirements
   actors:
   - actor_ref: product_manufacturer
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
   kind: permission
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - Union harmonisation legislation listed in Section A of Annex I gives the product manufacturer an option
-    to rely on a conformity assessment not involving a third party
-  - the manufacturer has applied harmonised standards ensuring compliance with all the requirements of
-    that legislation
+    operator: all_of
+    operands:
+    - text: Where Union harmonisation legislation listed in Section A of Annex I provides the product manufacturer with an option to rely on a conformity assessment that does not involve a third-party
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+    - text: provided that that manufacturer has applied harmonised standards to ensure compliance with all the relevant requirements
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-NO-EFFECT
   source: A043-P3
-  quote: does not affect the choice of the conformity assessment procedure
+  quote: The classification of a product as a high-risk AI system in accordance with Article 6(1) does
+    not affect the choice of the conformity assessment procedure provided to the manufacturers of products
+    covered by Union harmonisation legislation listed in Section A of Annex I, including, where applicable,
+    an option to rely on harmonised standards.
   action: preserve the sectoral conformity-route choice despite AI high-risk classification
   actors:
   - actor_ref: product_manufacturer
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
   kind: applicability
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - the product is covered by Union harmonisation legislation listed in Section A of Annex I
-  - the product is classified as a high-risk AI system under Article 6(1)
+    operator: all_of
+    operands:
+    - text: products covered by Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+    - text: The classification of a product as a high-risk AI system in accordance with Article 6(1)
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
@@ -202,17 +307,28 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P3-NO-THIRD-PARTY
   source: A043-P3
-  quote: are not required to choose a conformity assessment procedure involving third-party conformity
-    assessment only because the product includes a high-risk AI system
+  quote: The manufacturers of such products are not required to choose a conformity assessment procedure
+    involving third-party conformity assessment only because the product includes a high-risk AI system
+    as a safety component, if this is not required by the Union harmonisation legislation listed in Section
+    A of Annex I.
   action: avoid a third-party procedure where sectoral law does not otherwise require it
   actors:
   - actor_ref: product_manufacturer
+    basis_segment_ids: [AIA-TEXT-A043-P3]
   targets: []
   kind: applicability
+  qualifier_spans:
+  - A043-P3
   conditions:
-  - the product is covered by Union harmonisation legislation listed in Section A of Annex I
-  - the product includes a high-risk AI system as a safety component
-  - third-party conformity assessment is not required by that Union harmonisation legislation
+    operator: all_of
+    operands:
+    - text: products covered by Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+    - text: the product includes a high-risk AI system as a safety component
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+    - text: if this is not required by the Union harmonisation legislation listed in Section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
@@ -228,14 +344,20 @@ records:
     distribution or continued use
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P4]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A43-4
   verification_mode: reported_not_judged
   verified_by: vidibro
   conditions:
-  - the high-risk AI system has already undergone a conformity-assessment procedure
-  - the high-risk AI system is substantially modified
+    operator: all_of
+    operands:
+    - text: High-risk AI systems that have already been subject to a conformity assessment procedure
+      basis_segment_ids: [AIA-TEXT-A043-P4]
+    - text: in the event of a substantial modification
+      basis_segment_ids: [AIA-TEXT-A043-P4]
 - norm_id: AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
   source: A043-P4
   quote: For high-risk AI systems that continue to learn after being placed on the market or put into
@@ -246,16 +368,22 @@ records:
   action: exclude predetermined and initially documented learning changes from substantial modification
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P4]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability to the new-assessment obligation.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
   conditions:
-  - the continuing-learning change and performance effect was predetermined at initial conformity assessment
-  - the change is included in Annex IV point 2(f) technical documentation
+    operator: all_of
+    operands:
+    - text: changes to the high-risk AI system and its performance that have been pre-determined by the provider at the moment of the initial conformity assessment
+      basis_segment_ids: [AIA-TEXT-A043-P4]
+    - text: are part of the information contained in the technical documentation referred to in point 2(f) of Annex IV
+      basis_segment_ids: [AIA-TEXT-A043-P4]
 - norm_id: AIA-NORM-A043-P5-AMEND
   source: A043-P5
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
@@ -263,8 +391,10 @@ records:
   action: amend Annexes VI and VII for technical progress
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A043-P5]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -279,8 +409,10 @@ records:
   action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A043-P6]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -297,7 +429,9 @@ records:
     6 delegated acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A043-P6]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -307,3 +441,25 @@ records:
   - Annex VI internal-control effectiveness in preventing or minimising health, safety, and fundamental-rights
     risks
   - availability of adequate notified-body capacities and resources
+- norm_id: AIA-NORM-A043-P3-DUAL-COVERAGE-PROCEDURE
+  source: A043-P3
+  quote: Where a high-risk AI system is both covered by the Union harmonisation legislation listed in
+    Section A of Annex I and it falls within one of the categories listed in Annex III, the provider of
+    that system shall follow the relevant conformity assessment procedure as required pursuant to the
+    relevant Union harmonisation legislation listed in Section A of Annex I.
+  action: follow the Section A Annex I conformity-assessment procedure where the system is both covered
+    by that legislation and listed in an Annex III category
+  actors:
+  - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A043-P3]
+  targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_refs:
+  - AIA-RULE-PO-A43-3
+  verification_mode: reported_not_judged
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where a high-risk AI system is both covered by the Union harmonisation legislation listed in Section A of Annex I and it falls within one of the categories listed in Annex III
+      basis_segment_ids: [AIA-TEXT-A043-P3]
+  verified_by: vidibro

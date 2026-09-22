@@ -44,7 +44,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A041-P1-ADOPT-COMMON-SPECIFICATIONS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A041-P1-EXAMINATION-PROCEDURE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

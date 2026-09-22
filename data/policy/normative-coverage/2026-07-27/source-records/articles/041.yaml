@@ -8,8 +8,10 @@ records:
     conditions are fulfilled
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A041-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -23,21 +25,24 @@ records:
   - A041-P006
   - A041-P007
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the Commission has requested one or more European standardisation organisations, pursuant to Article
-      10(1) of Regulation (EU) No 1025/2012, to draft a harmonised standard for Chapter III Section 2
-      requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+    - text: the Commission has requested, pursuant to Article 10(1) of Regulation (EU) No 1025/2012, one or more European standardisation organisations to draft a harmonised standard for the requirements set out in Section 2 of this Chapter, or, as applicable, for the obligations set out in Sections 2 and 3 of Chapter V
+      basis_segment_ids: [AIA-TEXT-A041-P002]
     - operator: any_of
       operands:
-      - the request has not been accepted by any of the European standardisation organisations
-      - the harmonised standards addressing the request are not delivered within the deadline set in accordance
-        with Article 10(1) of Regulation (EU) No 1025/2012
-      - the relevant harmonised standards insufficiently address fundamental rights concerns
-      - the harmonised standards do not comply with the request
-    - no reference to harmonised standards covering those requirements or obligations has been published
-      in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012
-    - no such reference is expected to be published within a reasonable period
+      - text: the request has not been accepted by any of the European standardisation organisations
+        basis_segment_ids: [AIA-TEXT-A041-P003]
+      - text: the harmonised standards addressing that request are not delivered within the deadline set in accordance with Article 10(1) of Regulation (EU) No 1025/2012
+        basis_segment_ids: [AIA-TEXT-A041-P004]
+      - text: the relevant harmonised standards insufficiently address fundamental rights concerns
+        basis_segment_ids: [AIA-TEXT-A041-P005]
+      - text: the harmonised standards do not comply with the request
+        basis_segment_ids: [AIA-TEXT-A041-P006]
+    - text: no reference to harmonised standards covering the requirements referred to in Section 2 of this Chapter or, as applicable, the obligations referred to in Sections 2 and 3 of Chapter V has been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012
+      basis_segment_ids: [AIA-TEXT-A041-P007]
+    - text: no such reference is expected to be published within a reasonable period
+      basis_segment_ids: [AIA-TEXT-A041-P007]
 - norm_id: AIA-NORM-A041-P1-CONSULT-ADVISORY-FORUM
   source: A041-P008
   quote: When drafting the common specifications, the Commission shall consult the advisory forum referred
@@ -45,14 +50,19 @@ records:
   action: consult the Article 67 advisory forum when drafting common specifications
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A041-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission is drafting common specifications under paragraph 1
+    operator: all_of
+    operands:
+    - text: When drafting the common specifications
+      basis_segment_ids: [AIA-TEXT-A041-P008]
   verified_by: vidibro
 - norm_id: AIA-NORM-A041-P1-EXAMINATION-PROCEDURE
   source: A041-P009
@@ -61,7 +71,9 @@ records:
   action: adopt common-specification implementing acts under the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A041-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -76,7 +88,9 @@ records:
     drafting the act
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A041-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -93,13 +107,36 @@ records:
     with common specifications
   actors: none
   targets:
-  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
+  - target_ref: High-risk AI systems or general-purpose AI models
+    basis_segment_ids: [AIA-TEXT-A041-P011]
   kind: legal_consequence
-  implementation_mode: missing
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-HR-A09
+  - AIA-RULE-HR-A10
+  - AIA-RULE-HR-A11
+  - AIA-RULE-HR-A11-2
+  - AIA-RULE-HR-A12
+  - AIA-RULE-HR-A12-3A
+  - AIA-RULE-HR-A12-3B
+  - AIA-RULE-HR-A12-3C
+  - AIA-RULE-HR-A12-3D
+  - AIA-RULE-HR-A13
+  - AIA-RULE-HR-A13-3
+  - AIA-RULE-HR-A14
+  - AIA-RULE-HR-A15
+  implementation_reason: Reported alongside the Chapter III Section 2 requirement rules, which are the
+    rules that record this route. Article 41(3) also presumes conformity with the Chapter V Sections 2
+    and 3 obligations, and no rule carries that limb yet.
   verification_mode: reported_conditionally
   conditions:
-  - the system or model conforms to the relevant common specification or part
-  - the common specification covers the relevant requirement or obligation
+    operator: all_of
+    operands:
+    - text: which are in conformity with the common specifications referred to in paragraph 1, or parts of those specifications
+      basis_segment_ids: [AIA-TEXT-A041-P011]
+    - text: to the extent those common specifications cover those requirements or those obligations
+      basis_segment_ids: [AIA-TEXT-A041-P011]
   verified_by: vidibro
 - norm_id: AIA-NORM-A041-P4-ASSESS-HARMONISED-STANDARD
   source: A041-P012
@@ -109,15 +146,19 @@ records:
   action: assess a proposed harmonised standard under Regulation 1025/2012 before reference publication
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A041-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - a European standardisation organisation has adopted a harmonised standard and proposed publication
-    of its reference in the Official Journal of the European Union
+    operator: all_of
+    operands:
+    - text: Where a harmonised standard is adopted by a European standardisation organisation and proposed to the Commission for the publication of its reference in the Official Journal of the European Union
+      basis_segment_ids: [AIA-TEXT-A041-P012]
   verified_by: vidibro
 - norm_id: AIA-NORM-A041-P4-REPEAL-OVERLAPPING-SPECIFICATION
   source: A041-P012
@@ -128,14 +169,19 @@ records:
   action: repeal common-specification acts or parts overlapping a published harmonised standard
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A041-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the reference to a harmonised standard is published in the Official Journal of the European Union
+    operator: all_of
+    operands:
+    - text: When reference to a harmonised standard is published in the Official Journal of the European Union
+      basis_segment_ids: [AIA-TEXT-A041-P012]
   verified_by: vidibro
 - norm_id: AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS
   source: A041-P013
@@ -147,11 +193,17 @@ records:
     are not followed
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A041-P013]
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A041-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   verification_mode: reported_not_judged
   conditions:
-  - the provider does not comply with the paragraph 1 common specifications
+    operator: all_of
+    operands:
+    - text: Where providers of high-risk AI systems or general-purpose AI models do not comply with the common specifications referred to in paragraph 1
+      basis_segment_ids: [AIA-TEXT-A041-P013]
   implementation_refs:
   - AIA-RULE-PO-A41-5
   - AIA-RULE-GP-A41-5
@@ -164,15 +216,19 @@ records:
   action: inform the Commission with a detailed explanation of deficiencies in a common specification
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A041-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Member State considers that a common specification does not entirely meet Chapter III Section
-    2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+    operator: all_of
+    operands:
+    - text: Where a Member State considers that a common specification does not entirely meet the requirements set out in Section 2 or, as applicable, comply with obligations set out in Sections 2 and 3 of Chapter V
+      basis_segment_ids: [AIA-TEXT-A041-P014]
   verified_by: vidibro
 - norm_id: AIA-NORM-A041-P6-ASSESS-DEFICIENCY-INFORMATION
   source: A041-P014
@@ -182,15 +238,19 @@ records:
     amend the implementing act establishing it
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A041-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - a Member State has submitted detailed information that a common specification does not entirely meet
-    the applicable requirements or obligations
+    operator: all_of
+    operands:
+    - text: it shall inform the Commission thereof with a detailed explanation
+      basis_segment_ids: [AIA-TEXT-A041-P014]
   mandatory_content:
   - assess the Member State's information
   - if appropriate after that assessment, amend the implementing act establishing the common specification

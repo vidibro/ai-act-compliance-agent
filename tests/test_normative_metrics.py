@@ -1163,7 +1163,7 @@ def test_articles_forty_one_to_forty_six_preserve_gates_and_exceptions():
     certificate = norms["AIA-NORM-A044-P3-CERTIFICATE-MEASURE"]
     consultation = norms["AIA-NORM-A046-P5-CONSULT-MEMBER-STATE"]
 
-    assert "adopted a harmonised standard" in standard.conditions[0]
+    assert "is adopted by a European standardisation organisation" in standard.conditions[0]
     assert len(modification.conditions) == 2
     assert "corrective action" in certificate.exceptions[0]
     alternatives = consultation.conditions[0]
@@ -2190,16 +2190,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2108,
+        "approved": 2109,
         "proposed": 822,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2931
+    assert metrics.total_review_records == 2932
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 544
-    assert metrics.shall_token_candidate_recall == pytest.approx(856 / 1400)
+    assert metrics.shall_token_candidate_recall == pytest.approx(857 / 1401)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2215,14 +2215,14 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
     assert metrics.mapping_shape.one_norm_to_one_target == 38
-    assert metrics.mapping_shape.many_norms_to_one_target == 430
+    assert metrics.mapping_shape.many_norms_to_one_target == 431
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
-    assert metrics.mapping_shape.many_to_many == 22
-    assert metrics.mapping_shape.unmapped == 908
-    assert metrics.semantic_vs_existing_implementation_disagreements == 81
+    assert metrics.mapping_shape.many_to_many == 23
+    assert metrics.mapping_shape.unmapped == 907
+    assert metrics.semantic_vs_existing_implementation_disagreements == 80
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2235,7 +2235,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-D-KEEP-DOCUMENTATION",
         "AIA-NORM-A016-E-KEEP-LOGS",
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
-        "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
         "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
         "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
         "AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY",
@@ -2307,7 +2306,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
         "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
         "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
         "AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY",
@@ -2667,11 +2665,16 @@ def test_article_forty_one_preserves_common_specification_workflow():
         "AIA-TEXT-A041-P006",
         "AIA-TEXT-A041-P007",
     ]
-    assert len(power.conditions) == 1
-    assert power.conditions[0].operator == "all_of"
+    # Article 41(1)(a) to (b): three flat limbs plus the (i) to (iv) alternatives.
+    assert power.conditions.operator == "all_of"
+    assert len(power.conditions) == 4
+    assert power.conditions[1].operator == "any_of"
+    assert len(power.conditions[1].operands) == 4
     presumption = norms["AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION"]
     justification = norms["AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS"]
-    assert presumption.implementation_mode.value == "missing"
+    # Reported alongside the thirteen Section 2 requirement rules that record this route.
+    assert presumption.implementation_mode.value == "report_only"
+    assert len(presumption.implementation_refs) == 13
     assert justification.implementation_mode.value == "compliance_rule"
     assert justification.implementation_refs == ["AIA-RULE-PO-A41-5", "AIA-RULE-GP-A41-5"]
 
@@ -2696,9 +2699,10 @@ def test_article_forty_two_keeps_three_conformity_presumptions_distinct():
     assert all(norm.verification_mode.value == "reported_conditionally" for norm in norms)
     assert all(norm.has_no_actor for norm in norms)
     assert all(
-        [target.target_ref for target in norm.targets] == ["high_risk_ai_system"] for norm in norms
+        [target.target_ref.casefold() for target in norm.targets] == ["high-risk ai systems"]
+        for norm in norms
     )
-    assert {len(norm.conditions) for norm in norms} == {1, 2}
+    assert {len(norm.conditions) for norm in norms} == {1, 2, 3}
 
 
 def test_article_forty_three_reconciles_all_conformity_routes():
@@ -2716,9 +2720,12 @@ def test_article_forty_three_reconciles_all_conformity_routes():
 
     assert len(segments) == 7
     assert_segments_are_independently_approved(segments)
-    assert len(norms) == 18
+    # Article 43(3)'s fourth subparagraph gained the norm it never had: the procedure a system
+    # that is both an Annex I Section A product and an Annex III use case must follow.
+    assert len(norms) == 19
+    assert "AIA-NORM-A043-P3-DUAL-COVERAGE-PROCEDURE" in norms
     assert len(segments[1].norm_ids) == 4
-    assert len(segments[3].norm_ids) == 8
+    assert len(segments[3].norm_ids) == 9
     assert len(segments[4].norm_ids) == 2
     assert len(segments[6].norm_ids) == 2
     assert norms["AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE"].implementation_refs == [

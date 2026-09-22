@@ -1,0 +1,36 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '41'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 15
+  norms_scanned: 10
+  finding_count: 1
+  audit_sha256: 591d41a98790e19380564cb6d8c98afdb03c4681f727788eaab74ae5b9dadef1
+decisions:
+- finding_id: AIA-VALID-01F719BC7651680E
+  target: AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS:actor:gpai_provider:AIA-TEXT-A041-P013
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A041-P013
+  source_sha256: a8912afbddc6aed69bebe77b5c4c26fd52666febe7266f325fda235d5ca1cbb7
+  target_sha256: 1698461d21fe254e565c7addf075be66c28750610d46c1323f77db1b256491cd
+  decision: accepted_with_basis
+  reason: >-
+    The paragraph binds two parties in one compound subject — "providers of high-risk AI systems or
+    general-purpose AI models" — so neither party is named by any label the matcher holds for it on
+    its own. The general-purpose AI model provider is the second limb of that subject, quoted below.
+    Splitting the compound into a term would let the phrase evidence this actor wherever it appears;
+    the basis is recorded here instead.
+  legal_basis:
+  - span_id: AIA-TEXT-A041-P013
+    source_sha256: a8912afbddc6aed69bebe77b5c4c26fd52666febe7266f325fda235d5ca1cbb7
+    quote: Where providers of high-risk AI systems or general-purpose AI models do not comply with the
+      common specifications referred to in paragraph 1
+  reviewed_by: vidibro

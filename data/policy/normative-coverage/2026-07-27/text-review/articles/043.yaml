@@ -61,7 +61,10 @@ segments:
   - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
   - AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
   - AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -148,7 +151,16 @@ segments:
   - AIA-NORM-A043-P3-OPTION
   - AIA-NORM-A043-P3-NO-EFFECT
   - AIA-NORM-A043-P3-NO-THIRD-PARTY
-  qualifying_norm_ids: []
+  - AIA-NORM-A043-P3-DUAL-COVERAGE-PROCEDURE
+  qualifying_norm_ids:
+  - AIA-NORM-A043-P3-PROCEDURE
+  - AIA-NORM-A043-P3-SECTION2
+  - AIA-NORM-A043-P3-QMS
+  - AIA-NORM-A043-P3-BODY-POWER
+  - AIA-NORM-A043-P3-DESIGNATE
+  - AIA-NORM-A043-P3-OPTION
+  - AIA-NORM-A043-P3-NO-EFFECT
+  - AIA-NORM-A043-P3-NO-THIRD-PARTY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
