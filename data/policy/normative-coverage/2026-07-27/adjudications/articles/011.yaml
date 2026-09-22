@@ -5,10 +5,13 @@ source:
   document: '11'
   required_field_validations:
   - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 4
   norms_scanned: 9
   finding_count: 0
-  audit_sha256: e19ef76ab0e09c95e82be9aa8671dbb83a7406d6d269af1985636059ec62197b
+  audit_sha256: f9dce753e769bdbb92fa64f3f2aac684d09524a7188d3ac8931aec0ef8d46f90
 decisions: []

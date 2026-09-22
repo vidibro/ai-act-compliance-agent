@@ -5,12 +5,15 @@ source:
   document: '10'
   required_field_validations:
   - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 21
   norms_scanned: 21
   finding_count: 4
-  audit_sha256: 9872f111d4fcee6dc8481aad050e2ed344ac930e616db3fc2dbb5087bf56285d
+  audit_sha256: 153f856cd4c0251b86e0e48be34839f732fb91eb22ca17239121f631e9f0e088
 decisions:
 - finding_id: AIA-VALID-E4F9CC743A0C1F82
   target: AIA-NORM-A010-P2-GOVERN-DATASETS

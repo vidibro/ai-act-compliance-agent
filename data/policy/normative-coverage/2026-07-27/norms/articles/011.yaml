@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: draw up technical documentation before placing the system on the market or putting it into service
     and keep it up to date
@@ -38,11 +40,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P1-DEMONSTRATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: draw up documentation that demonstrates compliance with Chapter III Section 2 and gives national
     competent authorities and notified bodies the clear, comprehensive information needed to assess compliance
@@ -78,11 +83,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P1-ANNEX-IV
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: include every applicable Annex IV element
   norm_text: It shall contain, at a minimum, the elements set out in Annex IV.
@@ -112,11 +120,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P1-SIMPLIFY
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: use the simplified-documentation option
   norm_text: SMEs, including start-ups, and SMCs, may provide the elements of the technical documentation
@@ -154,11 +165,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P1-FORM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A011-P1
   targets: []
   action: establish a simplified technical-documentation form targeted at the needs of SMEs, start-ups,
     and SMCs
@@ -188,11 +202,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P1-USE-FORM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: use the Commission form when taking the simplified-documentation option
   norm_text: Where an SME, including a start-up, or an SMC, opts to provide the information required in
@@ -231,11 +248,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P1-ACCEPT-FORM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A011-P1
   targets: []
   action: accept the simplified form for conformity assessment
   norm_text: Notified bodies shall accept the form for the purposes of the conformity assessment.
@@ -263,11 +283,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: draw up one technical-documentation set containing both the Article 11(1) information and the
     information required by the applicable Annex I Section A legislation
@@ -309,11 +332,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A011-P3-AMEND
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A011-P3
   targets: []
   action: adopt Article 97 delegated acts amending Annex IV where necessary in light of technical progress
     to preserve all information needed to assess Section 2 compliance
@@ -354,3 +380,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

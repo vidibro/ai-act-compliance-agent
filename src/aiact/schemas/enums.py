@@ -610,6 +610,7 @@ class ActorRole(StrEnum):
 
 
 _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
+    ActorRole.NOTIFIED_BODY: ("notified body", "notified bodies"),
     ActorRole.MARKET_SURVEILLANCE_AUTHORITY: (
         "market surveillance authority",
         "market surveillance authorities",

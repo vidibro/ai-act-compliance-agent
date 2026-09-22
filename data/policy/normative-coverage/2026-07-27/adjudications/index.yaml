@@ -77,14 +77,23 @@ enforced_scope:
     document: "10"
     required_field_validations:
       - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "11"
     required_field_validations:
       - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "12"
     required_field_validations:
       - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
   - kind: article
     document: "13"
   - kind: article
