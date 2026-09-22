@@ -9,6 +9,7 @@ Cross-references are validated so a finding can never point at nothing:
 from __future__ import annotations
 
 from datetime import date, datetime
+from typing import Literal
 
 from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
@@ -17,6 +18,7 @@ from aiact.schemas.enums import (
     ActorCategory,
     ActorRole,
     DeployerType,
+    HighRiskRoute,
     OpenSourceRelease,
     ProviderReallocation,
     RealWorldTesting,
@@ -286,6 +288,23 @@ class Finding(BaseModel):
         return self
 
 
+class RuleTimingNotice(BaseModel):
+    """A selected duty that is visible before it can be judged.
+
+    The route is a classification result, the date and legal-basis segments come from the canonical
+    temporal regime attached to the rule's mandatory norms.  Keeping all four values in the report
+    makes a future duty inspectable without turning it into a gap today.
+    """
+
+    rule_id: str
+    use_case_id: str
+    role: ActorRole
+    status: Literal["upcoming", "classification_required"]
+    application_date: date | None = None
+    route: HighRiskRoute | None = None
+    legal_basis_segment_ids: list[str] = []
+
+
 class ReportSummary(BaseModel):
     """Verdict tallies, optionally broken down per use case."""
 
@@ -321,6 +340,11 @@ class ComplianceReport(BaseModel):
     members of the role owe it, from when, and what would satisfy it all live on the rule in the
     spec. `aiact.reporting.render_report` resolves each id and renders those beside it; any other
     consumer must do the same, and `tests/test_reporting.py` holds the shipped renderer to it."""
+
+    timing_not_active: list[RuleTimingNotice] = []
+    """Selected duties that are not currently judgeable because their application timing is future
+    or depends on an unresolved Article 6 route. They remain visible with their canonical date and
+    legal basis, but never change the verdict total."""
 
     permissions: dict[ActorRole, list[str]] = {}
     """Canonical permission norm ids, keyed by the active duty-holder role.
@@ -735,6 +759,17 @@ class ComplianceReport(BaseModel):
                     raise ValueError(
                         f"not_document_verifiable references rule_id {rule_id!r} not present "
                         f"in the loaded PolicyRuleset (spec_version={spec.spec_version})."
+                    )
+            for notice in self.timing_not_active:
+                if notice.rule_id not in known_rules:
+                    raise ValueError(
+                        f"timing_not_active references rule_id {notice.rule_id!r} not present "
+                        f"in the loaded PolicyRuleset (spec_version={spec.spec_version})."
+                    )
+                if notice.use_case_id not in known_use_cases:
+                    raise ValueError(
+                        f"timing_not_active for {notice.rule_id!r} references unknown use_case_id "
+                        f"{notice.use_case_id!r}."
                     )
             report_norms = {norm.norm_id: norm for norm in spec.report_norms}
             for field_name, accepted_kinds in (

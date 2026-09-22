@@ -14,7 +14,13 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from aiact.schemas.enums import ActorCategory, ActorRole, ProhibitedPractice, TargetKind
+from aiact.schemas.enums import (
+    ActorCategory,
+    ActorRole,
+    HighRiskRoute,
+    ProhibitedPractice,
+    TargetKind,
+)
 from aiact.schemas.interpretation import InterpretiveLink
 from aiact.schemas.review import ReviewRecord, ReviewStatus
 
@@ -402,6 +408,15 @@ class TemporalStatus(StrEnum):
     CONDITIONAL_TIMING = "conditional_timing"
 
 
+class ConditionalApplicationRoute(BaseModel):
+    """One classification-dependent application date in a shared temporal regime."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    route: HighRiskRoute
+    application_start: date
+
+
 class TemporalRegime(BaseModel):
     """One source-backed temporal regime shared by one or more norms.
 
@@ -415,6 +430,7 @@ class TemporalRegime(BaseModel):
 
     regime_id: str = Field(pattern=r"^AIA-TEMP-[A-Z0-9-]+$")
     application_start: date | None = None
+    application_routes: list[ConditionalApplicationRoute] = []
     application_end: date | None = None
     deadline: date | None = None
     relative_deadline: RelativeDeadline | None = None
@@ -426,6 +442,7 @@ class TemporalRegime(BaseModel):
     def _is_a_real_and_unambiguous_regime(self) -> TemporalRegime:
         if (
             self.application_start is None
+            and not self.application_routes
             and self.application_end is None
             and self.deadline is None
             and self.relative_deadline is None
@@ -441,6 +458,20 @@ class TemporalRegime(BaseModel):
             and self.application_end < self.application_start
         ):
             raise ValueError("temporal regime application_end must not precede application_start")
+        if self.application_start is not None and self.application_routes:
+            raise ValueError(
+                "temporal regime cannot combine application_start with "
+                "conditional application_routes"
+            )
+        if self.application_end is not None and self.application_routes:
+            raise ValueError(
+                "temporal regime cannot combine application_end with conditional application_routes"
+            )
+        routes = [route.route for route in self.application_routes]
+        if len(routes) != len(set(routes)):
+            raise ValueError(
+                "temporal regime application_routes must not duplicate a route"
+            )
         if sum(
             deadline is not None
             for deadline in (
@@ -456,8 +487,28 @@ class TemporalRegime(BaseModel):
             raise ValueError("temporal regime legal_basis_spans must not contain duplicates")
         return self
 
-    def status_on(self, as_of_date: date) -> TemporalStatus:
+    def status_on(
+        self,
+        as_of_date: date,
+        route: HighRiskRoute | None = None,
+    ) -> TemporalStatus:
         """Return a report label; never use timing to omit a norm from the report."""
+        if self.application_routes:
+            if route is None:
+                return TemporalStatus.CONDITIONAL_TIMING
+            application_route = next(
+                (
+                    item
+                    for item in self.application_routes
+                    if item.route is route
+                ),
+                None,
+            )
+            if application_route is None:
+                return TemporalStatus.CONDITIONAL_TIMING
+            if as_of_date < application_route.application_start:
+                return TemporalStatus.UPCOMING
+            return TemporalStatus.ACTIVE
         if self.application_start is not None and as_of_date < self.application_start:
             return TemporalStatus.UPCOMING
         if self.application_end is not None and as_of_date > self.application_end:
@@ -469,6 +520,8 @@ class TemporalRegime(BaseModel):
     def canonical_payload(self) -> dict[str, object]:
         """Serialize temporal facts without inventing an absent deadline in legacy regimes."""
         payload = self.model_dump(mode="json")
+        if not self.application_routes:
+            payload.pop("application_routes")
         if self.deadline is None:
             payload.pop("deadline")
         if self.relative_deadline is None:

@@ -13,7 +13,7 @@ audit:
   segments_scanned: 3
   norms_scanned: 4
   finding_count: 2
-  audit_sha256: 025f0a39ab324af51c65603ab863c5f3fbdba977cd23083659e1046a336d21c9
+  audit_sha256: 4237394f6520c85c165fd59c7c7b19d291f5f35e50fbd4d8f5f908100017faf4
 decisions:
 - finding_id: AIA-VALID-1B7856DEF2F78F84
   target: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS:actor:provider
@@ -22,20 +22,20 @@ decisions:
   source_sha256: 6abcb2c7ff8531223df7fa0e5828dd58fc5334d278ec10593c022ecd5e22ee93
   target_sha256: eb52a193b1cccbc21fa5e9d6604403265c89c3ec86ffa0473ad1f544ef840f35
   decision: accepted_with_basis
-  reason: >-
-    Article 8(1) addresses the SYSTEM, not a party: "High-risk AI systems shall comply with the
-    requirements laid down in this Section." No segment of this Article names a duty-holder, so no
-    basis span could evidence one. The party is supplied by Article 16(a), which puts the same
-    Section 2 compliance duty on the provider in terms, and this norm is recorded as carried by
-    that one rather than reported twice.
+  reason: 'Article 8(1) addresses the SYSTEM, not a party: "High-risk AI systems shall
+    comply with the requirements laid down in this Section." No segment of this Article
+    names a duty-holder, so no basis span could evidence one. The party is supplied
+    by Article 16(a), which puts the same Section 2 compliance duty on the provider
+    in terms, and this norm is recorded as carried by that one rather than reported
+    twice.'
   legal_basis:
   - span_id: AIA-TEXT-A016-P001
     source_sha256: b7bc956bab747cd918a6fe02ee7d5bf49088ecb7fb45b0b40f086d9730073a9d
     quote: 'Providers of high-risk AI systems shall:'
   - span_id: AIA-TEXT-A016-P002
     source_sha256: 52af9e7538a3655cdf429103d5d0eef52973450d300eae9fa4f7af30cd04eb1f
-    quote: (a) ensure that their high-risk AI systems are compliant with the requirements set out in
-      Section 2;
+    quote: (a) ensure that their high-risk AI systems are compliant with the requirements
+      set out in Section 2;
   reviewed_by: vidibro
 - finding_id: AIA-VALID-EDC28413563BEFC5
   target: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT:actor:provider
@@ -44,11 +44,11 @@ decisions:
   source_sha256: 6abcb2c7ff8531223df7fa0e5828dd58fc5334d278ec10593c022ecd5e22ee93
   target_sha256: ee7acadf17de6a7cab47d81490b5fea8b2c83fec30607b2b7f1b75aefe61eada
   decision: accepted_with_basis
-  reason: >-
-    Same sentence, same silence: "The risk management system referred to in Article 9 shall be
-    taken into account when ensuring compliance with those requirements" names no party either. The
-    requirements it qualifies are the Section 2 requirements Article 16(a) puts on the provider, so
-    the duty-holder is the provider and the norm is judged through the Article 9 rule.
+  reason: 'Same sentence, same silence: "The risk management system referred to in
+    Article 9 shall be taken into account when ensuring compliance with those requirements"
+    names no party either. The requirements it qualifies are the Section 2 requirements
+    Article 16(a) puts on the provider, so the duty-holder is the provider and the
+    norm is judged through the Article 9 rule.'
   legal_basis:
   - span_id: AIA-TEXT-A016-P001
     source_sha256: b7bc956bab747cd918a6fe02ee7d5bf49088ecb7fb45b0b40f086d9730073a9d

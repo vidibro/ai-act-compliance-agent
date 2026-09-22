@@ -330,6 +330,7 @@ def criterion_from_norm(norm: Norm) -> RuleCriterion:
         mandatory_content=list(norm.mandatory_content),
         source_spans=norm.all_spans,
         verification_mode=norm.verification_mode,
+        temporal_regime_id=norm.temporal_regime_id,
     )
 
 
@@ -448,6 +449,17 @@ def _national_law_notices(norms_root: Path, version: str) -> list[dict[str, obje
             }
         )
     return notices
+
+
+def _temporal_regimes(norms_root: Path, version: str) -> list[dict[str, object]]:
+    """Materialise canonical timing regimes from the generated norm inventory."""
+    manifest = norms_root if norms_root.is_file() else norms_root / "manifest.yaml"
+    payload = load_yaml_mapping(manifest, description="norm inventory manifest")
+    if str(payload.get("act_version_date", "")) != version:
+        raise ValueError(
+            f"Norm inventory at {norms_root} does not match policy version {version!r}."
+        )
+    return list(payload.get("temporal_regimes", []))
 
 
 def _report_norms(norms_root: Path, version: str) -> list[dict[str, object]]:
@@ -629,6 +641,7 @@ def load_policy_spec(
     _resolve_criteria(raw.get("rules", []), norm_path, version_str)
     raw["national_law_notices"] = _national_law_notices(norm_path, version_str)
     raw["report_norms"] = _report_norms(norm_path, version_str)
+    raw["temporal_regimes"] = _temporal_regimes(norm_path, version_str)
 
     spec = PolicyRuleset.model_validate(raw)
 

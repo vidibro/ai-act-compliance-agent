@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: establish, implement, document, and maintain a risk-management system for each high-risk AI
     system
@@ -40,11 +42,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P2-LIFECYCLE-PROCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: plan and operate risk management as a continuous iterative process throughout the entire high-risk
     AI-system lifecycle, with regular systematic review and updating
@@ -79,11 +84,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: identify and analyse known and reasonably foreseeable intended-use risks to health, safety,
     and fundamental rights
@@ -124,11 +132,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: estimate and evaluate risks emerging from intended use and reasonably foreseeable misuse
   norm_text: the estimation and evaluation of the risks that may emerge when the high-risk AI system is
@@ -169,11 +180,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P2-C-POST-MARKET-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: evaluate other risks using data from the Article 72 post-market monitoring system
   norm_text: the evaluation of other risks possibly arising, based on the analysis of data gathered from
@@ -205,11 +219,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P2-D-ADOPT-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: adopt appropriate and targeted measures addressing the risks identified under Article 9(2)(a)
   norm_text: the adoption of appropriate and targeted risk management measures designed to address the
@@ -241,12 +258,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_9_risk
+  - target_ref: The risks referred to in this Article
+    basis_segment_ids:
+    - AIA-TEXT-A009-P007
   action: limit Article 9 risk treatment to risks reasonably mitigable or eliminable through development,
     design, or adequate technical information
   norm_text: The risks referred to in this Article shall concern only those which may be reasonably mitigated
@@ -280,11 +300,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P4-CONSIDER-INTERACTIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: consider the effects and possible interactions of the combined Section 2 requirements when selecting
     risk-management measures
@@ -326,11 +349,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P5-ACCEPTABLE-RESIDUAL-RISK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: judge both each hazard's relevant residual risk and the high-risk AI system's overall residual
     risk to be acceptable
@@ -363,11 +389,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P5-A-DESIGN-RISK-REDUCTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: eliminate or reduce identified and evaluated risks through design and development as far as
     technically feasible
@@ -400,11 +429,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P5-B-MITIGATION-CONTROLS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: implement adequate mitigation and control measures for risks that cannot be eliminated where
     appropriate
@@ -444,11 +476,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: provide the information required by Article 13 as part of risk management
   norm_text: provision of information required pursuant to Article 13
@@ -479,11 +514,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P5-C-TRAIN-DEPLOYERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: provide deployer training where appropriate as part of risk management
   norm_text: where appropriate, training to deployers.
@@ -521,11 +559,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: consider expected deployer knowledge, experience, education, training, and the presumable use
     context when reducing use-related risks
@@ -557,11 +598,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P6-TEST-FOR-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: test high-risk AI systems to identify the most appropriate targeted risk-management measures
   norm_text: High-risk AI systems shall be tested for the purpose of identifying the most appropriate
@@ -592,11 +636,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P6-TEST-PERFORMANCE-AND-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: use testing to ensure both consistent performance for the intended purpose and compliance with
     the Section 2 requirements
@@ -630,11 +677,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P7-REAL-WORLD-TESTING
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: include testing in real-world conditions in the testing procedures
   norm_text: Testing procedures may include testing in real-world conditions in accordance with Article
@@ -672,11 +722,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P8-DEVELOPMENT-AND-PRE-MARKET-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: test high-risk AI systems throughout development where appropriate and, in every case, before
     market placement or putting into service
@@ -709,11 +762,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P8-METRICS-THRESHOLDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A016-P001
   targets: []
   action: test against predefined metrics and probabilistic thresholds appropriate to the intended purpose
   norm_text: Testing shall be carried out against prior defined metrics and probabilistic thresholds that
@@ -744,11 +800,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A009-P018
   targets: []
   action: consider, in view of the intended purpose, likely adverse impacts on persons under 18 and, where
     appropriate, other vulnerable groups
@@ -781,11 +840,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A009-P10-INTEGRATE-RISK-PROCESSES
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A009-P019
   targets: []
   action: incorporate or combine Article 9 aspects with internal risk-management procedures required by
     other Union law
@@ -827,3 +889,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

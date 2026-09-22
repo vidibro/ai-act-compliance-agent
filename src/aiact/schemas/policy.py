@@ -23,7 +23,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
-from aiact.schemas.norm import LogicalExpression, NormKind, VerificationMode
+from aiact.schemas.norm import LogicalExpression, NormKind, TemporalRegime, VerificationMode
 
 
 class LegalSource(BaseModel):
@@ -109,6 +109,7 @@ class RuleCriterion(BaseModel):
     mandatory_content: list[str]
     source_spans: list[str] = Field(min_length=1)
     verification_mode: VerificationMode
+    temporal_regime_id: str | None = Field(default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$")
 
     @model_validator(mode="after")
     def _actor_scope_is_unambiguous(self) -> RuleCriterion:
@@ -562,6 +563,7 @@ class PolicyRuleset(BaseModel):
     rules: list[PolicyRule]
     national_law_notices: list[NationalLawNotice] = []
     report_norms: list[ReportNorm] = []
+    temporal_regimes: list[TemporalRegime] = []
 
     @model_validator(mode="after")
     def _report_norms_are_unique_and_target_live_rules(self) -> PolicyRuleset:
@@ -576,4 +578,40 @@ class PolicyRuleset(BaseModel):
                 raise ValueError(
                     f"Report norm {norm.norm_id!r} names absent activation rule(s) {missing}"
                 )
+        regime_ids = [regime.regime_id for regime in self.temporal_regimes]
+        duplicate_regimes = sorted({item for item in regime_ids if regime_ids.count(item) > 1})
+        if duplicate_regimes:
+            raise ValueError(f"PolicyRuleset: duplicate temporal regime ids {duplicate_regimes}")
+        known_regimes = set(regime_ids)
+        for rule in self.rules:
+            missing_regimes = sorted(
+                {
+                    criterion.temporal_regime_id
+                    for criterion in rule.criteria
+                    if criterion.temporal_regime_id is not None
+                }
+                - known_regimes
+            )
+            if missing_regimes:
+                raise ValueError(
+                    f"PolicyRule {rule.rule_id!r}: criteria name absent temporal regime(s) "
+                    f"{missing_regimes}"
+                )
         return self
+
+    def temporal_regime_for(self, rule: PolicyRule) -> TemporalRegime | None:
+        """Return the one canonical timing regime for a fully migrated rule.
+
+        A rule may use canonical timing only once every mandatory criterion names the same regime.
+        Anything less would let a timed criterion hide an untimed one, or let two legal dates become
+        one report date. Rules not yet migrated keep their legacy timing fields until their norms
+        are reconciled.
+        """
+        mandatory = [criterion for criterion in rule.criteria if criterion.mandatory]
+        if not mandatory or any(criterion.temporal_regime_id is None for criterion in mandatory):
+            return None
+        regime_ids = {criterion.temporal_regime_id for criterion in mandatory}
+        if len(regime_ids) != 1:
+            return None
+        regime_id = regime_ids.pop()
+        return next((item for item in self.temporal_regimes if item.regime_id == regime_id), None)

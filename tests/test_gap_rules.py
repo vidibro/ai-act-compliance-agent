@@ -31,6 +31,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
+from aiact.schemas.norm import TemporalStatus
 from aiact.schemas.policy import LegalSource, PolicyRule
 from aiact.schemas.question import Answer
 
@@ -696,9 +697,19 @@ def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
             "AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT",
         }:
             continue  # not a high-risk system at all — see its comment in spec.yaml
-        assert rule.effective_date is None, f"{rule.rule_id} states a single date"
-        assert rule.effective_date_for(HighRiskRoute.ANNEX_III) == _ANNEX_III_DATE, rule.rule_id
-        assert rule.effective_date_for(HighRiskRoute.ANNEX_I) == _ANNEX_I_DATE, rule.rule_id
+        regime = spec.temporal_regime_for(rule)
+        if regime is not None:
+            assert rule.effective_date is None and not rule.effective_date_by_route
+            assert (
+                regime.status_on(_ANNEX_III_DATE, HighRiskRoute.ANNEX_III) is TemporalStatus.ACTIVE
+            )
+            assert (
+                regime.status_on(_ANNEX_III_DATE, HighRiskRoute.ANNEX_I) is TemporalStatus.UPCOMING
+            )
+        else:
+            assert rule.effective_date is None, f"{rule.rule_id} states a single date"
+            assert rule.effective_date_for(HighRiskRoute.ANNEX_III) == _ANNEX_III_DATE, rule.rule_id
+            assert rule.effective_date_for(HighRiskRoute.ANNEX_I) == _ANNEX_I_DATE, rule.rule_id
 
 
 def test_the_sections_the_omnibus_left_alone_keep_the_general_date(spec):
@@ -742,7 +753,25 @@ def test_an_unknown_route_resolves_to_the_earlier_date(spec):
     """Deliberately the earlier one. Telling a reader they have until 2028 when the answer might
     have been 2027 is the direction that costs them a deadline."""
     rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-HR-A09")
-    assert rule.effective_date_for(None) == _ANNEX_III_DATE
+    regime = spec.temporal_regime_for(rule)
+    assert regime is not None
+    assert regime.status_on(_ANNEX_III_DATE) is TemporalStatus.CONDITIONAL_TIMING
+
+
+def test_canonical_article_9_timing_withholds_only_the_judge(spec):
+    """A future Article 9 duty remains visible, but cannot manufacture a current gap."""
+    active = select_rules(
+        spec,
+        a_use_case(area=AnnexIIIArea.EMPLOYMENT),
+        ActorRole.PROVIDER,
+        as_of_date=date(2026, 9, 22),
+    )
+    notices = [notice for notice in active.upcoming if notice.rule.rule_id == "AIA-RULE-HR-A09"]
+    assert len(notices) == 1
+    assert notices[0].route is HighRiskRoute.ANNEX_III
+    assert notices[0].application_date == _ANNEX_III_DATE
+    assert notices[0].legal_basis_spans == ("AIA-TEXT-A113-C",)
+    assert "AIA-RULE-HR-A09" not in {rule.rule_id for rule in active.document_verifiable}
 
 
 # Chapter III Section 5 — Arts. 40 to 49. Not moved by the Omnibus, so in force ahead of the

@@ -17,7 +17,14 @@ from aiact.norm_validity import (
     enforce_validity_adjudications,
     load_adjudication_ledger,
 )
-from aiact.schemas import ActorRole, NormActor, NormTarget, TargetKind, TemporalRegime
+from aiact.schemas import (
+    ActorRole,
+    HighRiskRoute,
+    NormActor,
+    NormTarget,
+    TargetKind,
+    TemporalRegime,
+)
 from aiact.schemas.norm import ConditionClause, NormRelationKind, SourceKind
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -392,6 +399,38 @@ def test_temporal_deadline_must_be_in_its_legal_basis():
     findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
 
     assert [finding.rule for finding in findings].count("temporal_deadline_not_in_basis") == 1
+
+
+def test_conditional_application_routes_must_be_enacted_and_classified():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-TEST-INVALID-CONDITIONAL-APPLICATION",
+        application_routes=[
+            {
+                "route": HighRiskRoute.ANNEX_III,
+                "application_start": "2027-12-02",
+            }
+        ],
+        legal_basis_spans=["AIA-TEXT-A015-P002"],
+    )
+    bundle.norm_inventory.temporal_regimes.append(regime)
+    norm.temporal_regime_id = regime.regime_id
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+
+    assert {
+        finding.rule
+        for finding in findings
+        if finding.target == f"{norm.norm_id}:temporal:{regime.regime_id}"
+    } == {
+        "temporal_application_route_classification_not_in_basis",
+        "temporal_application_route_start_not_in_basis",
+    }
 
 
 def test_temporal_gate_requires_a_regime_for_a_relative_deadline():

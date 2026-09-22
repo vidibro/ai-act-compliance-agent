@@ -810,3 +810,24 @@ def test_art_111_4_rides_on_the_duty_not_the_tier(spec):
     assert "Art. 111(4)" in note
     assert "2 December 2026" in note
     assert "Art. 111(2)" not in note  # minimal risk, so the Chapter III limb does not fire
+
+
+def test_future_canonical_rule_is_reported_but_not_judged(spec):
+    """Article 9's future route is a preparation notice, never a document verdict."""
+    judge = StubJudge()
+    report = analyse(
+        DOCUMENT,
+        a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
+        spec,
+        brain=ScriptedBrain({}),
+        judge=judge,  # type: ignore[arg-type]
+        max_workers=1,
+        as_of_date=date(2026, 9, 22),
+    )
+    notices = [notice for notice in report.timing_not_active if notice.rule_id == "AIA-RULE-HR-A09"]
+    assert len(notices) == 1
+    assert notices[0].status == "upcoming"
+    assert notices[0].application_date == date(2027, 12, 2)
+    assert notices[0].legal_basis_segment_ids == ["AIA-TEXT-A113-C"]
+    assert "AIA-RULE-HR-A09" not in judge.asked
+    assert all(finding.rule_id != "AIA-RULE-HR-A09" for finding in report.findings)

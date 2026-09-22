@@ -24,6 +24,7 @@ from aiact.schemas import (
     DerogationCondition,
     DocumentChunk,
     Finding,
+    HighRiskRoute,
     LegalSource,
     NormActor,
     NormTarget,
@@ -90,6 +91,45 @@ def test_temporal_regime_labels_dates_without_hiding_a_norm():
 
     assert regime.status_on(date(2026, 8, 1)) is TemporalStatus.UPCOMING
     assert regime.status_on(date(2026, 8, 2)) is TemporalStatus.ACTIVE
+
+
+def test_temporal_regime_selects_a_source_bound_high_risk_application_route():
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-HIGH-RISK-TEST-APPLICATION",
+        application_routes=[
+            {
+                "route": "annex_iii",
+                "application_start": "2027-12-02",
+            },
+            {
+                "route": "annex_i",
+                "application_start": "2028-08-02",
+            },
+        ],
+        legal_basis_spans=["AIA-TEXT-A113-C"],
+    )
+
+    assert regime.status_on(date(2027, 12, 2)) is TemporalStatus.CONDITIONAL_TIMING
+    assert (
+        regime.status_on(
+            date(2027, 12, 2), HighRiskRoute.ANNEX_III
+        )
+        is TemporalStatus.ACTIVE
+    )
+    assert (
+        regime.status_on(
+            date(2027, 12, 2), HighRiskRoute.ANNEX_I
+        )
+        is TemporalStatus.UPCOMING
+    )
+
+    with pytest.raises(ValidationError, match="cannot combine application_start"):
+        TemporalRegime(
+            regime_id="AIA-TEMP-HIGH-RISK-INVALID",
+            application_start="2026-08-02",
+            application_routes=regime.application_routes,
+            legal_basis_spans=["AIA-TEXT-A113-C"],
+        )
 
 
 def test_temporal_regime_allows_a_deadline_without_making_a_norm_expire():

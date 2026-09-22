@@ -17,10 +17,10 @@ decisions:
   source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
   target_sha256: 57f53d864250056f120209e6ffc6e5f9656c97820d6e832aeabd2c785af11ba5
   decision: accepted_with_basis
-  reason: The canonical norm retains the distributor, pre-market condition, verification
-    action, and both mandatory accompanying documents. The leading “that” only joins
-    this item to the already-recorded verification verb; it adds no separate condition
-    or duty.
+  reason: "The canonical norm retains the distributor, pre-market condition, verification\
+    \ action, and both mandatory accompanying documents. The leading \u201Cthat\u201D\
+    \ only joins this item to the already-recorded verification verb; it adds no separate\
+    \ condition or duty."
   legal_basis:
   - span_id: AIA-TEXT-A024-P001
     source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
@@ -34,10 +34,10 @@ decisions:
   source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
   target_sha256: 27e5bdf23711f8c8b1c97b5a05d221bdce6b0b66bec7db007c5404f239d0cd62
   decision: accepted_with_basis
-  reason: The canonical norm retains the distributor and pre-market verification duty,
-    with every one of the three exhaustive Article 16(b), 16(c), and 23(3) checks
-    as mandatory content. The leading “that” merely shares the recorded verification
-    verb.
+  reason: "The canonical norm retains the distributor and pre-market verification\
+    \ duty, with every one of the three exhaustive Article 16(b), 16(c), and 23(3)\
+    \ checks as mandatory content. The leading \u201Cthat\u201D merely shares the\
+    \ recorded verification verb."
   legal_basis:
   - span_id: AIA-TEXT-A024-P001
     source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
@@ -88,9 +88,9 @@ decisions:
   source_sha256: f9be7a66b78fa89d4d0374506ba3fd6078a4dbd7ceb128eeef43ed343299ede9
   target_sha256: 866fe00340f6b2d542cf0d0841486c9b0a9dcf2e91a8fe4c14f01d3642f8d27c
   decision: fixed
-  reason: The canonical source record now retains both the importer-responsibility
-    trigger and the “where applicable” storage-or-transport qualifier as structured
-    conditions. The exact patch binds the audit finding to that correction.
+  reason: "The canonical source record now retains both the importer-responsibility\
+    \ trigger and the \u201Cwhere applicable\u201D storage-or-transport qualifier\
+    \ as structured conditions. The exact patch binds the audit finding to that correction."
   fix:
     patch_file: fixes/AIA-VALID-63729BED49FFB7B8.patch.yaml
     patch_sha256: 9abadb383df3ba575c158ca118177e0fc9b88415174085e319710b0066719ed5

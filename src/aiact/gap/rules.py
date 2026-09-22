@@ -21,6 +21,7 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 from dataclasses import dataclass, field
+from datetime import date
 
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.enums import (
@@ -32,7 +33,19 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
+from aiact.schemas.norm import TemporalStatus
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
+
+
+@dataclass(frozen=True)
+class TimingNotice:
+    """One selected rule that is visible but must not reach the judge yet."""
+
+    rule: PolicyRule
+    status: TemporalStatus
+    route: HighRiskRoute | None
+    application_date: date | None
+    legal_basis_spans: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -59,9 +72,21 @@ class ActiveRules:
     postponed: tuple[PolicyRule, ...] = field(default=())
     """Adopted but not yet applicable. Reported so a provider can prepare, never a gap."""
 
+    upcoming: tuple[TimingNotice, ...] = ()
+    """Selected duties with a known future application date; reported but never judged."""
+
+    timing_unresolved: tuple[TimingNotice, ...] = ()
+    """Selected duties whose legal route has not yet been classified; reported, never judged."""
+
     @property
     def all_rules(self) -> tuple[PolicyRule, ...]:
-        return self.document_verifiable + self.not_document_verifiable + self.postponed
+        return (
+            self.document_verifiable
+            + self.not_document_verifiable
+            + self.postponed
+            + tuple(item.rule for item in self.upcoming)
+            + tuple(item.rule for item in self.timing_unresolved)
+        )
 
 
 def roles_with_rules(spec: PolicyRuleset) -> list[ActorRole]:
@@ -78,7 +103,7 @@ def roles_with_rules(spec: PolicyRuleset) -> list[ActorRole]:
     return [role for role in ActorRole if role in named]
 
 
-def _route_of(use_case: UseCaseClassification) -> HighRiskRoute | None:
+def route_of(use_case: UseCaseClassification) -> HighRiskRoute | None:
     """WHICH of Art. 6's doors this use case came through, or None where neither did.
 
     Annex I is checked FIRST because it is checked first in law: Art. 6(1) is an independent route
@@ -99,7 +124,33 @@ def _route_of(use_case: UseCaseClassification) -> HighRiskRoute | None:
 
 def _route_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
     """A rule with no route condition fires whichever door was used — the ordinary case."""
-    return rule.applies_to_route is None or rule.applies_to_route is _route_of(use_case)
+    return rule.applies_to_route is None or rule.applies_to_route is route_of(use_case)
+
+
+def _timing_notice(
+    spec: PolicyRuleset, rule: PolicyRule, use_case: UseCaseClassification, as_of_date: date
+) -> TimingNotice | None:
+    """Resolve a fully migrated rule's canonical norm timing for this classified use case."""
+    regime = spec.temporal_regime_for(rule)
+    if regime is None:
+        return None
+    route = route_of(use_case)
+    status = regime.status_on(as_of_date, route)
+    if status not in {TemporalStatus.UPCOMING, TemporalStatus.CONDITIONAL_TIMING}:
+        return None
+    application_date = regime.application_start
+    if route is not None:
+        application_date = next(
+            (item.application_start for item in regime.application_routes if item.route is route),
+            application_date,
+        )
+    return TimingNotice(
+        rule=rule,
+        status=status,
+        route=route,
+        application_date=application_date,
+        legal_basis_spans=tuple(regime.legal_basis_spans),
+    )
 
 
 def _tier_or_duty_matches(
@@ -181,6 +232,7 @@ def select_rules(
     transparency_duties: Sequence[TransparencyDuty] = (),
     real_world_testing: RealWorldTesting | None = None,
     prohibited_practice: ProhibitedPractice | None = None,
+    as_of_date: date | None = None,
 ) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
 
@@ -261,14 +313,26 @@ def select_rules(
     # never by dropping it into a "might not apply" list. This report covers every role the Act
     # binds whoever is reading it; deciding on a reader's behalf which of their obligations to
     # demote is the same error as omitting a role for want of a ruleset.
+    notices = [
+        notice
+        for rule in active
+        if as_of_date is not None
+        if (notice := _timing_notice(spec, rule, use_case, as_of_date)) is not None
+    ]
+    deferred_ids = {notice.rule.rule_id for notice in notices}
+    ordinary = [rule for rule in active if rule.rule_id not in deferred_ids]
     return ActiveRules(
         use_case_id=use_case.use_case_id,
         role=role,
         document_verifiable=tuple(
-            r for r in active if r.status == "active" and r.document_verifiable
+            r for r in ordinary if r.status == "active" and r.document_verifiable
         ),
         not_document_verifiable=tuple(
-            r for r in active if r.status == "active" and not r.document_verifiable
+            r for r in ordinary if r.status == "active" and not r.document_verifiable
         ),
-        postponed=tuple(r for r in active if r.status == "postponed"),
+        postponed=tuple(r for r in ordinary if r.status == "postponed"),
+        upcoming=tuple(notice for notice in notices if notice.status is TemporalStatus.UPCOMING),
+        timing_unresolved=tuple(
+            notice for notice in notices if notice.status is TemporalStatus.CONDITIONAL_TIMING
+        ),
     )

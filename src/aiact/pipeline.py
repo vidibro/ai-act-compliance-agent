@@ -18,7 +18,7 @@ problem and not an input-format one.
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 
 from aiact.brain import Brain
 from aiact.classify.graph import classify, load_questions
@@ -163,6 +163,7 @@ def review(
     system_id: str = "system",
     questions: dict[str, Question] | None = None,
     max_workers: int = DEFAULT_WORKERS,
+    as_of_date: date | None = None,
 ) -> ComplianceReport:
     """Classify `document`, then check it against the obligations that classification activates.
 
@@ -215,6 +216,7 @@ def review(
         system_id=system_id,
         max_workers=max_workers,
         questions=role_questions.load_questions(),
+        as_of_date=as_of_date or datetime.now(UTC).date(),
     )
 
     # Art. 2(2). `select` already withholds Chapter III from a Section B use case, so the findings

@@ -28,6 +28,7 @@ from aiact.schemas.enums import (
     AnnexIIIArea,
     CheckType,
     DerogationCondition,
+    HighRiskRoute,
     ObligationStatus,
     ProhibitedPractice,
     RiskClass,
@@ -51,6 +52,7 @@ from aiact.schemas.interpretation import (
 )
 from aiact.schemas.norm import (
     CandidateDetectionChannel,
+    ConditionalApplicationRoute,
     ConditionClause,
     ImplementationMode,
     LogicalExpression,
@@ -110,7 +112,9 @@ __all__ = [
     "InterpretationTargetKind",
     "InterpretiveEffect",
     "InterpretiveLink",
+    "HighRiskRoute",
     "CandidateDetectionChannel",
+    "ConditionalApplicationRoute",
     "ConditionClause",
     "LogicalExpression",
     "LogicalExpression",

@@ -1,12 +1,14 @@
 records:
 - norm_id: AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
   source: A009-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: A risk management system shall be established, implemented, documented and maintained in relation
     to high-risk AI systems.
   action: establish, implement, document, and maintain a risk-management system for each high-risk AI
     system
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   mandatory_content:
@@ -20,6 +22,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P2-LIFECYCLE-PROCESS
   source: A009-P002
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: The risk management system shall be understood as a continuous iterative process planned and
     run throughout the entire lifecycle of a high-risk AI system, requiring regular systematic review
     and updating.
@@ -27,6 +30,7 @@ records:
     AI-system lifecycle, with regular systematic review and updating
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   mandatory_content:
@@ -37,6 +41,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
   source: A009-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the identification and analysis of the known and the reasonably foreseeable risks that the high-risk
     AI system can pose to health, safety or fundamental rights when the high-risk AI system is used in
     accordance with its intended purpose
@@ -44,6 +49,7 @@ records:
     and fundamental rights
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   conditions:
@@ -58,11 +64,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
   source: A009-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the estimation and evaluation of the risks that may emerge when the high-risk AI system is used
     in accordance with its intended purpose, and under conditions of reasonably foreseeable misuse
   action: estimate and evaluate risks emerging from intended use and reasonably foreseeable misuse
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   conditions:
@@ -77,11 +85,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P2-C-POST-MARKET-RISKS
   source: A009-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the evaluation of other risks possibly arising, based on the analysis of data gathered from the
     post-market monitoring system referred to in Article 72
   action: evaluate other risks using data from the Article 72 post-market monitoring system
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   qualifier_spans:
@@ -91,11 +101,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P2-D-ADOPT-MEASURES
   source: A009-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the adoption of appropriate and targeted risk management measures designed to address the risks
     identified pursuant to point (a).
   action: adopt appropriate and targeted measures addressing the risks identified under Article 9(2)(a)
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   qualifier_spans:
@@ -105,6 +117,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE
   source: A009-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: The risks referred to in this Article shall concern only those which may be reasonably mitigated
     or eliminated through the development or design of the high-risk AI system, or the provision of adequate
     technical information.
@@ -112,7 +125,8 @@ records:
     design, or adequate technical information
   actors: none
   targets:
-  - target_ref: article_9_risk
+  - target_ref: The risks referred to in this Article
+    basis_segment_ids: [AIA-TEXT-A009-P007]
   kind: applicability
   implementation_mode: report_only
   implementation_refs: *id001
@@ -120,6 +134,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P4-CONSIDER-INTERACTIONS
   source: A009-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: The risk management measures referred to in paragraph 2, point (d), shall give due consideration
     to the effects and possible interaction resulting from the combined application of the requirements
     set out in this Section, with a view to minimising risks more effectively while achieving an appropriate
@@ -128,6 +143,7 @@ records:
     risk-management measures
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   conditions:
@@ -140,12 +156,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P5-ACCEPTABLE-RESIDUAL-RISK
   source: A009-P009
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: the relevant residual risk associated with each hazard, as well as the overall residual risk
     of the high-risk AI systems is judged to be acceptable.
   action: judge both each hazard's relevant residual risk and the high-risk AI system's overall residual
     risk to be acceptable
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   mandatory_content:
@@ -156,12 +174,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P5-A-DESIGN-RISK-REDUCTION
   source: A009-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: elimination or reduction of risks identified and evaluated pursuant to paragraph 2 in as far
     as technically feasible through adequate design and development of the high-risk AI system
   action: eliminate or reduce identified and evaluated risks through design and development as far as
     technically feasible
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   qualifier_spans:
@@ -171,12 +191,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P5-B-MITIGATION-CONTROLS
   source: A009-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: where appropriate, implementation of adequate mitigation and control measures addressing risks
     that cannot be eliminated
   action: implement adequate mitigation and control measures for risks that cannot be eliminated where
     appropriate
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   conditions:
@@ -191,10 +213,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
   source: A009-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: provision of information required pursuant to Article 13
   action: provide the information required by Article 13 as part of risk management
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   qualifier_spans:
@@ -204,10 +228,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P5-C-TRAIN-DEPLOYERS
   source: A009-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: where appropriate, training to deployers.
   action: provide deployer training where appropriate as part of risk management
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   conditions:
@@ -222,12 +248,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
   source: A009-P014
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: due consideration shall be given to the technical knowledge, experience, education, the training
     to be expected by the deployer, and the presumable context in which the system is intended to be used.
   action: consider expected deployer knowledge, experience, education, training, and the presumable use
     context when reducing use-related risks
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -235,11 +263,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P6-TEST-FOR-MEASURES
   source: A009-P015
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: High-risk AI systems shall be tested for the purpose of identifying the most appropriate and
     targeted risk management measures.
   action: test high-risk AI systems to identify the most appropriate targeted risk-management measures
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -247,12 +277,14 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P6-TEST-PERFORMANCE-AND-COMPLIANCE
   source: A009-P015
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Testing shall ensure that high-risk AI systems perform consistently for their intended purpose
     and that they are in compliance with the requirements set out in this Section.
   action: use testing to ensure both consistent performance for the intended purpose and compliance with
     the Section 2 requirements
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   mandatory_content:
@@ -263,10 +295,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P7-REAL-WORLD-TESTING
   source: A009-P016
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Testing procedures may include testing in real-world conditions in accordance with Article 60.
   action: include testing in real-world conditions in the testing procedures
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: permission
   conditions:
@@ -280,6 +314,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P8-DEVELOPMENT-AND-PRE-MARKET-TESTING
   source: A009-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: The testing of high-risk AI systems shall be performed, as appropriate, at any time throughout
     the development process, and, in any event, prior to their being placed on the market or put into
     service.
@@ -287,6 +322,7 @@ records:
     market placement or putting into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -294,11 +330,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P8-METRICS-THRESHOLDS
   source: A009-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: Testing shall be carried out against prior defined metrics and probabilistic thresholds that
     are appropriate to the intended purpose of the high-risk AI system.
   action: test against predefined metrics and probabilistic thresholds appropriate to the intended purpose
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A016-P001]
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -306,6 +344,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
   source: A009-P018
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: providers shall give consideration to whether in view of its intended purpose the high-risk AI
     system is likely to have an adverse impact on persons under the age of 18 and, as appropriate, other
     vulnerable groups.
@@ -313,6 +352,7 @@ records:
     appropriate, other vulnerable groups
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A009-P018]
   targets: []
   kind: obligation
   implementation_refs: *id001
@@ -320,6 +360,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P10-INTEGRATE-RISK-PROCESSES
   source: A009-P019
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   quote: For providers of high-risk AI systems that are subject to requirements regarding internal risk
     management processes under other relevant provisions of Union law, the aspects provided in paragraphs
     1 to 9 may be part of, or combined with, the risk management procedures established pursuant to that
@@ -328,6 +369,7 @@ records:
     other Union law
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A009-P019]
   targets: []
   kind: permission
   conditions:

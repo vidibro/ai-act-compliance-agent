@@ -29,6 +29,8 @@ from __future__ import annotations
 
 import textwrap
 
+from aiact.gap.rules import route_of
+from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import PolicyRule, PolicyRuleset, ReportNorm
 from aiact.schemas.report import ComplianceReport, Finding
@@ -77,13 +79,29 @@ def _condition(rule: PolicyRule) -> list[str]:
     return _wrapped("applies to:", rule.activation_condition or "")
 
 
-def _timing(rule: PolicyRule) -> list[str]:
+def _timing(
+    rule: PolicyRule,
+    spec: PolicyRuleset | None = None,
+    use_case: UseCaseClassification | None = None,
+) -> list[str]:
     """WHEN the obligation starts to apply, and why that date is not the expected one.
 
     Rendered for judged and unjudged obligations alike: a PASS on a duty that does not begin until
     December 2027 says something different from a PASS on one that is already live, and Art. 6(4)
     — the only judged rule with a note — carries a date the Regulation does not settle."""
-    if rule.effective_date is not None:
+    regime = spec.temporal_regime_for(rule) if spec is not None else None
+    if regime is not None and use_case is not None:
+        route = route_of(use_case)
+        selected = next((item for item in regime.application_routes if item.route is route), None)
+        date_value = (
+            selected.application_start if selected is not None else regime.application_start
+        )
+        if date_value is not None:
+            lines = _wrapped("from:", date_value.isoformat())
+        else:
+            lines = _wrapped("from:", "depends on the Article 6 classification route")
+        lines += _wrapped("basis:", ", ".join(regime.legal_basis_spans))
+    elif rule.effective_date is not None:
         lines = _wrapped("from:", rule.effective_date.isoformat())
     elif rule.effective_date_by_route:
         by_route = sorted(rule.effective_date_by_route.items(), key=lambda kv: kv[0].value)
@@ -198,12 +216,14 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
     for role in ActorRole:
         findings = [f for f in report.findings if f.role == role]
         outstanding = report.not_document_verifiable.get(role, [])
+        timing_not_active = [notice for notice in report.timing_not_active if notice.role == role]
         permissions = report.permissions.get(role, [])
         legal_consequences = report.legal_consequences.get(role, [])
         conditional_applicability = report.conditional_applicability.get(role, [])
         if (
             not findings
             and not outstanding
+            and not timing_not_active
             and not permissions
             and not legal_consequences
             and not conditional_applicability
@@ -225,12 +245,41 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
             out += _wrapped("", finding.reasoning)
             out += _criteria_block(finding)
             if rule is not None:
-                out += _condition(rule) + _timing(rule)
+                use_case = next(
+                    (
+                        item
+                        for item in report.classification.use_cases
+                        if item.use_case_id == finding.use_case_id
+                    ),
+                    None,
+                )
+                out += _condition(rule) + _timing(rule, spec, use_case)
         if outstanding:
             out.append("  not checkable from the documentation — confirm separately:")
             for rule_id in outstanding:
                 rule = by_id.get(rule_id)
                 out += _outstanding_block(rule) if rule else [f"  --  {rule_id}"]
+        if timing_not_active:
+            out.append("  future or route-dependent duties — not judged:")
+            for notice in timing_not_active:
+                label = (
+                    "awaiting Article 6 route"
+                    if notice.status == "classification_required"
+                    else "from"
+                )
+                date_text = (
+                    notice.application_date.isoformat()
+                    if notice.application_date
+                    else "route not yet known"
+                )
+                route_text = f", {notice.route.value}" if notice.route else ""
+                basis = ", ".join(notice.legal_basis_segment_ids)
+                out.append(
+                    f"  --  {notice.rule_id:<16} [{notice.use_case_id}{route_text}] "
+                    f"{label} {date_text}"
+                )
+                if basis:
+                    out += _wrapped("basis:", basis)
         if permissions:
             out.append("  permitted implementation routes:")
             for norm_id in permissions:

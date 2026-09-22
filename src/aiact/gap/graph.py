@@ -28,7 +28,7 @@ scheduling: a report whose contents depended on thread timing would not be defen
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel, ConfigDict, Field
@@ -50,7 +50,7 @@ from aiact.schemas.enums import (
 from aiact.schemas.norm import NormKind
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question, narrow
-from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
+from aiact.schemas.report import ComplianceReport, Finding, ReportSummary, RuleTimingNotice
 from aiact.tracing import trace_run
 
 DEFAULT_WORKERS = 8
@@ -111,6 +111,7 @@ def build_graph(
     brain: Brain,
     max_workers: int = DEFAULT_WORKERS,
     questions: dict[str, Question] | None = None,
+    as_of_date: date | None = None,
 ):
     """Compile the gap-analysis graph for one ruleset and one judge.
 
@@ -175,6 +176,7 @@ def build_graph(
                     transparency_duties=duties,
                     real_world_testing=testing,
                     prohibited_practice=practice,
+                    as_of_date=as_of_date,
                 )
                 for uc in state.classification.use_cases
                 for role in roles
@@ -232,6 +234,7 @@ def build_graph(
         # Reported, never judged: applicable obligations a technical file cannot evidence. Omitting
         # them would read as full coverage of the Chapter III duties, which it is not.
         outstanding: dict[ActorRole, list[str]] = {}
+        timing_not_active: list[RuleTimingNotice] = []
         for active in state.active:
             for rule in active.not_document_verifiable + active.postponed:
                 if rule.report_as_public_authority_notice:
@@ -239,6 +242,22 @@ def build_graph(
                 ids = outstanding.setdefault(active.role, [])
                 if rule.rule_id not in ids:
                     ids.append(rule.rule_id)
+            for notice in active.upcoming + active.timing_unresolved:
+                timing_not_active.append(
+                    RuleTimingNotice(
+                        rule_id=notice.rule.rule_id,
+                        use_case_id=active.use_case_id,
+                        role=active.role,
+                        status=(
+                            "upcoming"
+                            if notice.status.value == "upcoming"
+                            else "classification_required"
+                        ),
+                        application_date=notice.application_date,
+                        route=notice.route,
+                        legal_basis_segment_ids=list(notice.legal_basis_spans),
+                    )
+                )
         outstanding = {role: sorted(ids) for role, ids in outstanding.items() if ids}
         permissions: dict[ActorRole, list[str]] = {}
         legal_consequences: dict[ActorRole, list[str]] = {}
@@ -303,6 +322,7 @@ def build_graph(
                 classification=state.classification,
                 findings=state.findings,
                 not_document_verifiable=outstanding,
+                timing_not_active=timing_not_active,
                 permissions=permissions,
                 legal_consequences=legal_consequences,
                 conditional_applicability=conditional_applicability,
@@ -336,6 +356,7 @@ def analyse(
     system_id: str = "system",
     max_workers: int = DEFAULT_WORKERS,
     questions: dict[str, Question] | None = None,
+    as_of_date: date | None = None,
 ) -> ComplianceReport:
     """Check one system's documentation against every obligation its classification activates.
 
@@ -348,7 +369,7 @@ def analyse(
     `questions` defaults to the context-free constant; pass `gap.roles.load_questions()` to anchor
     the question in the verbatim Articles, which any real review should do."""
     check_size(document)
-    graph = build_graph(spec, judge or LLMJudge(), brain, max_workers, questions)
+    graph = build_graph(spec, judge or LLMJudge(), brain, max_workers, questions, as_of_date)
     with trace_run(f"gap:{system_id}", session_id=system_id):
         out = graph.invoke(
             ComplianceCheckState(

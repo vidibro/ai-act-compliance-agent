@@ -5,12 +5,15 @@ source:
   document: '9'
   required_field_validations:
   - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 20
   norms_scanned: 21
   finding_count: 5
-  audit_sha256: 1e2797e8fe9b87fad46744a5454f2ef7c686a14f93c6a3e2e374fbf5e8ce0ad6
+  audit_sha256: 2ae7a3c437baf9506388f07e72491abc939f492e8e329a9687794b2279ede0d6
 decisions:
 - finding_id: AIA-VALID-3A5EB984164A447C
   target: AIA-TEXT-A009-P002
@@ -34,9 +37,9 @@ decisions:
   source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
   target_sha256: 869661e1e5f384bbbe4b7242103b2b1a8ab779a36b0c7f9f6c608feb02e1c220
   decision: accepted_with_basis
-  reason: The action retains both required levels of residual-risk judgment — each
-    hazard and the whole system. The enclosing risk-management-measures wording is
-    the source sentence's grammatical subject, not an omitted separate condition.
+  reason: "The action retains both required levels of residual-risk judgment \u2014\
+    \ each hazard and the whole system. The enclosing risk-management-measures wording\
+    \ is the source sentence's grammatical subject, not an omitted separate condition."
   legal_basis:
   - span_id: AIA-TEXT-A009-P009
     source_sha256: 97b614c4b1812e69cec4fd1d5fc9d4c6368ad5e61f27a01b8863e59626999d32
@@ -67,9 +70,10 @@ decisions:
   source_sha256: 27a651d2640afe5702a2c9febecb06c926dccdc2893db453d66abc88e893a053
   target_sha256: e81629b6282e45fa482fe9e73ee5f09dbd0e586ecfc77e62d6edafd4b537aa6b
   decision: accepted_with_basis
-  reason: The canonical action retains the purpose qualifier (“when reducing use-related
-    risks”) and every listed deployer-context factor. The initial source phrase is
-    a purpose qualifier, not a missing condition that changes the duty's scope.
+  reason: "The canonical action retains the purpose qualifier (\u201Cwhen reducing\
+    \ use-related risks\u201D) and every listed deployer-context factor. The initial\
+    \ source phrase is a purpose qualifier, not a missing condition that changes the\
+    \ duty's scope."
   legal_basis:
   - span_id: AIA-TEXT-A009-P014
     source_sha256: 27a651d2640afe5702a2c9febecb06c926dccdc2893db453d66abc88e893a053

@@ -678,6 +678,34 @@ def _new_field_findings(
                         evidence=basis_text,
                     )
                 )
+        for route in regime.application_routes:
+            if not _contains_exact_words(basis_text, _enacted_date(route.application_start)):
+                findings.append(
+                    _finding(
+                        target=target,
+                        rule="temporal_application_route_start_not_in_basis",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
+            route_terms = (
+                ("Article 6(2)", "Annex III")
+                if route.route.value == "annex_iii"
+                else ("Article 6(1)", "Annex I")
+            )
+            if not all(_contains_exact_words(basis_text, term) for term in route_terms):
+                findings.append(
+                    _finding(
+                        target=target,
+                        rule="temporal_application_route_classification_not_in_basis",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
         if (
             FieldValidation.TEMPORAL_REGIME in requirements
             and requires_calendar_deadline
