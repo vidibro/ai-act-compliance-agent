@@ -2364,13 +2364,6 @@ norm_relations:
     detail: 'Unresolved reference: Articles 9 to 15 of this Regulation. Articles 9 to 15 supply the detailed
       high-risk AI-system requirements. All are reviewed; the reference names a range of articles rather
       than one norm, so it resolves to no single target.'
-  - relation_id: AIA-REL-A008-P1-CONSIDER-RISK-MANAGEMENT-UNRESOLVED-DEPENDENCY-01
-    source_norm_id: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT
-    kind: unresolved_dependency
-    legal_basis_spans:
-    - AIA-TEXT-A008-P001
-    detail: 'Unresolved reference: Article 9 of this Regulation. Article 9 supplies the detailed risk-management-system
-      requirements and has not yet been semantically reviewed.'
   - relation_id: AIA-REL-A008-P2-ENSURE-PRODUCT-COMPLIANCE-UNRESOLVED-DEPENDENCY-01
     source_norm_id: AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
     kind: unresolved_dependency
@@ -2393,13 +2386,6 @@ norm_relations:
     - AIA-TEXT-A009-P005
     detail: 'Unresolved reference: Article 72 of this Regulation. Article 72 supplies the post-market monitoring
       requirements and has not yet been semantically reviewed.'
-  - relation_id: AIA-REL-A009-P5-C-PROVIDE-INFORMATION-UNRESOLVED-DEPENDENCY-01
-    source_norm_id: AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
-    kind: unresolved_dependency
-    legal_basis_spans:
-    - AIA-TEXT-A009-P013
-    detail: 'Unresolved reference: Article 13 of this Regulation. Article 13 supplies the required transparency
-      information and has not yet been semantically reviewed.'
   - relation_id: AIA-REL-A009-P7-REAL-WORLD-TESTING-UNRESOLVED-DEPENDENCY-01
     source_norm_id: AIA-NORM-A009-P7-REAL-WORLD-TESTING
     kind: unresolved_dependency
@@ -2428,13 +2414,6 @@ norm_relations:
     - AIA-TEXT-A012-P004
     detail: 'Unresolved reference: Article 72 of this Regulation. Article 72 supplies the post-market monitoring
       requirements and has not yet been semantically reviewed.'
-  - relation_id: AIA-REL-A012-P3-D-RESULT-VERIFIERS-UNRESOLVED-DEPENDENCY-01
-    source_norm_id: AIA-NORM-A012-P3-D-RESULT-VERIFIERS
-    kind: unresolved_dependency
-    legal_basis_spans:
-    - AIA-TEXT-A012-P010
-    detail: 'Unresolved reference: Article 14(5) of this Regulation. Article 14(5) defines the referenced
-      result-verification safeguards and has not yet been semantically reviewed.'
   - relation_id: AIA-REL-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES-UNRESOLVED-DEPENDENCY-01
     source_norm_id: AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
     kind: unresolved_dependency
@@ -2442,13 +2421,6 @@ norm_relations:
     - AIA-TEXT-A013-P007
     detail: 'Unresolved reference: Article 15 of this Regulation. Article 15 supplies the referenced accuracy,
       robustness, and cybersecurity requirements and has not yet been semantically reviewed.'
-  - relation_id: AIA-REL-A013-P3-D-HUMAN-OVERSIGHT-UNRESOLVED-DEPENDENCY-01
-    source_norm_id: AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
-    kind: unresolved_dependency
-    legal_basis_spans:
-    - AIA-TEXT-A013-P014
-    detail: 'Unresolved reference: Article 14 of this Regulation. Article 14 supplies the referenced human-oversight
-      requirements and has not yet been semantically reviewed.'
   - relation_id: AIA-REL-A017-P1-H-POST-MARKET-MONITORING-UNRESOLVED-DEPENDENCY-01
     source_norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
     kind: unresolved_dependency

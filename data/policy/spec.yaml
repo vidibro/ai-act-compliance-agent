@@ -158,8 +158,10 @@ rules:
     document_verifiable: true
     status: active
     # Article 9 has one provider duty: run a risk-management system.  Its eighteen mandatory
-    # Article 9 elements plus Article 8's sectoral duty are judged separately, so an omission
-    # cannot disappear in the rule-level result.
+    # Article 9 elements plus Art. 8(1)'s requirement that the risk management system be TAKEN
+    # INTO ACCOUNT when meeting the other Section 2 requirements are judged separately, so an
+    # omission cannot disappear in the rule-level result.  Art. 8(2), the sectoral duty, is a
+    # duty of its own and is judged under AIA-RULE-PO-A08-2.
     # The risk-scope limit and the two elective routes are materialised as report-only norms.
     criteria:
       - norm_id: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT

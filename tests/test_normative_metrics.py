@@ -111,8 +111,8 @@ def test_unresolved_dependencies_are_canonical_targetless_relations():
         if relation.kind is NormRelationKind.UNRESOLVED_DEPENDENCY
     ]
 
-    assert len(relations) == 46
-    assert len({relation.relation_id for relation in relations}) == 46
+    assert len(relations) == 42
+    assert len({relation.relation_id for relation in relations}) == 42
     assert all(relation.detail.startswith("Unresolved reference: ") for relation in relations)
     assert all(
         not (
