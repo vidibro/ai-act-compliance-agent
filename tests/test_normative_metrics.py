@@ -1074,14 +1074,16 @@ def test_article_twenty_six_preserves_structured_triggers_and_complete_log_reten
     authorisation = norms["AIA-NORM-A026-P10-REQUEST-AUTHORISATION"]
     retention = norms["AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS"]
 
-    assert risk_notice.conditions == [
-        "the deployer has reason to consider that use in accordance with the instructions may "
-        "result in the AI system presenting a risk within the meaning of Article 79(1)"
+    assert isinstance(risk_notice.conditions, LogicalExpression)
+    assert [operand.text for operand in risk_notice.conditions.operands] == [
+        "Where deployers have reason to consider that the use of the high-risk AI system in "
+        "accordance with the instructions may result in that AI system presenting a risk within "
+        "the meaning of Article 79(1)"
     ]
     assert incident_notice.norm_text.startswith("Where deployers have identified")
-    assert authorisation.exceptions == [
-        "initial identification of a potential suspect based on objective and verifiable facts "
-        "directly linked to the offence"
+    assert [operand.text for operand in authorisation.exceptions.operands] == [
+        "except when it is used for the initial identification of a potential suspect based on "
+        "objective and verifiable facts directly linked to the offence"
     ]
     assert set(
         bundle.norm_inventory.target_norm_ids_for(
@@ -1091,9 +1093,9 @@ def test_article_twenty_six_preserves_structured_triggers_and_complete_log_reten
     assert retention.norm_text.startswith("Deployers of high-risk AI systems shall keep")
     assert "period appropriate to the intended purpose" in retention.norm_text
     assert "at least six months" in retention.action
-    assert retention.exceptions == [
-        "applicable Union or national law, particularly personal-data law, provides a different "
-        "retention period"
+    assert [operand.text for operand in retention.exceptions.operands] == [
+        "unless provided otherwise in applicable Union or national law, in particular in Union law "
+        "on the protection of personal data"
     ]
     assert (
         not {
@@ -2018,10 +2020,12 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     assistance = norms["AIA-NORM-A025-P2-PROVIDE-ASSISTANCE"]
     assert len(assistance.mandatory_content) == 3
     assert assistance.qualifier_spans == [
+        "AIA-TEXT-A025-P005",
         "AIA-TEXT-A025-P007",
         "AIA-TEXT-A025-P008",
         "AIA-TEXT-A025-P009",
         "AIA-TEXT-A025-P010",
+        "AIA-TEXT-A025-P011",
     ]
 
     agreement_norms = {

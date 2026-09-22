@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A027-P001
   targets: []
   action: perform a fundamental-rights impact assessment containing all six required elements before deploying
     the qualifying Annex III system
@@ -32,11 +34,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the system is high-risk under Article 6(2) and is not intended for Annex III point 2
+    - text: Prior to deploying a high-risk AI system referred to in Article 6(2), with the exception of
+        high-risk AI systems intended to be used in the area listed in point 2 of Annex III
       basis_segment_ids:
       - AIA-TEXT-A027-P001
-    - text: the deployer is governed by public law or provides public services, or the system falls within
-        Annex III point 5(b) or 5(c)
+    - text: deployers that are bodies governed by public law, or are private entities providing public
+        services, and deployers of high-risk AI systems referred to in points 5 (b) and (c) of Annex III
       basis_segment_ids:
       - AIA-TEXT-A027-P001
   exceptions: null
@@ -63,31 +66,37 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P2-FIRST-USE
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A027-P008
   targets: []
   action: apply the fundamental-rights assessment duty to the system's first use
   norm_text: The obligation laid down in paragraph 1 applies to the first use of the high-risk AI system.
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A027-P008
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A027-P001
   conditions:
     operator: all_of
     operands:
-    - text: the system is high-risk under Article 6(2) and is not intended for Annex III point 2
+    - text: Prior to deploying a high-risk AI system referred to in Article 6(2), with the exception of
+        high-risk AI systems intended to be used in the area listed in point 2 of Annex III
       basis_segment_ids:
-      - AIA-TEXT-A027-P008
-    - text: the deployer is governed by public law or provides public services, or the system falls within
-        Annex III point 5(b) or 5(c)
+      - AIA-TEXT-A027-P001
+    - text: deployers that are bodies governed by public law, or are private entities providing public
+        services, and deployers of high-risk AI systems referred to in points 5 (b) and (c) of Annex III
       basis_segment_ids:
-      - AIA-TEXT-A027-P008
+      - AIA-TEXT-A027-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -106,11 +115,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P2-RELY-ON-PREVIOUS-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A027-P008
   targets: []
   action: rely in similar cases on a prior fundamental-rights assessment or an existing provider assessment
   norm_text: The deployer may, in similar cases, rely on previously conducted fundamental rights impact
@@ -124,7 +136,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the prior or provider assessment concerns a similar case
+    - text: in similar cases
       basis_segment_ids:
       - AIA-TEXT-A027-P008
   exceptions: null
@@ -145,11 +157,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P2-UPDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A027-P008
   targets: []
   action: update the fundamental-rights assessment information when a required element changes or becomes
     outdated
@@ -166,7 +181,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: during use, the deployer considers a paragraph 1 element changed or no longer current
+    - text: If, during the use of the high-risk AI system, the deployer considers that any of the elements
+        listed in paragraph 1 has changed or is no longer up to date
       basis_segment_ids:
       - AIA-TEXT-A027-P008
   exceptions: null
@@ -187,11 +203,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A027-P009
   targets: []
   action: notify the market-surveillance authority of the assessment results using the completed paragraph
     5 template
@@ -208,7 +227,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Article 27(1) assessment has been performed
+    - text: Once the assessment referred to in paragraph 1 of this Article has been performed
       basis_segment_ids:
       - AIA-TEXT-A027-P009
   exceptions: null
@@ -231,11 +250,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P3-ARTICLE-46-EXEMPTION
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A027-P009
   targets: []
   action: exempt the deployer from the result-notification duty in an Article 46(1) case
   norm_text: In the case referred to in Article 46(1), deployers may be exempt from that obligation to
@@ -250,7 +272,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the deployment falls within Article 46(1)
+    - text: In the case referred to in Article 46(1)
       basis_segment_ids:
       - AIA-TEXT-A027-P009
   exceptions: null
@@ -271,11 +293,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P4-INCORPORATE-DPIA
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A027-P010
   targets: []
   action: cross-reference or incorporate relevant DPIA sections when they already meet an Article 27 obligation
   norm_text: If any of the obligations laid down in this Article is already met through the data protection
@@ -292,7 +317,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: an applicable DPIA already meets an Article 27 obligation
+    - text: If any of the obligations laid down in this Article is already met through the data protection
+        impact assessment conducted pursuant to Article 35 of Regulation (EU) 2016/679 or Article 27 of
+        Directive (EU) 2016/680
       basis_segment_ids:
       - AIA-TEXT-A027-P010
   exceptions: null
@@ -313,11 +340,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P5-AI-OFFICE-TEMPLATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A027-P011
   targets: []
   action: develop a questionnaire template, potentially through an automated tool, that simplifies deployer
     compliance
@@ -348,11 +378,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A027-P5-TEMPLATE-DPIA-REUSE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A027-P011
   targets: []
   action: make the template support relevant DPIA cross-references and incorporated sections
   norm_text: This template shall, where relevant, give deployers the possibility to include cross-references
@@ -367,7 +400,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: DPIA reuse under Article 27(4) is relevant
+    - text: where relevant
       basis_segment_ids:
       - AIA-TEXT-A027-P011
   exceptions: null
@@ -387,3 +420,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

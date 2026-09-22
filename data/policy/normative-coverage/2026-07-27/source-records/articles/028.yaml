@@ -1,3 +1,8 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
+  application_start: 2025-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 records:
 - norm_id: AIA-NORM-A028-P1-DESIGNATE-AUTHORITY
   source: A028-P001
@@ -8,7 +13,9 @@ records:
     procedures and monitoring
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A028-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -21,7 +28,9 @@ records:
   action: develop conformity-assessment-body procedures cooperatively across Member-State notifying authorities
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -35,7 +44,9 @@ records:
   action: assign paragraph 1 assessment and monitoring to a qualifying national accreditation body
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A028-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: permission
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -50,7 +61,9 @@ records:
   action: organise and operate without conformity-body conflicts while safeguarding objectivity and impartiality
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -68,7 +81,9 @@ records:
   action: assign notification decisions to competent persons other than the body assessors
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -82,7 +97,9 @@ records:
     on a commercial or competitive basis
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -100,7 +117,9 @@ records:
   action: safeguard obtained information according to Article 78 confidentiality requirements
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -113,7 +132,9 @@ records:
   action: maintain enough competent personnel to perform notifying-authority tasks properly
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -127,7 +148,14 @@ records:
     law, and fundamental-rights supervision
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P007]
   targets: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: where applicable, for their function
+      basis_segment_ids: [AIA-TEXT-A028-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -145,10 +173,14 @@ records:
   action: provide eligible conformity bodies a single application and unified assessment procedure
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   conditions: &id001
-  - the relevant Section A Annex I legislation provides for the single application and unified assessment
-    procedure
+    operator: all_of
+    operands:
+    - text: where the relevant Union harmonisation legislation provides for such single application and unified assessment procedure
+      basis_segment_ids: [AIA-TEXT-A028-P008]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -162,7 +194,9 @@ records:
   action: cooperate across AI Act and Section A Annex I notifying authorities in unified assessments
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   conditions: *id001
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -179,8 +213,16 @@ records:
     AI Act designation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P008]
   targets: []
-  conditions: *id001
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
+  qualifier_spans:
+  - A028-P008
+  conditions:
+    operator: all_of
+    operands:
+    - text: provided that the relevant Union harmonisation legislation provides for such a procedure
+      basis_segment_ids: [AIA-TEXT-A028-P009]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -194,7 +236,9 @@ records:
   action: require a multi-designated conformity body to apply only once for AI Act designation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A028-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -209,7 +253,9 @@ records:
     body is designated
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A028-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -226,7 +272,9 @@ records:
     ensuring both sets of notified-body requirements
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -247,8 +295,15 @@ records:
     Member State designates another
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A028-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: legal_consequence
+  exceptions:
+    operator: any_of
+    operands:
+    - text: unless the Member State designates another notifying authority for this Regulation
+      basis_segment_ids: [AIA-TEXT-A028-P012]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

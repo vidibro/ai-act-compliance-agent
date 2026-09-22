@@ -5,9 +5,17 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: importer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: third_party_supplier
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   targets: []
   action: treat a distributor, importer, deployer, or other third party as the provider subject to Article
     16 after it puts its name or trademark on the high-risk system
@@ -24,8 +32,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the party puts its name or trademark on a high-risk AI system already placed on the market
-        or put into service
+    - text: they put their name or trademark on a high-risk AI system already placed on the market or
+        put into service
       basis_segment_ids:
       - AIA-TEXT-A025-P002
   exceptions: null
@@ -47,14 +55,23 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P1-B-MODIFICATION-ROLE-TRANSFER
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: importer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: third_party_supplier
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   targets: []
   action: treat the substantially modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when the modified system remains high-risk
@@ -72,8 +89,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the party substantially modifies an already marketed or operational high-risk system and it
-        remains high-risk under Article 6
+    - text: they make a substantial modification to a high-risk AI system that has already been placed
+        on the market or has already been put into service in such a way that it remains a high-risk AI
+        system pursuant to Article 6
       basis_segment_ids:
       - AIA-TEXT-A025-P003
   exceptions: null
@@ -95,14 +113,23 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P1-C-PURPOSE-ROLE-TRANSFER
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: distributor
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: importer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   - actor_ref: third_party_supplier
+    basis_segment_ids:
+    - AIA-TEXT-A025-P001
   targets: []
   action: treat the purpose-modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when its change makes an existing system high-risk
@@ -121,8 +148,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the party changes the intended purpose of an already marketed or operational non-high-risk
-        system so that it becomes high-risk under Article 6
+    - text: they modify the intended purpose of an AI system, including a general-purpose AI system, which
+        has not been classified as high-risk and has already been placed on the market or put into service
+        in such a way that the AI system concerned becomes a high-risk AI system in accordance with Article
+        6
       basis_segment_ids:
       - AIA-TEXT-A025-P004
   exceptions: null
@@ -144,11 +173,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P2-INITIAL-PROVIDER-STATUS-ENDS
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: initial_provider
+    basis_segment_ids:
+    - AIA-TEXT-A025-P005
   targets: []
   action: cease treating the initial provider as provider of the specific system after a paragraph 1 role
     transfer
@@ -165,7 +197,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: an Article 25(1) provider-role transfer occurs
+    - text: Where the circumstances referred to in paragraph 1 occur
       basis_segment_ids:
       - AIA-TEXT-A025-P005
   exceptions: null
@@ -187,34 +219,40 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P2-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: initial_provider
+    basis_segment_ids:
+    - AIA-TEXT-A025-P006
   targets: []
   action: closely cooperate with the new provider after the provider role has transferred
   norm_text: That initial provider shall closely cooperate with new providers
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A025-P006
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A025-P005
+  - AIA-TEXT-A025-P011
   conditions:
     operator: all_of
     operands:
-    - text: an Article 25(1) provider-role transfer occurs
+    - text: Where the circumstances referred to in paragraph 1 occur
       basis_segment_ids:
-      - AIA-TEXT-A025-P006
+      - AIA-TEXT-A025-P005
   exceptions:
     operator: any_of
     operands:
-    - text: the initial provider clearly specified that its system must not be changed into a high-risk
-        system
+    - text: This paragraph shall not apply in cases where the initial provider has clearly specified that
+        its AI system is not to be changed into a high-risk AI system
       basis_segment_ids:
-      - AIA-TEXT-A025-P006
+      - AIA-TEXT-A025-P011
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -232,11 +270,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: initial_provider
+    basis_segment_ids:
+    - AIA-TEXT-A025-P006
   targets: []
   action: provide the new provider with necessary information, reasonably expected technical access, and
     other assistance required for regulatory compliance
@@ -252,23 +293,25 @@ norms:
   primary_spans:
   - AIA-TEXT-A025-P006
   qualifier_spans:
+  - AIA-TEXT-A025-P005
   - AIA-TEXT-A025-P007
   - AIA-TEXT-A025-P008
   - AIA-TEXT-A025-P009
   - AIA-TEXT-A025-P010
+  - AIA-TEXT-A025-P011
   conditions:
     operator: all_of
     operands:
-    - text: an Article 25(1) provider-role transfer occurs
+    - text: Where the circumstances referred to in paragraph 1 occur
       basis_segment_ids:
-      - AIA-TEXT-A025-P006
+      - AIA-TEXT-A025-P005
   exceptions:
     operator: any_of
     operands:
-    - text: the initial provider clearly specified that its system must not be changed into a high-risk
-        system
+    - text: This paragraph shall not apply in cases where the initial provider has clearly specified that
+        its AI system is not to be changed into a high-risk AI system
       basis_segment_ids:
-      - AIA-TEXT-A025-P006
+      - AIA-TEXT-A025-P011
   mandatory_content:
   - technical documentation sufficient to assess Article 16 compliance
   - information about known limitations and failure modes
@@ -289,11 +332,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P2-NO-COOPERATION-DUTY
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: initial_provider
+    basis_segment_ids:
+    - AIA-TEXT-A025-P011
   targets: []
   action: disapply the initial-provider cooperation and documentation duties where high-risk conversion
     was clearly prohibited
@@ -311,8 +357,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the initial provider clearly specified that its AI system must not be changed into a high-risk
-        system
+    - text: the initial provider has clearly specified that its AI system is not to be changed into a
+        high-risk AI system
       basis_segment_ids:
       - AIA-TEXT-A025-P011
   exceptions: null
@@ -333,11 +379,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P3-A-PRODUCT-MANUFACTURER-ROLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: product_manufacturer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P012
   targets: []
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is marketed with the product under its name or trademark
@@ -354,11 +403,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is a safety component of a product covered by Section A of Annex I
-        legislation
+    - text: In the case of high-risk AI systems that are safety components of products covered by the
+        Union harmonisation legislation listed in Section A of Annex I
       basis_segment_ids:
-      - AIA-TEXT-A025-P013
-    - text: the system is marketed with the product under the product manufacturer's name or trademark
+      - AIA-TEXT-A025-P012
+    - text: the high-risk AI system is placed on the market together with the product under the name or
+        trademark of the product manufacturer
       basis_segment_ids:
       - AIA-TEXT-A025-P013
   exceptions: null
@@ -380,11 +430,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P3-B-PRODUCT-MANUFACTURER-ROLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: product_manufacturer
+    basis_segment_ids:
+    - AIA-TEXT-A025-P012
   targets: []
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is later put into service under its name or trademark
@@ -401,12 +454,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is a safety component of a product covered by Section A of Annex I
-        legislation
+    - text: In the case of high-risk AI systems that are safety components of products covered by the
+        Union harmonisation legislation listed in Section A of Annex I
       basis_segment_ids:
-      - AIA-TEXT-A025-P014
-    - text: the system is put into service under the product manufacturer's name or trademark after product
-        market placement
+      - AIA-TEXT-A025-P012
+    - text: the high-risk AI system is put into service under the name or trademark of the product manufacturer
+        after the product has been placed on the market
       basis_segment_ids:
       - AIA-TEXT-A025-P014
   exceptions: null
@@ -428,12 +481,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P4-WRITTEN-AGREEMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A025-P015
   - actor_ref: third_party_supplier
+    basis_segment_ids:
+    - AIA-TEXT-A025-P015
   targets: []
   action: use a written agreement to specify the state-of-the-art information, capabilities, technical
     access, and assistance necessary for the provider's full compliance
@@ -473,11 +531,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: third_party_supplier
+    basis_segment_ids:
+    - AIA-TEXT-A025-P015
   targets: []
   action: disapply the written-agreement duty to publicly accessible free and open-source supplies other
     than general-purpose AI models
@@ -495,7 +556,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: general-purpose AI models remain subject to the written-agreement duty
+    - text: other than general-purpose AI models
       basis_segment_ids:
       - AIA-TEXT-A025-P015
   mandatory_content: []
@@ -515,11 +576,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-MODEL-TERMS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A025-P016
   targets: []
   action: develop and recommend voluntary model terms for high-risk-system supply contracts
   norm_text: The AI Office may develop and recommend voluntary model terms for contracts between providers
@@ -549,11 +613,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-SECTOR-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A025-P016
   targets: []
   action: consider sector-specific and business-case contractual requirements when developing model terms
   norm_text: When developing those voluntary model terms, the AI Office shall take into account possible
@@ -567,7 +634,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office develops voluntary model terms
+    - text: When developing those voluntary model terms
       basis_segment_ids:
       - AIA-TEXT-A025-P016
   exceptions: null
@@ -587,11 +654,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-PUBLISH
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A025-P016
   targets: []
   action: publish voluntary model terms free of charge in an easily usable electronic format
   norm_text: The voluntary model terms shall be published and be available free of charge in an easily
@@ -620,6 +690,7 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
 - norm_id: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -659,3 +730,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3

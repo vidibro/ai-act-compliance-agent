@@ -1,3 +1,25 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A026-P5-RISK-NOTICE-WITHOUT-UNDUE-DELAY
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: Where deployers have reason to consider that the use of the high-risk AI system in
+      accordance with the instructions may result in that AI system presenting a risk within the
+      meaning of Article 79(1)
+  legal_basis_spans:
+  - AIA-TEXT-A026-P5
+- regime_id: AIA-TEMP-A026-P5-IMMEDIATE-INCIDENT-NOTICE
+  qualitative_deadline:
+    kind: immediately
+    trigger: Where deployers have identified a serious incident
+  legal_basis_spans:
+  - AIA-TEXT-A026-P5
+- regime_id: AIA-TEMP-A026-P10-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: in the framework of an investigation for the targeted search of a person suspected or
+      convicted of having committed a criminal offence
+  legal_basis_spans:
+  - AIA-TEXT-A026-P10
 records:
 - norm_id: AIA-NORM-A026-P1-INSTRUCTION-COMPLIANT-USE
   source: A026-P1
@@ -8,7 +30,9 @@ records:
     instructions
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P1]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   implementation_refs: &id001
   - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
@@ -20,7 +44,9 @@ records:
   action: assign human oversight to persons with all necessary competence, training, authority, and support
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P2]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   implementation_refs: *id001
   verification_mode: reported_not_judged
   mandatory_content:
@@ -39,7 +65,9 @@ records:
     and (2)
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P3]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This saving clause preserves external duties without creating an independent product
@@ -61,9 +89,14 @@ records:
     purpose
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P4]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer exercises control over the input data
+    operator: all_of
+    operands:
+    - text: to the extent the deployer exercises control over the input data
+      basis_segment_ids: [AIA-TEXT-A026-P4]
   implementation_refs: *id001
   verification_mode: reported_not_judged
   verified_by: vidibro
@@ -75,7 +108,9 @@ records:
     providers in accordance with Article 72
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P5]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   implementation_refs:
   - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
@@ -93,10 +128,14 @@ records:
     of an Article 79(1) risk and suspend use of the system
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P5]
   targets: []
+  temporal_regime_id: AIA-TEMP-A026-P5-RISK-NOTICE-WITHOUT-UNDUE-DELAY
   conditions:
-  - the deployer has reason to consider that use in accordance with the instructions may result in the
-    AI system presenting a risk within the meaning of Article 79(1)
+    operator: all_of
+    operands:
+    - text: Where deployers have reason to consider that the use of the high-risk AI system in accordance with the instructions may result in that AI system presenting a risk within the meaning of Article 79(1)
+      basis_segment_ids: [AIA-TEXT-A026-P5]
   implementation_refs:
   - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
@@ -112,9 +151,14 @@ records:
   action: immediately inform first the provider, then the importer or distributor and relevant market-surveillance authorities, of an identified serious incident
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P5]
   targets: []
+  temporal_regime_id: AIA-TEMP-A026-P5-IMMEDIATE-INCIDENT-NOTICE
   conditions:
-  - the deployer has identified a serious incident
+    operator: all_of
+    operands:
+    - text: Where deployers have identified a serious incident
+      basis_segment_ids: [AIA-TEXT-A026-P5]
   implementation_refs:
   - AIA-RULE-DP-A26
   verification_mode: reported_not_judged
@@ -125,10 +169,15 @@ records:
   action: apply the Article 73 reporting route when the provider cannot be reached
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P5]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: applicability
   conditions:
-  - the deployer is not able to reach the provider
+    operator: all_of
+    operands:
+    - text: If the deployer is not able to reach the provider
+      basis_segment_ids: [AIA-TEXT-A026-P5]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-DP-A26
@@ -141,10 +190,15 @@ records:
   action: exclude sensitive operational data of law-enforcement deployers
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P5]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: applicability
   conditions:
-  - the deployer is a law enforcement authority
+    operator: all_of
+    operands:
+    - text: deployers of AI systems which are law enforcement authorities
+      basis_segment_ids: [AIA-TEXT-A026-P5]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-DP-A26
@@ -159,11 +213,15 @@ records:
   action: deem financial institutions compliant through relevant financial-services governance rules
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P5]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: legal_consequence
   conditions:
-  - the deployer is a financial institution subject to requirements regarding its internal governance,
-    arrangements or processes under Union financial services law
+    operator: all_of
+    operands:
+    - text: For deployers that are financial institutions subject to requirements regarding their internal governance, arrangements or processes under Union financial services law
+      basis_segment_ids: [AIA-TEXT-A026-P5]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-DP-A26
@@ -179,12 +237,19 @@ records:
     system's intended purpose and for at least six months
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P6]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the automatically generated logs are under the deployer's control
+    operator: all_of
+    operands:
+    - text: to the extent such logs are under their control
+      basis_segment_ids: [AIA-TEXT-A026-P6]
   exceptions:
-  - applicable Union or national law, particularly personal-data law, provides a different retention
-    period
+    operator: any_of
+    operands:
+    - text: unless provided otherwise in applicable Union or national law, in particular in Union law on the protection of personal data
+      basis_segment_ids: [AIA-TEXT-A026-P6]
   implementation_refs: *id001
   verification_mode: reported_not_judged
   verified_by: vidibro
@@ -197,10 +262,14 @@ records:
     law
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P6]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer is a financial institution subject to internal-governance requirements under Union financial-services
-    law
+    operator: all_of
+    operands:
+    - text: Deployers that are financial institutions subject to requirements regarding their internal governance, arrangements or processes under Union financial services law
+      basis_segment_ids: [AIA-TEXT-A026-P6]
   implementation_refs:
   - AIA-RULE-DP-A26-6
   verification_mode: reported_not_judged
@@ -214,9 +283,14 @@ records:
     they will be subject to the high-risk system
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P7]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer is an employer putting the high-risk system into service or using it at the workplace
+    operator: all_of
+    operands:
+    - text: Before putting into service or using a high-risk AI system at the workplace, deployers who are employers
+      basis_segment_ids: [AIA-TEXT-A026-P7]
   implementation_refs:
   - AIA-RULE-DP-A26-7
   verification_mode: reported_not_judged
@@ -229,9 +303,14 @@ records:
     rules and practices
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P7]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - Union or national worker-information rules and practices apply
+    operator: all_of
+    operands:
+    - text: where applicable, in accordance with the rules and procedures laid down in Union and national law and practice on information of workers and their representatives
+      basis_segment_ids: [AIA-TEXT-A026-P7]
   implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-DP-A26-7
@@ -244,9 +323,14 @@ records:
   action: comply with the applicable Article 49 registration obligations
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P8]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer is a public authority or a Union institution, body, office, or agency
+    operator: all_of
+    operands:
+    - text: Deployers of high-risk AI systems that are public authorities, or Union institutions, bodies, offices or agencies
+      basis_segment_ids: [AIA-TEXT-A026-P8]
   implementation_refs: &id003
   - AIA-RULE-DP-A26-8
   verification_mode: reported_not_judged
@@ -258,11 +342,17 @@ records:
   action: do not use an envisaged high-risk system found absent from the EU database
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P8]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: prohibition
   conditions: &id004
-  - the deployer satisfies the Article 26(8) public-authority or Union-body condition
-  - the envisaged system is not registered in the Article 71 EU database
+    operator: all_of
+    operands:
+    - text: Deployers of high-risk AI systems that are public authorities, or Union institutions, bodies, offices or agencies
+      basis_segment_ids: [AIA-TEXT-A026-P8]
+    - text: When such deployers find that the high-risk AI system that they envisage using has not been registered in the EU database referred to in Article 71
+      basis_segment_ids: [AIA-TEXT-A026-P8]
   implementation_refs:
   - AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION
   verification_mode: reported_not_judged
@@ -273,7 +363,9 @@ records:
   action: inform the provider or distributor that the envisaged system is not registered in the EU database
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P8]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions: *id004
   implementation_refs:
   - AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE
@@ -287,9 +379,14 @@ records:
   action: use Article 13 information when carrying out an applicable data-protection impact assessment
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P9]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
+    operator: all_of
+    operands:
+    - text: their obligation to carry out a data protection impact assessment under Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
+      basis_segment_ids: [AIA-TEXT-A026-P9]
   implementation_refs:
   - AIA-RULE-DP-A26-9
   verification_mode: reported_not_judged
@@ -301,7 +398,9 @@ records:
     regime
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: applicability
   implementation_mode: report_only
   implementation_refs: &id005
@@ -318,13 +417,21 @@ records:
     without undue delay and within 48 hours
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-A026-P10-AUTHORISATION-WITHOUT-UNDUE-DELAY
   conditions: &id006
-  - the system is used for post-remote biometric identification in an investigation targeting a person
-    suspected or convicted of a criminal offence
+    operator: all_of
+    operands:
+    - text: in the framework of an investigation for the targeted search of a person suspected or convicted of having committed a criminal offence
+      basis_segment_ids: [AIA-TEXT-A026-P10]
+    - text: the deployer of a high-risk AI system for post-remote biometric identification
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   exceptions:
-  - initial identification of a potential suspect based on objective and verifiable facts directly linked
-    to the offence
+    operator: any_of
+    operands:
+    - text: except when it is used for the initial identification of a potential suspect based on objective and verifiable facts directly linked to the offence
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   implementation_refs: *id005
   verification_mode: reported_not_judged
   verified_by: vidibro
@@ -336,7 +443,9 @@ records:
     a specific offence
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions: *id006
   implementation_refs: *id005
   verification_mode: reported_not_judged
@@ -349,9 +458,14 @@ records:
   action: stop the authorised use immediately when the authorisation request is rejected
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions: &id007
-  - the requested authorisation is rejected
+    operator: all_of
+    operands:
+    - text: If the authorisation requested pursuant to the first subparagraph is rejected
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   implementation_refs: *id005
   verification_mode: reported_not_judged
   verified_by: vidibro
@@ -362,7 +476,9 @@ records:
   action: delete personal data linked to the use for which authorisation was rejected
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions: *id007
   implementation_refs: *id005
   verification_mode: reported_not_judged
@@ -377,10 +493,14 @@ records:
     missing-person link
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law
-    enforcement purposes
+    operator: all_of
+    operands:
+    - text: such high-risk AI system for post-remote biometric identification be used for law enforcement purposes
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   kind: prohibition
   implementation_refs:
   - AIA-RULE-DP-A26-10-LAW-ENFORCEMENT
@@ -395,10 +515,14 @@ records:
     system's output
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law
-    enforcement purposes
+    operator: all_of
+    operands:
+    - text: such high-risk AI system for post-remote biometric identification be used for law enforcement purposes
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   kind: prohibition
   implementation_refs:
   - AIA-RULE-DP-A26-10-LAW-ENFORCEMENT
@@ -411,7 +535,9 @@ records:
   action: preserve the referenced GDPR and law-enforcement Directive rules for biometric-data processing
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: applicability
   implementation_mode: report_only
   implementation_refs: *id005
@@ -428,17 +554,24 @@ records:
     data-protection authorities
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law
-    enforcement purposes
+    operator: all_of
+    operands:
+    - text: such high-risk AI system for post-remote biometric identification be used for law enforcement purposes
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   implementation_refs: *id005
   verification_mode: reported_not_judged
   mandatory_content:
   - document each use in the relevant police file regardless of purpose or deployer
   - make the record available to either specified authority upon request
   exceptions:
-  - sensitive operational data related to law enforcement must not be disclosed
+    operator: any_of
+    operands:
+    - text: excluding the disclosure of sensitive operational data related to law enforcement
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS
   source: A026-P10
@@ -447,7 +580,9 @@ records:
   action: preserve supervisory-authority powers under Directive (EU) 2016/680
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: applicability
   implementation_mode: report_only
   implementation_refs: *id005
@@ -461,14 +596,19 @@ records:
   action: submit annual post-remote biometric-identification use reports to both specified authorities
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   implementation_refs: *id005
   verification_mode: reported_not_judged
   mandatory_content:
   - report to the relevant market-surveillance authority
   - report to the national data-protection authority
   exceptions:
-  - sensitive operational data related to law enforcement must not be disclosed
+    operator: any_of
+    operands:
+    - text: excluding the disclosure of sensitive operational data related to law enforcement
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-AGGREGATE-REPORTS
   source: A026-P10
@@ -476,11 +616,16 @@ records:
   action: aggregate annual reports across multiple deployments
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law
-    enforcement purposes
-  - annual reports are submitted under Article 26(10)
+    operator: all_of
+    operands:
+    - text: such high-risk AI system for post-remote biometric identification be used for law enforcement purposes
+      basis_segment_ids: [AIA-TEXT-A026-P10]
+    - text: Deployers shall submit annual reports to the relevant market surveillance and national data protection authorities on their use of post-remote biometric identification systems
+      basis_segment_ids: [AIA-TEXT-A026-P10]
   kind: permission
   implementation_mode: report_only
   implementation_refs: *id005
@@ -494,7 +639,9 @@ records:
     law
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A026-P10]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -510,11 +657,19 @@ records:
   action: inform natural persons that they are subject to Annex III high-risk-system use in decision-making
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P11]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the Annex III high-risk system makes or assists decisions related to natural persons
+    operator: all_of
+    operands:
+    - text: deployers of high-risk AI systems referred to in Annex III that make decisions or assist in making decisions related to natural persons
+      basis_segment_ids: [AIA-TEXT-A026-P11]
   exceptions:
-  - law-enforcement use follows Article 13 of Directive (EU) 2016/680
+    operator: any_of
+    operands:
+    - text: For high-risk AI systems used for law enforcement purposes Article 13 of Directive (EU) 2016/680 shall apply
+      basis_segment_ids: [AIA-TEXT-A026-P11]
   implementation_refs: &id008
   - AIA-RULE-DP-A26-11
   verification_mode: reported_not_judged
@@ -526,10 +681,15 @@ records:
   action: apply the Directive (EU) 2016/680 Article 13 notice regime to law-enforcement use
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P11]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   kind: applicability
   conditions:
-  - the high-risk system is used for law-enforcement purposes
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems used for law enforcement purposes
+      basis_segment_ids: [AIA-TEXT-A026-P11]
   implementation_mode: report_only
   implementation_refs: *id008
   verification_mode: reported_conditionally
@@ -541,7 +701,9 @@ records:
   action: cooperate with relevant competent-authority actions concerning the high-risk system
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A026-P12]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   implementation_refs:
   - AIA-RULE-DP-A26-12
   verification_mode: reported_not_judged

@@ -632,6 +632,18 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
         "provider of a general-purpose AI model downstream",
         "downstream provider",
     ),
+    # Art. 25(1) lists this party as "any distributor, importer, deployer or other third-party", and
+    # Art. 25(4) as "the third party that supplies" — the short form is the enacted one.
+    ActorRole.THIRD_PARTY_SUPPLIER: (
+        "third party supplier",
+        "third party",
+    ),
+    # Art. 25(2) writes it out — "the provider that initially placed the AI system on the market" —
+    # before using the short form in the next sentence.
+    ActorRole.INITIAL_PROVIDER: (
+        "initial provider",
+        "provider that initially placed",
+    ),
     # The Act names this actor in full in Art. 3(48) and then uses the short form in the operative
     # Articles — Art. 21 says "a competent authority" throughout. Both are the enacted label.
     ActorRole.NATIONAL_COMPETENT_AUTHORITY: (

@@ -3,161 +3,146 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '26'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 13
   norms_scanned: 34
-  finding_count: 8
-  audit_sha256: 2114f036ceb898b675fb05fc30d1d23e9bd41da33bb91ff26915ae22b5c7ad12
+  finding_count: 9
+  audit_sha256: 6e9dbe2b1a187f86fc7095fe23a8310bd3061a29c5d79bc2e27f6960f997f420
 decisions:
-- finding_id: AIA-VALID-696BF1694FA2020C
+- finding_id: AIA-VALID-01BEF68C39406155
   target: AIA-NORM-A026-P10-DELETE-ON-REJECTION
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A026-P10
   source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
-  target_sha256: 853b9575925311a198d205e9e8e47e3bd3dc4ff35459d91c4bcda75652e38082
+  target_sha256: 027ff7de02ff36c8c0fe2f94527e46bae0d5bc00878999c14924d9f81a701edd
   decision: accepted_with_basis
-  reason: The deletion action is conditional on authorisation refusal through its
-    shared structured condition with the preceding stop-use duty. Together with the
-    recorded legal span, the norm reconstructs the complete duty; the fragment introduces
-    no further qualifier.
+  reason: The deletion action is conditional on authorisation refusal through its shared structured condition
+    with the preceding stop-use duty. Together with the recorded legal span, the norm reconstructs the
+    complete duty; the fragment introduces no further qualifier.
   legal_basis:
   - span_id: AIA-TEXT-A026-P10
     source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
-    quote: If the authorisation requested pursuant to the first subparagraph is rejected,
-      the use of the post-remote biometric identification system linked to that requested
-      authorisation shall be stopped with immediate effect and the personal data linked
-      to the use of the high-risk AI system for which the authorisation was requested
-      shall be deleted.
+    quote: If the authorisation requested pursuant to the first subparagraph is rejected, the use of the
+      post-remote biometric identification system linked to that requested authorisation shall be stopped
+      with immediate effect and the personal data linked to the use of the high-risk AI system for which
+      the authorisation was requested shall be deleted.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-0166D938B7FF3472
+- finding_id: AIA-VALID-7C5452774CED72B4
   target: AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A026-P10
   source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
   target_sha256: 6406f28b8357925cbeac5e2c3db8aa86530944f88665360a620b366577f606fa
-  decision: accepted_with_basis
-  reason: This is an applicability statement, not an exception to an Article 26 duty.
-    Its canonical external-requirement relation records the GDPR and Directive provisions,
-    and the report presents them conditionally without attempting to assess that outside
-    law.
-  legal_basis:
-  - span_id: AIA-TEXT-A026-P10
-    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
-    quote: This paragraph is without prejudice to Article 9 of Regulation (EU) 2016/679
-      and Article 10 of Directive (EU) 2016/680 for the processing of biometric data.
+  decision: false_positive
+  reason: 'This is an applicability statement, not an exception to an Article 26 duty. Its canonical external-requirement
+    relation records the GDPR and Directive provisions, and the report presents them conditionally without
+    attempting to assess that outside law. Under the expression gate the same conclusion holds: a saving
+    clause preserves a concurrent regime rather than branching this norm, so it has no exception expression
+    to state.'
   reviewed_by: vidibro
-- finding_id: AIA-VALID-CAAE613AF39C23F1
+- finding_id: AIA-VALID-200D81C7A8CEC7C5
   target: AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A026-P10
   source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
   target_sha256: 7095e58912f8e4f7f79745359831c814365a72ea8ac50f5007e2c3be8297dd57
-  decision: accepted_with_basis
-  reason: This applicability norm is linked to the continuing Directive (EU) 2016/680
-    requirements through a typed external relation and is reported conditionally.
-    It does not silently remove any Article 26 duty or claim to assess the Directive.
-  legal_basis:
-  - span_id: AIA-TEXT-A026-P10
-    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
-    quote: Without prejudice to Directive (EU) 2016/680,
+  decision: false_positive
+  reason: 'This applicability norm is linked to the continuing Directive (EU) 2016/680 requirements through
+    a typed external relation and is reported conditionally. It does not silently remove any Article 26
+    duty or claim to assess the Directive. Under the expression gate the same conclusion holds: a saving
+    clause preserves a concurrent regime rather than branching this norm, so it has no exception expression
+    to state.'
   reviewed_by: vidibro
-- finding_id: AIA-VALID-ED05F819E579B6E6
+- finding_id: AIA-VALID-930353BE651F7595
   target: AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A026-P10
   source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
   target_sha256: 42aa04d38bfe68d7a4bba9bea1b5da1e83f518af7bfa70adb8e0f993d1bb0ef8
-  decision: accepted_with_basis
-  reason: This applicability norm retains the preserved supervisory powers in a typed
-    external relation and is reported conditionally. The saving clause does not create
-    an unstructured exception to the deployer's Article 26 duties.
-  legal_basis:
-  - span_id: AIA-TEXT-A026-P10
-    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
-    quote: This subparagraph shall be without prejudice to the powers conferred by
-      Directive (EU) 2016/680 on supervisory authorities.
+  decision: false_positive
+  reason: 'This applicability norm retains the preserved supervisory powers in a typed external relation
+    and is reported conditionally. The saving clause does not create an unstructured exception to the
+    deployer''s Article 26 duties. Under the expression gate the same conclusion holds: a saving clause
+    preserves a concurrent regime rather than branching this norm, so it has no exception expression to
+    state.'
   reviewed_by: vidibro
-- finding_id: AIA-VALID-53A0A965B90B54FC
+- finding_id: AIA-VALID-3D76BD2B0FF65006
   target: AIA-NORM-A026-P10-REQUEST-AUTHORISATION
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A026-P10
   source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
-  target_sha256: 47a1548c78164fc7a570af60390183500e4ad2c1c39ea9d3e0002beacea6b354
+  target_sha256: 026756d300d0b264da3468dec2322055bffa70e9e1b704b434e33a1fe419b5ca
   decision: accepted_with_basis
-  reason: The canonical action retains the qualifying authority and both timing routes;
-    its structured condition limits it to the targeted criminal-investigation use
-    and its exception retains the initial-identification case. The assembled norm
-    is a complete conditional duty.
+  reason: The canonical action retains the qualifying authority and both timing routes; its structured
+    condition limits it to the targeted criminal-investigation use and its exception retains the initial-identification
+    case. The assembled norm is a complete conditional duty.
   legal_basis:
   - span_id: AIA-TEXT-A026-P10
     source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
-    quote: the deployer of a high-risk AI system for post-remote biometric identification
-      shall request an authorisation, ex ante, or without undue delay and no later
-      than 48 hours, by a judicial authority or an administrative authority whose
-      decision is binding and subject to judicial review, for the use of that system
+    quote: the deployer of a high-risk AI system for post-remote biometric identification shall request
+      an authorisation, ex ante, or without undue delay and no later than 48 hours, by a judicial authority
+      or an administrative authority whose decision is binding and subject to judicial review, for the
+      use of that system
   reviewed_by: vidibro
-- finding_id: AIA-VALID-B0247D44F2A88999
+- finding_id: AIA-VALID-77693B6B5B6677DE
   target: AIA-NORM-A026-P3-PRESERVE-OTHER-OBLIGATIONS
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A026-P3
   source_sha256: a5a30df7d6435af4f2d7def143c0dea7119a3217040bdd0eb210df92215c3f0a
   target_sha256: 8223e0837f3b7ca993f01668c54c7043e4ee27371ad37d2868f697b0c495a5f0
-  decision: accepted_with_basis
-  reason: This saving clause is a report-only external dependency. Its typed relation
-    records that separate Union or national deployer obligations continue to apply;
-    it neither changes nor substitutes the Article 26(1) and (2) duties.
-  legal_basis:
-  - span_id: AIA-TEXT-A026-P3
-    source_sha256: a5a30df7d6435af4f2d7def143c0dea7119a3217040bdd0eb210df92215c3f0a
-    quote: "The obligations set out in paragraphs 1 and 2, are without prejudice to\
-      \ other deployer obligations under Union or national law and to the deployer\u2019\
-      s freedom to organise its own resources and activities for the purpose of implementing\
-      \ the human oversight measures indicated by the provider."
+  decision: false_positive
+  reason: 'This saving clause is a report-only external dependency. Its typed relation records that separate
+    Union or national deployer obligations continue to apply; it neither changes nor substitutes the Article
+    26(1) and (2) duties. Under the expression gate the same conclusion holds: a saving clause preserves
+    a concurrent regime rather than branching this norm, so it has no exception expression to state.'
   reviewed_by: vidibro
-- finding_id: AIA-VALID-EA5E7ECE09FA3EB6
+- finding_id: AIA-VALID-4BD6076D6A334CAC
   target: AIA-NORM-A026-P4-INPUT-DATA-QUALITY
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A026-P4
   source_sha256: 7c2ca1b729a2cd1f982c905a02e1ce8799d863124a56846b6ed79ffe3a1356e7
-  target_sha256: 3dc77dc0773c4764fa739fd8b9b89a8bf9c8dc1a58636c398cc921a34651b5e9
+  target_sha256: 163317dd1aabc59d625d6ea13c45e82d4295ab2490961eacc4fbc788f1028015
   decision: accepted_with_basis
-  reason: The norm keeps the deployer's control-over-input-data condition and its
-    action contains both required qualities, relevance and sufficient representativeness
-    in view of intended purpose. The leading wording adds no missing qualifier.
+  reason: The norm keeps the deployer's control-over-input-data condition and its action contains both
+    required qualities, relevance and sufficient representativeness in view of intended purpose. The leading
+    wording adds no missing qualifier.
   legal_basis:
   - span_id: AIA-TEXT-A026-P4
     source_sha256: 7c2ca1b729a2cd1f982c905a02e1ce8799d863124a56846b6ed79ffe3a1356e7
-    quote: to the extent the deployer exercises control over the input data, that
-      deployer shall ensure that input data is relevant and sufficiently representative
-      in view of the intended purpose of the high-risk AI system
+    quote: to the extent the deployer exercises control over the input data, that deployer shall ensure
+      that input data is relevant and sufficiently representative in view of the intended purpose of the
+      high-risk AI system
   reviewed_by: vidibro
-- finding_id: AIA-VALID-495FB7D7B6530BC7
+- finding_id: AIA-VALID-295CAC7B2280A392
+  target: AIA-NORM-A026-P5-MONITOR
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A026-P5
+  source_sha256: d3b489936bbcc3185c1893f6fe4dd7c2efa1cb051daeb1a4021af4368f8a1392
+  target_sha256: 1c8e0fb3d20fcdb0c75e2c051e18a9761d5fd3eeb499f129bf0e5305cc1b1bac
+  decision: false_positive
+  reason: '"Where relevant" qualifies the second limb of the sentence — informing providers under Article
+    72 — and not the monitoring duty, which is owed on the basis of the instructions for use in every
+    case. The qualifier is retained verbatim in the norm''s mandatory content, so no gate on the duty
+    has been lost.'
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-5B81B0A4F6A36CB4
   target: AIA-NORM-A026-P8-INFORM-UNREGISTERED
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A026-P8
   source_sha256: f255e9e355d16de9ff26bcb5e93f30d0dede0be438f85d5e8617c4fc83e64c96
-  target_sha256: 6c90a20676eb34c3226d599ef0145d38d03b3076fb7d837f6249813eb9100632
+  target_sha256: 4123077b0671130688c193dd59cf249885e3f418eb132d10ce3d1569e3f24fa7
   decision: accepted_with_basis
-  reason: The norm shares the public-authority-or-Union-body and unregistered-system
-    conditions with the preceding prohibition, and its action names both possible
-    recipients. It reconstructs a complete conditional notification duty.
+  reason: The norm shares the public-authority-or-Union-body and unregistered-system conditions with the
+    preceding prohibition, and its action names both possible recipients. It reconstructs a complete conditional
+    notification duty.
   legal_basis:
   - span_id: AIA-TEXT-A026-P8
     source_sha256: f255e9e355d16de9ff26bcb5e93f30d0dede0be438f85d5e8617c4fc83e64c96
     quote: shall inform the provider or the distributor.
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-9A38D9F5ADC2296C
-  target: AIA-NORM-A026-P5-INCIDENT
-  rule: deadline_not_structured_or_retained
-  source_ref: AIA-TEXT-A026-P5
-  source_sha256: d3b489936bbcc3185c1893f6fe4dd7c2efa1cb051daeb1a4021af4368f8a1392
-  target_sha256: 5f750d28b297f0b14d9bef524de450988453d5d57cd09ac3a28ba51a03f4d6f2
-  decision: fixed
-  reason: 'The canonical action now retains the immediate timing and mandatory recipient
-    sequence: provider first, then importer or distributor and market-surveillance
-    authorities. The exact patch proves the source-record correction.'
-  fix:
-    patch_file: fixes/AIA-VALID-9A38D9F5ADC2296C.patch.yaml
-    patch_sha256: 3bdcc5cac89d26c982473ad7cecc63e7c8781af71267d67b8dd07fa5233a674c
   reviewed_by: vidibro

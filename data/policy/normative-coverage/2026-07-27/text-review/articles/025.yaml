@@ -155,7 +155,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P2-INITIAL-PROVIDER-STATUS-ENDS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A025-P2-COOPERATE
+  - AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -314,7 +316,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P2-NO-COOPERATION-DUTY
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A025-P2-COOPERATE
+  - AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

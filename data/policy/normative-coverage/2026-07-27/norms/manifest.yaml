@@ -4048,6 +4048,42 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A024-P004
+- regime_id: AIA-TEMP-A026-P5-RISK-NOTICE-WITHOUT-UNDUE-DELAY
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: Where deployers have reason to consider that the use of the high-risk AI system in accordance
+      with the instructions may result in that AI system presenting a risk within the meaning of Article
+      79(1)
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P5
+- regime_id: AIA-TEMP-A026-P5-IMMEDIATE-INCIDENT-NOTICE
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: Where deployers have identified a serious incident
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P5
+- regime_id: AIA-TEMP-A026-P10-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: in the framework of an investigation for the targeted search of a person suspected or convicted
+      of having committed a criminal offence
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P10
+- regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
+  application_start: '2025-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 - regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
   application_start: null
   application_end: null

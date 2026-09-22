@@ -11,11 +11,16 @@ records:
     the qualifying Annex III system
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A027-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions: &id001
-  - the system is high-risk under Article 6(2) and is not intended for Annex III point 2
-  - the deployer is governed by public law or provides public services, or the system falls within Annex
-    III point 5(b) or 5(c)
+    operator: all_of
+    operands:
+    - text: Prior to deploying a high-risk AI system referred to in Article 6(2), with the exception of high-risk AI systems intended to be used in the area listed in point 2 of Annex III
+      basis_segment_ids: [AIA-TEXT-A027-P001]
+    - text: deployers that are bodies governed by public law, or are private entities providing public services, and deployers of high-risk AI systems referred to in points 5 (b) and (c) of Annex III
+      basis_segment_ids: [AIA-TEXT-A027-P001]
   implementation_refs: &id004
   - AIA-RULE-DP-A27
   verification_mode: reported_not_judged
@@ -40,8 +45,12 @@ records:
   action: apply the fundamental-rights assessment duty to the system's first use
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A027-P008]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
+  qualifier_spans:
+  - A027-P001
   conditions: *id001
   implementation_mode: report_only
   implementation_refs: &id002
@@ -55,10 +64,15 @@ records:
   action: rely in similar cases on a prior fundamental-rights assessment or an existing provider assessment
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A027-P008]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the prior or provider assessment concerns a similar case
+    operator: all_of
+    operands:
+    - text: in similar cases
+      basis_segment_ids: [AIA-TEXT-A027-P008]
   implementation_mode: report_only
   implementation_refs: *id002
   verification_mode: reported_conditionally
@@ -72,9 +86,14 @@ records:
     outdated
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A027-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - during use, the deployer considers a paragraph 1 element changed or no longer current
+    operator: all_of
+    operands:
+    - text: If, during the use of the high-risk AI system, the deployer considers that any of the elements listed in paragraph 1 has changed or is no longer up to date
+      basis_segment_ids: [AIA-TEXT-A027-P008]
   implementation_refs:
   - AIA-RULE-DP-A27-2
   verification_mode: reported_not_judged
@@ -88,9 +107,14 @@ records:
     5 template
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A027-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the Article 27(1) assessment has been performed
+    operator: all_of
+    operands:
+    - text: Once the assessment referred to in paragraph 1 of this Article has been performed
+      basis_segment_ids: [AIA-TEXT-A027-P009]
   implementation_refs: &id003
   - AIA-RULE-DP-A27-3
   verification_mode: reported_not_judged
@@ -104,10 +128,15 @@ records:
   action: exempt the deployer from the result-notification duty in an Article 46(1) case
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A027-P009]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - the deployment falls within Article 46(1)
+    operator: all_of
+    operands:
+    - text: In the case referred to in Article 46(1)
+      basis_segment_ids: [AIA-TEXT-A027-P009]
   implementation_mode: report_only
   implementation_refs: *id003
   verification_mode: reported_conditionally
@@ -122,10 +151,15 @@ records:
   action: cross-reference or incorporate relevant DPIA sections when they already meet an Article 27 obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A027-P010]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - an applicable DPIA already meets an Article 27 obligation
+    operator: all_of
+    operands:
+    - text: If any of the obligations laid down in this Article is already met through the data protection impact assessment conducted pursuant to Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
+      basis_segment_ids: [AIA-TEXT-A027-P010]
   implementation_mode: report_only
   implementation_refs: *id004
   verification_mode: reported_conditionally
@@ -138,7 +172,9 @@ records:
     compliance
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A027-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -152,9 +188,14 @@ records:
   action: make the template support relevant DPIA cross-references and incorporated sections
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A027-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
   conditions:
-  - DPIA reuse under Article 27(4) is relevant
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids: [AIA-TEXT-A027-P011]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

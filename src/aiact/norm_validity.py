@@ -408,9 +408,20 @@ def _expression_leaf_sha256(
 
 
 def _actor_term_is_in_text(term: str, text: str) -> bool:
-    """Match one declared legal label, allowing normal whitespace and a final plural ``s``."""
+    """Match one declared legal label, allowing normal whitespace and an English plural.
+
+    Both plural forms, because the Act uses both: "deployers" takes the regular ``s``, and the
+    authorities take ``y`` -> ``ies`` — Art. 28 says "Notifying authorities" throughout while the
+    role is named in the singular. Spelling every plural into the term tables instead would make a
+    missing entry look like a missing actor.
+    """
     escaped = re.escape(term).replace(r"\ ", r"[\s-]+")
-    return re.search(rf"\b{escaped}s?\b", text, re.I) is not None
+    if term.endswith("y"):
+        stem = re.escape(term[:-1]).replace(r"\ ", r"[\s-]+")
+        pattern = rf"\b(?:{escaped}s?|{stem}ies)\b"
+    else:
+        pattern = rf"\b{escaped}s?\b"
+    return re.search(pattern, text, re.I) is not None
 
 
 def _enacted_date(value) -> str:

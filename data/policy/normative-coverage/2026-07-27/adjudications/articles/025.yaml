@@ -3,29 +3,75 @@ act_version_date: '2026-07-27'
 source:
   kind: article
   document: '25'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
 audit:
   audit_schema_version: 1
   segments_scanned: 18
   norms_scanned: 15
-  finding_count: 1
-  audit_sha256: 418e4ef74d7013ceb77d5f644c0647deda776b0000d7ad66a8ded094537a4ff5
+  finding_count: 4
+  audit_sha256: 7a38ea10f3e4b6b5dd0767910eff7d9f927a6f4e4f284b5152a4be4e15b9d93e
 decisions:
-- finding_id: AIA-VALID-0AA79DC2690256EC
+- finding_id: AIA-VALID-9CD6FD257F8D2228
   target: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A025-P017
   source_sha256: e2ddad11e401df9774dd6fcc311a970ae7dbbeaf165558784d440d58149f2fdc
   target_sha256: 6bcbd532ab01c2604e64b626db6718da26f329c1afaa93c82d7bef5f4b7a1b42
+  decision: false_positive
+  reason: >-
+    "Without prejudice" is a saving clause, not an exception branch. It takes nothing out of
+    paragraphs 2 and 3; it preserves a concurrent external regime alongside them, and the external
+    law is recorded as AIA-REL-A025-P5-PROTECT-RIGHTS-AND-SECRETS-EXTERNAL-REQUIREMENT-01 rather
+    than as a condition of this norm. An exception expression here would state that the paragraph 2
+    and 3 duties fall away where intellectual property is involved, which the sentence does not say.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-11D183A340FA3B5F
+  target: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS:actor:initial_provider
+  rule: actor_basis_missing
+  source_ref: AIA-TEXT-A025-P017
+  source_sha256: e2ddad11e401df9774dd6fcc311a970ae7dbbeaf165558784d440d58149f2fdc
+  target_sha256: e7d8aff0b79f7261062fca13d12d4ec9922bd1c3643171e056fccb7548bac1ed
   decision: accepted_with_basis
-  reason: "The canonical norm retains the Article 25(2) and (3) scope in its action\
-    \ and records the external Union-and-national-law constraint in a typed relation.\
-    \ \u201CWithout prejudice\u201D does not create an optional exception; it preserves\
-    \ that separate protection duty, which the report now materialises conditionally\
-    \ without attempting to assess external law."
+  reason: >-
+    Paragraph 5 names its subject by cross-reference — "Paragraphs 2 and 3" — and no party at all,
+    so no span of it could evidence an actor. The parties are those the referenced paragraphs bind.
+    Paragraph 2 binds the initial provider, in the words quoted below.
   legal_basis:
-  - span_id: AIA-TEXT-A025-P017
-    source_sha256: e2ddad11e401df9774dd6fcc311a970ae7dbbeaf165558784d440d58149f2fdc
-    quote: Paragraphs 2 and 3 are without prejudice to the need to observe and protect
-      intellectual property rights, confidential business information and trade secrets
-      in accordance with Union and national law.
+  - span_id: AIA-TEXT-A025-P006
+    source_sha256: 40866d685a278d10637b0d0a592fd436133273a0bcaeab3763f02fadacd2ba35
+    quote: That initial provider shall closely cooperate with new providers
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-759330F7C1A7171E
+  target: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS:actor:product_manufacturer
+  rule: actor_basis_missing
+  source_ref: AIA-TEXT-A025-P017
+  source_sha256: e2ddad11e401df9774dd6fcc311a970ae7dbbeaf165558784d440d58149f2fdc
+  target_sha256: 8db5d761c4f3ee659c1084407aa56fef1d4cd905184eb1dd5607c267feb6dfa4
+  decision: accepted_with_basis
+  reason: >-
+    The same cross-reference supplies this party: paragraph 3 is the limb that makes the product
+    manufacturer the provider, so it is one of the two paragraphs this saving clause qualifies.
+  legal_basis:
+  - span_id: AIA-TEXT-A025-P012
+    source_sha256: 876628f0659b2338f99530fb9f9cbf930437a9e04973a50b9f4fa30ce1c0bdda
+    quote: the product manufacturer shall be considered to be the provider of the high-risk AI system
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-3440EC42840D2D0E
+  target: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS:actor:provider
+  rule: actor_basis_missing
+  source_ref: AIA-TEXT-A025-P017
+  source_sha256: e2ddad11e401df9774dd6fcc311a970ae7dbbeaf165558784d440d58149f2fdc
+  target_sha256: a08c0972ec5b0d0af1e16c25e99fb119b57ce0eeaab0e0ea978bd81370bb65f5
+  decision: accepted_with_basis
+  reason: >-
+    The third party to the paragraph 2 relationship is the NEW provider, which receives the
+    information and technical access the saving clause qualifies. Paragraph 2 names it in terms.
+  legal_basis:
+  - span_id: AIA-TEXT-A025-P006
+    source_sha256: 40866d685a278d10637b0d0a592fd436133273a0bcaeab3763f02fadacd2ba35
+    quote: That initial provider shall closely cooperate with new providers
   reviewed_by: vidibro

@@ -242,7 +242,9 @@ segments:
   norm_ids:
   - AIA-NORM-A028-P8-SINGLE-APPLICATION
   - AIA-NORM-A028-P8-COOPERATE-IN-ASSESSMENTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A028-P8-EXISTING-BODY-ACCESS
+  - AIA-NORM-A028-P8-UNIFIED-PROCEDURE-CHARACTERISTICS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

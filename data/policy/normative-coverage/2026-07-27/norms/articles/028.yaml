@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A028-P001
   targets: []
   action: designate or establish at least one notifying authority responsible for conformity-assessment-body
     procedures and monitoring
@@ -35,11 +37,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P1-COOPERATIVE-PROCEDURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P001
   targets: []
   action: develop conformity-assessment-body procedures cooperatively across Member-State notifying authorities
   norm_text: Those procedures shall be developed in cooperation between the notifying authorities of all
@@ -68,11 +73,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P2-ACCREDITATION-BODY-OPTION
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A028-P002
   targets: []
   action: assign paragraph 1 assessment and monitoring to a qualifying national accreditation body
   norm_text: Member States may decide that the assessment and monitoring referred to in paragraph 1 is
@@ -102,11 +110,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P3-INDEPENDENCE-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P003
   targets: []
   action: organise and operate without conformity-body conflicts while safeguarding objectivity and impartiality
   norm_text: Notifying authorities shall be established, organised and operated in such a way that no
@@ -139,11 +150,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P4-SEPARATE-DECISION-MAKERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P004
   targets: []
   action: assign notification decisions to competent persons other than the body assessors
   norm_text: Notifying authorities shall be organised in such a way that decisions relating to the notification
@@ -173,11 +187,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P5-NO-CONFORMITY-ACTIVITIES
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P005
   targets: []
   action: refrain from offering or providing conformity-assessment-body activities or consultancy services
     on a commercial or competitive basis
@@ -209,11 +226,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P6-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P006
   targets: []
   action: safeguard obtained information according to Article 78 confidentiality requirements
   norm_text: Notifying authorities shall safeguard the confidentiality of the information that they obtain,
@@ -242,11 +262,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P7-ADEQUATE-PERSONNEL
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P007
   targets: []
   action: maintain enough competent personnel to perform notifying-authority tasks properly
   norm_text: Notifying authorities shall have an adequate number of competent personnel at their disposal
@@ -275,11 +298,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P7-PERSONNEL-EXPERTISE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P007
   targets: []
   action: ensure personnel possess function-appropriate expertise, including relevant technology, AI,
     law, and fundamental-rights supervision
@@ -291,7 +317,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A028-P007
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where applicable, for their function
+      basis_segment_ids:
+      - AIA-TEXT-A028-P007
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -309,11 +340,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P8-SINGLE-APPLICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P008
   targets: []
   action: provide eligible conformity bodies a single application and unified assessment procedure
   norm_text: Notifying authorities designated pursuant to this Regulation that are responsible for AI
@@ -332,8 +366,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the relevant Section A Annex I legislation provides for the single application and unified
-        assessment procedure
+    - text: where the relevant Union harmonisation legislation provides for such single application and
+        unified assessment procedure
       basis_segment_ids:
       - AIA-TEXT-A028-P008
   exceptions: null
@@ -353,11 +387,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P8-COOPERATE-IN-ASSESSMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P008
   targets: []
   action: cooperate across AI Act and Section A Annex I notifying authorities in unified assessments
   norm_text: notifying authorities designated pursuant to this Regulation and those designated pursuant
@@ -371,8 +408,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the relevant Section A Annex I legislation provides for the single application and unified
-        assessment procedure
+    - text: where the relevant Union harmonisation legislation provides for such single application and
+        unified assessment procedure
       basis_segment_ids:
       - AIA-TEXT-A028-P008
   exceptions: null
@@ -392,11 +429,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P8-EXISTING-BODY-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P008
   targets: []
   action: make the unified procedure available to already designated Section A Annex I bodies seeking
     AI Act designation
@@ -407,14 +447,15 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A028-P009
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A028-P008
   conditions:
     operator: all_of
     operands:
-    - text: the relevant Section A Annex I legislation provides for the single application and unified
-        assessment procedure
+    - text: provided that the relevant Union harmonisation legislation provides for such a procedure
       basis_segment_ids:
       - AIA-TEXT-A028-P009
   exceptions: null
@@ -434,11 +475,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P8-APPLY-ONCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A028-P010
   targets: []
   action: require a multi-designated conformity body to apply only once for AI Act designation
   norm_text: A conformity assessment body that is designated pursuant to more than one piece of Union
@@ -469,11 +513,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P8-DESIGNATION-ACROSS-LEGISLATION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A028-P010
   targets: []
   action: apply the AI Act designation across all relevant Section A Annex I legislation for which the
     body is designated
@@ -504,11 +551,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P8-UNIFIED-PROCEDURE-CHARACTERISTICS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P008
   targets: []
   action: operate the unified procedure without unnecessary duplication, using existing procedures while
     ensuring both sets of notified-body requirements
@@ -544,11 +594,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A028-P9-DEFAULT-NOTIFYING-AUTHORITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A028-P012
   targets: []
   action: treat the Section A Annex I notifying authority as the unified-procedure authority unless the
     Member State designates another
@@ -563,7 +616,12 @@ norms:
   - AIA-TEXT-A028-P012
   qualifier_spans: []
   conditions: null
-  exceptions: null
+  exceptions:
+    operator: any_of
+    operands:
+    - text: unless the Member State designates another notifying authority for this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A028-P012
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -580,3 +638,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

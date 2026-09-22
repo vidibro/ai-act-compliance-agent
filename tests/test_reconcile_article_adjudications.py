@@ -41,7 +41,7 @@ def test_article_selection_refuses_an_article_outside_the_closed_scope():
     ledger = load_adjudication_ledger(LEDGER)
 
     with pytest.raises(ValueError, match="not in the enforced adjudication scope"):
-        reconcile_article_adjudications._article_scope(ledger, "28")
+        reconcile_article_adjudications._article_scope(ledger, "29")
 
 
 def test_article_check_verifies_the_current_closed_build():

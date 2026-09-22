@@ -47,7 +47,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A027-P2-FIRST-USE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

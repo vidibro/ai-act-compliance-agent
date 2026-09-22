@@ -1,0 +1,37 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '28'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 13
+  norms_scanned: 16
+  finding_count: 1
+  audit_sha256: 411bdb4e2c514e252c9b44d1274a682c23f91e4cd4969046383edb516c673eac
+decisions:
+- finding_id: AIA-VALID-B7E2AC4863ADB541
+  target: AIA-NORM-A028-P8-COOPERATE-IN-ASSESSMENTS
+  rule: fragment_without_qualifier_span
+  source_ref: AIA-TEXT-A028-P008
+  source_sha256: 53080787e7f9bcedd936173dcd6bd63c17cd5e7275f786fafa1740a5294e4107
+  target_sha256: 7500b2bc85ef351ca80d08081f93c1089cef52b654830f7687194c166ffc3b71
+  decision: accepted_with_basis
+  reason: >-
+    The quotation begins at "To that end", which points back to the single application and unified
+    assessment procedure established by the first sentence of the same paragraph. That sentence is
+    recorded below, and the norm carries its proviso as a structured condition, so the cooperation
+    duty is complete: the two sets of notifying authorities cooperate in their assessments where
+    the relevant Union harmonisation legislation provides for the unified procedure.
+  legal_basis:
+  - span_id: AIA-TEXT-A028-P008
+    source_sha256: 53080787e7f9bcedd936173dcd6bd63c17cd5e7275f786fafa1740a5294e4107
+    quote: To that end, notifying authorities designated pursuant to this Regulation and those
+      designated pursuant to the Union harmonisation legislation listed in Section A of Annex I
+      shall cooperate in their assessments.
+  reviewed_by: vidibro
