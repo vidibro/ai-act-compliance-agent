@@ -1,0 +1,31 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '35'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 3
+  norms_scanned: 3
+  finding_count: 1
+  audit_sha256: 46cb8c80152b5cc6fdc61abda7bc765e5efb559aa056e22d8ef1420cdd7ef920
+decisions:
+- finding_id: AIA-VALID-555B875927CDAA91
+  target: AIA-NORM-A035-P1-ASSIGN-SINGLE-IDENTIFICATION-NUMBER
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A035-P001
+  source_sha256: adbd10a4269157b9eb9ec3f7fde541e50d0858ed57f68eeed84aff80e67e574c
+  target_sha256: 160d1639a088b5f914b6a0cc3ba7dd4cf66b137788f80faff2ad6f642befa5db
+  decision: false_positive
+  reason: >-
+    The cue is "even where a body is notified under more than one Union act", and it is the opposite
+    of a condition. The duty is to assign one number to each notified body; the clause says that
+    duty holds anyway in the case that might have looked like an exception to it. Recording it as a
+    condition would invert the paragraph, limiting the duty to bodies notified under more than one
+    Union act, when the enacted words extend it to them.
+  reviewed_by: vidibro

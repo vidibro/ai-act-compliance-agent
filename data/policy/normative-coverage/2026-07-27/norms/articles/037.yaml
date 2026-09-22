@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A037-P001
   targets: []
   action: investigate cases raising doubts about notified-body competence, Article 31 compliance, or continuing
     fulfilment of responsibilities
@@ -17,7 +19,16 @@ norms:
   primary_spans:
   - AIA-TEXT-A037-P001
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where necessary
+      basis_segment_ids:
+      - AIA-TEXT-A037-P001
+    - text: where there are reasons to doubt the competence of a notified body or the continued fulfilment
+        by a notified body of the requirements laid down in Article 31 and of its applicable responsibilities
+      basis_segment_ids:
+      - AIA-TEXT-A037-P001
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -35,11 +46,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A037-P2-PROVIDE-NOTIFICATION-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A037-P002
   targets: []
   action: provide the Commission on request all relevant notification and notified-body competence information
   norm_text: The notifying authority shall provide the Commission, on request, with all relevant information
@@ -70,11 +84,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A037-P3-PROTECT-INVESTIGATION-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A037-P003
   targets: []
   action: ensure Article 37 investigation information is treated confidentially under Article 78
   norm_text: The Commission shall ensure that all sensitive information obtained in the course of its
@@ -103,11 +120,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A037-P4-INFORM-NOTIFYING-STATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A037-P004
   targets: []
   action: inform the notifying Member State that a notified body fails notification requirements and request
     necessary corrective measures, including suspension or withdrawal where necessary
@@ -124,8 +144,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission ascertains that a notified body does not meet or no longer meets its notification
-        requirements
+    - text: Where the Commission ascertains that a notified body does not meet or no longer meets the
+        requirements for its notification
       basis_segment_ids:
       - AIA-TEXT-A037-P004
   exceptions: null
@@ -148,11 +168,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A037-P4-COMMISSION-DESIGNATION-POWER
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A037-P004
   targets: []
   action: suspend, restrict, or withdraw a designation by implementing act when the Member State fails
     to correct it
@@ -163,7 +186,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A037-P004
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where the Member State fails to take the necessary corrective measures
+      basis_segment_ids:
+      - AIA-TEXT-A037-P004
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -181,11 +209,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A037-P4-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A037-P004
   targets: []
   action: adopt the designation implementing act under the Article 98(2) examination procedure
   norm_text: That implementing act shall be adopted in accordance with the examination procedure referred
@@ -214,3 +245,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

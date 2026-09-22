@@ -4058,6 +4058,86 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-B
   - AIA-TEXT-A033-P004
+- regime_id: AIA-TEMP-A036-P3-NINE-MONTH-VALIDITY
+  application_start: '2025-08-02'
+  application_end: null
+  timing_conditions:
+  - "for a period of nine months after cessation of the notified body\u2019s activities"
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P004
+- regime_id: AIA-TEMP-A036-P4-INVESTIGATE-WITHOUT-DELAY
+  application_start: '2025-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: Where a notifying authority has sufficient reason to consider that a notified body no longer
+      meets the requirements laid down in Article 31, or that it is failing to fulfil its obligations
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P005
+- regime_id: AIA-TEMP-A036-P4-IMMEDIATE-NOTICE
+  application_start: '2025-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: it shall restrict, suspend or withdraw the designation as appropriate
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P005
+- regime_id: AIA-TEMP-A036-P5-TEN-DAY-PROVIDER-NOTICE
+  application_start: '2025-08-02'
+  application_end: null
+  relative_deadline:
+    quantity: 10
+    unit: day
+    trigger: Where its designation has been suspended, restricted, or fully or partially withdrawn
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P006
+- regime_id: AIA-TEMP-A036-P7-B-THREE-MONTH-REPORT
+  application_start: '2025-08-02'
+  application_end: null
+  relative_deadline:
+    quantity: 3
+    unit: month
+    trigger: having notified the changes to the designation
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P010
+- regime_id: AIA-TEMP-A036-P8-B-THREE-MONTH-CONFIRMATION
+  application_start: '2025-08-02'
+  application_end: null
+  relative_deadline:
+    quantity: 3
+    unit: month
+    trigger: the suspension or restriction
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P016
+- regime_id: AIA-TEMP-A036-P9-NINE-MONTH-VALIDITY
+  application_start: '2025-08-02'
+  application_end: null
+  timing_conditions:
+  - for a period of nine months
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P017
+- regime_id: AIA-TEMP-A036-P9-IMMEDIATE-NOTICE
+  application_start: '2025-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: the change of designation
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A036-P021
 - regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
   application_start: null
   application_end: null

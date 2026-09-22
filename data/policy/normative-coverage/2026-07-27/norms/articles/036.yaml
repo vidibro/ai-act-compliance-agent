@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P001
   targets: []
   action: notify the Commission and other Member States of relevant notification changes through the Article
     30(2) tool
@@ -35,11 +37,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P2-EXTENSION-PROCEDURES
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P001
   targets: []
   action: apply the Articles 29 and 30 procedures to notification-scope extensions
   norm_text: The procedures laid down in Articles 29 and 30 shall apply to extensions of the scope of
@@ -69,11 +74,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P2-OTHER-CHANGE-PROCEDURES
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P001
   targets: []
   action: apply paragraphs 3 to 9 to notification changes other than scope extensions
   norm_text: For changes to the notification other than extensions of its scope, the procedures laid down
@@ -103,11 +111,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P3-CEASING-BODY-NOTICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A036-P004
   targets: []
   action: inform the notifying authority and affected providers of cessation as soon as possible and at
     least one year ahead when planned
@@ -123,7 +134,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body decides to cease conformity-assessment activities
+    - text: Where a notified body decides to cease its conformity assessment activities
       basis_segment_ids:
       - AIA-TEXT-A036-P004
   exceptions: null
@@ -143,12 +154,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P3-NINE-MONTH-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: affected_certificates
+  - target_ref: The certificates of the notified body
+    basis_segment_ids:
+    - AIA-TEXT-A036-P004
   action: preserve certificate validity for up to nine months after cessation when a replacement notified
     body accepts responsibility in writing
   norm_text: "The certificates of the notified body may remain valid for a period of nine months after\
@@ -164,7 +178,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: another notified body confirms in writing that it assumes responsibility for the covered systems
+    - text: on condition that another notified body has confirmed in writing that it will assume responsibilities
+        for the high-risk AI systems covered by those certificates
       basis_segment_ids:
       - AIA-TEXT-A036-P004
   exceptions: null
@@ -184,11 +199,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P3-NINE-MONTH-VALIDITY
 - norm_id: AIA-NORM-A036-P3-REPLACEMENT-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A036-P004
   targets: []
   action: complete a full assessment within nine months before issuing replacement certificates
   norm_text: The latter notified body shall complete a full assessment of the high-risk AI systems affected
@@ -217,11 +235,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P3-WITHDRAW-DESIGNATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P004
   targets: []
   action: withdraw the designation when the notified body has ceased activity
   norm_text: Where the notified body has ceased its activity, the notifying authority shall withdraw the
@@ -255,11 +276,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P4-INVESTIGATE-FAILURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P005
   targets: []
   action: investigate suspected Article 31 noncompliance or failure of obligations without delay and with
     utmost diligence
@@ -275,8 +299,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notifying authority has sufficient reason to consider that the notified body no longer
-        meets Article 31 requirements or is failing to fulfil its obligations
+    - text: Where a notifying authority has sufficient reason to consider that a notified body no longer
+        meets the requirements laid down in Article 31, or that it is failing to fulfil its obligations
       basis_segment_ids:
       - AIA-TEXT-A036-P005
   exceptions: null
@@ -296,11 +320,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P4-INVESTIGATE-WITHOUT-DELAY
 - norm_id: AIA-NORM-A036-P4-INFORM-OBJECTIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P005
   targets: []
   action: inform the notified body of the objections raised
   norm_text: In that context, it shall inform the notified body concerned about the objections raised
@@ -314,7 +341,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the objections arise in the notifying authority's investigation of the notified body
+    - text: In that context
       basis_segment_ids:
       - AIA-TEXT-A036-P005
   exceptions: null
@@ -334,11 +361,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P4-OPPORTUNITY-TO-RESPOND
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A036-P005
   targets: []
   action: receive an opportunity to make its views on the objections known
   norm_text: In that context, it shall inform the notified body concerned about the objections raised
@@ -352,7 +382,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the objections arise in the notifying authority's investigation of the notified body
+    - text: In that context
       basis_segment_ids:
       - AIA-TEXT-A036-P005
   exceptions: null
@@ -372,11 +402,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P4-CORRECT-DESIGNATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P005
   targets: []
   action: restrict, suspend, or withdraw the designation proportionately to the seriousness of confirmed
     failure
@@ -393,8 +426,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notifying authority concludes that the notified body no longer meets Article 31 requirements
-        or is failing to fulfil its obligations
+    - text: If the notifying authority comes to the conclusion that the notified body no longer meets
+        the requirements laid down in Article 31 or that it is failing to fulfil its obligations
       basis_segment_ids:
       - AIA-TEXT-A036-P005
   exceptions: null
@@ -414,11 +447,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P4-INFORM-COMMISSION-AND-STATES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P005
   targets: []
   action: immediately inform the Commission and other Member States of the designation measure
   norm_text: It shall immediately inform the Commission and the other Member States accordingly.
@@ -431,7 +467,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notifying authority has restricted, suspended or withdrawn the notified body's designation
+    - text: it shall restrict, suspend or withdraw the designation as appropriate
       basis_segment_ids:
       - AIA-TEXT-A036-P005
   exceptions: null
@@ -451,11 +487,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P4-IMMEDIATE-NOTICE
 - norm_id: AIA-NORM-A036-P5-INFORM-PROVIDERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A036-P006
   targets: []
   action: inform affected providers within 10 days of restriction, suspension, or withdrawal of designation
   norm_text: Where its designation has been suspended, restricted, or fully or partially withdrawn, the
@@ -469,7 +508,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been suspended, restricted, or fully or partially withdrawn
+    - text: Where its designation has been suspended, restricted, or fully or partially withdrawn
       basis_segment_ids:
       - AIA-TEXT-A036-P006
   exceptions: null
@@ -489,11 +528,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P5-TEN-DAY-PROVIDER-NOTICE
 - norm_id: AIA-NORM-A036-P6-PRESERVE-FILES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P007
   targets: []
   action: take appropriate steps to preserve the affected notified body's files and make them available
     on request to other Member States' notifying authorities and market-surveillance authorities
@@ -503,13 +545,15 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A036-P007
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A036-P007
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been restricted, suspended or withdrawn
+    - text: In the event of the restriction, suspension or withdrawal of a designation
       basis_segment_ids:
       - AIA-TEXT-A036-P007
   exceptions: null
@@ -532,11 +576,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P008
   targets: []
   action: assess the impact of the designation change on certificates issued by the notified body
   norm_text: assess the impact on the certificates issued by the notified body
@@ -550,9 +597,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been restricted, suspended or withdrawn
+    - text: In the event of the restriction, suspension or withdrawal of a designation
       basis_segment_ids:
-      - AIA-TEXT-A036-P009
+      - AIA-TEXT-A036-P008
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -570,11 +617,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P7-B-REPORT-FINDINGS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P008
   targets: []
   action: report findings to the Commission and other Member States within three months of notifying the
     designation change
@@ -590,9 +640,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been restricted, suspended or withdrawn
+    - text: In the event of the restriction, suspension or withdrawal of a designation
       basis_segment_ids:
-      - AIA-TEXT-A036-P010
+      - AIA-TEXT-A036-P008
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -610,11 +660,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P7-B-THREE-MONTH-REPORT
 - norm_id: AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P008
   targets: []
   action: require suspension or withdrawal of unduly issued certificates within a reasonable authority-set
     period
@@ -631,9 +684,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been restricted, suspended or withdrawn
+    - text: In the event of the restriction, suspension or withdrawal of a designation
       basis_segment_ids:
-      - AIA-TEXT-A036-P011
+      - AIA-TEXT-A036-P008
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -651,11 +704,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P008
   targets: []
   action: inform the Commission and Member States which certificates were required to be suspended or
     withdrawn
@@ -671,9 +727,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been restricted, suspended or withdrawn
+    - text: In the event of the restriction, suspension or withdrawal of a designation
       basis_segment_ids:
-      - AIA-TEXT-A036-P012
+      - AIA-TEXT-A036-P008
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -691,11 +747,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P008
   targets: []
   action: provide the provider's establishment-state authorities all relevant information on certificates
     required to be suspended or withdrawn
@@ -712,9 +771,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been restricted, suspended or withdrawn
+    - text: In the event of the restriction, suspension or withdrawal of a designation
       basis_segment_ids:
-      - AIA-TEXT-A036-P013
+      - AIA-TEXT-A036-P008
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -732,11 +791,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P7-E-MITIGATE-RISK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P013
   targets: []
   action: take necessary appropriate measures to avoid potential health, safety, or fundamental-rights
     risk
@@ -753,11 +815,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been restricted, suspended or withdrawn
+    - text: In the event of the restriction, suspension or withdrawal of a designation
       basis_segment_ids:
-      - AIA-TEXT-A036-P013
-    - text: appropriate measures are necessary to avoid a potential risk to health, safety or fundamental
-        rights
+      - AIA-TEXT-A036-P008
+    - text: where necessary
       basis_segment_ids:
       - AIA-TEXT-A036-P013
   exceptions: null
@@ -777,12 +838,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: affected_certificates
+  - target_ref: the certificates
+    basis_segment_ids:
+    - AIA-TEXT-A036-P014
   action: preserve non-unduly-issued certificate validity during suspension or restriction when either
     enacted condition set is satisfied
   norm_text: With the exception of certificates unduly issued, and where a designation has been suspended
@@ -800,34 +864,36 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body's designation has been suspended or restricted
+    - text: where a designation has been suspended or restricted
       basis_segment_ids:
       - AIA-TEXT-A036-P014
     - operator: any_of
       operands:
       - operator: all_of
         operands:
-        - text: the notifying authority confirms within one month that affected certificates pose no health,
-            safety or fundamental-rights risk
+        - text: the notifying authority has confirmed, within one month of the suspension or restriction,
+            that there is no risk to health, safety or fundamental rights in relation to certificates
+            affected by the suspension or restriction
           basis_segment_ids:
-          - AIA-TEXT-A036-P014
-        - text: the notifying authority provides a timeline for actions to remedy the suspension or restriction
+          - AIA-TEXT-A036-P015
+        - text: the notifying authority has outlined a timeline for actions to remedy the suspension or
+            restriction
           basis_segment_ids:
-          - AIA-TEXT-A036-P014
+          - AIA-TEXT-A036-P015
       - operator: all_of
         operands:
-        - text: the notifying authority confirms no certificates relevant to the suspension will be issued,
-            amended or reissued during the suspension or restriction
+        - text: the notifying authority has confirmed that no certificates relevant to the suspension
+            will be issued, amended or re-issued during the course of the suspension or restriction
           basis_segment_ids:
-          - AIA-TEXT-A036-P014
-        - text: the notifying authority states whether the notified body can continue to monitor and remain
-            responsible for existing certificates during the suspension or restriction
+          - AIA-TEXT-A036-P016
+        - text: states whether the notified body has the capability of continuing to monitor and remain
+            responsible for existing certificates issued for the period of the suspension or restriction
           basis_segment_ids:
-          - AIA-TEXT-A036-P014
+          - AIA-TEXT-A036-P016
   exceptions:
     operator: any_of
     operands:
-    - text: certificates that were unduly issued
+    - text: With the exception of certificates unduly issued
       basis_segment_ids:
       - AIA-TEXT-A036-P014
   mandatory_content: []
@@ -846,11 +912,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A036-P016
   targets: []
   action: confirm in writing within three months that a qualified replacement body temporarily assumes
     certificate monitoring and responsibility
@@ -863,21 +932,26 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A036-P016
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A036-P016
   conditions:
     operator: all_of
     operands:
-    - text: the notifying authority determines the original notified body cannot support existing certificates
+    - text: in the event that the notifying authority determines that the notified body does not have
+        the capability to support existing certificates issued
       basis_segment_ids:
       - AIA-TEXT-A036-P016
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-PO-A36-8
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -889,12 +963,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P8-B-THREE-MONTH-CONFIRMATION
 - norm_id: AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: affected_certificates
+  - target_ref: the certificates
+    basis_segment_ids:
+    - AIA-TEXT-A036-P017
   action: preserve non-unduly-issued certificate validity for nine months after withdrawal when both enacted
     conditions are satisfied
   norm_text: With the exception of certificates unduly issued, and where a designation has been withdrawn,
@@ -912,15 +989,24 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider's establishment-state authority confirms no associated health, safety, or fundamental-rights
-        risk
+    - text: where a designation has been withdrawn
       basis_segment_ids:
       - AIA-TEXT-A036-P017
-    - text: another notified body accepts immediate responsibility in writing and completes assessment
-        within 12 months of withdrawal
+    - text: the national competent authority of the Member State in which the provider of the high-risk
+        AI system covered by the certificate has its registered place of business has confirmed that there
+        is no risk to health, safety or fundamental rights associated with the high-risk AI systems concerned
+      basis_segment_ids:
+      - AIA-TEXT-A036-P018
+    - text: another notified body has confirmed in writing that it will assume immediate responsibility
+        for those AI systems and completes its assessment within 12 months of the withdrawal of the designation
+      basis_segment_ids:
+      - AIA-TEXT-A036-P019
+  exceptions:
+    operator: any_of
+    operands:
+    - text: With the exception of certificates unduly issued
       basis_segment_ids:
       - AIA-TEXT-A036-P017
-  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
@@ -937,11 +1023,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P9-NINE-MONTH-VALIDITY
 - norm_id: AIA-NORM-A036-P9-EXTEND-PROVISIONAL-VALIDITY
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P020
   targets: []
   action: extend provisional certificate validity in three-month periods up to a total of 12 months
   norm_text: In the circumstances referred to in the first subparagraph, the national competent authority
@@ -973,12 +1062,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A036-P9-INFORM-STAKEHOLDERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A036-P021
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A036-P021
   targets: []
   action: immediately inform the Commission, other Member States, and other notified bodies of the replacement
     arrangement
@@ -1009,3 +1103,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A036-P9-IMMEDIATE-NOTICE

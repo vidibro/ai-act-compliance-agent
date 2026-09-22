@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A035-P001
   targets: []
   action: assign one identification number to each notified body even when it is notified under multiple
     Union acts
@@ -34,11 +36,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A035-P2-PUBLISH-NOTIFIED-BODY-LIST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A035-P002
   targets: []
   action: publish the list of bodies notified under the Regulation with their identification numbers and
     notified activities
@@ -71,11 +76,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
 - norm_id: AIA-NORM-A035-P2-KEEP-LIST-CURRENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A035-P002
   targets: []
   action: keep the notified-body list up to date
   norm_text: The Commission shall ensure that the list is kept up to date.
@@ -103,3 +111,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4

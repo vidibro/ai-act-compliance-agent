@@ -1142,7 +1142,9 @@ def test_article_thirty_six_preserves_triggers_and_alternative_validity_routes()
 
     assert "sufficient reason" in investigation.conditions[0]
     assert "suspended, restricted" in provider_notice.conditions[0]
-    assert validity.exceptions == ["certificates that were unduly issued"]
+    assert [operand.text for operand in validity.exceptions.operands] == [
+        "With the exception of certificates unduly issued"
+    ]
     alternatives = validity.conditions[1]
     assert isinstance(alternatives, LogicalExpression) and alternatives.operator == "any_of"
     assert len(alternatives.operands) == 2
@@ -2212,15 +2214,15 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
-    assert metrics.mapping_shape.one_norm_to_one_target == 37
+    assert metrics.mapping_shape.one_norm_to_one_target == 38
     assert metrics.mapping_shape.many_norms_to_one_target == 430
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 21
-    assert metrics.mapping_shape.unmapped == 910
-    assert metrics.semantic_vs_existing_implementation_disagreements == 83
+    assert metrics.mapping_shape.unmapped == 909
+    assert metrics.semantic_vs_existing_implementation_disagreements == 82
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2233,7 +2235,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-D-KEEP-DOCUMENTATION",
         "AIA-NORM-A016-E-KEEP-LOGS",
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
-        "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
         "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
         "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
@@ -2307,7 +2308,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
         "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
         "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
@@ -2533,7 +2533,11 @@ def test_article_thirty_six_preserves_certificate_change_workflows():
     ]
     provider = norms["AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION"]
     assert provider.product_scope.value == "in_scope"
-    assert provider.implementation_mode.value == "missing"
+    assert provider.implementation_mode.value == "compliance_rule"
+    assert provider.implementation_refs == ["AIA-RULE-PO-A36-8"]
+    # Whether the duty is owed turns on the notifying authority's determination about the notified
+    # body, which no description of the system settles, so the rule is listed rather than judged.
+    assert provider.verification_mode.value == "reported_conditionally"
 
 
 def test_article_thirty_seven_separates_challenge_and_escalation_effects():

@@ -7,7 +7,9 @@ records:
     Union acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A035-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -21,7 +23,9 @@ records:
     notified activities
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A035-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -37,7 +41,9 @@ records:
   action: keep the notified-body list up to date
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A035-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

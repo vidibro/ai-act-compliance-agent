@@ -8,12 +8,21 @@ records:
     fulfilment of responsibilities
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A037-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: where necessary
+      basis_segment_ids: [AIA-TEXT-A037-P001]
+    - text: where there are reasons to doubt the competence of a notified body or the continued fulfilment by a notified body of the requirements laid down in Article 31 and of its applicable responsibilities
+      basis_segment_ids: [AIA-TEXT-A037-P001]
 - norm_id: AIA-NORM-A037-P2-PROVIDE-NOTIFICATION-INFORMATION
   source: A037-P002
   quote: The notifying authority shall provide the Commission, on request, with all relevant information
@@ -21,7 +30,9 @@ records:
   action: provide the Commission on request all relevant notification and notified-body competence information
   actors:
   - actor_ref: notifying_authority
+    basis_segment_ids: [AIA-TEXT-A037-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -37,7 +48,9 @@ records:
   action: ensure Article 37 investigation information is treated confidentially under Article 78
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A037-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -53,14 +66,19 @@ records:
     necessary corrective measures, including suspension or withdrawal where necessary
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A037-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission ascertains that a notified body does not meet or no longer meets its notification requirements
+    operator: all_of
+    operands:
+    - text: Where the Commission ascertains that a notified body does not meet or no longer meets the requirements for its notification
+      basis_segment_ids: [AIA-TEXT-A037-P004]
   mandatory_content:
   - inform the notifying Member State accordingly
   - request the Member State to take necessary corrective measures, including suspension or withdrawal
@@ -74,8 +92,15 @@ records:
     to correct it
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A037-P004]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where the Member State fails to take the necessary corrective measures
+      basis_segment_ids: [AIA-TEXT-A037-P004]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -88,7 +113,9 @@ records:
   action: adopt the designation implementing act under the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A037-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

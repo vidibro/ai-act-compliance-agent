@@ -44,7 +44,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P1-NOTIFY-CHANGES
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A036-P2-EXTENSION-PROCEDURES
+  - AIA-NORM-A036-P2-OTHER-CHANGE-PROCEDURES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -221,7 +223,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P6-PRESERVE-FILES
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A036-P6-PRESERVE-FILES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -475,6 +478,7 @@ segments:
   - AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
   qualifying_norm_ids:
   - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
+  - AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
