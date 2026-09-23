@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A096-P001
   targets: []
   action: develop guidelines on the practical implementation of this Regulation, in particular on the
     enacted subjects
@@ -53,11 +55,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
 - norm_id: AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A096-P001
   targets: []
   action: publish the point (g) guidelines on the practical implementation of Article 8(2), Article 9(10)
     and Article 17(3) by 1 August 2027
@@ -69,9 +74,11 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A096-P008
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A096-P008
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -96,6 +103,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A096-P009
   targets: []
   action: involve the Board and pay particular attention to the specified affected groups' needs when
     issuing implementation guidelines
@@ -111,7 +120,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission is issuing the implementation guidelines
+    - text: When issuing such guidelines
       basis_segment_ids:
       - AIA-TEXT-A096-P009
   exceptions: null
@@ -135,11 +144,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
 - norm_id: AIA-NORM-A096-P1-ACCOUNT-FOR-STATE-OF-ART
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A096-P001
   targets: []
   action: account for AI state of the art and relevant standards specifications when preparing guidelines
   norm_text: The guidelines referred to in the first subparagraph of this paragraph shall take due account
@@ -170,11 +182,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
 - norm_id: AIA-NORM-A096-P2-UPDATE-GUIDELINES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A096-P011
   targets: []
   action: update adopted guidelines when necessary on request or on the Commission's initiative
   norm_text: At the request of the Member States or the AI Office, or on its own initiative, the Commission
@@ -188,18 +203,15 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission deems an update necessary
+    - text: when deemed necessary
       basis_segment_ids:
       - AIA-TEXT-A096-P011
     - operator: any_of
       operands:
-      - text: Member States request the update
+      - text: At the request of the Member States or the AI Office
         basis_segment_ids:
         - AIA-TEXT-A096-P011
-      - text: the AI Office requests the update
-        basis_segment_ids:
-        - AIA-TEXT-A096-P011
-      - text: the Commission acts on its own initiative
+      - text: on its own initiative
         basis_segment_ids:
         - AIA-TEXT-A096-P011
   exceptions: null
@@ -219,3 +231,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X

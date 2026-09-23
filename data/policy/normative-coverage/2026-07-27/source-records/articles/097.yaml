@@ -1,3 +1,8 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-XI
+  application_start: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
 records:
 - norm_id: AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
   source: A097-P001
@@ -6,8 +11,10 @@ records:
   action: confer delegated-act power on the Commission subject to Article 97 conditions
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A097-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -24,8 +31,10 @@ records:
     1 August 2024 and the Article 2(13) and 30(2) powers for five years from 27 July 2026
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A097-P002]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,7 +47,9 @@ records:
   action: prepare a delegation-of-power report at least nine months before the five-year period ends
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A097-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -52,16 +63,20 @@ records:
   action: extend delegated power automatically unless Parliament or Council timely opposes
   actors: none
   targets:
-  - target_ref: delegation_of_power
+  - target_ref: delegation of power
+    basis_segment_ids: [AIA-TEXT-A097-P002]
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
   verification_mode: not_reported
   exceptions:
-  - the European Parliament or the Council opposes the extension no later than three months before the
-    end of the period
+    operator: any_of
+    operands:
+    - text: unless the European Parliament or the Council opposes such extension no later than three months before the end of each period
+      basis_segment_ids: [AIA-TEXT-A097-P002]
 - norm_id: AIA-NORM-A097-P3-REVOKE-DELEGATION
   source: A097-P003
   quote: The delegation of power referred to in Article 2(13), Article 6(6) and (7), Article 7(1) and
@@ -70,9 +85,12 @@ records:
   action: revoke at any time the delegation of power referred to in the enacted provisions
   actors:
   - actor_ref: european_parliament
+    basis_segment_ids: [AIA-TEXT-A097-P003]
   - actor_ref: council
+    basis_segment_ids: [AIA-TEXT-A097-P003]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -87,9 +105,12 @@ records:
     publication in the Official Journal of the European Union or on a later date specified in the decision
   actors:
   - actor_ref: european_parliament
+    basis_segment_ids: [AIA-TEXT-A097-P003]
   - actor_ref: council
+    basis_segment_ids: [AIA-TEXT-A097-P003]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -101,9 +122,12 @@ records:
   action: preserve the validity of any delegated acts already in force
   actors:
   - actor_ref: european_parliament
+    basis_segment_ids: [AIA-TEXT-A097-P003]
   - actor_ref: council
+    basis_segment_ids: [AIA-TEXT-A097-P003]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,7 +141,9 @@ records:
   action: consult Member-State experts before adopting a delegated act under the Better-Law-Making principles
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A097-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -130,7 +156,9 @@ records:
   action: notify Parliament and Council simultaneously upon adopting a delegated act
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A097-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -149,15 +177,17 @@ records:
     not object
   actors: none
   targets:
-  - target_ref: delegated_act
+  - target_ref: delegated act
+    basis_segment_ids: [AIA-TEXT-A097-P006]
   kind: legal_consequence
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - no objection has been expressed by either the European Parliament or the Council within a period
-      of three months of notification of that act to them
-    - before the expiry of that period, the European Parliament and the Council have both informed the
-      Commission that they will not object
+    - text: if no objection has been expressed by either the European Parliament or the Council within a period of three months of notification of that act to the European Parliament and the Council
+      basis_segment_ids: [AIA-TEXT-A097-P006]
+    - text: if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object
+      basis_segment_ids: [AIA-TEXT-A097-P006]
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
@@ -170,11 +200,17 @@ records:
   action: extend the objection period by three months
   actors:
   - actor_ref: european_parliament
+    basis_segment_ids: [AIA-TEXT-A097-P006]
   - actor_ref: council
+    basis_segment_ids: [AIA-TEXT-A097-P006]
   targets: []
   kind: power
   conditions:
-  - the European Parliament or the Council takes the initiative
+    operator: all_of
+    operands:
+    - text: at the initiative of the European Parliament or of the Council
+      basis_segment_ids: [AIA-TEXT-A097-P006]
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

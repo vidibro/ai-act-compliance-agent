@@ -1,7 +1,9 @@
 temporal_regimes:
 - regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
+  application_start: 2026-08-02
   deadline: 2027-08-01
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A096-P008
 records:
 - norm_id: AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
@@ -12,6 +14,7 @@ records:
     enacted subjects
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A096-P001]
   targets: []
   mandatory_content:
   - the application of the requirements and obligations referred to in Articles 8 to 15 and in Articles
@@ -33,6 +36,7 @@ records:
   - A096-P006
   - A096-P007
   - A096-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -49,7 +53,10 @@ records:
     and Article 17(3) by 1 August 2027
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A096-P001]
   targets: []
+  qualifier_spans:
+  - A096-P008
   temporal_regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -65,14 +72,19 @@ records:
     issuing implementation guidelines
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A096-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission is issuing the implementation guidelines
+    operator: all_of
+    operands:
+    - text: When issuing such guidelines
+      basis_segment_ids: [AIA-TEXT-A096-P009]
   mandatory_content:
   - involve the Board
   - pay particular attention to the needs of SMEs, including start-ups, and SMCs
@@ -87,7 +99,9 @@ records:
   action: account for AI state of the art and relevant standards specifications when preparing guidelines
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A096-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -100,16 +114,22 @@ records:
   action: update adopted guidelines when necessary on request or on the Commission's initiative
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A096-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission deems an update necessary
-  - operator: any_of
+    operator: all_of
     operands:
-    - Member States request the update
-    - the AI Office requests the update
-    - the Commission acts on its own initiative
+    - text: when deemed necessary
+      basis_segment_ids: [AIA-TEXT-A096-P011]
+    - operator: any_of
+      operands:
+      - text: At the request of the Member States or the AI Office
+        basis_segment_ids: [AIA-TEXT-A096-P011]
+      - text: on its own initiative
+        basis_segment_ids: [AIA-TEXT-A096-P011]

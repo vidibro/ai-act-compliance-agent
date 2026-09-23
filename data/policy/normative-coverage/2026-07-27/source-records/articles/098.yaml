@@ -6,7 +6,9 @@ records:
   action: receive assistance from a Regulation 182/2011 committee
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A098-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -18,12 +20,17 @@ records:
   action: apply the Regulation 182/2011 Article 5 examination procedure when Article 98(2) is referenced
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A098-P001]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
   product_scope: outside_supported_actor
   product_scope_reason: This institutional procedure is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
   verification_mode: not_reported
   conditions:
-  - an enacted provision refers to Article 98(2)
+    operator: all_of
+    operands:
+    - text: Where reference is made to this paragraph
+      basis_segment_ids: [AIA-TEXT-A098-P002]

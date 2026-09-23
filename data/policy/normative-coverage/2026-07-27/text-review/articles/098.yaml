@@ -43,7 +43,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A098-P1-COMMITTEE-ASSISTANCE
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A098-P2-EXAMINATION-PROCEDURE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

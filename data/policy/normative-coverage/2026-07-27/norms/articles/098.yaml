@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A098-P001
   targets: []
   action: receive assistance from a Regulation 182/2011 committee
   norm_text: The Commission shall be assisted by a committee. That committee shall be a committee within
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI
 - norm_id: AIA-NORM-A098-P2-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A098-P001
   targets: []
   action: apply the Regulation 182/2011 Article 5 examination procedure when Article 98(2) is referenced
   norm_text: Where reference is made to this paragraph, Article 5 of Regulation (EU) No 182/2011 shall
@@ -52,7 +57,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: an enacted provision refers to Article 98(2)
+    - text: Where reference is made to this paragraph
       basis_segment_ids:
       - AIA-TEXT-A098-P002
   exceptions: null
@@ -72,3 +77,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XI

@@ -4784,13 +4784,14 @@ def test_articles_ninety_six_to_ninety_eight_extract_institutional_procedures():
     # Entry into force has two alternatives; the extension is a separate power.
     entry = by_id["AIA-NORM-A097-P6-DELEGATED-ACT-ENTRY-CONDITION"]
     extension = by_id["AIA-NORM-A097-P6-EXTEND-OBJECTION-PERIOD"]
-    assert len(entry.conditions) == 1
-    alternatives = entry.conditions[0]
+    alternatives = entry.conditions
     assert isinstance(alternatives, LogicalExpression) and alternatives.operator == "any_of"
-    assert "no objection has been expressed" in alternatives.operands[0]
-    assert "will not object" in alternatives.operands[1]
+    assert "no objection has been expressed" in alternatives.operands[0].text
+    assert "will not object" in alternatives.operands[1].text
     assert extension.kind.value == "power"
-    assert extension.conditions == ["the European Parliament or the Council takes the initiative"]
+    assert [operand.text for operand in extension.conditions.operands] == [
+        "at the initiative of the European Parliament or of the Council"
+    ]
     assert sum(norm.kind.value == "power" for norm in by_article["097"]) == 3
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in by_article["098"])
 

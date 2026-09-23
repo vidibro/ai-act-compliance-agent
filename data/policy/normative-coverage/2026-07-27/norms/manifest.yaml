@@ -4772,12 +4772,19 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-GENERAL
 - regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   deadline: '2027-08-01'
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A096-P008
+- regime_id: AIA-TEMP-CHAPTER-XI
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
 - regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
   application_start: null
   application_end: null

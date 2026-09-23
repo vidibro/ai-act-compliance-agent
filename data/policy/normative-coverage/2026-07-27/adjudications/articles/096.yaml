@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '96'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 12
+  norms_scanned: 5
+  finding_count: 1
+  audit_sha256: 035aa275ed5a40f084c016b4557f247daa529a81652d5eb7bb4def875f3bc846
+decisions:
+- finding_id: AIA-VALID-C476A068256F183D
+  target: AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A096-P008
+  source_sha256: ad9d5fd8d8c6402077ce667a0f41a1bc3147d3f70b7e2c196b97b60552e58317
+  target_sha256: 69bf82bd33475a1202919c36697a92438d8dcd0c16fff1f0458f62979696d67d
+  decision: false_positive
+  reason: '"When complying with the requirements" describes the burden the guidelines must minimise, not
+    a trigger for the duty. The Commission must publish the point (g) guidelines by 1 August 2027 in any
+    case.'
+  legal_basis:
+  - span_id: AIA-TEXT-A096-P008
+    source_sha256: ad9d5fd8d8c6402077ce667a0f41a1bc3147d3f70b7e2c196b97b60552e58317
+    quote: minimising additional burdens when complying with the requirements of this Regulation and the
+      requirements of the Union harmonisation legislation listed in Section A of Annex I
+  reviewed_by: vidibro
