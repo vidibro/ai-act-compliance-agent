@@ -5,6 +5,8 @@ norms:
   kind: permission
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: process lawfully collected personal data for sandbox development, training, and testing only
     for that purpose and only when every enacted condition is met
@@ -32,13 +34,13 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the personal data were lawfully collected for other purposes
+    - text: In the AI regulatory sandbox
       basis_segment_ids:
       - AIA-TEXT-A059-P001
-    - text: processing occurs in an AI regulatory sandbox
+    - text: personal data lawfully collected for other purposes
       basis_segment_ids:
       - AIA-TEXT-A059-P001
-    - text: every Article 59(1) condition is met
+    - text: when all of the following conditions are met
       basis_segment_ids:
       - AIA-TEXT-A059-P001
   exceptions: null
@@ -61,11 +63,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: develop the sandbox AI system to safeguard substantial public interest in at least one enacted
     field
@@ -87,32 +92,30 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
+    - text: AI systems shall be developed for safeguarding substantial public interest by a public authority
+        or another natural or legal person
+      basis_segment_ids:
+      - AIA-TEXT-A059-P002
+    - operator: any_of
       operands:
-      - text: the AI system is developed for safeguarding substantial public interest by a public authority
-          or another natural or legal person
+      - text: public safety and public health, including disease detection, diagnosis prevention, control
+          and treatment and improvement of health care systems
         basis_segment_ids:
-        - AIA-TEXT-A059-P002
-      - operator: any_of
-        operands:
-        - text: public safety and public health, including disease detection, diagnosis prevention, control
-            and treatment and improvement of health care systems
-          basis_segment_ids:
-          - AIA-TEXT-A059-P002
-        - text: a high level of protection and improvement of the quality of the environment, protection
-            of biodiversity, protection against pollution, green transition measures, climate change mitigation
-            and adaptation measures
-          basis_segment_ids:
-          - AIA-TEXT-A059-P002
-        - text: energy sustainability
-          basis_segment_ids:
-          - AIA-TEXT-A059-P002
-        - text: safety and resilience of transport systems and mobility, critical infrastructure and networks
-          basis_segment_ids:
-          - AIA-TEXT-A059-P002
-        - text: efficiency and quality of public administration and public services
-          basis_segment_ids:
-          - AIA-TEXT-A059-P002
+        - AIA-TEXT-A059-P003
+      - text: a high level of protection and improvement of the quality of the environment, protection
+          of biodiversity, protection against pollution, green transition measures, climate change mitigation
+          and adaptation measures
+        basis_segment_ids:
+        - AIA-TEXT-A059-P004
+      - text: energy sustainability
+        basis_segment_ids:
+        - AIA-TEXT-A059-P005
+      - text: safety and resilience of transport systems and mobility, critical infrastructure and networks
+        basis_segment_ids:
+        - AIA-TEXT-A059-P006
+      - text: efficiency and quality of public administration and public services
+        basis_segment_ids:
+        - AIA-TEXT-A059-P007
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -131,11 +134,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-B-DATA-NECESSITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: process personal data only where necessary for a Chapter III Section 2 requirement that non-personal
     alternatives cannot effectively fulfil
@@ -144,14 +150,17 @@ norms:
     anonymised, synthetic or other non-personal data;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P008
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions:
     operator: all_of
     operands:
-    - text: anonymised synthetic or other non-personal data cannot effectively fulfil the applicable requirement
+    - text: where those requirements cannot effectively be fulfilled by processing anonymised, synthetic
+        or other non-personal data
       basis_segment_ids:
       - AIA-TEXT-A059-P008
   exceptions: null
@@ -172,11 +181,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: maintain effective mechanisms to identify high data-subject risks, promptly mitigate them, and
     stop processing where necessary
@@ -187,10 +199,12 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P009
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
   exceptions: null
   mandatory_content:
@@ -213,11 +227,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: keep sandbox personal data in a functionally separate isolated protected environment under provider
     control with access limited to authorised persons
@@ -226,10 +243,12 @@ norms:
     only authorised persons have access to those data;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P010
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -249,11 +268,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P011
   targets: []
   action: share originally collected data only under Union data-protection law and never share sandbox-created
     personal data outside the sandbox
@@ -261,10 +283,12 @@ norms:
     protection law; any personal data created in the sandbox cannot be shared outside the sandbox;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P011
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -284,11 +308,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: prevent sandbox personal-data processing from producing measures or decisions affecting data
     subjects or impairing their Union-law rights
@@ -297,10 +324,12 @@ norms:
     in Union law on the protection of personal data;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P012
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -320,11 +349,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: protect sandbox personal data with appropriate technical and organisational measures and delete
     it at sandbox exit or retention-period expiry
@@ -333,10 +365,12 @@ norms:
     or the personal data has reached the end of its retention period;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P013
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -356,11 +390,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: keep sandbox personal-data processing logs throughout participation unless Union or national
     law provides otherwise
@@ -368,12 +405,19 @@ norms:
     duration of the participation in the sandbox, unless provided otherwise by Union or national law;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P014
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
-  exceptions: null
+  exceptions:
+    operator: any_of
+    operands:
+    - text: unless provided otherwise by Union or national law
+      basis_segment_ids:
+      - AIA-TEXT-A059-P014
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -391,11 +435,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A059-P1-H-LOG-RETENTION
 - norm_id: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A059-P010
   targets: []
   action: include a complete detailed description and rationale for training testing and validation together
     with testing results in the Annex IV technical documentation
@@ -404,10 +451,12 @@ norms:
     documentation referred to in Annex IV;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P015
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
   exceptions: null
   mandatory_content:
@@ -429,11 +478,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: sandbox_participant
+    basis_segment_ids:
+    - AIA-TEXT-A059-P016
   targets: []
   action: publish a short project summary with objectives and expected results on the competent-authority
     website while excluding protected sensitive operational data
@@ -444,15 +496,18 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A059-P016
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A059-P001
   conditions: null
   exceptions:
     operator: any_of
     operands:
-    - text: sensitive operational data of law-enforcement border-control immigration or asylum authorities
+    - text: this obligation shall not cover sensitive operational data in relation to the activities of
+        law enforcement, border control, immigration or asylum authorities
       basis_segment_ids:
       - AIA-TEXT-A059-P016
   mandatory_content:
@@ -475,11 +530,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: law_enforcement_authority
+    basis_segment_ids:
+    - AIA-TEXT-A059-P017
   targets: []
   action: base law-enforcement sandbox personal-data processing on specific Union or national law and
     satisfy every Article 59(1) condition
@@ -497,10 +555,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: processing serves the enacted criminal-justice or public-security purposes
+    - text: For the purposes of the prevention, investigation, detection or prosecution of criminal offences
+        or the execution of criminal penalties, including safeguarding against and preventing threats
+        to public security
       basis_segment_ids:
       - AIA-TEXT-A059-P017
-    - text: processing is under law-enforcement authority control and responsibility
+    - text: under the control and responsibility of law enforcement authorities
       basis_segment_ids:
       - AIA-TEXT-A059-P017
   exceptions: null
@@ -520,11 +580,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: sandbox_participant
+    basis_segment_ids:
+    - AIA-TEXT-A059-P018
   targets: []
   action: preserve applicable Union and national restrictions and alternative lawful bases for innovative-AI
     personal-data processing
@@ -558,3 +621,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI

@@ -610,6 +610,17 @@ class ActorRole(StrEnum):
 
 
 _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
+    # Arts. 60(5) and 61 name the people tested by their part in the test, never by a noun.
+    ActorRole.TESTING_SUBJECT: (
+        "testing subject",
+        "subjects of the testing",
+        "subjects of testing",
+    ),
+    # Art. 60(5) writes "their legally designated representative" for a subject's representative.
+    ActorRole.LEGAL_REPRESENTATIVE: (
+        "legal representative",
+        "legally designated representative",
+    ),
     ActorRole.NOTIFIED_BODY: ("notified body", "notified bodies"),
     # Art. 40(3) names this party by what it does, not by a noun: "The participants in the
     # standardisation process".

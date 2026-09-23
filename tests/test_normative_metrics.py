@@ -1226,13 +1226,20 @@ def test_article_sixty_preserves_alternative_eligibility_and_approval_routes():
     approval = norms["AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT"]
     establishment = norms["AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT"]
 
-    assert isinstance(permission.conditions[0], LogicalExpression)
-    assert permission.conditions[0].operator == "any_of"
-    assert isinstance(approval.conditions[0], LogicalExpression)
-    assert approval.conditions[0].operator == "any_of"
-    assert approval.conditions[0].operands[1].operator == "all_of"
-    assert isinstance(establishment.conditions[0], LogicalExpression)
-    assert establishment.conditions[0].operator == "any_of"
+    # Either Annex route opens the permission; the testing plan binds both.
+    assert permission.conditions.operator == "all_of"
+    assert isinstance(permission.conditions.operands[0], LogicalExpression)
+    assert permission.conditions.operands[0].operator == "any_of"
+    # Approval is explicit or tacit after 30 days. The Act states only the negative case for
+    # national law without tacit approval, so it is kept in its own words as the exception.
+    assert approval.conditions.operator == "any_of"
+    assert [operand.text for operand in approval.conditions.operands][1] == (
+        "where the market surveillance authority has not provided an answer within 30 days"
+    )
+    assert approval.exceptions[0].text.startswith(
+        "where national law does not provide for a tacit approval"
+    )
+    assert establishment.conditions.operator == "any_of"
 
 
 def test_annex_three_supplies_twenty_five_article_six_classification_routes():
@@ -2200,8 +2207,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2113,
-        "proposed": 822,
+        "approved": 2130,
+        "proposed": 805,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2936
@@ -2224,15 +2231,15 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
-    assert metrics.mapping_shape.one_norm_to_one_target == 37
-    assert metrics.mapping_shape.many_norms_to_one_target == 438
+    assert metrics.mapping_shape.one_norm_to_one_target == 38
+    assert metrics.mapping_shape.many_norms_to_one_target == 458
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 902
-    assert metrics.semantic_vs_existing_implementation_disagreements == 70
+    assert metrics.mapping_shape.unmapped == 881
+    assert metrics.semantic_vs_existing_implementation_disagreements == 49
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2247,30 +2254,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A050-P5-MANNER",
-        "AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION",
-        "AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION",
-        "AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN",
-        "AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT",
-        "AIA-NORM-A060-P4-C-REGISTER-TESTING",
-        "AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT",
-        "AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS",
-        "AIA-NORM-A060-P4-F-DURATION-LIMIT",
-        "AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS",
-        "AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS",
-        "AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA",
-        "AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT",
-        "AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT",
-        "AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS",
-        "AIA-NORM-A060-P7-IMMEDIATE-MITIGATION",
-        "AIA-NORM-A060-P7-INCIDENT-RESPONSE",
-        "AIA-NORM-A060-P7-RECALL-PROCEDURE",
-        "AIA-NORM-A060-P8-NOTIFY-OUTCOMES",
         "AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN",
         "AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS",
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
-        "AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT",
-        "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
-        "AIA-NORM-A061-P2-GIVE-CONSENT-COPY",
         "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
@@ -2306,30 +2292,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION",
-        "AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION",
-        "AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN",
-        "AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT",
-        "AIA-NORM-A060-P4-C-REGISTER-TESTING",
-        "AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT",
-        "AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS",
-        "AIA-NORM-A060-P4-F-DURATION-LIMIT",
-        "AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS",
-        "AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS",
-        "AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA",
-        "AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT",
-        "AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT",
-        "AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS",
-        "AIA-NORM-A060-P7-IMMEDIATE-MITIGATION",
-        "AIA-NORM-A060-P7-INCIDENT-RESPONSE",
-        "AIA-NORM-A060-P7-RECALL-PROCEDURE",
-        "AIA-NORM-A060-P8-NOTIFY-OUTCOMES",
         "AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN",
         "AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS",
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
-        "AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT",
-        "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
-        "AIA-NORM-A061-P2-GIVE-CONSENT-COPY",
         "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
@@ -3346,9 +3311,9 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
     safeguards = norms["AIA-NORM-A058-P4-AGREE-REAL-WORLD-TESTING-SAFEGUARDS"]
     cooperation = norms["AIA-NORM-A058-P4-COOPERATE-ON-TESTING-PRACTICES"]
     testing_context = (
-        "Where national competent authorities consider authorising testing in real world conditions "
-        "supervised within the framework of an AI regulatory sandbox to be established under this "
-        "Article"
+        "Where national competent authorities consider authorising testing in real world "
+        "conditions supervised within the framework of an AI regulatory sandbox to be established "
+        "under this Article"
     )
     assert [operand.text for operand in safeguards.conditions] == [testing_context]
     assert [operand.text for operand in cooperation.conditions] == [
@@ -3408,19 +3373,18 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     assert public_interest.actors[0].actor_ref == "prospective_provider"
     assert public_interest.primary_spans == ["AIA-TEXT-A059-P002"]
     assert public_interest.qualifier_spans == [f"AIA-TEXT-A059-P{n:03}" for n in range(3, 8)]
-    assert len(public_interest.conditions) == 1
-    requirement = public_interest.conditions[0]
+    requirement = public_interest.conditions
     assert isinstance(requirement, LogicalExpression) and requirement.operator == "all_of"
     assert len(requirement.operands) == 2
     purpose, areas = requirement.operands
-    assert purpose == (
-        "the AI system is developed for safeguarding substantial public interest by a public "
+    assert purpose.text == (
+        "AI systems shall be developed for safeguarding substantial public interest by a public "
         "authority or another natural or legal person"
     )
     assert isinstance(areas, LogicalExpression) and areas.operator == "any_of"
     # Only the five enacted areas are alternatives. Their detail, including the health examples,
     # remains within each area instead of becoming extra alternatives or cumulative obligations.
-    assert areas.operands == [
+    assert [area.text for area in areas.operands] == [
         "public safety and public health, including disease detection, diagnosis prevention, "
         "control and treatment and improvement of health care systems",
         "a high level of protection and improvement of the quality of the environment, protection "
@@ -3435,10 +3399,10 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
         segment = next(segment for segment in segments if segment.segment_id == span_id)
         assert area.text in segment.text
         assert segment.qualifying_norm_ids == [public_interest.norm_id]
-    assert permission.conditions == [
-        "the personal data were lawfully collected for other purposes",
-        "processing occurs in an AI regulatory sandbox",
-        "every Article 59(1) condition is met",
+    assert [operand.text for operand in permission.conditions] == [
+        "In the AI regulatory sandbox",
+        "personal data lawfully collected for other purposes",
+        "when all of the following conditions are met",
     ]
     condition_norm_ids = bundle.norm_inventory.target_norm_ids_for(
         permission.norm_id, NormRelationKind.CONDITIONAL_ON_NORMS
@@ -3507,7 +3471,7 @@ def test_article_sixty_extracts_real_world_testing_lifecycle():
     )
     assert len(permission.qualifier_spans) == 11
     assert len(permission.mandatory_content) == 11
-    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 18
+    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 0
     assert_extraction_never_approves(norms.values())
 
 
@@ -3522,28 +3486,34 @@ def test_article_sixty_registration_routes_are_alternatives_not_a_checklist():
     # Three registration routes selected by system class. A mandatory-content list would read as
     # three cumulative registrations, so the exclusive gates are conditions instead.
     assert not register.mandatory_content
-    assert len(register.conditions) == 1
-    routes = register.conditions[0]
+    routes = register.conditions
     assert isinstance(routes, LogicalExpression) and routes.operator == "any_of"
     assert [branch.operator for branch in routes.operands] == ["all_of"] * 3
-    general, secure, point_two = routes.operands
-    assert general.operands == [
-        "the system is neither a high-risk AI system referred to in points 1, 6 and 7 of Annex III "
-        "in the areas of law enforcement, migration, asylum and border control management nor a "
-        "high-risk AI system referred to in point 2 of Annex III",
-        "the testing is registered in accordance with Article 71(4) with a Union-wide unique "
-        "single identification number and with the information specified in Annex IX",
+    general, secure, point_two = (
+        [operand.text for operand in branch.operands] for branch in routes.operands
+    )
+    # Each route pairs the class of system it is for with the registration that class makes.
+    assert general == [
+        "with the exception of providers or prospective providers of high-risk AI systems "
+        "referred to in points 1, 6 and 7 of Annex III in the areas of law enforcement, migration, "
+        "asylum and border control management, and high-risk AI systems referred to in point 2 of "
+        "Annex III",
+        "has registered the testing in real world conditions in accordance with Article 71(4) with "
+        "a Union-wide unique single identification number and with the information specified in "
+        "Annex IX",
     ]
-    assert secure.operands == [
-        "the system is a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the "
-        "areas of law enforcement, migration, asylum and border control management",
-        "the testing is registered in the secure non-public section of the EU database according "
-        "to Article 49(4), point (d), with a Union-wide unique single identification number and "
-        "with the information specified therein",
+    assert secure == [
+        "the provider or prospective provider of high-risk AI systems referred to in points 1, 6 "
+        "and 7 of Annex III in the areas of law enforcement, migration, asylum and border control "
+        "management",
+        "has registered the testing in real-world conditions in the secure non-public section of "
+        "the EU database according to Article 49(4), point (d), with a Union-wide unique single "
+        "identification number and with the information specified therein",
     ]
-    assert point_two.operands == [
-        "the system is a high-risk AI system referred to in point 2 of Annex III",
-        "the testing is registered in accordance with Article 49(5)",
+    assert point_two == [
+        "the provider or prospective provider of high-risk AI systems referred to in point 2 of "
+        "Annex III",
+        "has registered the testing in real-world conditions in accordance with Article 49(5)",
     ]
     assert register.norm_text.endswith("in accordance with Article 49(5);")
 
@@ -3555,15 +3525,19 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
         if norm.norm_id.startswith("AIA-NORM-A060-")
     }
     cooperation = (
-        "the provider or prospective provider organises the testing in real world conditions in "
-        "cooperation with one or more deployers or prospective deployers"
+        "where a provider or prospective provider organises the testing in real world conditions "
+        "in cooperation with one or more deployers or prospective deployers"
     )
+
+    def texts(expression):
+        return [operand.text for operand in expression]
+
 
     inform = norms["AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES"]
     agreement = norms["AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT"]
     assert [actor.actor_ref for actor in inform.actors] == ["provider", "prospective_provider"]
     assert [actor.actor_ref for actor in agreement.actors] == ["provider", "deployer"]
-    assert inform.conditions == agreement.conditions == [cooperation]
+    assert texts(inform.conditions) == texts(agreement.conditions) == [cooperation]
     assert inform.mandatory_content == [
         "all aspects of the testing relevant to the deployer's decision to participate",
         "Article 13 instructions for use of the AI system",
@@ -3574,17 +3548,17 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     # Law-enforcement status alone does not replace consent: the exception also requires that
     # seeking consent would prevent the system from being tested.
     substitute = [
-        "the testing is in the case of law enforcement",
-        "seeking informed consent would prevent the AI system from being tested",
+        "in the case of law enforcement",
+        "where the seeking of informed consent would prevent the AI system from being tested",
     ]
     consent = norms["AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS"]
     assert not consent.mandatory_content
-    assert consent.exceptions == [
-        "law-enforcement testing where seeking informed consent would prevent the AI system from "
-        "being tested"
+    assert texts(consent.exceptions) == [
+        "in the case of law enforcement, where the seeking of informed consent would prevent the "
+        "AI system from being tested"
     ]
-    assert norms["AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT"].conditions == substitute
-    assert norms["AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA"].conditions == substitute
+    assert texts(norms["AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT"].conditions) == substitute
+    assert texts(norms["AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA"].conditions) == substitute
 
     # Withdrawal and the deletion request are the two contents of one enacted entitlement.
     withdraw = norms["AIA-NORM-A060-P5-WITHDRAW-AND-DELETE"]
@@ -3603,13 +3577,13 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     assert not use.mandatory_content
 
     incident = (
-        "a serious incident is identified in the course of the testing in real world conditions"
+        "Any serious incident identified in the course of the testing in real world conditions"
     )
     report = norms["AIA-NORM-A060-P7-INCIDENT-RESPONSE"]
     mitigate = norms["AIA-NORM-A060-P7-IMMEDIATE-MITIGATION"]
     recall = norms["AIA-NORM-A060-P7-RECALL-PROCEDURE"]
     assert not report.mandatory_content
-    assert report.conditions == mitigate.conditions == [incident]
+    assert texts(report.conditions) == texts(mitigate.conditions) == [incident]
     # Mitigation, and the fallback suspension or termination, form one alternative response.
     assert len(mitigate.mandatory_content) == 2
     assert "or terminate it" in mitigate.action

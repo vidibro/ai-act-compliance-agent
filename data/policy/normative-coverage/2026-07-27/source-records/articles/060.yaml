@@ -1,3 +1,21 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A060-P4-B-TACIT-APPROVAL
+  application_start: 2026-08-02
+  relative_deadline:
+    quantity: 30
+    unit: day
+    trigger: where the market surveillance authority has not provided an answer
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A060-P008
+- regime_id: AIA-TEMP-A060-P4-F-SIX-MONTH-LIMIT
+  application_start: 2026-08-02
+  timing_conditions:
+  - does not last longer than necessary to achieve its objectives and in any case not longer than six
+    months
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A060-P012
 records:
 - norm_id: AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION
   source: A060-P001
@@ -10,18 +28,34 @@ records:
     without infringing Article 5
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P001]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P001]
   targets: []
   kind: permission
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the high-risk AI system is listed in Annex III
-    - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-      I
-  - Article 60 and the real-world testing plan are followed
-  - Article 5 prohibitions remain observed
+    - operator: any_of
+      operands:
+      - text: high-risk AI systems listed in Annex III
+        basis_segment_ids: [AIA-TEXT-A060-P001]
+      - text: covered by Union harmonisation legislation listed in Section A of Annex I
+        basis_segment_ids: [AIA-TEXT-A060-P001]
+    - text: in accordance with this Article and the real-world testing plan referred to in this Article
+      basis_segment_ids: [AIA-TEXT-A060-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   verification_mode: reported_conditionally
+  exceptions:
+    operator: any_of
+    operands:
+    - text: without prejudice to the prohibitions under Article 5
+      basis_segment_ids: [AIA-TEXT-A060-P001]
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
+  implementation_reason: The rule's activation condition recognises the Article 60 testing route.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P1-COMMISSION-PLAN-ACTS
   source: A060-P002
   quote: The Commission shall, by means of implementing acts, specify the detailed elements of the real-world
@@ -31,7 +65,9 @@ records:
     examination procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A060-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -45,9 +81,12 @@ records:
   action: preserve applicable Union and national product testing law
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P001]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P001]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Preserves other applicable law rather than creating an independent product action.
   implementation_mode: none_required
@@ -62,11 +101,18 @@ records:
   action: conduct eligible high-risk system testing before market placement or service alone or with deployers
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P004]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P004]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   verification_mode: reported_conditionally
   verified_by: vidibro
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
+  implementation_reason: The rule's activation condition recognises the Article 60 testing route.
 - norm_id: AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW
   source: A060-P005
   quote: The testing of high-risk AI systems in real world conditions under this Article shall be without
@@ -74,9 +120,12 @@ records:
   action: preserve any ethical review required by Union or national law
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P004]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P004]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Preserves an independently applicable review requirement rather than creating
     a new one.
@@ -90,7 +139,9 @@ records:
   action: conduct real-world testing only when all eleven conditions are met
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
   kind: permission
   qualifier_spans:
@@ -105,9 +156,10 @@ records:
   - A060-P015
   - A060-P016
   - A060-P017
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   implementation_refs:
   - AIA-RULE-PO-A60-4
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   mandatory_content:
   - testing plan submitted
   - authority approval or applicable tacit approval
@@ -121,6 +173,13 @@ records:
   - qualified effective oversight
   - reversible and disregardable outputs
   verified_by: vidibro
+  conditions:
+    operator: all_of
+    operands:
+    - text: only where all of the following conditions are met
+      basis_segment_ids: [AIA-TEXT-A060-P006]
+  implementation_mode: report_only
+  implementation_reason: The rule's activation condition recognises the Article 60 testing route.
 - norm_id: AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
   source: A060-P007
   quote: the provider or prospective provider has drawn up a real-world testing plan and submitted it
@@ -129,11 +188,17 @@ records:
   action: draw up the testing plan and submit it to the relevant Member State market surveillance authority
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P007]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
   source: A060-P008
   quote: the market surveillance authority in the Member State where the testing in real world conditions
@@ -145,19 +210,29 @@ records:
   action: obtain authority approval or rely on 30-day tacit approval only where national law permits it
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - the market-surveillance authority approves the real-world testing and testing plan
-    - operator: all_of
-      operands:
-      - the market-surveillance authority does not answer within 30 days
-      - national law provides for tacit approval
+    - text: the market surveillance authority in the Member State where the testing in real world conditions is to be conducted has approved the testing in real world conditions and the real-world testing plan
+      basis_segment_ids: [AIA-TEXT-A060-P008]
+    - text: where the market surveillance authority has not provided an answer within 30 days
+      basis_segment_ids: [AIA-TEXT-A060-P008]
+  temporal_regime_id: AIA-TEMP-A060-P4-B-TACIT-APPROVAL
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  exceptions:
+    operator: any_of
+    operands:
+    - text: where national law does not provide for a tacit approval, the testing in real world conditions shall remain subject to an authorisation
+      basis_segment_ids: [AIA-TEXT-A060-P008]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-C-REGISTER-TESTING
   source: A060-P009
   quote: the provider or prospective provider, with the exception of providers or prospective providers
@@ -175,32 +250,38 @@ records:
     assign, with the identifier and information that route requires
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P009]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P009]
   targets: []
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
     - operator: all_of
       operands:
-      - the system is neither a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the
-        areas of law enforcement, migration, asylum and border control management nor a high-risk AI system
-        referred to in point 2 of Annex III
-      - the testing is registered in accordance with Article 71(4) with a Union-wide unique single identification
-        number and with the information specified in Annex IX
+      - text: with the exception of providers or prospective providers of high-risk AI systems referred to in points 1, 6 and 7 of Annex III in the areas of law enforcement, migration, asylum and border control management, and high-risk AI systems referred to in point 2 of Annex III
+        basis_segment_ids: [AIA-TEXT-A060-P009]
+      - text: has registered the testing in real world conditions in accordance with Article 71(4) with a Union-wide unique single identification number and with the information specified in Annex IX
+        basis_segment_ids: [AIA-TEXT-A060-P009]
     - operator: all_of
       operands:
-      - the system is a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the areas
-        of law enforcement, migration, asylum and border control management
-      - the testing is registered in the secure non-public section of the EU database according to Article
-        49(4), point (d), with a Union-wide unique single identification number and with the information
-        specified therein
+      - text: the provider or prospective provider of high-risk AI systems referred to in points 1, 6 and 7 of Annex III in the areas of law enforcement, migration, asylum and border control management
+        basis_segment_ids: [AIA-TEXT-A060-P009]
+      - text: has registered the testing in real-world conditions in the secure non-public section of the EU database according to Article 49(4), point (d), with a Union-wide unique single identification number and with the information specified therein
+        basis_segment_ids: [AIA-TEXT-A060-P009]
     - operator: all_of
       operands:
-      - the system is a high-risk AI system referred to in point 2 of Annex III
-      - the testing is registered in accordance with Article 49(5)
+      - text: the provider or prospective provider of high-risk AI systems referred to in point 2 of Annex III
+        basis_segment_ids: [AIA-TEXT-A060-P009]
+      - text: has registered the testing in real-world conditions in accordance with Article 49(5)
+        basis_segment_ids: [AIA-TEXT-A060-P009]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
   source: A060-P010
   quote: the provider or prospective provider conducting the testing in real world conditions is established
@@ -208,16 +289,24 @@ records:
   action: be Union-established or appoint a Union-established legal representative
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P010]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - the provider or prospective provider conducting the testing is established in the Union
-    - the provider or prospective provider has appointed a legal representative established in the Union
+    - text: is established in the Union
+      basis_segment_ids: [AIA-TEXT-A060-P010]
+    - text: has appointed a legal representative who is established in the Union
+      basis_segment_ids: [AIA-TEXT-A060-P010]
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
   source: A060-P011
   quote: data collected and processed for the purpose of the testing in real world conditions shall be
@@ -226,11 +315,17 @@ records:
   action: transfer testing data to third countries only with appropriate applicable Union-law safeguards
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-F-DURATION-LIMIT
   source: A060-P012
   quote: the testing in real world conditions does not last longer than necessary to achieve its objectives
@@ -239,11 +334,17 @@ records:
     extension
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-A060-P4-F-SIX-MONTH-LIMIT
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-EXTEND
   source: A060-P012
   quote: may be extended for an additional period of six months, subject to prior notification by the
@@ -252,17 +353,27 @@ records:
   action: extend testing once for six months after prior notice and explanation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P012]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P012]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   implementation_refs:
   - AIA-RULE-PO-A60-4
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   conditions:
-  - prior authority notification
-  - explanation of need
+    operator: all_of
+    operands:
+    - text: subject to prior notification by the provider or prospective provider to the market surveillance authority
+      basis_segment_ids: [AIA-TEXT-A060-P012]
+    - text: accompanied by an explanation of the need for such an extension
+      basis_segment_ids: [AIA-TEXT-A060-P012]
   qualifier_spans:
   - A060-P006
+  implementation_mode: report_only
+  implementation_reason: The rule's activation condition recognises the Article 60 testing route.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
   source: A060-P013
   quote: the subjects of the testing in real world conditions who are persons belonging to vulnerable
@@ -270,11 +381,17 @@ records:
   action: appropriately protect testing subjects vulnerable because of age or disability
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
   source: A060-P014
   quote: where a provider or prospective provider organises the testing in real world conditions in cooperation
@@ -285,19 +402,25 @@ records:
     to their participation decision and give them the Article 13 instructions for use
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P014]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P014]
   targets: []
   conditions:
-  - the provider or prospective provider organises the testing in real world conditions in cooperation
-    with one or more deployers or prospective deployers
+    operator: all_of
+    operands:
+    - text: where a provider or prospective provider organises the testing in real world conditions in cooperation with one or more deployers or prospective deployers
+      basis_segment_ids: [AIA-TEXT-A060-P014]
   mandatory_content:
   - all aspects of the testing relevant to the deployer's decision to participate
   - Article 13 instructions for use of the AI system
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   implementation_refs:
   - AIA-RULE-PO-A60-4
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
   source: A060-P014
   quote: the provider or prospective provider and the deployer or prospective deployer shall conclude
@@ -309,16 +432,22 @@ records:
     and national law
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P014]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A060-P014]
   targets: []
   conditions:
-  - the provider or prospective provider organises the testing in real world conditions in cooperation
-    with one or more deployers or prospective deployers
+    operator: all_of
+    operands:
+    - text: where a provider or prospective provider organises the testing in real world conditions in cooperation with one or more deployers or prospective deployers
+      basis_segment_ids: [AIA-TEXT-A060-P014]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   implementation_refs:
   - AIA-RULE-PO-A60-4
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
   source: A060-P015
   quote: the subjects of the testing in real world conditions have given informed consent in accordance
@@ -326,13 +455,22 @@ records:
   action: obtain the testing subjects' informed consent in accordance with Article 61
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
   exceptions:
-  - law-enforcement testing where seeking informed consent would prevent the AI system from being tested
+    operator: any_of
+    operands:
+    - text: in the case of law enforcement, where the seeking of informed consent would prevent the AI system from being tested
+      basis_segment_ids: [AIA-TEXT-A060-P015]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
   source: A060-P015
   quote: in the case of law enforcement, where the seeking of informed consent would prevent the AI system
@@ -342,14 +480,24 @@ records:
     law-enforcement substitute for informed consent applies
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
   conditions:
-  - the testing is in the case of law enforcement
-  - seeking informed consent would prevent the AI system from being tested
+    operator: all_of
+    operands:
+    - text: in the case of law enforcement
+      basis_segment_ids: [AIA-TEXT-A060-P015]
+    - text: where the seeking of informed consent would prevent the AI system from being tested
+      basis_segment_ids: [AIA-TEXT-A060-P015]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
   source: A060-P015
   quote: their personal data shall be deleted after the test is performed;
@@ -357,14 +505,24 @@ records:
     for informed consent applies
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
   conditions:
-  - the testing is in the case of law enforcement
-  - seeking informed consent would prevent the AI system from being tested
+    operator: all_of
+    operands:
+    - text: in the case of law enforcement
+      basis_segment_ids: [AIA-TEXT-A060-P015]
+    - text: where the seeking of informed consent would prevent the AI system from being tested
+      basis_segment_ids: [AIA-TEXT-A060-P015]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
   source: A060-P016
   quote: the testing in real world conditions is effectively overseen by the provider or prospective provider,
@@ -374,11 +532,17 @@ records:
     authority
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P016]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A060-P016]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
   source: A060-P017
   quote: the predictions, recommendations or decisions of the AI system can be effectively reversed and
@@ -386,11 +550,17 @@ records:
   action: ensure system predictions recommendations and decisions can be effectively reversed and disregarded
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
   verification_mode: reported_conditionally
   qualifier_spans:
   - A060-P006
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P5-WITHDRAW-AND-DELETE
   source: A060-P018
   quote: Any subjects of the testing in real world conditions, or their legally designated representative,
@@ -402,9 +572,12 @@ records:
     subject's personal data
   actors:
   - actor_ref: testing_subject
+    basis_segment_ids: [AIA-TEXT-A060-P018]
   - actor_ref: legal_representative
+    basis_segment_ids: [AIA-TEXT-A060-P018]
   targets: []
   kind: entitlement
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -419,9 +592,12 @@ records:
   action: preserve activities completed before consent withdrawal
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P004]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P004]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Defines a withdrawal consequence rather than an independent product action.
   implementation_mode: none_required
@@ -437,12 +613,14 @@ records:
     authorities in accordance with Article 75
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A060-P019]
   targets: []
   mandatory_content:
   - power to require providers and prospective providers to provide information
   - power to carry out unannounced remote or on-site inspections
   - power to perform checks on the conduct of the testing in real world conditions and the related high-risk
     AI systems
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -456,7 +634,9 @@ records:
     testing in real world conditions
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A060-P019]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -470,10 +650,18 @@ records:
     Article 73
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P020]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P020]
   targets: []
   conditions:
-  - a serious incident is identified in the course of the testing in real world conditions
+    operator: all_of
+    operands:
+    - text: Any serious incident identified in the course of the testing in real world conditions
+      basis_segment_ids: [AIA-TEXT-A060-P020]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-7
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A060-P7-IMMEDIATE-MITIGATION
@@ -485,15 +673,24 @@ records:
     until mitigation takes place or terminate it
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P020]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P020]
   targets: []
   conditions:
-  - a serious incident is identified in the course of the testing in real world conditions
+    operator: all_of
+    operands:
+    - text: Any serious incident identified in the course of the testing in real world conditions
+      basis_segment_ids: [AIA-TEXT-A060-P020]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-7
   verification_mode: reported_conditionally
   mandatory_content:
   - adopt immediate mitigation measures
   - if immediate mitigation is not adopted, suspend testing until mitigation takes place or terminate
     testing
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P7-RECALL-PROCEDURE
   source: A060-P020
   quote: The provider or prospective provider shall establish a procedure for the prompt recall of the
@@ -502,8 +699,13 @@ records:
     in real world conditions
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P020]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P020]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-7
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A060-P8-NOTIFY-OUTCOMES
@@ -514,8 +716,13 @@ records:
   action: notify the relevant authority of testing suspension or termination and final outcomes
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P021]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P021]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
+  implementation_refs:
+  - AIA-RULE-PO-A60-8
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A060-P9-TESTING-LIABILITY
@@ -525,9 +732,12 @@ records:
   action: bear liability under applicable law for damage caused during real-world testing
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A060-P022]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A060-P022]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Establishes liability consequences rather than an independent product action.
   implementation_mode: none_required

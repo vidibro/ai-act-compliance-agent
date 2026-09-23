@@ -5,7 +5,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P004
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P004
   targets: []
   action: obtain freely given informed consent from the testing subjects before their participation in
     Article 60 testing, after duly informing them with concise, clear, relevant and understandable information
@@ -18,6 +22,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A061-P001
   qualifier_spans:
@@ -26,7 +31,12 @@ norms:
   - AIA-TEXT-A061-P004
   - AIA-TEXT-A061-P005
   - AIA-TEXT-A061-P006
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: For the purpose of testing in real world conditions under Article 60
+      basis_segment_ids:
+      - AIA-TEXT-A061-P001
   exceptions: null
   mandatory_content:
   - the nature and objectives of the testing in real world conditions and the possible inconvenience that
@@ -43,8 +53,9 @@ norms:
     from whom further information can be obtained
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-PO-A61
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -56,18 +67,24 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P004
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P004
   targets: []
   action: date and document the informed consent
   norm_text: The informed consent shall be dated and documented
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A061-P007
   qualifier_spans: []
@@ -78,8 +95,9 @@ norms:
   - documented consent
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-PO-A61
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -91,18 +109,25 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A061-P2-GIVE-CONSENT-COPY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P004
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P004
   targets: []
   action: give a copy of the informed consent to the subjects of testing or their legal representative
-  norm_text: a copy shall be given to the subjects of testing or their legal representative.
+  norm_text: The informed consent shall be dated and documented and a copy shall be given to the subjects
+    of testing or their legal representative.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A061-P007
   qualifier_spans: []
@@ -111,8 +136,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-PO-A61
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -124,3 +150,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI

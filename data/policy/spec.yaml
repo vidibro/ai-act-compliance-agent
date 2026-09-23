@@ -2281,7 +2281,10 @@ rules:
       annex: "IX"
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
-    applies_to_role: [provider]
+    # BOTH PARTIES. Points (h) and (j) bind a deployer taking part in the testing beside the
+    # provider: the roles-and-responsibilities agreement and qualified oversight. The deployer's
+    # report shows those two criteria only.
+    applies_to_role: [provider, deployer]
     # ANNEX IX IS SUPPLIED, because point (c) registers the testing "with the information specified
     # in Annex IX" and the Annex is that information. Without it the registration limb is a
     # pointer to a list nobody reads.
@@ -2320,7 +2323,9 @@ rules:
       (j) Effective oversight of the testing by the provider AND by any participating deployer,
       through persons suitably qualified with the capacity, training and authority to do it.
       (k) Predictions, recommendations and decisions that can be EFFECTIVELY REVERSED AND
-      DISREGARDED. A programme of acts before and around a trial rather than a property of the
+      DISREGARDED. A deployer or prospective deployer taking part owes points (h) and (j) with the
+      provider: the written agreement on roles and responsibilities, and qualified oversight of the
+      testing. A programme of acts before and around a trial rather than a property of the
       technical file — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
@@ -2330,6 +2335,21 @@ rules:
       runs from the general date of 2 August 2026 — ahead of the Chapter III Section 2
       requirements a trial is run to establish. A provider testing on live inputs today owes these
       conditions today, whichever Art. 6 door its system came through.
+    criteria:
+      - norm_id: AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
+      - norm_id: AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
+      - norm_id: AIA-NORM-A060-P4-C-REGISTER-TESTING
+      - norm_id: AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
+      - norm_id: AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
+      - norm_id: AIA-NORM-A060-P4-F-DURATION-LIMIT
+      - norm_id: AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
+      - norm_id: AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
+      - norm_id: AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
+      - norm_id: AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
+      - norm_id: AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
+      - norm_id: AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
+      - norm_id: AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
+      - norm_id: AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
     status: active
 
   - rule_id: AIA-RULE-PO-A60-7
@@ -2364,6 +2384,10 @@ rules:
       runs from the general date of 2 August 2026 — ahead of the Chapter III Section 2
       requirements a trial is run to establish. A provider testing on live inputs today owes these
       conditions today, whichever Art. 6 door its system came through.
+    criteria:
+      - norm_id: AIA-NORM-A060-P7-INCIDENT-RESPONSE
+      - norm_id: AIA-NORM-A060-P7-IMMEDIATE-MITIGATION
+      - norm_id: AIA-NORM-A060-P7-RECALL-PROCEDURE
     status: active
 
   - rule_id: AIA-RULE-PO-A60-8
@@ -2452,6 +2476,10 @@ rules:
       runs from the general date of 2 August 2026 — ahead of the Chapter III Section 2
       requirements a trial is run to establish. A provider testing on live inputs today owes these
       conditions today, whichever Art. 6 door its system came through.
+    criteria:
+      - norm_id: AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
+      - norm_id: AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT
+      - norm_id: AIA-NORM-A061-P2-GIVE-CONSENT-COPY
     status: active
 
   - rule_id: AIA-RULE-PO-A72

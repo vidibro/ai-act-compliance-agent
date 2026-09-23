@@ -335,8 +335,32 @@ def test_the_testing_duties_reach_no_tier_the_article_does_not_govern(spec):
     for rule_id in sorted(_TESTING_RULES):
         rule = next(r for r in spec.rules if r.rule_id == rule_id)
         assert rule.applies_to_risk_class == [RiskClass.HIGH_RISK], rule_id
-        assert rule.applies_to_role == [ActorRole.PROVIDER], rule_id
+        # Art. 60(4)(h) and (j) also bind a deployer taking part; every other testing duty is the
+        # provider's alone.
+        expected = (
+            [ActorRole.PROVIDER, ActorRole.DEPLOYER]
+            if rule_id == "AIA-RULE-PO-A60-4"
+            else [ActorRole.PROVIDER]
+        )
+        assert rule.applies_to_role == expected, rule_id
         assert rule.requires_real_world_testing, rule_id
+
+
+def test_a_deployer_taking_part_in_testing_reads_only_its_own_criteria(spec):
+    """Art. 60(4) is one rule for both parties. The provider reads all fourteen points; a deployer
+    taking part owes the roles-and-responsibilities agreement of (h) and the oversight of (j), and
+    a report that handed it the other twelve would name duties it cannot discharge."""
+    use_case = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
+
+    def testing_rule(role: ActorRole) -> PolicyRule:
+        selected = select_rules(spec, use_case, role, real_world_testing=RealWorldTesting.UNDERWAY)
+        return next(r for r in selected.all_rules if r.rule_id == "AIA-RULE-PO-A60-4")
+
+    assert len(testing_rule(ActorRole.PROVIDER).criteria) == 14
+    assert [c.norm_id for c in testing_rule(ActorRole.DEPLOYER).criteria] == [
+        "AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT",
+        "AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT",
+    ]
 
 
 def test_a_narrowed_duty_names_the_organisations_it_binds(spec):

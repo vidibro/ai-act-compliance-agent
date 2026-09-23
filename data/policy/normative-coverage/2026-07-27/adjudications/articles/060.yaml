@@ -1,0 +1,99 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '60'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 23
+  norms_scanned: 30
+  finding_count: 5
+  audit_sha256: e2c93b45aa0c4871b9693eddad7d1413bc60987a3d04063592a26dfed20d6abe
+decisions:
+- finding_id: AIA-VALID-0B476C6109799346
+  target: AIA-NORM-A060-P1-PRESERVE-PRODUCT-TESTING-LAW
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A060-P003
+  source_sha256: f24c519ed49b7cea613d5a135917dde4c83478dc74382325da4ef05a5fad6006
+  target_sha256: 5f6b154008bcedd536ec56cef7c7713d0423d23fd67ee7589d978e6fbe279da2
+  decision: false_positive
+  reason: The subparagraph is a saving clause. "Without prejudice" keeps Union and national law on real-world
+    testing of Annex I products applying alongside Article 60(1). It takes no case out of the Article
+    60 route and adds none, so there is no exception branch to state.
+  legal_basis:
+  - span_id: AIA-TEXT-A060-P003
+    source_sha256: f24c519ed49b7cea613d5a135917dde4c83478dc74382325da4ef05a5fad6006
+    quote: This paragraph shall be without prejudice to Union or national law on the testing in real world
+      conditions of high-risk AI systems related to products covered by Union harmonisation legislation
+      listed in Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-C42C366E3F9F9FEA
+  target: AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A060-P005
+  source_sha256: aa28fe1dd6d0f24fb1b63c82edc184519780a0cfc55621a606533d1242c9614a
+  target_sha256: f3c813077473b1bc24f0e16e855e6f017fb333b28c7e6606370f299e9aaa44df
+  decision: false_positive
+  reason: Paragraph 3 is a saving clause. "Without prejudice" keeps any ethical review required by Union
+    or national law applying alongside the testing. It takes no case out of Article 60 and adds none,
+    so there is no exception branch to state.
+  legal_basis:
+  - span_id: AIA-TEXT-A060-P005
+    source_sha256: aa28fe1dd6d0f24fb1b63c82edc184519780a0cfc55621a606533d1242c9614a
+    quote: The testing of high-risk AI systems in real world conditions under this Article shall be without
+      prejudice to any ethical review that is required by Union or national law
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-EC36D01E5C6E6EA3
+  target: AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A060-P007
+  source_sha256: c0c0f6241fffe3cede25fa6bea20c9c27e1ea92a4df9ba24f052272603739873
+  target_sha256: 463caf07ba3913960f662597c31ced34988789e4cd9999303fff57a4d947c908
+  decision: false_positive
+  reason: '"Where" here names a place, the Member State in which the testing is conducted, not a circumstance
+    on which the duty depends. The duty holds for every testing under Article 60, so there is no condition
+    on the norm to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A060-P007
+    source_sha256: c0c0f6241fffe3cede25fa6bea20c9c27e1ea92a4df9ba24f052272603739873
+    quote: submitted it to the market surveillance authority in the Member State where the testing in
+      real world conditions is to be conducted
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-A09B40249785F2D7
+  target: AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A060-P011
+  source_sha256: 58ce75aa888864b436fbf4bf3497e44ba163084f5dbe2bf88b0627c1d727fd70
+  target_sha256: 0a1d4a23d39ef31481fbaaf5587a81b8f2b37cd0119062043ac350357fbb5fac
+  decision: false_positive
+  reason: '"Only provided that" states what the duty requires, not when it applies: any transfer of testing
+    data to a third country must have appropriate and applicable Union-law safeguards in place. The duty
+    binds every such transfer, so there is no condition on the norm to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A060-P011
+    source_sha256: 58ce75aa888864b436fbf4bf3497e44ba163084f5dbe2bf88b0627c1d727fd70
+    quote: data collected and processed for the purpose of the testing in real world conditions shall
+      be transferred to third countries only provided that appropriate and applicable safeguards under
+      Union law are implemented
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-D5C9E8A78F8CE7E7
+  target: AIA-NORM-A060-P8-NOTIFY-OUTCOMES
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A060-P021
+  source_sha256: 314c27a59964fb3cb6d51e92e6baf7f597cb608fe0ccd194df5ed5788ee8d237
+  target_sha256: ee5598477f11dd39f3c1754eed21b73f8fa96dd1d1c310bed9ad7507f277e440
+  decision: false_positive
+  reason: '"Where" here names a place, the Member State in which the testing is conducted, not a circumstance
+    on which the duty depends. The duty holds for every testing under Article 60, so there is no condition
+    on the norm to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A060-P021
+    source_sha256: 314c27a59964fb3cb6d51e92e6baf7f597cb608fe0ccd194df5ed5788ee8d237
+    quote: shall notify the national market surveillance authority in the Member State where the testing
+      in real world conditions is to be conducted
+  reviewed_by: vidibro

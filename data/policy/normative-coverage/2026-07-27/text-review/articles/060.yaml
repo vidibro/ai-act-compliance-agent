@@ -46,7 +46,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P1-PRESERVE-PRODUCT-TESTING-LAW
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -128,7 +129,12 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW
+  - AIA-NORM-A060-P5-PRIOR-ACTIVITIES-UNAFFECTED
+  - AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
+  - AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT
+  - AIA-NORM-A061-P2-GIVE-CONSENT-COPY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

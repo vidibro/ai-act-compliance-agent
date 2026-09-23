@@ -4349,6 +4349,34 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A057-P025
+- regime_id: AIA-TEMP-A059-P1-H-LOG-RETENTION
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions:
+  - for the duration of the participation in the sandbox
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A059-P014
+- regime_id: AIA-TEMP-A060-P4-B-TACIT-APPROVAL
+  application_start: '2026-08-02'
+  application_end: null
+  relative_deadline:
+    quantity: 30
+    unit: day
+    trigger: where the market surveillance authority has not provided an answer
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A060-P008
+- regime_id: AIA-TEMP-A060-P4-F-SIX-MONTH-LIMIT
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions:
+  - does not last longer than necessary to achieve its objectives and in any case not longer than six
+    months
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A060-P012
 - regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
   application_start: null
   application_end: null
