@@ -127,7 +127,11 @@ segments:
   - AIA-NORM-A048-P4-FOLLOW-WITH-BODY-NUMBER
   - AIA-NORM-A048-P4-AFFIX-BODY-NUMBER
   - AIA-NORM-A048-P4-PROMOTIONAL-BODY-NUMBER
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES
+  - AIA-NORM-A048-P2-DIGITAL-CE-MARKING
+  - AIA-NORM-A048-P3-AFFIX-CE-MARKING
+  - AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -185,6 +185,18 @@ relations:
   - AIA-TEXT-A016-P013
   detail: The two named Directives supply the substantive accessibility requirements; this Regulation
     records the provider duty but does not reproduce or independently check those requirements.
+- relation_id: AIA-REL-A048-P5-OTHER-LAW-COMPLIANCE-EXTERNAL-REQUIREMENT
+  source_norm_id: AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - other Union law providing for the affixing of the CE marking
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A048-P005
+  detail: The other Union law supplies the requirements the marking must also indicate compliance with;
+    this Regulation records the duty but does not reproduce or independently check them.
 - relation_id: AIA-REL-A048-P1-GENERAL-CE-PRINCIPLES-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES
   kind: carried_by_norms
@@ -4222,6 +4234,14 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A046-P005
+- regime_id: AIA-TEMP-A047-P1-TEN-YEAR-RETENTION
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions:
+  - for 10 years after the high-risk AI system has been placed on the market or put into service
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A047-P001
 - regime_id: AIA-TEMP-A053-CHAPTER-V
   application_start: '2025-08-02'
   application_end: null

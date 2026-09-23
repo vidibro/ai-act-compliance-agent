@@ -1628,6 +1628,10 @@ rules:
       1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
       did not carry it across, is a question for advice rather than for this tool — which reports
       the date the Article gives and says plainly that it looks inverted.
+    criteria:
+      - norm_id: AIA-NORM-A047-P1-DRAW-UP-DECLARATION
+      - norm_id: AIA-NORM-A047-P1-IDENTIFY-SYSTEM
+      - norm_id: AIA-NORM-A047-P1-SUBMIT-ON-REQUEST
     status: active
 
   - rule_id: AIA-RULE-PO-A47-4
@@ -1661,6 +1665,9 @@ rules:
       1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
       did not carry it across, is a question for advice rather than for this tool — which reports
       the date the Article gives and says plainly that it looks inverted.
+    criteria:
+      - norm_id: AIA-NORM-A047-P4-ASSUME-RESPONSIBILITY
+      - norm_id: AIA-NORM-A047-P4-KEEP-CURRENT
     status: active
 
   - rule_id: AIA-RULE-PO-A48
@@ -1735,6 +1742,9 @@ rules:
       1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
       did not carry it across, is a question for advice rather than for this tool — which reports
       the date the Article gives and says plainly that it looks inverted.
+    criteria:
+      - norm_id: AIA-NORM-A047-P2-STATE-SECTION-2-COMPLIANCE
+      - norm_id: AIA-NORM-A047-P2-ANNEX-V-CONTENT
     status: active
 
   # TWO PARAGRAPHS AIA-RULE-PO-A48 DOES NOT REACH. It cites 48(3), which is written for something you
@@ -1809,6 +1819,10 @@ rules:
       1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
       did not carry it across, is a question for advice rather than for this tool — which reports
       the date the Article gives and says plainly that it looks inverted.
+    criteria:
+      - norm_id: AIA-NORM-A048-P4-FOLLOW-WITH-BODY-NUMBER
+      - norm_id: AIA-NORM-A048-P4-AFFIX-BODY-NUMBER
+      - norm_id: AIA-NORM-A048-P4-PROMOTIONAL-BODY-NUMBER
     status: active
 
   - rule_id: AIA-RULE-PO-A49
@@ -2956,6 +2970,9 @@ rules:
       Section 5 and otherwise applies from 2 August 2026, but the registration is triggered by the
       Article 6(3) conclusion. A provider relying on the derogation should take advice rather than
       treat the later date as certain.
+    criteria:
+      - norm_id: AIA-NORM-A006-P4-REGISTER-SYSTEM
+      - norm_id: AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
     status: active
 
   - rule_id: AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT
@@ -3928,6 +3945,7 @@ rules:
       - norm_id: AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
       - norm_id: AIA-NORM-A022-P4-TERMINATE-MANDATE
       - norm_id: AIA-NORM-A022-P4-NOTIFY-TERMINATION
+      - norm_id: AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER
 
   - rule_id: AIA-RULE-IM-A23
     source:
@@ -4893,6 +4911,9 @@ rules:
       Art. 47 sits in Chapter III Section 5, which Art. 113(c) does not name, so 2 August 2026 —
       ahead of the 2 December 2027 start of the Section 2 requirements the declaration attests to.
       As AIA-RULE-PO-A47.
+    criteria:
+      - norm_id: AIA-NORM-A047-P3-SINGLE-DECLARATION
+      - norm_id: AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
     status: active
 
   # THE LIMB A CROSS-REFERENCE DROPS. Art. 6(4) sends a provider that self-assessed out of Annex III

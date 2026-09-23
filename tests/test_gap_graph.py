@@ -275,6 +275,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         "AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION",
         "AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION",
         "AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY",
+        "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
     ]
     assert "AIA-RULE-PO-A17" not in judge.asked
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.

@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A048-P004
   targets: []
   action: apply the Regulation 765/2008 Article 30 general principles to the CE marking
   norm_text: The CE marking shall be subject to the general principles set out in Article 30 of Regulation
@@ -34,11 +36,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A048-P2-DIGITAL-CE-MARKING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A048-P004
   targets: []
   action: use an easily accessible digital CE marking for digitally provided high-risk systems
   norm_text: For high-risk AI systems provided digitally, a digital CE marking shall be used, only if
@@ -54,8 +59,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the marking is easily accessible through the system interface, a machine-readable code, or
-        other electronic means
+    - text: For high-risk AI systems provided digitally
+      basis_segment_ids:
+      - AIA-TEXT-A048-P002
+    - text: only if it can easily be accessed via the interface from which that system is accessed or
+        via an easily accessible machine-readable code or other electronic means
       basis_segment_ids:
       - AIA-TEXT-A048-P002
   exceptions: null
@@ -76,11 +84,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A048-P3-AFFIX-CE-MARKING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A048-P004
   targets: []
   action: affix the CE marking visibly, legibly, and indelibly, using packaging or accompanying documentation
     only where system affixing is impossible or unwarranted
@@ -113,11 +124,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A048-P4-FOLLOW-WITH-BODY-NUMBER
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A048-P004
   targets: []
   action: place the responsible notified body's identification number after the CE marking where applicable
   norm_text: Where applicable, the CE marking shall be followed by the identification number of the notified
@@ -132,7 +146,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a notified body was responsible for the Article 43 conformity assessment procedures
+    - text: Where applicable, the CE marking shall be followed by the identification number of the notified
+        body responsible for the conformity assessment procedures set out in Article 43
       basis_segment_ids:
       - AIA-TEXT-A048-P004
   exceptions: null
@@ -153,11 +168,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A048-P4-AFFIX-BODY-NUMBER
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A048-P004
   targets: []
   action: have the notified-body number affixed by the body or, under its instructions, by the provider
     or authorised representative
@@ -173,7 +191,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a notified body was responsible for the Article 43 conformity assessment procedures
+    - text: Where applicable, the CE marking shall be followed by the identification number of the notified
+        body responsible for the conformity assessment procedures set out in Article 43
       basis_segment_ids:
       - AIA-TEXT-A048-P004
   exceptions: null
@@ -194,11 +213,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A048-P4-PROMOTIONAL-BODY-NUMBER
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A048-P004
   targets: []
   action: include the notified-body number in promotional material claiming CE-marking compliance
   norm_text: The identification number shall also be indicated in any promotional material which mentions
@@ -213,10 +235,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a notified body was responsible for the Article 43 conformity assessment procedures
+    - text: Where applicable, the CE marking shall be followed by the identification number of the notified
+        body responsible for the conformity assessment procedures set out in Article 43
       basis_segment_ids:
       - AIA-TEXT-A048-P004
-    - text: promotional material mentions that the high-risk AI system fulfils the CE marking requirements
+    - text: any promotional material which mentions that the high-risk AI system fulfils the requirements
+        for CE marking
       basis_segment_ids:
       - AIA-TEXT-A048-P004
   exceptions: null
@@ -237,11 +261,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A048-P004
   targets: []
   action: make the CE marking indicate compliance with other applicable CE-marking Union law
   norm_text: Where high-risk AI systems are subject to other Union law which also provides for the affixing
@@ -250,22 +277,26 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A048-P005
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: other applicable Union law also provides for affixing the CE marking
+    - text: Where high-risk AI systems are subject to other Union law which also provides for the affixing
+        of the CE marking
       basis_segment_ids:
       - AIA-TEXT-A048-P005
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A48
+  implementation_reason: What the marking must indicate here is settled by the other Union law that also
+    requires it, so this duty is reported alongside the affixing rule rather than judged.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -276,3 +307,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5

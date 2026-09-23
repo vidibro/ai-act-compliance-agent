@@ -46,7 +46,8 @@ segments:
   norm_ids:
   - AIA-NORM-A049-P1-PROVIDER-REGISTER
   - AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A049-P5-NATIONAL-REGISTRATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

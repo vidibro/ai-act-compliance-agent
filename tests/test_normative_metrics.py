@@ -2214,15 +2214,15 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
-    assert metrics.mapping_shape.one_norm_to_one_target == 38
-    assert metrics.mapping_shape.many_norms_to_one_target == 433
+    assert metrics.mapping_shape.one_norm_to_one_target == 37
+    assert metrics.mapping_shape.many_norms_to_one_target == 436
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 904
-    assert metrics.semantic_vs_existing_implementation_disagreements == 75
+    assert metrics.mapping_shape.unmapped == 902
+    assert metrics.semantic_vs_existing_implementation_disagreements == 73
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2236,8 +2236,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-E-KEEP-LOGS",
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
-        "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
-        "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
         "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
@@ -2301,8 +2299,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
-        "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
         "AIA-NORM-A052-P5-REQUEST-CONTENT",
@@ -2935,16 +2931,28 @@ def test_article_forty_eight_maps_ce_marking_duties():
     assert len(norms) == 7
     assert len(segments[4].norm_ids) == 3
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
-    assert len(mapped) == 5
-    assert all(norm.implementation_mode.value == "compliance_rule" for norm in mapped)
-    missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
-    assert {norm.norm_id for norm in missing} == {"AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE"}
+    # Article 48(5) is reported alongside the affixing rule rather than left unmapped.
+    assert len(mapped) == 6
+    other_law = norms["AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE"]
+    assert all(
+        norm.implementation_mode.value == "compliance_rule"
+        for norm in mapped
+        if norm is not other_law
+    )
+    # The duty bites only where other Union law also requires the marking, and that law settles
+    # what it must indicate, so it is listed rather than judged.
+    assert other_law.implementation_mode.value == "report_only"
+    assert other_law.implementation_refs == ["AIA-RULE-PO-A48"]
+    assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     principles = norms["AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES"]
     assert bundle.norm_inventory.target_norm_ids_for(
         principles.norm_id, NormRelationKind.CARRIED_BY_NORMS
     ) == ["AIA-NORM-A048-P3-AFFIX-CE-MARKING"]
     digital_marking = norms["AIA-NORM-A048-P2-DIGITAL-CE-MARKING"]
-    assert len(digital_marking.conditions) == 1
+    # Both enacted limbs: the system is provided digitally, and the marking is easily accessible.
+    assert len(digital_marking.conditions) == 2
+    assert "provided digitally" in digital_marking.conditions[0]
+    assert "easily be accessed" in digital_marking.conditions[1]
 
 
 def test_article_forty_nine_maps_registration_routes_and_restricted_content():
@@ -2966,11 +2974,14 @@ def test_article_forty_nine_maps_registration_routes_and_restricted_content():
     assert [len(segments[index].norm_ids) for index in (1, 2, 4, 9)] == [2, 2, 1, 2]
     assert all(segments[index].disposition.value == "normative" for index in range(5, 9))
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
-    assert len(mapped) == 6
+    # Article 49(2)'s provider registration reaches AIA-RULE-NHR-A06-4-REGISTER.
+    assert len(mapped) == 7
     assert all(norm.implementation_mode.value == "compliance_rule" for norm in mapped)
-    # The Art. 6(4) rule evidences the documented assessment, not this database entry.
+    # AIA-RULE-NHR-A06-4-REGISTER is the Article 49(2) database entry, distinct from the Article
+    # 6(4) rule that evidences the documented assessment.
     provider_entry = norms["AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK"]
-    assert provider_entry.implementation_mode.value == "missing"
+    assert provider_entry.implementation_mode.value == "compliance_rule"
+    assert provider_entry.implementation_refs == ["AIA-RULE-NHR-A06-4-REGISTER"]
     assert provider_entry.verification_mode.value == "reported_not_judged"
     restricted = norms["AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION"]
     assert len(restricted.mandatory_content) == 5

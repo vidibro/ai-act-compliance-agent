@@ -137,7 +137,11 @@ segments:
   norm_ids:
   - AIA-NORM-A047-P4-ASSUME-RESPONSIBILITY
   - AIA-NORM-A047-P4-KEEP-CURRENT
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A047-P2-STATE-SECTION-2-COMPLIANCE
+  - AIA-NORM-A047-P2-ANNEX-V-CONTENT
+  - AIA-NORM-A047-P3-SINGLE-DECLARATION
+  - AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

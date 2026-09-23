@@ -1,3 +1,11 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A047-P1-TEN-YEAR-RETENTION
+  application_start: 2026-08-02
+  timing_conditions:
+  - for 10 years after the high-risk AI system has been placed on the market or put into service
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A047-P001
 records:
 - norm_id: AIA-NORM-A047-P1-DRAW-UP-DECLARATION
   source: A047-P001
@@ -9,7 +17,9 @@ records:
     placement or service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-A047-P1-TEN-YEAR-RETENTION
   implementation_refs:
   - AIA-RULE-PO-A47
   verification_mode: reported_not_judged
@@ -25,7 +35,9 @@ records:
   action: identify the specific high-risk system covered by the declaration
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47
   verification_mode: reported_not_judged
@@ -37,7 +49,9 @@ records:
   action: submit a declaration copy to relevant national competent authorities on request
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47
   verification_mode: reported_not_judged
@@ -49,7 +63,9 @@ records:
   action: state that the covered high-risk system meets Chapter III Section 2 requirements
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47-2
   verification_mode: reported_not_judged
@@ -63,7 +79,9 @@ records:
     language for authorities in every Member State where the system is placed on the market or made available
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47-2
   verification_mode: reported_not_judged
@@ -81,10 +99,17 @@ records:
     also requires one
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47-3
   verification_mode: reported_not_judged
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where high-risk AI systems are subject to other Union harmonisation legislation which also requires an EU declaration of conformity
+      basis_segment_ids: [AIA-TEXT-A047-P003]
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
   source: A047-P003
@@ -93,10 +118,14 @@ records:
   action: include all information needed to identify every Union harmonisation law covered
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P004]
   targets: []
   conditions:
-  - the high-risk AI system is subject to other Union harmonisation legislation which also requires an
-    EU declaration of conformity
+    operator: all_of
+    operands:
+    - text: Where high-risk AI systems are subject to other Union harmonisation legislation which also requires an EU declaration of conformity
+      basis_segment_ids: [AIA-TEXT-A047-P003]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47-3
   verification_mode: reported_not_judged
@@ -108,7 +137,9 @@ records:
   action: assume responsibility for Section 2 compliance by drawing up the declaration
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47-4
   verification_mode: reported_not_judged
@@ -119,7 +150,9 @@ records:
   action: keep the declaration of conformity current as appropriate
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A47-4
   verification_mode: reported_not_judged
@@ -132,8 +165,10 @@ records:
   action: amend Annex V declaration content to introduce elements required by technical progress
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A047-P005]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

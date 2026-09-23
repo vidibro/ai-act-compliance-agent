@@ -1,0 +1,58 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '49'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 11
+  norms_scanned: 9
+  finding_count: 2
+  audit_sha256: 858ec0c382f3d38c9f4c1200cfb3c1fc0e0b677ce64398b1164ac10dcc7a9ab5
+decisions:
+- finding_id: AIA-VALID-B840A53B8F2381D8
+  target: AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION:actor:operator:AIA-TEXT-A049-P004
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A049-P004
+  source_sha256: 651fb389bdd18adbed9032ea18ee85e274981281eb36216ad979cad48a45ac32
+  target_sha256: dde576e10c85ad1aab2bf4c4ac51fd36c003521824b3d111cfe08d4d443f60de
+  decision: accepted_with_basis
+  reason: >-
+    The paragraph names no party. It speaks of "the registration referred to in paragraphs 1, 2 and
+    3 of this Article", so the duty-holder is whoever those paragraphs bind: the provider and, where
+    applicable, the authorised representative under paragraphs 1 and 2, and the public-authority
+    deployer under paragraph 3. "Operator" is the Act's collective noun for those parties, and the
+    paragraph uses the cross-reference in its place, so no span of it can name the actor.
+  legal_basis:
+  - span_id: AIA-TEXT-A049-P001
+    source_sha256: 0603cf2b80910ead6d2bf60fa0fade855eaece813289be7785a0eab88f832ba8
+    quote: the provider or, where applicable, the authorised representative shall register themselves
+      and their system in the EU database referred to in Article 71
+  - span_id: AIA-TEXT-A049-P003
+    source_sha256: 581f5ab9f4acbfbcad4d5dcc7e4c9f0ee2bdc20dca2631fe3a2c8221a2205dcc
+    quote: deployers that are public authorities, Union institutions, bodies, offices or agencies or
+      persons acting on their behalf shall register themselves, select the system and register its use
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-AD6281E9B50D7198
+  target: AIA-NORM-A049-P4-NATIONAL-AUTHORITY-ACCESS:actor:national_competent_authority:AIA-TEXT-A049-P009
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A049-P009
+  source_sha256: f49acad7635ca911c51268d6d0b2476b112861cc925b5b02b42a589064f7ec85
+  target_sha256: 6d130d4973f200867f75fe3fc5bf3f4a7f4e889c3b55f6920aad6e726bb67022
+  decision: accepted_with_basis
+  reason: >-
+    The sentence says "national authorities referred to in Article 74(8)" rather than the settled
+    label. It is a cross-reference rather than a shorter synonym, so the label cannot be matched
+    against this span and adding the phrase as a term would let an Article 74(8) reference evidence
+    this actor anywhere it appears.
+  legal_basis:
+  - span_id: AIA-TEXT-A049-P009
+    source_sha256: f49acad7635ca911c51268d6d0b2476b112861cc925b5b02b42a589064f7ec85
+    quote: Only the Commission and national authorities referred to in Article 74(8) shall have access
+      to the respective restricted sections of the EU database
+  reviewed_by: vidibro

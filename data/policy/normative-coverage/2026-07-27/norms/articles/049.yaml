@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A049-P001
   targets: []
   action: register itself and the Annex III high-risk system in the Article 71 EU database before market
     placement or putting into service
@@ -22,10 +24,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the system is high-risk and listed in Annex III other than point 2
-      basis_segment_ids:
-      - AIA-TEXT-A049-P001
-    - text: registration occurs before placing on the market or putting into service
+    - text: Before placing on the market or putting into service a high-risk AI system listed in Annex
+        III, with the exception of high-risk AI systems referred to in point 2 of Annex III
       basis_segment_ids:
       - AIA-TEXT-A049-P001
   exceptions: null
@@ -46,11 +46,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A049-P001
   targets: []
   action: register itself and the Annex III high-risk system in the Article 71 EU database where the registration
     falls to the representative
@@ -68,13 +71,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the system is high-risk and listed in Annex III other than point 2
+    - text: Before placing on the market or putting into service a high-risk AI system listed in Annex
+        III, with the exception of high-risk AI systems referred to in point 2 of Annex III
       basis_segment_ids:
       - AIA-TEXT-A049-P001
-    - text: the representative is applicable for the registration
-      basis_segment_ids:
-      - AIA-TEXT-A049-P001
-    - text: registration occurs before placing on the market or putting into service
+    - text: where applicable, the authorised representative
       basis_segment_ids:
       - AIA-TEXT-A049-P001
   exceptions: null
@@ -95,11 +96,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A049-P002
   targets: []
   action: register itself and the system concluded not high-risk under Article 6(3) in the Article 71
     EU database
@@ -110,26 +114,25 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A049-P002
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the provider concluded under Article 6(3) that the system is not high-risk
-      basis_segment_ids:
-      - AIA-TEXT-A049-P002
-    - text: registration occurs before placing on the market or putting into service
+    - text: Before placing on the market or putting into service an AI system for which the provider has
+        concluded that it is not high-risk according to Article 6(3)
       basis_segment_ids:
       - AIA-TEXT-A049-P002
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: Article 6(4)'s rule evidences the documented assessment, not this EU-database
-    entry, which no submitted document can show.
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-NHR-A06-4-REGISTER
+  implementation_reason: ''
   verification_mode: reported_not_judged
   review:
     status: approved
@@ -140,11 +143,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A049-P002
   targets: []
   action: register itself and the system concluded not high-risk under Article 6(3) in the Article 71
     EU database where applicable
@@ -162,13 +168,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider concluded under Article 6(3) that the system is not high-risk
+    - text: Before placing on the market or putting into service an AI system for which the provider has
+        concluded that it is not high-risk according to Article 6(3)
       basis_segment_ids:
       - AIA-TEXT-A049-P002
-    - text: the representative is applicable for the registration
-      basis_segment_ids:
-      - AIA-TEXT-A049-P002
-    - text: registration occurs before placing on the market or putting into service
+    - text: where applicable, the authorised representative
       basis_segment_ids:
       - AIA-TEXT-A049-P002
   exceptions: null
@@ -189,11 +193,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P3-DEPLOYER-REGISTER-USE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A049-P003
   targets: []
   action: register itself, select the system, and register its use in the Article 71 EU database before
     service or use
@@ -211,14 +218,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the deployer is a public authority, Union institution, body, office or agency, or acts on
-        its behalf
+    - text: deployers that are public authorities, Union institutions, bodies, offices or agencies or
+        persons acting on their behalf
       basis_segment_ids:
       - AIA-TEXT-A049-P003
-    - text: the system is high-risk and listed in Annex III other than point 2
-      basis_segment_ids:
-      - AIA-TEXT-A049-P003
-    - text: registration occurs before putting into service or use
+    - text: Before putting into service or using a high-risk AI system listed in Annex III, with the exception
+        of high-risk AI systems listed in point 2 of Annex III
       basis_segment_ids:
       - AIA-TEXT-A049-P003
   exceptions: null
@@ -239,11 +244,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A049-P004
   targets: []
   action: lodge the applicable registration in a secure non-public section of the Article 71 EU database
     and limit it to the enacted Annex VIII and Annex IX information
@@ -266,8 +274,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or
-        border-control management
+    - text: For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law
+        enforcement, migration, asylum and border control management
       basis_segment_ids:
       - AIA-TEXT-A049-P004
   exceptions: null
@@ -293,11 +301,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P4-COMMISSION-ACCESS
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A049-P009
   targets: []
   action: access the respective restricted sections of the EU database
   norm_text: Only the Commission and national authorities referred to in Article 74(8) shall have access
@@ -327,11 +338,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P4-NATIONAL-AUTHORITY-ACCESS
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A049-P009
   targets: []
   action: access the respective restricted sections of the EU database
   norm_text: Only the Commission and national authorities referred to in Article 74(8) shall have access
@@ -361,11 +375,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-A049-P5-NATIONAL-REGISTRATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A049-P001
   targets: []
   action: register Annex III point 2 high-risk systems at national level
   norm_text: High-risk AI systems referred to in point 2 of Annex III shall be registered at national
@@ -380,7 +397,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk system is referred to in Annex III point 2
+    - text: High-risk AI systems referred to in point 2 of Annex III
       basis_segment_ids:
       - AIA-TEXT-A049-P010
   exceptions: null
@@ -401,3 +418,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5

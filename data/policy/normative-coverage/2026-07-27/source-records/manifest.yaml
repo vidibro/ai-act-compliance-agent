@@ -271,6 +271,17 @@ norm_relations:
     detail: >-
       The two named Directives supply the substantive accessibility requirements; this Regulation
       records the provider duty but does not reproduce or independently check those requirements.
+  # Article 48(5) only bites where OTHER Union law also requires the CE marking, and that law is
+  # what settles what the marking must then indicate.
+  - relation_id: AIA-REL-A048-P5-OTHER-LAW-COMPLIANCE-EXTERNAL-REQUIREMENT
+    source_norm_id: AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE
+    kind: subject_to_external_requirements
+    external_requirements:
+      - other Union law providing for the affixing of the CE marking
+    legal_basis_spans: [AIA-TEXT-A048-P005]
+    detail: >-
+      The other Union law supplies the requirements the marking must also indicate compliance with;
+      this Regulation records the duty but does not reproduce or independently check them.
   - {relation_id: AIA-REL-A048-P1-GENERAL-CE-PRINCIPLES-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A048-P3-AFFIX-CE-MARKING], legal_basis_spans: [AIA-TEXT-A048-P001]}
   - {relation_id: AIA-REL-A008-P1-COMPLY-SECTION-REQUIREMENTS-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A016-A-SECTION-2-COMPLIANCE], legal_basis_spans: [AIA-TEXT-A008-P001]}
   - {relation_id: AIA-REL-A016-J-CORRECTIVE-ACTION-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A016-J-CORRECTIVE-ACTION, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A020-P1-CORRECTIVE-RESPONSE, AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN, AIA-NORM-A020-P2-INVESTIGATE-RISK], legal_basis_spans: [AIA-TEXT-A016-P011]}

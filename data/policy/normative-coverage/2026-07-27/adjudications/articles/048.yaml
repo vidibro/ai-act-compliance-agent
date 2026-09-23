@@ -1,0 +1,46 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '48'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 6
+  norms_scanned: 7
+  finding_count: 2
+  audit_sha256: ae90be7cc1d2a00cfa980eb22e59d8a1f167d12cdd661902378bec7bd431ee93
+decisions:
+- finding_id: AIA-VALID-38899F783F3B78B6
+  target: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A048-P001
+  source_sha256: ad2d319f1ca31a5fe8c3931efb8f904793e13593ce1fd9dd195a8663736ddb56
+  target_sha256: e75f18af0f6e6dc921592127838eec8a0f078d49f49fe3f036fa6a062a74da52
+  decision: false_positive
+  reason: >-
+    The cue is "subject to" in "The CE marking shall be subject to the general principles set out in
+    Article 30 of Regulation (EC) No 765/2008". There it means governed by, not conditional on: the
+    sentence says which body of law reads the marking, and names no circumstance in which the
+    marking is or is not required. A condition here would invent a trigger the paragraph does not
+    state.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-4FE62E11DC3DB582
+  target: AIA-NORM-A048-P3-AFFIX-CE-MARKING
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A048-P003
+  source_sha256: e794dbcb933c4d83f7ccb8bade2731f530a57009384bdd87e02b51acbccded22
+  target_sha256: 5ab0b55f38717ddcab2e12c745e72e38369ab7007ba0bbaea919c8bfbb67f1b3
+  decision: false_positive
+  reason: >-
+    The cue is "Where that is not possible or not warranted on account of the nature of the high-risk
+    AI system", and it governs WHERE the marking goes, not WHETHER it is owed. The duty to affix is
+    unconditional; the clause only moves the marking to the packaging or the accompanying
+    documentation. Recorded as a condition it would read that the marking is required only when
+    affixing it to the system is impossible, which inverts the paragraph. The alternative placement
+    is retained in the norm's action instead.
+  reviewed_by: vidibro

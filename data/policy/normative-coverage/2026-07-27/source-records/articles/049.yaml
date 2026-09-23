@@ -9,10 +9,14 @@ records:
     placement or putting into service
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A049-P001]
   targets: []
   conditions:
-  - the system is high-risk and listed in Annex III other than point 2
-  - registration occurs before placing on the market or putting into service
+    operator: all_of
+    operands:
+    - text: Before placing on the market or putting into service a high-risk AI system listed in Annex III, with the exception of high-risk AI systems referred to in point 2 of Annex III
+      basis_segment_ids: [AIA-TEXT-A049-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A49
   verification_mode: reported_not_judged
@@ -27,11 +31,16 @@ records:
     falls to the representative
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A049-P001]
   targets: []
   conditions:
-  - the system is high-risk and listed in Annex III other than point 2
-  - the representative is applicable for the registration
-  - registration occurs before placing on the market or putting into service
+    operator: all_of
+    operands:
+    - text: Before placing on the market or putting into service a high-risk AI system listed in Annex III, with the exception of high-risk AI systems referred to in point 2 of Annex III
+      basis_segment_ids: [AIA-TEXT-A049-P001]
+    - text: where applicable, the authorised representative
+      basis_segment_ids: [AIA-TEXT-A049-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-AR-A22
   verification_mode: reported_not_judged
@@ -46,13 +55,17 @@ records:
     EU database
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A049-P002]
   targets: []
   conditions:
-  - the provider concluded under Article 6(3) that the system is not high-risk
-  - registration occurs before placing on the market or putting into service
-  implementation_mode: missing
-  implementation_reason: Article 6(4)'s rule evidences the documented assessment, not this EU-database
-    entry, which no submitted document can show.
+    operator: all_of
+    operands:
+    - text: Before placing on the market or putting into service an AI system for which the provider has concluded that it is not high-risk according to Article 6(3)
+      basis_segment_ids: [AIA-TEXT-A049-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-NHR-A06-4-REGISTER
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
@@ -65,11 +78,16 @@ records:
     EU database where applicable
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A049-P002]
   targets: []
   conditions:
-  - the provider concluded under Article 6(3) that the system is not high-risk
-  - the representative is applicable for the registration
-  - registration occurs before placing on the market or putting into service
+    operator: all_of
+    operands:
+    - text: Before placing on the market or putting into service an AI system for which the provider has concluded that it is not high-risk according to Article 6(3)
+      basis_segment_ids: [AIA-TEXT-A049-P002]
+    - text: where applicable, the authorised representative
+      basis_segment_ids: [AIA-TEXT-A049-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-AR-A49-2
   verification_mode: reported_not_judged
@@ -84,11 +102,16 @@ records:
     service or use
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A049-P003]
   targets: []
   conditions:
-  - the deployer is a public authority, Union institution, body, office or agency, or acts on its behalf
-  - the system is high-risk and listed in Annex III other than point 2
-  - registration occurs before putting into service or use
+    operator: all_of
+    operands:
+    - text: deployers that are public authorities, Union institutions, bodies, offices or agencies or persons acting on their behalf
+      basis_segment_ids: [AIA-TEXT-A049-P003]
+    - text: Before putting into service or using a high-risk AI system listed in Annex III, with the exception of high-risk AI systems listed in point 2 of Annex III
+      basis_segment_ids: [AIA-TEXT-A049-P003]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-DP-A49-3
   verification_mode: reported_not_judged
@@ -104,10 +127,14 @@ records:
     and limit it to the enacted Annex VIII and Annex IX information
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A049-P004]
   targets: []
   conditions:
-  - the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or border-control
-    management
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law enforcement, migration, asylum and border control management
+      basis_segment_ids: [AIA-TEXT-A049-P004]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-ALL-A49-4
   verification_mode: reported_not_judged
@@ -130,8 +157,10 @@ records:
   action: access the respective restricted sections of the EU database
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A049-P009]
   targets: []
   kind: entitlement
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -144,8 +173,10 @@ records:
   action: access the respective restricted sections of the EU database
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A049-P009]
   targets: []
   kind: entitlement
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -157,9 +188,14 @@ records:
   action: register Annex III point 2 high-risk systems at national level
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A049-P001]
   targets: []
   conditions:
-  - the high-risk system is referred to in Annex III point 2
+    operator: all_of
+    operands:
+    - text: High-risk AI systems referred to in point 2 of Annex III
+      basis_segment_ids: [AIA-TEXT-A049-P010]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-PO-A49-5
   verification_mode: reported_not_judged
