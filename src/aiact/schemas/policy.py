@@ -117,6 +117,12 @@ class RuleCriterion(BaseModel):
             raise ValueError("criterion cannot name actors and apply to all actors")
         return self
 
+    def owed_by(self, role: ActorRole) -> bool:
+        """Whether `role` owes this criterion, directly or through a collective noun."""
+        return self.applies_to_all_actors or any(
+            role in ActorRole(actor).covered_roles for actor in self.actors
+        )
+
     @property
     def mandatory(self) -> bool:
         """Whether the rule can pass only if this criterion passes.
@@ -395,15 +401,15 @@ class PolicyRule(BaseModel):
             )
         # One rule may bind several roles, with each criterion owed by its own duty-holders: Art.
         # 60(4)(h) and (j) bind the deployer beside the provider, the rest the provider alone. Each
-        # role is then reported only the criteria it owes, so a criterion must name one of the
-        # rule's roles, and every role must owe at least one criterion.
-        roles = {role.value for role in self.applies_to_role}
+        # role is then reported only the criteria it owes, so a criterion must be owed by one of
+        # the rule's roles, and every role must owe at least one criterion.
         for criterion in self.criteria:
-            if not criterion.applies_to_all_actors and not roles & set(criterion.actors):
+            if not any(criterion.owed_by(role) for role in self.applies_to_role):
                 raise ValueError(
                     f"PolicyRule {self.rule_id!r}: criterion {criterion.norm_id} names actors "
-                    f"{criterion.actors}, none of which is in applies_to_role {sorted(roles)}, "
-                    "so no report could show it."
+                    f"{criterion.actors}, none of which is or covers a role in applies_to_role "
+                    f"{sorted(role.value for role in self.applies_to_role)}, so no report could "
+                    "show it."
                 )
         for role in self.applies_to_role:
             if self.criteria and not self.criteria_for(role):
@@ -424,11 +430,7 @@ class PolicyRule(BaseModel):
 
     def criteria_for(self, role: ActorRole) -> list[RuleCriterion]:
         """The criteria `role` owes, in the rule's order."""
-        return [
-            criterion
-            for criterion in self.criteria
-            if criterion.applies_to_all_actors or role.value in criterion.actors
-        ]
+        return [criterion for criterion in self.criteria if criterion.owed_by(role)]
 
     def for_role(self, role: ActorRole) -> PolicyRule:
         """This rule as `role` reads it: only the criteria that role owes."""

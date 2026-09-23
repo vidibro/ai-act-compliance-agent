@@ -284,10 +284,11 @@ def build_graph(
                 # reader's own activated duty, and filtering on that actor would delete it from
                 # every report instead of moving it to another one.
                 exact_actor_roles = {
-                    ActorRole(actor)
+                    covered
                     for actor in report_norm.actors
                     if actor in {role.value for role in ActorRole}
                     and ActorRole(actor).category is ActorCategory.SUPPORTED_OPERATOR
+                    for covered in ActorRole(actor).covered_roles
                 }
                 if (
                     not report_norm.applies_to_all_actors

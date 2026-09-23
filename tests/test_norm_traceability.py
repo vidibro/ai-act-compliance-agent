@@ -768,8 +768,29 @@ def test_a_rule_may_bind_several_roles_and_each_reads_only_what_it_owes(spec):
 
 
 def test_a_criterion_no_role_of_the_rule_owes_is_refused(spec):
-    with pytest.raises(ValueError, match="none of which is in applies_to_role"):
+    with pytest.raises(ValueError, match="none of which is or covers a role in applies_to_role"):
         PolicyRule.model_validate(_rule_with(spec, ["provider"], [["provider"], ["deployer"]]))
+
+
+def test_an_operator_criterion_is_owed_by_every_role_it_covers(spec):
+    """Art. 3(8) makes "operator" the collective noun for six roles, so a duty the Act addresses
+    to operators is owed by each role of the rule that it covers, and each reads it."""
+    rule = PolicyRule.model_validate(
+        _rule_with(spec, ["provider", "deployer"], [["operator"], ["provider"]])
+    )
+    assert [c.norm_id for c in rule.for_role(ActorRole.DEPLOYER).criteria] == [
+        rule.criteria[0].norm_id
+    ]
+    assert rule.for_role(ActorRole.PROVIDER) is rule
+    assert ActorRole.OPERATOR.covered_roles == {
+        ActorRole.PROVIDER,
+        ActorRole.PRODUCT_MANUFACTURER,
+        ActorRole.DEPLOYER,
+        ActorRole.AUTHORISED_REPRESENTATIVE,
+        ActorRole.IMPORTER,
+        ActorRole.DISTRIBUTOR,
+    }
+    assert ActorRole.PROVIDER.covered_roles == {ActorRole.PROVIDER}
 
 
 def test_a_role_that_owes_no_criterion_is_refused(spec):

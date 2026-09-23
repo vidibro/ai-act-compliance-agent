@@ -608,6 +608,28 @@ class ActorRole(StrEnum):
             self, (self.value.replace("_", " "),)
         )
 
+    @property
+    def covered_roles(self) -> frozenset["ActorRole"]:
+        """The roles this actor stands for: itself, or the parties a collective noun names."""
+        return _COLLECTIVE_ROLES.get(self, frozenset({self}))
+
+
+# Art. 3(8): "'operator' means a provider, product manufacturer, deployer, authorised
+# representative, importer or distributor". The Act's collective noun, never a party of its own, so
+# a duty it addresses to operators is owed by each of these roles.
+_COLLECTIVE_ROLES: dict[ActorRole, frozenset[ActorRole]] = {
+    ActorRole.OPERATOR: frozenset(
+        {
+            ActorRole.PROVIDER,
+            ActorRole.PRODUCT_MANUFACTURER,
+            ActorRole.DEPLOYER,
+            ActorRole.AUTHORISED_REPRESENTATIVE,
+            ActorRole.IMPORTER,
+            ActorRole.DISTRIBUTOR,
+        }
+    ),
+}
+
 
 _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
     # Arts. 60(5) and 61 name the people tested by their part in the test, never by a noun.
