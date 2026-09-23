@@ -4677,19 +4677,17 @@ temporal_regimes:
   - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A080-P003
 - regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   qualitative_deadline:
     kind: without_undue_delay
     trigger: null
-  timing_conditions:
-  - within three months of receipt of the notification referred to in Article 79(5)
-  - within 30 days in the case of non-compliance with the prohibition of the AI practices referred to
-    in Article 5
+  timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A081-P001
 - regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIX-MONTHS
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   relative_deadline:
     quantity: 6
@@ -4697,9 +4695,10 @@ temporal_regimes:
     trigger: notification referred to in Article 79(5)
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A081-P001
 - regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIXTY-DAYS
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   relative_deadline:
     quantity: 60
@@ -4707,7 +4706,59 @@ temporal_regimes:
     trigger: notification referred to in Article 79(5)
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A081-P001
+- regime_id: AIA-TEMP-A082-P1-REQUIRE-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions:
+  - within a period it may prescribe
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P001
+- regime_id: AIA-TEMP-A082-P3-INFORM-IMMEDIATELY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P003
+- regime_id: AIA-TEMP-A082-P4-CONSULT-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P004
+- regime_id: AIA-TEMP-A082-P5-COMMUNICATE-IMMEDIATELY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P005
+- regime_id: AIA-TEMP-A083-P2-RESTRICT-WITHOUT-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A083-P009
 - regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
   application_start: null
   application_end: null

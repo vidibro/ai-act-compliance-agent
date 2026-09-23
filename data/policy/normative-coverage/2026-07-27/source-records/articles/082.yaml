@@ -1,3 +1,34 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A082-P1-REQUIRE-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  timing_conditions:
+  - within a period it may prescribe
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P001
+- regime_id: AIA-TEMP-A082-P3-INFORM-IMMEDIATELY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: immediately
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P003
+- regime_id: AIA-TEMP-A082-P4-CONSULT-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P004
+- regime_id: AIA-TEMP-A082-P5-COMMUNICATE-IMMEDIATELY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: immediately
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A082-P005
 records:
 - norm_id: AIA-NORM-A082-P1-REQUIRE-RISK-REMOVAL
   source: A082-P001
@@ -8,23 +39,27 @@ records:
     protection, it shall require the relevant operator to take all appropriate measures to ensure that
     the AI system concerned, when placed on the market or put into service, no longer presents that risk
     without undue delay, within a period it may prescribe.
-  action: require appropriate timely measures eliminating a compliant high-risk system's public-interest
-    risk
+  action: require, without undue delay and within a period it may prescribe, appropriate measures eliminating
+    a compliant high-risk system's public-interest risk
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A082-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-A082-P1-REQUIRE-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the market-surveillance authority has performed an Article 79 evaluation
-    - the market-surveillance authority has consulted the relevant Article 77(1) national public authority
-    - the authority finds that a compliant high-risk AI system nevertheless presents a risk to health
-      or safety, fundamental rights, or another aspect of public-interest protection
+    - text: having performed an evaluation under Article 79
+      basis_segment_ids: [AIA-TEXT-A082-P001]
+    - text: after consulting the relevant national public authority referred to in Article 77(1)
+      basis_segment_ids: [AIA-TEXT-A082-P001]
+    - text: the market surveillance authority of a Member State finds that although a high-risk AI system complies with this Regulation, it nevertheless presents a risk to the health or safety of persons, to fundamental rights, or to other aspects of public interest protection
+      basis_segment_ids: [AIA-TEXT-A082-P001]
 - norm_id: AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS
   source: A082-P002
   quote: The provider or other relevant operator shall ensure that corrective action is taken in respect
@@ -34,8 +69,11 @@ records:
     the authority's timeline
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A082-P002]
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A082-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-ALL-A82
   verification_mode: reported_not_judged
@@ -48,12 +86,14 @@ records:
   action: immediately report the finding with system supply-chain risk and national-measure details
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A082-P003]
   targets: []
   mandatory_content:
   - system identification data
   - system origin and supply chain
   - nature of the risk
   - nature and duration of national measures
+  temporal_regime_id: AIA-TEMP-A082-P3-INFORM-IMMEDIATELY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -63,10 +103,12 @@ records:
   source: A082-P004
   quote: The Commission shall without undue delay enter into consultation with the Member States concerned
     and the relevant operators, and shall evaluate the national measures taken.
-  action: promptly consult concerned Member States and operators and evaluate national measures
+  action: consult concerned Member States and operators without undue delay and evaluate national measures
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A082-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-A082-P4-CONSULT-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -79,14 +121,14 @@ records:
   action: decide whether the measure is justified and propose other appropriate measures where necessary
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A082-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - the decision is based on the results of the evaluation
 - norm_id: AIA-NORM-A082-P5-COMMUNICATE-DECISION
   source: A082-P005
   quote: The Commission shall immediately communicate its decision to the Member States concerned and
@@ -94,7 +136,9 @@ records:
   action: immediately communicate the decision to the Member States concerned and to the relevant operators
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A082-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-A082-P5-COMMUNICATE-IMMEDIATELY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -106,7 +150,9 @@ records:
   action: inform the other Member States of the decision
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A082-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

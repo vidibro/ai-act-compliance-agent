@@ -1,0 +1,49 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '81'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 4
+  norms_scanned: 8
+  finding_count: 2
+  audit_sha256: f1926a7dced53e4e35038f4c0ca061445b51aa1511ab505fed72ee15315c72a4
+decisions:
+- finding_id: AIA-VALID-5B744A724430E6EC
+  target: AIA-NORM-A081-P1-CONSULT-AND-EVALUATE:temporal:AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
+  rule: temporal_relative_deadline_missing
+  source_ref: AIA-TEXT-A081-P001
+  source_sha256: 0de113063e951be158de26622d1436950d0c996c4ef011758818aa75b87b92a3
+  target_sha256: 2b61478cdb25d466989ecf9688db08cc42bdee337cd99a1038720a5665aff1e3
+  decision: false_positive
+  reason: '"Within 30 days" is the window for raising an objection, and the norm''s condition keeps it
+    with the three-month window beside it. The Commission''s own deadline to consult and evaluate is "without
+    undue delay", which the regime records. There is no relative deadline on this duty.'
+  legal_basis:
+  - span_id: AIA-TEXT-A081-P001
+    source_sha256: 0de113063e951be158de26622d1436950d0c996c4ef011758818aa75b87b92a3
+    quote: Where, within three months of receipt of the notification referred to in Article 79(5), or
+      within 30 days in the case of non-compliance with the prohibition of the AI practices referred to
+      in Article 5, objections are raised
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-08B7955FCC4AC147
+  target: AIA-NORM-A081-P2-TAKE-JUSTIFIED-RESTRICTIONS:temporal:AIA-TEMP-CHAPTER-IX
+  rule: temporal_qualitative_deadline_missing
+  source_ref: AIA-TEXT-A081-P002
+  source_sha256: 95feaeccf1cd03628d3659d4b9f3bacb4b42783358c9655140ea5914f9f4a867
+  target_sha256: c2d3b61f4327c6f59a44b5593059dfe41ce9d6d7f55af73c5dac813517df9d28
+  decision: accepted_with_basis
+  reason: '"Without undue delay" belongs to the example the paragraph gives, requiring withdrawal of the
+    system from the market. It is not a deadline on every appropriate restrictive measure, so the norm
+    takes the Chapter IX date with no deadline of its own.'
+  legal_basis:
+  - span_id: AIA-TEXT-A081-P002
+    source_sha256: 95feaeccf1cd03628d3659d4b9f3bacb4b42783358c9655140ea5914f9f4a867
+    quote: such as requiring the withdrawal of the AI system from their market without undue delay
+  reviewed_by: vidibro

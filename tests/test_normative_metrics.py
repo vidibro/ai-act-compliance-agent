@@ -4530,7 +4530,7 @@ def test_article_eighty_three_keeps_formal_defects_as_one_enforcement_cycle():
     formal = norms["AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE"]
     assert not formal.mandatory_content
     assert len(formal.qualifier_spans) == 7
-    triggers = formal.conditions[0]
+    triggers = formal.conditions
     assert isinstance(triggers, LogicalExpression) and triggers.operator == "any_of"
     assert len(triggers.operands) == 7
 

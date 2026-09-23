@@ -1,25 +1,28 @@
 temporal_regimes:
 - regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
   qualitative_deadline:
     kind: without_undue_delay
-  timing_conditions:
-  - within three months of receipt of the notification referred to in Article 79(5)
-  - within 30 days in the case of non-compliance with the prohibition of the AI practices referred to in Article 5
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A081-P001
 - regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIX-MONTHS
+  application_start: 2026-08-02
   relative_deadline:
     quantity: 6
     unit: month
     trigger: notification referred to in Article 79(5)
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A081-P001
 - regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIXTY-DAYS
+  application_start: 2026-08-02
   relative_deadline:
     quantity: 60
     unit: day
     trigger: notification referred to in Article 79(5)
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A081-P001
 norm_relations:
 - relation_id: AIA-REL-A081-P1-DECIDE-ALTERNATIVE-DEADLINES
@@ -43,6 +46,7 @@ records:
     national measure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A081-P001]
   targets: []
   temporal_regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
@@ -51,24 +55,27 @@ records:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
     - operator: all_of
       operands:
-      - a Member State market-surveillance authority objects to a measure taken by another market-surveillance
-        authority
       - operator: any_of
         operands:
-        - the objection is raised within three months after receipt of the Article 79(5) notification
-        - the objection concerns Article 5 prohibited-practice non-compliance and is raised within 30
-          days after receipt of the Article 79(5) notification
-    - the Commission considers the measure contrary to Union law
+        - text: Where, within three months of receipt of the notification referred to in Article 79(5)
+          basis_segment_ids: [AIA-TEXT-A081-P001]
+        - text: within 30 days in the case of non-compliance with the prohibition of the AI practices referred to in Article 5
+          basis_segment_ids: [AIA-TEXT-A081-P001]
+      - text: objections are raised by the market surveillance authority of a Member State to a measure taken by another market surveillance authority
+        basis_segment_ids: [AIA-TEXT-A081-P001]
+    - text: where the Commission considers the measure to be contrary to Union law
+      basis_segment_ids: [AIA-TEXT-A081-P001]
 - norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIX-MONTHS
   source: A081-P001
   quote: the Commission shall, within six months
   action: decide whether the national measure is justified within six months of the Article 79(5) notification
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A081-P001]
   targets: []
   qualifier_spans:
   - A081-P001
@@ -78,15 +85,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - the decision is based on the results of the evaluation
-  - the measure does not concern Article 5 prohibited-practice non-compliance
 - norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIXTY-DAYS
   source: A081-P001
   quote: within 60 days
   action: decide whether the national measure is justified within 60 days of the Article 79(5) notification
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A081-P001]
   targets: []
   qualifier_spans:
   - A081-P001
@@ -97,29 +102,35 @@ records:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the decision is based on the results of the evaluation
-  - the measure concerns Article 5 prohibited-practice non-compliance
+    operator: all_of
+    operands:
+    - text: in the case of non-compliance with the prohibition of the AI practices referred to in Article 5
+      basis_segment_ids: [AIA-TEXT-A081-P001]
 - norm_id: AIA-NORM-A081-P1-NOTIFY-DECISION
   source: A081-P001
   quote: shall notify its decision to the market surveillance authority of the Member State concerned.
   action: notify the decision to the market surveillance authority of the Member State concerned
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A081-P001]
   targets: []
+  qualifier_spans:
+  - A081-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - the Commission has decided whether the national measure is justified
 - norm_id: AIA-NORM-A081-P1-INFORM-OTHER-AUTHORITIES
   source: A081-P001
   quote: The Commission shall also inform all other market surveillance authorities of its decision.
   action: inform all other market surveillance authorities of the decision
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A081-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -135,14 +146,19 @@ records:
     measure is justified
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A081-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission considers the measure taken by the relevant Member State justified
+    operator: all_of
+    operands:
+    - text: Where the Commission considers the measure taken by the relevant Member State to be justified
+      basis_segment_ids: [AIA-TEXT-A081-P002]
 - norm_id: AIA-NORM-A081-P2-WITHDRAW-UNJUSTIFIED-MEASURE
   source: A081-P002
   quote: Where the Commission considers the national measure to be unjustified, the Member State concerned
@@ -150,14 +166,19 @@ records:
   action: withdraw an unjustified national measure and inform the Commission
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A081-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission considers the national measure unjustified
+    operator: all_of
+    operands:
+    - text: Where the Commission considers the national measure to be unjustified
+      basis_segment_ids: [AIA-TEXT-A081-P002]
 - norm_id: AIA-NORM-A081-P3-APPLY-STANDARDS-PROCEDURE
   source: A081-P003
   quote: Where the national measure is considered justified and the non-compliance of the AI system is
@@ -168,16 +189,19 @@ records:
     standards or common specifications
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A081-P003]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - operator: all_of
+    operator: all_of
     operands:
-    - the national measure is considered justified
-    - the AI system's non-compliance is attributed to shortcomings in the Article 40 or 41 harmonised
-      standards or common specifications
+    - text: Where the national measure is considered justified
+      basis_segment_ids: [AIA-TEXT-A081-P003]
+    - text: the non-compliance of the AI system is attributed to shortcomings in the harmonised standards or common specifications referred to in Articles 40 and 41 of this Regulation
+      basis_segment_ids: [AIA-TEXT-A081-P003]

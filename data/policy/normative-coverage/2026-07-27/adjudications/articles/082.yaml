@@ -1,0 +1,32 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '82'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 6
+  norms_scanned: 7
+  finding_count: 1
+  audit_sha256: 0491f6b745c091cd58d13894b317dfa90b8aaad5214ee52982139fed21a5fbc4
+decisions:
+- finding_id: AIA-VALID-386AA1A5FA1FDD4B
+  target: AIA-NORM-A082-P4-DECIDE-AND-PROPOSE
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A082-P004
+  source_sha256: 9da7635413ee32b8d38aad5371240c6f0a85bc5bccbf6810c7787a6509ee17ef
+  target_sha256: db139c800713f4c7a54cab2477fad53f0e8370cc9c1e47956eead523b4f92dc1
+  decision: accepted_with_basis
+  reason: '"Where necessary" qualifies the second limb only, proposing other appropriate measures. Deciding
+    whether the measure is justified is always owed. The action keeps the qualifier on the proposal.'
+  legal_basis:
+  - span_id: AIA-TEXT-A082-P004
+    source_sha256: 9da7635413ee32b8d38aad5371240c6f0a85bc5bccbf6810c7787a6509ee17ef
+    quote: the Commission shall decide whether the measure is justified and, where necessary, propose
+      other appropriate measures
+  reviewed_by: vidibro

@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A083-P001
   targets: []
   action: require the provider to end identified formal non-compliance within a prescribed period
   norm_text: Where the market surveillance authority of a Member State makes one of the following findings,
@@ -26,31 +28,29 @@ norms:
   - AIA-TEXT-A083-P007
   - AIA-TEXT-A083-P008
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - operator: any_of
-      operands:
-      - text: the CE marking has been affixed in violation of Article 48
-        basis_segment_ids:
-        - AIA-TEXT-A083-P001
-      - text: the CE marking has not been affixed
-        basis_segment_ids:
-        - AIA-TEXT-A083-P001
-      - text: the Article 47 EU declaration of conformity has not been drawn up
-        basis_segment_ids:
-        - AIA-TEXT-A083-P001
-      - text: the Article 47 EU declaration of conformity has not been drawn up correctly
-        basis_segment_ids:
-        - AIA-TEXT-A083-P001
-      - text: the Article 71 EU-database registration has not been carried out
-        basis_segment_ids:
-        - AIA-TEXT-A083-P001
-      - text: no authorised representative has been appointed where one is applicable
-        basis_segment_ids:
-        - AIA-TEXT-A083-P001
-      - text: technical documentation is not available
-        basis_segment_ids:
-        - AIA-TEXT-A083-P001
+    - text: the CE marking has been affixed in violation of Article 48
+      basis_segment_ids:
+      - AIA-TEXT-A083-P002
+    - text: the CE marking has not been affixed
+      basis_segment_ids:
+      - AIA-TEXT-A083-P003
+    - text: the EU declaration of conformity referred to in Article 47 has not been drawn up
+      basis_segment_ids:
+      - AIA-TEXT-A083-P004
+    - text: the EU declaration of conformity referred to in Article 47 has not been drawn up correctly
+      basis_segment_ids:
+      - AIA-TEXT-A083-P005
+    - text: the registration in the EU database referred to in Article 71 has not been carried out
+      basis_segment_ids:
+      - AIA-TEXT-A083-P006
+    - text: where applicable, no authorised representative has been appointed
+      basis_segment_ids:
+      - AIA-TEXT-A083-P007
+    - text: technical documentation is not available
+      basis_segment_ids:
+      - AIA-TEXT-A083-P008
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -69,11 +69,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A083-P2-RESTRICT-PERSISTENT-NONCOMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A083-P009
   targets: []
   action: take proportionate restriction prohibition recall or withdrawal measures without delay when
     formal non-compliance persists
@@ -90,7 +93,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the formal non-compliance referred to in paragraph 1 persists
+    - text: Where the non-compliance referred to in paragraph 1 persists
       basis_segment_ids:
       - AIA-TEXT-A083-P009
   exceptions: null
@@ -110,3 +113,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A083-P2-RESTRICT-WITHOUT-DELAY

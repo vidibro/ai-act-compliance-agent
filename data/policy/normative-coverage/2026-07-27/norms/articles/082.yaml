@@ -5,9 +5,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A082-P001
   targets: []
-  action: require appropriate timely measures eliminating a compliant high-risk system's public-interest
-    risk
+  action: require, without undue delay and within a period it may prescribe, appropriate measures eliminating
+    a compliant high-risk system's public-interest risk
   norm_text: Where, having performed an evaluation under Article 79, after consulting the relevant national
     public authority referred to in Article 77(1), the market surveillance authority of a Member State
     finds that although a high-risk AI system complies with this Regulation, it nevertheless presents
@@ -25,19 +27,17 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: the market-surveillance authority has performed an Article 79 evaluation
-        basis_segment_ids:
-        - AIA-TEXT-A082-P001
-      - text: the market-surveillance authority has consulted the relevant Article 77(1) national public
-          authority
-        basis_segment_ids:
-        - AIA-TEXT-A082-P001
-      - text: the authority finds that a compliant high-risk AI system nevertheless presents a risk to
-          health or safety, fundamental rights, or another aspect of public-interest protection
-        basis_segment_ids:
-        - AIA-TEXT-A082-P001
+    - text: having performed an evaluation under Article 79
+      basis_segment_ids:
+      - AIA-TEXT-A082-P001
+    - text: after consulting the relevant national public authority referred to in Article 77(1)
+      basis_segment_ids:
+      - AIA-TEXT-A082-P001
+    - text: the market surveillance authority of a Member State finds that although a high-risk AI system
+        complies with this Regulation, it nevertheless presents a risk to the health or safety of persons,
+        to fundamental rights, or to other aspects of public interest protection
+      basis_segment_ids:
+      - AIA-TEXT-A082-P001
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -55,12 +55,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A082-P1-REQUIRE-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A082-P002
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A082-P002
   targets: []
   action: ensure corrective action across all concerned systems made available on the Union market within
     the authority's timeline
@@ -93,11 +98,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A082-P3-INFORM-ABOUT-RISK-FINDING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A082-P003
   targets: []
   action: immediately report the finding with system supply-chain risk and national-measure details
   norm_text: The Member States shall immediately inform the Commission and the other Member States of
@@ -133,13 +141,16 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A082-P3-INFORM-IMMEDIATELY
 - norm_id: AIA-NORM-A082-P4-CONSULT-AND-EVALUATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A082-P004
   targets: []
-  action: promptly consult concerned Member States and operators and evaluate national measures
+  action: consult concerned Member States and operators without undue delay and evaluate national measures
   norm_text: The Commission shall without undue delay enter into consultation with the Member States concerned
     and the relevant operators, and shall evaluate the national measures taken.
   detection_channels:
@@ -166,11 +177,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A082-P4-CONSULT-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A082-P4-DECIDE-AND-PROPOSE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A082-P004
   targets: []
   action: decide whether the measure is justified and propose other appropriate measures where necessary
   norm_text: On the basis of the results of that evaluation, the Commission shall decide whether the measure
@@ -181,12 +195,7 @@ norms:
   primary_spans:
   - AIA-TEXT-A082-P004
   qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the decision is based on the results of the evaluation
-      basis_segment_ids:
-      - AIA-TEXT-A082-P004
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -204,11 +213,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A082-P5-COMMUNICATE-DECISION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A082-P005
   targets: []
   action: immediately communicate the decision to the Member States concerned and to the relevant operators
   norm_text: The Commission shall immediately communicate its decision to the Member States concerned
@@ -237,11 +249,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A082-P5-COMMUNICATE-IMMEDIATELY
 - norm_id: AIA-NORM-A082-P5-INFORM-OTHER-MEMBER-STATES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A082-P005
   targets: []
   action: inform the other Member States of the decision
   norm_text: It shall also inform the other Member States.
@@ -269,3 +284,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

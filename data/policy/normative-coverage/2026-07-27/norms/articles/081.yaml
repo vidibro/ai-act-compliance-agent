@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A081-P001
   targets: []
   action: promptly consult the relevant authority and operators and evaluate an objected-to or Union-law-inconsistent
     national measure
@@ -22,28 +24,26 @@ norms:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - operator: any_of
+    - operator: all_of
       operands:
-      - operator: all_of
+      - operator: any_of
         operands:
-        - text: a Member State market-surveillance authority objects to a measure taken by another market-surveillance
-            authority
+        - text: Where, within three months of receipt of the notification referred to in Article 79(5)
           basis_segment_ids:
           - AIA-TEXT-A081-P001
-        - operator: any_of
-          operands:
-          - text: the objection is raised within three months after receipt of the Article 79(5) notification
-            basis_segment_ids:
-            - AIA-TEXT-A081-P001
-          - text: the objection concerns Article 5 prohibited-practice non-compliance and is raised within
-              30 days after receipt of the Article 79(5) notification
-            basis_segment_ids:
-            - AIA-TEXT-A081-P001
-      - text: the Commission considers the measure contrary to Union law
+        - text: within 30 days in the case of non-compliance with the prohibition of the AI practices
+            referred to in Article 5
+          basis_segment_ids:
+          - AIA-TEXT-A081-P001
+      - text: objections are raised by the market surveillance authority of a Member State to a measure
+          taken by another market surveillance authority
         basis_segment_ids:
         - AIA-TEXT-A081-P001
+    - text: where the Commission considers the measure to be contrary to Union law
+      basis_segment_ids:
+      - AIA-TEXT-A081-P001
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -67,6 +67,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A081-P001
   targets: []
   action: decide whether the national measure is justified within six months of the Article 79(5) notification
   norm_text: the Commission shall, within six months
@@ -78,15 +80,7 @@ norms:
   - AIA-TEXT-A081-P001
   qualifier_spans:
   - AIA-TEXT-A081-P001
-  conditions:
-    operator: all_of
-    operands:
-    - text: the decision is based on the results of the evaluation
-      basis_segment_ids:
-      - AIA-TEXT-A081-P001
-    - text: the measure does not concern Article 5 prohibited-practice non-compliance
-      basis_segment_ids:
-      - AIA-TEXT-A081-P001
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -110,6 +104,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A081-P001
   targets: []
   action: decide whether the national measure is justified within 60 days of the Article 79(5) notification
   norm_text: within 60 days
@@ -123,10 +119,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the decision is based on the results of the evaluation
-      basis_segment_ids:
-      - AIA-TEXT-A081-P001
-    - text: the measure concerns Article 5 prohibited-practice non-compliance
+    - text: in the case of non-compliance with the prohibition of the AI practices referred to in Article
+        5
       basis_segment_ids:
       - AIA-TEXT-A081-P001
   exceptions: null
@@ -152,21 +146,20 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A081-P001
   targets: []
   action: notify the decision to the market surveillance authority of the Member State concerned
   norm_text: shall notify its decision to the market surveillance authority of the Member State concerned.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A081-P001
-  qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the Commission has decided whether the national measure is justified
-      basis_segment_ids:
-      - AIA-TEXT-A081-P001
+  qualifier_spans:
+  - AIA-TEXT-A081-P001
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -184,11 +177,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A081-P1-INFORM-OTHER-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A081-P001
   targets: []
   action: inform all other market surveillance authorities of the decision
   norm_text: The Commission shall also inform all other market surveillance authorities of its decision.
@@ -216,11 +212,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A081-P2-TAKE-JUSTIFIED-RESTRICTIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A081-P002
   targets: []
   action: take appropriate restrictions without undue delay and inform the Commission when the national
     measure is justified
@@ -237,7 +236,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission considers the measure taken by the relevant Member State justified
+    - text: Where the Commission considers the measure taken by the relevant Member State to be justified
       basis_segment_ids:
       - AIA-TEXT-A081-P002
   exceptions: null
@@ -257,11 +256,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A081-P2-WITHDRAW-UNJUSTIFIED-MEASURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A081-P002
   targets: []
   action: withdraw an unjustified national measure and inform the Commission
   norm_text: Where the Commission considers the national measure to be unjustified, the Member State concerned
@@ -275,7 +277,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission considers the national measure unjustified
+    - text: Where the Commission considers the national measure to be unjustified
       basis_segment_ids:
       - AIA-TEXT-A081-P002
   exceptions: null
@@ -295,11 +297,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A081-P3-APPLY-STANDARDS-PROCEDURE
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A081-P003
   targets: []
   action: apply the Regulation 1025/2012 Article 11 procedure when justified non-compliance arises from
     standards or common specifications
@@ -317,15 +322,13 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - operator: all_of
-      operands:
-      - text: the national measure is considered justified
-        basis_segment_ids:
-        - AIA-TEXT-A081-P003
-      - text: the AI system's non-compliance is attributed to shortcomings in the Article 40 or 41 harmonised
-          standards or common specifications
-        basis_segment_ids:
-        - AIA-TEXT-A081-P003
+    - text: Where the national measure is considered justified
+      basis_segment_ids:
+      - AIA-TEXT-A081-P003
+    - text: the non-compliance of the AI system is attributed to shortcomings in the harmonised standards
+        or common specifications referred to in Articles 40 and 41 of this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A081-P003
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -343,3 +346,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
