@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A106-P002
   targets: []
   action: account for AI Act Chapter III Section 2 when adopting rail-system safety-component AI delegated
     and implementing acts
@@ -18,7 +20,21 @@ norms:
   - AIA-TEXT-A106-P002
   qualifier_spans:
   - AIA-TEXT-A106-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: any_of
+      operands:
+      - text: When adopting delegated acts pursuant to paragraph 1
+        basis_segment_ids:
+        - AIA-TEXT-A106-P002
+      - text: implementing acts pursuant to paragraph 11
+        basis_segment_ids:
+        - AIA-TEXT-A106-P002
+    - text: concerning Artificial Intelligence systems which are safety components within the meaning
+        of Regulation (EU) 2024/1689
+      basis_segment_ids:
+      - AIA-TEXT-A106-P002
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -36,3 +52,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110

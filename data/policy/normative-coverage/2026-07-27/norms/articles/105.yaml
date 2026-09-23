@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A105-P002
   targets: []
   action: account for AI Act Chapter III Section 2 in marine-equipment safety-component AI activities
     specifications and testing standards
@@ -18,7 +20,22 @@ norms:
   - AIA-TEXT-A105-P002
   qualifier_spans:
   - AIA-TEXT-A105-P001
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: For Artificial Intelligence systems which are safety components within the meaning of Regulation
+        (EU) 2024/1689
+      basis_segment_ids:
+      - AIA-TEXT-A105-P002
+    - operator: any_of
+      operands:
+      - text: when carrying out its activities pursuant to paragraph 1
+        basis_segment_ids:
+        - AIA-TEXT-A105-P002
+      - text: when adopting technical specifications and testing standards in accordance with paragraphs
+          2 and 3
+        basis_segment_ids:
+        - AIA-TEXT-A105-P002
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -36,3 +53,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110

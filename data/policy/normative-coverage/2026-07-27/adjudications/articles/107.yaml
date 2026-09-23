@@ -1,0 +1,32 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '107'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 3
+  norms_scanned: 1
+  finding_count: 1
+  audit_sha256: 4c60e1bbba3058d3c5b3a150ded92bf17a19784eba1faa769924fdd0cd972532
+decisions:
+- finding_id: AIA-VALID-CAD5DC8599753F41
+  target: AIA-NORM-A107-P4-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A107-P002
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A107-P002
+  source_sha256: 87e7f0bbc3c9bf13cee5daed008aba50bf4acb12e6294882bea72e313472e360
+  target_sha256: a29bb8434635d80f73d65f2850b8b7e54e7f178992770211049b097b4be116cd
+  decision: accepted_with_basis
+  reason: The added paragraph binds whoever adopts the delegated acts under Article 5 of Regulation (EU)
+    2018/858. That act gives the power to the Commission, but the paragraph itself names no one, so the
+    Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A107-P002
+    source_sha256: 87e7f0bbc3c9bf13cee5daed008aba50bf4acb12e6294882bea72e313472e360
+    quote: When adopting delegated acts pursuant to paragraph 3
+  reviewed_by: vidibro

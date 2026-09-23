@@ -2,11 +2,26 @@ records:
 - norm_id: AIA-NORM-A106-P12-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   source: A106-P002
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
-  action: account for AI Act Chapter III Section 2 when adopting rail-system safety-component AI delegated and implementing acts
+  action: account for AI Act Chapter III Section 2 when adopting rail-system safety-component AI delegated
+    and implementing acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A106-P002]
   targets: []
-  qualifier_spans: [A106-P001]
+  qualifier_spans:
+  - A106-P001
+  conditions:
+    operator: all_of
+    operands:
+    - operator: any_of
+      operands:
+      - text: When adopting delegated acts pursuant to paragraph 1
+        basis_segment_ids: [AIA-TEXT-A106-P002]
+      - text: implementing acts pursuant to paragraph 11
+        basis_segment_ids: [AIA-TEXT-A106-P002]
+    - text: concerning Artificial Intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689
+      basis_segment_ids: [AIA-TEXT-A106-P002]
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
