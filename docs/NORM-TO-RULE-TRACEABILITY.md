@@ -22,14 +22,18 @@ remove, merge, or silently skip criteria.
 ## Deterministic rule grouping
 
 A policy rule is a group of norms, not a free-text summary. The loader resolves every listed norm
-from the canonical inventory and rejects a group that mixes any of these properties:
+from the canonical inventory and rejects a group that mixes either of these properties:
 
 1. **Legal kind:** one rule contains one `NormKind`. Obligations/prohibitions are judged rules;
    permissions and legal consequences are never criterion members.
-2. **Duty-holder:** all criteria name the same subject set. Different actors get separate rules and
-   separate report sections.
-3. **Assessment treatment:** all criteria use one verification mode. A rule is either judged or
+2. **Assessment treatment:** all criteria use one verification mode. A rule is either judged or
    reported for separate confirmation; it cannot combine those two answers.
+
+**Duty-holders** may differ between criteria. A rule lists every role it binds in
+`applies_to_role`, and each criterion keeps the actors of its own norm. Each role's report shows
+only the criteria that role owes (`PolicyRule.criteria_for`), so one provision binding the provider
+and, in part, the deployer is one rule rather than one copy per actor. The loader rejects a
+criterion that names none of the rule's roles, and a role that owes none of the rule's criteria.
 
 The rule itself owns the remaining shared properties: its activation gate, expected evidence,
 effective date and outcome. Norms may share a rule only when that one activation and one evidence

@@ -296,7 +296,7 @@ def select_rules(
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
     active = [
-        rule
+        rule.for_role(role)
         for rule in spec.rules
         if _tier_or_duty_matches(rule, use_case, transparency_duties)
         and role in rule.applies_to_role

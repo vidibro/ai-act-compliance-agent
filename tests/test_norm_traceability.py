@@ -37,7 +37,7 @@ from aiact.schemas.classification import (
     ClassificationResult,
     UseCaseClassification,
 )
-from aiact.schemas.enums import AnnexIIIArea, RiskClass, Verdict
+from aiact.schemas.enums import ActorRole, AnnexIIIArea, RiskClass, Verdict
 from aiact.schemas.norm import ImplementationMode, NormRelationKind, SourceKind
 from aiact.schemas.policy import LegalSource, PolicyRule, PolicyRuleset, RuleCriterion
 from aiact.schemas.report import (
@@ -744,6 +744,39 @@ def test_the_loader_refuses_a_criterion_it_cannot_resolve(tmp_path, new, error):
     path = _spec_with(tmp_path, f"      - norm_id: {MODEL_FLAWS}\n", new)
     with pytest.raises(ValueError, match=error):
         load_policy_spec(path, POLICY / "articles", norms_root=COVERAGE / "norms")
+
+
+# --- one rule, several duty-holders --------------------------------------------------------------
+def _rule_with(spec, roles: list[str], actor_sets: list[list[str]]) -> dict:
+    """HR-A15 with its first criteria re-assigned, so only the actor fields differ."""
+    rule = next(rule for rule in spec.rules if rule.rule_id == RULE).model_dump()
+    rule["applies_to_role"] = roles
+    rule["criteria"] = [
+        {**criterion, "actors": actors}
+        for criterion, actors in zip(rule["criteria"], actor_sets, strict=False)
+    ]
+    return rule
+
+
+def test_a_rule_may_bind_several_roles_and_each_reads_only_what_it_owes(spec):
+    rule = PolicyRule.model_validate(
+        _rule_with(spec, ["provider", "deployer"], [["provider"], ["provider", "deployer"]])
+    )
+    assert rule.for_role(ActorRole.PROVIDER) is rule
+    deployer = rule.for_role(ActorRole.DEPLOYER)
+    assert [c.norm_id for c in deployer.criteria] == [rule.criteria[1].norm_id]
+
+
+def test_a_criterion_no_role_of_the_rule_owes_is_refused(spec):
+    with pytest.raises(ValueError, match="none of which is in applies_to_role"):
+        PolicyRule.model_validate(_rule_with(spec, ["provider"], [["provider"], ["deployer"]]))
+
+
+def test_a_role_that_owes_no_criterion_is_refused(spec):
+    with pytest.raises(ValueError, match="applies to deployer, but no criterion names that role"):
+        PolicyRule.model_validate(
+            _rule_with(spec, ["provider", "deployer"], [["provider"], ["provider"]])
+        )
 
 
 # --- aggregation is conservative ------------------------------------------------------------------

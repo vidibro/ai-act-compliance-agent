@@ -747,7 +747,9 @@ class ComplianceReport(BaseModel):
                         f"loaded PolicyRuleset (spec_version={spec.spec_version})."
                     )
                 # A dropped criterion would vanish from the report without a trace.
-                declared = [c.norm_id for c in known_rules[finding.rule_id].criteria]
+                declared = [
+                    c.norm_id for c in known_rules[finding.rule_id].criteria_for(finding.role)
+                ]
                 reported = [c.norm_id for c in finding.criteria]
                 if declared != reported:
                     raise ValueError(

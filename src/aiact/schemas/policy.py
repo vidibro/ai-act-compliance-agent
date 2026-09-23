@@ -393,15 +393,24 @@ class PolicyRule(BaseModel):
                 "deterministic "
                 "assessment treatment."
             )
-        actor_sets = {
-            (tuple(criterion.actors), criterion.applies_to_all_actors)
-            for criterion in self.criteria
-        }
-        if len(actor_sets) > 1:
-            raise ValueError(
-                f"PolicyRule {self.rule_id!r}: criteria name different actors. Split rules by "
-                "actor before they reach the report."
-            )
+        # One rule may bind several roles, with each criterion owed by its own duty-holders: Art.
+        # 60(4)(h) and (j) bind the deployer beside the provider, the rest the provider alone. Each
+        # role is then reported only the criteria it owes, so a criterion must name one of the
+        # rule's roles, and every role must owe at least one criterion.
+        roles = {role.value for role in self.applies_to_role}
+        for criterion in self.criteria:
+            if not criterion.applies_to_all_actors and not roles & set(criterion.actors):
+                raise ValueError(
+                    f"PolicyRule {self.rule_id!r}: criterion {criterion.norm_id} names actors "
+                    f"{criterion.actors}, none of which is in applies_to_role {sorted(roles)}, "
+                    "so no report could show it."
+                )
+        for role in self.applies_to_role:
+            if self.criteria and not self.criteria_for(role):
+                raise ValueError(
+                    f"PolicyRule {self.rule_id!r}: applies to {role.value}, but no criterion "
+                    "names that role, so its report would hold an empty rule."
+                )
         if (
             self.criteria
             and self.document_verifiable
@@ -412,6 +421,21 @@ class PolicyRule(BaseModel):
                 "criterion, so nothing could ever fail the rule."
             )
         return self
+
+    def criteria_for(self, role: ActorRole) -> list[RuleCriterion]:
+        """The criteria `role` owes, in the rule's order."""
+        return [
+            criterion
+            for criterion in self.criteria
+            if criterion.applies_to_all_actors or role.value in criterion.actors
+        ]
+
+    def for_role(self, role: ActorRole) -> PolicyRule:
+        """This rule as `role` reads it: only the criteria that role owes."""
+        scoped = self.criteria_for(role)
+        if len(scoped) == len(self.criteria):
+            return self
+        return self.model_copy(update={"criteria": scoped})
 
     obligation_status: ObligationStatus
     check_type: CheckType
