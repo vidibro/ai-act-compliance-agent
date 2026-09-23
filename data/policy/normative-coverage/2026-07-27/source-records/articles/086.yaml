@@ -11,14 +11,21 @@ records:
     main elements to an eligible affected person
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A086-P001]
   targets: []
   conditions:
-  - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
-  - the decision produces legal effects on the affected person or similarly significantly affects them
-  - the affected person considers the decision to have an adverse impact on their health, safety or fundamental
-    rights
+    operator: all_of
+    operands:
+    - text: Any affected person subject to a decision which is taken by the deployer on the basis of the output from a high-risk AI system listed in Annex III
+      basis_segment_ids: [AIA-TEXT-A086-P001]
+    - text: which produces legal effects or similarly significantly affects that person in a way that they consider to have an adverse impact on their health, safety or fundamental rights
+      basis_segment_ids: [AIA-TEXT-A086-P001]
   exceptions:
-  - the system is listed under point 2 of Annex III
+    operator: any_of
+    operands:
+    - text: with the exception of systems listed under point 2 thereof
+      basis_segment_ids: [AIA-TEXT-A086-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-DP-A86
   verification_mode: reported_not_judged
@@ -30,8 +37,12 @@ records:
     decision adversely affects the person
   actors:
   - actor_ref: affected_person
+    basis_segment_ids: [AIA-TEXT-A086-P001]
   targets: []
+  qualifier_spans:
+  - A086-P001
   kind: entitlement
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This records the person's correlative entitlement; the deployer action is mapped
     separately.
@@ -39,12 +50,17 @@ records:
   implementation_reason: No independent product action arises beyond the mapped deployer duty.
   verification_mode: not_reported
   conditions:
-  - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
-  - the decision produces legal effects on the affected person or similarly significantly affects them
-  - the affected person considers the decision to have an adverse impact on their health, safety or fundamental
-    rights
+    operator: all_of
+    operands:
+    - text: Any affected person subject to a decision which is taken by the deployer on the basis of the output from a high-risk AI system listed in Annex III
+      basis_segment_ids: [AIA-TEXT-A086-P001]
+    - text: which produces legal effects or similarly significantly affects that person in a way that they consider to have an adverse impact on their health, safety or fundamental rights
+      basis_segment_ids: [AIA-TEXT-A086-P001]
   exceptions:
-  - the system is listed under point 2 of Annex III
+    operator: any_of
+    operands:
+    - text: with the exception of systems listed under point 2 thereof
+      basis_segment_ids: [AIA-TEXT-A086-P001]
 - norm_id: AIA-NORM-A086-P2-LEGAL-EXCEPTIONS
   source: A086-P002
   quote: Paragraph 1 shall not apply to the use of AI systems for which exceptions from, or restrictions
@@ -54,8 +70,10 @@ records:
     restriction
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A086-P001]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This qualifies the mapped explanation duty rather than creating another action.
   implementation_mode: none_required
@@ -66,10 +84,12 @@ records:
   quote: This Article shall apply only to the extent that the right referred to in paragraph 1 is not
     otherwise provided for under Union law.
   action: apply Article 86 only where Union law does not otherwise provide the explanation right
-  actors:
-  - actor_ref: public_authority
-  targets: []
+  actors: none
+  targets:
+  - target_ref: the right referred to in paragraph 1
+    basis_segment_ids: [AIA-TEXT-A086-P003]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This defines the right's legal boundary without creating another action.
   implementation_mode: none_required

@@ -1,0 +1,31 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '84'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 3
+  norms_scanned: 2
+  finding_count: 1
+  audit_sha256: 74e2b52f61f55ff1a27d17e72685d05e06f67dd9022f3f3a8f23b96fd8772178
+decisions:
+- finding_id: AIA-VALID-F71E001B7FCC767A
+  target: AIA-NORM-A084-P2-PROVIDE-INDEPENDENT-ADVICE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A084-P002
+  source_sha256: 1bb445ea50d2731a49592b8f1a9309a5a876af4258cda8c1809804d4854fd847
+  target_sha256: 820c97d4002bb441f6ce3e6eeeaeac6b1b6a79e9502706a5083e05aef3699e50
+  decision: false_positive
+  reason: '"Without prejudice to the tasks referred to in paragraph 1" keeps the Article 21(6) tasks running
+    alongside the advice. It takes no case out of the duty, so there is no exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A084-P002
+    source_sha256: 1bb445ea50d2731a49592b8f1a9309a5a876af4258cda8c1809804d4854fd847
+    quote: Without prejudice to the tasks referred to in paragraph 1
+  reviewed_by: vidibro

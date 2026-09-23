@@ -1,0 +1,31 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '85'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 3
+  norms_scanned: 2
+  finding_count: 1
+  audit_sha256: 27a2597b2ba5ae9f046ce967bf601058d99ed474afcbded7783860b3c6172bf9
+decisions:
+- finding_id: AIA-VALID-751818218D7A3E70
+  target: AIA-NORM-A085-P1-LODGE-COMPLAINT
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A085-P001
+  source_sha256: ac96fe5653a1430e0705a16d2ec79f3aad49099309087eab60bd0b7127e802ba
+  target_sha256: 3b1b5935c8df482f9e8f6a07ea38fc124de5e5965a53220b3679e889c72ec37f
+  decision: false_positive
+  reason: '"Without prejudice to other administrative or judicial remedies" keeps those remedies open
+    beside the complaint. It takes no case out of the right, so there is no exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A085-P001
+    source_sha256: ac96fe5653a1430e0705a16d2ec79f3aad49099309087eab60bd0b7127e802ba
+    quote: Without prejudice to other administrative or judicial remedies
+  reviewed_by: vidibro

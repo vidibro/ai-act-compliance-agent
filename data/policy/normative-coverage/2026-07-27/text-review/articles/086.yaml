@@ -48,7 +48,9 @@ segments:
   norm_ids:
   - AIA-NORM-A086-P1-PROVIDE-EXPLANATION
   - AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION
+  - AIA-NORM-A086-P2-LEGAL-EXCEPTIONS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

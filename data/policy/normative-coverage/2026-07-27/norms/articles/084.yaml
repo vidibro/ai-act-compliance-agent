@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A084-P001
   targets: []
   action: designate one or more Union structures for Regulation 2019/1020 Article 21(6) AI testing support
   norm_text: The Commission shall designate one or more Union AI testing support structures to perform
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A084-P2-PROVIDE-INDEPENDENT-ADVICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A084-P002
   targets: []
   action: provide independent technical or scientific advice when requested by the Board Commission or
     market surveillance authorities
@@ -53,7 +58,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Board, the Commission, or a market-surveillance authority requests the advice
+    - text: at the request of the Board, the Commission, or of market surveillance authorities
       basis_segment_ids:
       - AIA-TEXT-A084-P002
   exceptions: null
@@ -73,3 +78,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

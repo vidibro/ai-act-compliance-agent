@@ -5,6 +5,8 @@ norms:
   kind: entitlement
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids:
+    - AIA-TEXT-A085-P001
   targets: []
   action: submit an infringement complaint to the relevant market surveillance authority without prejudice
     to other remedies
@@ -20,7 +22,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the natural or legal person has grounds to consider that this Regulation has been infringed
+    - text: having grounds to consider that there has been an infringement of the provisions of this Regulation
       basis_segment_ids:
       - AIA-TEXT-A085-P001
   exceptions: null
@@ -40,18 +42,21 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A085-P2-ACCOUNT-FOR-AND-HANDLE-COMPLAINTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A085-P002
   targets: []
   action: take such complaints into account for the purpose of conducting market surveillance activities,
     in accordance with Regulation (EU) 2019/1020, and handle them under the dedicated procedures established
     by market surveillance authorities
-  norm_text: such complaints shall be taken into account for the purpose of conducting market surveillance
-    activities, and shall be handled in line with the dedicated procedures established therefor by the
-    market surveillance authorities.
+  norm_text: In accordance with Regulation (EU) 2019/1020, such complaints shall be taken into account
+    for the purpose of conducting market surveillance activities, and shall be handled in line with the
+    dedicated procedures established therefor by the market surveillance authorities.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -78,3 +83,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

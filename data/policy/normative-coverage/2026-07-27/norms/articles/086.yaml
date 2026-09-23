@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A086-P001
   targets: []
   action: provide a clear meaningful explanation of the AI system's decision-making role and the decision's
     main elements to an eligible affected person
@@ -24,22 +26,18 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the deployer took a decision on the basis of output from a high-risk AI system listed in Annex
-        III
+    - text: Any affected person subject to a decision which is taken by the deployer on the basis of the
+        output from a high-risk AI system listed in Annex III
       basis_segment_ids:
       - AIA-TEXT-A086-P001
-    - text: the decision produces legal effects on the affected person or similarly significantly affects
-        them
-      basis_segment_ids:
-      - AIA-TEXT-A086-P001
-    - text: the affected person considers the decision to have an adverse impact on their health, safety
-        or fundamental rights
+    - text: which produces legal effects or similarly significantly affects that person in a way that
+        they consider to have an adverse impact on their health, safety or fundamental rights
       basis_segment_ids:
       - AIA-TEXT-A086-P001
   exceptions:
     operator: any_of
     operands:
-    - text: the system is listed under point 2 of Annex III
+    - text: with the exception of systems listed under point 2 thereof
       basis_segment_ids:
       - AIA-TEXT-A086-P001
   mandatory_content: []
@@ -59,11 +57,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
   - actor_ref: affected_person
+    basis_segment_ids:
+    - AIA-TEXT-A086-P001
   targets: []
   action: obtain a clear meaningful explanation from the deployer when an eligible Annex III system-based
     decision adversely affects the person
@@ -71,28 +72,26 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A086-P001
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A086-P001
   conditions:
     operator: all_of
     operands:
-    - text: the deployer took a decision on the basis of output from a high-risk AI system listed in Annex
-        III
+    - text: Any affected person subject to a decision which is taken by the deployer on the basis of the
+        output from a high-risk AI system listed in Annex III
       basis_segment_ids:
       - AIA-TEXT-A086-P001
-    - text: the decision produces legal effects on the affected person or similarly significantly affects
-        them
-      basis_segment_ids:
-      - AIA-TEXT-A086-P001
-    - text: the affected person considers the decision to have an adverse impact on their health, safety
-        or fundamental rights
+    - text: which produces legal effects or similarly significantly affects that person in a way that
+        they consider to have an adverse impact on their health, safety or fundamental rights
       basis_segment_ids:
       - AIA-TEXT-A086-P001
   exceptions:
     operator: any_of
     operands:
-    - text: the system is listed under point 2 of Annex III
+    - text: with the exception of systems listed under point 2 thereof
       basis_segment_ids:
       - AIA-TEXT-A086-P001
   mandatory_content: []
@@ -112,11 +111,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A086-P2-LEGAL-EXCEPTIONS
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A086-P001
   targets: []
   action: disapply paragraph 1 to the extent compliant Union or national law supplies an exception or
     restriction
@@ -148,12 +150,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A086-P3-SUBSIDIARY-RIGHT
   act_version_date: '2026-07-27'
   kind: applicability
-  actors:
-  - actor_ref: public_authority
-  targets: []
+  actors: none
+  targets:
+  - target_ref: the right referred to in paragraph 1
+    basis_segment_ids:
+    - AIA-TEXT-A086-P003
   action: apply Article 86 only where Union law does not otherwise provide the explanation right
   norm_text: This Article shall apply only to the extent that the right referred to in paragraph 1 is
     not otherwise provided for under Union law.
@@ -182,3 +187,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
