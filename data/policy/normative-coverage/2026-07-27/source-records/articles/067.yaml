@@ -1,11 +1,15 @@
 records:
 - norm_id: AIA-NORM-A067-P1-ESTABLISH-ADVISORY-FORUM
   source: A067-P001
-  quote: An advisory forum shall be established to provide technical expertise and advise the Board and the Commission, and to contribute to their tasks under this Regulation.
-  action: establish an advisory forum supporting the Board and Commission with expertise advice and task contributions
+  quote: An advisory forum shall be established to provide technical expertise and advise the Board and
+    the Commission, and to contribute to their tasks under this Regulation.
+  action: establish an advisory forum supporting the Board and Commission with expertise advice and task
+    contributions
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A067-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -13,12 +17,20 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A067-P2-BALANCED-MEMBERSHIP
   source: A067-P002
-  quote: The membership of the advisory forum shall represent a balanced selection of stakeholders, including industry, start-ups, SMEs, civil society and academia. The membership of the advisory forum shall be balanced with regard to commercial and non-commercial interests and, within the category of commercial interests, with regard to SMEs and other undertakings.
+  quote: The membership of the advisory forum shall represent a balanced selection of stakeholders, including
+    industry, start-ups, SMEs, civil society and academia. The membership of the advisory forum shall
+    be balanced with regard to commercial and non-commercial interests and, within the category of commercial
+    interests, with regard to SMEs and other undertakings.
   action: maintain balanced stakeholder commercial and undertaking representation in forum membership
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A067-P003]
   targets: []
-  mandatory_content: [industry start-ups SMEs civil society and academia, commercial and non-commercial interests, SMEs and other undertakings within commercial interests]
+  mandatory_content:
+  - industry start-ups SMEs civil society and academia
+  - commercial and non-commercial interests
+  - SMEs and other undertakings within commercial interests
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -26,11 +38,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A067-P3-APPOINT-MEMBERS
   source: A067-P003
-  quote: The Commission shall appoint the members of the advisory forum, in accordance with the criteria set out in paragraph 2, from amongst stakeholders with recognised expertise in the field of AI.
+  quote: The Commission shall appoint the members of the advisory forum, in accordance with the criteria
+    set out in paragraph 2, from amongst stakeholders with recognised expertise in the field of AI.
   action: appoint AI-expert forum members under the paragraph 2 balance criteria
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A067-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,11 +53,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A067-P4-MEMBER-TERM
   source: A067-P004
-  quote: The term of office of the members of the advisory forum shall be two years, which may be extended by up to no more than four years.
+  quote: The term of office of the members of the advisory forum shall be two years, which may be extended
+    by up to no more than four years.
   action: set forum member terms at two years with extension limited to four additional years
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A067-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -50,12 +68,21 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A067-P5-PERMANENT-MEMBERS
   source: A067-P005
-  quote: The Fundamental Rights Agency, ENISA, the European Committee for Standardization (CEN), the European Committee for Electrotechnical Standardization (CENELEC), and the European Telecommunications Standards Institute (ETSI) shall be permanent members of the advisory forum.
+  quote: The Fundamental Rights Agency, ENISA, the European Committee for Standardization (CEN), the European
+    Committee for Electrotechnical Standardization (CENELEC), and the European Telecommunications Standards
+    Institute (ETSI) shall be permanent members of the advisory forum.
   action: include every enacted Union and standardisation body as a permanent forum member
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P005]
   targets: []
-  mandatory_content: [Fundamental Rights Agency, ENISA, CEN, CENELEC, ETSI]
+  mandatory_content:
+  - Fundamental Rights Agency
+  - ENISA
+  - CEN
+  - CENELEC
+  - ETSI
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -67,7 +94,9 @@ records:
   action: draw up the advisory forum's rules of procedure
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -75,12 +104,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A067-P6-ELECT-COCHAIRS
   source: A067-P006
-  quote: It shall elect two co-chairs from among its members, in accordance with criteria set out in paragraph 2.
-  action: elect two co-chairs from among the forum's members in accordance with the paragraph 2
-    criteria
+  quote: It shall elect two co-chairs from among its members, in accordance with criteria set out in paragraph
+    2.
+  action: elect two co-chairs from among the forum's members in accordance with the paragraph 2 criteria
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -92,8 +123,10 @@ records:
   action: hold the co-chair office for a two-year term, renewable once
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P006]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -105,7 +138,9 @@ records:
   action: hold meetings at least twice a year
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,8 +152,10 @@ records:
   action: invite experts and other stakeholders to the forum's meetings
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P007]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -126,13 +163,20 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A067-P8-PREPARE-REQUESTED-CONTRIBUTIONS
   source: A067-P008
-  quote: The advisory forum may prepare opinions, recommendations and written contributions at the request of the Board or the Commission.
+  quote: The advisory forum may prepare opinions, recommendations and written contributions at the request
+    of the Board or the Commission.
   action: prepare requested opinions recommendations and written contributions
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P008]
   targets: []
   kind: power
-  conditions: [the Board or Commission requests the contribution]
+  conditions:
+    operator: all_of
+    operands:
+    - text: at the request of the Board or the Commission
+      basis_segment_ids: [AIA-TEXT-A067-P008]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -140,12 +184,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A067-P9-ESTABLISH-SUBGROUPS
   source: A067-P009
-  quote: The advisory forum may establish standing or temporary sub-groups as appropriate for the purpose of examining specific questions related to the objectives of this Regulation.
+  quote: The advisory forum may establish standing or temporary sub-groups as appropriate for the purpose
+    of examining specific questions related to the objectives of this Regulation.
   action: establish standing or temporary subgroups to examine Regulation-objective questions
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P009]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -157,7 +204,9 @@ records:
   action: prepare an annual report on the forum's activities
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -169,7 +218,9 @@ records:
   action: make the annual activity report publicly available
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids: [AIA-TEXT-A067-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A067-P003
   targets: []
   action: establish an advisory forum supporting the Board and Commission with expertise advice and task
     contributions
@@ -34,11 +36,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P2-BALANCED-MEMBERSHIP
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A067-P003
   targets: []
   action: maintain balanced stakeholder commercial and undertaking representation in forum membership
   norm_text: The membership of the advisory forum shall represent a balanced selection of stakeholders,
@@ -72,11 +77,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P3-APPOINT-MEMBERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A067-P003
   targets: []
   action: appoint AI-expert forum members under the paragraph 2 balance criteria
   norm_text: The Commission shall appoint the members of the advisory forum, in accordance with the criteria
@@ -105,11 +113,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P4-MEMBER-TERM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A067-P003
   targets: []
   action: set forum member terms at two years with extension limited to four additional years
   norm_text: The term of office of the members of the advisory forum shall be two years, which may be
@@ -139,11 +150,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P5-PERMANENT-MEMBERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P005
   targets: []
   action: include every enacted Union and standardisation body as a permanent forum member
   norm_text: The Fundamental Rights Agency, ENISA, the European Committee for Standardization (CEN), the
@@ -178,11 +192,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P6-RULES-AND-COCHAIRS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P006
   targets: []
   action: draw up the advisory forum's rules of procedure
   norm_text: The advisory forum shall draw up its rules of procedure.
@@ -210,11 +227,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P6-ELECT-COCHAIRS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P006
   targets: []
   action: elect two co-chairs from among the forum's members in accordance with the paragraph 2 criteria
   norm_text: It shall elect two co-chairs from among its members, in accordance with criteria set out
@@ -243,11 +263,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P6-COCHAIR-TERM
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P006
   targets: []
   action: hold the co-chair office for a two-year term, renewable once
   norm_text: The term of office of the co-chairs shall be two years, renewable once.
@@ -276,11 +299,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P007
   targets: []
   action: hold meetings at least twice a year
   norm_text: The advisory forum shall hold meetings at least twice a year.
@@ -308,11 +334,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P7-INVITE-EXPERTS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P007
   targets: []
   action: invite experts and other stakeholders to the forum's meetings
   norm_text: The advisory forum may invite experts and other stakeholders to its meetings.
@@ -340,11 +369,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P8-PREPARE-REQUESTED-CONTRIBUTIONS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P008
   targets: []
   action: prepare requested opinions recommendations and written contributions
   norm_text: The advisory forum may prepare opinions, recommendations and written contributions at the
@@ -358,7 +390,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Board or Commission requests the contribution
+    - text: at the request of the Board or the Commission
       basis_segment_ids:
       - AIA-TEXT-A067-P008
   exceptions: null
@@ -378,11 +410,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P9-ESTABLISH-SUBGROUPS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P009
   targets: []
   action: establish standing or temporary subgroups to examine Regulation-objective questions
   norm_text: The advisory forum may establish standing or temporary sub-groups as appropriate for the
@@ -411,11 +446,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P010
   targets: []
   action: prepare an annual report on the forum's activities
   norm_text: The advisory forum shall prepare an annual report on its activities.
@@ -443,11 +481,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A067-P10-PUBLISH-ANNUAL-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: advisory_forum
+    basis_segment_ids:
+    - AIA-TEXT-A067-P010
   targets: []
   action: make the annual activity report publicly available
   norm_text: That report shall be made publicly available.
@@ -475,3 +516,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII

@@ -1,0 +1,17 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '69'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 4
+  norms_scanned: 3
+  finding_count: 0
+  audit_sha256: a5a56a8965e94029dc69990bd37fed6ad01f6dfc20bf2a86c8879cbff8618079
+decisions: []

@@ -1,11 +1,17 @@
 records:
 - norm_id: AIA-NORM-A068-P1-ESTABLISH-SCIENTIFIC-PANEL
   source: A068-P001
-  quote: The Commission shall, by means of an implementing act, make provisions on the establishment of a scientific panel of independent experts (the ‘ scientific panel ’) intended to support the enforcement activities under this Regulation. That implementing act shall be adopted in accordance with the examination procedure referred to in Article 98(2).
-  action: provide for an independent scientific panel by implementing act under the Article 98(2) examination procedure
+  quote: The Commission shall, by means of an implementing act, make provisions on the establishment of
+    a scientific panel of independent experts (the ‘ scientific panel ’) intended to support the enforcement
+    activities under this Regulation. That implementing act shall be adopted in accordance with the examination
+    procedure referred to in Article 98(2).
+  action: provide for an independent scientific panel by implementing act under the Article 98(2) examination
+    procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A068-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -13,13 +19,24 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A068-P2-SELECT-QUALIFIED-INDEPENDENT-EXPERTS
   source: A068-P002
-  quote: 'The scientific panel shall consist of experts selected by the Commission on the basis of up-to-date scientific or technical expertise in the field of AI necessary for the tasks set out in paragraph 3, and shall be able to demonstrate meeting all of the following conditions:'
-  action: select panel experts with current task-relevant AI expertise who satisfy every enacted competence independence and performance condition
+  quote: 'The scientific panel shall consist of experts selected by the Commission on the basis of up-to-date
+    scientific or technical expertise in the field of AI necessary for the tasks set out in paragraph
+    3, and shall be able to demonstrate meeting all of the following conditions:'
+  action: select panel experts with current task-relevant AI expertise who satisfy every enacted competence
+    independence and performance condition
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A068-P002]
   targets: []
-  mandatory_content: [particular AI expertise and competence, independence from AI-system and GPAI-model providers, diligent accurate and objective performance ability]
-  qualifier_spans: [A068-P003, A068-P004, A068-P005]
+  mandatory_content:
+  - particular AI expertise and competence
+  - independence from AI-system and GPAI-model providers
+  - diligent accurate and objective performance ability
+  qualifier_spans:
+  - A068-P003
+  - A068-P004
+  - A068-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -27,11 +44,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A068-P2-PANEL-SIZE-AND-REPRESENTATION
   source: A068-P006
-  quote: The Commission, in consultation with the Board, shall determine the number of experts on the panel in accordance with the required needs and shall ensure fair gender and geographical representation.
-  action: determine needs-based panel size with Board consultation and ensure fair gender and geographical representation
+  quote: The Commission, in consultation with the Board, shall determine the number of experts on the
+    panel in accordance with the required needs and shall ensure fair gender and geographical representation.
+  action: determine needs-based panel size with Board consultation and ensure fair gender and geographical
+    representation
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A068-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -39,12 +60,19 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   source: A068-P007
-  quote: 'The scientific panel shall advise and support the AI Office, in particular with regard to the following tasks:'
+  quote: 'The scientific panel shall advise and support the AI Office, in particular with regard to the
+    following tasks:'
   action: advise and support the AI Office, in particular on the enacted tasks
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
-  qualifier_spans: [A068-P008, A068-P014, A068-P015, A068-P016]
+  qualifier_spans:
+  - A068-P008
+  - A068-P014
+  - A068-P015
+  - A068-P016
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -56,48 +84,73 @@ records:
   action: support the work of market surveillance authorities
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
-  conditions: [the market surveillance authorities request the support]
+  conditions:
+    operator: all_of
+    operands:
+    - text: at their request
+      basis_segment_ids: [AIA-TEXT-A068-P014]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
 - norm_id: AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
   source: A068-P015
-  quote: supporting cross-border market surveillance activities as referred to in Article 74(11), without prejudice to the powers of market surveillance authorities;
+  quote: supporting cross-border market surveillance activities as referred to in Article 74(11), without
+    prejudice to the powers of market surveillance authorities;
   action: support the Article 74(11) cross-border market surveillance activities without prejudice to
     the powers of the market surveillance authorities
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
 - norm_id: AIA-NORM-A068-P3-D-SUPPORT-SAFEGUARD-PROCEDURE
   source: A068-P016
-  quote: supporting the AI Office in carrying out its duties in the context of the Union safeguard procedure pursuant to Article 81.
-  action: support the AI Office in carrying out its duties under the Article 81 Union safeguard
-    procedure
+  quote: supporting the AI Office in carrying out its duties in the context of the Union safeguard procedure
+    pursuant to Article 81.
+  action: support the AI Office in carrying out its duties under the Article 81 Union safeguard procedure
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
 - norm_id: AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   source: A068-P008
-  quote: 'supporting the implementation and enforcement of this Regulation as regards general-purpose AI models and systems, in particular by:'
+  quote: 'supporting the implementation and enforcement of this Regulation as regards general-purpose
+    AI models and systems, in particular by:'
   action: support the implementation and enforcement of this Regulation as regards general-purpose AI
     models and systems, in particular through the enacted tasks
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
-  qualifier_spans: [A068-P009, A068-P010, A068-P011, A068-P012, A068-P013]
+  qualifier_spans:
+  - A068-P009
+  - A068-P010
+  - A068-P011
+  - A068-P012
+  - A068-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -105,75 +158,105 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
   source: A068-P009
-  quote: alerting the AI Office of possible systemic risks at Union level of general-purpose AI models, in accordance with Article 90;
-  action: alert the AI Office of possible Union-level systemic risks of general-purpose AI models in
-    accordance with Article 90
+  quote: alerting the AI Office of possible systemic risks at Union level of general-purpose AI models,
+    in accordance with Article 90;
+  action: alert the AI Office of possible Union-level systemic risks of general-purpose AI models in accordance
+    with Article 90
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
+  - A068-P008
 - norm_id: AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
   source: A068-P010
-  quote: contributing to the development of tools and methodologies for evaluating capabilities of general-purpose AI models and systems, including through benchmarks;
-  action: contribute to developing tools and methodologies, including benchmarks, for evaluating the
-    capabilities of general-purpose AI models and systems
+  quote: contributing to the development of tools and methodologies for evaluating capabilities of general-purpose
+    AI models and systems, including through benchmarks;
+  action: contribute to developing tools and methodologies, including benchmarks, for evaluating the capabilities
+    of general-purpose AI models and systems
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
+  - A068-P008
 - norm_id: AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
   source: A068-P011
   quote: providing advice on the classification of general-purpose AI models with systemic risk;
   action: advise on the classification of general-purpose AI models with systemic risk
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
+  - A068-P008
 - norm_id: AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
   source: A068-P012
   quote: providing advice on the classification of various general-purpose AI models and systems;
   action: advise on the classification of various general-purpose AI models and systems
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
+  - A068-P008
 - norm_id: AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
   source: A068-P013
   quote: contributing to the development of tools and templates;
   action: contribute to the development of tools and templates
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A068-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A068-P007
+  - A068-P008
 - norm_id: AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE
   source: A068-P017
   quote: The experts on the scientific panel shall perform their tasks with impartiality and objectivity,
-    and shall ensure the confidentiality of information and data obtained in carrying out their tasks and activities.
+    and shall ensure the confidentiality of information and data obtained in carrying out their tasks
+    and activities.
   action: perform the panel's tasks impartially and objectively and ensure the confidentiality of information
     and data obtained in carrying out those tasks and activities
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids: [AIA-TEXT-A068-P017]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -185,24 +268,34 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A068-P4-NO-INSTRUCTIONS
   source: A068-P017
-  quote: They shall neither seek nor take instructions from anyone when exercising their tasks under paragraph 3.
+  quote: They shall neither seek nor take instructions from anyone when exercising their tasks under paragraph
+    3.
   action: neither seek nor take instructions from anyone when exercising the paragraph 3 tasks
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids: [AIA-TEXT-A068-P017]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: when exercising their tasks under paragraph 3
+      basis_segment_ids: [AIA-TEXT-A068-P017]
 - norm_id: AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS
   source: A068-P017
   quote: Each expert shall draw up a declaration of interests, which shall be made publicly available.
   action: draw up a declaration of interests that is made publicly available
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids: [AIA-TEXT-A068-P017]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -210,11 +303,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A068-P4-MANAGE-CONFLICTS
   source: A068-P017
-  quote: The AI Office shall establish systems and procedures to actively manage and prevent potential conflicts of interest.
-  action: establish systems and procedures actively managing and preventing potential expert conflicts of interest
+  quote: The AI Office shall establish systems and procedures to actively manage and prevent potential
+    conflicts of interest.
+  action: establish systems and procedures actively managing and preventing potential expert conflicts
+    of interest
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A068-P017]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -222,12 +319,19 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A068-P5-ALERT-AND-ASSISTANCE-ARRANGEMENTS
   source: A068-P018
-  quote: The implementing act referred to in paragraph 1 shall include provisions on the conditions, procedures and detailed arrangements for the scientific panel and its members to issue alerts, and to request the assistance of the AI Office for the performance of the tasks of the scientific panel.
-  action: include panel alert and AI Office assistance conditions procedures and detailed arrangements in the implementing act
+  quote: The implementing act referred to in paragraph 1 shall include provisions on the conditions, procedures
+    and detailed arrangements for the scientific panel and its members to issue alerts, and to request
+    the assistance of the AI Office for the performance of the tasks of the scientific panel.
+  action: include panel alert and AI Office assistance conditions procedures and detailed arrangements
+    in the implementing act
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A068-P001]
   targets: []
-  mandatory_content: [conditions procedures and arrangements for alerts, conditions procedures and arrangements for AI Office assistance requests]
+  mandatory_content:
+  - conditions procedures and arrangements for alerts
+  - conditions procedures and arrangements for AI Office assistance requests
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

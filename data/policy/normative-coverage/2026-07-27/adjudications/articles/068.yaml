@@ -1,0 +1,75 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '68'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 19
+  norms_scanned: 18
+  finding_count: 4
+  audit_sha256: c6b68a7d8a477076a86fde7ea6d1782d0f78307a4815c0909a18c0d9564aa4d4
+decisions:
+- finding_id: AIA-VALID-0B90A8AB8AF25FFC
+  target: AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A068-P015
+  source_sha256: 29b4048c560432e2a6dd16a48635d974916076d48569bc56d253513b3ed26ee2
+  target_sha256: e7b63a421b210e569ec19aeb18fbc7d6dfb4962b72d2af82e95d8002fa95b615
+  decision: false_positive
+  reason: '"Without prejudice to the powers of market surveillance authorities" keeps those powers intact
+    while the panel supports cross-border activities. It takes no case out of the task, so there is no
+    exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A068-P015
+    source_sha256: 29b4048c560432e2a6dd16a48635d974916076d48569bc56d253513b3ed26ee2
+    quote: supporting cross-border market surveillance activities as referred to in Article 74(11), without
+      prejudice to the powers of market surveillance authorities
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-E8C476C5918F6F66
+  target: AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS:actor:natural_or_legal_person:AIA-TEXT-A068-P017
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A068-P017
+  source_sha256: eb74eddb33750b3a0af24a61bce2c4ff509705f8fd54a0c8d9b3a5e9b8d81e92
+  target_sha256: a34a1c6bba1c79ec6330279e62516d730f45c2104b3f3ea67f4cfa6f67f5fd6c
+  decision: accepted_with_basis
+  reason: The paragraph names the "experts on the scientific panel" by their function. Each is an individual
+    the Commission selects, and the Act defines no label for them, so the generic natural-or-legal-person
+    role records them and no span can name it.
+  legal_basis:
+  - &id001
+    span_id: AIA-TEXT-A068-P017
+    source_sha256: eb74eddb33750b3a0af24a61bce2c4ff509705f8fd54a0c8d9b3a5e9b8d81e92
+    quote: The experts on the scientific panel shall perform their tasks with impartiality and objectivity
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-0893E8DE979DBAA9
+  target: AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE:actor:natural_or_legal_person:AIA-TEXT-A068-P017
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A068-P017
+  source_sha256: eb74eddb33750b3a0af24a61bce2c4ff509705f8fd54a0c8d9b3a5e9b8d81e92
+  target_sha256: d2e294757998b6d506b4b73c3879c042c4571290f259c27b8aecbacb3abd9b22
+  decision: accepted_with_basis
+  reason: The paragraph names the "experts on the scientific panel" by their function. Each is an individual
+    the Commission selects, and the Act defines no label for them, so the generic natural-or-legal-person
+    role records them and no span can name it.
+  legal_basis:
+  - *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-1A3B804B639DA073
+  target: AIA-NORM-A068-P4-NO-INSTRUCTIONS:actor:natural_or_legal_person:AIA-TEXT-A068-P017
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A068-P017
+  source_sha256: eb74eddb33750b3a0af24a61bce2c4ff509705f8fd54a0c8d9b3a5e9b8d81e92
+  target_sha256: 73d1db1aa6366ee33480ecbc83cc0aa7b396ed57894e15b6003ad84d48e69777
+  decision: accepted_with_basis
+  reason: The paragraph names the "experts on the scientific panel" by their function. Each is an individual
+    the Commission selects, and the Act defines no label for them, so the generic natural-or-legal-person
+    role records them and no span can name it.
+  legal_basis:
+  - *id001
+  reviewed_by: vidibro

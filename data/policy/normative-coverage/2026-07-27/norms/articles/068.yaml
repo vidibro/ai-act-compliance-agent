@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A068-P001
   targets: []
   action: provide for an independent scientific panel by implementing act under the Article 98(2) examination
     procedure
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P2-SELECT-QUALIFIED-INDEPENDENT-EXPERTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A068-P002
   targets: []
   action: select panel experts with current task-relevant AI expertise who satisfy every enacted competence
     independence and performance condition
@@ -78,11 +83,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P2-PANEL-SIZE-AND-REPRESENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A068-P006
   targets: []
   action: determine needs-based panel size with Board consultation and ensure fair gender and geographical
     representation
@@ -112,11 +120,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: advise and support the AI Office, in particular on the enacted tasks
   norm_text: 'The scientific panel shall advise and support the AI Office, in particular with regard to
@@ -150,23 +161,28 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: support the work of market surveillance authorities
   norm_text: supporting the work of market surveillance authorities, at their request;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P014
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
   conditions:
     operator: all_of
     operands:
-    - text: the market surveillance authorities request the support
+    - text: at their request
       basis_segment_ids:
       - AIA-TEXT-A068-P014
   exceptions: null
@@ -186,11 +202,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: support the Article 74(11) cross-border market surveillance activities without prejudice to
     the powers of the market surveillance authorities
@@ -198,9 +217,11 @@ norms:
     without prejudice to the powers of market surveillance authorities;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P015
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -219,20 +240,25 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-D-SUPPORT-SAFEGUARD-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: support the AI Office in carrying out its duties under the Article 81 Union safeguard procedure
   norm_text: supporting the AI Office in carrying out its duties in the context of the Union safeguard
     procedure pursuant to Article 81.
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P016
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -251,11 +277,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: support the implementation and enforcement of this Regulation as regards general-purpose AI
     models and systems, in particular through the enacted tasks
@@ -290,11 +319,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: alert the AI Office of possible Union-level systemic risks of general-purpose AI models in accordance
     with Article 90
@@ -302,9 +334,12 @@ norms:
     in accordance with Article 90;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P009
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
+  - AIA-TEXT-A068-P008
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -323,11 +358,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: contribute to developing tools and methodologies, including benchmarks, for evaluating the capabilities
     of general-purpose AI models and systems
@@ -335,9 +373,12 @@ norms:
     general-purpose AI models and systems, including through benchmarks;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P010
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
+  - AIA-TEXT-A068-P008
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -356,19 +397,25 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: advise on the classification of general-purpose AI models with systemic risk
   norm_text: providing advice on the classification of general-purpose AI models with systemic risk;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P011
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
+  - AIA-TEXT-A068-P008
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -387,19 +434,25 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: advise on the classification of various general-purpose AI models and systems
   norm_text: providing advice on the classification of various general-purpose AI models and systems;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P012
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
+  - AIA-TEXT-A068-P008
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -418,19 +471,25 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A068-P007
   targets: []
   action: contribute to the development of tools and templates
   norm_text: contributing to the development of tools and templates;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A068-P013
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A068-P007
+  - AIA-TEXT-A068-P008
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -449,11 +508,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids:
+    - AIA-TEXT-A068-P017
   targets: []
   action: perform the panel's tasks impartially and objectively and ensure the confidentiality of information
     and data obtained in carrying out those tasks and activities
@@ -486,11 +548,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P4-NO-INSTRUCTIONS
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids:
+    - AIA-TEXT-A068-P017
   targets: []
   action: neither seek nor take instructions from anyone when exercising the paragraph 3 tasks
   norm_text: They shall neither seek nor take instructions from anyone when exercising their tasks under
@@ -501,7 +566,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A068-P017
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: when exercising their tasks under paragraph 3
+      basis_segment_ids:
+      - AIA-TEXT-A068-P017
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -519,11 +589,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids:
+    - AIA-TEXT-A068-P017
   targets: []
   action: draw up a declaration of interests that is made publicly available
   norm_text: Each expert shall draw up a declaration of interests, which shall be made publicly available.
@@ -551,11 +624,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P4-MANAGE-CONFLICTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A068-P017
   targets: []
   action: establish systems and procedures actively managing and preventing potential expert conflicts
     of interest
@@ -585,11 +661,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A068-P5-ALERT-AND-ASSISTANCE-ARRANGEMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A068-P001
   targets: []
   action: include panel alert and AI Office assistance conditions procedures and detailed arrangements
     in the implementing act
@@ -622,3 +701,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII

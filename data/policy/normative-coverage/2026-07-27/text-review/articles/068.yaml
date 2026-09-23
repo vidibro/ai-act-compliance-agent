@@ -43,7 +43,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P1-ESTABLISH-SCIENTIFIC-PANEL
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P5-ALERT-AND-ASSISTANCE-ARRANGEMENTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -198,7 +199,16 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES
+  - AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
+  - AIA-NORM-A068-P3-D-SUPPORT-SAFEGUARD-PROCEDURE
+  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  - AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
+  - AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
+  - AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
+  - AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
+  - AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -226,6 +236,11 @@ segments:
   - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   qualifying_norm_ids:
   - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
+  - AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
+  - AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
+  - AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
+  - AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
+  - AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

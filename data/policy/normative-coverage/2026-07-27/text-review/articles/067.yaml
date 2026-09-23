@@ -97,7 +97,10 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A067-P3-APPOINT-MEMBERS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A067-P1-ESTABLISH-ADVISORY-FORUM
+  - AIA-NORM-A067-P2-BALANCED-MEMBERSHIP
+  - AIA-NORM-A067-P4-MEMBER-TERM
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

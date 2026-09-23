@@ -3965,9 +3965,8 @@ def test_article_sixty_eight_extracts_scientific_panel_safeguards():
             assert all(norms[child].primary_spans == [span_id] for child in children)
 
     # Only support for the market surveillance authorities is request-triggered.
-    assert norms["AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES"].conditions == [
-        "the market surveillance authorities request the support"
-    ]
+    request = norms["AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES"].conditions
+    assert [operand.text for operand in request] == ["at their request"]
     cross_border = norms["AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE"]
     assert not cross_border.conditions
     assert "without prejudice" in cross_border.action
