@@ -8,12 +8,12 @@ records:
     while preserving more specific rights
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A094-P001]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This grants procedural protection rather than imposing a product compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
-  exceptions:
-  - more specific procedural rights provided by this Regulation remain unaffected

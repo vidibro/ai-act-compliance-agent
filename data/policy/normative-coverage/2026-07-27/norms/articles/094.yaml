@@ -5,6 +5,8 @@ norms:
   kind: applicability
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A094-P001
   targets: []
   action: apply Regulation 2019/1020 Article 18 procedural rights to GPAI providers with necessary adaptations
     while preserving more specific rights
@@ -19,12 +21,7 @@ norms:
   - AIA-TEXT-A094-P001
   qualifier_spans: []
   conditions: null
-  exceptions:
-    operator: any_of
-    operands:
-    - text: more specific procedural rights provided by this Regulation remain unaffected
-      basis_segment_ids:
-      - AIA-TEXT-A094-P001
+  exceptions: null
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: This grants procedural protection rather than imposing a product compliance action.
@@ -41,3 +38,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

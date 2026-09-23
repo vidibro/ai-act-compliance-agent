@@ -682,8 +682,9 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
         "providers of general-purpose AI models",
         "general-purpose AI model provider",
         # Arts. 91 and 92 name the provider already under supervision: "the provider of the
-        # general-purpose AI model concerned".
+        # general-purpose AI model concerned"; Art. 94 the same in the plural.
         "provider of the general-purpose AI model",
+        "providers of the general-purpose AI model",
     ),
     ActorRole.GPAI_PROVIDER_CLIENT: (
         "provider of a general-purpose AI model downstream",

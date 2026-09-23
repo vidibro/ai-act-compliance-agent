@@ -6,6 +6,7 @@ records:
     providers
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A093-P001]
   targets: []
   kind: power
   mandatory_content: []
@@ -13,22 +14,29 @@ records:
   - A093-P002
   - A093-P003
   - A093-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission considers the request necessary and appropriate
-  - operator: any_of
+    operator: all_of
     operands:
-    - the request is to take appropriate measures to comply with Articles 53 and 54
-    - operator: all_of
+    - text: Where necessary and appropriate
+      basis_segment_ids: [AIA-TEXT-A093-P001]
+    - operator: any_of
       operands:
-      - the request is to implement mitigation measures
-      - an Article 92 evaluation has given rise to serious and substantiated concern about a systemic
-        risk at Union level
-    - the request is to restrict making the model available on the market, withdraw it, or recall it
+      - text: take appropriate measures to comply with the obligations set out in Articles 53 and 54
+        basis_segment_ids: [AIA-TEXT-A093-P002]
+      - operator: all_of
+        operands:
+        - text: implement mitigation measures
+          basis_segment_ids: [AIA-TEXT-A093-P003]
+        - text: where the evaluation carried out in accordance with Article 92 has given rise to serious and substantiated concern of a systemic risk at Union level
+          basis_segment_ids: [AIA-TEXT-A093-P003]
+      - text: restrict the making available on the market, withdraw or recall the model
+        basis_segment_ids: [AIA-TEXT-A093-P004]
 - norm_id: AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE
   source: A093-P005
   quote: Before a measure is requested, the AI Office may initiate a structured dialogue with the provider
@@ -36,8 +44,10 @@ records:
   action: initiate structured dialogue with the GPAI provider before requesting a measure
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A093-P005]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -53,13 +63,17 @@ records:
     action
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A093-P006]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - during the paragraph 2 structured dialogue, a provider of a general-purpose AI model with systemic
-    risk offers commitments to implement mitigation measures addressing a systemic risk at Union level
+    operator: all_of
+    operands:
+    - text: If, during the structured dialogue referred to in paragraph 2, the provider of the general-purpose AI model with systemic risk offers commitments to implement mitigation measures to address a systemic risk at Union level
+      basis_segment_ids: [AIA-TEXT-A093-P006]

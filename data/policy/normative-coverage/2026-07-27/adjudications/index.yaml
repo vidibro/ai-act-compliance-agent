@@ -689,6 +689,27 @@ enforced_scope:
       - actor_evidence
       - target_evidence
       - temporal_regime
+  - kind: article
+    document: "93"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
+  - kind: article
+    document: "94"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
+  - kind: article
+    document: "95"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
 
 shards:
   - kind: article
@@ -985,3 +1006,12 @@ shards:
   - kind: article
     document: "92"
     file: articles/092.yaml
+  - kind: article
+    document: "93"
+    file: articles/093.yaml
+  - kind: article
+    document: "94"
+    file: articles/094.yaml
+  - kind: article
+    document: "95"
+    file: articles/095.yaml

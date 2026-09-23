@@ -1,0 +1,32 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '94'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 2
+  norms_scanned: 1
+  finding_count: 1
+  audit_sha256: fb25deaa6c9f5f318f02d95522c257f1be81b3367b9456965940d3257c70bb36
+decisions:
+- finding_id: AIA-VALID-B1FC4661DA2003E2
+  target: AIA-NORM-A094-GPAI-PROCEDURAL-RIGHTS
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A094-P001
+  source_sha256: effc89a6a241b68e899853ac64e09bfa1c2edc59b4d4019181124002d33c5b76
+  target_sha256: c861968dbb62536e51737c982b125727e1b454aefd87d370b06c75de7a09404c
+  decision: false_positive
+  reason: '"Without prejudice to more specific procedural rights provided for in this Regulation" keeps
+    those rights applying alongside Article 18. It takes no case out of it, so there is no exception branch
+    to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A094-P001
+    source_sha256: effc89a6a241b68e899853ac64e09bfa1c2edc59b4d4019181124002d33c5b76
+    quote: without prejudice to more specific procedural rights provided for in this Regulation
+  reviewed_by: vidibro

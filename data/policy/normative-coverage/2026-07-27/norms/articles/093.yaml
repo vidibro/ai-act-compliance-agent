@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A093-P001
   targets: []
   action: request necessary appropriate compliance mitigation or market-restriction measures from GPAI
     providers
@@ -22,27 +24,26 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission considers the request necessary and appropriate
+    - text: Where necessary and appropriate
       basis_segment_ids:
       - AIA-TEXT-A093-P001
     - operator: any_of
       operands:
-      - text: the request is to take appropriate measures to comply with Articles 53 and 54
+      - text: take appropriate measures to comply with the obligations set out in Articles 53 and 54
         basis_segment_ids:
-        - AIA-TEXT-A093-P001
+        - AIA-TEXT-A093-P002
       - operator: all_of
         operands:
-        - text: the request is to implement mitigation measures
+        - text: implement mitigation measures
           basis_segment_ids:
-          - AIA-TEXT-A093-P001
-        - text: an Article 92 evaluation has given rise to serious and substantiated concern about a systemic
-            risk at Union level
+          - AIA-TEXT-A093-P003
+        - text: where the evaluation carried out in accordance with Article 92 has given rise to serious
+            and substantiated concern of a systemic risk at Union level
           basis_segment_ids:
-          - AIA-TEXT-A093-P001
-      - text: the request is to restrict making the model available on the market, withdraw it, or recall
-          it
+          - AIA-TEXT-A093-P003
+      - text: restrict the making available on the market, withdraw or recall the model
         basis_segment_ids:
-        - AIA-TEXT-A093-P001
+        - AIA-TEXT-A093-P004
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -60,11 +61,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A093-P005
   targets: []
   action: initiate structured dialogue with the GPAI provider before requesting a measure
   norm_text: Before a measure is requested, the AI Office may initiate a structured dialogue with the
@@ -93,11 +97,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A093-P006
   targets: []
   action: make offered systemic-risk mitigation commitments binding and declare no further grounds for
     action
@@ -113,9 +120,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: during the paragraph 2 structured dialogue, a provider of a general-purpose AI model with
-        systemic risk offers commitments to implement mitigation measures addressing a systemic risk at
-        Union level
+    - text: If, during the structured dialogue referred to in paragraph 2, the provider of the general-purpose
+        AI model with systemic risk offers commitments to implement mitigation measures to address a systemic
+        risk at Union level
       basis_segment_ids:
       - AIA-TEXT-A093-P006
   exceptions: null
@@ -135,3 +142,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

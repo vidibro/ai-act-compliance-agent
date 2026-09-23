@@ -1,3 +1,8 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-X
+  application_start: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
 records:
 - norm_id: AIA-NORM-A095-P1-ENCOURAGE-NON-HIGH-RISK-CODES
   source: A095-P001
@@ -10,8 +15,11 @@ records:
     application to non-high-risk systems
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A095-P001]
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A095-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -28,7 +36,9 @@ records:
     are examples and are not exhaustive, and applying the requirements stays voluntary
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A095-P002]
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A095-P002]
   targets: []
   mandatory_content:
   - clear objectives
@@ -39,6 +49,7 @@ records:
   - A095-P005
   - A095-P006
   - A095-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -55,10 +66,12 @@ records:
     one or more similarly purposed systems
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A095-P008]
   - actor_ref: deployer
-  - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A095-P008]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: no_product_action
   product_scope_reason: This is permission to participate in voluntary code development rather than a
     compliance obligation.
@@ -73,8 +86,16 @@ records:
   action: account for SME start-up and SMC interests and needs when encouraging and facilitating codes
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A095-P009]
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A095-P009]
   targets: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: when encouraging and facilitating the drawing up of codes of conduct
+      basis_segment_ids: [AIA-TEXT-A095-P009]
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

@@ -5,7 +5,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A095-P001
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A095-P001
   targets: []
   action: encourage and facilitate codes and governance mechanisms for voluntary Chapter III Section 2
     application to non-high-risk systems
@@ -38,12 +42,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
 - norm_id: AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A095-P002
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A095-P002
   targets: []
   action: facilitate the drawing up of codes of conduct for the voluntary application of specific requirements
     to all AI systems, on the basis of clear objectives and key performance indicators; the elements listed
@@ -84,13 +93,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
 - norm_id: AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A095-P008
   - actor_ref: deployer
-  - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A095-P008
   targets: []
   action: draw up a voluntary code individually jointly or through representative organisations and cover
     one or more similarly purposed systems
@@ -124,12 +137,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
 - norm_id: AIA-NORM-A095-P4-ACCOUNT-FOR-SMALL-BUSINESS-NEEDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A095-P009
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A095-P009
   targets: []
   action: account for SME start-up and SMC interests and needs when encouraging and facilitating codes
   norm_text: The AI Office and the Member States shall take into account the specific interests and needs
@@ -141,7 +159,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A095-P009
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: when encouraging and facilitating the drawing up of codes of conduct
+      basis_segment_ids:
+      - AIA-TEXT-A095-P009
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -159,3 +182,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-X
