@@ -130,11 +130,13 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
         if n.norm_id.startswith("AIA-NORM-A031-")
     }
     assert len(norms) == 18
-    assert norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions == ["disclosure required by law"]
+    assert [
+        operand.text for operand in norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions
+    ] == ["except when its disclosure is required by law"]
     staff = norms["P7-STAFF-PROFESSIONAL-SECRECY"]
     assert staff.actors[0].actor_ref == "conformity_assessment_body_personnel"
-    assert "notifying authorities of the Member State" in staff.exceptions[0]
-    assert "disclosure required by law" not in staff.exceptions
+    assert "notifying authorities of the Member State" in staff.exceptions[0].text
+    assert all("disclosure" not in operand.text for operand in staff.exceptions)
     for suffix in (
         "P5-DIRECT-INVOLVEMENT-PROHIBITED",
         "P5-CONFLICTING-ACTIVITIES-PROHIBITED",
@@ -183,30 +185,33 @@ def test_article_forty_one_preserves_standardisation_conditions(corrected_bundle
     norms = {n.norm_id: n for n in corrected_bundle.norm_inventory.norms}
     power = norms["AIA-NORM-A041-P1-ADOPT-COMMON-SPECIFICATIONS"]
     assert power.kind.value == "power"
-    root = power.conditions[0]
+    root = power.conditions
     assert root.operator == "all_of" and len(root.operands) == 4
-    assert "Article 10(1)" in root.operands[0]
+    assert "Article 10(1)" in root.operands[0].text
     alternatives = root.operands[1]
     assert alternatives.operator == "any_of" and len(alternatives.operands) == 4
-    assert "deadline" in alternatives.operands[1]
-    assert "fundamental rights" in alternatives.operands[2]
-    assert "no reference" in root.operands[2]
-    assert "no such reference is expected" in root.operands[3]
+    assert "deadline" in alternatives.operands[1].text
+    assert "fundamental rights" in alternatives.operands[2].text
+    assert "no reference" in root.operands[2].text
+    assert "no such reference is expected" in root.operands[3].text
 
 
 def test_article_forty_three_preserves_routes_and_exceptions(corrected_bundle):
     norms = {n.norm_id: n for n in corrected_bundle.norm_inventory.norms}
-    required = norms["AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE"].conditions[0]
+    required = norms["AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE"].conditions
     assert required.operator == "all_of"
-    assert "point 1 of Annex III" in required.operands[0]
+    assert "point 1 of Annex III" in required.operands[0].text
     assert required.operands[1].operator == "any_of"
     assert len(required.operands[1].operands) == 4
-    assert "only for the part that was restricted" in required.operands[1].operands[3]
+    assert "only on the part of the standard that was restricted" in (
+        required.operands[1].operands[3].text
+    )
     choice = norms["AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY"]
     assert choice.kind.value == "permission"
-    assert "point 1 of Annex III" in choice.conditions[0]
-    assert "law enforcement, immigration or asylum" in choice.exceptions[0]
-    assert "Article 74(8) or (9)" in choice.exceptions[0]
+    # The choice is enacted for the Annex VII procedure, which only point 1 of Annex III reaches.
+    assert "procedure referred to in Annex VII" in choice.conditions[0].text
+    assert "law enforcement, immigration or asylum" in choice.exceptions[0].text
+    assert "Article 74(8) or (9)" in choice.exceptions[0].text
     assert corrected_bundle.norm_inventory.target_norm_ids_for(
         choice.norm_id, NormRelationKind.RELIES_ON_NORMS
     ) == ["AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY"]

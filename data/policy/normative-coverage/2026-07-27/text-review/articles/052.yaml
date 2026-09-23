@@ -78,7 +78,11 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A052-P2-PRESENT-REBUTTAL
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A052-P1-NOTIFY-COMMISSION
+  - AIA-NORM-A052-P1-NOTIFICATION-CONTENT
+  - AIA-NORM-A052-P5-REQUEST-CONTENT
+  - AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

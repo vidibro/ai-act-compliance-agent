@@ -1,3 +1,8 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-V
+  application_start: 2025-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 records:
 - norm_id: AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK
   source: A051-P002
@@ -7,13 +12,17 @@ records:
     systemic risk
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids: [AIA-TEXT-A051-P001]
   kind: applicability
   qualifier_spans:
   - A051-P001
   conditions:
-  - appropriate technical tools and methodologies, including indicators and benchmarks, establish high-impact
-    capabilities
+    operator: all_of
+    operands:
+    - text: it has high impact capabilities evaluated on the basis of appropriate technical tools and methodologies, including indicators and benchmarks
+      basis_segment_ids: [AIA-TEXT-A051-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   verification_mode: answered_by_classification
   implementation_mode: applicability_question
   implementation_refs:
@@ -28,14 +37,17 @@ records:
     as a model with systemic risk
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids: [AIA-TEXT-A051-P001]
   kind: applicability
   qualifier_spans:
   - A051-P001
   conditions:
-  - the Commission decides ex officio or following a qualified scientific-panel alert that the model has
-    equivalent capabilities or impact
-  - the Commission has regard to the Annex XIII criteria
+    operator: all_of
+    operands:
+    - text: based on a decision of the Commission, ex officio or following a qualified alert from the scientific panel, it has capabilities or an impact equivalent to those set out in point (a) having regard to the criteria set out in Annex XIII
+      basis_segment_ids: [AIA-TEXT-A051-P003]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   verification_mode: answered_by_classification
   implementation_mode: applicability_question
   implementation_refs:
@@ -50,10 +62,15 @@ records:
     exceeds 10^25 floating-point operations
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids: [AIA-TEXT-A051-P004]
   kind: applicability
   conditions:
-  - cumulative training computation measured in floating-point operations exceeds 10^25
+    operator: all_of
+    operands:
+    - text: when the cumulative amount of computation used for its training measured in floating point operations is greater than 10 25
+      basis_segment_ids: [AIA-TEXT-A051-P004]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   verification_mode: answered_by_classification
   implementation_mode: applicability_question
   implementation_refs:
@@ -69,10 +86,14 @@ records:
     and indicators when necessary for the thresholds to reflect the state of the art
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A051-P005]
   targets: []
   conditions:
-  - amendment is necessary for the thresholds to reflect the state of the art in light of technological
-    developments
+    operator: all_of
+    operands:
+    - text: when necessary, for these thresholds to reflect the state of the art
+      basis_segment_ids: [AIA-TEXT-A051-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

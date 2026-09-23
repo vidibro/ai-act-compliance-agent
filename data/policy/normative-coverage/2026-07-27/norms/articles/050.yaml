@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A050-P1
   targets: []
   action: design direct-interaction systems to inform natural persons they are interacting with AI
   norm_text: Providers shall ensure that AI systems intended to interact directly with natural persons
@@ -24,18 +26,22 @@ norms:
   - AIA-TEXT-A050-P1
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: AI systems intended to interact directly with natural persons
+      basis_segment_ids:
+      - AIA-TEXT-A050-P1
   exceptions:
     operator: any_of
     operands:
-    - text: interaction with an AI system is obvious from the point of view of a natural person who is
-        reasonably well-informed, observant and circumspect, taking into account the circumstances and
-        the context of use
+    - text: unless this is obvious from the point of view of a natural person who is reasonably well-informed,
+        observant and circumspect, taking into account the circumstances and the context of use
       basis_segment_ids:
       - AIA-TEXT-A050-P1
-    - text: AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences,
-        subject to safeguards for third-party rights and freedoms, unless the system is publicly available
-        for reporting a criminal offence
+    - text: This obligation shall not apply to AI systems authorised by law to detect, prevent, investigate
+        or prosecute criminal offences, subject to appropriate safeguards for the rights and freedoms
+        of third parties, unless those systems are available for the public to report a criminal offence
       basis_segment_ids:
       - AIA-TEXT-A050-P1
   mandatory_content: []
@@ -55,11 +61,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P2-MARK-DETECT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A050-P2
   targets: []
   action: make synthetic outputs both machine-readably marked and detectable
   norm_text: Providers of AI systems, including general-purpose AI systems, generating synthetic audio,
@@ -81,14 +90,23 @@ norms:
   - AIA-TEXT-A050-P2
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: AI systems, including general-purpose AI systems, generating synthetic audio, image, video
+        or text content
+      basis_segment_ids:
+      - AIA-TEXT-A050-P2
   exceptions:
     operator: any_of
     operands:
-    - text: assistive standard editing, or no substantial alteration of deployer input data or its semantics
+    - text: to the extent the AI systems perform an assistive function for standard editing
       basis_segment_ids:
       - AIA-TEXT-A050-P2
-    - text: use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+    - text: do not substantially alter the input data provided by the deployer or the semantics thereof
+      basis_segment_ids:
+      - AIA-TEXT-A050-P2
+    - text: where authorised by law to detect, prevent, investigate or prosecute criminal offences
       basis_segment_ids:
       - AIA-TEXT-A050-P2
   mandatory_content:
@@ -116,14 +134,18 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P3-INFORM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A050-P3
   targets: []
   action: inform people exposed to emotion recognition or biometric categorisation
-  norm_text: shall inform the natural persons exposed thereto of the operation of the system
+  norm_text: Deployers of an emotion recognition system or a biometric categorisation system shall inform
+    the natural persons exposed thereto of the operation of the system
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -133,13 +155,19 @@ norms:
   - AIA-TEXT-A050-P3
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: an emotion recognition system or a biometric categorisation system
+      basis_segment_ids:
+      - AIA-TEXT-A050-P3
   exceptions:
     operator: any_of
     operands:
-    - text: biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
-        criminal offences, subject to safeguards for third-party rights and freedoms and in accordance
-        with Union law
+    - text: This obligation shall not apply to AI systems used for biometric categorisation and emotion
+        recognition, which are permitted by law to detect, prevent or investigate criminal offences, subject
+        to appropriate safeguards for the rights and freedoms of third parties, and in accordance with
+        Union law
       basis_segment_ids:
       - AIA-TEXT-A050-P3
   mandatory_content: []
@@ -159,36 +187,54 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P3-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A050-P3
   targets: []
   action: process personal data under the referenced data-protection instruments
-  norm_text: shall process the personal data in accordance with Regulations (EU) 2016/679 and (EU) 2018/1725
-    and Directive (EU) 2016/680
+  norm_text: Deployers of an emotion recognition system or a biometric categorisation system shall inform
+    the natural persons exposed thereto of the operation of the system, and shall process the personal
+    data in accordance with Regulations (EU) 2016/679 and (EU) 2018/1725 and Directive (EU) 2016/680,
+    as applicable. This obligation shall not apply to AI systems used for biometric categorisation and
+    emotion recognition, which are permitted by law to detect, prevent or investigate criminal offences,
+    subject to appropriate safeguards for the rights and freedoms of third parties, and in accordance
+    with Union law.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A050-P3
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: an emotion recognition system or a biometric categorisation system
+      basis_segment_ids:
+      - AIA-TEXT-A050-P3
   exceptions:
     operator: any_of
     operands:
-    - text: biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
-        criminal offences, subject to safeguards for third-party rights and freedoms and in accordance
-        with Union law
+    - text: This obligation shall not apply to AI systems used for biometric categorisation and emotion
+        recognition, which are permitted by law to detect, prevent or investigate criminal offences, subject
+        to appropriate safeguards for the rights and freedoms of third parties, and in accordance with
+        Union law
       basis_segment_ids:
       - AIA-TEXT-A050-P3
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-TR-A50-3
+  implementation_reason: What the processing requires is settled by the Regulations and the Directive
+    the paragraph names, so this duty is reported alongside the Article 50(3) information rule rather
+    than judged.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -199,20 +245,20 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P4-DEEPFAKE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A050-P4
   targets: []
   action: disclose artificial generation or manipulation of deep-fake image, audio, or video
   norm_text: Deployers of an AI system that generates or manipulates image, audio or video content constituting
     a deep fake, shall disclose that the content has been artificially generated or manipulated. This
     obligation shall not apply where the use is authorised by law to detect, prevent, investigate or prosecute
-    criminal offence. Where the content forms part of an evidently artistic, creative, satirical, fictional
-    or analogous work or programme, the transparency obligations set out in this paragraph are limited
-    to disclosure of the existence of such generated or manipulated content in an appropriate manner that
-    does not hamper the display or enjoyment of the work.
+    criminal offence.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -225,14 +271,19 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: for evidently artistic, creative, satirical, fictional, or analogous works or programmes,
-        disclosure is limited to an appropriate indication that does not hamper display or enjoyment
+    - text: an AI system that generates or manipulates image, audio or video content constituting a deep
+        fake
       basis_segment_ids:
       - AIA-TEXT-A050-P4
   exceptions:
     operator: any_of
     operands:
-    - text: use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+    - text: This obligation shall not apply where the use is authorised by law to detect, prevent, investigate
+        or prosecute criminal offence
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
+    - text: Where the content forms part of an evidently artistic, creative, satirical, fictional or analogous
+        work or programme
       basis_segment_ids:
       - AIA-TEXT-A050-P4
   mandatory_content: []
@@ -252,11 +303,70 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
+- norm_id: AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A050-P4
+  targets: []
+  action: disclose the existence of deep-fake content in an evidently artistic, creative, satirical, fictional
+    or analogous work or programme in an appropriate manner that does not hamper its display or enjoyment
+  norm_text: Where the content forms part of an evidently artistic, creative, satirical, fictional or
+    analogous work or programme, the transparency obligations set out in this paragraph are limited to
+    disclosure of the existence of such generated or manipulated content in an appropriate manner that
+    does not hamper the display or enjoyment of the work.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A050-P4
+  qualifier_spans:
+  - AIA-TEXT-A050-P5
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where the content forms part of an evidently artistic, creative, satirical, fictional or analogous
+        work or programme
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
+  exceptions:
+    operator: any_of
+    operands:
+    - text: This obligation shall not apply where the use is authorised by law to detect, prevent, investigate
+        or prosecute criminal offence
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
+  mandatory_content:
+  - disclosure of the existence of such generated or manipulated content
+  - in an appropriate manner that does not hamper the display or enjoyment of the work
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-TR-A50-4
+  implementation_reason: ''
+  verification_mode: reported_not_judged
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P4-TEXT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A050-P4
   targets: []
   action: disclose artificial generation or manipulation of public-interest text
   norm_text: Deployers of an AI system that generates or manipulates text which is published with the
@@ -274,15 +384,23 @@ norms:
   - AIA-TEXT-A050-P4
   qualifier_spans:
   - AIA-TEXT-A050-P5
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: an AI system that generates or manipulates text which is published with the purpose of informing
+        the public on matters of public interest
+      basis_segment_ids:
+      - AIA-TEXT-A050-P4
   exceptions:
     operator: any_of
     operands:
-    - text: use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+    - text: This obligation shall not apply where the use is authorised by law to detect, prevent, investigate
+        or prosecute criminal offences
       basis_segment_ids:
       - AIA-TEXT-A050-P4
-    - text: AI-generated content underwent human review or editorial control and a natural or legal person
-        holds editorial responsibility for publication
+    - text: where the AI-generated content has undergone a process of human review or editorial control
+        and where a natural or legal person holds editorial responsibility for the publication of the
+        content
       basis_segment_ids:
       - AIA-TEXT-A050-P4
   mandatory_content: []
@@ -302,12 +420,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P5-MANNER
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A050-P1
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A050-P3
   targets: []
   action: provide paragraphs 1 to 4 information clearly, distinguishably, on time, and accessibly
   norm_text: The information referred to in paragraphs 1 to 4 shall be provided to the natural persons
@@ -340,12 +463,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A050-P5-FIRST-INTERACTION
 - norm_id: AIA-NORM-A050-P6-CUMULATIVE
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A050-P1
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A050-P6
   targets: []
   action: preserve Chapter III and other transparency duties alongside Article 50
   norm_text: Paragraphs 1 to 4 shall not affect the requirements and obligations set out in Chapter III,
@@ -376,11 +504,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P7-CODES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A050-P7
   targets: []
   action: encourage and facilitate Union-level codes of practice
   norm_text: The Commission shall encourage and facilitate the drawing up of codes of practice at Union
@@ -410,11 +541,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P7-ASSESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A050-P7
   targets: []
   action: assess whether code adherence adequately ensures compliance
   norm_text: The Commission, taking utmost account of the opinion of the Board, shall assess whether adherence
@@ -444,11 +578,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV
 - norm_id: AIA-NORM-A050-P7-ACT
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A050-P7
   targets: []
   action: adopt common implementation rules if a code is inadequate
   norm_text: If it deems the code of practice to be inadequate, the Commission may adopt an implementing
@@ -463,7 +600,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission deems the code of practice inadequate
+    - text: If it deems the code of practice to be inadequate
       basis_segment_ids:
       - AIA-TEXT-A050-P7
   exceptions: null
@@ -483,3 +620,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IV

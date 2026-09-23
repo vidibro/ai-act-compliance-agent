@@ -12,7 +12,7 @@ audit:
   segments_scanned: 14
   norms_scanned: 17
   finding_count: 4
-  audit_sha256: 220f5fa463ae4d608c9dbb39af18635ee20ad5c101a041a935838f3338885211
+  audit_sha256: 8e88dfdb242c3e57c23985919c6ac45b35c3cb9124608437b3e7bb73d5c264d5
 decisions:
 - finding_id: AIA-VALID-B7C082C11A137C24
   target: AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION:actor:gpai_provider:AIA-TEXT-A053-P008

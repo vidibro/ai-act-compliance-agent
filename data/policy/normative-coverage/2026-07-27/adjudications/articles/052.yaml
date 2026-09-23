@@ -1,0 +1,37 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '52'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 8
+  norms_scanned: 13
+  finding_count: 1
+  audit_sha256: 74583aff2ebf26725adc0222d62444a6898b6ac0b413ad7199ce121cb1a1161a
+decisions:
+- finding_id: AIA-VALID-74484EA18400E9C1
+  target: AIA-NORM-A052-P6-PUBLISH-LIST
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A052-P007
+  source_sha256: b874055188362918cceeb74995b1aed2b71bcc94b617ce1d25e6b0bca7c1fa18
+  target_sha256: 39923db6a3405dcb149b888b1054e561ab24f2fba662badb8a24b00bfebbe925
+  decision: false_positive
+  reason: 'The "without prejudice" clause never lifts the duty to publish the list
+    and keep it up to date. It keeps a concurrent duty running while the list is published:
+    to observe and protect intellectual property rights, confidential business information
+    and trade secrets. The record carries that duty in its mandatory content. There
+    is no case in which the list need not be published, so there is no exception branch
+    to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A052-P007
+    source_sha256: b874055188362918cceeb74995b1aed2b71bcc94b617ce1d25e6b0bca7c1fa18
+    quote: without prejudice to the need to observe and protect intellectual property
+      rights and confidential business information or trade secrets in accordance
+      with Union and national law
+  reviewed_by: vidibro

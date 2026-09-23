@@ -5,7 +5,9 @@ norms:
   kind: applicability
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids:
+    - AIA-TEXT-A051-P001
   action: classify a general-purpose AI model with evaluated high-impact capabilities as a model with
     systemic risk
   norm_text: it has high impact capabilities evaluated on the basis of appropriate technical tools and
@@ -22,8 +24,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: appropriate technical tools and methodologies, including indicators and benchmarks, establish
-        high-impact capabilities
+    - text: it has high impact capabilities evaluated on the basis of appropriate technical tools and
+        methodologies, including indicators and benchmarks
       basis_segment_ids:
       - AIA-TEXT-A051-P002
   exceptions: null
@@ -44,12 +46,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids:
+    - AIA-TEXT-A051-P001
   action: classify a general-purpose AI model with Commission-determined equivalent capabilities or impact
     as a model with systemic risk
   norm_text: based on a decision of the Commission, ex officio or following a qualified alert from the
@@ -67,11 +72,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission decides ex officio or following a qualified scientific-panel alert that the
-        model has equivalent capabilities or impact
-      basis_segment_ids:
-      - AIA-TEXT-A051-P003
-    - text: the Commission has regard to the Annex XIII criteria
+    - text: based on a decision of the Commission, ex officio or following a qualified alert from the
+        scientific panel, it has capabilities or an impact equivalent to those set out in point (a) having
+        regard to the criteria set out in Annex XIII
       basis_segment_ids:
       - AIA-TEXT-A051-P003
   exceptions: null
@@ -92,12 +95,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A051-P2-COMPUTE-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids:
+    - AIA-TEXT-A051-P004
   action: presume a general-purpose AI model has high-impact capabilities when its training computation
     exceeds 10^25 floating-point operations
   norm_text: A general-purpose AI model shall be presumed to have high impact capabilities pursuant to
@@ -114,7 +120,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: cumulative training computation measured in floating-point operations exceeds 10^25
+    - text: when the cumulative amount of computation used for its training measured in floating point
+        operations is greater than 10 25
       basis_segment_ids:
       - AIA-TEXT-A051-P004
   exceptions: null
@@ -135,11 +142,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A051-P3-AMEND-THRESHOLDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A051-P005
   targets: []
   action: adopt Article 97 delegated acts amending Article 51 thresholds and supplementing benchmarks
     and indicators when necessary for the thresholds to reflect the state of the art
@@ -156,8 +166,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: amendment is necessary for the thresholds to reflect the state of the art in light of technological
-        developments
+    - text: when necessary, for these thresholds to reflect the state of the art
       basis_segment_ids:
       - AIA-TEXT-A051-P005
   exceptions: null
@@ -180,3 +189,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V

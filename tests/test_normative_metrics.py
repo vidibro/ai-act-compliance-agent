@@ -1186,11 +1186,21 @@ def test_article_fifty_retains_complete_operative_context_without_merging_norms(
     assert "effective, interoperable, robust and reliable" in synthetic.norm_text
     assert emotion.actors[0].actor_ref == "deployer"
     assert "process the personal data" not in emotion.norm_text
-    assert norms["AIA-NORM-A050-P3-DATA"].norm_text.startswith("shall process")
-    assert "evidently artistic, creative, satirical" in deepfake.norm_text
+    data = norms["AIA-NORM-A050-P3-DATA"]
+    assert data.norm_text.startswith("Deployers of an emotion recognition system")
+    assert "shall process the personal data" in data.norm_text
+    # The artistic-works sentence narrows the deep-fake duty, so it is its own norm and an
+    # exception to the full disclosure rather than a condition of it.
+    artistic = norms["AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE"]
+    assert "evidently artistic, creative, satirical" not in deepfake.norm_text
+    assert "evidently artistic, creative, satirical" in artistic.norm_text
+    assert artistic.conditions[0].text == deepfake.exceptions[1].text
+    assert artistic.implementation_refs == deepfake.implementation_refs == ["AIA-RULE-TR-A50-4"]
     assert "time of the first interaction or exposure" in manner.norm_text
     assert "examination procedure laid down in Article 98(2)" in implementing_act.norm_text
-    assert implementing_act.conditions == ["the Commission deems the code of practice inadequate"]
+    assert [operand.text for operand in implementing_act.conditions] == [
+        "If it deems the code of practice to be inadequate"
+    ]
 
 
 def test_list_item_norms_retain_their_enacting_chapeaux():
@@ -2190,16 +2200,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2111,
+        "approved": 2112,
         "proposed": 822,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2934
+    assert metrics.total_review_records == 2935
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 544
-    assert metrics.shall_token_candidate_recall == pytest.approx(859 / 1403)
+    assert metrics.shall_token_candidate_recall == pytest.approx(860 / 1404)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2214,15 +2224,15 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
-    assert metrics.mapping_shape.one_norm_to_one_target == 37
-    assert metrics.mapping_shape.many_norms_to_one_target == 436
+    assert metrics.mapping_shape.one_norm_to_one_target == 36
+    assert metrics.mapping_shape.many_norms_to_one_target == 440
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 902
-    assert metrics.semantic_vs_existing_implementation_disagreements == 73
+    assert metrics.mapping_shape.unmapped == 900
+    assert metrics.semantic_vs_existing_implementation_disagreements == 70
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2236,10 +2246,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-E-KEEP-LOGS",
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
-        "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
-        "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
-        "AIA-NORM-A052-P5-REQUEST-CONTENT",
         "AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION",
         "AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION",
         "AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN",
@@ -2299,9 +2306,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A050-P3-DATA",
-        "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
-        "AIA-NORM-A052-P5-REQUEST-CONTENT",
         "AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION",
         "AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION",
         "AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN",
@@ -2998,16 +3002,16 @@ def test_article_fifty_preserves_disclosure_test_and_technical_solution_qualifie
         for norm in bundle.norm_inventory.norms
         if norm.norm_id.startswith("AIA-NORM-A050-")
     }
-    assert len(norms) == 11
+    assert len(norms) == 12
     disclose = norms["AIA-NORM-A050-P1-DISCLOSE"]
-    assert disclose.exceptions == [
-        "interaction with an AI system is obvious from the point of view of a natural person "
-        "who is reasonably well-informed, observant and circumspect, taking into account "
-        "the circumstances and the context of use",
-        "AI system authorised by law to detect, prevent, investigate, or prosecute criminal "
-        "offences, "
-        "subject to safeguards for third-party rights and freedoms, unless the system is publicly "
-        "available for reporting a criminal offence",
+    assert [operand.text for operand in disclose.exceptions] == [
+        "unless this is obvious from the point of view of a natural person who is reasonably "
+        "well-informed, observant and circumspect, taking into account the circumstances and the "
+        "context of use",
+        "This obligation shall not apply to AI systems authorised by law to detect, prevent, "
+        "investigate or prosecute criminal offences, subject to appropriate safeguards for the "
+        "rights and freedoms of third parties, unless those systems are available for the public "
+        "to report a criminal offence",
     ]
     marking = norms["AIA-NORM-A050-P2-MARK-DETECT"]
     assert marking.mandatory_content == [
@@ -3022,10 +3026,11 @@ def test_article_fifty_preserves_disclosure_test_and_technical_solution_qualifie
         "acknowledged state of the art, as may be reflected in relevant technical standards",
     ]
     # Costs and technical feasibility do not become new exemptions from marking/detectability.
-    assert marking.exceptions == [
-        "assistive standard editing, or no substantial alteration of deployer input data "
-        "or its semantics",
-        "use authorised by law to detect, prevent, investigate, or prosecute criminal offences",
+    assert [operand.text for operand in marking.exceptions] == [
+        "to the extent the AI systems perform an assistive function for standard editing",
+        "do not substantially alter the input data provided by the deployer or the semantics "
+        "thereof",
+        "where authorised by law to detect, prevent, investigate or prosecute criminal offences",
     ]
     assert disclose.implementation_refs == ["AIA-RULE-TR-A50-1"]
     assert marking.implementation_refs == ["AIA-RULE-TR-A50-2"]
@@ -3079,8 +3084,9 @@ def test_article_fifty_one_extracts_systemic_risk_classification_gates():
     assert len(delegated_acts) == 1
     assert all(norm.implementation_mode.value == "none_required" for norm in delegated_acts)
     presumption = norms["AIA-NORM-A051-P2-COMPUTE-PRESUMPTION"]
-    assert presumption.conditions == [
-        "cumulative training computation measured in floating-point operations exceeds 10^25"
+    assert [operand.text for operand in presumption.conditions] == [
+        "when the cumulative amount of computation used for its training measured in floating "
+        "point operations is greater than 10 25"
     ]
 
 
@@ -3101,15 +3107,19 @@ def test_article_fifty_two_separates_notification_and_reassessment_procedure():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 13
     assert [len(segments[index].norm_ids) for index in (1, 3, 6, 7)] == [3, 2, 4, 1]
-    mapped = [norm for norm in norms.values() if norm.implementation_refs]
+    mapped = [
+        norm for norm in norms.values() if norm.implementation_mode.value == "compliance_rule"
+    ]
     assert len(mapped) == 2
     assert all(norm.implementation_refs == ["AIA-RULE-GP-A52-1"] for norm in mapped)
-    missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
-    assert {norm.norm_id for norm in missing} == {
-        "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
-        "AIA-NORM-A052-P5-REQUEST-CONTENT",
-    }
+    assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
+    # Article 52(3)'s consequence is the Article 51 classification outcome.
+    consequence = norms["AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE"]
+    assert consequence.implementation_mode.value == "applicability_question"
+    assert consequence.implementation_refs == ["AIA-CQ-SYSTEMIC-RISK"]
     request_content = norms["AIA-NORM-A052-P5-REQUEST-CONTENT"]
+    # The content rule binds only a provider that chooses to request reassessment.
+    assert request_content.product_scope.value == "no_product_action"
     assert request_content.mandatory_content == [
         "objective reasons",
         "detailed reasons",

@@ -95,7 +95,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 179
+    assert len(expected_content) == 180
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     baseline_content["AIA-NORM-A002-P11-MORE-FAVOURABLE-WORKER-RULES"] = 2
     baseline_content["AIA-NORM-A005-P6-PROVIDE-TEMPLATE"] = 2
@@ -149,6 +149,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST"] = 2
     baseline_content.pop("AIA-NORM-A046-P2-REFUSAL-RESPONSE", None)
     baseline_content["AIA-NORM-A050-P2-MARK-DETECT"] = 6
+    baseline_content["AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE"] = 2
     baseline_content["AIA-NORM-A052-P6-PUBLISH-LIST"] = 3
     baseline_content.pop("AIA-NORM-A055-P1-C-REPORT-INCIDENTS", None)
     baseline_content["AIA-NORM-A055-P1-A-EVALUATE-MODEL"] = 2

@@ -1,0 +1,36 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '50'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 8
+  norms_scanned: 12
+  finding_count: 1
+  audit_sha256: a23f217ecaec736c13239d0039e4e98743d7e8517dd41028fe7c738aadfc77f5
+decisions:
+- finding_id: AIA-VALID-5089727D57779B86
+  target: AIA-NORM-A050-P6-CUMULATIVE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A050-P6
+  source_sha256: df614cef1d0b72e4a47b1d9f0878d24d09eab7183772b580e1bf2f85219b6e40
+  target_sha256: 64c4386d4e7bd54c6a2266718beca31e9c7f3aa07037cb9d2ac27867a6d7d1ad
+  decision: false_positive
+  reason: Paragraph 6 is a saving clause. "Shall not affect" and "without prejudice"
+    keep the Chapter III requirements and other Union or national transparency duties
+    running alongside paragraphs 1 to 4. It takes no case out of an Article 50 duty
+    and adds none, so there is no exception branch to state; the record keeps it as
+    an applicability statement with dependency-only scope.
+  legal_basis:
+  - span_id: AIA-TEXT-A050-P6
+    source_sha256: df614cef1d0b72e4a47b1d9f0878d24d09eab7183772b580e1bf2f85219b6e40
+    quote: Paragraphs 1 to 4 shall not affect the requirements and obligations set
+      out in Chapter III, and shall be without prejudice to other transparency obligations
+      laid down in Union or national law for deployers of AI systems
+  reviewed_by: vidibro

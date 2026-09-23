@@ -345,6 +345,7 @@ relations:
   - AIA-NORM-A050-P2-MARK-DETECT
   - AIA-NORM-A050-P3-INFORM
   - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE
   - AIA-NORM-A050-P4-TEXT
   external_requirements: []
   guidance_refs: []
@@ -4242,12 +4243,38 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A047-P001
-- regime_id: AIA-TEMP-A053-CHAPTER-V
+- regime_id: AIA-TEMP-CHAPTER-IV
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A050-P5-FIRST-INTERACTION
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions:
+  - at the latest at the time of the first interaction or exposure
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A050-P5
+- regime_id: AIA-TEMP-CHAPTER-V
   application_start: '2025-08-02'
   application_end: null
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A113-B
+- regime_id: AIA-TEMP-A052-P1-NOTIFY-WITHOUT-DELAY
+  application_start: '2025-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: Where a general-purpose AI model meets the condition referred to in Article 51(1), point
+      (a)
+  timing_conditions:
+  - in any event within two weeks after that requirement is met or it becomes known that it will be met
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A052-P001
 - regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
   application_start: null
   application_end: null

@@ -49,7 +49,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A050-P1-DISCLOSE
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A050-P5-MANNER
+  - AIA-NORM-A050-P6-CUMULATIVE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -114,7 +116,8 @@ segments:
   norm_ids:
   - AIA-NORM-A050-P3-INFORM
   - AIA-NORM-A050-P3-DATA
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A050-P5-MANNER
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -149,6 +152,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE
   - AIA-NORM-A050-P4-TEXT
   qualifying_norm_ids: []
   review:
@@ -182,6 +186,7 @@ segments:
   - AIA-NORM-A050-P2-MARK-DETECT
   - AIA-NORM-A050-P3-INFORM
   - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE
   - AIA-NORM-A050-P4-TEXT
   review:
     status: approved

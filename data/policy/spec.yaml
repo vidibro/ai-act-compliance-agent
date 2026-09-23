@@ -3242,6 +3242,10 @@ rules:
       requirements. A publication practice, not a property of the system — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
+    criteria:
+      - norm_id: AIA-NORM-A050-P4-DEEPFAKE
+      - norm_id: AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE
+      - norm_id: AIA-NORM-A050-P4-TEXT
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -4138,6 +4142,9 @@ rules:
       of any document under review — confirm separately.
     document_verifiable: false
     effective_date: 2025-08-02
+    criteria:
+      - norm_id: AIA-NORM-A052-P1-NOTIFY-COMMISSION
+      - norm_id: AIA-NORM-A052-P1-NOTIFICATION-CONTENT
     status: active
 
   # ART. 53(1) IS FOUR DUTIES, NOT ONE, and they do not share a fate: (a) and (b) are lifted for a

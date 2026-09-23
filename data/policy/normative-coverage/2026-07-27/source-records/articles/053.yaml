@@ -1,8 +1,3 @@
-temporal_regimes:
-- regime_id: AIA-TEMP-A053-CHAPTER-V
-  application_start: 2025-08-02
-  legal_basis_spans:
-  - AIA-TEXT-A113-B
 records:
 - norm_id: AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   source: A053-P002
@@ -20,7 +15,7 @@ records:
   - target_ref: technical documentation of the model
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P002]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   qualifier_spans:
   - A053-P001
   implementation_refs:
@@ -45,7 +40,7 @@ records:
   - target_ref: information and documentation
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P003]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GP-A53-1B
   verification_mode: reported_not_judged
@@ -65,7 +60,7 @@ records:
   - target_ref: intellectual property rights
     target_kind: external_requirement
     basis_segment_ids: [AIA-TEXT-A053-P003]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GP-A53-1B
   verification_mode: reported_not_judged
@@ -86,7 +81,7 @@ records:
   - target_ref: capabilities and limitations
     target_kind: other
     basis_segment_ids: [AIA-TEXT-A053-P004]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   qualifier_spans:
   - A053-P003
   implementation_refs:
@@ -104,7 +99,7 @@ records:
   - target_ref: elements set out in Annex XII
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P005]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   qualifier_spans:
   - A053-P003
   mandatory_content:
@@ -124,7 +119,7 @@ records:
   - target_ref: policy
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P006]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   qualifier_spans:
   - A053-P001
   implementation_refs:
@@ -143,7 +138,7 @@ records:
   - target_ref: reservation of rights
     target_kind: legal_status
     basis_segment_ids: [AIA-TEXT-A053-P006]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GP-A53-1C
   verification_mode: reported_not_judged
@@ -162,7 +157,7 @@ records:
   - target_ref: summary about the content used for training
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P007]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   qualifier_spans:
   - A053-P001
   implementation_refs:
@@ -183,7 +178,7 @@ records:
   - target_ref: free and open-source licence
     target_kind: legal_status
     basis_segment_ids: [AIA-TEXT-A053-P008]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   kind: applicability
   conditions:
   - the licence permits access, usage, modification, and distribution
@@ -206,7 +201,7 @@ records:
   - target_ref: general-purpose AI models with systemic risks
     target_kind: ai_model
     basis_segment_ids: [AIA-TEXT-A053-P008]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   kind: applicability
   conditions:
   - the general-purpose AI model presents systemic risk
@@ -230,7 +225,7 @@ records:
   - target_ref: national competent authorities
     target_kind: organisation
     basis_segment_ids: [AIA-TEXT-A053-P009]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GP-A53-3
   verification_mode: reported_not_judged
@@ -249,7 +244,7 @@ records:
   - target_ref: codes of practice
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P010]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   kind: permission
   implementation_mode: report_only
   implementation_refs:
@@ -269,7 +264,7 @@ records:
   - target_ref: European harmonised standards
     target_kind: external_requirement
     basis_segment_ids: [AIA-TEXT-A053-P010]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   kind: legal_consequence
   implementation_mode: report_only
   implementation_refs:
@@ -290,7 +285,7 @@ records:
   - target_ref: alternative adequate means of compliance
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P010]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   conditions:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
   implementation_refs:
@@ -311,7 +306,7 @@ records:
   - target_ref: measurement and calculation methodologies
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P011]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -330,7 +325,7 @@ records:
   - target_ref: Annexes XI and XII
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P012]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -350,7 +345,7 @@ records:
   - target_ref: information or documentation obtained pursuant to this Article
     target_kind: documentation
     basis_segment_ids: [AIA-TEXT-A053-P013]
-  temporal_regime_id: AIA-TEMP-A053-CHAPTER-V
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   conditions:
   - the downstream provider obtains information or documentation under Article 53
   implementation_refs:

@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A052-P002
   targets: []
   action: notify the Commission without delay and within two weeks of meeting or anticipating the Article
     51(1)(a) condition
@@ -21,7 +23,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
+    - text: Where a general-purpose AI model meets the condition referred to in Article 51(1), point (a)
       basis_segment_ids:
       - AIA-TEXT-A052-P001
   exceptions: null
@@ -42,11 +44,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A052-P1-NOTIFY-WITHOUT-DELAY
 - norm_id: AIA-NORM-A052-P1-NOTIFICATION-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A052-P002
   targets: []
   action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
   norm_text: That notification shall include the information necessary to demonstrate that the relevant
@@ -61,7 +66,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider submits the Article 52(1) notification
+    - text: Where a general-purpose AI model meets the condition referred to in Article 51(1), point (a)
       basis_segment_ids:
       - AIA-TEXT-A052-P001
   exceptions: null
@@ -83,11 +88,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P1-DESIGNATE-UNNOTIFIED-MODEL
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A052-P001
   targets: []
   action: designate an unnotified general-purpose AI model presenting systemic risks as a model with systemic
     risk
@@ -102,8 +110,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission becomes aware that an unnotified general-purpose AI model presents systemic
-        risks
+    - text: If the Commission becomes aware of a general-purpose AI model presenting systemic risks of
+        which it has not been notified
       basis_segment_ids:
       - AIA-TEXT-A052-P001
   exceptions: null
@@ -123,11 +131,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P2-PRESENT-REBUTTAL
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A052-P002
   targets: []
   action: present substantiated model-specific arguments with the notification against systemic-risk classification
   norm_text: The provider of a general-purpose AI model that meets the condition referred to in Article
@@ -144,10 +155,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the model meets the Article 51(1)(a) condition
-      basis_segment_ids:
-      - AIA-TEXT-A052-P002
-    - text: the arguments are presented with the notification and are sufficiently substantiated
+    - text: The provider of a general-purpose AI model that meets the condition referred to in Article
+        51(1), point (a)
       basis_segment_ids:
       - AIA-TEXT-A052-P002
   exceptions: null
@@ -167,11 +176,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P3-REJECT-UNSUBSTANTIATED-ARGUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A052-P003
   targets: []
   action: reject insufficiently substantiated rebuttal arguments that fail to demonstrate absence of systemic
     risk
@@ -188,10 +200,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: paragraph 2 arguments are insufficiently substantiated
+    - text: Where the Commission concludes that the arguments submitted pursuant to paragraph 2 are not
+        sufficiently substantiated
       basis_segment_ids:
       - AIA-TEXT-A052-P003
-    - text: the provider did not demonstrate that the model lacks systemic risk due to its specific characteristics
+    - text: the relevant provider was not able to demonstrate that the general-purpose AI model does not
+        present, due to its specific characteristics, systemic risks
       basis_segment_ids:
       - AIA-TEXT-A052-P003
   exceptions: null
@@ -211,36 +225,50 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids:
+    - AIA-TEXT-A052-P003
   action: classify the model as a general-purpose AI model with systemic risk after unsuccessful rebuttal
-  norm_text: the general-purpose AI model shall be considered to be a general-purpose AI model with systemic
-    risk.
+  norm_text: Where the Commission concludes that the arguments submitted pursuant to paragraph 2 are not
+    sufficiently substantiated and the relevant provider was not able to demonstrate that the general-purpose
+    AI model does not present, due to its specific characteristics, systemic risks, it shall reject those
+    arguments, and the general-purpose AI model shall be considered to be a general-purpose AI model with
+    systemic risk.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A052-P003
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the Commission rejects the provider's paragraph 2 arguments under Article 52(3)
+    - text: Where the Commission concludes that the arguments submitted pursuant to paragraph 2 are not
+        sufficiently substantiated
+      basis_segment_ids:
+      - AIA-TEXT-A052-P003
+    - text: the relevant provider was not able to demonstrate that the general-purpose AI model does not
+        present, due to its specific characteristics, systemic risks
       basis_segment_ids:
       - AIA-TEXT-A052-P003
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SYSTEMIC-RISK
+  implementation_reason: The consequence is the Article 51 classification outcome, a general-purpose AI
+    model with systemic risk, so the systemic-risk classification question answers it.
+  verification_mode: answered_by_classification
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -250,11 +278,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P4-DESIGNATE-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A052-P004
   targets: []
   action: designate a general-purpose AI model as presenting systemic risks using Annex XIII criteria
   norm_text: The Commission may designate a general-purpose AI model as presenting systemic risks, ex
@@ -269,10 +300,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: designation is ex officio or follows a qualified Article 90(1)(a) scientific-panel alert
+    - text: ex officio or following a qualified alert from the scientific panel pursuant to Article 90(1),
+        point (a)
       basis_segment_ids:
       - AIA-TEXT-A052-P004
-    - text: designation is based on Annex XIII criteria
+    - text: on the basis of criteria set out in Annex XIII
       basis_segment_ids:
       - AIA-TEXT-A052-P004
   exceptions: null
@@ -292,11 +324,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P4-AMEND-ANNEX-XIII
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A052-P005
   targets: []
   action: adopt Article 97 delegated acts specifying and updating Annex XIII criteria
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
@@ -325,11 +360,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P5-CONSIDER-REASSESSMENT-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A052-P006
   targets: []
   action: take a provider's reasoned reassessment request into account
   norm_text: Upon a reasoned request of a provider whose model has been designated as a general-purpose
@@ -343,7 +381,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider makes a reasoned request concerning a model designated under Article 52(4)
+    - text: Upon a reasoned request of a provider whose model has been designated as a general-purpose
+        AI model with systemic risk pursuant to paragraph 4
       basis_segment_ids:
       - AIA-TEXT-A052-P006
   exceptions: null
@@ -363,24 +402,32 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P5-REASSESS-DESIGNATION
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A052-P006
   targets: []
   action: reassess under Annex XIII whether the model still presents systemic risks
-  norm_text: may decide to reassess whether the general-purpose AI model can still be considered to present
+  norm_text: Upon a reasoned request of a provider whose model has been designated as a general-purpose
+    AI model with systemic risk pursuant to paragraph 4, the Commission shall take the request into account
+    and may decide to reassess whether the general-purpose AI model can still be considered to present
     systemic risks on the basis of the criteria set out in Annex XIII.
   detection_channels:
   - semantic_legal_effect
+  - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A052-P006
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the Commission has received and considered a reasoned provider request under Article 52(5)
+    - text: Upon a reasoned request of a provider whose model has been designated as a general-purpose
+        AI model with systemic risk pursuant to paragraph 4
       basis_segment_ids:
       - AIA-TEXT-A052-P006
   exceptions: null
@@ -400,11 +447,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P5-REQUEST-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A052-P002
   targets: []
   action: include objective, detailed, and new post-designation reasons in a reassessment request
   norm_text: Such a request shall contain objective, detailed and new reasons that have arisen since the
@@ -418,7 +468,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider requests reassessment under Article 52(5)
+    - text: Upon a reasoned request of a provider whose model has been designated as a general-purpose
+        AI model with systemic risk pursuant to paragraph 4
       basis_segment_ids:
       - AIA-TEXT-A052-P006
   exceptions: null
@@ -426,12 +477,12 @@ norms:
   - objective reasons
   - detailed reasons
   - new reasons arising since the designation decision
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
+  product_scope: no_product_action
+  product_scope_reason: The content rule applies only when exercising the optional reassessment request.
+  implementation_mode: none_required
   implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
+  implementation_reason: No independent product action is required.
+  verification_mode: not_reported
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -441,11 +492,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A052-P002
   targets: []
   action: request reassessment no earlier than six months after the applicable designation or maintenance
     decision
@@ -460,10 +514,14 @@ norms:
   - AIA-TEXT-A052-P006
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: at least six months have passed since the initial designation or the latest decision maintaining
-        it
+    - text: Providers may request reassessment at the earliest six months after the designation decision
+      basis_segment_ids:
+      - AIA-TEXT-A052-P006
+    - text: Where the Commission, following its reassessment, decides to maintain the designation as a
+        general-purpose AI model with systemic risk, providers may request reassessment at the earliest
+        six months after that decision
       basis_segment_ids:
       - AIA-TEXT-A052-P006
   exceptions: null
@@ -483,11 +541,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A052-P6-PUBLISH-LIST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A052-P007
   targets: []
   action: ensure publication of a current list of general-purpose AI models with systemic risk while observing
     and protecting intellectual-property rights, confidential business information, and trade secrets
@@ -523,3 +584,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V

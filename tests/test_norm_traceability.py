@@ -142,10 +142,13 @@ def test_article_six_separates_document_and_process_duties(bundle, spec):
     assert {
         norm_id: norms[norm_id].implementation_refs for norm_id in expected
     } == {norm_id: [rule_id] for norm_id, rule_id in expected.items()}
-    assert all(
-        next(rule for rule in spec.rules if rule.rule_id == rule_id).criteria == []
-        for rule_id in expected.values()
-    )
+    rules = {rule.rule_id: rule for rule in spec.rules}
+    assert rules["AIA-RULE-NHR-A06-4"].criteria == []
+    assert rules["AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT"].criteria == []
+    # Article 49(2) writes the registration duty out again, so the rule names both provisions.
+    assert [
+        criterion.norm_id for criterion in rules["AIA-RULE-NHR-A06-4-REGISTER"].criteria
+    ] == ["AIA-NORM-A006-P4-REGISTER-SYSTEM", "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK"]
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
@@ -276,7 +279,9 @@ def test_article_twenty_two_separates_mandate_content_from_representative_tasks(
     ]
     representative_criteria = [criterion.norm_id for criterion in rules["AIA-RULE-AR-A22"].criteria]
     assert "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS" not in representative_criteria
-    assert len(representative_criteria) == 11
+    assert len(representative_criteria) == 12
+    # Article 49(1) gives the representative its own EU-database registration duty.
+    assert representative_criteria[-1] == "AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER"
     task_set = bundle.norm_inventory.target_norm_ids_for(
         "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS", NormRelationKind.RELIES_ON_NORMS
     )
