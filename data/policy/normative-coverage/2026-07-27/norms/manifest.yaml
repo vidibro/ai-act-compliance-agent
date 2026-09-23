@@ -4576,6 +4576,23 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A075-P021
+- regime_id: AIA-TEMP-A077-P1A-ACCESS-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A077-P002
+- regime_id: AIA-TEMP-A077-P2-LIST-BY
+  application_start: null
+  application_end: null
+  deadline: '2024-11-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A077-P004
 - regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
   application_start: null
   application_end: null

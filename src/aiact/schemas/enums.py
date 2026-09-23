@@ -622,6 +622,12 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
         "legally designated representative",
     ),
     ActorRole.NOTIFIED_BODY: ("notified body", "notified bodies"),
+    # Art. 77(1) names these bodies by what they supervise, never by a noun.
+    ActorRole.FUNDAMENTAL_RIGHTS_AUTHORITY: (
+        "fundamental rights authority",
+        "public authorities or bodies which supervise or enforce the respect of obligations under "
+        "Union law protecting fundamental rights",
+    ),
     # Art. 40(3) names this party by what it does, not by a noun: "The participants in the
     # standardisation process".
     ActorRole.STANDARDISATION_PARTICIPANT: (

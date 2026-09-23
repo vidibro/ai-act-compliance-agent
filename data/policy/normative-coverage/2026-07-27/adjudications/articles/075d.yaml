@@ -1,0 +1,48 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: 75d
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 5
+  norms_scanned: 9
+  finding_count: 2
+  audit_sha256: db657b37e5bef865b2661535a722f7dcb32f1c94f63ca24664bbdc9d327885c6
+decisions:
+- finding_id: AIA-VALID-2FE740C95C6113DF
+  target: AIA-NORM-A075D-P1-APPLY-PROCEDURAL-RIGHTS
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075D-P001
+  source_sha256: 91010658213d66958b8d500e8d29bd631cad939c2762e8b59a4c11010e8c9ad8
+  target_sha256: 3e9f7a43c65518df808e6ebd19bc617f9ecdea8706a97b4daa59b8a3677587f1
+  decision: false_positive
+  reason: '"Subject to the AI Office''s competence pursuant to Article 75(1)" names the operators the
+    procedural rights reach, the same operators the whole Article covers. It is not a condition on when
+    Article 18 applies.'
+  legal_basis:
+  - &id001
+    span_id: AIA-TEXT-A075D-P001
+    source_sha256: 91010658213d66958b8d500e8d29bd631cad939c2762e8b59a4c11010e8c9ad8
+    quote: Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis to operators subject to
+      the AI Office’s competence pursuant to Article 75(1) of this Regulation, without prejudice to more
+      specific procedural rights provided for in this Regulation
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-6FDA2A978DD98C94
+  target: AIA-NORM-A075D-P1-APPLY-PROCEDURAL-RIGHTS
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A075D-P001
+  source_sha256: 91010658213d66958b8d500e8d29bd631cad939c2762e8b59a4c11010e8c9ad8
+  target_sha256: 3e9f7a43c65518df808e6ebd19bc617f9ecdea8706a97b4daa59b8a3677587f1
+  decision: false_positive
+  reason: '"Without prejudice to more specific procedural rights" keeps this Regulation''s own procedural
+    rights applying alongside Article 18. It takes no case out of it, so there is no exception branch
+    to state.'
+  legal_basis:
+  - *id001
+  reviewed_by: vidibro

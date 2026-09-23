@@ -1,0 +1,49 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '77'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 7
+  norms_scanned: 9
+  finding_count: 2
+  audit_sha256: 1fa90a477e64628c36275761c1746e1d38dd72033cbb0449d2eeec9ddae74d81
+decisions:
+- finding_id: AIA-VALID-5D2B9A3849181E26
+  target: AIA-NORM-A077-P1-PRESERVE-AUTHORITY-MANDATES
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A077-P001
+  source_sha256: 5e6098fb7aa43a457b87e633e3d8894bb405c0f1b50c1d01e8b1f51a0ae9a411
+  target_sha256: 9e64fd01b884926c93fd3d9a95db5e78b9c978c63231b81fa7f79b60e78e2a47
+  decision: false_positive
+  reason: The sentence is a saving clause and its whole legal effect. "Without prejudice" keeps the bodies'
+    own competences, tasks, powers and independence untouched by the Article. It takes no case out of
+    anything, so there is no exception branch to state.
+  legal_basis:
+  - span_id: AIA-TEXT-A077-P001
+    source_sha256: 5e6098fb7aa43a457b87e633e3d8894bb405c0f1b50c1d01e8b1f51a0ae9a411
+    quote: This Article is without prejudice to the competences, tasks, powers and independence of the
+      relevant national public authorities or bodies under their mandates
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-5FA2F23889B88416
+  target: AIA-NORM-A077-P1B-COOPERATE-AND-ASSIST
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A077-P003
+  source_sha256: 21083ffede86cdabd777bdeaa45d4d3c8093adcc0ed0fe9c6cd3be378c807caa
+  target_sha256: f9505cecb8151eaf72d2e934047abd8978faa3004dd025f9007cd0644cf841dd
+  decision: accepted_with_basis
+  reason: '"Where necessary" qualifies one part of the cooperation, the exchange of information. Close
+    cooperation and mutual assistance are always owed. A condition on the whole norm would make them optional
+    too. The action keeps the qualifier on the exchange.'
+  legal_basis:
+  - span_id: AIA-TEXT-A077-P003
+    source_sha256: 21083ffede86cdabd777bdeaa45d4d3c8093adcc0ed0fe9c6cd3be378c807caa
+    quote: This shall include, in particular, exchange of information where necessary for the effective
+      supervision or enforcement of this Regulation and the respective other Union legislation
+  reviewed_by: vidibro

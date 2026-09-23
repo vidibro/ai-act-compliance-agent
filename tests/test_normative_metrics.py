@@ -2208,15 +2208,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 2137,
-        "proposed": 800,
+        "proposed": 802,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2938
+    assert metrics.total_review_records == 2940
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 540
-    assert metrics.shall_token_candidate_recall == pytest.approx(867 / 1407)
+    assert metrics.shall_vs_semantic_disagreements == 541
+    assert metrics.shall_token_candidate_recall == pytest.approx(868 / 1409)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2227,7 +2227,7 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # Primary links measure norms yielded by a segment; qualifier-only chapeaux do not count.
-    assert metrics.normative_segments_with_multiple_norms == 237
+    assert metrics.normative_segments_with_multiple_norms == 238
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records. Article 73(6)'s
@@ -2240,7 +2240,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 880
+    assert metrics.mapping_shape.unmapped == 882
     assert metrics.semantic_vs_existing_implementation_disagreements == 43
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
@@ -4357,7 +4357,7 @@ def test_article_seventy_seven_extracts_fundamental_rights_cooperation():
 
     assert len(segments) == 7
     assert_segments_are_independently_approved(segments)
-    assert len(norms) == 8
+    assert len(norms) == 9
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
 
     # The 2 November 2024 deadline covers identification and publication only.
@@ -5009,7 +5009,7 @@ def test_articles_seventy_five_c_and_d_extract_penalties_and_safeguards():
     }
 
     assert len(article_c) == 18
-    assert len(article_d) == 8
+    assert len(article_d) == 9
     assert len(article_c["AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES"].mandatory_content) == 7
     assert article_d["AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS"].kind.value == "entitlement"
 

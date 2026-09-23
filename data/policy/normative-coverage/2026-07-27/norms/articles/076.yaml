@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A076-P001
   targets: []
   action: exercise competences and powers to ensure real-world testing complies with this Regulation
   norm_text: Market surveillance authorities shall have competences and powers to ensure that testing
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A076-P1A-ARTICLE-60A-SUBSTITUTIONS
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A076-P002
   targets: []
   action: substitute the competent sectoral authority and Article 60a for Article 76 references in Article
     60a testing
@@ -52,7 +57,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A076-P002
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where testing in real world conditions is based on Article 60a
+      basis_segment_ids:
+      - AIA-TEXT-A076-P002
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -70,11 +80,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A076-P2-VERIFY-SANDBOX-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A076-P003
   targets: []
   action: verify Article 60 compliance when supervising sandbox real-world testing
   norm_text: Where testing in real world conditions is conducted for AI systems that are supervised within
@@ -89,8 +102,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: real-world testing is supervised by the market-surveillance authority within an Article 58
-        AI regulatory sandbox
+    - text: Where testing in real world conditions is conducted for AI systems that are supervised within
+        an AI regulatory sandbox under Article 58
       basis_segment_ids:
       - AIA-TEXT-A076-P003
   exceptions: null
@@ -110,11 +123,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A076-P2-ALLOW-DEROGATION
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A076-P003
   targets: []
   action: allow provider-conducted sandbox testing under an appropriate Article 60(4)(f) and (g) derogation
   norm_text: Those authorities may, as appropriate, allow the testing in real world conditions to be conducted
@@ -143,11 +159,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A076-P3-INTERVENE-IN-TESTING
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A076-P004
   targets: []
   action: suspend terminate or require modification of real-world testing after a serious incident or
     suspected Articles 60 or 61 breach
@@ -161,7 +180,17 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A076-P005
   - AIA-TEXT-A076-P006
-  conditions: null
+  conditions:
+    operator: any_of
+    operands:
+    - text: Where a market surveillance authority has been informed by the prospective provider, the provider
+        or any third party of a serious incident
+      basis_segment_ids:
+      - AIA-TEXT-A076-P004
+    - text: has other grounds for considering that the conditions set out in Articles 60 and 61 are not
+        met
+      basis_segment_ids:
+      - AIA-TEXT-A076-P004
   exceptions: null
   mandatory_content:
   - suspend or terminate testing
@@ -181,11 +210,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A076-P4-GIVE-GROUNDS-AND-CHALLENGE-ROUTE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A076-P007
   targets: []
   action: state grounds and the provider's challenge route in a paragraph 3 decision or Article 60(4)(b)
     objection
@@ -200,9 +232,13 @@ norms:
   - AIA-TEXT-A076-P007
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: the authority has taken an Article 76(3) decision or issued an Article 60(4)(b) objection
+    - text: Where a market surveillance authority has taken a decision referred to in paragraph 3 of this
+        Article
+      basis_segment_ids:
+      - AIA-TEXT-A076-P007
+    - text: has issued an objection within the meaning of Article 60(4), point (b)
       basis_segment_ids:
       - AIA-TEXT-A076-P007
   exceptions: null
@@ -222,11 +258,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A076-P5-COMMUNICATE-GROUNDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A076-P008
   targets: []
   action: communicate intervention grounds to authorities in other Member States where planned testing
     occurred
@@ -242,7 +281,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: where applicable, the authority has taken an Article 76(3) decision
+    - text: Where applicable
+      basis_segment_ids:
+      - AIA-TEXT-A076-P008
+    - text: where a market surveillance authority has taken a decision referred to in paragraph 3
       basis_segment_ids:
       - AIA-TEXT-A076-P008
   exceptions: null
@@ -262,3 +304,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

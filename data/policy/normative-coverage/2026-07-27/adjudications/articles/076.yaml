@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '76'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 9
+  norms_scanned: 7
+  finding_count: 1
+  audit_sha256: ed2e8334eac90bff6e8b144d702d5027b2b239efc87bdb6df3df87841726c856
+decisions:
+- finding_id: AIA-VALID-2F6D9D59A7E0032D
+  target: AIA-NORM-A076-P2-ALLOW-DEROGATION
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A076-P003
+  source_sha256: e47a7ff41c963c60e76dc358ea478a2a4bce04b6f86ca0d1adb9e630a215bbaf
+  target_sha256: 8ac14e7b4880ae67e4dee5276d2f5c776d12d2ef3a641a52afd38e9eda4a4ae8
+  decision: false_positive
+  reason: '"In derogation from the conditions set out in Article 60(4), points (f) and (g)" names what
+    the power lets the authority waive. It is the power itself, not an exception to it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A076-P003
+    source_sha256: e47a7ff41c963c60e76dc358ea478a2a4bce04b6f86ca0d1adb9e630a215bbaf
+    quote: Those authorities may, as appropriate, allow the testing in real world conditions to be conducted
+      by the provider or prospective provider, in derogation from the conditions set out in Article 60(4),
+      points (f) and (g)
+  reviewed_by: vidibro

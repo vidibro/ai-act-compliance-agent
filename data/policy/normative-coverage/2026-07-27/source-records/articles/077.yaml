@@ -1,3 +1,15 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A077-P1A-ACCESS-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A077-P002
+- regime_id: AIA-TEMP-A077-P2-LIST-BY
+  deadline: 2024-11-02
+  legal_basis_spans:
+  - AIA-TEXT-A077-P004
 records:
 - norm_id: AIA-NORM-A077-P1-REQUEST-AND-ACCESS-INFORMATION
   source: A077-P001
@@ -11,16 +23,36 @@ records:
     form within the body's mandate
   actors:
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids: [AIA-TEXT-A077-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - access is necessary for the authority or body to fulfil its fundamental-rights mandate effectively
-    within its jurisdiction
+    operator: all_of
+    operands:
+    - text: where access to that information or documentation is necessary for effectively fulfilling their mandates within the limits of their jurisdiction
+      basis_segment_ids: [AIA-TEXT-A077-P001]
+- norm_id: AIA-NORM-A077-P1-PRESERVE-AUTHORITY-MANDATES
+  source: A077-P001
+  quote: This Article is without prejudice to the competences, tasks, powers and independence of the relevant
+    national public authorities or bodies under their mandates.
+  action: leave the fundamental-rights bodies' own competences, tasks, powers and independence untouched
+  actors:
+  - actor_ref: fundamental_rights_authority
+    basis_segment_ids: [AIA-TEXT-A077-P001]
+  targets: []
+  kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A077-P1A-GRANT-INFORMATION-ACCESS
   source: A077-P002
   quote: Subject to the conditions specified in this Article, the market surveillance authority shall
@@ -31,25 +63,36 @@ records:
     or deployer
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A077-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-A077-P1A-ACCESS-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the conditions specified in Article 77 are met
+    operator: all_of
+    operands:
+    - text: Subject to the conditions specified in this Article
+      basis_segment_ids: [AIA-TEXT-A077-P002]
 - norm_id: AIA-NORM-A077-P1B-COOPERATE-AND-ASSIST
   source: A077-P003
   quote: Market surveillance authorities and public authorities or bodies referred to in paragraph 1 shall
     cooperate closely and provide each other with the mutual assistance necessary to fulfil their respective
-    mandates
+    mandates, with a view to ensuring the coherent application of this Regulation and Union law protecting
+    fundamental rights and streamlining procedures, while respecting their respective competences, tasks,
+    powers and independence. This shall include, in particular, exchange of information where necessary
+    for the effective supervision or enforcement of this Regulation and the respective other Union legislation.
   action: cooperate closely exchange necessary information and provide mutual assistance while respecting
     respective mandates and independence
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A077-P003]
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids: [AIA-TEXT-A077-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -63,10 +106,12 @@ records:
     by 2 November 2024
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A077-P004]
   targets: []
   mandatory_content:
   - identification of the public authorities or bodies referred to in paragraph 1
   - a publicly available list of them
+  temporal_regime_id: AIA-TEMP-A077-P2-LIST-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -79,7 +124,9 @@ records:
   action: notify the list to the Commission and other Member States and keep it up to date
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A077-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -98,16 +145,20 @@ records:
     infringement
   actors:
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids: [AIA-TEXT-A077-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - paragraph 1 documentation is insufficient to determine whether Union fundamental-rights obligations
-    were infringed
+    operator: all_of
+    operands:
+    - text: Where the documentation referred to in paragraph 1 is insufficient to ascertain whether an infringement of obligations under Union law protecting fundamental rights has occurred
+      basis_segment_ids: [AIA-TEXT-A077-P005]
 - norm_id: AIA-NORM-A077-P3-ORGANISE-TESTING
   source: A077-P005
   quote: The market surveillance authority shall organise the testing with the close involvement of the
@@ -115,7 +166,9 @@ records:
   action: organise requested technical testing within a reasonable time with close requesting-body involvement
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A077-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -129,7 +182,9 @@ records:
   action: treat information and documentation obtained under Article 77 according to Article 78 confidentiality
   actors:
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids: [AIA-TEXT-A077-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

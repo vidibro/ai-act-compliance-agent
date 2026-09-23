@@ -1,15 +1,17 @@
 records:
 - norm_id: AIA-NORM-A075D-P1-APPLY-PROCEDURAL-RIGHTS
   source: A075D-P001
-  quote: "Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis to operators subject to\
-    \ the AI Office\u2019s competence pursuant to Article 75(1) of this Regulation, without prejudice\
-    \ to more specific procedural rights provided for in this Regulation."
+  quote: Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis to operators subject to
+    the AI Office’s competence pursuant to Article 75(1) of this Regulation, without prejudice to more
+    specific procedural rights provided for in this Regulation.
   action: apply Regulation 2019/1020 Article 18 procedural rights with necessary adaptations while preserving
     more specific rights
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A075D-P001]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This grants procedural protection rather than imposing a product action.
   implementation_mode: none_required
@@ -22,7 +24,9 @@ records:
   action: fully respect Article 75(1) operators' defence and file-access rights in proceedings
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075D-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -30,40 +34,77 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS
   source: A075D-P002
-  quote: those operators shall be entitled to have access to the AI Office file under the terms of a negotiated
-    disclosure
+  quote: In view of the possible adoption of decisions on the basis of Article 75c(1), those operators
+    shall be entitled to have access to the AI Office file under the terms of a negotiated disclosure,
+    subject to the legitimate interest of the operator or other person concerned in the protection of
+    their business secrets.
   action: access the AI Office file through negotiated disclosure subject to legitimate business-secret
     interests and stated confidentiality exclusions
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A075D-P002]
   targets: []
   kind: entitlement
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This is a procedural entitlement rather than a product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
   conditions:
-  - adoption of an Article 75c(1) decision is possible
+    operator: all_of
+    operands:
+    - text: In view of the possible adoption of decisions on the basis of Article 75c(1)
+      basis_segment_ids: [AIA-TEXT-A075D-P002]
+    - text: subject to the legitimate interest of the operator or other person concerned in the protection of their business secrets
+      basis_segment_ids: [AIA-TEXT-A075D-P002]
   exceptions:
-  - confidential information and internal documents of the AI Office, the Board, competent market-surveillance
-    authorities or other Member-State public authorities
-  - correspondence between the AI Office and those authorities
+    operator: any_of
+    operands:
+    - text: confidential information and internal documents of the AI Office, the Board, competent market surveillance authorities or other public authorities of the Member States
+      basis_segment_ids: [AIA-TEXT-A075D-P002]
+    - text: correspondence between the AI Office and those authorities
+      basis_segment_ids: [AIA-TEXT-A075D-P002]
+- norm_id: AIA-NORM-A075D-P2-FILE-ACCESS-LIMITS
+  source: A075D-P002
+  quote: The right of access to the file shall not extend to confidential information and internal documents
+    of the AI Office, the Board, competent market surveillance authorities or other public authorities
+    of the Member States. In particular, the right of access shall not extend to correspondence between
+    the AI Office and those authorities.
+  action: exclude confidential information, internal documents and AI Office correspondence with the authorities
+    from the operator's access to the file
+  actors:
+  - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A075D-P002]
+  targets: []
+  kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  product_scope: no_product_action
+  product_scope_reason: This limits a procedural entitlement rather than requiring a product action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075D-P2-SET-DISCLOSURE-TERMS
   source: A075D-P002
-  quote: The AI Office shall have the power to adopt decisions setting out such terms of disclosure
+  quote: The AI Office shall have the power to adopt decisions setting out such terms of disclosure in
+    the case of disagreement between the parties.
   action: set negotiated-disclosure terms by decision when parties disagree
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075D-P002]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the parties disagree about negotiated-disclosure terms
+    operator: all_of
+    operands:
+    - text: in the case of disagreement between the parties
+      basis_segment_ids: [AIA-TEXT-A075D-P002]
 - norm_id: AIA-NORM-A075D-P2-DISCLOSE-INFRINGEMENT-EVIDENCE
   source: A075D-P002
   quote: Nothing in this paragraph shall prevent the AI Office from disclosing and using information necessary
@@ -71,8 +112,10 @@ records:
   action: disclose and use information necessary to prove an infringement despite file-access restrictions
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075D-P002]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -85,8 +128,10 @@ records:
   action: adopt implementing acts on file access and negotiated disclosure arrangements
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A075D-P003]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -100,7 +145,9 @@ records:
   action: publish Article 75b and 75c decisions with party names decision substance and imposed penalties
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075D-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -113,7 +160,9 @@ records:
   action: protect affected persons' confidentiality rights and legitimate interests when publishing decisions
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075D-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

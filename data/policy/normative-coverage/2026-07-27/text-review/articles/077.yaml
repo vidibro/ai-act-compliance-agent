@@ -49,7 +49,11 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A077-P1-REQUEST-AND-ACCESS-INFORMATION
-  qualifying_norm_ids: []
+  - AIA-NORM-A077-P1-PRESERVE-AUTHORITY-MANDATES
+  qualifying_norm_ids:
+  - AIA-NORM-A077-P1B-COOPERATE-AND-ASSIST
+  - AIA-NORM-A077-P3-REQUEST-TECHNICAL-TESTING
+  - AIA-NORM-A077-P4-TREAT-INFORMATION-CONFIDENTIALLY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

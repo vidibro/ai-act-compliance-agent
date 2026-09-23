@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P001
   targets: []
   action: request and electronically access necessary authority-held information in accessible machine-readable
     form within the body's mandate
@@ -23,8 +25,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: access is necessary for the authority or body to fulfil its fundamental-rights mandate effectively
-        within its jurisdiction
+    - text: where access to that information or documentation is necessary for effectively fulfilling
+        their mandates within the limits of their jurisdiction
       basis_segment_ids:
       - AIA-TEXT-A077-P001
   exceptions: null
@@ -44,11 +46,50 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+- norm_id: AIA-NORM-A077-P1-PRESERVE-AUTHORITY-MANDATES
+  act_version_date: '2026-07-27'
+  kind: applicability
+  actors:
+  - actor_ref: fundamental_rights_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P001
+  targets: []
+  action: leave the fundamental-rights bodies' own competences, tasks, powers and independence untouched
+  norm_text: This Article is without prejudice to the competences, tasks, powers and independence of the
+    relevant national public authorities or bodies under their mandates.
+  detection_channels:
+  - semantic_legal_effect
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A077-P001
+  qualifier_spans: []
+  conditions: null
+  exceptions: null
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A077-P1A-GRANT-INFORMATION-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P002
   targets: []
   action: grant necessary information access without undue delay including by obtaining it from a provider
     or deployer
@@ -65,7 +106,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the conditions specified in Article 77 are met
+    - text: Subject to the conditions specified in this Article
       basis_segment_ids:
       - AIA-TEXT-A077-P002
   exceptions: null
@@ -85,18 +126,26 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A077-P1A-ACCESS-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A077-P1B-COOPERATE-AND-ASSIST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P003
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P001
   targets: []
   action: cooperate closely exchange necessary information and provide mutual assistance while respecting
     respective mandates and independence
   norm_text: Market surveillance authorities and public authorities or bodies referred to in paragraph
     1 shall cooperate closely and provide each other with the mutual assistance necessary to fulfil their
-    respective mandates
+    respective mandates, with a view to ensuring the coherent application of this Regulation and Union
+    law protecting fundamental rights and streamlining procedures, while respecting their respective competences,
+    tasks, powers and independence. This shall include, in particular, exchange of information where necessary
+    for the effective supervision or enforcement of this Regulation and the respective other Union legislation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -121,11 +170,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A077-P004
   targets: []
   action: identify the paragraph 1 public authorities or bodies and make a list of them publicly available
     by 2 November 2024
@@ -157,11 +209,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A077-P2-LIST-BY
 - norm_id: AIA-NORM-A077-P2-NOTIFY-LIST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A077-P004
   targets: []
   action: notify the list to the Commission and other Member States and keep it up to date
   norm_text: Member States shall notify the list to the Commission and to the other Member States, and
@@ -192,11 +247,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A077-P3-REQUEST-TECHNICAL-TESTING
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P001
   targets: []
   action: make a reasoned technical-testing request when documentation cannot establish a fundamental-rights
     infringement
@@ -213,8 +271,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: paragraph 1 documentation is insufficient to determine whether Union fundamental-rights obligations
-        were infringed
+    - text: Where the documentation referred to in paragraph 1 is insufficient to ascertain whether an
+        infringement of obligations under Union law protecting fundamental rights has occurred
       basis_segment_ids:
       - AIA-TEXT-A077-P005
   exceptions: null
@@ -234,11 +292,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A077-P3-ORGANISE-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P005
   targets: []
   action: organise requested technical testing within a reasonable time with close requesting-body involvement
   norm_text: The market surveillance authority shall organise the testing with the close involvement of
@@ -267,11 +328,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A077-P4-TREAT-INFORMATION-CONFIDENTIALLY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: fundamental_rights_authority
+    basis_segment_ids:
+    - AIA-TEXT-A077-P001
   targets: []
   action: treat information and documentation obtained under Article 77 according to Article 78 confidentiality
   norm_text: Any information or documentation obtained by the national public authorities or bodies referred
@@ -301,3 +365,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

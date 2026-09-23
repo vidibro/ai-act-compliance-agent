@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1407 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1409 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory does not decide classification,
 rule selection, or judging. It does materialise rule criteria and report-only legal boundaries into
@@ -117,9 +117,9 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - article 75a: 25
 - article 75b: 3
 - article 75c: 18
-- article 75d: 8
+- article 75d: 9
 - article 76: 7
-- article 77: 8
+- article 77: 9
 - article 78: 10
 - article 79: 17
 - article 8: 4
@@ -881,7 +881,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - AIA-TEXT-A075C-P023: 1
 - AIA-TEXT-A075C-P024: 1
 - AIA-TEXT-A075D-P001: 1
-- AIA-TEXT-A075D-P002: 4
+- AIA-TEXT-A075D-P002: 5
 - AIA-TEXT-A075D-P003: 1
 - AIA-TEXT-A075D-P004: 2
 - AIA-TEXT-A076-P001: 1
@@ -890,7 +890,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - AIA-TEXT-A076-P004: 1
 - AIA-TEXT-A076-P007: 1
 - AIA-TEXT-A076-P008: 1
-- AIA-TEXT-A077-P001: 1
+- AIA-TEXT-A077-P001: 2
 - AIA-TEXT-A077-P002: 1
 - AIA-TEXT-A077-P003: 1
 - AIA-TEXT-A077-P004: 2
@@ -1160,15 +1160,15 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - Characters displayed by the extraction pass: 395046
 - Independently approved characters: 395046
 - Characters deliberately left as review debt: 0
-- Normative segments yielding multiple propositions: 237
-- Semantic candidates a shall-token pass missed: 540
+- Normative segments yielding multiple propositions: 238
+- Semantic candidates a shall-token pass missed: 541
 - Shall-token candidate recall: 61.6%
 - In-scope semantic candidates absent from existing implementation: 43
-- Detection-channel counts: cross_reference_structure=466, deeming_or_consequence=271, existing_implementation=527, other_modal=170, semantic_legal_effect=1407, shall_token=867
-- Mapping shapes, by norm: one-to-one=41, many-to-one=458, one-to-many=2, many-to-many=26, unmapped=880
+- Detection-channel counts: cross_reference_structure=466, deeming_or_consequence=273, existing_implementation=527, other_modal=170, semantic_legal_effect=1409, shall_token=868
+- Mapping shapes, by norm: one-to-one=41, many-to-one=458, one-to-many=2, many-to-many=26, unmapped=882
 - Implementation debt candidates: 22
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2938
+- Review records with measured elapsed time: 0/2940
 - Parallel-duty groups: 23, linking 67 norms
 - National-law alignment notices: 4
 

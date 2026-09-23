@@ -5,6 +5,8 @@ norms:
   kind: applicability
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P001
   targets: []
   action: apply Regulation 2019/1020 Article 18 procedural rights with necessary adaptations while preserving
     more specific rights
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075D-P2-RESPECT-DEFENCE-AND-FILE-RIGHTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P002
   targets: []
   action: fully respect Article 75(1) operators' defence and file-access rights in proceedings
   norm_text: The rights of defence and of access to the file of operators falling within the scope of
@@ -69,16 +74,21 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P002
   targets: []
   action: access the AI Office file through negotiated disclosure subject to legitimate business-secret
     interests and stated confidentiality exclusions
-  norm_text: those operators shall be entitled to have access to the AI Office file under the terms of
-    a negotiated disclosure
+  norm_text: In view of the possible adoption of decisions on the basis of Article 75c(1), those operators
+    shall be entitled to have access to the AI Office file under the terms of a negotiated disclosure,
+    subject to the legitimate interest of the operator or other person concerned in the protection of
+    their business secrets.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -88,14 +98,18 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: adoption of an Article 75c(1) decision is possible
+    - text: In view of the possible adoption of decisions on the basis of Article 75c(1)
+      basis_segment_ids:
+      - AIA-TEXT-A075D-P002
+    - text: subject to the legitimate interest of the operator or other person concerned in the protection
+        of their business secrets
       basis_segment_ids:
       - AIA-TEXT-A075D-P002
   exceptions:
     operator: any_of
     operands:
-    - text: confidential information and internal documents of the AI Office, the Board, competent market-surveillance
-        authorities or other Member-State public authorities
+    - text: confidential information and internal documents of the AI Office, the Board, competent market
+        surveillance authorities or other public authorities of the Member States
       basis_segment_ids:
       - AIA-TEXT-A075D-P002
     - text: correspondence between the AI Office and those authorities
@@ -117,14 +131,58 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+- norm_id: AIA-NORM-A075D-P2-FILE-ACCESS-LIMITS
+  act_version_date: '2026-07-27'
+  kind: applicability
+  actors:
+  - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P002
+  targets: []
+  action: exclude confidential information, internal documents and AI Office correspondence with the authorities
+    from the operator's access to the file
+  norm_text: The right of access to the file shall not extend to confidential information and internal
+    documents of the AI Office, the Board, competent market surveillance authorities or other public authorities
+    of the Member States. In particular, the right of access shall not extend to correspondence between
+    the AI Office and those authorities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A075D-P002
+  qualifier_spans: []
+  conditions: null
+  exceptions: null
+  mandatory_content: []
+  product_scope: no_product_action
+  product_scope_reason: This limits a procedural entitlement rather than requiring a product action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action arises.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075D-P2-SET-DISCLOSURE-TERMS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P002
   targets: []
   action: set negotiated-disclosure terms by decision when parties disagree
   norm_text: The AI Office shall have the power to adopt decisions setting out such terms of disclosure
+    in the case of disagreement between the parties.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -134,7 +192,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the parties disagree about negotiated-disclosure terms
+    - text: in the case of disagreement between the parties
       basis_segment_ids:
       - AIA-TEXT-A075D-P002
   exceptions: null
@@ -154,11 +212,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075D-P2-DISCLOSE-INFRINGEMENT-EVIDENCE
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P002
   targets: []
   action: disclose and use information necessary to prove an infringement despite file-access restrictions
   norm_text: Nothing in this paragraph shall prevent the AI Office from disclosing and using information
@@ -187,11 +248,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075D-P3-ADOPT-FILE-ACCESS-ARRANGEMENTS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P003
   targets: []
   action: adopt implementing acts on file access and negotiated disclosure arrangements
   norm_text: The Commission may adopt implementing acts concerning the practical arrangements for access
@@ -220,11 +284,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075D-P4-PUBLISH-DECISIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P004
   targets: []
   action: publish Article 75b and 75c decisions with party names decision substance and imposed penalties
   norm_text: The AI Office shall publish the decisions it adopts pursuant to Articles 75b and 75c. Such
@@ -254,11 +321,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075D-P4-PROTECT-CONFIDENTIAL-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P004
   targets: []
   action: protect affected persons' confidentiality rights and legitimate interests when publishing decisions
   norm_text: The publication shall have regard to the rights and legitimate interests of any person concerned
@@ -287,3 +357,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
