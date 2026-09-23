@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '71'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 7
+  norms_scanned: 13
+  finding_count: 1
+  audit_sha256: 990fffa0fd686d9262a60d479c46f3d77a907442308dcce077f0f4d44e5dcc87
+decisions:
+- finding_id: AIA-VALID-D042C5C52CC0EEA3
+  target: AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A071-P002
+  source_sha256: a2ae9e790603649eee110f76e55380b1b9d904c730c7ef45c395505c79fcb7d9
+  target_sha256: 69975a830a2c1e6f9ea37dd70a7475e98f1218fbe7de9bb2e3a31cb7b4dc9ee0
+  decision: false_positive
+  reason: '"Where applicable" qualifies the alternative party, the authorised representative, not the
+    provider''s duty. The representative''s own norm records it as its condition. The provider''s entry
+    of the Section A and B data is unconditional.'
+  legal_basis:
+  - span_id: AIA-TEXT-A071-P002
+    source_sha256: a2ae9e790603649eee110f76e55380b1b9d904c730c7ef45c395505c79fcb7d9
+    quote: shall be entered into the EU database by the provider or, where applicable, by the authorised
+      representative
+  reviewed_by: vidibro

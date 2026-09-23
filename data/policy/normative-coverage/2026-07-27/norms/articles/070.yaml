@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P001
   targets: []
   action: establish or designate at least one notifying authority and at least one market surveillance
     authority as national competent authorities for the purposes of this Regulation
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P1-INDEPENDENT-EXERCISE-OF-POWERS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A070-P001
   targets: []
   action: exercise the authority's powers independently, impartially and without bias so as to safeguard
     the objectivity of its activities and tasks and to ensure the application and implementation of this
@@ -72,11 +77,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P1-MEMBER-CONDUCT
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A070-P001
   targets: []
   action: refrain from any action incompatible with the member's duties
   norm_text: The members of those authorities shall refrain from any action incompatible with their duties.
@@ -104,11 +112,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P1-ORGANISATIONAL-FLEXIBILITY
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P001
   targets: []
   action: have the activities and tasks performed by one or more designated authorities according to the
     Member State's organisational needs
@@ -123,7 +134,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the independence, impartiality, objectivity and member-conduct principles are observed
+    - text: Provided that those principles are observed
       basis_segment_ids:
       - AIA-TEXT-A070-P001
   exceptions: null
@@ -143,11 +154,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P2-AUTHORITY-AND-CONTACT-DISCLOSURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P002
   targets: []
   action: communicate to the Commission the identity and tasks of the notifying and market surveillance
     authorities, and any subsequent changes to them
@@ -181,11 +195,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P2-PUBLISH-CONTACT-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P002
   targets: []
   action: make information on how to contact the competent authorities and single points of contact publicly
     available through electronic communication means by 2 August 2025
@@ -215,11 +232,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A070-P2-CONTACT-INFORMATION-BY
 - norm_id: AIA-NORM-A070-P2-DESIGNATE-SINGLE-POINT-OF-CONTACT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P002
   targets: []
   action: designate a market surveillance authority as the single point of contact for this Regulation
     and notify the Commission of its identity
@@ -250,11 +270,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P2-PUBLISH-CONTACT-LIST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A070-P002
   targets: []
   action: publicly provide the single-point-of-contact list
   norm_text: The Commission shall make a list of the single points of contact publicly available.
@@ -282,11 +305,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P3-ADEQUATE-RESOURCES-AND-COMPETENCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P003
   targets: []
   action: ensure the national competent authorities are provided with adequate technical, financial and
     human resources and with infrastructure to fulfil their tasks effectively
@@ -321,18 +347,21 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A070-P003
   targets: []
   action: keep a sufficient number of personnel permanently available whose competences and expertise
     cover every enacted field
-  norm_text: the national competent authorities shall have a sufficient number of personnel permanently
-    available whose competences and expertise shall include an in-depth understanding of AI technologies,
-    data and data computing, personal data protection, cybersecurity, fundamental rights, health and safety
-    risks and knowledge of existing standards and legal requirements.
+  norm_text: In particular, the national competent authorities shall have a sufficient number of personnel
+    permanently available whose competences and expertise shall include an in-depth understanding of AI
+    technologies, data and data computing, personal data protection, cybersecurity, fundamental rights,
+    health and safety risks and knowledge of existing standards and legal requirements.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -364,11 +393,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P3-ANNUAL-REASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P003
   targets: []
   action: assess the paragraph 3 competence and resource requirements annually and update them where necessary
   norm_text: Member States shall assess and, if necessary, update competence and resource requirements
@@ -397,11 +429,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P4-ADEQUATE-CYBERSECURITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A070-P004
   targets: []
   action: take appropriate measures ensuring adequate cybersecurity
   norm_text: National competent authorities shall take appropriate measures to ensure an adequate level
@@ -430,11 +465,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P5-ARTICLE-78-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A070-P005
   targets: []
   action: comply with Article 78 confidentiality when performing authority tasks
   norm_text: When performing their tasks, the national competent authorities shall act in accordance with
@@ -445,7 +483,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A070-P005
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: When performing their tasks
+      basis_segment_ids:
+      - AIA-TEXT-A070-P005
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -463,11 +506,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P6-RESOURCE-STATUS-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A070-P006
   targets: []
   action: report authority financial and human resource status and adequacy by 2 August 2025 and biennially
     thereafter
@@ -498,11 +544,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A070-P6-RESOURCE-REPORTS
 - norm_id: AIA-NORM-A070-P6-TRANSMIT-RESOURCE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A070-P006
   targets: []
   action: transmit Member State authority-resource information to the Board
   norm_text: The Commission shall transmit that information to the Board for discussion and possible recommendations.
@@ -530,11 +579,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P7-FACILITATE-EXPERIENCE-EXCHANGE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A070-P007
   targets: []
   action: facilitate experience exchange among national competent authorities
   norm_text: The Commission shall facilitate the exchange of experience between national competent authorities.
@@ -562,11 +614,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P8-GUIDANCE-AND-CONSULTATION
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A070-P008
   targets: []
   action: provide Board-and-Commission-informed implementation guidance and consult authorities responsible
     for other applicable Union law
@@ -582,12 +637,7 @@ norms:
   primary_spans:
   - AIA-TEXT-A070-P008
   qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: other-law authorities are consulted where guidance concerns their Union-law area
-      basis_segment_ids:
-      - AIA-TEXT-A070-P008
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -605,11 +655,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A070-P9-EDPS-COMPETENT-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A070-P009
   targets: []
   action: act as competent supervisory authority for in-scope Union institutions bodies offices and agencies
   norm_text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation,
@@ -623,7 +676,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a Union institution body office or agency falls within the Regulation's scope
+    - text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation
       basis_segment_ids:
       - AIA-TEXT-A070-P009
   exceptions: null
@@ -643,3 +696,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII

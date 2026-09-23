@@ -4032,8 +4032,8 @@ def test_article_seventy_extracts_national_authority_governance():
     assert conduct.kind.value == "prohibition"
     # Consolidating the tasks is permitted only while those principles are observed.
     assert flexibility.kind.value == "permission"
-    assert flexibility.conditions == [
-        "the independence, impartiality, objectivity and member-conduct principles are observed"
+    assert [operand.text for operand in flexibility.conditions] == [
+        "Provided that those principles are observed"
     ]
 
     # The disclosure stages have different deadlines and recipients.
@@ -4085,11 +4085,11 @@ def test_article_seventy_one_extracts_database_and_data_entry_duties():
     experts = norms["AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS"]
     board = norms["AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES"]
     assert len(setup.mandatory_content) == 2
-    assert experts.conditions == [
-        "the Commission is setting the functional specifications of the database"
+    assert [operand.text for operand in experts.conditions] == [
+        "When setting the functional specifications of such database"
     ]
-    assert board.conditions == [
-        "the Commission is updating the functional specifications of the database"
+    assert [operand.text for operand in board.conditions] == [
+        "when updating the functional specifications of such database"
     ]
 
     # Article 49 and Article 60 information follow different access regimes.
@@ -4097,13 +4097,13 @@ def test_article_seventy_one_extracts_database_and_data_entry_duties():
     restricted = norms["AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS"]
     presentation = norms["AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE"]
     assert not public.mandatory_content
-    assert public.exceptions == [
+    assert [operand.text for operand in public.exceptions] == [
         "the section referred to in Article 49(4)",
-        "the section referred to in Article 60(4), point (c)",
+        "Article 60(4), point (c)",
     ]
-    assert restricted.exceptions == [
-        "the prospective provider or provider has given consent for also making the information "
-        "accessible the public"
+    assert [operand.text for operand in restricted.exceptions] == [
+        "unless the prospective provider or provider has given consent for also making the "
+        "information accessible the public"
     ]
     # The enacted "should" is preserved rather than promoted to a duty.
     assert presentation.kind.value == "legal_consequence"

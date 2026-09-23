@@ -43,7 +43,10 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
+  - AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
+  - AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -2086,6 +2086,9 @@ rules:
       entered data describes. Same inversion as the Art. 49 registrations it fills in, and for the
       same reason: Regulation (EU) 2026/1744 moved Sections 1 to 3 and left everything else where
       it was.
+    criteria:
+      - norm_id: AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
+      - norm_id: AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
     status: active
 
   # NO AREA GATE, AND THAT IS THE DIFFERENCE FROM AIA-RULE-PO-A71-2. Art. 49(1) and 49(3) each except
@@ -2529,6 +2532,11 @@ rules:
       elements must still be there and the equivalence is the provider's to show.
     document_verifiable: false
     effective_date: 2026-08-02
+    criteria:
+      - norm_id: AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
+      - norm_id: AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
+      - norm_id: AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
+      - norm_id: AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
     status: active
 
   # ART. 73(10) MOVES THE ADDRESSEE, which is why it is a rule and not a narrowing. Read as a limit

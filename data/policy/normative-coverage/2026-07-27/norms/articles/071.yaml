@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P001
   targets: []
   action: set up and maintain the EU database, in collaboration with the Member States, containing the
     paragraph 2 and 3 information on the enacted registered systems
@@ -40,15 +42,19 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P001
   targets: []
   action: consult the relevant experts when setting the database's functional specifications
   norm_text: When setting the functional specifications of such database, the Commission shall consult
-    the relevant experts
+    the relevant experts, and when updating the functional specifications of such database, the Commission
+    shall consult the Board.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -58,7 +64,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission is setting the functional specifications of the database
+    - text: When setting the functional specifications of such database
       basis_segment_ids:
       - AIA-TEXT-A071-P001
   exceptions: null
@@ -78,15 +84,19 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P001
   targets: []
   action: consult the Board when updating the database's functional specifications
-  norm_text: when updating the functional specifications of such database, the Commission shall consult
-    the Board.
+  norm_text: When setting the functional specifications of such database, the Commission shall consult
+    the relevant experts, and when updating the functional specifications of such database, the Commission
+    shall consult the Board.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -96,7 +106,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission is updating the functional specifications of the database
+    - text: when updating the functional specifications of such database
       basis_segment_ids:
       - AIA-TEXT-A071-P001
   exceptions: null
@@ -116,11 +126,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A071-P002
   targets: []
   action: enter the applicable Annex VIII Sections A and B data into the EU database
   norm_text: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by
@@ -151,11 +164,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A071-P002
   targets: []
   action: enter the applicable Annex VIII Sections A and B data into the EU database where registration
     falls to the representative
@@ -171,7 +187,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the authorised representative is applicable for the data entry
+    - text: where applicable, by the authorised representative
       basis_segment_ids:
       - AIA-TEXT-A071-P002
   exceptions: null
@@ -192,11 +208,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A071-P003
   targets: []
   action: enter Annex VIII Section C data into the EU database under Article 49(3) and (4)
   norm_text: The data listed in Section C of Annex VIII shall be entered into the EU database by the deployer
@@ -212,7 +231,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the deployer is or acts for a public authority agency or body
+    - text: who is, or who acts on behalf of, a public authority, agency or body
       basis_segment_ids:
       - AIA-TEXT-A071-P003
   exceptions: null
@@ -233,11 +252,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P4-DATABASE-ACCESS-RULES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P004
   targets: []
   action: keep the information registered under Article 49 accessible and publicly available in a user-friendly
     manner
@@ -257,7 +279,7 @@ norms:
     - text: the section referred to in Article 49(4)
       basis_segment_ids:
       - AIA-TEXT-A071-P004
-    - text: the section referred to in Article 60(4), point (c)
+    - text: Article 60(4), point (c)
       basis_segment_ids:
       - AIA-TEXT-A071-P004
   mandatory_content: []
@@ -276,11 +298,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P004
   targets: []
   action: the information should be easily navigable and machine-readable
   norm_text: The information should be easily navigable and machine-readable.
@@ -308,11 +333,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P004
   targets: []
   action: keep the information registered under Article 60 accessible only to market surveillance authorities
     and the Commission
@@ -329,8 +357,8 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: the prospective provider or provider has given consent for also making the information accessible
-        the public
+    - text: unless the prospective provider or provider has given consent for also making the information
+        accessible the public
       basis_segment_ids:
       - AIA-TEXT-A071-P004
   mandatory_content: []
@@ -349,11 +377,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P006
   targets: []
   action: limit database personal data to what Regulation processing requires while including authorised
     registrant names and contacts
@@ -387,11 +418,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P006
   targets: []
   action: be the controller of the EU database
   norm_text: The Commission shall be the controller of the EU database.
@@ -420,11 +454,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P6-OPERATOR-SUPPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P006
   targets: []
   action: make adequate technical and administrative support available to providers, prospective providers
     and deployers
@@ -456,11 +493,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII
 - norm_id: AIA-NORM-A071-P6-DATABASE-ACCESSIBILITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A071-P006
   targets: []
   action: ensure the EU database complies with applicable accessibility requirements
   norm_text: The EU database shall comply with the applicable accessibility requirements.
@@ -488,3 +528,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VIII

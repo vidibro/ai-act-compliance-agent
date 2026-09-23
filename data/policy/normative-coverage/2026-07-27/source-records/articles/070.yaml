@@ -1,3 +1,18 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A070-P2-CONTACT-INFORMATION-BY
+  application_start: 2025-08-02
+  deadline: 2025-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A070-P002
+- regime_id: AIA-TEMP-A070-P6-RESOURCE-REPORTS
+  application_start: 2025-08-02
+  deadline: 2025-08-02
+  timing_conditions:
+  - once every two years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A070-P006
 records:
 - norm_id: AIA-NORM-A070-P1-DESIGNATE-AND-SAFEGUARD-AUTHORITIES
   source: A070-P001
@@ -7,10 +22,12 @@ records:
     authority as national competent authorities for the purposes of this Regulation
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P001]
   targets: []
   mandatory_content:
   - at least one notifying authority
   - at least one market surveillance authority
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -26,7 +43,9 @@ records:
     Regulation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A070-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,8 +57,10 @@ records:
   action: refrain from any action incompatible with the member's duties
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A070-P001]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -53,10 +74,15 @@ records:
     Member State's organisational needs
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P001]
   targets: []
   kind: permission
   conditions:
-  - the independence, impartiality, objectivity and member-conduct principles are observed
+    operator: all_of
+    operands:
+    - text: Provided that those principles are observed
+      basis_segment_ids: [AIA-TEXT-A070-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -71,11 +97,13 @@ records:
     authorities, and any subsequent changes to them
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P002]
   targets: []
   mandatory_content:
   - identity of the notifying authorities and the market surveillance authorities
   - tasks of those authorities
   - any subsequent changes to that identity or those tasks
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -89,7 +117,9 @@ records:
     available through electronic communication means by 2 August 2025
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-A070-P2-CONTACT-INFORMATION-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -103,7 +133,9 @@ records:
     and notify the Commission of its identity
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -115,7 +147,9 @@ records:
   action: publicly provide the single-point-of-contact list
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A070-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -130,12 +164,14 @@ records:
     human resources and with infrastructure to fulfil their tasks effectively
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P003]
   targets: []
   mandatory_content:
   - adequate technical resources
   - adequate financial resources
   - adequate human resources
   - infrastructure to fulfil the tasks effectively
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -144,14 +180,15 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL
   source: A070-P003
-  quote: the national competent authorities shall have a sufficient number of personnel permanently available
-    whose competences and expertise shall include an in-depth understanding of AI technologies, data and
-    data computing, personal data protection, cybersecurity, fundamental rights, health and safety risks
-    and knowledge of existing standards and legal requirements.
+  quote: In particular, the national competent authorities shall have a sufficient number of personnel
+    permanently available whose competences and expertise shall include an in-depth understanding of AI
+    technologies, data and data computing, personal data protection, cybersecurity, fundamental rights,
+    health and safety risks and knowledge of existing standards and legal requirements.
   action: keep a sufficient number of personnel permanently available whose competences and expertise
     cover every enacted field
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A070-P003]
   targets: []
   mandatory_content:
   - in-depth understanding of AI technologies
@@ -161,6 +198,7 @@ records:
   - fundamental rights
   - health and safety risks
   - knowledge of existing standards and legal requirements
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -173,7 +211,9 @@ records:
   action: assess the paragraph 3 competence and resource requirements annually and update them where necessary
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -186,7 +226,9 @@ records:
   action: take appropriate measures ensuring adequate cybersecurity
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A070-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -199,12 +241,19 @@ records:
   action: comply with Article 78 confidentiality when performing authority tasks
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A070-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: When performing their tasks
+      basis_segment_ids: [AIA-TEXT-A070-P005]
 - norm_id: AIA-NORM-A070-P6-RESOURCE-STATUS-REPORT
   source: A070-P006
   quote: By 2 August 2025, and once every two years thereafter, Member States shall report to the Commission
@@ -214,7 +263,9 @@ records:
     thereafter
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A070-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-A070-P6-RESOURCE-REPORTS
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -226,7 +277,9 @@ records:
   action: transmit Member State authority-resource information to the Board
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A070-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -238,7 +291,9 @@ records:
   action: facilitate experience exchange among national competent authorities
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A070-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -255,10 +310,10 @@ records:
     for other applicable Union law
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A070-P008]
   targets: []
   kind: power
-  conditions:
-  - other-law authorities are consulted where guidance concerns their Union-law area
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -271,9 +326,14 @@ records:
   action: act as competent supervisory authority for in-scope Union institutions bodies offices and agencies
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A070-P009]
   targets: []
   conditions:
-  - a Union institution body office or agency falls within the Regulation's scope
+    operator: all_of
+    operands:
+    - text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation
+      basis_segment_ids: [AIA-TEXT-A070-P009]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

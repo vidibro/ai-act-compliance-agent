@@ -193,7 +193,8 @@ segments:
   - AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
   - AIA-NORM-A071-P6-OPERATOR-SUPPORT
   - AIA-NORM-A071-P6-DATABASE-ACCESSIBILITY
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

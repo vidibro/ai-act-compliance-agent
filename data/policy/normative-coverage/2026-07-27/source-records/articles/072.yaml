@@ -1,3 +1,14 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-IX
+  application_start: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A072-P3-PLAN-GUIDANCE-BY
+  application_start: 2026-08-02
+  deadline: 2027-09-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A072-P003
 records:
 - norm_id: AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
   source: A072-P001
@@ -6,7 +17,9 @@ records:
   action: establish and document a risk-proportionate post-market monitoring system
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A072-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
@@ -24,13 +37,18 @@ records:
     continuous compliance while excluding protected law-enforcement data
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A072-P001]
   targets: []
   mandatory_content:
   - active systematic lifetime data collection documentation and analysis
   - continuous Chapter III Section 2 compliance evaluation
   - relevant interaction analysis with other AI systems
   exceptions:
-  - sensitive operational data of law-enforcement deployers
+    operator: any_of
+    operands:
+    - text: This obligation shall not cover sensitive operational data of deployers which are law-enforcement authorities
+      basis_segment_ids: [AIA-TEXT-A072-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
@@ -41,7 +59,9 @@ records:
   action: base the post-market monitoring system on a post-market monitoring plan
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A072-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
@@ -54,7 +74,9 @@ records:
     IV
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A072-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A72
   verification_mode: reported_not_judged
@@ -66,7 +88,9 @@ records:
   action: adopt Board-informed plan guidance and a template by 2 September 2027
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A072-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-A072-P3-PLAN-GUIDANCE-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -84,27 +108,32 @@ records:
     protection is achieved
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A072-P004]
   targets: []
   kind: permission
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - operator: all_of
+    - operator: any_of
       operands:
-      - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-        I
-      - a post-market monitoring system and plan are already established under that legislation
-    - operator: all_of
-      operands:
-      - the high-risk AI system is referred to in point 5 of Annex III
-      - the system is placed on the market or put into service by a financial institution
-      - the financial institution is subject to Union financial-services-law requirements concerning internal
-        governance, arrangements or processes
-  - the integration uses the paragraph 3 template as appropriate
-  - the result achieves an equivalent level of protection
+      - operator: all_of
+        operands:
+        - text: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A of Annex I
+          basis_segment_ids: [AIA-TEXT-A072-P004]
+        - text: where a post-market monitoring system and plan are already established under that legislation
+          basis_segment_ids: [AIA-TEXT-A072-P004]
+      - text: high-risk AI systems referred to in point 5 of Annex III placed on the market or put into service by financial institutions that are subject to requirements under Union financial services law regarding their internal governance, arrangements or processes
+        basis_segment_ids: [AIA-TEXT-A072-P005]
+    - text: using the template referred in paragraph 3
+      basis_segment_ids: [AIA-TEXT-A072-P004]
+    - text: provided that it achieves an equivalent level of protection
+      basis_segment_ids: [AIA-TEXT-A072-P004]
   qualifier_spans:
   - A072-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A72
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   verified_by: vidibro
+  implementation_reason: The rule's evidence names the Article 72(4) integration route.

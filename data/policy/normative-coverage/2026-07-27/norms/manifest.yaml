@@ -4383,6 +4383,43 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A113-B
+- regime_id: AIA-TEMP-A070-P2-CONTACT-INFORMATION-BY
+  application_start: '2025-08-02'
+  application_end: null
+  deadline: '2025-08-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A070-P002
+- regime_id: AIA-TEMP-A070-P6-RESOURCE-REPORTS
+  application_start: '2025-08-02'
+  application_end: null
+  deadline: '2025-08-02'
+  timing_conditions:
+  - once every two years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A070-P006
+- regime_id: AIA-TEMP-CHAPTER-VIII
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-CHAPTER-IX
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A072-P3-PLAN-GUIDANCE-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2027-09-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A072-P003
 - regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
   application_start: null
   application_end: null

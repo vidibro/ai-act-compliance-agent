@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '70'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 10
+  norms_scanned: 18
+  finding_count: 1
+  audit_sha256: bc73b675d983a9c6d9e566b08da8cfc3e1376c8f7a10523e2f3fe7b0ab58bf9f
+decisions:
+- finding_id: AIA-VALID-D822C52E055EC8D4
+  target: AIA-NORM-A070-P3-ANNUAL-REASSESSMENT
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A070-P003
+  source_sha256: 79ed087506078634d2414011dec331f25600e4937bb5102365582595b2e5dc45
+  target_sha256: 6860c1875db8cd0914e396c7b688ca040b6f7beabea83519d0d0559cf6eaeccc
+  decision: accepted_with_basis
+  reason: '"If necessary" qualifies only the update: Member States must assess the requirements every
+    year, and update them only where the assessment shows it is needed. A condition on the whole norm
+    would make the annual assessment optional too. The action keeps the qualifier on the update.'
+  legal_basis:
+  - span_id: AIA-TEXT-A070-P003
+    source_sha256: 79ed087506078634d2414011dec331f25600e4937bb5102365582595b2e5dc45
+    quote: Member States shall assess and, if necessary, update competence and resource requirements referred
+      to in this paragraph on an annual basis
+  reviewed_by: vidibro

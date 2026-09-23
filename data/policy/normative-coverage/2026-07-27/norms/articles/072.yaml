@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A072-P001
   targets: []
   action: establish and document a risk-proportionate post-market monitoring system
   norm_text: Providers shall establish and document a post-market monitoring system in a manner that is
@@ -35,11 +37,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A072-P001
   targets: []
   action: actively collect document and analyse lifetime performance and interaction data to evaluate
     continuous compliance while excluding protected law-enforcement data
@@ -62,7 +67,8 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: sensitive operational data of law-enforcement deployers
+    - text: This obligation shall not cover sensitive operational data of deployers which are law-enforcement
+        authorities
       basis_segment_ids:
       - AIA-TEXT-A072-P002
   mandatory_content:
@@ -85,11 +91,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A072-P001
   targets: []
   action: base the post-market monitoring system on a post-market monitoring plan
   norm_text: The post-market monitoring system shall be based on a post-market monitoring plan.
@@ -119,11 +128,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A072-P001
   targets: []
   action: include the post-market monitoring plan in the technical documentation referred to in Annex
     IV
@@ -155,11 +167,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A072-P3-COMMISSION-PLAN-GUIDANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A072-P003
   targets: []
   action: adopt Board-informed plan guidance and a template by 2 September 2027
   norm_text: The Commission, taking utmost account of the opinion of the Board, shall adopt guidance,
@@ -188,11 +203,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A072-P3-PLAN-GUIDANCE-BY
 - norm_id: AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A072-P004
   targets: []
   action: integrate Article 72 elements into an existing sectoral monitoring system and plan where equivalent
     protection is achieved
@@ -218,40 +236,33 @@ norms:
       operands:
       - operator: all_of
         operands:
-        - text: the high-risk AI system is covered by Union harmonisation legislation listed in Section
+        - text: For high-risk AI systems covered by the Union harmonisation legislation listed in Section
             A of Annex I
           basis_segment_ids:
           - AIA-TEXT-A072-P004
-        - text: a post-market monitoring system and plan are already established under that legislation
+        - text: where a post-market monitoring system and plan are already established under that legislation
           basis_segment_ids:
           - AIA-TEXT-A072-P004
-      - operator: all_of
-        operands:
-        - text: the high-risk AI system is referred to in point 5 of Annex III
-          basis_segment_ids:
-          - AIA-TEXT-A072-P004
-        - text: the system is placed on the market or put into service by a financial institution
-          basis_segment_ids:
-          - AIA-TEXT-A072-P004
-        - text: the financial institution is subject to Union financial-services-law requirements concerning
-            internal governance, arrangements or processes
-          basis_segment_ids:
-          - AIA-TEXT-A072-P004
-    - text: the integration uses the paragraph 3 template as appropriate
+      - text: high-risk AI systems referred to in point 5 of Annex III placed on the market or put into
+          service by financial institutions that are subject to requirements under Union financial services
+          law regarding their internal governance, arrangements or processes
+        basis_segment_ids:
+        - AIA-TEXT-A072-P005
+    - text: using the template referred in paragraph 3
       basis_segment_ids:
       - AIA-TEXT-A072-P004
-    - text: the result achieves an equivalent level of protection
+    - text: provided that it achieves an equivalent level of protection
       basis_segment_ids:
       - AIA-TEXT-A072-P004
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A72
-  implementation_reason: ''
-  verification_mode: reported_not_judged
+  implementation_reason: The rule's evidence names the Article 72(4) integration route.
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -261,3 +272,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

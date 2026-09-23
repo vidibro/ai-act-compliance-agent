@@ -1,0 +1,34 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '72'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 6
+  norms_scanned: 6
+  finding_count: 1
+  audit_sha256: d0752e13a377688a2ba385fc23667e2577c9d9bcda89ceea3c70dc36bbf31965
+decisions:
+- finding_id: AIA-VALID-6AB5742688D053F8
+  target: AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A072-P002
+  source_sha256: b94e5dd9eec062816d4ef505021623566ce3f4272677dffa5260caaf13f1cb11
+  target_sha256: 5da87a44b7c681f4011c009f6c968345c74c9b11384ec143f35803db069890ff
+  decision: accepted_with_basis
+  reason: '"Where relevant" qualifies one element only, the analysis of the interaction with other AI
+    systems. The collection, documentation and analysis of performance data are owed throughout the system''s
+    lifetime. The mandatory content keeps the qualifier on that element as "relevant interaction analysis
+    with other AI systems".'
+  legal_basis:
+  - span_id: AIA-TEXT-A072-P002
+    source_sha256: b94e5dd9eec062816d4ef505021623566ce3f4272677dffa5260caaf13f1cb11
+    quote: Where relevant, post-market monitoring shall include an analysis of the interaction with other
+      AI systems
+  reviewed_by: vidibro
