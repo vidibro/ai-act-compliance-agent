@@ -176,7 +176,8 @@ segments:
   - AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
   - AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
   - AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -460,6 +461,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P5-MSA-FACT-FINDING
+  - AIA-NORM-A075A-P5-NATIONAL-LAW-POWERS
   qualifying_norm_ids: []
   review:
     status: approved

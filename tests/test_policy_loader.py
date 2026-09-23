@@ -131,7 +131,10 @@ def test_shipped_spec_loads():
     #
     # Art. 73(6)'s bar on altering the system before informing the authorities is a rule of its
     # own beside AIA-RULE-ALL-A73, because a rule implements one legal kind.
-    assert len(spec.rules) == 125
+    #
+    # Art. 75a(3)'s voluntary reply to an AI Office simple request must be correct, which binds
+    # the operator even though replying at all is optional.
+    assert len(spec.rules) == 126
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

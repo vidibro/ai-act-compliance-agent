@@ -7,8 +7,15 @@ records:
   action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P001]
   targets: []
   kind: power
+  conditions:
+    operator: all_of
+    operands:
+    - text: When exercising its tasks of supervision and enforcement laid down in Article 75(1) of this Regulation
+      basis_segment_ids: [AIA-TEXT-A075A-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -24,8 +31,10 @@ records:
     operator
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -37,8 +46,10 @@ records:
   action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P001]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: This institutional procedure is outside the supported operator surface.
   implementation_mode: none_required
@@ -53,16 +64,20 @@ records:
   action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P002]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI Office has reasonable grounds to suspect non-compliance by a provider or deployer of an Article
-    75(1) AI system
+    operator: all_of
+    operands:
+    - text: Where the AI Office has reasonable grounds to suspect non-compliance with this Regulation by a provider or a deployer of an AI system referred to in Article 75(1) of this Regulation
+      basis_segment_ids: [AIA-TEXT-A075A-P002]
 - norm_id: AIA-NORM-A075A-P2-NOTIFY-INVESTIGATION
   source: A075A-P002
   quote: Upon starting such an investigation, the AI Office shall notify the operator of the AI system
@@ -70,14 +85,19 @@ records:
   action: notify the concerned AI-system operator when starting an investigation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI Office starts an investigation under Article 75a(2)
+    operator: all_of
+    operands:
+    - text: Upon starting such an investigation
+      basis_segment_ids: [AIA-TEXT-A075A-P002]
 - norm_id: AIA-NORM-A075A-P2-EXERCISE-POWERS-PREINVESTIGATION
   source: A075A-P002
   quote: The AI Office may exercise the powers referred to in paragraph 1 of this Article on its own initiative
@@ -87,8 +107,10 @@ records:
     investigation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P002]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -102,16 +124,20 @@ records:
   action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075A-P003]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the market-surveillance authority has reason to suspect non-compliance by a provider or deployer of
-    an Article 75(1) AI system
+    operator: all_of
+    operands:
+    - text: Where a market surveillance authority has reason to suspect non-compliance with this Regulation by a provider or a deployer of an AI system referred to in Article 75(1)
+      basis_segment_ids: [AIA-TEXT-A075A-P003]
 - norm_id: AIA-NORM-A075A-P3-REQUEST-INFORMATION
   source: A075A-P004
   quote: The AI Office may exercise the powers listed in Article 14(4), points (a), (b) and (c) of Regulation
@@ -119,8 +145,10 @@ records:
   action: exercise listed information and document powers by simple request or decision
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P004]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -135,11 +163,18 @@ records:
     period for providing it
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P005]
   targets: []
   mandatory_content:
   - the legal basis and the purpose of the request
   - what information is required
   - the period within which the information is to be provided
+  conditions:
+    operator: all_of
+    operands:
+    - text: When requesting information
+      basis_segment_ids: [AIA-TEXT-A075A-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -156,13 +191,18 @@ records:
     99(5) fines
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P005]
   targets: []
   conditions:
-  - the request is a simple request
+    operator: all_of
+    operands:
+    - text: Where the request is a simple request
+      basis_segment_ids: [AIA-TEXT-A075A-P005]
   mandatory_content:
   - that there is no obligation to provide the information requested, but a voluntary reply must be correct
     and not misleading
   - the potential fines provided for in Article 99(5) for supplying incorrect or misleading information
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -178,12 +218,17 @@ records:
     Court of Justice of the European Union
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P005]
   targets: []
   conditions:
-  - the request is made by decision
+    operator: all_of
+    operands:
+    - text: Where the request is made by decision
+      basis_segment_ids: [AIA-TEXT-A075A-P005]
   mandatory_content:
   - the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading information
   - the right to have the decision reviewed by the Court of Justice of the European Union
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -197,7 +242,9 @@ records:
     territory the operator or its legal representative is situated
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -209,14 +256,24 @@ records:
   action: ensure any voluntary response to a simple AI Office request is correct and not misleading
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A075A-P005]
   targets: []
+  qualifier_spans:
+  - A075A-P005
   conditions:
-  - the AI Office requested the information by simple request rather than by decision
+    operator: all_of
+    operands:
+    - text: Where the request is a simple request
+      basis_segment_ids: [AIA-TEXT-A075A-P005]
+    - text: in the case of a voluntary reply
+      basis_segment_ids: [AIA-TEXT-A075A-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: in_scope
   product_scope_reason: This is a conditional information-quality duty for supported operators.
-  implementation_mode: missing
-  implementation_reason: No current rule represents this conditional response duty.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A75a-3
+  verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A075A-P4-CONDUCT-INSPECTIONS
   source: A075A-P006
@@ -226,8 +283,10 @@ records:
   action: conduct necessary remote or on-site inspections for Section enforcement tasks
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P006]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -244,7 +303,14 @@ records:
     territorial authority before inspection
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P006]
   targets: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: When conducting an inspection
+      basis_segment_ids: [AIA-TEXT-A075A-P006]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -257,6 +323,7 @@ records:
     inspection
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P007]
   targets: []
   kind: power
   mandatory_content:
@@ -271,6 +338,7 @@ records:
   - A075A-P010
   - A075A-P011
   - A075A-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -286,14 +354,19 @@ records:
     inspection obstruction
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A075A-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - a natural or legal person opposes or obstructs an AI Office inspection
+    operator: all_of
+    operands:
+    - text: Where the AI Office finds that a natural or legal person opposes or obstructs an inspection
+      basis_segment_ids: [AIA-TEXT-A075A-P013]
 - norm_id: AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
   source: A075A-P014
   quote: Where an on-site inspection of business premises, land or property requires authorisation by
@@ -303,14 +376,14 @@ records:
     where appropriate
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - national law requires judicial authorisation for the on-site inspection
 - norm_id: AIA-NORM-A075A-P4-JUDICIAL-AUTHORISATION-REVIEW
   source: A075A-P014
   quote: Where such an authorisation is applied for, the national judicial authority shall promptly verify
@@ -328,14 +401,19 @@ records:
     reviewing investigation necessity or demanding the AI Office file
   actors:
   - actor_ref: judicial_authority
+    basis_segment_ids: [AIA-TEXT-A075A-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - judicial authorisation for an AI Office inspection has been requested
+    operator: all_of
+    operands:
+    - text: Where such an authorisation is applied for
+      basis_segment_ids: [AIA-TEXT-A075A-P014]
 - norm_id: AIA-NORM-A075A-P5-MSA-FACT-FINDING
   source: A075A-P015
   quote: At the request of the AI Office, the competent market surveillance authority of a Member State
@@ -345,15 +423,37 @@ records:
   action: conduct requested territorial fact-finding for the AI Office under national-law powers
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075A-P015]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI Office requests the fact-finding measure
+    operator: all_of
+    operands:
+    - text: At the request of the AI Office
+      basis_segment_ids: [AIA-TEXT-A075A-P015]
+- norm_id: AIA-NORM-A075A-P5-NATIONAL-LAW-POWERS
+  source: A075A-P015
+  quote: The officials of the competent authorities of the Member States who are responsible for conducting
+    such investigations, inspections, or fact-finding measures, as well as those authorised or appointed
+    by them, shall exercise their powers in accordance with their national law.
+  action: exercise the powers used for fact-finding on the AI Office's behalf in accordance with national
+    law
+  actors:
+  - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075A-P015]
+  targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
   source: A075A-P016
   quote: 'In addition to the powers set out in paragraph 1 of this Article, the AI Office, in the exercise
@@ -362,6 +462,7 @@ records:
     data and documents
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P016]
   targets: []
   kind: power
   mandatory_content:
@@ -370,6 +471,7 @@ records:
   qualifier_spans:
   - A075A-P017
   - A075A-P018
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -377,16 +479,18 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P7-APPOINT-EXPERTS
   source: A075A-P019
-  quote: "To assist it in monitoring the effective implementation and compliance with the relevant provisions\
-    \ of this Regulation and to provide it with specific expertise or knowledge in the exercise of its\
-    \ competences under Article 75(1), the AI Office may appoint independent external experts and auditors,\
-    \ as well as experts, investigative teams and auditors from the Member State\u2019s competent authorities\
-    \ with the agreement of the authority concerned."
+  quote: To assist it in monitoring the effective implementation and compliance with the relevant provisions
+    of this Regulation and to provide it with specific expertise or knowledge in the exercise of its competences
+    under Article 75(1), the AI Office may appoint independent external experts and auditors, as well
+    as experts, investigative teams and auditors from the Member State’s competent authorities with the
+    agreement of the authority concerned.
   action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P019]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -399,7 +503,9 @@ records:
   action: share monitoring information with relevant Member-State competent authorities
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075A-P019]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -411,7 +517,9 @@ records:
   action: use Article 75a information only for AI Act purposes
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A075A-P020]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

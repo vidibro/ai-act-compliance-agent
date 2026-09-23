@@ -2208,15 +2208,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 2137,
-        "proposed": 799,
+        "proposed": 800,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2937
+    assert metrics.total_review_records == 2938
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 540
-    assert metrics.shall_token_candidate_recall == pytest.approx(866 / 1406)
+    assert metrics.shall_token_candidate_recall == pytest.approx(867 / 1407)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2227,20 +2227,21 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # Primary links measure norms yielded by a segment; qualifier-only chapeaux do not count.
-    assert metrics.normative_segments_with_multiple_norms == 236
+    assert metrics.normative_segments_with_multiple_norms == 237
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records. Article 73(6)'s
-    # alteration prohibition left `AIA-RULE-ALL-A73` for a rule of its own.
-    assert metrics.mapping_shape.one_norm_to_one_target == 39
+    # alteration prohibition left `AIA-RULE-ALL-A73` for a rule of its own, and the operator duties
+    # in Articles 75a(3) and 75c(3) each map to one rule.
+    assert metrics.mapping_shape.one_norm_to_one_target == 41
     assert metrics.mapping_shape.many_norms_to_one_target == 458
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 881
-    assert metrics.semantic_vs_existing_implementation_disagreements == 45
+    assert metrics.mapping_shape.unmapped == 880
+    assert metrics.semantic_vs_existing_implementation_disagreements == 43
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2255,8 +2256,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A050-P5-MANNER",
-        "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
-        "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
@@ -2289,8 +2288,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
-        "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
@@ -4965,12 +4962,14 @@ def test_articles_seventy_five_a_and_b_extract_ai_office_enforcement_powers():
         norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A075B-")
     ]
 
-    assert len(article_a) == 24
+    assert len(article_a) == 25
     assert len(article_b) == 3
     assert len(article_a["AIA-NORM-A075A-P4-INSPECTION-POWERS"].mandatory_content) == 5
-    assert article_a["AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS"].implementation_mode.value == (
-        "missing"
-    )
+    assert article_a["AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS"].implementation_refs == [
+        "AIA-RULE-ALL-A75a-3"
+    ]
+    # Paragraph 5's second sentence binds national officials to their national law.
+    assert "AIA-NORM-A075A-P5-NATIONAL-LAW-POWERS" in article_a
 
     # Common request fields, the two request-type branches and the copy are separate.
     common = article_a["AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT"]
@@ -4978,9 +4977,15 @@ def test_articles_seventy_five_a_and_b_extract_ai_office_enforcement_powers():
     decision = article_a["AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS"]
     copy = article_a["AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY"]
     assert len(common.mandatory_content) == 3
-    assert not common.conditions
-    assert simple.conditions == ["the request is a simple request"]
-    assert decision.conditions == ["the request is made by decision"]
+    assert [operand.text for operand in common.conditions.operands] == [
+        "When requesting information"
+    ]
+    assert [operand.text for operand in simple.conditions.operands] == [
+        "Where the request is a simple request"
+    ]
+    assert [operand.text for operand in decision.conditions.operands] == [
+        "Where the request is made by decision"
+    ]
     assert "no obligation to provide the information" in simple.mandatory_content[0]
     assert "incorrect, incomplete or misleading" in decision.mandatory_content[0]
     assert "Court of Justice" in decision.mandatory_content[1]

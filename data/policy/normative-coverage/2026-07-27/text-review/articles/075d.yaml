@@ -106,7 +106,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075D-P3-ADOPT-FILE-ACCESS-ARRANGEMENTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A075C-P8-SPECIFY-LIMITATION-PERIODS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -2757,6 +2757,35 @@ rules:
     effective_date: 2026-08-02
     status: active
 
+  # THE ONE OPERATOR DUTY IN ART. 75a. Paragraph 3 makes the AI Office tell the recipient of a
+  # simple request that there is no obligation to reply but that a voluntary reply "must be correct
+  # and not misleading". Answering is optional; answering wrongly is not, and Art. 75c(4) attaches
+  # the Art. 99(5) fines to it. Same roles and tiers as AIA-RULE-ALL-A75c-3, for the same reason.
+  - rule_id: AIA-RULE-ALL-A75a-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 75a
+      paragraph: 3 # a voluntary reply to a simple request must be correct
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [provider, deployer]
+    activation_condition: >-
+      The AI Office has sent this operator a SIMPLE REQUEST for information under Art. 75a(3), and
+      the operator chooses to reply. A request made by decision is a different thing: the reply is
+      then owed. The Office reaches an operator at all only through Art. 75(1), which is not
+      derivable from a description of the system, so the duty is listed with the condition
+      attached.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A reply to an AI Office simple request that is CORRECT AND NOT MISLEADING. The operator may
+      decline to answer, but once it answers, supplying incorrect or misleading information is
+      fined under Art. 99(5) through Art. 75c(4). A duty about a reply whose content the request
+      sets — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
   # NOT ART. 21 IN ANOTHER PLACE. Art. 21(1) is information and documentation demonstrating
   # conformity; 21(2) is the Art. 12(1) logs. Neither reaches the TRAINING, VALIDATION AND TESTING
   # DATA SETS, and neither says anything about the API or remote-access modality this paragraph

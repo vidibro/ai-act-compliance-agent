@@ -1,0 +1,81 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: 75c
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 25
+  norms_scanned: 18
+  finding_count: 4
+  audit_sha256: 204b61ca9a92b8b3586bc429e2156079b4a4913efe2b4000b2bf7fe715bc8e11
+decisions:
+- finding_id: AIA-VALID-604FCB4B2E28C367
+  target: AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075C-P010
+  source_sha256: 2eeaac4f5e9a85e1721bcec9d6ce01238e3c3a8a0c89d8086ea4aeeccc7164e1
+  target_sha256: 06a64849c21947f4d6173bda67b801976f2daa8b7b867b01666f6c25846dea7e
+  decision: false_positive
+  reason: '"Subject to its competence pursuant to Article 75(1)" names which operators the power reaches,
+    the same operators the whole Article covers. It is not a condition on the power. The seven points
+    list what the payments may compel, not when they may be imposed.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075C-P010
+    source_sha256: 2eeaac4f5e9a85e1721bcec9d6ce01238e3c3a8a0c89d8086ea4aeeccc7164e1
+    quote: to compel the operators subject to its competence pursuant to Article 75(1) to the following
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-826FC36F8BBCC5FF
+  target: AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075C-P018
+  source_sha256: 5594f73eca0fb729a6dd6a165ad9ed049eb1f625107cd6d58523ac0d4ced1052
+  target_sha256: 6f5e4687986aa468d5a61518056ebdc4cc4e75ca7429ab14d2799a401292224a
+  decision: accepted_with_basis
+  reason: '"Where applicable" qualifies the 5% ceiling only, which depends on the operator having a daily
+    income or turnover to measure. The payments must always be effective and proportionate. A condition
+    on the whole norm would make that optional too.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075C-P018
+    source_sha256: 5594f73eca0fb729a6dd6a165ad9ed049eb1f625107cd6d58523ac0d4ced1052
+    quote: Those penalty payments shall be effective and proportionate, and, where applicable, shall not
+      exceed 5 % of the average daily income or worldwide annual turnover in the preceding financial year
+      per day
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-147703086F00D852
+  target: AIA-NORM-A075C-P8-FIVE-YEAR-INFRINGEMENT-LIMIT
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075C-P021
+  source_sha256: 36ab4fc934c74603abe6696ea2f0c5dd0d8e347b7029b0459aee13a582070faa
+  target_sha256: bac7e5b0c55eab964f80b21be2560e11e77a6e9e9f0fdf1702ab2c390c4489aa
+  decision: false_positive
+  reason: '"Subject to" here attaches a legal effect; it does not state when the norm applies. The AI
+    Office''s powers always lapse after five years. The continuing or repeated infringement case moves
+    only the day the period starts, and the action keeps it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075C-P021
+    source_sha256: 36ab4fc934c74603abe6696ea2f0c5dd0d8e347b7029b0459aee13a582070faa
+    quote: The powers conferred on the AI Office by this Article shall be subject to a limitation period
+      of five years
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-F95E8B916CA45D79
+  target: AIA-NORM-A075C-P8-FIVE-YEAR-DECISION-LIMIT
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075C-P022
+  source_sha256: 259ff50b31f3a11bd789b927dfce5221440c419f334d519d1b6fe0e269a2499c
+  target_sha256: a3c99e19db0053a0e929e8e4bf68cd7493b0cebf0e7f3cd6b9fa74f298f19d66
+  decision: false_positive
+  reason: '"Subject to" here attaches a legal effect; it does not state when the norm applies. The power
+    to enforce a decision always lapses five years after the decision becomes final, so there is no condition
+    to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075C-P022
+    source_sha256: 259ff50b31f3a11bd789b927dfce5221440c419f334d519d1b6fe0e269a2499c
+    quote: The power of the AI Office to enforce decisions taken pursuant to this Article shall be subject
+      to a limitation period of five years
+  reviewed_by: vidibro

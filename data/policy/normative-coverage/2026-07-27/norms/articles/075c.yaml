@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P001
   targets: []
   action: adopt a decision establishing detected AI Act or binding-commitment non-compliance
   norm_text: Where the AI Office finds that an operator falling within the scope of Article 75(1) does
@@ -17,16 +19,15 @@ norms:
   - AIA-TEXT-A075C-P001
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - operator: any_of
-      operands:
-      - text: an Article 75(1) operator does not comply with relevant provisions of the Regulation
-        basis_segment_ids:
-        - AIA-TEXT-A075C-P001
-      - text: an Article 75(1) operator does not comply with commitments made binding under Article 75b
-        basis_segment_ids:
-        - AIA-TEXT-A075C-P001
+    - text: Where the AI Office finds that an operator falling within the scope of Article 75(1) does
+        not comply with the relevant provisions of this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P001
+    - text: with commitments made binding pursuant to Article 75b
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P001
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -44,11 +45,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P2-COMMUNICATE-PRELIMINARY-FINDINGS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P002
   targets: []
   action: communicate preliminary findings before adopting a non-compliance decision
   norm_text: Before adopting a decision pursuant to paragraph 1, the AI Office shall communicate its preliminary
@@ -62,7 +66,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: before the AI Office adopts an Article 75c(1) decision
+    - text: Before adopting a decision pursuant to paragraph 1
       basis_segment_ids:
       - AIA-TEXT-A075C-P002
   exceptions: null
@@ -82,11 +86,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P2-EXPLAIN-CONTEMPLATED-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P002
   targets: []
   action: explain contemplated AI Office measures and measures the operator should take in the preliminary
     findings
@@ -99,12 +106,7 @@ norms:
   primary_spans:
   - AIA-TEXT-A075C-P002
   qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the AI Office communicates preliminary findings under Article 75c(2)
-      basis_segment_ids:
-      - AIA-TEXT-A075C-P002
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -122,11 +124,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P3-ORDER-COMPLIANCE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P003
   targets: []
   action: order necessary compliance measures within a reasonable specified period and information about
     intended measures
@@ -143,7 +148,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the requirement is relevant to the Article 75c(1) decision
+    - text: where relevant
       basis_segment_ids:
       - AIA-TEXT-A075C-P003
   exceptions: null
@@ -165,11 +170,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P003
   targets: []
   action: describe implemented measures ensuring compliance with the AI Office decision, once they are
     implemented
@@ -178,26 +186,29 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: an Article 75c(1) decision ordered the operator to take measures
+    - text: order the operator concerned to take the necessary measures to ensure compliance with the
+        relevant provisions of this Regulation
       basis_segment_ids:
       - AIA-TEXT-A075C-P003
-    - text: the measures have been implemented
+    - text: upon their implementation
       basis_segment_ids:
       - AIA-TEXT-A075C-P003
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is an enforcement-response duty for a supported operator.
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: No current rule represents this post-decision reporting duty.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A75c-3
+  implementation_reason: ''
+  verification_mode: reported_not_judged
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -207,11 +218,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P3-STRUCTURED-DIALOGUE
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P003
   targets: []
   action: conduct a structured dialogue before requesting a measure
   norm_text: Prior to requesting any measure, the AI Office may engage in a structured dialogue with the
@@ -240,11 +254,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P003
   targets: []
   action: propose Article 75b commitments during structured dialogue
   norm_text: During this dialogue, the operator may propose commitments in accordance with Article 75b.
@@ -257,7 +274,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the operator is participating in the structured dialogue described in Article 75c(3)
+    - text: During this dialogue
       basis_segment_ids:
       - AIA-TEXT-A075C-P003
   exceptions: null
@@ -277,11 +294,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P4-IMPOSE-PENALTIES
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P004
   targets: []
   action: accompany a non-compliance decision with Article 99 penalties adapted to AI Office enforcement
   norm_text: A decision adopted pursuant to paragraph 1 of this Article may be accompanied by the imposition
@@ -313,11 +333,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P4-ARTICLE99-4-FINES
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P001
   targets: []
   action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4)
     fines
@@ -334,7 +357,21 @@ norms:
   - AIA-TEXT-A075C-P006
   - AIA-TEXT-A075C-P007
   - AIA-TEXT-A075C-P008
-  conditions: null
+  conditions:
+    operator: any_of
+    operands:
+    - text: infringement of any applicable provision of this Regulation, including those not listed in
+        Article 99(4)
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P006
+    - text: failure to comply with decisions or measures adopted pursuant to the powers listed in Article
+        14(4) or Article 16(3) of Regulation (EU) 2019/1020, as well as those specified in Article 75a
+        of this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P007
+    - text: failure to comply with a commitment made binding by a decision pursuant to Article 75b
+      basis_segment_ids:
+      - AIA-TEXT-A075C-P008
   exceptions: null
   mandatory_content:
   - infringement of any applicable AI Act provision
@@ -355,11 +392,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P4-INFORMATION-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P001
   targets: []
   action: expose incorrect incomplete or misleading requested information supplied to the AI Office to
     Article 99(5) fines
@@ -375,8 +415,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: incorrect, incomplete or misleading information is supplied to the AI Office in reply to a
-        request
+    - text: The supply of incorrect, incomplete or misleading information to the AI Office in reply to
+        a request
       basis_segment_ids:
       - AIA-TEXT-A075C-P009
   exceptions: null
@@ -396,11 +436,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P010
   targets: []
   action: impose periodic penalty payments compelling specified investigation information inspection correction
     and compliance conduct
@@ -445,11 +488,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P010
   targets: []
   action: make periodic penalty payments effective and proportionate and, where applicable, keep them
     within 5 % of average daily income or worldwide annual turnover in the preceding financial year per
@@ -486,11 +532,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P6-JUDICIAL-REVIEW
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: court_of_justice_of_the_european_union
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P019
   targets: []
   action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited
     jurisdiction
@@ -522,11 +571,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P7-ALLOCATE-FINE-FUNDS
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P020
   targets: []
   action: allocate Article 75c fine and periodic-payment funds to the Union general budget
   norm_text: Funds collected through the imposition of fines or periodic penalty payments pursuant to
@@ -556,11 +608,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-INFRINGEMENT-LIMIT
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P021
   targets: []
   action: apply a five-year infringement limitation period from commission or cessation for continuing
     or repeated infringements
@@ -593,11 +648,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-DECISION-LIMIT
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P022
   targets: []
   action: apply a five-year final-decision enforcement limitation period
   norm_text: The power of the AI Office to enforce decisions taken pursuant to this Article shall be subject
@@ -628,11 +686,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P8-SPECIFY-LIMITATION-PERIODS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A075D-P003
   targets: []
   action: specify infringement and decision-enforcement limitation rules including interruption circumstances
     in the Article 75d(3) implementing act
@@ -662,11 +723,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075C-P9-CLOSE-PROCEEDING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075C-P024
   targets: []
   action: close proceedings immediately by decision when no grounds for non-compliance exist
   norm_text: Where the AI Office determines that there are no grounds to adopt a decision of non-compliance,
@@ -680,7 +744,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office determines there are no grounds to adopt a non-compliance decision
+    - text: Where the AI Office determines that there are no grounds to adopt a decision of non-compliance
       basis_segment_ids:
       - AIA-TEXT-A075C-P024
   exceptions: null
@@ -700,3 +764,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

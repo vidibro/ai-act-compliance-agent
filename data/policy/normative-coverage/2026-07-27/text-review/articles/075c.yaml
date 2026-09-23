@@ -44,7 +44,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P1-ESTABLISH-NONCOMPLIANCE
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A075C-P4-ARTICLE99-4-FINES
+  - AIA-NORM-A075C-P4-INFORMATION-FINE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -293,7 +295,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

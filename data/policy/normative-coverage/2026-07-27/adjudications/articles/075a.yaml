@@ -1,0 +1,50 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: 75a
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 21
+  norms_scanned: 25
+  finding_count: 2
+  audit_sha256: 7b1e2ab32755250a13ba86ffa33bd4bc94b4a5c3fc9c42d2308578516b26c105
+decisions:
+- finding_id: AIA-VALID-C3116B6B2C625F84
+  target: AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075A-P014
+  source_sha256: fb4e68fc7b2ea2cc74b8274e4968ed95e5ce1de1f64b9ea2a3aca131b924c3d0
+  target_sha256: 288b9c24ff0717d656964e866f9f97081bc77e27febb1e1bcf01c3c00d285558
+  decision: accepted_with_basis
+  reason: 'The "where" clause limits the first sentence only: the AI Office must apply for judicial authorisation
+    where national law requires it. The second sentence lets it apply as a precaution in any case. A condition
+    on the whole norm would make the precautionary application conditional too. The action keeps both.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075A-P014
+    source_sha256: fb4e68fc7b2ea2cc74b8274e4968ed95e5ce1de1f64b9ea2a3aca131b924c3d0
+    quote: Where an on-site inspection of business premises, land or property requires authorisation by
+      a judicial authority in accordance with national law, the AI Office shall apply for such an authorisation.
+      The AI Office may also apply for such authorisation as a precautionary measure.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-11339BBC1D2E1738
+  target: AIA-NORM-A075A-P8-PURPOSE-LIMIT-INFORMATION:actor:public_authority:AIA-TEXT-A075A-P020
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A075A-P020
+  source_sha256: 505504f3a71e84ec8a6b744d71f400e46783597644ccb5c7795252ed109d9da2
+  target_sha256: b47cbf98d9bcf753634e99f078baaaadf957b6d8309e8c2e8bfd98f74368c45c
+  decision: accepted_with_basis
+  reason: 'Paragraph 8 is passive: information "shall be used only" for this Regulation. It binds whichever
+    authorities collected or received it under the Article, which are the AI Office, market surveillance
+    authorities and national competent authorities. No single role covers them, so the public-authority
+    role records the group and no span can name it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075A-P020
+    source_sha256: 505504f3a71e84ec8a6b744d71f400e46783597644ccb5c7795252ed109d9da2
+    quote: Information collected pursuant to this Article shall be used only for the purpose of this Regulation
+  reviewed_by: vidibro

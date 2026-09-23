@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P001
   targets: []
   action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
   norm_text: When exercising its tasks of supervision and enforcement laid down in Article 75(1) of this
@@ -16,7 +18,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P001
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: When exercising its tasks of supervision and enforcement laid down in Article 75(1) of this
+        Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P001
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -34,11 +42,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P1-RECLAIM-ENFORCEMENT-COSTS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P001
   targets: []
   action: reclaim all supervision and enforcement costs associated with non-compliance from the relevant
     operator
@@ -70,11 +81,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P1-APPLY-ARTICLE17
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P001
   targets: []
   action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
   norm_text: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
@@ -103,11 +117,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P2-START-INVESTIGATION
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P002
   targets: []
   action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
   norm_text: Where the AI Office has reasonable grounds to suspect non-compliance with this Regulation
@@ -123,8 +140,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office has reasonable grounds to suspect non-compliance by a provider or deployer of
-        an Article 75(1) AI system
+    - text: Where the AI Office has reasonable grounds to suspect non-compliance with this Regulation
+        by a provider or a deployer of an AI system referred to in Article 75(1) of this Regulation
       basis_segment_ids:
       - AIA-TEXT-A075A-P002
   exceptions: null
@@ -144,11 +161,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P2-NOTIFY-INVESTIGATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P002
   targets: []
   action: notify the concerned AI-system operator when starting an investigation
   norm_text: Upon starting such an investigation, the AI Office shall notify the operator of the AI system
@@ -162,7 +182,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office starts an investigation under Article 75a(2)
+    - text: Upon starting such an investigation
       basis_segment_ids:
       - AIA-TEXT-A075A-P002
   exceptions: null
@@ -182,11 +202,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P2-EXERCISE-POWERS-PREINVESTIGATION
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P002
   targets: []
   action: exercise paragraph 1 powers on initiative or complaint including before formally starting an
     investigation
@@ -217,11 +240,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P2-MSA-REQUEST-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P003
   targets: []
   action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
   norm_text: Where a market surveillance authority has reason to suspect non-compliance with this Regulation
@@ -236,8 +262,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market-surveillance authority has reason to suspect non-compliance by a provider or deployer
-        of an Article 75(1) AI system
+    - text: Where a market surveillance authority has reason to suspect non-compliance with this Regulation
+        by a provider or a deployer of an AI system referred to in Article 75(1)
       basis_segment_ids:
       - AIA-TEXT-A075A-P003
   exceptions: null
@@ -257,11 +283,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P3-REQUEST-INFORMATION
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P004
   targets: []
   action: exercise listed information and document powers by simple request or decision
   norm_text: The AI Office may exercise the powers listed in Article 14(4), points (a), (b) and (c) of
@@ -290,11 +319,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P005
   targets: []
   action: state the legal basis and purpose of the request, specify the information required and set the
     period for providing it
@@ -307,7 +339,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P005
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: When requesting information
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P005
   exceptions: null
   mandatory_content:
   - the legal basis and the purpose of the request
@@ -328,11 +365,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P005
   targets: []
   action: additionally indicate, for a simple request, that there is no obligation to provide the information
     and that a voluntary reply must be correct and not misleading, and indicate the potential Article
@@ -350,7 +390,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the request is a simple request
+    - text: Where the request is a simple request
       basis_segment_ids:
       - AIA-TEXT-A075A-P005
   exceptions: null
@@ -373,11 +413,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P005
   targets: []
   action: additionally indicate, for a request made by decision, the Article 99(5) fines for supplying
     incorrect, incomplete or misleading information and the right to have the decision reviewed by the
@@ -394,7 +437,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the request is made by decision
+    - text: Where the request is made by decision
       basis_segment_ids:
       - AIA-TEXT-A075A-P005
   exceptions: null
@@ -416,11 +459,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P005
   targets: []
   action: send a copy of the request to the market surveillance authority of the Member State in whose
     territory the operator or its legal representative is situated
@@ -450,33 +496,43 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P005
   targets: []
   action: ensure any voluntary response to a simple AI Office request is correct and not misleading
   norm_text: in the case of a voluntary reply, the information must be correct and not misleading
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A075A-P005
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A075A-P005
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office requested the information by simple request rather than by decision
+    - text: Where the request is a simple request
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P005
+    - text: in the case of a voluntary reply
       basis_segment_ids:
       - AIA-TEXT-A075A-P005
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a conditional information-quality duty for supported operators.
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: No current rule represents this conditional response duty.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A75a-3
+  implementation_reason: ''
+  verification_mode: reported_not_judged
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -486,11 +542,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P4-CONDUCT-INSPECTIONS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P006
   targets: []
   action: conduct necessary remote or on-site inspections for Section enforcement tasks
   norm_text: In order to carry out the tasks assigned to it under this Section, the AI Office may conduct
@@ -520,11 +579,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-NOTICES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P006
   targets: []
   action: inform the provider about inspection subject purpose fines and review rights and inform the
     territorial authority before inspection
@@ -539,7 +601,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P006
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: When conducting an inspection
+      basis_segment_ids:
+      - AIA-TEXT-A075A-P006
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -557,11 +624,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-POWERS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P007
   targets: []
   action: exercise the specified entry examination copying questioning recording and sealing powers during
     inspection
@@ -601,11 +671,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P4-ASSIST-OBSTRUCTED-INSPECTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P013
   targets: []
   action: provide necessary assistance including police-equivalent assistance where appropriate to overcome
     inspection obstruction
@@ -622,7 +695,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a natural or legal person opposes or obstructs an AI Office inspection
+    - text: Where the AI Office finds that a natural or legal person opposes or obstructs an inspection
       basis_segment_ids:
       - AIA-TEXT-A075A-P013
   exceptions: null
@@ -642,11 +715,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P014
   targets: []
   action: apply for required judicial authorisation for an on-site inspection including precautionarily
     where appropriate
@@ -660,12 +736,7 @@ norms:
   primary_spans:
   - AIA-TEXT-A075A-P014
   qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: national law requires judicial authorisation for the on-site inspection
-      basis_segment_ids:
-      - AIA-TEXT-A075A-P014
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -683,11 +754,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P4-JUDICIAL-AUTHORISATION-REVIEW
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: judicial_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P014
   targets: []
   action: promptly review requested coercive measures for non-arbitrariness and proportionality without
     reviewing investigation necessity or demanding the AI Office file
@@ -712,7 +786,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: judicial authorisation for an AI Office inspection has been requested
+    - text: Where such an authorisation is applied for
       basis_segment_ids:
       - AIA-TEXT-A075A-P014
   exceptions: null
@@ -732,11 +806,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P5-MSA-FACT-FINDING
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P015
   targets: []
   action: conduct requested territorial fact-finding for the AI Office under national-law powers
   norm_text: At the request of the AI Office, the competent market surveillance authority of a Member
@@ -752,7 +829,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office requests the fact-finding measure
+    - text: At the request of the AI Office
       basis_segment_ids:
       - AIA-TEXT-A075A-P015
   exceptions: null
@@ -772,11 +849,52 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+- norm_id: AIA-NORM-A075A-P5-NATIONAL-LAW-POWERS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P015
+  targets: []
+  action: exercise the powers used for fact-finding on the AI Office's behalf in accordance with national
+    law
+  norm_text: The officials of the competent authorities of the Member States who are responsible for conducting
+    such investigations, inspections, or fact-finding measures, as well as those authorised or appointed
+    by them, shall exercise their powers in accordance with their national law.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075A-P015
+  qualifier_spans: []
+  conditions: null
+  exceptions: null
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P016
   targets: []
   action: order system access and explanations and require retention of necessary compliance-assessment
     data and documents
@@ -810,11 +928,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P7-APPOINT-EXPERTS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P019
   targets: []
   action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
   norm_text: "To assist it in monitoring the effective implementation and compliance with the relevant\
@@ -846,11 +967,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P7-SHARE-MONITORING-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P019
   targets: []
   action: share monitoring information with relevant Member-State competent authorities
   norm_text: Information obtained as a result of such monitoring actions shall be shared with the relevant
@@ -879,11 +1003,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075A-P8-PURPOSE-LIMIT-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075A-P020
   targets: []
   action: use Article 75a information only for AI Act purposes
   norm_text: Information collected pursuant to this Article shall be used only for the purpose of this
@@ -912,3 +1039,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
