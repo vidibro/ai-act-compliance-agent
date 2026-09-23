@@ -7,20 +7,24 @@ records:
     either enacted purpose
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A092-P001]
   targets: []
   kind: power
   conditions:
-  - the AI Office has consulted the Board
-  - operator: any_of
+    operator: all_of
     operands:
-    - to assess compliance of the provider with obligations under this Regulation, where the information
-      gathered pursuant to Article 91 is insufficient
-    - to investigate systemic risks at Union level of general-purpose AI models with systemic risk, in
-      particular following a qualified alert from the scientific panel in accordance with Article 90(1),
-      point (a)
+    - text: after consulting the Board
+      basis_segment_ids: [AIA-TEXT-A092-P001]
+    - operator: any_of
+      operands:
+      - text: to assess compliance of the provider with obligations under this Regulation, where the information gathered pursuant to Article 91 is insufficient
+        basis_segment_ids: [AIA-TEXT-A092-P002]
+      - text: to investigate systemic risks at Union level of general-purpose AI models with systemic risk, in particular following a qualified alert from the scientific panel in accordance with Article 90(1), point (a)
+        basis_segment_ids: [AIA-TEXT-A092-P003]
   qualifier_spans:
   - A092-P002
   - A092-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -34,8 +38,10 @@ records:
   action: appoint Article 68(2)-qualified independent experts to carry out evaluations for the Commission
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A092-P004]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -48,15 +54,20 @@ records:
   action: request access to the GPAI model through APIs source code or other appropriate technical means
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A092-P005]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - access is requested for an evaluation purpose specified in paragraph 1
+    operator: all_of
+    operands:
+    - text: For the purposes of paragraph 1
+      basis_segment_ids: [AIA-TEXT-A092-P005]
 - norm_id: AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
   source: A092-P006
   quote: The request for access shall state the legal basis, the purpose and reasons of the request and
@@ -66,12 +77,14 @@ records:
     request
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A092-P005]
   targets: []
   mandatory_content:
   - legal basis
   - purpose and reasons
   - access period
   - Article 101 fines for failure to provide access
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -84,10 +97,11 @@ records:
   action: supply the information requested following a Commission request for model access
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A092-P007]
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A092-P007]
   targets: []
-  conditions:
-  - the Commission requested access to the model under Article 92(3)
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-GP-A92-5
   verification_mode: reported_not_judged
@@ -100,17 +114,21 @@ records:
   action: provide requested model access on behalf of a legal-person or non-legal-personality GPAI provider
   actors:
   - actor_ref: legal_representative
+    basis_segment_ids: [AIA-TEXT-A092-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - the provider is a legal person, company, or firm
-    - the provider has no legal personality
+    - text: In the case of legal persons, companies or firms
+      basis_segment_ids: [AIA-TEXT-A092-P007]
+    - text: where the provider has no legal personality
+      basis_segment_ids: [AIA-TEXT-A092-P007]
 - norm_id: AIA-NORM-A092-P6-ADOPT-EVALUATION-ARRANGEMENTS
   source: A092-P008
   quote: The Commission shall adopt implementing acts setting out the detailed arrangements and the conditions
@@ -121,7 +139,9 @@ records:
     the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A092-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -137,8 +157,10 @@ records:
     mitigations
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A092-P009]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '92'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 10
+  norms_scanned: 8
+  finding_count: 1
+  audit_sha256: 18baa475c0c9984df91a6da3e8c9c1426881d44e3c909f89e84c6e534815acb3
+decisions:
+- finding_id: AIA-VALID-8395FC0C6540DBC4
+  target: AIA-NORM-A092-P5-SUPPLY-REQUESTED-INFORMATION:actor:authorised_representative:AIA-TEXT-A092-P007
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A092-P007
+  source_sha256: 0c76527d36b70ec456ac53c1ed32bd3c4aed118918de01148a84803a0f3bd735
+  target_sha256: b054e0ae2a7558d2c8962891b0174727de161d83411885101d52a8c6eb5a8e70
+  decision: accepted_with_basis
+  reason: '"Its representative" is the authorised representative a provider of a general-purpose AI model
+    established outside the Union must appoint under Article 54; the paragraph gives it the short name.
+    The role records it, and no span in the paragraph uses the full term.'
+  legal_basis:
+  - span_id: AIA-TEXT-A092-P007
+    source_sha256: 0c76527d36b70ec456ac53c1ed32bd3c4aed118918de01148a84803a0f3bd735
+    quote: The providers of the general-purpose AI model concerned or its representative shall supply
+      the information requested
+  reviewed_by: vidibro

@@ -1,0 +1,48 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '91'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 6
+  norms_scanned: 8
+  finding_count: 2
+  audit_sha256: 37729143c02abedd2bc3b5fb1890b19fb21990a68ede76e20755522bc8dbcf2b
+decisions:
+- finding_id: AIA-VALID-1E05D3025740EEB9
+  target: AIA-NORM-A091-P5-LAWYER-SUPPLY:actor:natural_or_legal_person:AIA-TEXT-A091-P005
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A091-P005
+  source_sha256: c7bd0c86797b3f82876c69c47344f092c8d38d7e2145f8c4e75baa53ef8c42e4
+  target_sha256: d2b81b7a9fad97ebed2615bb38c6773734b6b3b325683d73b9c4edb7d9e31d65
+  decision: accepted_with_basis
+  reason: The permission is given to "lawyers duly authorised to act". No role names lawyers, and a lawyer
+    is a natural or legal person acting for a client, so that role records them. No span can name the
+    role.
+  legal_basis:
+  - span_id: AIA-TEXT-A091-P005
+    source_sha256: c7bd0c86797b3f82876c69c47344f092c8d38d7e2145f8c4e75baa53ef8c42e4
+    quote: Lawyers duly authorised to act may supply information on behalf of their clients
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-3B5855F1644F316C
+  target: AIA-NORM-A091-P5-SUPPLY-REQUESTED-INFORMATION:actor:authorised_representative:AIA-TEXT-A091-P005
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A091-P005
+  source_sha256: c7bd0c86797b3f82876c69c47344f092c8d38d7e2145f8c4e75baa53ef8c42e4
+  target_sha256: 597dcadb4a31f7ed551e2bf336f4efe96505a1e986c78740733a0d3b018934ea
+  decision: accepted_with_basis
+  reason: '"Its representative" is the authorised representative a provider of a general-purpose AI model
+    established outside the Union must appoint under Article 54; the paragraph gives it the short name.
+    The role records it, and no span in the paragraph uses the full term.'
+  legal_basis:
+  - span_id: AIA-TEXT-A091-P005
+    source_sha256: c7bd0c86797b3f82876c69c47344f092c8d38d7e2145f8c4e75baa53ef8c42e4
+    quote: The provider of the general-purpose AI model concerned, or its representative shall supply
+      the information requested
+  reviewed_by: vidibro

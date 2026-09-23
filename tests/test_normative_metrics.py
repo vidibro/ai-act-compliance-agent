@@ -4627,7 +4627,8 @@ def test_article_ninety_extracts_scientific_panel_alerts():
     assert len(norms) == 4
     alert = norms["AIA-NORM-A090-P1-ISSUE-QUALIFIED-ALERT"]
     assert not alert.mandatory_content
-    triggers = alert.conditions[0]
+    suspicion, triggers = alert.conditions.operands
+    assert suspicion.text == "where it has reason to suspect that"
     assert isinstance(triggers, LogicalExpression) and triggers.operator == "any_of"
     assert len(triggers.operands) == 2
     assert len(norms["AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT"].mandatory_content) == 3
@@ -4646,11 +4647,13 @@ def test_article_ninety_one_maps_gpai_information_supply():
         "AIA-RULE-GP-A91-5"
     ]
     # Paragraph 5's last two sentences bind different actors: the lawyer may supply, the client
-    # stays liable. Only the second reaches a supported operator, so they are separate norms.
+    # stays liable. Only the second reaches a supported operator, so they are separate norms. The
+    # client is the provider of the model concerned, and its liability is reported, not judged.
     assert norms["AIA-NORM-A091-P5-LAWYER-SUPPLY"].product_scope.value == "outside_supported_actor"
     client = norms["AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE"]
     assert client.product_scope.value == "in_scope"
-    assert client.actors[0].category.value == "external_private_party"
+    assert client.actors[0].actor_ref == "gpai_provider"
+    assert client.implementation_mode.value == "report_only"
     assert len(norms["AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT"].mandatory_content) == 4
 
 
@@ -4671,12 +4674,12 @@ def test_article_ninety_two_maps_gpai_model_access():
     # The two evaluation purposes are alternatives, each keeping its own enacted limits.
     evaluation = norms["AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION"]
     assert not evaluation.mandatory_content
-    assert evaluation.conditions[0] == "the AI Office has consulted the Board"
-    purposes = evaluation.conditions[1]
+    board, purposes = evaluation.conditions.operands
+    assert board.text == "after consulting the Board"
     assert isinstance(purposes, LogicalExpression) and purposes.operator == "any_of"
-    assert "Article 91 is insufficient" in purposes.operands[0]
-    assert "general-purpose AI models with systemic risk" in purposes.operands[1]
-    assert "Article 90(1), point (a)" in purposes.operands[1]
+    assert "Article 91 is insufficient" in purposes.operands[0].text
+    assert "general-purpose AI models with systemic risk" in purposes.operands[1].text
+    assert "Article 90(1), point (a)" in purposes.operands[1].text
 
 
 def test_article_ninety_three_extracts_commission_measure_powers():

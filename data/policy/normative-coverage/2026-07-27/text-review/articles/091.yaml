@@ -44,7 +44,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A091-P1-REQUEST-DOCUMENTATION-AND-INFORMATION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

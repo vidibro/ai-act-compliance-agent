@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A090-P001
   targets: []
   action: provide a qualified alert when there is reason to suspect a concrete identifiable Union-level
     risk or Article 51 systemic-risk conditions
@@ -22,16 +24,17 @@ norms:
   conditions:
     operator: all_of
     operands:
+    - text: where it has reason to suspect that
+      basis_segment_ids:
+      - AIA-TEXT-A090-P001
     - operator: any_of
       operands:
-      - text: the scientific panel has reason to suspect that a general-purpose AI model poses a concrete
-          identifiable risk at Union level
+      - text: a general-purpose AI model poses concrete identifiable risk at Union level
         basis_segment_ids:
-        - AIA-TEXT-A090-P001
-      - text: the scientific panel has reason to suspect that a general-purpose AI model meets the conditions
-          referred to in Article 51
+        - AIA-TEXT-A090-P002
+      - text: a general-purpose AI model meets the conditions referred to in Article 51
         basis_segment_ids:
-        - AIA-TEXT-A090-P001
+        - AIA-TEXT-A090-P003
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -49,11 +52,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A090-P2-ASSESS-ALERT
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A090-P004
   targets: []
   action: after informing the Board exercise Section powers to assess a qualified alert
   norm_text: Upon such qualified alert, the Commission, through the AI Office and after having informed
@@ -67,10 +73,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the scientific panel has provided a qualified alert
+    - text: Upon such qualified alert
       basis_segment_ids:
       - AIA-TEXT-A090-P004
-    - text: the Board has been informed
+    - text: after having informed the Board
       basis_segment_ids:
       - AIA-TEXT-A090-P004
   exceptions: null
@@ -90,11 +96,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A090-P2-INFORM-BOARD-OF-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A090-P004
   targets: []
   action: inform the Board of every measure under Articles 91 to 94
   norm_text: The AI Office shall inform the Board of any measure according to Articles 91 to 94.
@@ -122,11 +131,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids:
+    - AIA-TEXT-A090-P007
   targets: []
   action: duly reason and include the minimum required information in a qualified alert
   norm_text: A qualified alert shall be duly reasoned and indicate at least
@@ -140,12 +152,7 @@ norms:
   - AIA-TEXT-A090-P006
   - AIA-TEXT-A090-P007
   - AIA-TEXT-A090-P008
-  conditions:
-    operator: all_of
-    operands:
-    - text: the scientific panel provides a qualified alert
-      basis_segment_ids:
-      - AIA-TEXT-A090-P005
+  conditions: null
   exceptions: null
   mandatory_content:
   - systemic-risk GPAI provider point of contact
@@ -166,3 +173,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

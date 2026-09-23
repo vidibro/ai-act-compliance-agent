@@ -7,24 +7,30 @@ records:
     risk or Article 51 systemic-risk conditions
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A090-P001]
   targets: []
   kind: power
   mandatory_content: []
   qualifier_spans:
   - A090-P002
   - A090-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - operator: any_of
+    operator: all_of
     operands:
-    - the scientific panel has reason to suspect that a general-purpose AI model poses a concrete identifiable
-      risk at Union level
-    - the scientific panel has reason to suspect that a general-purpose AI model meets the conditions
-      referred to in Article 51
+    - text: where it has reason to suspect that
+      basis_segment_ids: [AIA-TEXT-A090-P001]
+    - operator: any_of
+      operands:
+      - text: a general-purpose AI model poses concrete identifiable risk at Union level
+        basis_segment_ids: [AIA-TEXT-A090-P002]
+      - text: a general-purpose AI model meets the conditions referred to in Article 51
+        basis_segment_ids: [AIA-TEXT-A090-P003]
 - norm_id: AIA-NORM-A090-P2-ASSESS-ALERT
   source: A090-P004
   quote: Upon such qualified alert, the Commission, through the AI Office and after having informed the
@@ -32,23 +38,31 @@ records:
   action: after informing the Board exercise Section powers to assess a qualified alert
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A090-P004]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the scientific panel has provided a qualified alert
-  - the Board has been informed
+    operator: all_of
+    operands:
+    - text: Upon such qualified alert
+      basis_segment_ids: [AIA-TEXT-A090-P004]
+    - text: after having informed the Board
+      basis_segment_ids: [AIA-TEXT-A090-P004]
 - norm_id: AIA-NORM-A090-P2-INFORM-BOARD-OF-MEASURES
   source: A090-P004
   quote: The AI Office shall inform the Board of any measure according to Articles 91 to 94.
   action: inform the Board of every measure under Articles 91 to 94
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A090-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -60,6 +74,7 @@ records:
   action: duly reason and include the minimum required information in a qualified alert
   actors:
   - actor_ref: scientific_panel
+    basis_segment_ids: [AIA-TEXT-A090-P007]
   targets: []
   mandatory_content:
   - systemic-risk GPAI provider point of contact
@@ -69,10 +84,9 @@ records:
   - A090-P006
   - A090-P007
   - A090-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - the scientific panel provides a qualified alert

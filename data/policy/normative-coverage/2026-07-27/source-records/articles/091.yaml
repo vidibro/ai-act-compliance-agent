@@ -8,8 +8,10 @@ records:
     compliance
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A091-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -22,8 +24,10 @@ records:
   action: initiate structured dialogue with the GPAI provider before an information request
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A091-P002]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,17 +42,22 @@ records:
     request
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A091-P003]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the scientific panel has made a duly substantiated request
-  - access to the information is necessary and proportionate for fulfilment of the scientific panel's
-    Article 68(2) tasks
+    operator: all_of
+    operands:
+    - text: Upon a duly substantiated request from the scientific panel
+      basis_segment_ids: [AIA-TEXT-A091-P003]
+    - text: where the access to information is necessary and proportionate for the fulfilment of the tasks of the scientific panel under Article 68(2)
+      basis_segment_ids: [AIA-TEXT-A091-P003]
 - norm_id: AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT
   source: A091-P004
   quote: The request for information shall state the legal basis and the purpose of the request, specify
@@ -58,12 +67,14 @@ records:
     101 fines in an information request
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A091-P001]
   targets: []
   mandatory_content:
   - legal basis and purpose
   - required information
   - response period
   - Article 101 fines for incorrect incomplete or misleading information
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -76,10 +87,11 @@ records:
   action: supply information requested by the Commission
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A091-P005]
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A091-P005]
   targets: []
-  conditions:
-  - the Commission issued a request for information under Article 91(1) or Article 91(3)
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-GP-A91-5
   verification_mode: reported_not_judged
@@ -92,25 +104,31 @@ records:
   action: supply requested information on behalf of a legal-person or non-legal-personality GPAI provider
   actors:
   - actor_ref: legal_representative
+    basis_segment_ids: [AIA-TEXT-A091-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - the provider is a legal person, company, or firm
-    - the provider has no legal personality
+    - text: In the case of legal persons, companies or firms
+      basis_segment_ids: [AIA-TEXT-A091-P005]
+    - text: where the provider has no legal personality
+      basis_segment_ids: [AIA-TEXT-A091-P005]
 - norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY
   source: A091-P005
   quote: Lawyers duly authorised to act may supply information on behalf of their clients.
   action: supply the requested information on behalf of a client
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids: [AIA-TEXT-A091-P005]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -122,13 +140,20 @@ records:
     incorrect or misleading.
   action: remain fully responsible for information a lawyer supplied on the client's behalf
   actors:
-  - actor_ref: gpai_provider_client
+  - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A091-P005]
   targets: []
   kind: legal_consequence
   conditions:
-  - a duly authorised lawyer supplied the information on the client's behalf
-  - the information supplied is incomplete, incorrect or misleading
+    operator: all_of
+    operands:
+    - text: if the information supplied is incomplete, incorrect or misleading
+      basis_segment_ids: [AIA-TEXT-A091-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-GP-A91-5
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   verified_by: vidibro
+  implementation_reason: The rule's evidence names the client's full responsibility for what a lawyer
+    supplies.

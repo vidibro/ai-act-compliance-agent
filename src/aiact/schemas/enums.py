@@ -638,10 +638,12 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
         "subjects of the testing",
         "subjects of testing",
     ),
-    # Art. 60(5) writes "their legally designated representative" for a subject's representative.
+    # Art. 60(5) writes "their legally designated representative" for a subject's representative;
+    # Arts. 91(5) and 92(5) name a provider's by what the law lets them do.
     ActorRole.LEGAL_REPRESENTATIVE: (
         "legal representative",
         "legally designated representative",
+        "persons authorised to represent them by law or by their statutes",
     ),
     ActorRole.NOTIFIED_BODY: ("notified body", "notified bodies"),
     # Art. 77(1) names these bodies by what they supervise, never by a noun.
@@ -679,6 +681,9 @@ _ACTOR_LEGAL_REFERENCE_TERMS: dict[ActorRole, tuple[str, ...]] = {
         # on the first word rather than the last.
         "providers of general-purpose AI models",
         "general-purpose AI model provider",
+        # Arts. 91 and 92 name the provider already under supervision: "the provider of the
+        # general-purpose AI model concerned".
+        "provider of the general-purpose AI model",
     ),
     ActorRole.GPAI_PROVIDER_CLIENT: (
         "provider of a general-purpose AI model downstream",
