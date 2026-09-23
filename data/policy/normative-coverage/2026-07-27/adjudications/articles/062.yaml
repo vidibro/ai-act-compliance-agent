@@ -1,0 +1,34 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '62'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 12
+  norms_scanned: 13
+  finding_count: 1
+  audit_sha256: 8fb6506fed07cd4a0ebffce1f1809b07bbcc7de662e19e1d89602f0ab2b4c68c
+decisions:
+- finding_id: AIA-VALID-377900B652937DA6
+  target: AIA-NORM-A062-P2-PROPORTIONATE-SME-FEES:actor:conformity_assessment_body:AIA-TEXT-A062-P006
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A062-P006
+  source_sha256: 7ed22d5563d1d62a0f079bb0c3413d910a689247755ce8568336f9fe5ad0434d
+  target_sha256: bd00ba715c5856ed6feead695a8bc2232f5cc154a7a4bf55e03db43ed3ab1b46
+  decision: accepted_with_basis
+  reason: 'Paragraph 2 is passive: the SME interests "shall be taken into account when setting the fees
+    for conformity assessment under Article 43". Those fees are set by the bodies that carry out the Article
+    43 assessment, so the duty is theirs. The sentence never names them, so no span of it can name the
+    actor.'
+  legal_basis:
+  - span_id: AIA-TEXT-A062-P006
+    source_sha256: 7ed22d5563d1d62a0f079bb0c3413d910a689247755ce8568336f9fe5ad0434d
+    quote: The specific interests and needs of the SME providers, including start-ups, shall be taken
+      into account when setting the fees for conformity assessment under Article 43
+  reviewed_by: vidibro

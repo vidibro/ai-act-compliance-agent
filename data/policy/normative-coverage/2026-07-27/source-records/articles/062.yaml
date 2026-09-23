@@ -6,12 +6,14 @@ records:
     for SMEs, start-ups, deployers, innovators and relevant authorities
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A062-P001]
   targets: []
   qualifier_spans:
   - A062-P002
   - A062-P003
   - A062-P004
   - A062-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -26,10 +28,16 @@ records:
     or branch in the Union
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A062-P001]
   targets: []
   conditions:
-  - the SME or start-up has a registered office or a branch in the Union
-  - the SME or start-up fulfils the sandbox eligibility conditions and selection criteria
+    operator: all_of
+    operands:
+    - text: having a registered office or a branch in the Union
+      basis_segment_ids: [AIA-TEXT-A062-P002]
+    - text: to the extent that they fulfil the eligibility conditions and selection criteria
+      basis_segment_ids: [AIA-TEXT-A062-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -45,10 +53,15 @@ records:
   action: keep the priority access from precluding other SMEs and start-ups from sandbox access
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A062-P001]
   targets: []
   kind: legal_consequence
   conditions:
-  - the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
+    operator: all_of
+    operands:
+    - text: provided that they also fulfil the eligibility conditions and selection criteria
+      basis_segment_ids: [AIA-TEXT-A062-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -64,7 +77,9 @@ records:
     the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A062-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -80,7 +95,9 @@ records:
     participation
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A062-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -96,9 +113,14 @@ records:
   action: establish new communication channels for that advice and query response
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A062-P001]
   targets: []
   conditions:
-  - where appropriate
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids: [AIA-TEXT-A062-P004]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -114,7 +136,9 @@ records:
     process
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A062-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -131,16 +155,23 @@ records:
     fees
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-A062-P006]
   targets: []
   mandatory_content:
   - SME size
   - market size
   - other relevant indicators
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: when setting the fees for conformity assessment under Article 43
+      basis_segment_ids: [AIA-TEXT-A062-P006]
 - norm_id: AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   source: A062-P007
   quote: 'The AI Office shall undertake the following actions:'
@@ -148,12 +179,14 @@ records:
     action
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A062-P007]
   targets: []
   qualifier_spans:
   - A062-P008
   - A062-P009
   - A062-P010
   - A062-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -166,9 +199,14 @@ records:
   action: provide standardised templates for the areas covered by this Regulation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A062-P007]
   targets: []
   conditions:
-  - the Board specifies the areas in its request
+    operator: all_of
+    operands:
+    - text: as specified by the Board in its request
+      basis_segment_ids: [AIA-TEXT-A062-P008]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -184,7 +222,9 @@ records:
     information on this Regulation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A062-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -200,7 +240,9 @@ records:
     this Regulation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A062-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -215,7 +257,9 @@ records:
   action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A062-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

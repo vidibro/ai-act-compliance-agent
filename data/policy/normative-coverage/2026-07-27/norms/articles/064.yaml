@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A064-P001
   targets: []
   action: develop Union AI expertise and capabilities through the AI Office
   norm_text: The Commission shall develop Union expertise and capabilities in the field of AI through
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A064-P2-FACILITATE-AI-OFFICE-TASKS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A064-P002
   targets: []
   action: facilitate the Regulation tasks entrusted to the AI Office
   norm_text: Member States shall facilitate the tasks entrusted to the AI Office, as reflected in this
@@ -66,11 +71,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A064-P3-ADEQUATE-AI-OFFICE-RESOURCES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A064-P003
   targets: []
   action: allocate adequate resources for effective performance of AI Office enforcement duties and powers
   norm_text: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources
@@ -81,12 +89,7 @@ norms:
   primary_spans:
   - AIA-TEXT-A064-P003
   qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the applicable budgetary procedure remains observed
-      basis_segment_ids:
-      - AIA-TEXT-A064-P003
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -104,3 +107,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII

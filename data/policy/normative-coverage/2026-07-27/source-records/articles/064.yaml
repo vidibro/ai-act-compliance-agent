@@ -1,11 +1,19 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-VII
+  application_start: 2025-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 records:
 - norm_id: AIA-NORM-A064-P1-DEVELOP-UNION-AI-EXPERTISE
   source: A064-P001
-  quote: The Commission shall develop Union expertise and capabilities in the field of AI through the AI Office.
+  quote: The Commission shall develop Union expertise and capabilities in the field of AI through the
+    AI Office.
   action: develop Union AI expertise and capabilities through the AI Office
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A064-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -17,7 +25,9 @@ records:
   action: facilitate the Regulation tasks entrusted to the AI Office
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A064-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -25,12 +35,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A064-P3-ADEQUATE-AI-OFFICE-RESOURCES
   source: A064-P003
-  quote: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources to effectively perform its duties and exercise its powers in relation to the enforcement of this Regulation.
+  quote: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources
+    to effectively perform its duties and exercise its powers in relation to the enforcement of this Regulation.
   action: allocate adequate resources for effective performance of AI Office enforcement duties and powers
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A064-P003]
   targets: []
-  conditions: [the applicable budgetary procedure remains observed]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

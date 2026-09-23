@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A062-P001
   targets: []
   action: undertake every enacted sandbox access, awareness, communication and standardisation action
     for SMEs, start-ups, deployers, innovators and relevant authorities
@@ -38,11 +40,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A062-P001
   targets: []
   action: provide priority AI regulatory sandbox access to SMEs and start-ups with a registered office
     or branch in the Union
@@ -59,10 +64,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the SME or start-up has a registered office or a branch in the Union
+    - text: having a registered office or a branch in the Union
       basis_segment_ids:
       - AIA-TEXT-A062-P002
-    - text: the SME or start-up fulfils the sandbox eligibility conditions and selection criteria
+    - text: to the extent that they fulfil the eligibility conditions and selection criteria
       basis_segment_ids:
       - AIA-TEXT-A062-P002
   exceptions: null
@@ -82,11 +87,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A062-P001
   targets: []
   action: keep the priority access from precluding other SMEs and start-ups from sandbox access
   norm_text: the priority access shall not preclude other SMEs, including start-ups, other than those
@@ -104,7 +112,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
+    - text: provided that they also fulfil the eligibility conditions and selection criteria
       basis_segment_ids:
       - AIA-TEXT-A062-P002
   exceptions: null
@@ -124,11 +132,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P1-B-AWARENESS-AND-TRAINING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A062-P001
   targets: []
   action: organise awareness-raising and training activities on applying this Regulation, tailored to
     the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
@@ -159,11 +170,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A062-P001
   targets: []
   action: utilise existing dedicated channels to advise SMEs, start-ups, deployers, other innovators and,
     as appropriate, local public authorities and answer their implementation queries, including on sandbox
@@ -194,11 +208,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A062-P001
   targets: []
   action: establish new communication channels for that advice and query response
   norm_text: where appropriate, establish new ones for communication with SMEs including start-ups, deployers,
@@ -234,11 +251,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P1-D-FACILITATE-STANDARDISATION-PARTICIPATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A062-P001
   targets: []
   action: facilitate SME and other relevant stakeholder participation in the standardisation development
     process
@@ -269,11 +289,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P2-PROPORTIONATE-SME-FEES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids:
+    - AIA-TEXT-A062-P006
   targets: []
   action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment
     fees
@@ -286,7 +309,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A062-P006
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: when setting the fees for conformity assessment under Article 43
+      basis_segment_ids:
+      - AIA-TEXT-A062-P006
   exceptions: null
   mandatory_content:
   - SME size
@@ -307,11 +335,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A062-P007
   targets: []
   action: undertake every enacted template, information platform, awareness and procurement best-practice
     action
@@ -345,11 +376,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A062-P007
   targets: []
   action: provide standardised templates for the areas covered by this Regulation
   norm_text: provide standardised templates for areas covered by this Regulation, as specified by the
@@ -364,7 +398,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Board specifies the areas in its request
+    - text: as specified by the Board in its request
       basis_segment_ids:
       - AIA-TEXT-A062-P008
   exceptions: null
@@ -384,11 +418,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P3-B-INFORMATION-PLATFORM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A062-P007
   targets: []
   action: develop and maintain a single information platform giving all operators across the Union easy-to-use
     information on this Regulation
@@ -419,11 +456,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P3-C-COMMUNICATION-CAMPAIGNS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A062-P007
   targets: []
   action: organise appropriate communication campaigns raising awareness of the obligations arising from
     this Regulation
@@ -454,11 +494,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A062-P3-D-PROCUREMENT-BEST-PRACTICES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A062-P007
   targets: []
   action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
   norm_text: evaluate and promote the convergence of best practices in public procurement procedures in
@@ -488,3 +531,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI

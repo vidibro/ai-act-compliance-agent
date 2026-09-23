@@ -5,6 +5,8 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: comply with eligible Article 17 quality-management elements in the authorised simplified manner
   norm_text: SMEs, including start-ups, may comply with certain elements of the quality management system
@@ -13,25 +15,26 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A063-P001
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the SME has no partner enterprise or linked enterprise within Recommendation 2003/361/EC
-      basis_segment_ids:
-      - AIA-TEXT-A063-P001
-    - text: simplification is limited to elements identified by Commission guidance
+    - text: provided that they do not have partner enterprises or linked enterprises within the meaning
+        of Recommendation 2003/361/EC
       basis_segment_ids:
       - AIA-TEXT-A063-P001
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A17
+  implementation_reason: The permission narrows how the Article 17 quality management system checked by
+    this rule may be met.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -42,11 +45,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A063-P1-COMMISSION-SIMPLIFICATION-GUIDANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A063-P001
   targets: []
   action: develop SME-sensitive quality-management simplification guidelines that preserve protection
     and high-risk compliance
@@ -79,11 +85,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A063-P2-NO-BROADER-EXEMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A017-P001
   targets: []
   action: preserve every other Regulation requirement and obligation despite the Article 63(1) simplification
   norm_text: Paragraph 1 of this Article shall not be interpreted as exempting those operators from fulfilling
@@ -115,3 +124,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI

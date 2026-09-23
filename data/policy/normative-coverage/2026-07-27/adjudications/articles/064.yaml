@@ -1,0 +1,51 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '64'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 4
+  norms_scanned: 3
+  finding_count: 2
+  audit_sha256: 4334e8616dc56336fdcc852fcf51d3b138d553dfd62fb28698e41c62bedfb2bc
+decisions:
+- finding_id: AIA-VALID-14F255ECDA83C0E0
+  target: AIA-NORM-A064-P3-ADEQUATE-AI-OFFICE-RESOURCES
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A064-P003
+  source_sha256: 26bbc93a2d79762c50cdfa92217d318778e667095c13fa8dcb37a2ad8376d137
+  target_sha256: 5e11f1c42313fd6e1695a3b29b59902038898a07af3ec90b77cb558742f21bf2
+  decision: false_positive
+  reason: '"Without prejudice to the budgetary procedure" keeps the Union budgetary procedure running
+    alongside the duty; it does not take any case out of it. The AI Office must still be given adequate
+    resources, so there is no exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A064-P003
+    source_sha256: 26bbc93a2d79762c50cdfa92217d318778e667095c13fa8dcb37a2ad8376d137
+    quote: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources
+      to effectively perform its duties and exercise its powers in relation to the enforcement of this
+      Regulation
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-5BADF1381E79C24A
+  target: AIA-NORM-A064-P3-ADEQUATE-AI-OFFICE-RESOURCES:actor:union_institution_or_body:AIA-TEXT-A064-P003
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A064-P003
+  source_sha256: 26bbc93a2d79762c50cdfa92217d318778e667095c13fa8dcb37a2ad8376d137
+  target_sha256: 03e762cfbeb548649bff62807427b71a8a409887c06709ecdaa31cc11036e3f6
+  decision: accepted_with_basis
+  reason: 'Paragraph 3 is passive: the AI Office "shall be allocated" resources. The allocation is made
+    through the Union budgetary procedure the same sentence preserves, so the duty falls to the Union
+    institutions that run it. The paragraph names none of them, so no span can name the actor.'
+  legal_basis:
+  - span_id: AIA-TEXT-A064-P003
+    source_sha256: 26bbc93a2d79762c50cdfa92217d318778e667095c13fa8dcb37a2ad8376d137
+    quote: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources
+      to effectively perform its duties and exercise its powers in relation to the enforcement of this
+      Regulation
+  reviewed_by: vidibro

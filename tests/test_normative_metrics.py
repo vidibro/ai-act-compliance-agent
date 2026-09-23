@@ -2232,14 +2232,14 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
     assert metrics.mapping_shape.one_norm_to_one_target == 38
-    assert metrics.mapping_shape.many_norms_to_one_target == 458
+    assert metrics.mapping_shape.many_norms_to_one_target == 459
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 881
-    assert metrics.semantic_vs_existing_implementation_disagreements == 49
+    assert metrics.mapping_shape.unmapped == 880
+    assert metrics.semantic_vs_existing_implementation_disagreements == 48
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2257,7 +2257,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN",
         "AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS",
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
-        "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
@@ -2295,7 +2294,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN",
         "AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS",
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
-        "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
@@ -3713,22 +3711,27 @@ def test_article_sixty_two_extracts_sme_support_measures():
     # Priority access is conditional and does not shut other eligible SMEs out of the sandbox.
     priority = norms["AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS"]
     preserved = norms["AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS"]
-    assert priority.conditions == [
-        "the SME or start-up has a registered office or a branch in the Union",
-        "the SME or start-up fulfils the sandbox eligibility conditions and selection criteria",
+    def texts(expression):
+        return [operand.text for operand in expression]
+
+    assert texts(priority.conditions) == [
+        "having a registered office or a branch in the Union",
+        "to the extent that they fulfil the eligibility conditions and selection criteria",
     ]
     assert preserved.kind.value == "legal_consequence"
-    assert preserved.conditions == [
-        "the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria"
+    assert texts(preserved.conditions) == [
+        "provided that they also fulfil the eligibility conditions and selection criteria"
     ]
 
     # Using existing channels is unconditional; creating new ones is only where appropriate.
     assert not norms["AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS"].conditions
-    assert norms["AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS"].conditions == ["where appropriate"]
+    assert texts(norms["AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS"].conditions) == [
+        "where appropriate"
+    ]
 
     # Templates follow a Board request; the other AI Office actions are standing duties.
-    assert norms["AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES"].conditions == [
-        "the Board specifies the areas in its request"
+    assert texts(norms["AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES"].conditions) == [
+        "as specified by the Board in its request"
     ]
     for suffix in (
         "B-INFORMATION-PLATFORM",
