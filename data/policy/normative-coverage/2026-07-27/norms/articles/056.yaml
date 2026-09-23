@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P001
   targets: []
   action: encourage and facilitate Union-level codes of practice supporting proper application while considering
     international approaches
@@ -35,12 +37,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P2-CODE-COVERAGE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P002
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A056-P002
   targets: []
   action: aim to ensure codes cover Articles 53 and 55 and every listed implementation issue
   norm_text: The AI Office and the Board shall aim to ensure that the codes of practice cover at least
@@ -78,12 +85,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P2-D-PROPORTIONATE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P002
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A056-P002
   targets: []
   action: make code measures proportionate and responsive to severity, probability, and AI-value-chain
     emergence challenges
@@ -94,9 +106,11 @@ norms:
   - semantic_legal_effect
   - shall_token
   - other_modal
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A056-P006
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A056-P002
   conditions: null
   exceptions: null
   mandatory_content:
@@ -118,11 +132,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P3-INVITE-PARTICIPANTS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P007
   targets: []
   action: invite general-purpose-model providers and relevant national authorities to draw up codes
   norm_text: The AI Office may invite all providers of general-purpose AI models, as well as relevant
@@ -151,11 +168,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P3-STAKEHOLDER-SUPPORT
   act_version_date: '2026-07-27'
   kind: permission
   actors:
-  - actor_ref: standardisation_participant
+  - actor_ref: natural_or_legal_person
+    basis_segment_ids:
+    - AIA-TEXT-A056-P007
   targets: []
   action: support the code-drawing process
   norm_text: Civil society organisations, industry, academia and other relevant stakeholders, such as
@@ -184,12 +204,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P4-OBJECTIVES-AND-COMMITMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P008
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A056-P008
   targets: []
   action: aim to ensure codes state objectives, contain commitments, measures, and appropriate indicators
     to achieve them, and account for the needs and interests of all interested parties, including affected
@@ -227,11 +252,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P5-PARTICIPANT-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P009
   targets: []
   action: aim to ensure regular participant reporting on commitments, measures, outcomes, and appropriate
     indicators
@@ -262,11 +290,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P5-CAPACITY-SENSITIVE-METRICS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P009
   targets: []
   action: make indicators and reporting commitments reflect participant size and capacity differences
   norm_text: Key performance indicators and reporting commitments shall reflect differences in size and
@@ -295,12 +326,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P6-JOINT-MONITOR-EVALUATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A056-P010
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A056-P010
   targets: []
   action: regularly monitor and evaluate participant achievement and codes' contribution to proper application
   norm_text: The Commission and the Board shall regularly monitor and evaluate the achievement of the
@@ -330,11 +366,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P6-ASSESS-COVERAGE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A056-P010
   targets: []
   action: assess Article 53 and 55 coverage while taking utmost account of the Board's opinion
   norm_text: The Commission, taking utmost account of the opinion of the Board, shall assess whether the
@@ -363,14 +402,19 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P6-COMMISSION-MONITOR-EVALUATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A056-P010
   targets: []
   action: regularly monitor and evaluate achievement of code objectives
-  norm_text: shall regularly monitor and evaluate the achievement of their objectives.
+  norm_text: The Commission, taking utmost account of the opinion of the Board, shall assess whether the
+    codes of practice cover the obligations provided for in Articles 53 and 55, and shall regularly monitor
+    and evaluate the achievement of their objectives.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -395,11 +439,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P6-PUBLISH-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A056-P010
   targets: []
   action: publish the assessment of code adequacy
   norm_text: The Commission shall publish its assessment of the adequacy of the codes of practice.
@@ -427,11 +474,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P7-INVITE-ADHERENCE
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P011
   targets: []
   action: invite all general-purpose-model providers to adhere to codes of practice
   norm_text: The AI Office may invite all providers of general-purpose AI models to adhere to the codes
@@ -460,11 +510,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P7-LIMITED-ADHERENCE
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A056-P011
   targets: []
   action: limit adherence to Article 53 for non-systemic-risk models unless the provider opts into the
     full code
@@ -477,8 +530,18 @@ norms:
   primary_spans:
   - AIA-TEXT-A056-P011
   qualifier_spans: []
-  conditions: null
-  exceptions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: For providers of general-purpose AI models not presenting systemic risks
+      basis_segment_ids:
+      - AIA-TEXT-A056-P011
+  exceptions:
+    operator: any_of
+    operands:
+    - text: unless they declare explicitly their interest to join the full code
+      basis_segment_ids:
+      - AIA-TEXT-A056-P011
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Defines the optional extent of code adherence rather than a required product action.
@@ -495,11 +558,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P8-REVIEW-ADAPT-CODES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P012
   targets: []
   action: encourage and facilitate review and adaptation of codes in light of emerging standards
   norm_text: The AI Office shall, as appropriate, also encourage and facilitate the review and adaptation
@@ -528,11 +594,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P8-ASSESS-STANDARDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P012
   targets: []
   action: assist assessment of available standards
   norm_text: The AI Office shall assist in the assessment of available standards.
@@ -560,11 +629,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P9-CODES-DEADLINE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P013
   targets: []
   action: ensure codes of practice are ready by 2 May 2025
   norm_text: Codes of practice shall be ready at the latest by 2 May 2025.
@@ -593,11 +665,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A056-P9-CODES-READY-BY
 - norm_id: AIA-NORM-A056-P9-TAKE-STEPS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A056-P013
   targets: []
   action: take necessary steps toward timely codes, including inviting providers under paragraph 7
   norm_text: The AI Office shall take the necessary steps, including inviting providers pursuant to paragraph
@@ -626,16 +701,20 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P9-COMMON-RULES
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A056-P014
   targets: []
   action: adopt implementing acts providing common Article 53 and 55 implementation rules
-  norm_text: the Commission may provide, by means of implementing acts, common rules for the implementation
-    of the obligations provided for in Articles 53 and 55, including the issues set out in paragraph 2
-    of this Article.
+  norm_text: If, by 2 August 2025, a code of practice cannot be finalised, or if the AI Office deems it
+    is not adequate following its assessment under paragraph 6 of this Article, the Commission may provide,
+    by means of implementing acts, common rules for the implementation of the obligations provided for
+    in Articles 53 and 55, including the issues set out in paragraph 2 of this Article.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -643,9 +722,13 @@ norms:
   - AIA-TEXT-A056-P014
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: no code is finalised by 2 August 2025 or the AI Office assesses the code as inadequate
+    - text: If, by 2 August 2025, a code of practice cannot be finalised
+      basis_segment_ids:
+      - AIA-TEXT-A056-P014
+    - text: if the AI Office deems it is not adequate following its assessment under paragraph 6 of this
+        Article
       basis_segment_ids:
       - AIA-TEXT-A056-P014
   exceptions: null
@@ -665,11 +748,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A056-P9-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A056-P014
   targets: []
   action: adopt fallback common-rule acts under the Article 98(2) examination procedure
   norm_text: Those implementing acts shall be adopted in accordance with the examination procedure referred
@@ -683,7 +769,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission exercises the Article 56(9) implementing power
+    - text: the Commission may provide, by means of implementing acts, common rules for the implementation
+        of the obligations provided for in Articles 53 and 55
       basis_segment_ids:
       - AIA-TEXT-A056-P014
   exceptions: null
@@ -703,3 +790,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V

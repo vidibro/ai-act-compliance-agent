@@ -1,0 +1,51 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '56'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 15
+  norms_scanned: 20
+  finding_count: 2
+  audit_sha256: 6d700b4b6d9216063b51cd36e9c8c76066f5640c4209462d45aff93ec22c055a
+decisions:
+- finding_id: AIA-VALID-8931B84920248599
+  target: AIA-NORM-A056-P3-STAKEHOLDER-SUPPORT:actor:natural_or_legal_person:AIA-TEXT-A056-P007
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A056-P007
+  source_sha256: e4bfa3e2b167fabe526dc2370b0c41e4dc04eb42d4cb67782b4d9ce4d7d56abe
+  target_sha256: 443789a9616bbbe8dd48fef166279f7686c772766044b13676d1bb4d2b7cffcc
+  decision: accepted_with_basis
+  reason: 'The sentence names its parties by kind rather than by a defined label: civil society organisations,
+    industry, academia, downstream providers and independent experts. Each is a natural or legal person,
+    and none is a party the Act defines, so the generic label is the only one that covers the whole list
+    and no span can name it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A056-P007
+    source_sha256: e4bfa3e2b167fabe526dc2370b0c41e4dc04eb42d4cb67782b4d9ce4d7d56abe
+    quote: Civil society organisations, industry, academia and other relevant stakeholders, such as downstream
+      providers and independent experts, may support the process
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-A4DDED79C79A8359
+  target: AIA-NORM-A056-P9-COMMON-RULES:temporal:AIA-TEMP-CHAPTER-V
+  rule: temporal_calendar_deadline_missing
+  source_ref: AIA-TEXT-A056-P014
+  source_sha256: 169b12373c8fcbc8079b25b4265c00dda2f09d3500a3f36b1083a63236606fe7
+  target_sha256: c695d516e5b290afd4699d97126fb0b440f4bd314d95ec5bda26003aedeaf97d
+  decision: false_positive
+  reason: '"By 2 August 2025" dates the failure that triggers the power, not a deadline for exercising
+    it: the Commission may act if no code is finalised by then. The date is kept word for word in the
+    norm''s first condition, and the power itself has no time limit.'
+  legal_basis:
+  - span_id: AIA-TEXT-A056-P014
+    source_sha256: 169b12373c8fcbc8079b25b4265c00dda2f09d3500a3f36b1083a63236606fe7
+    quote: If, by 2 August 2025, a code of practice cannot be finalised, or if the AI Office deems it
+      is not adequate following its assessment under paragraph 6 of this Article, the Commission may provide,
+      by means of implementing acts, common rules
+  reviewed_by: vidibro

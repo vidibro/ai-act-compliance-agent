@@ -46,7 +46,9 @@ segments:
   norm_ids:
   - AIA-NORM-A057-P1-ESTABLISH-NATIONAL-SANDBOX
   - AIA-NORM-A057-P1-COMMISSION-SUPPORT
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A057-P1-EQUIVALENT-PARTICIPATION
+  - AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

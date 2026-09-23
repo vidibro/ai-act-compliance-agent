@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A057-P001
   targets: []
   action: ensure at least one national AI regulatory sandbox is operational by 2 August 2027, individually
     or jointly
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A057-P1-OPERATIONAL-BY
 - norm_id: AIA-NORM-A057-P1-COMMISSION-SUPPORT
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A057-P001
   targets: []
   action: provide technical support, advice, and tools for sandbox establishment and operation
   norm_text: The Commission may provide technical support, advice and tools for the establishment and
@@ -69,11 +74,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P1-EQUIVALENT-PARTICIPATION
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A057-P001
   targets: []
   action: fulfil the national-sandbox obligation through participation providing equivalent national coverage
   norm_text: The obligation under the first subparagraph may also be fulfilled by participating in an
@@ -88,7 +96,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: participation in the existing sandbox provides equivalent national coverage
+    - text: in so far as that participation provides an equivalent level of national coverage for the
+        participating Member States
       basis_segment_ids:
       - AIA-TEXT-A057-P002
   exceptions: null
@@ -108,12 +117,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P2-ADDITIONAL-SANDBOXES
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A057-P003
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P003
   targets: []
   action: establish additional regional, local, or jointly operated sandboxes
   norm_text: Additional AI regulatory sandboxes at regional or local level, or established jointly with
@@ -142,11 +156,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P3-EDPS-SANDBOX
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A057-P004
   targets: []
   action: establish an AI regulatory sandbox for Union institutions, bodies, offices and agencies
   norm_text: The European Data Protection Supervisor may establish an AI regulatory sandbox for Union
@@ -175,11 +192,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P3-EDPS-AUTHORITY-REFERENCES
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A057-P004
   targets: []
   action: construe this Chapter's national competent authority references as references to the EDPS for
     its sandbox
@@ -195,7 +215,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the EDPS establishes the sandbox under paragraph 3
+    - text: The European Data Protection Supervisor may establish an AI regulatory sandbox for Union institutions,
+        bodies, offices and agencies
       basis_segment_ids:
       - AIA-TEXT-A057-P004
   exceptions: null
@@ -215,11 +236,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A057-P005
   targets: []
   action: establish an Article 75(1) Union-level sandbox without prejudice to Member States' competence
     to establish and supervise sandboxes for systems under their supervision
@@ -251,11 +275,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P3A-AI-OFFICE-AUTHORITY-REFERENCES
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A057-P005
   targets: []
   action: construe this Chapter's national competent authority references, where relevant, as references
     to the AI Office for its sandbox
@@ -271,7 +298,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office establishes the sandbox under paragraph 3a
+    - text: The AI Office may establish an AI regulatory sandbox at Union level for AI systems covered
+        by Article 75(1)
+      basis_segment_ids:
+      - AIA-TEXT-A057-P005
+    - text: where relevant
       basis_segment_ids:
       - AIA-TEXT-A057-P005
   exceptions: null
@@ -291,11 +322,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P3A-COOPERATE-WITH-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A057-P005
   targets: []
   action: implement the Union sandbox in close cooperation with relevant competent authorities, in particular
     where other Union-law compliance is supervised
@@ -311,7 +345,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office establishes the sandbox under paragraph 3a
+    - text: The AI Office may establish an AI regulatory sandbox at Union level for AI systems covered
+        by Article 75(1)
       basis_segment_ids:
       - AIA-TEXT-A057-P005
   exceptions: null
@@ -331,14 +366,20 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P3A-PRIORITY-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A057-P005
   targets: []
   action: provide priority access to SMEs, including start-ups, and SMCs in the Union sandbox
-  norm_text: shall provide priority access to SMEs, including start-ups, and SMCs.
+  norm_text: That AI regulatory sandbox shall be implemented in close cooperation with relevant competent
+    authorities, in particular where compliance with Union legislation other than this Regulation is supervised
+    in the AI regulatory sandbox, and shall provide priority access to SMEs, including start-ups, and
+    SMCs.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -348,7 +389,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office establishes the sandbox under paragraph 3a
+    - text: The AI Office may establish an AI regulatory sandbox at Union level for AI systems covered
+        by Article 75(1)
       basis_segment_ids:
       - AIA-TEXT-A057-P005
   exceptions: null
@@ -368,11 +410,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P4-RESOURCE-AND-AUTHORITY-COORDINATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A057-P007
   targets: []
   action: ensure paragraph 1 and 2 competent authorities allocate sufficient resources for effective and
     timely compliance with this Article
@@ -402,11 +447,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P4-AUTHORITY-COOPERATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P007
   targets: []
   action: cooperate with other relevant authorities
   norm_text: Where appropriate, national competent authorities shall cooperate with other relevant authorities
@@ -419,7 +467,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: where appropriate
+    - text: Where appropriate
       basis_segment_ids:
       - AIA-TEXT-A057-P007
   exceptions: null
@@ -439,23 +487,29 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P4-INVOLVE-ECOSYSTEM-ACTORS
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P007
   targets: []
   action: allow involvement of other actors within the AI ecosystem
-  norm_text: may allow for the involvement of other actors within the AI ecosystem.
+  norm_text: Where appropriate, national competent authorities shall cooperate with other relevant authorities,
+    and may allow for the involvement of other actors within the AI ecosystem.
   detection_channels:
   - semantic_legal_effect
+  - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: where appropriate
+    - text: Where appropriate
       basis_segment_ids:
       - AIA-TEXT-A057-P007
   exceptions: null
@@ -475,11 +529,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P4-PRESERVE-OTHER-SANDBOXES
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A057-P007
   targets: []
   action: preserve other regulatory sandboxes established under Union or national law
   norm_text: This Article shall not affect other regulatory sandboxes established under Union or national
@@ -509,11 +566,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P4-INTER-SANDBOX-COOPERATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A057-P007
   targets: []
   action: ensure appropriate cooperation between authorities supervising other Union or national-law sandboxes
     and national competent authorities
@@ -543,11 +603,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P5-CONTROLLED-SANDBOX-LIFECYCLE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P008
   targets: []
   action: operate an innovation-fostering controlled environment for development, training, testing and
     validation under a specific agreed sandbox plan
@@ -585,11 +648,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P5-SUPERVISED-REAL-WORLD-TESTING
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P008
   targets: []
   action: include supervised testing in real-world conditions within the sandbox
   norm_text: Such sandboxes may include testing in real world conditions supervised therein.
@@ -617,11 +683,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P5-INCORPORATE-TESTING-PLAN
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P008
   targets: []
   action: incorporate the real-world testing plan referred to in Articles 60 and 60a into the sandbox
     plan
@@ -636,7 +705,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: where the Articles 60 and 60a real-world testing plan is applicable
+    - text: Where applicable
       basis_segment_ids:
       - AIA-TEXT-A057-P008
   exceptions: null
@@ -656,11 +725,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P6-GUIDANCE-SUPERVISION-SUPPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P009
   targets: []
   action: provide sandbox guidance, supervision, and support addressing risks, testing, mitigation, effectiveness,
     and applicable law
@@ -675,7 +747,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P009
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: as appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A057-P009
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -693,11 +770,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P7-REGULATORY-EXPECTATIONS-GUIDANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P010
   targets: []
   action: guide sandbox participants on regulatory expectations and fulfilment of Regulation obligations
   norm_text: Competent authorities shall provide providers and prospective providers participating in
@@ -727,11 +807,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P7-SANDBOX-EVIDENCE-PACKAGE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P011
   targets: []
   action: provide written proof of activities successfully carried out in the sandbox
   norm_text: Upon request of the provider or prospective provider of the AI system, the competent authority
@@ -745,7 +828,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider or prospective provider of the AI system requests written proof
+    - text: Upon request of the provider or prospective provider of the AI system
       basis_segment_ids:
       - AIA-TEXT-A057-P011
   exceptions: null
@@ -765,11 +848,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P7-EXIT-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P011
   targets: []
   action: provide an exit report detailing sandbox activities, results and learning outcomes
   norm_text: The competent authority shall also provide an exit report detailing the activities carried
@@ -801,11 +887,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P7-EVIDENTIARY-USE
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A057-P011
   targets: []
   action: use sandbox documentation to demonstrate compliance through conformity assessment or relevant
     market surveillance activities
@@ -836,11 +925,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P7-SURVEILLANCE-EVIDENCE-CONSIDERATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P011
   targets: []
   action: take exit reports and national-authority written proof positively into account with a view to
     reasonably accelerating conformity assessment procedures
@@ -871,11 +963,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P7-NOTIFIED-BODY-EVIDENCE-CONSIDERATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A057-P011
   targets: []
   action: take exit reports and national-authority written proof positively into account with a view to
     reasonably accelerating conformity assessment procedures
@@ -906,12 +1001,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P8-EXIT-REPORT-ACCESS
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A057-P012
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A057-P012
   targets: []
   action: access the exit reports with provider or prospective-provider agreement, subject to Article
     78 confidentiality
@@ -926,10 +1026,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: Article 78 confidentiality provisions are observed
+    - text: Subject to the confidentiality provisions in Article 78
       basis_segment_ids:
       - AIA-TEXT-A057-P012
-    - text: the provider or prospective provider agrees to access
+    - text: with the agreement of the provider or prospective provider
       basis_segment_ids:
       - AIA-TEXT-A057-P012
   exceptions: null
@@ -949,15 +1049,22 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P8-CONSIDER-EXIT-REPORTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A057-P012
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A057-P012
   targets: []
   action: take exit reports into account when exercising tasks under this Regulation
-  norm_text: shall take them into account, as appropriate, when exercising their tasks under this Regulation.
+  norm_text: Subject to the confidentiality provisions in Article 78, and with the agreement of the provider
+    or prospective provider, the Commission and the Board shall be authorised to access the exit reports
+    and shall take them into account, as appropriate, when exercising their tasks under this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -967,13 +1074,13 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: Article 78 confidentiality provisions are observed
+    - text: Subject to the confidentiality provisions in Article 78
       basis_segment_ids:
       - AIA-TEXT-A057-P012
-    - text: the provider or prospective provider agrees to access
+    - text: with the agreement of the provider or prospective provider
       basis_segment_ids:
       - AIA-TEXT-A057-P012
-    - text: where appropriate when exercising tasks under this Regulation
+    - text: as appropriate
       basis_segment_ids:
       - AIA-TEXT-A057-P012
   exceptions: null
@@ -993,11 +1100,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P8-PUBLIC-EXIT-REPORT
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P012
   targets: []
   action: make the exit report publicly available through the single information platform only with both
     parties' explicit agreement
@@ -1013,13 +1123,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider or prospective provider explicitly agrees to public release
+    - text: If both the provider or prospective provider and the national competent authority explicitly
+        agree
       basis_segment_ids:
       - AIA-TEXT-A057-P012
-    - text: the national competent authority explicitly agrees to public release
-      basis_segment_ids:
-      - AIA-TEXT-A057-P012
-    - text: Article 78 confidentiality provisions are observed
+    - text: Subject to the confidentiality provisions in Article 78
       basis_segment_ids:
       - AIA-TEXT-A057-P012
   exceptions: null
@@ -1039,11 +1147,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P001
   targets: []
   action: design sandbox establishment to contribute to every enacted objective
   norm_text: The establishment of AI regulatory sandboxes shall aim to contribute to the following objectives
@@ -1082,11 +1193,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P10-ASSOCIATE-SPECIALIST-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P019
   targets: []
   action: associate and involve data-protection and other competent authorities in sandbox operation and
     supervision within their remit
@@ -1120,11 +1234,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P11-PRESERVE-SUPERVISORY-POWERS
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P020
   targets: []
   action: preserve sandbox supervisors' existing supervisory and corrective powers, including at regional
     and local levels
@@ -1155,11 +1272,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P11-SUPERVISORY-MITIGATION-WORKFLOW
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P020
   targets: []
   action: require adequate mitigation of significant risks identified during sandbox development and testing
   norm_text: Any significant risks to health and safety and fundamental rights identified during the development
@@ -1173,8 +1293,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: significant risks to health and safety and fundamental rights are identified during development
-        and testing
+    - text: Any significant risks to health and safety and fundamental rights identified during the development
+        and testing of such AI systems
       basis_segment_ids:
       - AIA-TEXT-A057-P020
   exceptions: null
@@ -1194,11 +1314,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P11-SUSPEND-TESTING-OR-PARTICIPATION
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P020
   targets: []
   action: temporarily or permanently suspend testing or participation in the sandbox if no effective mitigation
     is possible
@@ -1213,10 +1336,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: significant risks are identified during sandbox development and testing
+    - text: Any significant risks to health and safety and fundamental rights identified during the development
+        and testing of such AI systems
       basis_segment_ids:
       - AIA-TEXT-A057-P020
-    - text: no effective mitigation is possible
+    - text: if no effective mitigation is possible
       basis_segment_ids:
       - AIA-TEXT-A057-P020
   exceptions: null
@@ -1236,14 +1360,19 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P11-NOTIFY-SUSPENSION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P020
   targets: []
   action: inform the AI Office of the suspension decision
-  norm_text: shall inform the AI Office of such decision.
+  norm_text: National competent authorities shall have the power to temporarily or permanently suspend
+    the testing process, or the participation in the sandbox if no effective mitigation is possible, and
+    shall inform the AI Office of such decision.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1253,8 +1382,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a decision temporarily or permanently suspending testing or sandbox participation has been
-        taken
+    - text: Any significant risks to health and safety and fundamental rights identified during the development
+        and testing of such AI systems
+      basis_segment_ids:
+      - AIA-TEXT-A057-P020
+    - text: if no effective mitigation is possible
       basis_segment_ids:
       - AIA-TEXT-A057-P020
   exceptions: null
@@ -1274,11 +1406,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P11-LAWFUL-SUPERVISORY-DISCRETION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P020
   targets: []
   action: exercise supervisory powers within relevant law, using discretion for the specific sandbox project
     with the objective of supporting AI innovation in the Union
@@ -1310,12 +1445,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P12-LIABILITY-AND-FINE-SAFE-HARBOUR
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A057-P021
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A057-P021
   targets: []
   action: remain liable under applicable Union and national liability law for third-party damage resulting
     from sandbox experimentation
@@ -1332,10 +1472,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider or prospective provider participates in the sandbox
+    - text: Providers and prospective providers participating in the AI regulatory sandbox
       basis_segment_ids:
       - AIA-TEXT-A057-P021
-    - text: third-party damage results from sandbox experimentation
+    - text: for any damage inflicted on third parties as a result of the experimentation taking place
+        in the sandbox
       basis_segment_ids:
       - AIA-TEXT-A057-P021
   exceptions: null
@@ -1356,11 +1497,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P12-AI-ACT-NO-FINE-PROTECTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A057-P021
   targets: []
   action: benefit from no administrative fines for infringements of this Regulation under the prospective-provider
     sandbox conditions
@@ -1378,13 +1522,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the prospective provider observes the specific sandbox plan
-      basis_segment_ids:
-      - AIA-TEXT-A057-P021
-    - text: the prospective provider observes the terms and conditions of participation
-      basis_segment_ids:
-      - AIA-TEXT-A057-P021
-    - text: the prospective provider follows national competent authority guidance in good faith
+    - text: provided that the prospective providers observe the specific plan and the terms and conditions
+        for their participation and follow in good faith the guidance given by the national competent
+        authority
       basis_segment_ids:
       - AIA-TEXT-A057-P021
   exceptions: null
@@ -1405,12 +1545,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P12-OTHER-LAW-NO-FINE-PROTECTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A057-P021
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A057-P021
   targets: []
   action: benefit from no administrative fines regarding the other Union or national law whose competent
     authorities supervised and provided compliance guidance
@@ -1427,14 +1572,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider or prospective provider participates in the sandbox
+    - text: Providers and prospective providers participating in the AI regulatory sandbox
       basis_segment_ids:
       - AIA-TEXT-A057-P021
-    - text: competent authorities responsible for the other law were actively involved in supervision
-        of the AI system in the sandbox
-      basis_segment_ids:
-      - AIA-TEXT-A057-P021
-    - text: those competent authorities provided guidance for compliance with that law
+    - text: Where other competent authorities responsible for other Union and national law were actively
+        involved in the supervision of the AI system in the sandbox and provided guidance for compliance
       basis_segment_ids:
       - AIA-TEXT-A057-P021
   exceptions: null
@@ -1455,11 +1597,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P13-CROSS-BORDER-DESIGN
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P022
   targets: []
   action: design and implement sandboxes to facilitate relevant cross-border authority cooperation
   norm_text: The AI regulatory sandboxes shall be designed and implemented in such a way that, where relevant,
@@ -1470,7 +1615,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A057-P022
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids:
+      - AIA-TEXT-A057-P022
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -1488,11 +1638,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P14-COORDINATE-SANDBOX-ACTIVITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P023
   targets: []
   action: coordinate activities and cooperate within the framework of the Board
   norm_text: National competent authorities, the European Data Protection Supervisor and the AI Office,
@@ -1507,8 +1660,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: as appropriate and within the respective competences of national competent authorities, the
-        EDPS and the AI Office
+    - text: as appropriate and within their respective competences
       basis_segment_ids:
       - AIA-TEXT-A057-P023
   exceptions: null
@@ -1528,11 +1680,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P14-SUPPORT-JOINT-SANDBOXES
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P023
   targets: []
   action: support joint sandbox establishment and operation, including across sectors, and exchange related
     best practices
@@ -1547,7 +1702,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: within the respective competences of national competent authorities, the EDPS and the AI Office
+    - text: as appropriate and within their respective competences
       basis_segment_ids:
       - AIA-TEXT-A057-P023
   exceptions: null
@@ -1567,11 +1722,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P15-NOTIFY-AND-LIST-SANDBOXES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P024
   targets: []
   action: inform the AI Office and the Board of the establishment of a sandbox
   norm_text: National competent authorities shall inform the AI Office and the Board of the establishment
@@ -1600,16 +1758,22 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P15-REQUEST-SUPPORT
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P024
   targets: []
   action: ask the AI Office and the Board for support and guidance
-  norm_text: may ask them for support and guidance.
+  norm_text: National competent authorities shall inform the AI Office and the Board of the establishment
+    of a sandbox, and may ask them for support and guidance.
   detection_channels:
   - semantic_legal_effect
+  - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A057-P024
   qualifier_spans: []
@@ -1631,11 +1795,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P15-PUBLIC-SANDBOX-LIST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A057-P024
   targets: []
   action: publish and keep current a list of planned and existing sandboxes to encourage sandbox interaction
     and cross-border cooperation
@@ -1666,24 +1833,36 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P16-SANDBOX-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P025
   targets: []
   action: submit annual reports to the AI Office and the Board from one year after sandbox establishment
     and every year thereafter until termination, followed by a final report
   norm_text: National competent authorities shall submit annual reports to the AI Office and to the Board,
     from one year after the establishment of the AI regulatory sandbox and every year thereafter until
-    its termination, and a final report.
+    its termination, and a final report. Those reports shall provide information on the progress and results
+    of the implementation of those sandboxes, including best practices, incidents, lessons learnt and
+    recommendations on their setup and, where relevant, on the application and possible revision of this
+    Regulation, including its delegated and implementing acts, and on the application of other Union law
+    supervised by the competent authorities within the sandbox.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   primary_spans:
   - AIA-TEXT-A057-P025
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids:
+      - AIA-TEXT-A057-P025
   exceptions: null
   mandatory_content:
   - implementation progress and results
@@ -1711,11 +1890,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A057-P16-ANNUAL-REPORTING
 - norm_id: AIA-NORM-A057-P16-PUBLISH-ANNUAL-REPORTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A057-P025
   targets: []
   action: make annual sandbox reports or abstracts thereof publicly available online
   norm_text: The national competent authorities shall make those annual reports or abstracts thereof available
@@ -1744,11 +1926,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P16-COMMISSION-REPORT-CONSIDERATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A057-P025
   targets: []
   action: take annual sandbox reports into account when exercising tasks under this Regulation
   norm_text: The Commission shall, where appropriate, take the annual reports into account when exercising
@@ -1782,11 +1967,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P17-SINGLE-INFORMATION-INTERFACE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A057-P026
   targets: []
   action: develop a single dedicated interface for sandbox information, stakeholder interaction, enquiries
     and non-binding guidance in accordance with Article 62(1)(c)
@@ -1824,11 +2012,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A057-P17-PROACTIVE-AUTHORITY-COORDINATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A057-P026
   targets: []
   action: proactively coordinate with national competent authorities
   norm_text: The Commission shall proactively coordinate with national competent authorities, where relevant.
@@ -1861,3 +2052,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI

@@ -1,3 +1,8 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A056-P9-CODES-READY-BY
+  deadline: 2025-05-02
+  legal_basis_spans:
+  - AIA-TEXT-A056-P013
 records:
 - norm_id: AIA-NORM-A056-P1-FACILITATE-CODES
   source: A056-P001
@@ -8,7 +13,9 @@ records:
     international approaches
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -21,7 +28,9 @@ records:
   action: aim to ensure codes cover Articles 53 and 55 and every listed implementation issue
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P002]
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A056-P002]
   targets: []
   mandatory_content:
   - keeping Article 53(1)(a) and (b) information current
@@ -33,6 +42,7 @@ records:
   - A056-P004
   - A056-P005
   - A056-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -47,17 +57,22 @@ records:
     emergence challenges
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P002]
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A056-P002]
   targets: []
   mandatory_content:
   - risk proportionality
   - severity and probability
   - AI-value-chain emergence and materialisation challenges
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A056-P002
 - norm_id: AIA-NORM-A056-P3-INVITE-PARTICIPANTS
   source: A056-P007
   quote: The AI Office may invite all providers of general-purpose AI models, as well as relevant national
@@ -65,8 +80,10 @@ records:
   action: invite general-purpose-model providers and relevant national authorities to draw up codes
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P007]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -78,9 +95,11 @@ records:
     providers and independent experts, may support the process.
   action: support the code-drawing process
   actors:
-  - actor_ref: standardisation_participant
+  - actor_ref: natural_or_legal_person
+    basis_segment_ids: [AIA-TEXT-A056-P007]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -97,7 +116,9 @@ records:
     persons
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P008]
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A056-P008]
   targets: []
   mandatory_content:
   - specific objectives
@@ -105,6 +126,7 @@ records:
   - key performance indicators as appropriate
   - due account of the needs and interests of all interested parties, including affected persons, at Union
     level
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -120,7 +142,9 @@ records:
     indicators
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -133,7 +157,9 @@ records:
   action: make indicators and reporting commitments reflect participant size and capacity differences
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -147,8 +173,11 @@ records:
   action: regularly monitor and evaluate participant achievement and codes' contribution to proper application
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A056-P010]
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A056-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -161,7 +190,9 @@ records:
   action: assess Article 53 and 55 coverage while taking utmost account of the Board's opinion
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A056-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -169,11 +200,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A056-P6-COMMISSION-MONITOR-EVALUATE
   source: A056-P010
-  quote: shall regularly monitor and evaluate the achievement of their objectives.
+  quote: The Commission, taking utmost account of the opinion of the Board, shall assess whether the codes
+    of practice cover the obligations provided for in Articles 53 and 55, and shall regularly monitor
+    and evaluate the achievement of their objectives.
   action: regularly monitor and evaluate achievement of code objectives
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A056-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -185,7 +220,9 @@ records:
   action: publish the assessment of code adequacy
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A056-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -198,8 +235,10 @@ records:
   action: invite all general-purpose-model providers to adhere to codes of practice
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P011]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -214,13 +253,25 @@ records:
     full code
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A056-P011]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: no_product_action
   product_scope_reason: Defines the optional extent of code adherence rather than a required product action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: For providers of general-purpose AI models not presenting systemic risks
+      basis_segment_ids: [AIA-TEXT-A056-P011]
+  exceptions:
+    operator: any_of
+    operands:
+    - text: unless they declare explicitly their interest to join the full code
+      basis_segment_ids: [AIA-TEXT-A056-P011]
 - norm_id: AIA-NORM-A056-P8-REVIEW-ADAPT-CODES
   source: A056-P012
   quote: The AI Office shall, as appropriate, also encourage and facilitate the review and adaptation
@@ -228,7 +279,9 @@ records:
   action: encourage and facilitate review and adaptation of codes in light of emerging standards
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -240,7 +293,9 @@ records:
   action: assist assessment of available standards
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -252,7 +307,9 @@ records:
   action: ensure codes of practice are ready by 2 May 2025
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-A056-P9-CODES-READY-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -265,7 +322,9 @@ records:
   action: take necessary steps toward timely codes, including inviting providers under paragraph 7
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A056-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -273,16 +332,24 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A056-P9-COMMON-RULES
   source: A056-P014
-  quote: the Commission may provide, by means of implementing acts, common rules for the implementation
-    of the obligations provided for in Articles 53 and 55, including the issues set out in paragraph 2
-    of this Article.
+  quote: If, by 2 August 2025, a code of practice cannot be finalised, or if the AI Office deems it is
+    not adequate following its assessment under paragraph 6 of this Article, the Commission may provide,
+    by means of implementing acts, common rules for the implementation of the obligations provided for
+    in Articles 53 and 55, including the issues set out in paragraph 2 of this Article.
   action: adopt implementing acts providing common Article 53 and 55 implementation rules
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A056-P014]
   targets: []
   kind: power
   conditions:
-  - no code is finalised by 2 August 2025 or the AI Office assesses the code as inadequate
+    operator: any_of
+    operands:
+    - text: If, by 2 August 2025, a code of practice cannot be finalised
+      basis_segment_ids: [AIA-TEXT-A056-P014]
+    - text: if the AI Office deems it is not adequate following its assessment under paragraph 6 of this Article
+      basis_segment_ids: [AIA-TEXT-A056-P014]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -295,9 +362,14 @@ records:
   action: adopt fallback common-rule acts under the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A056-P014]
   targets: []
   conditions:
-  - the Commission exercises the Article 56(9) implementing power
+    operator: all_of
+    operands:
+    - text: the Commission may provide, by means of implementing acts, common rules for the implementation of the obligations provided for in Articles 53 and 55
+      basis_segment_ids: [AIA-TEXT-A056-P014]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

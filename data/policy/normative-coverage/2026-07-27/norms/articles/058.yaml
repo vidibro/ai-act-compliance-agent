@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A058-P001
   targets: []
   action: adopt implementing acts specifying the complete sandbox lifecycle and all enacted common-principle
     areas
@@ -44,11 +46,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A058-P1-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A058-P001
   targets: []
   action: adopt the sandbox-arrangement implementing acts under the Article 98(2) examination procedure
   norm_text: Those implementing acts shall be adopted in accordance with the examination procedure referred
@@ -77,11 +82,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A058-P2-MINIMUM-IMPLEMENTING-ACT-OUTCOMES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A058-P001
   targets: []
   action: ensure the implementing acts produce every enacted access, flexibility, support, recognition,
     duration, and testing outcome
@@ -129,11 +137,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A058-P3-DIRECT-TO-PREDEPLOYMENT-SERVICES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A058-P017
   targets: []
   action: direct prospective sandbox providers to relevant pre-deployment and value-adding services
   norm_text: Prospective providers in the AI regulatory sandboxes, in particular SMEs and start-ups, shall
@@ -146,7 +157,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A058-P017
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids:
+      - AIA-TEXT-A058-P017
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -164,11 +180,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A058-P4-AGREE-REAL-WORLD-TESTING-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A058-P018
   targets: []
   action: specifically agree real-world testing terms and conditions, in particular appropriate safeguards,
     with participants to protect fundamental rights, health and safety
@@ -185,7 +204,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the authority considers authorising supervised real-world sandbox testing
+    - text: Where national competent authorities consider authorising testing in real world conditions
+        supervised within the framework of an AI regulatory sandbox to be established under this Article
       basis_segment_ids:
       - AIA-TEXT-A058-P018
   exceptions: null
@@ -207,11 +227,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A058-P4-COOPERATE-ON-TESTING-PRACTICES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A058-P018
   targets: []
   action: cooperate with other national competent authorities to ensure consistent real-world sandbox
     testing practices across the Union
@@ -226,10 +249,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the authority considers authorising supervised real-world sandbox testing
+    - text: Where national competent authorities consider authorising testing in real world conditions
+        supervised within the framework of an AI regulatory sandbox to be established under this Article
       basis_segment_ids:
       - AIA-TEXT-A058-P018
-    - text: where appropriate
+    - text: Where appropriate
       basis_segment_ids:
       - AIA-TEXT-A058-P018
   exceptions: null
@@ -249,3 +273,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI

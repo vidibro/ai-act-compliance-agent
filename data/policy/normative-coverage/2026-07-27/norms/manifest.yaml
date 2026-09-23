@@ -4319,6 +4319,36 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-B
   - AIA-TEXT-A055-P004
+- regime_id: AIA-TEMP-A056-P9-CODES-READY-BY
+  application_start: null
+  application_end: null
+  deadline: '2025-05-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A056-P013
+- regime_id: AIA-TEMP-CHAPTER-VI
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A057-P1-OPERATIONAL-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2027-08-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A057-P001
+- regime_id: AIA-TEMP-A057-P16-ANNUAL-REPORTING
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions:
+  - from one year after the establishment of the AI regulatory sandbox and every year thereafter until
+    its termination
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A057-P025
 - regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
   application_start: null
   application_end: null

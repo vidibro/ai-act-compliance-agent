@@ -1,0 +1,38 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '58'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 19
+  norms_scanned: 6
+  finding_count: 1
+  audit_sha256: b66551e2eba98e63e5c28884d604fa719f4b50d24b7fc711a84710d12cca7ae5
+decisions:
+- finding_id: AIA-VALID-B9885A435D6EEBE8
+  target: AIA-NORM-A058-P3-DIRECT-TO-PREDEPLOYMENT-SERVICES:actor:national_competent_authority:AIA-TEXT-A058-P017
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A058-P017
+  source_sha256: af1069a953c848f207a4e2ab38ddec5c2e7c48d905fb2a65981cb38f283dc9ad
+  target_sha256: 785a1d90fe44c61e59431e710546d186d5e509eba17aab2e830360e8a14f6353
+  decision: accepted_with_basis
+  reason: 'Paragraph 3 is passive: prospective providers "shall be directed". Article 57(7) makes the
+    competent authorities the ones who guide providers and prospective providers in the sandbox, so they
+    are the ones who direct them to these services. The sentence never names them, so no span of it can
+    name the actor.'
+  legal_basis:
+  - span_id: AIA-TEXT-A058-P017
+    source_sha256: af1069a953c848f207a4e2ab38ddec5c2e7c48d905fb2a65981cb38f283dc9ad
+    quote: Prospective providers in the AI regulatory sandboxes, in particular SMEs and start-ups, shall
+      be directed, where relevant, to pre-deployment services
+  - span_id: AIA-TEXT-A057-P010
+    source_sha256: 0c8303048cf090b188d74dccb388483e1a5b71d5c4504fb703f4f5c2732e4e62
+    quote: Competent authorities shall provide providers and prospective providers participating in the
+      AI regulatory sandbox with guidance on regulatory expectations
+  reviewed_by: vidibro

@@ -1,3 +1,22 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-VI
+  application_start: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A057-P1-OPERATIONAL-BY
+  application_start: 2026-08-02
+  deadline: 2027-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A057-P001
+- regime_id: AIA-TEMP-A057-P16-ANNUAL-REPORTING
+  application_start: 2026-08-02
+  timing_conditions:
+  - from one year after the establishment of the AI regulatory sandbox and every year thereafter until
+    its termination
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A057-P025
 records:
 - norm_id: AIA-NORM-A057-P1-ESTABLISH-NATIONAL-SANDBOX
   source: A057-P001
@@ -8,7 +27,9 @@ records:
     or jointly
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A057-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-A057-P1-OPERATIONAL-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -21,8 +42,10 @@ records:
   action: provide technical support, advice, and tools for sandbox establishment and operation
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A057-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -36,10 +59,15 @@ records:
   action: fulfil the national-sandbox obligation through participation providing equivalent national coverage
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A057-P001]
   targets: []
   kind: permission
   conditions:
-  - participation in the existing sandbox provides equivalent national coverage
+    operator: all_of
+    operands:
+    - text: in so far as that participation provides an equivalent level of national coverage for the participating Member States
+      basis_segment_ids: [AIA-TEXT-A057-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -52,9 +80,12 @@ records:
   action: establish additional regional, local, or jointly operated sandboxes
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A057-P003]
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P003]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -67,8 +98,10 @@ records:
   action: establish an AI regulatory sandbox for Union institutions, bodies, offices and agencies
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A057-P004]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -82,10 +115,15 @@ records:
     its sandbox
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A057-P004]
   targets: []
   kind: legal_consequence
   conditions:
-  - the EDPS establishes the sandbox under paragraph 3
+    operator: all_of
+    operands:
+    - text: The European Data Protection Supervisor may establish an AI regulatory sandbox for Union institutions, bodies, offices and agencies
+      basis_segment_ids: [AIA-TEXT-A057-P004]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -99,10 +137,12 @@ records:
     to establish and supervise sandboxes for systems under their supervision
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A057-P005]
   targets: []
   kind: power
   qualifier_spans:
   - A057-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -116,10 +156,17 @@ records:
     to the AI Office for its sandbox
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A057-P005]
   targets: []
   kind: legal_consequence
   conditions:
-  - the AI Office establishes the sandbox under paragraph 3a
+    operator: all_of
+    operands:
+    - text: The AI Office may establish an AI regulatory sandbox at Union level for AI systems covered by Article 75(1)
+      basis_segment_ids: [AIA-TEXT-A057-P005]
+    - text: where relevant
+      basis_segment_ids: [AIA-TEXT-A057-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -134,10 +181,15 @@ records:
     where other Union-law compliance is supervised
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A057-P005]
   targets: []
   kind: obligation
   conditions:
-  - the AI Office establishes the sandbox under paragraph 3a
+    operator: all_of
+    operands:
+    - text: The AI Office may establish an AI regulatory sandbox at Union level for AI systems covered by Article 75(1)
+      basis_segment_ids: [AIA-TEXT-A057-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -145,14 +197,22 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A057-P3A-PRIORITY-ACCESS
   source: A057-P005
-  quote: shall provide priority access to SMEs, including start-ups, and SMCs.
+  quote: That AI regulatory sandbox shall be implemented in close cooperation with relevant competent
+    authorities, in particular where compliance with Union legislation other than this Regulation is supervised
+    in the AI regulatory sandbox, and shall provide priority access to SMEs, including start-ups, and
+    SMCs.
   action: provide priority access to SMEs, including start-ups, and SMCs in the Union sandbox
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A057-P005]
   targets: []
   kind: obligation
   conditions:
-  - the AI Office establishes the sandbox under paragraph 3a
+    operator: all_of
+    operands:
+    - text: The AI Office may establish an AI regulatory sandbox at Union level for AI systems covered by Article 75(1)
+      basis_segment_ids: [AIA-TEXT-A057-P005]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -166,8 +226,10 @@ records:
     timely compliance with this Article
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A057-P007]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -179,10 +241,15 @@ records:
   action: cooperate with other relevant authorities
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P007]
   targets: []
   kind: obligation
   conditions:
-  - where appropriate
+    operator: all_of
+    operands:
+    - text: Where appropriate
+      basis_segment_ids: [AIA-TEXT-A057-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -190,14 +257,20 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A057-P4-INVOLVE-ECOSYSTEM-ACTORS
   source: A057-P007
-  quote: may allow for the involvement of other actors within the AI ecosystem.
+  quote: Where appropriate, national competent authorities shall cooperate with other relevant authorities,
+    and may allow for the involvement of other actors within the AI ecosystem.
   action: allow involvement of other actors within the AI ecosystem
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P007]
   targets: []
   kind: permission
   conditions:
-  - where appropriate
+    operator: all_of
+    operands:
+    - text: Where appropriate
+      basis_segment_ids: [AIA-TEXT-A057-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -210,8 +283,10 @@ records:
   action: preserve other regulatory sandboxes established under Union or national law
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A057-P007]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -225,8 +300,10 @@ records:
     and national competent authorities
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A057-P007]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -243,6 +320,7 @@ records:
     validation under a specific agreed sandbox plan
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P008]
   targets: []
   kind: obligation
   mandatory_content:
@@ -251,6 +329,7 @@ records:
   - a limited period before placing on the market or putting into service
   - a specific sandbox plan agreed between providers or prospective providers and competent authorities
   - appropriate safeguards
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -262,8 +341,10 @@ records:
   action: include supervised testing in real-world conditions within the sandbox
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P008]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -277,10 +358,15 @@ records:
     plan
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P008]
   targets: []
   kind: obligation
   conditions:
-  - where the Articles 60 and 60a real-world testing plan is applicable
+    operator: all_of
+    operands:
+    - text: Where applicable
+      basis_segment_ids: [AIA-TEXT-A057-P008]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -297,12 +383,19 @@ records:
     and applicable law
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: as appropriate
+      basis_segment_ids: [AIA-TEXT-A057-P009]
 - norm_id: AIA-NORM-A057-P7-REGULATORY-EXPECTATIONS-GUIDANCE
   source: A057-P010
   quote: Competent authorities shall provide providers and prospective providers participating in the
@@ -311,7 +404,9 @@ records:
   action: guide sandbox participants on regulatory expectations and fulfilment of Regulation obligations
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -324,10 +419,15 @@ records:
   action: provide written proof of activities successfully carried out in the sandbox
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P011]
   targets: []
   kind: obligation
   conditions:
-  - the provider or prospective provider of the AI system requests written proof
+    operator: all_of
+    operands:
+    - text: Upon request of the provider or prospective provider of the AI system
+      basis_segment_ids: [AIA-TEXT-A057-P011]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -340,12 +440,14 @@ records:
   action: provide an exit report detailing sandbox activities, results and learning outcomes
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P011]
   targets: []
   kind: obligation
   mandatory_content:
   - activities carried out in the sandbox
   - related results
   - learning outcomes
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -359,8 +461,10 @@ records:
     market surveillance activities
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A057-P011]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
     rather than an independent product action.
@@ -376,8 +480,10 @@ records:
     reasonably accelerating conformity assessment procedures
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A057-P011]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -392,8 +498,10 @@ records:
     reasonably accelerating conformity assessment procedures
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A057-P011]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -407,12 +515,19 @@ records:
     78 confidentiality
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A057-P012]
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A057-P012]
   targets: []
   kind: permission
   conditions:
-  - Article 78 confidentiality provisions are observed
-  - the provider or prospective provider agrees to access
+    operator: all_of
+    operands:
+    - text: Subject to the confidentiality provisions in Article 78
+      basis_segment_ids: [AIA-TEXT-A057-P012]
+    - text: with the agreement of the provider or prospective provider
+      basis_segment_ids: [AIA-TEXT-A057-P012]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -420,17 +535,27 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A057-P8-CONSIDER-EXIT-REPORTS
   source: A057-P012
-  quote: shall take them into account, as appropriate, when exercising their tasks under this Regulation.
+  quote: Subject to the confidentiality provisions in Article 78, and with the agreement of the provider
+    or prospective provider, the Commission and the Board shall be authorised to access the exit reports
+    and shall take them into account, as appropriate, when exercising their tasks under this Regulation.
   action: take exit reports into account when exercising tasks under this Regulation
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A057-P012]
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A057-P012]
   targets: []
   kind: obligation
   conditions:
-  - Article 78 confidentiality provisions are observed
-  - the provider or prospective provider agrees to access
-  - where appropriate when exercising tasks under this Regulation
+    operator: all_of
+    operands:
+    - text: Subject to the confidentiality provisions in Article 78
+      basis_segment_ids: [AIA-TEXT-A057-P012]
+    - text: with the agreement of the provider or prospective provider
+      basis_segment_ids: [AIA-TEXT-A057-P012]
+    - text: as appropriate
+      basis_segment_ids: [AIA-TEXT-A057-P012]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -445,12 +570,17 @@ records:
     parties' explicit agreement
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P012]
   targets: []
   kind: permission
   conditions:
-  - the provider or prospective provider explicitly agrees to public release
-  - the national competent authority explicitly agrees to public release
-  - Article 78 confidentiality provisions are observed
+    operator: all_of
+    operands:
+    - text: If both the provider or prospective provider and the national competent authority explicitly agree
+      basis_segment_ids: [AIA-TEXT-A057-P012]
+    - text: Subject to the confidentiality provisions in Article 78
+      basis_segment_ids: [AIA-TEXT-A057-P012]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -462,6 +592,7 @@ records:
   action: design sandbox establishment to contribute to every enacted objective
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P001]
   targets: []
   mandatory_content:
   - legal certainty and compliance
@@ -475,6 +606,7 @@ records:
   - A057-P016
   - A057-P017
   - A057-P018
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -492,7 +624,9 @@ records:
     supervision within their remit
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P019]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -506,8 +640,10 @@ records:
     and local levels
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P020]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -520,11 +656,15 @@ records:
   action: require adequate mitigation of significant risks identified during sandbox development and testing
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P020]
   targets: []
   kind: obligation
   conditions:
-  - significant risks to health and safety and fundamental rights are identified during development and
-    testing
+    operator: all_of
+    operands:
+    - text: Any significant risks to health and safety and fundamental rights identified during the development and testing of such AI systems
+      basis_segment_ids: [AIA-TEXT-A057-P020]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -538,11 +678,17 @@ records:
     is possible
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P020]
   targets: []
   kind: power
   conditions:
-  - significant risks are identified during sandbox development and testing
-  - no effective mitigation is possible
+    operator: all_of
+    operands:
+    - text: Any significant risks to health and safety and fundamental rights identified during the development and testing of such AI systems
+      basis_segment_ids: [AIA-TEXT-A057-P020]
+    - text: if no effective mitigation is possible
+      basis_segment_ids: [AIA-TEXT-A057-P020]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -550,14 +696,23 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A057-P11-NOTIFY-SUSPENSION
   source: A057-P020
-  quote: shall inform the AI Office of such decision.
+  quote: National competent authorities shall have the power to temporarily or permanently suspend the
+    testing process, or the participation in the sandbox if no effective mitigation is possible, and shall
+    inform the AI Office of such decision.
   action: inform the AI Office of the suspension decision
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P020]
   targets: []
   kind: obligation
   conditions:
-  - a decision temporarily or permanently suspending testing or sandbox participation has been taken
+    operator: all_of
+    operands:
+    - text: Any significant risks to health and safety and fundamental rights identified during the development and testing of such AI systems
+      basis_segment_ids: [AIA-TEXT-A057-P020]
+    - text: if no effective mitigation is possible
+      basis_segment_ids: [AIA-TEXT-A057-P020]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -572,8 +727,10 @@ records:
     with the objective of supporting AI innovation in the Union
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P020]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -588,12 +745,19 @@ records:
     from sandbox experimentation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A057-P021]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A057-P021]
   targets: []
   kind: legal_consequence
   conditions:
-  - the provider or prospective provider participates in the sandbox
-  - third-party damage results from sandbox experimentation
+    operator: all_of
+    operands:
+    - text: Providers and prospective providers participating in the AI regulatory sandbox
+      basis_segment_ids: [AIA-TEXT-A057-P021]
+    - text: for any damage inflicted on third parties as a result of the experimentation taking place in the sandbox
+      basis_segment_ids: [AIA-TEXT-A057-P021]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
     rather than an independent product action.
@@ -609,12 +773,15 @@ records:
     sandbox conditions
   actors:
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A057-P021]
   targets: []
   kind: legal_consequence
   conditions:
-  - the prospective provider observes the specific sandbox plan
-  - the prospective provider observes the terms and conditions of participation
-  - the prospective provider follows national competent authority guidance in good faith
+    operator: all_of
+    operands:
+    - text: provided that the prospective providers observe the specific plan and the terms and conditions for their participation and follow in good faith the guidance given by the national competent authority
+      basis_segment_ids: [AIA-TEXT-A057-P021]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
     rather than an independent product action.
@@ -630,14 +797,19 @@ records:
     authorities supervised and provided compliance guidance
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A057-P021]
   - actor_ref: prospective_provider
+    basis_segment_ids: [AIA-TEXT-A057-P021]
   targets: []
   kind: legal_consequence
   conditions:
-  - the provider or prospective provider participates in the sandbox
-  - competent authorities responsible for the other law were actively involved in supervision of the AI
-    system in the sandbox
-  - those competent authorities provided guidance for compliance with that law
+    operator: all_of
+    operands:
+    - text: Providers and prospective providers participating in the AI regulatory sandbox
+      basis_segment_ids: [AIA-TEXT-A057-P021]
+    - text: Where other competent authorities responsible for other Union and national law were actively involved in the supervision of the AI system in the sandbox and provided guidance for compliance
+      basis_segment_ids: [AIA-TEXT-A057-P021]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action
   product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
     rather than an independent product action.
@@ -651,12 +823,19 @@ records:
   action: design and implement sandboxes to facilitate relevant cross-border authority cooperation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P022]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids: [AIA-TEXT-A057-P022]
 - norm_id: AIA-NORM-A057-P14-COORDINATE-SANDBOX-ACTIVITIES
   source: A057-P023
   quote: National competent authorities, the European Data Protection Supervisor and the AI Office, shall,
@@ -665,11 +844,15 @@ records:
   action: coordinate activities and cooperate within the framework of the Board
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A057-P023]
   targets: []
   kind: obligation
   conditions:
-  - as appropriate and within the respective competences of national competent authorities, the EDPS and
-    the AI Office
+    operator: all_of
+    operands:
+    - text: as appropriate and within their respective competences
+      basis_segment_ids: [AIA-TEXT-A057-P023]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -683,10 +866,15 @@ records:
     best practices
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A057-P023]
   targets: []
   kind: permission
   conditions:
-  - within the respective competences of national competent authorities, the EDPS and the AI Office
+    operator: all_of
+    operands:
+    - text: as appropriate and within their respective competences
+      basis_segment_ids: [AIA-TEXT-A057-P023]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -699,8 +887,10 @@ records:
   action: inform the AI Office and the Board of the establishment of a sandbox
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P024]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -708,12 +898,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A057-P15-REQUEST-SUPPORT
   source: A057-P024
-  quote: may ask them for support and guidance.
+  quote: National competent authorities shall inform the AI Office and the Board of the establishment
+    of a sandbox, and may ask them for support and guidance.
   action: ask the AI Office and the Board for support and guidance
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P024]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -728,8 +921,10 @@ records:
     and cross-border cooperation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A057-P024]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -739,11 +934,16 @@ records:
   source: A057-P025
   quote: National competent authorities shall submit annual reports to the AI Office and to the Board,
     from one year after the establishment of the AI regulatory sandbox and every year thereafter until
-    its termination, and a final report.
+    its termination, and a final report. Those reports shall provide information on the progress and results
+    of the implementation of those sandboxes, including best practices, incidents, lessons learnt and
+    recommendations on their setup and, where relevant, on the application and possible revision of this
+    Regulation, including its delegated and implementing acts, and on the application of other Union law
+    supervised by the competent authorities within the sandbox.
   action: submit annual reports to the AI Office and the Board from one year after sandbox establishment
     and every year thereafter until termination, followed by a final report
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P025]
   targets: []
   kind: obligation
   mandatory_content:
@@ -757,6 +957,12 @@ records:
   - where relevant, recommendations on application of other Union law supervised by competent authorities
     within the sandbox
   - submit a final report when the sandbox terminates
+  temporal_regime_id: AIA-TEMP-A057-P16-ANNUAL-REPORTING
+  conditions:
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids: [AIA-TEXT-A057-P025]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -769,8 +975,10 @@ records:
   action: make annual sandbox reports or abstracts thereof publicly available online
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A057-P025]
   targets: []
   kind: obligation
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -783,10 +991,15 @@ records:
   action: take annual sandbox reports into account when exercising tasks under this Regulation
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A057-P025]
   targets: []
   kind: obligation
   conditions:
-  - where appropriate
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids: [AIA-TEXT-A057-P025]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -803,6 +1016,7 @@ records:
     and non-binding guidance in accordance with Article 62(1)(c)
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A057-P026]
   targets: []
   kind: obligation
   mandatory_content:
@@ -811,6 +1025,7 @@ records:
   - enquiries with competent authorities
   - non-binding conformity guidance for innovative products, services and business models embedding AI
     technologies
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -822,10 +1037,15 @@ records:
   action: proactively coordinate with national competent authorities
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A057-P026]
   targets: []
   kind: obligation
   conditions:
-  - where relevant
+    operator: all_of
+    operands:
+    - text: where relevant
+      basis_segment_ids: [AIA-TEXT-A057-P026]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

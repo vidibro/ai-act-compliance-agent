@@ -2208,8 +2208,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 544
-    assert metrics.shall_token_candidate_recall == pytest.approx(861 / 1405)
+    assert metrics.shall_vs_semantic_disagreements == 542
+    assert metrics.shall_token_candidate_recall == pytest.approx(863 / 1405)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -3345,9 +3345,16 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
 
     safeguards = norms["AIA-NORM-A058-P4-AGREE-REAL-WORLD-TESTING-SAFEGUARDS"]
     cooperation = norms["AIA-NORM-A058-P4-COOPERATE-ON-TESTING-PRACTICES"]
-    testing_context = "the authority considers authorising supervised real-world sandbox testing"
-    assert safeguards.conditions == [testing_context]
-    assert cooperation.conditions == [testing_context, "where appropriate"]
+    testing_context = (
+        "Where national competent authorities consider authorising testing in real world conditions "
+        "supervised within the framework of an AI regulatory sandbox to be established under this "
+        "Article"
+    )
+    assert [operand.text for operand in safeguards.conditions] == [testing_context]
+    assert [operand.text for operand in cooperation.conditions] == [
+        testing_context,
+        "Where appropriate",
+    ]
     assert safeguards.kind.value == cooperation.kind.value == "obligation"
     assert safeguards.actors == cooperation.actors
     assert safeguards.actors[0].actor_ref == "national_competent_authority"

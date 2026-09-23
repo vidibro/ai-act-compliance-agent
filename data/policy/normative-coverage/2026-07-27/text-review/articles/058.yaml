@@ -45,7 +45,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A058-P1-DETAILED-SANDBOX-ARRANGEMENTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A058-P1-EXAMINATION-PROCEDURE
+  - AIA-NORM-A058-P2-MINIMUM-IMPLEMENTING-ACT-OUTCOMES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

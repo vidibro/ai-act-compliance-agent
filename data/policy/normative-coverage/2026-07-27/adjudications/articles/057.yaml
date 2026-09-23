@@ -1,0 +1,68 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '57'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 27
+  norms_scanned: 49
+  finding_count: 3
+  audit_sha256: 43a19a6972d146f9e2d818afca0ce04856d969f797ed774857000492a2f7c89b
+decisions:
+- finding_id: AIA-VALID-96A66D88FA07BD3C
+  target: AIA-NORM-A057-P11-LAWFUL-SUPERVISORY-DISCRETION
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A057-P020
+  source_sha256: 8dfcc4a61c5a60547eca820855bd4336b449014c5f57ab9f27a8c04b990c60da
+  target_sha256: 3477a6bfd2ba0d7e550fe547825127cbee2adf7724dbe0e09aa3983d1d8c2628
+  decision: false_positive
+  reason: '"When implementing legal provisions in respect of a specific AI regulatory sandbox project"
+    says where the authorities use their discretion, not when the duty applies. The duty to exercise supervisory
+    powers within the limits of the relevant law holds whenever those powers are exercised, so there is
+    no condition on the norm to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A057-P020
+    source_sha256: 8dfcc4a61c5a60547eca820855bd4336b449014c5f57ab9f27a8c04b990c60da
+    quote: National competent authorities shall exercise their supervisory powers within the limits of
+      the relevant law, using their discretionary powers when implementing legal provisions in respect
+      of a specific AI regulatory sandbox project
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-79380697C03D54D3
+  target: AIA-NORM-A057-P14-COORDINATE-SANDBOX-ACTIVITIES:actor:public_authority:AIA-TEXT-A057-P023
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A057-P023
+  source_sha256: 88f26ab5b449dde6b0a9e44c20b6ef85af888573154fad72ff1c099696437d56
+  target_sha256: 6f8660993365b72f4e3819ffd42bb9516a0e258001426724430b2fe41a72ebc7
+  decision: accepted_with_basis
+  reason: 'The paragraph binds three bodies together: national competent authorities, the European Data
+    Protection Supervisor and the AI Office. No single role covers all three, and the Act never gives
+    them a collective label here, so the public-authority role records the group and no span can name
+    it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A057-P023
+    source_sha256: 88f26ab5b449dde6b0a9e44c20b6ef85af888573154fad72ff1c099696437d56
+    quote: National competent authorities, the European Data Protection Supervisor and the AI Office,
+      shall, as appropriate and within their respective competences, coordinate their activities and cooperate
+      within the framework of the Board
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-78D9F98FC9C5174F
+  target: AIA-NORM-A057-P14-SUPPORT-JOINT-SANDBOXES:actor:public_authority:AIA-TEXT-A057-P023
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A057-P023
+  source_sha256: 88f26ab5b449dde6b0a9e44c20b6ef85af888573154fad72ff1c099696437d56
+  target_sha256: 68fc9877f7a38c728cfbb88f0bdac5ebd079ddc84b01bcb6cede3a17f95b5409
+  decision: accepted_with_basis
+  reason: '"They" refers back to the three bodies named in the previous sentence: national competent authorities,
+    the European Data Protection Supervisor and the AI Office. No single role covers all three, so the
+    public-authority role records the group and no span can name it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A057-P023
+    source_sha256: 88f26ab5b449dde6b0a9e44c20b6ef85af888573154fad72ff1c099696437d56
+    quote: They may support the joint establishment and operation of AI regulatory sandboxes
+  reviewed_by: vidibro
