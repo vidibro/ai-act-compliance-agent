@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '102'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 2
+  norms_scanned: 1
+  finding_count: 1
+  audit_sha256: 13147e84854f1861ed1e1caaa7d7692b7e327c9c2fa326d46f0500e0b0f846a7
+decisions:
+- finding_id: AIA-VALID-39DA6F15DA41A5BE
+  target: AIA-NORM-A102-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A102-P001
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A102-P001
+  source_sha256: 807e2671fe9bf06f6a20828f73dc8bdd8a4ce9716dfa7ef0c8ba5c323b960b2e
+  target_sha256: 45b0686498687f2870caca8694d6ca36a498febe11629d32c0a466529f693ba3
+  decision: accepted_with_basis
+  reason: The added subparagraph binds whoever adopts the detailed measures under Article 4(3) of Regulation
+    (EC) No 300/2008. That Regulation gives the power to the Commission, but the subparagraph itself names
+    no one, so the Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A102-P001
+    source_sha256: 807e2671fe9bf06f6a20828f73dc8bdd8a4ce9716dfa7ef0c8ba5c323b960b2e
+    quote: When adopting detailed measures related to technical specifications and procedures for approval
+      and use of security equipment concerning Artificial Intelligence systems
+  reviewed_by: vidibro

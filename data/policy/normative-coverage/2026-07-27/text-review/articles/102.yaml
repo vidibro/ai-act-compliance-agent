@@ -48,7 +48,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A102-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A102-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

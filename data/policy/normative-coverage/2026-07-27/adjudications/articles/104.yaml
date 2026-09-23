@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '104'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 2
+  norms_scanned: 1
+  finding_count: 1
+  audit_sha256: b44045179bf2a3b3d2f7ed94e269f15704365344154c03c7ff892c37f26f858f
+decisions:
+- finding_id: AIA-VALID-4F1E4BEB107D3828
+  target: AIA-NORM-A104-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A104-P001
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A104-P001
+  source_sha256: cbf3423768bee27e895e0ef4df5dd633ede5004c8b1f063bc91397247780f4ff
+  target_sha256: 75f8945c7d8567006484d8c9e6aab17ee88c464679919a3bb30c6a682f3f5f08
+  decision: accepted_with_basis
+  reason: The added subparagraph binds whoever adopts the delegated acts under Article 22(5) of Regulation
+    (EU) No 168/2013. That Regulation gives the power to the Commission, but the subparagraph itself names
+    no one, so the Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A104-P001
+    source_sha256: cbf3423768bee27e895e0ef4df5dd633ede5004c8b1f063bc91397247780f4ff
+    quote: When adopting delegated acts pursuant to the first subparagraph concerning Artificial Intelligence
+      systems which are safety components
+  reviewed_by: vidibro
