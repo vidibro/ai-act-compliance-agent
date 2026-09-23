@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A089-P001
   targets: []
   action: take necessary actions monitoring GPAI-provider compliance and adherence to approved codes of
     practice
@@ -20,7 +22,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the action serves performance of the AI Office's tasks under this Section
+    - text: For the purpose of carrying out the tasks assigned to it under this Section
       basis_segment_ids:
       - AIA-TEXT-A089-P001
   exceptions: null
@@ -40,11 +42,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A089-P002
   targets: []
   action: lodge a complaint alleging a GPAI provider's infringement of this Regulation
   norm_text: Downstream providers shall have the right to lodge a complaint alleging an infringement of
@@ -73,11 +78,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A089-P2-COMPLAINT-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A089-P002
   targets: []
   action: duly reason and include the minimum required information in a downstream-provider complaint
   norm_text: A complaint shall be duly reasoned and indicate at least
@@ -91,12 +99,7 @@ norms:
   - AIA-TEXT-A089-P003
   - AIA-TEXT-A089-P004
   - AIA-TEXT-A089-P005
-  conditions:
-    operator: all_of
-    operands:
-    - text: a downstream provider exercises its entitlement to lodge a complaint
-      basis_segment_ids:
-      - AIA-TEXT-A089-P002
+  conditions: null
   exceptions: null
   mandatory_content:
   - GPAI provider point of contact
@@ -117,3 +120,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

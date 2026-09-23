@@ -1,0 +1,47 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '88'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 3
+  norms_scanned: 3
+  finding_count: 2
+  audit_sha256: 19467c7b5997cc4c9b602b6449e46af062d26633199e598b023e2da7bb86eee2
+decisions:
+- finding_id: AIA-VALID-C3C0F9093EA7E402
+  target: AIA-NORM-A088-P1-ENTRUST-AI-OFFICE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A088-P001
+  source_sha256: df8cb23e57af8bdfe343cc71aa8eeff186e9813094278cf218c688dcc310cbaf
+  target_sha256: cef7158e79252325cff0ae0585bc6398952ccfc9b0f934beb0b50a2993e3f680
+  decision: false_positive
+  reason: '"Without prejudice to the powers of organisation of the Commission and the division of competences"
+    keeps both applying alongside the entrustment. It takes no case out of it, so there is no exception
+    branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A088-P001
+    source_sha256: df8cb23e57af8bdfe343cc71aa8eeff186e9813094278cf218c688dcc310cbaf
+    quote: without prejudice to the powers of organisation of the Commission and the division of competences
+      between Member States and the Union based on the Treaties
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-1374F0AAA7B41B89
+  target: AIA-NORM-A088-P2-REQUEST-COMMISSION-ASSISTANCE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A088-P002
+  source_sha256: 01e985ebb60a3879f2faf85190affbcff1e44b130fc4944fa057eedf31eb3938
+  target_sha256: c4c4edc849e3baef4359e4b0d46770776ddfe0a8992cfde034e83e052412d80e
+  decision: false_positive
+  reason: '"Without prejudice to Article 75(3)" keeps the Article 75(3) request route open beside this
+    one. It takes no case out of the power, so there is no exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A088-P002
+    source_sha256: 01e985ebb60a3879f2faf85190affbcff1e44b130fc4944fa057eedf31eb3938
+    quote: Without prejudice to Article 75(3)
+  reviewed_by: vidibro

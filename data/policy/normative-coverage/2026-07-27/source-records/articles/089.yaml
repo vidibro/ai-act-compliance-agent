@@ -8,15 +8,20 @@ records:
     practice
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A089-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the action serves performance of the AI Office's tasks under this Section
+    operator: all_of
+    operands:
+    - text: For the purpose of carrying out the tasks assigned to it under this Section
+      basis_segment_ids: [AIA-TEXT-A089-P001]
 - norm_id: AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT
   source: A089-P002
   quote: Downstream providers shall have the right to lodge a complaint alleging an infringement of this
@@ -24,8 +29,10 @@ records:
   action: lodge a complaint alleging a GPAI provider's infringement of this Regulation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A089-P002]
   targets: []
   kind: entitlement
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This is an optional procedural entitlement rather than a compliance action.
   implementation_mode: none_required
@@ -37,6 +44,7 @@ records:
   action: duly reason and include the minimum required information in a downstream-provider complaint
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A089-P002]
   targets: []
   mandatory_content:
   - GPAI provider point of contact
@@ -46,10 +54,9 @@ records:
   - A089-P003
   - A089-P004
   - A089-P005
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: The content rule applies only when exercising the optional complaint entitlement.
   implementation_mode: none_required
   implementation_reason: No standing compliance action arises.
   verification_mode: not_reported
-  conditions:
-  - a downstream provider exercises its entitlement to lodge a complaint

@@ -1,12 +1,15 @@
 records:
 - norm_id: AIA-NORM-A087-WHISTLEBLOWER-DIRECTIVE
   source: A087-P001
-  quote: Directive (EU) 2019/1937 shall apply to the reporting of infringements of this Regulation and the protection of persons reporting such infringements.
+  quote: Directive (EU) 2019/1937 shall apply to the reporting of infringements of this Regulation and
+    the protection of persons reporting such infringements.
   action: apply Directive 2019/1937 to AI Act infringement reporting and reporting-person protection
-  actors:
-  - actor_ref: public_authority
-  targets: []
+  actors: none
+  targets:
+  - target_ref: the reporting of infringements of this Regulation
+    basis_segment_ids: [AIA-TEXT-A087-P001]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This cross-regime applicability rule creates no independent AI product action.
   implementation_mode: none_required

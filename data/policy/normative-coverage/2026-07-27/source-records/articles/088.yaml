@@ -6,8 +6,10 @@ records:
   action: exercise exclusive Chapter V supervision and enforcement powers subject to Article 94 guarantees
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A088-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -22,15 +24,14 @@ records:
     competence boundaries
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A088-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  exceptions:
-  - the Commission's powers of organisation are unaffected
-  - the Treaty-based division of competences between Member States and the Union is unaffected
 - norm_id: AIA-NORM-A088-P2-REQUEST-COMMISSION-ASSISTANCE
   source: A088-P002
   quote: Without prejudice to Article 75(3), market surveillance authorities may request the Commission
@@ -40,13 +41,17 @@ records:
     tasks
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A088-P002]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - exercising the Section powers is necessary and proportionate to assist fulfilment of the authority's
-    tasks under this Regulation
+    operator: all_of
+    operands:
+    - text: where that is necessary and proportionate to assist with the fulfilment of their tasks under this Regulation
+      basis_segment_ids: [AIA-TEXT-A088-P002]

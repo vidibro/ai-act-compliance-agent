@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A088-P001
   targets: []
   action: exercise exclusive Chapter V supervision and enforcement powers subject to Article 94 guarantees
   norm_text: The Commission shall have exclusive powers to supervise and enforce Chapter V, taking into
@@ -33,11 +35,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A088-P1-ENTRUST-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A088-P001
   targets: []
   action: entrust Chapter V supervision and enforcement implementation to the AI Office within enacted
     competence boundaries
@@ -51,15 +56,7 @@ norms:
   - AIA-TEXT-A088-P001
   qualifier_spans: []
   conditions: null
-  exceptions:
-    operator: any_of
-    operands:
-    - text: the Commission's powers of organisation are unaffected
-      basis_segment_ids:
-      - AIA-TEXT-A088-P001
-    - text: the Treaty-based division of competences between Member States and the Union is unaffected
-      basis_segment_ids:
-      - AIA-TEXT-A088-P001
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -76,11 +73,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A088-P2-REQUEST-COMMISSION-ASSISTANCE
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A088-P002
   targets: []
   action: request necessary proportionate Commission exercise of Section powers to assist surveillance
     tasks
@@ -96,8 +96,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: exercising the Section powers is necessary and proportionate to assist fulfilment of the authority's
-        tasks under this Regulation
+    - text: where that is necessary and proportionate to assist with the fulfilment of their tasks under
+        this Regulation
       basis_segment_ids:
       - AIA-TEXT-A088-P002
   exceptions: null
@@ -117,3 +117,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
