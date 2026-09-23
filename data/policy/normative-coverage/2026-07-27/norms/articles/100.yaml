@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A100-P001
   targets: []
   action: impose administrative fines on in-scope Union institutions bodies offices and agencies after
     considering all relevant circumstances and specified factors
@@ -53,11 +55,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P2-ARTICLE5-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A100-P001
   targets: []
   action: expose Union-body Article 5 non-compliance to a fine up to EUR 1500000
   norm_text: Non-compliance with the prohibition of the AI practices referred to in Article 5 shall be
@@ -72,8 +77,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: an in-scope Union institution, body, office, or agency does not comply with the Article 5
-        prohibition of AI practices
+    - text: Non-compliance with the prohibition of the AI practices referred to in Article 5
       basis_segment_ids:
       - AIA-TEXT-A100-P009
   exceptions: null
@@ -93,11 +97,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P3-OTHER-REQUIREMENT-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A100-P001
   targets: []
   action: expose other Union-body AI Act non-compliance to a fine up to EUR 750000
   norm_text: The non-compliance of the AI system with any requirements or obligations under this Regulation,
@@ -112,11 +119,15 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: an AI system of an in-scope Union institution, body, office, or agency does not comply with
-        a requirement or obligation under this Regulation other than Article 5
+    - text: The non-compliance of the AI system with any requirements or obligations under this Regulation
       basis_segment_ids:
       - AIA-TEXT-A100-P010
-  exceptions: null
+  exceptions:
+    operator: any_of
+    operands:
+    - text: other than those laid down in Article 5
+      basis_segment_ids:
+      - AIA-TEXT-A100-P010
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
@@ -133,11 +144,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P4-HEARING-RIGHTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A100-P011
   targets: []
   action: give the Union institution, body, office or agency subject to the proceedings the opportunity
     of being heard on the possible infringement before taking a decision
@@ -154,7 +168,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the decision is taken pursuant to Article 100
+    - text: Before taking decisions pursuant to this Article
       basis_segment_ids:
       - AIA-TEXT-A100-P011
   exceptions: null
@@ -174,11 +188,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P4-DECISION-GROUNDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A100-P011
   targets: []
   action: base the decision only on elements and circumstances on which the parties concerned have been
     able to comment
@@ -208,11 +225,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A100-P011
   targets: []
   action: associate any complainants closely with the proceedings
   norm_text: Complainants, if any, shall be associated closely with the proceedings.
@@ -225,7 +245,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: there are complainants
+    - text: Complainants, if any
       basis_segment_ids:
       - AIA-TEXT-A100-P011
   exceptions: null
@@ -245,11 +265,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A100-P012
   targets: []
   action: fully respect the rights of defence of the parties concerned in the proceedings
   norm_text: The rights of defence of the parties concerned shall be fully respected in the proceedings.
@@ -277,11 +300,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
   act_version_date: '2026-07-27'
   kind: entitlement
   actors:
-  - actor_ref: concerned_party
+  - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A100-P011
   targets: []
   action: have access to the European Data Protection Supervisor's file
   norm_text: "They shall be entitled to have access to the European Data Protection Supervisor\u2019s\
@@ -296,16 +322,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the person is a party concerned in Article 100 proceedings
+    - text: subject to the legitimate interest of individuals or undertakings in the protection of their
+        personal data or business secrets
       basis_segment_ids:
       - AIA-TEXT-A100-P012
-  exceptions:
-    operator: any_of
-    operands:
-    - text: the legitimate interest of individuals or undertakings in the protection of their personal
-        data or business secrets
-      basis_segment_ids:
-      - AIA-TEXT-A100-P012
+  exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -322,11 +343,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A100-P013
   targets: []
   action: contribute the funds collected by imposing Article 100 fines to the general budget of the Union
   norm_text: Funds collected by imposition of fines in this Article shall contribute to the general budget
@@ -356,11 +380,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P6-PRESERVE-FINED-BODY-OPERATION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids:
+    - AIA-TEXT-A100-P013
   targets: []
   action: keep the fines from affecting the effective operation of the Union institution, body, office
     or agency fined
@@ -391,11 +418,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
 - norm_id: AIA-NORM-A100-P7-ANNUAL-FINE-NOTIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A100-P014
   targets: []
   action: notify the Commission annually of Article 100 fines and initiated proceedings
   norm_text: The European Data Protection Supervisor shall, on an annual basis, notify the Commission
@@ -425,3 +455,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII

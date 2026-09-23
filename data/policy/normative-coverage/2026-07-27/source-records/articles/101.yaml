@@ -1,3 +1,9 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-ARTICLE-101
+  application_start: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A113-GENERAL
 records:
 - norm_id: AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
   source: A101-P001
@@ -8,6 +14,7 @@ records:
     whichever is higher, for intentional or negligent listed conduct
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A101-P001]
   targets: []
   kind: power
   mandatory_content: []
@@ -16,20 +23,27 @@ records:
   - A101-P003
   - A101-P004
   - A101-P005
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission finds that the provider acted intentionally or negligently
-  - operator: any_of
+    operator: all_of
     operands:
-    - the provider infringed relevant provisions of this Regulation
-    - the provider failed to comply with an Article 91 document or information request or supplied incorrect,
-      incomplete, or misleading information
-    - the provider failed to comply with a measure requested under Article 93
-    - the provider failed to make available access to the general-purpose AI model for an Article 92 evaluation
+    - text: when the Commission finds that the provider intentionally or negligently
+      basis_segment_ids: [AIA-TEXT-A101-P001]
+    - operator: any_of
+      operands:
+      - text: infringed the relevant provisions of this Regulation
+        basis_segment_ids: [AIA-TEXT-A101-P002]
+      - text: failed to comply with a request for a document or for information pursuant to Article 91, or supplied incorrect, incomplete or misleading information
+        basis_segment_ids: [AIA-TEXT-A101-P003]
+      - text: failed to comply with a measure requested under Article 93
+        basis_segment_ids: [AIA-TEXT-A101-P004]
+      - text: failed to make available to the Commission access to the general-purpose AI model or general-purpose AI model with systemic risk with a view to conducting an evaluation pursuant to Article 92
+        basis_segment_ids: [AIA-TEXT-A101-P005]
 - norm_id: AIA-NORM-A101-P1-FIX-FINE-AMOUNT
   source: A101-P006
   quote: In fixing the amount of the fine or periodic penalty payment, regard shall be had to the nature,
@@ -39,12 +53,14 @@ records:
   action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A101-P006]
   targets: []
   mandatory_content:
   - the nature, gravity and duration of the infringement
   - due account of the principles of proportionality and appropriateness
   - commitments made in accordance with Article 93(3) or made in relevant codes of practice in accordance
     with Article 56
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -58,21 +74,28 @@ records:
     a fine decision
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A101-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission intends to adopt a paragraph 1 fine decision
+    operator: all_of
+    operands:
+    - text: Before adopting the decision pursuant to paragraph 1
+      basis_segment_ids: [AIA-TEXT-A101-P007]
 - norm_id: AIA-NORM-A101-P3-FINE-QUALITY
   source: A101-P008
   quote: Fines imposed in accordance with this Article shall be effective, proportionate and dissuasive
   action: ensure Article 101 fines are effective proportionate and dissuasive
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A101-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -84,7 +107,9 @@ records:
   action: communicate information on Article 101 fines to the Board as appropriate
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A101-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -97,8 +122,10 @@ records:
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
   actors:
   - actor_ref: court_of_justice_of_the_european_union
+    basis_segment_ids: [AIA-TEXT-A101-P010]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -114,7 +141,9 @@ records:
     through the Article 98(2) examination procedure
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A101-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

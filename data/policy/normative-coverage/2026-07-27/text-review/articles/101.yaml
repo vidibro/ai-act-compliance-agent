@@ -44,7 +44,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A101-P3-FINE-QUALITY
+  - AIA-NORM-A101-P4-COMMUNICATE-FINES-TO-BOARD
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

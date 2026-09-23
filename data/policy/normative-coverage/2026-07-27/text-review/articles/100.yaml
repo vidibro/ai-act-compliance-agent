@@ -46,7 +46,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A100-P2-ARTICLE5-FINE
+  - AIA-NORM-A100-P3-OTHER-REQUIREMENT-FINE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -314,7 +316,8 @@ segments:
   - AIA-NORM-A100-P4-HEARING-RIGHTS
   - AIA-NORM-A100-P4-DECISION-GROUNDS
   - AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

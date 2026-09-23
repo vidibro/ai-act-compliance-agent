@@ -10,6 +10,7 @@ records:
     considering all relevant circumstances and specified factors
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A100-P001]
   targets: []
   kind: power
   mandatory_content:
@@ -28,6 +29,7 @@ records:
   - A100-P006
   - A100-P007
   - A100-P008
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -40,16 +42,20 @@ records:
   action: expose Union-body Article 5 non-compliance to a fine up to EUR 1500000
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A100-P001]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
   verification_mode: not_reported
   conditions:
-  - an in-scope Union institution, body, office, or agency does not comply with the Article 5 prohibition
-    of AI practices
+    operator: all_of
+    operands:
+    - text: Non-compliance with the prohibition of the AI practices referred to in Article 5
+      basis_segment_ids: [AIA-TEXT-A100-P009]
 - norm_id: AIA-NORM-A100-P3-OTHER-REQUIREMENT-FINE
   source: A100-P010
   quote: The non-compliance of the AI system with any requirements or obligations under this Regulation,
@@ -57,16 +63,25 @@ records:
   action: expose other Union-body AI Act non-compliance to a fine up to EUR 750000
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A100-P001]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
   verification_mode: not_reported
   conditions:
-  - an AI system of an in-scope Union institution, body, office, or agency does not comply with a requirement
-    or obligation under this Regulation other than Article 5
+    operator: all_of
+    operands:
+    - text: The non-compliance of the AI system with any requirements or obligations under this Regulation
+      basis_segment_ids: [AIA-TEXT-A100-P010]
+  exceptions:
+    operator: any_of
+    operands:
+    - text: other than those laid down in Article 5
+      basis_segment_ids: [AIA-TEXT-A100-P010]
 - norm_id: AIA-NORM-A100-P4-HEARING-RIGHTS
   source: A100-P011
   quote: Before taking decisions pursuant to this Article, the European Data Protection Supervisor shall
@@ -77,9 +92,14 @@ records:
     of being heard on the possible infringement before taking a decision
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A100-P011]
   targets: []
   conditions:
-  - the decision is taken pursuant to Article 100
+    operator: all_of
+    operands:
+    - text: Before taking decisions pursuant to this Article
+      basis_segment_ids: [AIA-TEXT-A100-P011]
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -93,7 +113,9 @@ records:
     able to comment
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A100-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -105,9 +127,14 @@ records:
   action: associate any complainants closely with the proceedings
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A100-P011]
   targets: []
   conditions:
-  - there are complainants
+    operator: all_of
+    operands:
+    - text: Complainants, if any
+      basis_segment_ids: [AIA-TEXT-A100-P011]
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -119,7 +146,9 @@ records:
   action: fully respect the rights of defence of the parties concerned in the proceedings
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A100-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -127,24 +156,26 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
   source: A100-P012
-  quote: "They shall be entitled to have access to the European Data Protection Supervisor\u2019s file,\
-    \ subject to the legitimate interest of individuals or undertakings in the protection of their personal\
-    \ data or business secrets."
+  quote: They shall be entitled to have access to the European Data Protection Supervisor’s file, subject
+    to the legitimate interest of individuals or undertakings in the protection of their personal data
+    or business secrets.
   action: have access to the European Data Protection Supervisor's file
   actors:
-  - actor_ref: concerned_party
+  - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A100-P011]
   targets: []
   kind: entitlement
-  exceptions:
-  - the legitimate interest of individuals or undertakings in the protection of their personal data or
-    business secrets
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the person is a party concerned in Article 100 proceedings
+    operator: all_of
+    operands:
+    - text: subject to the legitimate interest of individuals or undertakings in the protection of their personal data or business secrets
+      basis_segment_ids: [AIA-TEXT-A100-P012]
 - norm_id: AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
   source: A100-P013
   quote: Funds collected by imposition of fines in this Article shall contribute to the general budget
@@ -152,8 +183,10 @@ records:
   action: contribute the funds collected by imposing Article 100 fines to the general budget of the Union
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A100-P013]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
@@ -167,8 +200,10 @@ records:
     or agency fined
   actors:
   - actor_ref: union_institution_or_body
+    basis_segment_ids: [AIA-TEXT-A100-P013]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
@@ -182,7 +217,9 @@ records:
   action: notify the Commission annually of Article 100 fines and initiated proceedings
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A100-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

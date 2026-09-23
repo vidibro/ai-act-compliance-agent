@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A101-P001
   targets: []
   action: fine a GPAI provider up to 3 % of preceding-year worldwide annual turnover or EUR 15 000 000,
     whichever is higher, for intentional or negligent listed conduct
@@ -25,25 +27,25 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission finds that the provider acted intentionally or negligently
+    - text: when the Commission finds that the provider intentionally or negligently
       basis_segment_ids:
       - AIA-TEXT-A101-P001
     - operator: any_of
       operands:
-      - text: the provider infringed relevant provisions of this Regulation
+      - text: infringed the relevant provisions of this Regulation
         basis_segment_ids:
-        - AIA-TEXT-A101-P001
-      - text: the provider failed to comply with an Article 91 document or information request or supplied
-          incorrect, incomplete, or misleading information
+        - AIA-TEXT-A101-P002
+      - text: failed to comply with a request for a document or for information pursuant to Article 91,
+          or supplied incorrect, incomplete or misleading information
         basis_segment_ids:
-        - AIA-TEXT-A101-P001
-      - text: the provider failed to comply with a measure requested under Article 93
+        - AIA-TEXT-A101-P003
+      - text: failed to comply with a measure requested under Article 93
         basis_segment_ids:
-        - AIA-TEXT-A101-P001
-      - text: the provider failed to make available access to the general-purpose AI model for an Article
-          92 evaluation
+        - AIA-TEXT-A101-P004
+      - text: failed to make available to the Commission access to the general-purpose AI model or general-purpose
+          AI model with systemic risk with a view to conducting an evaluation pursuant to Article 92
         basis_segment_ids:
-        - AIA-TEXT-A101-P001
+        - AIA-TEXT-A101-P005
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -61,11 +63,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
 - norm_id: AIA-NORM-A101-P1-FIX-FINE-AMOUNT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A101-P006
   targets: []
   action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
   norm_text: In fixing the amount of the fine or periodic penalty payment, regard shall be had to the
@@ -100,11 +105,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
 - norm_id: AIA-NORM-A101-P2-PRELIMINARY-FINDINGS-AND-HEARING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A101-P007
   targets: []
   action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before
     a fine decision
@@ -120,7 +128,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission intends to adopt a paragraph 1 fine decision
+    - text: Before adopting the decision pursuant to paragraph 1
       basis_segment_ids:
       - AIA-TEXT-A101-P007
   exceptions: null
@@ -140,11 +148,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
 - norm_id: AIA-NORM-A101-P3-FINE-QUALITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A101-P001
   targets: []
   action: ensure Article 101 fines are effective proportionate and dissuasive
   norm_text: Fines imposed in accordance with this Article shall be effective, proportionate and dissuasive
@@ -172,11 +183,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
 - norm_id: AIA-NORM-A101-P4-COMMUNICATE-FINES-TO-BOARD
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A101-P001
   targets: []
   action: communicate information on Article 101 fines to the Board as appropriate
   norm_text: Information on fines imposed under this Article shall also be communicated to the Board as
@@ -205,11 +219,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
 - norm_id: AIA-NORM-A101-P5-JUDICIAL-REVIEW
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: court_of_justice_of_the_european_union
+    basis_segment_ids:
+    - AIA-TEXT-A101-P010
   targets: []
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
   norm_text: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
@@ -239,11 +256,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLE-101
 - norm_id: AIA-NORM-A101-P6-ADOPT-FINE-PROCEDURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A101-P011
   targets: []
   action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings
     through the Article 98(2) examination procedure
@@ -275,3 +295,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLE-101

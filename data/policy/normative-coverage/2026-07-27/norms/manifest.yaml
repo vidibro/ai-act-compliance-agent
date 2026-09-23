@@ -3846,18 +3846,6 @@ relations:
   legal_basis_spans:
   - AIA-TEXT-A099-P002
   detail: ''
-- relation_id: AIA-REL-A099-P2-INITIAL-NOTIFICATION-RELIES-ON-GENERAL-APPLICATION
-  source_norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
-  kind: relies_on_norms
-  target_rule_ids: []
-  target_norm_ids:
-  - AIA-NORM-A113-GENERAL
-  external_requirements: []
-  guidance_refs: []
-  legal_basis_spans:
-  - AIA-TEXT-A099-P002
-  - AIA-TEXT-A113-GENERAL
-  detail: ''
 - relation_id: AIA-REL-ANNEX-IX-REGISTRATION-INFORMATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
   kind: carried_by_norms
@@ -4785,32 +4773,47 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-CHAPTER-XII
+  application_start: '2025-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 - regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
-  application_start: null
+  application_start: '2025-08-02'
   application_end: null
   qualitative_deadline:
     kind: without_delay
     trigger: null
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A099-P002
 - regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-APPLICATION-DEADLINE
-  application_start: null
+  application_start: '2025-08-02'
   application_end: null
-  deadline: '2026-08-02'
-  timing_conditions: []
+  timing_conditions:
+  - at the latest by the date of entry into application
   legal_basis_spans:
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A099-P002
-  - AIA-TEXT-A113-GENERAL
 - regime_id: AIA-TEMP-A099-P2-AMENDMENT-NOTIFICATION-WITHOUT-DELAY
-  application_start: null
+  application_start: '2025-08-02'
   application_end: null
   qualitative_deadline:
     kind: without_delay
     trigger: null
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A099-P002
+- regime_id: AIA-TEMP-ARTICLE-101
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A113-GENERAL
 - regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   application_start: '2025-02-02'
   application_end: null

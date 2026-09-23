@@ -4813,21 +4813,23 @@ def test_article_ninety_nine_extracts_penalty_framework():
     by_date = norms["AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE"]
     without_delay = norms["AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY"]
     amendment = norms["AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENT-WITHOUT-DELAY"]
-    assert "2 August 2026" in by_date.action
+    # No calendar date: the cut-off is the entry into application of the national rules.
+    assert "at the latest by the date of entry into application" in by_date.action
+    assert "2026" not in by_date.action and "2025" not in by_date.action
     assert "without delay" in without_delay.action
     assert "subsequent amendment" in amendment.action
 
     # The fine ceiling, its turnover alternative and the Article 5 exclusion are explicit.
     fine = norms["AIA-NORM-A099-P4-OPERATOR-FINE"]
     assert not fine.mandatory_content
-    triggers = fine.conditions[0]
+    triggers = fine.conditions
     assert isinstance(triggers, LogicalExpression) and triggers.operator == "any_of"
     assert len(triggers.operands) == 8
     assert "EUR 15 000 000" in fine.action
     assert "3 % of its total worldwide annual turnover" in fine.action
     assert "preceding financial year" in fine.action
-    assert fine.exceptions == [
-        "the provisions laid down in Article 5, which carry the paragraph 3 fine instead"
+    assert [operand.text for operand in fine.exceptions.operands] == [
+        "other than those laid down in Articles 5"
     ]
 
 
@@ -4844,19 +4846,25 @@ def test_articles_one_hundred_to_one_hundred_five_extract_enforcement_and_amendm
     by_id = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
 
     # Hearing, decision grounds and complainant association are separate protections.
-    assert by_id["AIA-NORM-A100-P4-HEARING-RIGHTS"].conditions == [
-        "the decision is taken pursuant to Article 100"
-    ]
+    assert [
+        operand.text for operand in by_id["AIA-NORM-A100-P4-HEARING-RIGHTS"].conditions.operands
+    ] == ["Before taking decisions pursuant to this Article"]
     assert "only on elements and circumstances" in by_id["AIA-NORM-A100-P4-DECISION-GROUNDS"].action
-    assert by_id["AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS"].conditions == ["there are complainants"]
+    assert [
+        operand.text
+        for operand in by_id["AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS"].conditions.operands
+    ] == ["Complainants, if any"]
 
-    # File access is an entitlement of the parties, limited by the enacted interests.
+    # File access is an entitlement of the parties, limited by the enacted interests, as in
+    # Article 75d(2).
     access = by_id["AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT"]
     assert access.kind.value == "entitlement"
-    assert access.actors[0].actor_ref == "concerned_party"
-    assert access.exceptions == [
-        "the legitimate interest of individuals or undertakings in the protection of their "
-        "personal data or business secrets"
+    # "The parties concerned" are the Union body under investigation, which paragraph 4 names.
+    assert access.actors[0].actor_ref == "union_institution_or_body"
+    assert access.exceptions is None
+    assert [operand.text for operand in access.conditions.operands] == [
+        "subject to the legitimate interest of individuals or undertakings in the protection of "
+        "their personal data or business secrets"
     ]
 
     # Revenue allocation and the protection of the fined body are distinct consequences.

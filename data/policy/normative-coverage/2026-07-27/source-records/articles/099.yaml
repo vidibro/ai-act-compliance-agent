@@ -1,18 +1,28 @@
 temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-XII
+  application_start: 2025-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 - regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
+  application_start: 2025-08-02
   qualitative_deadline:
     kind: without_delay
   legal_basis_spans:
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A099-P002
 - regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-APPLICATION-DEADLINE
-  deadline: 2026-08-02
+  application_start: 2025-08-02
+  timing_conditions:
+  - at the latest by the date of entry into application
   legal_basis_spans:
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A099-P002
-  - AIA-TEXT-A113-GENERAL
 - regime_id: AIA-TEMP-A099-P2-AMENDMENT-NOTIFICATION-WITHOUT-DELAY
+  application_start: 2025-08-02
   qualitative_deadline:
     kind: without_delay
   legal_basis_spans:
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A099-P002
 norm_relations:
 - relation_id: AIA-REL-A099-P2-INITIAL-NOTIFICATION-PARALLEL-DEADLINES
@@ -22,14 +32,6 @@ norm_relations:
   - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
   legal_basis_spans:
   - AIA-TEXT-A099-P002
-- relation_id: AIA-REL-A099-P2-INITIAL-NOTIFICATION-RELIES-ON-GENERAL-APPLICATION
-  source_norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
-  kind: relies_on_norms
-  target_norm_ids:
-  - AIA-NORM-A113-GENERAL
-  legal_basis_spans:
-  - AIA-TEXT-A099-P002
-  - AIA-TEXT-A113-GENERAL
 records:
 - norm_id: AIA-NORM-A099-P1-ESTABLISH-PENALTIES
   source: A099-P001
@@ -43,7 +45,9 @@ records:
     and enforcement measures
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -56,7 +60,14 @@ records:
   action: account for SME start-up and SMC interests and economic viability when imposing penalties
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P001]
   targets: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: when imposing penalties
+      basis_segment_ids: [AIA-TEXT-A099-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -68,6 +79,7 @@ records:
   action: notify the Commission without delay of the paragraph 1 rules on penalties and enforcement measures
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P002]
   targets: []
   temporal_regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
   product_scope: outside_supported_actor
@@ -78,9 +90,11 @@ records:
 - norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
   source: A099-P002
   quote: at the latest by the date of entry into application
-  action: notify the Commission of the paragraph 1 rules on penalties and enforcement measures by 2 August 2026
+  action: notify the Commission of the paragraph 1 rules on penalties and enforcement measures at the
+    latest by the date of entry into application of those rules
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P002]
   targets: []
   qualifier_spans:
   - A099-P002
@@ -96,6 +110,7 @@ records:
   action: notify the Commission without delay of every subsequent amendment to the rules or measures
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P002]
   targets: []
   qualifier_spans:
   - A099-P002
@@ -114,15 +129,20 @@ records:
     undertaking, 7 % of preceding-year worldwide annual turnover, whichever is higher
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A099-P003]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: no_product_action
   product_scope_reason: This is an enforcement consequence rather than an independent compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
   conditions:
-  - the Article 5 prohibition of AI practices is not complied with
+    operator: all_of
+    operands:
+    - text: Non-compliance with the prohibition of the AI practices referred to in Article 5
+      basis_segment_ids: [AIA-TEXT-A099-P003]
 - norm_id: AIA-NORM-A099-P4-OPERATOR-FINE
   source: A099-P004
   quote: shall be subject to administrative fines of up to EUR 15000000 or, if the offender is an undertaking,
@@ -132,10 +152,14 @@ records:
     to 3 % of its total worldwide annual turnover for the preceding financial year, whichever is higher
   actors: none
   targets:
-  - target_ref: infringing_operator_or_notified_body
+  - target_ref: operators or notified bodies
+    basis_segment_ids: [AIA-TEXT-A099-P004]
   kind: legal_consequence
   exceptions:
-  - the provisions laid down in Article 5, which carry the paragraph 3 fine instead
+    operator: any_of
+    operands:
+    - text: other than those laid down in Articles 5
+      basis_segment_ids: [AIA-TEXT-A099-P004]
   mandatory_content: []
   qualifier_spans:
   - A099-P005
@@ -146,23 +170,31 @@ records:
   - A099-P010
   - A099-P011
   - A099-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: no_product_action
   product_scope_reason: This is an enforcement consequence rather than an independent compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
   conditions:
-  - operator: any_of
+    operator: any_of
     operands:
-    - Article 16 provider obligations are not complied with
-    - Article 22 authorised-representative obligations are not complied with
-    - Article 23 importer obligations are not complied with
-    - Article 24 distributor obligations are not complied with
-    - Article 25(2) or (4) provider or operator obligations are not complied with
-    - Article 26 deployer obligations are not complied with
-    - Article 31, Article 33(1), (3) or (4), or Article 34 notified-body requirements or obligations are
-      not complied with
-    - Article 50 provider or deployer transparency obligations are not complied with
+    - text: obligations of providers pursuant to Article 16
+      basis_segment_ids: [AIA-TEXT-A099-P005]
+    - text: obligations of authorised representatives pursuant to Article 22
+      basis_segment_ids: [AIA-TEXT-A099-P006]
+    - text: obligations of importers pursuant to Article 23
+      basis_segment_ids: [AIA-TEXT-A099-P007]
+    - text: obligations of distributors pursuant to Article 24
+      basis_segment_ids: [AIA-TEXT-A099-P008]
+    - text: obligations of providers and operators pursuant to Article 25(2) and (4)
+      basis_segment_ids: [AIA-TEXT-A099-P009]
+    - text: obligations of deployers pursuant to Article 26
+      basis_segment_ids: [AIA-TEXT-A099-P010]
+    - text: requirements and obligations of notified bodies pursuant to Article 31, Article 33(1), (3) and (4) or Article 34
+      basis_segment_ids: [AIA-TEXT-A099-P011]
+    - text: transparency obligations for providers and deployers pursuant to Article 50
+      basis_segment_ids: [AIA-TEXT-A099-P012]
 - norm_id: AIA-NORM-A099-P5-INFORMATION-FINE
   source: A099-P013
   quote: The supply of incorrect, incomplete or misleading information to notified bodies or national
@@ -173,16 +205,20 @@ records:
     for an undertaking, 1 % of preceding-year worldwide annual turnover, whichever is higher
   actors: none
   targets:
-  - target_ref: information_supplier
+  - target_ref: incorrect, incomplete or misleading information
+    basis_segment_ids: [AIA-TEXT-A099-P013]
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: no_product_action
   product_scope_reason: This is an enforcement consequence rather than an independent compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
   conditions:
-  - incorrect, incomplete, or misleading information is supplied to a notified body or national competent
-    authority in reply to a request
+    operator: all_of
+    operands:
+    - text: The supply of incorrect, incomplete or misleading information to notified bodies or national competent authorities in reply to a request
+      basis_segment_ids: [AIA-TEXT-A099-P013]
 - norm_id: AIA-NORM-A099-P6-SME-FINE-CAP
   source: A099-P014
   quote: In the case of SMEs, including start-ups, each fine referred to in this Article shall be up to
@@ -190,15 +226,20 @@ records:
   action: cap SME and start-up fines at the lower applicable percentage or amount
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A099-P014]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the offender is an SME, including a start-up
+    operator: all_of
+    operands:
+    - text: In the case of SMEs, including start-ups
+      basis_segment_ids: [AIA-TEXT-A099-P014]
 - norm_id: AIA-NORM-A099-P6A-SMC-FINE-CAP
   source: A099-P015
   quote: In the case of SMCs, each fine referred to in paragraphs 4 and 5 shall be up to the percentages
@@ -206,22 +247,30 @@ records:
   action: cap SMC fines under paragraphs 4 and 5 at the lower applicable percentage or amount
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A099-P015]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the offender is an SMC
+    operator: all_of
+    operands:
+    - text: In the case of SMCs
+      basis_segment_ids: [AIA-TEXT-A099-P015]
 - norm_id: AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   source: A099-P016
-  quote: all relevant circumstances of the specific situation shall be taken into account
+  quote: 'When deciding whether to impose an administrative fine and when deciding on the amount of the
+    administrative fine in each individual case, all relevant circumstances of the specific situation
+    shall be taken into account and, as appropriate, regard shall be given to the following:'
   action: consider all relevant circumstances and the specified factors when deciding whether and how
     much to fine
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A099-P016]
   targets: []
   mandatory_content:
   - infringement nature gravity duration consequences affected persons and damage
@@ -245,6 +294,14 @@ records:
   - A099-P024
   - A099-P025
   - A099-P026
+  conditions:
+    operator: any_of
+    operands:
+    - text: When deciding whether to impose an administrative fine
+      basis_segment_ids: [AIA-TEXT-A099-P016]
+    - text: when deciding on the amount of the administrative fine in each individual case
+      basis_segment_ids: [AIA-TEXT-A099-P016]
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -258,7 +315,9 @@ records:
     bodies
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P027]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -273,14 +332,19 @@ records:
   action: ensure court-imposed or other-body-imposed fine rules have equivalent effect
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P028]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - under the Member State's legal system, fines are imposed by competent national courts or other bodies
+    operator: all_of
+    operands:
+    - text: Depending on the legal system of the Member States
+      basis_segment_ids: [AIA-TEXT-A099-P028]
 - norm_id: AIA-NORM-A099-P10-PROCEDURAL-SAFEGUARDS
   source: A099-P029
   quote: The exercise of powers under this Article shall be subject to appropriate procedural safeguards
@@ -288,7 +352,9 @@ records:
   action: exercise Article 99 powers subject to effective remedies due process and other appropriate safeguards
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A099-P029]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -302,7 +368,9 @@ records:
   action: report annually to the Commission on Article 99 fines and related proceedings
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A099-P030]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
