@@ -2945,8 +2945,54 @@ rules:
       So the custody duty binds from the general date while the Annex IV documentation it governs
       is not owed until 2 December 2027 for an Annex III system. In force ahead of its own subject,
       as with AIA-RULE-ALL-A49-4.
+    criteria:
+      - norm_id: AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS
+      - norm_id: AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
     status: active
 
+
+  # NOT ART. 20 IN ANOTHER PLACE. Art. 20 starts from the provider's own reason to consider a
+  # HIGH-RISK system non-conforming. Art. 80 starts from an AUTHORITY finding that a system the
+  # provider classified as NOT high-risk under Art. 6(3) is in fact high-risk, so the provider
+  # reading this rule is one whose own classification says it owes none of Chapter III. Filed
+  # under not_high_risk for that reason: gated on high_risk it could never reach the provider it
+  # binds. Chapter IX, so the general date.
+  - rule_id: AIA-RULE-NHR-A80
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 80
+      paragraph: 4 # bring the reclassified system into compliance, and correct it Union-wide
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [not_high_risk]
+    applies_to_role: [provider]
+    qualified_by:
+      - article: 80
+        paragraph: 5
+    activation_condition: >-
+      Owed once a market surveillance authority, evaluating the system under Art. 80(1), FINDS
+      THAT IT IS HIGH-RISK and requires the provider under Art. 80(2) to bring it into compliance
+      within a period the authority may prescribe. Until then the provider's Art. 6(3)
+      classification stands, so the duty is listed with the condition attached rather than
+      asserted of every not-high-risk system.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      TWO THINGS, both on the provider. Art. 80(4): all necessary action taken to bring the system
+      into compliance with the requirements and obligations of the Regulation — in practice the
+      high-risk regime it was classified out of — within the period the authority set; missing
+      that period attracts fines under Art. 99. Art. 80(5): all appropriate corrective action
+      taken for ALL the systems concerned that the provider has made available on the Union
+      market, not only those in the authority's territory. Where the corrective action is not
+      adequate, Art. 80(6) hands the case to the Art. 79(5) to (9) procedure, and Art. 80(7) adds
+      fines where the misclassification was made to circumvent Chapter III Section 2. A response
+      to an authority's decision, not visible in the technical documentation — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A080-P4-BRING-SYSTEM-INTO-COMPLIANCE
+      - norm_id: AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
 
   # Art. 79 binds the OPERATOR — Art. 3(8): provider, product manufacturer, deployer, authorised
   # representative, importer or distributor — which is why this is filed AIA-RULE-ALL- and carries five
@@ -3005,6 +3051,9 @@ rules:
       separately.
     document_verifiable: false
     effective_date: 2026-08-02
+    criteria:
+      - norm_id: AIA-NORM-A079-P2-OPERATOR-COOPERATION
+      - norm_id: AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
     status: active
 
   # ------------------------------------------------------------------------------------------

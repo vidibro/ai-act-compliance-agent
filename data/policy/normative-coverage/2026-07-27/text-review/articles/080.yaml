@@ -76,7 +76,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P2-REQUIRE-COMPLIANCE-AND-CORRECTION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A080-P6-APPLY-ARTICLE-79-ESCALATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -1,3 +1,12 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A078-P3-IMMEDIATE-ACCESS
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: immediately
+    trigger: upon request
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A078-P009
 records:
 - norm_id: AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   source: A078-P001
@@ -6,22 +15,23 @@ records:
   action: protect confidentiality of task-related information and data under Union or national law
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids: [AIA-TEXT-A078-P001]
   targets: []
   mandatory_content:
   - the intellectual property rights and confidential business information or trade secrets of a natural
-    or legal person, including source code
+    or legal person, including source code, except in the cases referred to in Article 5 of Directive
+    (EU) 2016/943
   - effective inspections, investigations and audits
   - public and national security
   - criminal and administrative proceedings
   - classified information
-  exceptions:
-  - point (a) only, the cases referred to in Article 5 of Directive (EU) 2016/943
   qualifier_spans:
   - A078-P002
   - A078-P003
   - A078-P004
   - A078-P005
   - A078-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The cross-actor confidentiality rule is represented at specific supported-operator
     receipt points rather than reported here generically.
@@ -37,7 +47,9 @@ records:
   action: request only data strictly necessary for risk assessment and exercise of enacted powers
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A078-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -52,7 +64,9 @@ records:
     data as soon as its acquisition purpose no longer requires it
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A078-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -73,12 +87,18 @@ records:
     national competent authority and the deployer
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A078-P008]
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A078-P008]
   targets: []
   conditions:
-  - the high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement,
-    border control, immigration or asylum authorities
-  - the disclosure would jeopardise public and national security interests
+    operator: all_of
+    operands:
+    - text: when high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement, border control, immigration or asylum authorities
+      basis_segment_ids: [AIA-TEXT-A078-P008]
+    - text: when such disclosure would jeopardise public and national security interests
+      basis_segment_ids: [AIA-TEXT-A078-P008]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -92,9 +112,12 @@ records:
     or asylum authorities from the exchange of information
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A078-P008]
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A078-P008]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -108,13 +131,18 @@ records:
   action: keep the Annex IV technical documentation within the premises of the authority
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A078-P009]
   targets: []
   conditions:
-  - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
-    to in point 1, 6 or 7 of Annex III
+    operator: all_of
+    operands:
+    - text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI systems referred to in point 1, 6 or 7 of Annex III
+      basis_segment_ids: [AIA-TEXT-A078-P009]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A78-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
   source: A078-P009
   quote: Those authorities shall ensure that the market surveillance authorities referred to in Article
@@ -124,11 +152,16 @@ records:
     immediately access the documentation or obtain a copy of it
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A078-P009]
   targets: []
   conditions:
-  - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
-    to in point 1, 6 or 7 of Annex III
-  - the market surveillance authority requests access or a copy
+    operator: all_of
+    operands:
+    - text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI systems referred to in point 1, 6 or 7 of Annex III
+      basis_segment_ids: [AIA-TEXT-A078-P009]
+    - text: upon request
+      basis_segment_ids: [AIA-TEXT-A078-P009]
+  temporal_regime_id: AIA-TEMP-A078-P3-IMMEDIATE-ACCESS
   implementation_refs:
   - AIA-RULE-PO-A78-3
   verification_mode: reported_not_judged
@@ -141,8 +174,10 @@ records:
     to access the documentation or any copy of it
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A078-P009]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -159,8 +194,10 @@ records:
     despite paragraphs 1 to 3
   actors: none
   targets:
-  - target_ref: persons_applying_article_78
+  - target_ref: Paragraphs 1, 2 and 3
+    basis_segment_ids: [AIA-TEXT-A078-P010]
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This saving clause qualifies other duties without creating an independent product
     action.
@@ -177,9 +214,17 @@ records:
     and adequate confidentiality arrangements
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A078-P011]
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A078-P011]
   targets: []
   kind: power
+  conditions:
+    operator: all_of
+    operands:
+    - text: where necessary
+      basis_segment_ids: [AIA-TEXT-A078-P011]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

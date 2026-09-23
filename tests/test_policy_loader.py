@@ -134,7 +134,10 @@ def test_shipped_spec_loads():
     #
     # Art. 75a(3)'s voluntary reply to an AI Office simple request must be correct, which binds
     # the operator even though replying at all is optional.
-    assert len(spec.rules) == 126
+    #
+    # Art. 80(4) and (5) bind the provider of a system it classified as not high-risk once an
+    # authority finds it high-risk, so they are a not-high-risk rule rather than part of Art. 20.
+    assert len(spec.rules) == 127
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

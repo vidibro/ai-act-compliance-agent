@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: natural_or_legal_person
+    basis_segment_ids:
+    - AIA-TEXT-A078-P001
   targets: []
   action: protect confidentiality of task-related information and data under Union or national law
   norm_text: shall, in accordance with Union or national law, respect the confidentiality of information
@@ -22,15 +24,11 @@ norms:
   - AIA-TEXT-A078-P005
   - AIA-TEXT-A078-P006
   conditions: null
-  exceptions:
-    operator: any_of
-    operands:
-    - text: point (a) only, the cases referred to in Article 5 of Directive (EU) 2016/943
-      basis_segment_ids:
-      - AIA-TEXT-A078-P001
+  exceptions: null
   mandatory_content:
   - the intellectual property rights and confidential business information or trade secrets of a natural
-    or legal person, including source code
+    or legal person, including source code, except in the cases referred to in Article 5 of Directive
+    (EU) 2016/943
   - effective inspections, investigations and audits
   - public and national security
   - criminal and administrative proceedings
@@ -52,11 +50,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A078-P2-REQUEST-ONLY-NECESSARY-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A078-P007
   targets: []
   action: request only data strictly necessary for risk assessment and exercise of enacted powers
   norm_text: The authorities involved in the application of this Regulation pursuant to paragraph 1 shall
@@ -86,11 +87,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A078-P2-PROTECT-OBTAINED-DATA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A078-P007
   targets: []
   action: protect obtained information and data through adequate effective cybersecurity and delete collected
     data as soon as its acquisition purpose no longer requires it
@@ -123,12 +127,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A078-P008
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A078-P008
   targets: []
   action: disclose confidentially exchanged information only after prior consultation of the originating
     national competent authority and the deployer
@@ -147,11 +156,11 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement,
+    - text: when high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement,
         border control, immigration or asylum authorities
       basis_segment_ids:
       - AIA-TEXT-A078-P008
-    - text: the disclosure would jeopardise public and national security interests
+    - text: when such disclosure would jeopardise public and national security interests
       basis_segment_ids:
       - AIA-TEXT-A078-P008
   exceptions: null
@@ -171,12 +180,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A078-P008
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A078-P008
   targets: []
   action: exclude sensitive operational data on the activities of law enforcement, border control, immigration
     or asylum authorities from the exchange of information
@@ -206,11 +220,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A078-P009
   targets: []
   action: keep the Annex IV technical documentation within the premises of the authority
   norm_text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI
@@ -226,54 +243,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the law enforcement, immigration or asylum authority is the provider of a high-risk AI system
-        referred to in point 1, 6 or 7 of Annex III
-      basis_segment_ids:
-      - AIA-TEXT-A078-P009
-  exceptions: null
-  mandatory_content: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-RULE-PO-A78-3
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  actors:
-  - actor_ref: provider
-  targets: []
-  action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon request,
-    immediately access the documentation or obtain a copy of it
-  norm_text: Those authorities shall ensure that the market surveillance authorities referred to in Article
-    74(8) and (9), as applicable, can, upon request, immediately access the documentation or obtain a
-    copy thereof.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A078-P009
-  qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the law enforcement, immigration or asylum authority is the provider of a high-risk AI system
-        referred to in point 1, 6 or 7 of Annex III
-      basis_segment_ids:
-      - AIA-TEXT-A078-P009
-    - text: the market surveillance authority requests access or a copy
+    - text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI
+        systems referred to in point 1, 6 or 7 of Annex III
       basis_segment_ids:
       - AIA-TEXT-A078-P009
   exceptions: null
@@ -294,11 +265,63 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+- norm_id: AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A078-P009
+  targets: []
+  action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon request,
+    immediately access the documentation or obtain a copy of it
+  norm_text: Those authorities shall ensure that the market surveillance authorities referred to in Article
+    74(8) and (9), as applicable, can, upon request, immediately access the documentation or obtain a
+    copy thereof.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A078-P009
+  qualifier_spans: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI
+        systems referred to in point 1, 6 or 7 of Annex III
+      basis_segment_ids:
+      - AIA-TEXT-A078-P009
+    - text: upon request
+      basis_segment_ids:
+      - AIA-TEXT-A078-P009
+  exceptions: null
+  mandatory_content: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-PO-A78-3
+  implementation_reason: ''
+  verification_mode: reported_not_judged
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A078-P3-IMMEDIATE-ACCESS
 - norm_id: AIA-NORM-A078-P3-SECURITY-CLEARED-ACCESS-ONLY
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A078-P009
   targets: []
   action: allow only market surveillance authority staff holding the appropriate level of security clearance
     to access the documentation or any copy of it
@@ -328,12 +351,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A078-P4-PRESERVE-EXCHANGE-AND-CRIMINAL-LAW-DUTIES
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: persons_applying_article_78
+  - target_ref: Paragraphs 1, 2 and 3
+    basis_segment_ids:
+    - AIA-TEXT-A078-P010
   action: preserve information-exchange warning and Member State criminal-law disclosure rights and duties
     despite paragraphs 1 to 3
   norm_text: Paragraphs 1, 2 and 3 shall not affect the rights or obligations of the Commission, Member
@@ -367,12 +393,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A078-P5-EXCHANGE-WITH-THIRD-COUNTRY-REGULATORS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A078-P011
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A078-P011
   targets: []
   action: exchange necessary confidential information with third-country regulators under applicable agreements
     and adequate confidentiality arrangements
@@ -386,7 +417,12 @@ norms:
   primary_spans:
   - AIA-TEXT-A078-P011
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: where necessary
+      basis_segment_ids:
+      - AIA-TEXT-A078-P011
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -404,3 +440,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

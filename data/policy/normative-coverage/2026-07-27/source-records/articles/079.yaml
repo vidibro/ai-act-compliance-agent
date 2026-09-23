@@ -1,15 +1,56 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A079-P2-REQUIRE-CORRECTION
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  timing_conditions:
+  - within a period the market surveillance authority may prescribe, and in any event within the shorter
+    of 15 working days, or as provided for in the relevant Union harmonisation legislation
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P003
+- regime_id: AIA-TEMP-A079-P3-INFORM-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P005
+- regime_id: AIA-TEMP-A079-P5-NOTIFY-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P007
+- regime_id: AIA-TEMP-A079-P7-INFORM-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P013
+- regime_id: AIA-TEMP-A079-P9-RESTRICT-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P015
 records:
 - norm_id: AIA-NORM-A079-P1-RISK-DEFINITION
   source: A079-P001
-  quote: "AI systems presenting a risk shall be understood as a \u2018 product presenting a risk \u2019\
-    \ as defined in Article 3, point 19 of Regulation (EU) 2019/1020, in so far as they present risks\
-    \ to the health or safety, or to fundamental rights, of persons."
+  quote: AI systems presenting a risk shall be understood as a ‘ product presenting a risk ’ as defined
+    in Article 3, point 19 of Regulation (EU) 2019/1020, in so far as they present risks to the health
+    or safety, or to fundamental rights, of persons.
   action: treat an AI system risking health safety or fundamental rights as a Regulation 2019/1020 product
     presenting a risk
-  actors:
-  - actor_ref: market_surveillance_authority
-  targets: []
+  actors: none
+  targets:
+  - target_ref: AI systems presenting a risk
+    basis_segment_ids: [AIA-TEXT-A079-P001]
   kind: definition
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: The definition controls enforcement procedure without creating an independent
     operator action.
@@ -26,15 +67,19 @@ records:
     presents a risk
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Member-State market-surveillance authority has sufficient reason to consider an AI system to present
-    an Article 79(1) risk
+    operator: all_of
+    operands:
+    - text: Where the market surveillance authority of a Member State has sufficient reason to consider an AI system to present a risk as referred to in paragraph 1 of this Article
+      basis_segment_ids: [AIA-TEXT-A079-P002]
 - norm_id: AIA-NORM-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS
   source: A079-P002
   quote: Particular attention shall be given to AI systems presenting a risk to vulnerable groups. Where
@@ -44,7 +89,9 @@ records:
     are identified
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -58,9 +105,14 @@ records:
     Article 79 evaluation
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A079-P002]
   targets: []
   conditions:
-  - the market surveillance authority is carrying out an Article 79(2) evaluation of the AI system
+    operator: all_of
+    operands:
+    - text: Where the market surveillance authority of a Member State has sufficient reason to consider an AI system to present a risk as referred to in paragraph 1 of this Article
+      basis_segment_ids: [AIA-TEXT-A079-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-ALL-A79
   verification_mode: reported_not_judged
@@ -77,22 +129,28 @@ records:
   action: require correction withdrawal or recall without undue delay within the shorter enacted deadline
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-A079-P2-REQUIRE-CORRECTION
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Article 79 evaluation finds that the AI system does not comply with the Regulation's requirements
-    and obligations
+    operator: all_of
+    operands:
+    - text: Where, in the course of that evaluation, the market surveillance authority or, where applicable the market surveillance authority in cooperation with the national public authority referred to in Article 77(1), finds that the AI system does not comply with the requirements and obligations laid down in this Regulation
+      basis_segment_ids: [AIA-TEXT-A079-P003]
 - norm_id: AIA-NORM-A079-P2-INFORM-NOTIFIED-BODY
   source: A079-P004
   quote: The market surveillance authority shall inform the relevant notified body accordingly.
   action: inform the relevant notified body of required corrective measures
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -105,8 +163,10 @@ records:
   action: apply Regulation 2019/1020 Article 18 to paragraph 2 corrective measures
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P004]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,18 +177,23 @@ records:
   quote: Where the market surveillance authority considers that the non-compliance is not restricted to
     its national territory, it shall inform the Commission and the other Member States without undue delay
     of the results of the evaluation and of the actions which it has required the operator to take.
-  action: promptly inform the Commission and other Member States of cross-border evaluation results and
-    required actions
+  action: inform the Commission and other Member States without undue delay of cross-border evaluation
+    results and required actions
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-A079-P3-INFORM-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the market-surveillance authority considers the non-compliance is not restricted to its national territory
+    operator: all_of
+    operands:
+    - text: Where the market surveillance authority considers that the non-compliance is not restricted to its national territory
+      basis_segment_ids: [AIA-TEXT-A079-P005]
 - norm_id: AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
   source: A079-P006
   quote: The operator shall ensure that all appropriate corrective action is taken in respect of all the
@@ -137,25 +202,31 @@ records:
     market
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A079-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-ALL-A79
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES
   source: A079-P007
-  quote: "Where the operator of an AI system does not take adequate corrective action within the period\
-    \ referred to in paragraph 2, the market surveillance authority shall take all appropriate provisional\
-    \ measures to prohibit or restrict the AI system\u2019s being made available on its national market\
-    \ or put into service, to withdraw the product or the standalone AI system from that market or to\
-    \ recall it."
+  quote: Where the operator of an AI system does not take adequate corrective action within the period
+    referred to in paragraph 2, the market surveillance authority shall take all appropriate provisional
+    measures to prohibit or restrict the AI system’s being made available on its national market or put
+    into service, to withdraw the product or the standalone AI system from that market or to recall it.
   action: take all appropriate provisional measures to prohibit or restrict the system's being made available
     or put into service, to withdraw the product or standalone AI system, or to recall it
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P007]
   targets: []
   conditions:
-  - the operator does not take adequate corrective action within the period referred to in paragraph 2
+    operator: all_of
+    operands:
+    - text: Where the operator of an AI system does not take adequate corrective action within the period referred to in paragraph 2
+      basis_segment_ids: [AIA-TEXT-A079-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -168,7 +239,9 @@ records:
   action: notify the Commission and the other Member States of those measures without undue delay
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P007]
   targets: []
+  temporal_regime_id: AIA-TEMP-A079-P5-NOTIFY-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -176,11 +249,17 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   source: A079-P008
-  quote: The notification referred to in paragraph 5 shall include all available details
+  quote: 'The notification referred to in paragraph 5 shall include all available details, in particular
+    the information necessary for the identification of the non-compliant AI system, the origin of the
+    AI system and the supply chain, the nature of the non-compliance alleged and the risk involved, the
+    nature and duration of the national measures taken and the arguments put forward by the relevant operator.
+    In particular, the market surveillance authorities shall indicate whether the non-compliance is due
+    to one or more of the following:'
   action: include identification supply-chain risk measure operator-argument and non-compliance-ground
     details in the paragraph 5 notification
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P008]
   targets: []
   mandatory_content:
   - the information necessary for the identification of the non-compliant AI system
@@ -200,6 +279,7 @@ records:
   - A079-P010
   - A079-P011
   - A079-P012
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -212,11 +292,13 @@ records:
     States of any measures adopted and of any additional information at their disposal relating to the
     non-compliance of the AI system concerned, and, in the event of disagreement with the notified national
     measure, of their objections.
-  action: promptly report adopted measures additional information and any objection to the notified national
-    measure
+  action: report adopted measures, additional information and any objection to the notified national
+    measure without undue delay
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-A079-P7-INFORM-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -233,16 +315,20 @@ records:
     prohibition
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P014]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This procedural consequence creates no independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
   conditions:
-  - no Member-State market-surveillance authority or the Commission objects within the applicable objection
-    period after receipt of the paragraph 5 notification
+    operator: all_of
+    operands:
+    - text: Where, within three months of receipt of the notification referred to in paragraph 5 of this Article, no objection has been raised by either a market surveillance authority of a Member State or by the Commission in respect of a provisional measure taken by a market surveillance authority of another Member State
+      basis_segment_ids: [AIA-TEXT-A079-P014]
 - norm_id: AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
   source: A079-P014
   quote: This shall be without prejudice to the procedural rights of the concerned operator in accordance
@@ -250,8 +336,10 @@ records:
   action: preserve the concerned operator's procedural rights under Article 18 of Regulation (EU) 2019/1020
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P014]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This procedural consequence creates no independent product action.
   implementation_mode: none_required
@@ -265,8 +353,15 @@ records:
     of the AI practices referred to in Article 5
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P014]
   targets: []
   kind: legal_consequence
+  conditions:
+    operator: all_of
+    operands:
+    - text: in the event of non-compliance with the prohibition of the AI practices referred to in Article 5 of this Regulation
+      basis_segment_ids: [AIA-TEXT-A079-P014]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: no_product_action
   product_scope_reason: This procedural consequence creates no independent product action.
   implementation_mode: none_required
@@ -280,7 +375,9 @@ records:
   action: ensure appropriate restrictive measures including market withdrawal without undue delay
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A079-P015]
   targets: []
+  temporal_regime_id: AIA-TEMP-A079-P9-RESTRICT-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

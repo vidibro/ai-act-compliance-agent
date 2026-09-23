@@ -1,0 +1,63 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '78'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 12
+  norms_scanned: 10
+  finding_count: 3
+  audit_sha256: 39d7e95512e15994f6f351121038cb6ec2163534c43d2f4364a1590dab831cca
+decisions:
+- finding_id: AIA-VALID-497D0BE5E84D4E31
+  target: AIA-NORM-A078-P2-PROTECT-OBTAINED-DATA:actor:public_authority:AIA-TEXT-A078-P007
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A078-P007
+  source_sha256: dabf03a4e69f077154b0409ec300e95a769fa6c2cb113153d4dba2838662157a
+  target_sha256: 8c7fb0eeabfde6b4853999e46f6df19763a0bb93759d99316ee8c6d62398e1a8
+  decision: accepted_with_basis
+  reason: Paragraph 2 binds "the authorities involved in the application of this Regulation", the Commission,
+    market surveillance authorities and the other authorities paragraph 1 names. No single role covers
+    them, so the public-authority role records the group and no span can name it. The second sentence
+    refers back to them as "They".
+  legal_basis:
+  - &id001
+    span_id: AIA-TEXT-A078-P007
+    source_sha256: dabf03a4e69f077154b0409ec300e95a769fa6c2cb113153d4dba2838662157a
+    quote: The authorities involved in the application of this Regulation pursuant to paragraph 1 shall
+      request only data that is strictly necessary
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B8E5B4DC40B36A48
+  target: AIA-NORM-A078-P2-REQUEST-ONLY-NECESSARY-DATA:actor:public_authority:AIA-TEXT-A078-P007
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A078-P007
+  source_sha256: dabf03a4e69f077154b0409ec300e95a769fa6c2cb113153d4dba2838662157a
+  target_sha256: cbae0a8454fa633ab1dbe8d9ed1fc3f595dde809d8e3e70825f8a9bde0896564
+  decision: accepted_with_basis
+  reason: Paragraph 2 binds "the authorities involved in the application of this Regulation", the Commission,
+    market surveillance authorities and the other authorities paragraph 1 names. No single role covers
+    them, so the public-authority role records the group and no span can name it.
+  legal_basis:
+  - *id001
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-5E0C6B8C92001480
+  target: AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A078-P008
+  source_sha256: e6b78004bec69a1aee62dfaafb76a50d8d85a414a9b97b75e388d08d08b78e3b
+  target_sha256: 911bf5e4e9bfb06780f7ef6bb89b338663c4573a76faff7e390ade686ab041a6
+  decision: false_positive
+  reason: '"Without prejudice to paragraphs 1 and 2" keeps the general confidentiality and data-minimisation
+    duties applying alongside this disclosure bar. It takes no case out of the bar, so there is no exception
+    branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A078-P008
+    source_sha256: e6b78004bec69a1aee62dfaafb76a50d8d85a414a9b97b75e388d08d08b78e3b
+    quote: Without prejudice to paragraphs 1 and 2
+  reviewed_by: vidibro

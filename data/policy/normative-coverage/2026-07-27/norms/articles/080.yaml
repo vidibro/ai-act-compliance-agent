@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A080-P001
   targets: []
   action: evaluate a reasonably suspected non-high-risk classification under Article 6(3) and Commission
     guidelines
@@ -22,8 +24,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the authority has sufficient reason to consider that a system classified by its provider as
-        non-high-risk under Article 6(3) is actually high-risk
+    - text: Where a market surveillance authority has sufficient reason to consider that an AI system
+        classified by the provider as non-high-risk pursuant to Article 6(3) is indeed high-risk
       basis_segment_ids:
       - AIA-TEXT-A080-P001
   exceptions: null
@@ -43,11 +45,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A080-P2-REQUIRE-COMPLIANCE-AND-CORRECTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A080-P002
   targets: []
   action: require necessary compliance and corrective action without undue delay within a prescribed period
   norm_text: Where, in the course of that evaluation, the market surveillance authority finds that the
@@ -65,7 +70,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Article 80 evaluation finds that the AI system is high-risk
+    - text: Where, in the course of that evaluation, the market surveillance authority finds that the
+        AI system concerned is high-risk
       basis_segment_ids:
       - AIA-TEXT-A080-P002
   exceptions: null
@@ -85,14 +91,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A080-P2-REQUIRE-COMPLIANCE
 - norm_id: AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A080-P003
   targets: []
-  action: promptly inform the Commission and other Member States of cross-border evaluation results and
-    required provider action
+  action: inform the Commission and other Member States without undue delay of cross-border evaluation
+    results and required provider action
   norm_text: Where the market surveillance authority considers that the use of the AI system concerned
     is not restricted to its national territory, it shall inform the Commission and the other Member States
     without undue delay of the results of the evaluation and of the actions which it has required the
@@ -106,8 +115,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market-surveillance authority considers that use of the AI system is not restricted to
-        its national territory
+    - text: Where the market surveillance authority considers that the use of the AI system concerned
+        is not restricted to its national territory
       basis_segment_ids:
       - AIA-TEXT-A080-P003
   exceptions: null
@@ -127,11 +136,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A080-P3-INFORM-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A080-P4-BRING-SYSTEM-INTO-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A080-P004
   targets: []
   action: bring an authority-reclassified high-risk system into compliance with all applicable requirements
     and obligations
@@ -151,7 +163,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-RULE-PO-A20
+  - AIA-RULE-NHR-A80
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -163,11 +175,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A080-P4-NONCOMPLIANCE-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A080-P004
   targets: []
   action: incur Article 99 fines for failure to comply within the prescribed period
   norm_text: Where the provider of an AI system concerned does not bring the AI system into compliance
@@ -183,7 +198,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider does not bring the AI system into compliance within the Article 80(2) period
+    - text: Where the provider of an AI system concerned does not bring the AI system into compliance
+        with those requirements and obligations within the period referred to in paragraph 2 of this Article
       basis_segment_ids:
       - AIA-TEXT-A080-P004
   exceptions: null
@@ -204,11 +220,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A080-P005
   targets: []
   action: ensure appropriate corrective action across all concerned systems made available on the Union
     market
@@ -228,7 +247,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-RULE-PO-A20
+  - AIA-RULE-NHR-A80
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -240,11 +259,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A080-P6-APPLY-ARTICLE-79-ESCALATION
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A080-P002
   targets: []
   action: apply Article 79(5) to (9) escalation after inadequate provider correction
   norm_text: Article 79(5) to (9) shall apply.
@@ -255,7 +277,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A080-P006
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where the provider of the AI system concerned does not take adequate corrective action within
+        the period referred to in paragraph 2 of this Article
+      basis_segment_ids:
+      - AIA-TEXT-A080-P006
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -273,11 +301,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A080-P7-CIRCUMVENTION-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A080-P007
   targets: []
   action: incur Article 99 fines for intentional non-high-risk misclassification used to circumvent Chapter
     III Section 2
@@ -295,8 +326,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Article 80(1) evaluation establishes intentional non-high-risk misclassification to circumvent
-        Chapter III Section 2 requirements
+    - text: Where, in the course of the evaluation pursuant to paragraph 1 of this Article, the market
+        surveillance authority establishes that the AI system was misclassified by the provider as non-high-risk
+        in order to circumvent the application of requirements in Chapter III, Section 2
       basis_segment_ids:
       - AIA-TEXT-A080-P007
   exceptions: null
@@ -317,11 +349,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A080-P8-PERFORM-MONITORING-CHECKS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A080-P008
   targets: []
   action: perform appropriate classification checks with particular account taken of EU database information
   norm_text: In exercising their power to monitor the application of this Article, and in accordance with
@@ -352,3 +387,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

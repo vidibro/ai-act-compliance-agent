@@ -3,9 +3,11 @@ norms:
 - norm_id: AIA-NORM-A079-P1-RISK-DEFINITION
   act_version_date: '2026-07-27'
   kind: definition
-  actors:
-  - actor_ref: market_surveillance_authority
-  targets: []
+  actors: none
+  targets:
+  - target_ref: AI systems presenting a risk
+    basis_segment_ids:
+    - AIA-TEXT-A079-P001
   action: treat an AI system risking health safety or fundamental rights as a Regulation 2019/1020 product
     presenting a risk
   norm_text: "AI systems presenting a risk shall be understood as a \u2018 product presenting a risk \u2019\
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P2-EVALUATE-RISK-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P002
   targets: []
   action: evaluate all enacted requirements and obligations when sufficient reason indicates an AI system
     presents a risk
@@ -57,8 +62,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Member-State market-surveillance authority has sufficient reason to consider an AI system
-        to present an Article 79(1) risk
+    - text: Where the market surveillance authority of a Member State has sufficient reason to consider
+        an AI system to present a risk as referred to in paragraph 1 of this Article
       basis_segment_ids:
       - AIA-TEXT-A079-P002
   exceptions: null
@@ -78,11 +83,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P002
   targets: []
   action: prioritise vulnerable-group risks and cooperate with fundamental-rights bodies when such risks
     are identified
@@ -114,11 +122,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P2-OPERATOR-COOPERATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A079-P002
   targets: []
   action: cooperate as necessary with market surveillance and fundamental-rights authorities during an
     Article 79 evaluation
@@ -134,7 +145,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market surveillance authority is carrying out an Article 79(2) evaluation of the AI system
+    - text: Where the market surveillance authority of a Member State has sufficient reason to consider
+        an AI system to present a risk as referred to in paragraph 1 of this Article
       basis_segment_ids:
       - AIA-TEXT-A079-P002
   exceptions: null
@@ -155,11 +167,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P2-REQUIRE-CORRECTIVE-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P003
   targets: []
   action: require correction withdrawal or recall without undue delay within the shorter enacted deadline
   norm_text: Where, in the course of that evaluation, the market surveillance authority or, where applicable
@@ -179,8 +194,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Article 79 evaluation finds that the AI system does not comply with the Regulation's requirements
-        and obligations
+    - text: Where, in the course of that evaluation, the market surveillance authority or, where applicable
+        the market surveillance authority in cooperation with the national public authority referred to
+        in Article 77(1), finds that the AI system does not comply with the requirements and obligations
+        laid down in this Regulation
       basis_segment_ids:
       - AIA-TEXT-A079-P003
   exceptions: null
@@ -200,11 +217,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A079-P2-REQUIRE-CORRECTION
 - norm_id: AIA-NORM-A079-P2-INFORM-NOTIFIED-BODY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P004
   targets: []
   action: inform the relevant notified body of required corrective measures
   norm_text: The market surveillance authority shall inform the relevant notified body accordingly.
@@ -232,11 +252,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P2-APPLY-ARTICLE-18
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P004
   targets: []
   action: apply Regulation 2019/1020 Article 18 to paragraph 2 corrective measures
   norm_text: Article 18 of Regulation (EU) 2019/1020 shall apply to the measures referred to in the second
@@ -266,14 +289,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P3-INFORM-CROSS-BORDER-NONCOMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P005
   targets: []
-  action: promptly inform the Commission and other Member States of cross-border evaluation results and
-    required actions
+  action: inform the Commission and other Member States without undue delay of cross-border evaluation
+    results and required actions
   norm_text: Where the market surveillance authority considers that the non-compliance is not restricted
     to its national territory, it shall inform the Commission and the other Member States without undue
     delay of the results of the evaluation and of the actions which it has required the operator to take.
@@ -286,8 +312,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market-surveillance authority considers the non-compliance is not restricted to its national
-        territory
+    - text: Where the market surveillance authority considers that the non-compliance is not restricted
+        to its national territory
       basis_segment_ids:
       - AIA-TEXT-A079-P005
   exceptions: null
@@ -307,11 +333,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A079-P3-INFORM-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A079-P006
   targets: []
   action: ensure appropriate corrective action across all concerned systems made available on the Union
     market
@@ -343,11 +372,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P007
   targets: []
   action: take all appropriate provisional measures to prohibit or restrict the system's being made available
     or put into service, to withdraw the product or standalone AI system, or to recall it
@@ -365,8 +397,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the operator does not take adequate corrective action within the period referred to in paragraph
-        2
+    - text: Where the operator of an AI system does not take adequate corrective action within the period
+        referred to in paragraph 2
       basis_segment_ids:
       - AIA-TEXT-A079-P007
   exceptions: null
@@ -386,11 +418,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P007
   targets: []
   action: notify the Commission and the other Member States of those measures without undue delay
   norm_text: That authority shall without undue delay notify the Commission and the other Member States
@@ -419,15 +454,23 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A079-P5-NOTIFY-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P008
   targets: []
   action: include identification supply-chain risk measure operator-argument and non-compliance-ground
     details in the paragraph 5 notification
-  norm_text: The notification referred to in paragraph 5 shall include all available details
+  norm_text: 'The notification referred to in paragraph 5 shall include all available details, in particular
+    the information necessary for the identification of the non-compliant AI system, the origin of the
+    AI system and the supply chain, the nature of the non-compliance alleged and the risk involved, the
+    nature and duration of the national measures taken and the arguments put forward by the relevant operator.
+    In particular, the market surveillance authorities shall indicate whether the non-compliance is due
+    to one or more of the following:'
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -469,14 +512,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P7-OTHER-AUTHORITY-NOTIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P013
   targets: []
-  action: promptly report adopted measures additional information and any objection to the notified national
-    measure
+  action: report adopted measures, additional information and any objection to the notified national measure
+    without undue delay
   norm_text: The market surveillance authorities other than the market surveillance authority of the Member
     State initiating the procedure shall, without undue delay, inform the Commission and the other Member
     States of any measures adopted and of any additional information at their disposal relating to the
@@ -506,11 +552,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A079-P7-INFORM-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A079-P8-DEEM-MEASURE-JUSTIFIED
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P014
   targets: []
   action: deem the provisional measure justified when no objection is raised within three months of receipt
     of the paragraph 5 notification, or within 30 days where the non-compliance concerns the Article 5
@@ -529,8 +578,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: no Member-State market-surveillance authority or the Commission objects within the applicable
-        objection period after receipt of the paragraph 5 notification
+    - text: Where, within three months of receipt of the notification referred to in paragraph 5 of this
+        Article, no objection has been raised by either a market surveillance authority of a Member State
+        or by the Commission in respect of a provisional measure taken by a market surveillance authority
+        of another Member State
       basis_segment_ids:
       - AIA-TEXT-A079-P014
   exceptions: null
@@ -550,11 +601,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P014
   targets: []
   action: preserve the concerned operator's procedural rights under Article 18 of Regulation (EU) 2019/1020
   norm_text: This shall be without prejudice to the procedural rights of the concerned operator in accordance
@@ -584,11 +638,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P8-SHORTENED-ARTICLE-5-PERIOD
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P014
   targets: []
   action: reduce the three-month objection period to 30 days where the non-compliance concerns the prohibition
     of the AI practices referred to in Article 5
@@ -601,7 +658,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A079-P014
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: in the event of non-compliance with the prohibition of the AI practices referred to in Article
+        5 of this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A079-P014
   exceptions: null
   mandatory_content: []
   product_scope: no_product_action
@@ -619,11 +682,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A079-P9-TAKE-RESTRICTIVE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A079-P015
   targets: []
   action: ensure appropriate restrictive measures including market withdrawal without undue delay
   norm_text: The market surveillance authorities shall ensure that appropriate restrictive measures are
@@ -653,3 +719,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A079-P9-RESTRICT-WITHOUT-UNDUE-DELAY

@@ -4593,6 +4593,89 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A077-P004
+- regime_id: AIA-TEMP-A078-P3-IMMEDIATE-ACCESS
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: upon request
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A078-P009
+- regime_id: AIA-TEMP-A079-P2-REQUIRE-CORRECTION
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions:
+  - within a period the market surveillance authority may prescribe, and in any event within the shorter
+    of 15 working days, or as provided for in the relevant Union harmonisation legislation
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P003
+- regime_id: AIA-TEMP-A079-P3-INFORM-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P005
+- regime_id: AIA-TEMP-A079-P5-NOTIFY-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P007
+- regime_id: AIA-TEMP-A079-P7-INFORM-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P013
+- regime_id: AIA-TEMP-A079-P9-RESTRICT-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A079-P015
+- regime_id: AIA-TEMP-A080-P2-REQUIRE-COMPLIANCE
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions:
+  - within a period the market surveillance authority may prescribe
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A080-P002
+- regime_id: AIA-TEMP-A080-P3-INFORM-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A080-P003
 - regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
   application_start: null
   application_end: null

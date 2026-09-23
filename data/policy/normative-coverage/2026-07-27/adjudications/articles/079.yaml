@@ -1,0 +1,52 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '79'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 16
+  norms_scanned: 17
+  finding_count: 2
+  audit_sha256: f30254260d485c41d5224c600e0a3a33e48a7d77d21565006f0102e222e72189
+decisions:
+- finding_id: AIA-VALID-29C647A9430AB109
+  target: AIA-NORM-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A079-P002
+  source_sha256: 735e35ef4bcb2d3e62a949d996914516b2b21d1ba87cda487edff86626ef10ac
+  target_sha256: a3295fb963a48562d66a2901f52b8362cd63833b43c3286b8826415484b2d112
+  decision: accepted_with_basis
+  reason: '"Where risks to fundamental rights are identified" limits the second sentence only, the duty
+    to inform and cooperate with the Article 77(1) bodies. Particular attention to systems presenting
+    a risk to vulnerable groups is always owed. A condition on the whole norm would make that optional
+    too.'
+  legal_basis:
+  - span_id: AIA-TEXT-A079-P002
+    source_sha256: 735e35ef4bcb2d3e62a949d996914516b2b21d1ba87cda487edff86626ef10ac
+    quote: Particular attention shall be given to AI systems presenting a risk to vulnerable groups. Where
+      risks to fundamental rights are identified, the market surveillance authority shall also inform
+      and fully cooperate with the relevant national public authorities or bodies referred to in Article
+      77(1).
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-66CFE09CC08DCAEF
+  target: AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A079-P014
+  source_sha256: c5c572ad29cfa139433f356ab75258b9be995e866ef09bc7b6bdd5a8e2bff945
+  target_sha256: f3a36dc1ecde650db72c3d4a2693f214417f379b9f11361b98e5a624186fecf2
+  decision: false_positive
+  reason: The sentence is a saving clause and its whole legal effect. "Without prejudice" keeps the operator's
+    Article 18 procedural rights applying alongside the deemed justification. It takes no case out of
+    anything, so there is no exception branch to state.
+  legal_basis:
+  - span_id: AIA-TEXT-A079-P014
+    source_sha256: c5c572ad29cfa139433f356ab75258b9be995e866ef09bc7b6bdd5a8e2bff945
+    quote: This shall be without prejudice to the procedural rights of the concerned operator in accordance
+      with Article 18 of Regulation (EU) 2019/1020
+  reviewed_by: vidibro

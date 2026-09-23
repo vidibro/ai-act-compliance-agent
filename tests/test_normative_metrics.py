@@ -2207,8 +2207,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2137,
-        "proposed": 802,
+        "approved": 2138,
+        "proposed": 801,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2940
@@ -4390,17 +4390,19 @@ def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():
     assert provider.implementation_refs == access.implementation_refs == ["AIA-RULE-PO-A78-3"]
     assert not provider.mandatory_content
     # Only the access duty is request-triggered, and the clearance limit binds the authority.
-    assert len(provider.conditions) == 1
-    assert access.conditions[-1] == "the market surveillance authority requests access or a copy"
+    assert len(provider.conditions.operands) == 1
+    assert access.conditions.operands[-1].text == "upon request"
     assert clearance.actors[0].actor_ref == "market_surveillance_authority"
     assert clearance.kind.value == "prohibition"
 
-    # The Article 5 trade-secret exception is scoped to point (a) and recorded as a dependency.
+    # The Article 5 trade-secret exception stays with point (a) and is recorded as a dependency;
+    # as a whole-norm exception it would lift the entire confidentiality duty.
     confidentiality = norms["AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY"]
     assert len(confidentiality.mandatory_content) == 5
-    assert confidentiality.exceptions == [
-        "point (a) only, the cases referred to in Article 5 of Directive (EU) 2016/943"
-    ]
+    assert confidentiality.exceptions is None
+    assert confidentiality.mandatory_content[0].endswith(
+        "except in the cases referred to in Article 5 of Directive (EU) 2016/943"
+    )
     assert bundle.norm_inventory.external_requirements_for(confidentiality.norm_id) == [
         "Article 5 of Directive (EU) 2016/943"
     ]
@@ -4408,7 +4410,7 @@ def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():
     # Consultation before disclosure does not override the separate sensitive-data exclusion.
     disclosure = norms["AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE"]
     sensitive = norms["AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA"]
-    assert len(disclosure.conditions) == 2
+    assert len(disclosure.conditions.operands) == 2
     assert sensitive.kind.value == "prohibition"
     assert not sensitive.conditions
     assert_extraction_never_approves(norms.values())
@@ -4429,9 +4431,9 @@ def test_article_seventy_nine_maps_operator_enforcement_duties():
     # Taking provisional measures and notifying them are separate actions.
     measures = norms["AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES"]
     notify = norms["AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES"]
-    assert measures.conditions == [
-        "the operator does not take adequate corrective action within the period referred to in "
-        "paragraph 2"
+    assert [operand.text for operand in measures.conditions.operands] == [
+        "Where the operator of an AI system does not take adequate corrective action within the "
+        "period referred to in paragraph 2"
     ]
     assert "without undue delay" in notify.action
     assert "without undue delay" not in measures.action
@@ -4464,7 +4466,9 @@ def test_article_eighty_maps_reclassified_provider_correction():
     }
 
     assert len(norms) == 9
-    mapped = [norm for norm in norms.values() if norm.implementation_refs == ["AIA-RULE-PO-A20"]]
+    # Reclassification binds a provider whose own classification was not high-risk, so the
+    # duties sit under a not-high-risk rule rather than Article 20.
+    mapped = [norm for norm in norms.values() if norm.implementation_refs == ["AIA-RULE-NHR-A80"]]
     assert len(mapped) == 2
     assert sum(norm.kind.value == "legal_consequence" for norm in norms.values()) == 2
 
