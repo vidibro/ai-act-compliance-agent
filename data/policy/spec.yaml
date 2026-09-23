@@ -4431,10 +4431,14 @@ rules:
       An authorised representative established in the Union, appointed BY WRITTEN MANDATE and
       appointed PRIOR TO placing the model on the Union market — an appointment made afterwards
       does not cure the breach. The Chapter V twin of Art. 22(1), and mis-attributable the same
-      way: the duty is the PROVIDER'S, not the representative's. An appointment recorded in a
+      way: the duty is the PROVIDER'S, not the representative's. The mandate must also empower the
+      representative to carry out the four Art. 54(3)(a) to (d) tasks. An appointment recorded in a
       contract, not in a model card — confirm separately.
     document_verifiable: false
     effective_date: 2025-08-02
+    criteria:
+      - norm_id: AIA-NORM-A054-P1-APPOINT-REPRESENTATIVE
+      - norm_id: AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
     status: active
 
   - rule_id: AIA-RULE-GP-A54-2
@@ -4489,6 +4493,13 @@ rules:
       not by any document under review — confirm separately.
     document_verifiable: false
     effective_date: 2025-08-02
+    criteria:
+      - norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
+      - norm_id: AIA-NORM-A054-P3-PROVIDE-MANDATE
+      - norm_id: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
+      - norm_id: AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
+      - norm_id: AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
+      - norm_id: AIA-NORM-A054-P3-D-COOPERATE
     status: active
 
   - rule_id: AIA-RULE-GP-A54-4
@@ -4542,6 +4553,9 @@ rules:
       representative — confirm separately.
     document_verifiable: false
     effective_date: 2025-08-02
+    criteria:
+      - norm_id: AIA-NORM-A054-P5-TERMINATE-MANDATE
+      - norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
     status: active
 
   # ART. 55 IS FOUR DUTIES ON TOP OF ARTS. 53 AND 54, and the paragraph says so in terms — "in

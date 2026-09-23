@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A055-P001
   targets: []
   action: evaluate the model using standardised state-of-the-art protocols and tools, including conducting
     and documenting adversarial testing to identify and mitigate systemic risks
@@ -40,11 +42,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A055-P001
   targets: []
   action: assess and mitigate possible Union-level systemic risks and their sources across development,
     market placement, and use
@@ -79,11 +84,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A055-P001
   targets: []
   action: keep track of and document relevant serious-incident information and possible corrective measures,
     and report them without undue delay to the AI Office and, as appropriate, national competent authorities
@@ -119,11 +127,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A055-P1-C-REPORT-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A055-P001
   targets: []
   action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model and
     its physical infrastructure
@@ -156,11 +167,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A055-P2-RELY-ON-CODES
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A055-P006
   targets: []
   action: rely on Article 56 codes to demonstrate Article 55(1) compliance until a harmonised standard
     is published
@@ -170,7 +184,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
-  - existing_implementation
   primary_spans:
   - AIA-TEXT-A055-P006
   qualifier_spans: []
@@ -179,11 +192,10 @@ norms:
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Provides an optional compliance route rather than an additional product action.
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-RULE-GP-A55-2
-  implementation_reason: ''
-  verification_mode: reported_not_judged
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action is required.
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -193,11 +205,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A055-P006
   targets: []
   action: presume conformity to the extent European harmonised standards cover Article 55 obligations
   norm_text: Compliance with European harmonised standards grants providers the presumption of conformity
@@ -205,7 +220,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - existing_implementation
   primary_spans:
   - AIA-TEXT-A055-P006
   qualifier_spans: []
@@ -214,11 +228,10 @@ norms:
   mandatory_content: []
   product_scope: no_product_action
   product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-RULE-GP-A55-2
-  implementation_reason: ''
-  verification_mode: reported_not_judged
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action is required.
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -228,11 +241,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A055-P2-ALTERNATIVE-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A055-P006
   targets: []
   action: demonstrate alternative adequate means of compliance for Commission assessment
   norm_text: Providers of general-purpose AI models with systemic risks who do not adhere to an approved
@@ -248,7 +264,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider neither adheres to an approved code nor complies with a covering harmonised standard
+    - text: who do not adhere to an approved code of practice or do not comply with a European harmonised
+        standard
       basis_segment_ids:
       - AIA-TEXT-A055-P006
   exceptions: null
@@ -269,11 +286,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A055-P3-CONFIDENTIAL-TREATMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A055-P004
   targets: []
   action: treat Article 55 information and documentation, including trade secrets, under Article 78 confidentiality
     duties
@@ -303,3 +323,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V

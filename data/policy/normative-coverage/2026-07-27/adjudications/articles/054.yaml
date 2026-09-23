@@ -1,0 +1,34 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '54'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 11
+  norms_scanned: 13
+  finding_count: 1
+  audit_sha256: 3d7dc6ec30bdc92b1d04e4754d7b342bd6133fb03ce8eb94c24e37503af14bd3
+decisions:
+- finding_id: AIA-VALID-9C9FC40419D15E4D
+  target: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A054-P004
+  source_sha256: 0bc8cde3bc7ec5fedd81e9a56425d395f68c48962035c9fa09ce6f10a2ad21d4
+  target_sha256: 0edb40b650b5dc3e938a8754b4feb367b96ed8cbd47730daeb3c36c24e8ab885
+  decision: false_positive
+  reason: '"Where applicable" narrows which obligations the representative verifies, not whether it must
+    verify: Article 55 binds only providers of models with systemic risk, so its obligations are verified
+    only for those models. The verification duty itself holds for every mandate, and the action keeps
+    the qualifier on Article 55, so there is no condition on the norm to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A054-P004
+    source_sha256: 0bc8cde3bc7ec5fedd81e9a56425d395f68c48962035c9fa09ce6f10a2ad21d4
+    quote: verify that the technical documentation specified in Annex XI has been drawn up and all obligations
+      referred to in Article 53 and, where applicable, Article 55 have been fulfilled by the provider
+  reviewed_by: vidibro

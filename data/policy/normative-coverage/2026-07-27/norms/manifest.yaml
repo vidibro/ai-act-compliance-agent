@@ -3798,6 +3798,21 @@ relations:
   - AIA-TEXT-A022-P003
   detail: The provider's mandate must give the representative powers matching each enumerated Article
     22(3) task.
+- relation_id: AIA-REL-A054-P3-MANDATE-EMPOWER-TASKS-RELIES-ON-NORMS
+  source_norm_id: AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
+  kind: relies_on_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
+  - AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
+  - AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
+  - AIA-NORM-A054-P3-D-COOPERATE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A054-P003
+  detail: The provider's mandate must give the representative powers matching each enumerated Article
+    54(3) task.
 - relation_id: AIA-REL-A075-P3-SUPPLY-INFORMATION-PARALLEL-DEADLINES
   source_norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
   kind: parallel_norms
@@ -4275,6 +4290,35 @@ temporal_regimes:
   legal_basis_spans:
   - AIA-TEXT-A113-B
   - AIA-TEXT-A052-P001
+- regime_id: AIA-TEMP-A054-P3-B-TEN-YEAR-RETENTION
+  application_start: '2025-08-02'
+  application_end: null
+  timing_conditions:
+  - for a period of 10 years after the general-purpose AI model has been placed on the market
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A054-P005
+- regime_id: AIA-TEMP-A054-P5-NOTIFY-IMMEDIATELY
+  application_start: '2025-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: if it considers or has reason to consider the provider to be acting contrary to its obligations
+      pursuant to this Regulation
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A054-P009
+- regime_id: AIA-TEMP-A055-P1-C-REPORT-WITHOUT-UNDUE-DELAY
+  application_start: '2025-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A055-P004
 - regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
   application_start: null
   application_end: null

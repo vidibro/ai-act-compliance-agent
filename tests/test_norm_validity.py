@@ -755,10 +755,17 @@ def test_legal_basis_must_be_an_exact_source_quote(tmp_path):
         enforce_validity_adjudications(bundle, path)
 
 
+def _article_outside_scope(manifest: dict) -> str:
+    """Read off the ledger so the enforced scope can grow without editing these tests."""
+    enforced = {scope["document"] for scope in manifest["enforced_scope"]}
+    return next(str(number) for number in range(1, 114) if str(number) not in enforced)
+
+
 def test_manifest_rejects_an_undeclared_shard(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
     write_ledger(root, manifest, shard)
-    (root / "articles" / "054.yaml").write_text(
+    outside = _article_outside_scope(manifest)
+    (root / "articles" / f"{int(outside):03d}.yaml").write_text(
         yaml.safe_dump(shard, sort_keys=False), encoding="utf-8"
     )
 
@@ -777,11 +784,13 @@ def test_manifest_rejects_a_shard_with_the_wrong_declared_source(tmp_path):
 
 def test_manifest_rejects_a_finding_duplicated_across_shards(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
-    manifest["enforced_scope"].append({"kind": "article", "document": "54"})
-    manifest["shards"].append({"kind": "article", "document": "54", "file": "articles/054.yaml"})
+    outside = _article_outside_scope(manifest)
+    file = f"articles/{int(outside):03d}.yaml"
+    manifest["enforced_scope"].append({"kind": "article", "document": outside})
+    manifest["shards"].append({"kind": "article", "document": outside, "file": file})
     write_ledger(root, manifest, shard)
-    duplicate = {**shard, "source": {"kind": "article", "document": "54"}}
-    (root / "articles" / "054.yaml").write_text(
+    duplicate = {**shard, "source": {"kind": "article", "document": outside}}
+    (root / file).write_text(
         yaml.safe_dump(duplicate, sort_keys=False), encoding="utf-8"
     )
 

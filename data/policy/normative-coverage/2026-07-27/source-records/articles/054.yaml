@@ -1,3 +1,20 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A054-P3-B-TEN-YEAR-RETENTION
+  application_start: 2025-08-02
+  timing_conditions:
+  - for a period of 10 years after the general-purpose AI model has been placed on the market
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A054-P005
+- regime_id: AIA-TEMP-A054-P5-NOTIFY-IMMEDIATELY
+  application_start: 2025-08-02
+  qualitative_deadline:
+    kind: immediately
+    trigger: if it considers or has reason to consider the provider to be acting contrary to its obligations
+      pursuant to this Regulation
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
+  - AIA-TEXT-A054-P009
 records:
 - norm_id: AIA-NORM-A054-P1-APPOINT-REPRESENTATIVE
   source: A054-P001
@@ -8,9 +25,16 @@ records:
     model on the Union market
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A054-P010]
   targets: []
   conditions:
-  - the provider is established in a third country
+    operator: all_of
+    operands:
+    - text: Prior to placing a general-purpose AI model on the Union market
+      basis_segment_ids: [AIA-TEXT-A054-P001]
+    - text: providers established in third countries
+      basis_segment_ids: [AIA-TEXT-A054-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GP-A54-1
   verification_mode: reported_not_judged
@@ -22,7 +46,9 @@ records:
   action: enable the authorised representative to perform every task specified in its mandate
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A054-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GP-A54-2
   verification_mode: reported_not_judged
@@ -34,7 +60,9 @@ records:
   action: perform every task specified in the provider's mandate
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
@@ -46,12 +74,43 @@ records:
   action: provide the AI Office a mandate copy in an official Union-institution language on request
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P003]
   targets: []
   conditions:
-  - the AI Office requests a copy of the mandate
+    operator: all_of
+    operands:
+    - text: upon request
+      basis_segment_ids: [AIA-TEXT-A054-P003]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
+- norm_id: AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
+  source: A054-P003
+  quote: 'For the purposes of this Regulation, the mandate shall empower the authorised representative
+    to carry out the following tasks:'
+  action: ensure the written mandate empowers the authorised representative to carry out every Article
+    54(3)(a) to (d) task
+  actors:
+  - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A054-P010]
+  targets: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: For the purposes of this Regulation
+      basis_segment_ids: [AIA-TEXT-A054-P003]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
+  implementation_refs:
+  - AIA-RULE-GP-A54-1
+  verification_mode: reported_not_judged
+  mandatory_content:
+  - authority to verify the Annex XI documentation and the provider's fulfilment of Article 53 and, where
+    applicable, Article 55
+  - authority to keep the Annex XI documentation and the provider's contact details available for 10 years
+  - authority to provide the AI Office with compliance information on reasoned request
+  - authority to cooperate with the AI Office and competent authorities on reasoned request
   verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
   source: A054-P004
@@ -61,9 +120,11 @@ records:
     55
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P003]
   targets: []
   qualifier_spans:
   - A054-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
@@ -77,12 +138,14 @@ records:
     years after market placement
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P003]
   targets: []
   qualifier_spans:
   - A054-P003
   mandatory_content:
   - Annex XI technical documentation
   - appointing-provider contact details
+  temporal_regime_id: AIA-TEMP-A054-P3-B-TEN-YEAR-RETENTION
   implementation_refs:
   - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
@@ -95,11 +158,16 @@ records:
     AI Office request
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P003]
   targets: []
   qualifier_spans:
   - A054-P003
   conditions:
-  - the AI Office makes a reasoned request
+    operator: all_of
+    operands:
+    - text: upon a reasoned request
+      basis_segment_ids: [AIA-TEXT-A054-P006]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
@@ -113,11 +181,16 @@ records:
     systems in the Union
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P003]
   targets: []
   qualifier_spans:
   - A054-P003
   conditions:
-  - the AI Office or a competent authority makes a reasoned request
+    operator: all_of
+    operands:
+    - text: upon a reasoned request
+      basis_segment_ids: [AIA-TEXT-A054-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GPAR-A54-3
   verification_mode: reported_not_judged
@@ -131,7 +204,9 @@ records:
     compliance issues
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A054-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GP-A54-4
   verification_mode: reported_not_judged
@@ -143,9 +218,14 @@ records:
   action: terminate the mandate when the provider is or appears to be acting contrary to regulatory obligations
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P009]
   targets: []
   conditions:
-  - the representative considers or has reason to consider the provider non-compliant
+    operator: all_of
+    operands:
+    - text: if it considers or has reason to consider the provider to be acting contrary to its obligations pursuant to this Regulation
+      basis_segment_ids: [AIA-TEXT-A054-P009]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_refs:
   - AIA-RULE-GPAR-A54-5
   verification_mode: reported_not_judged
@@ -157,12 +237,17 @@ records:
   action: immediately inform the AI Office of the mandate termination and its reasons
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids: [AIA-TEXT-A054-P009]
   targets: []
   conditions:
-  - the representative terminates the mandate under Article 54(5)
+    operator: all_of
+    operands:
+    - text: if it considers or has reason to consider the provider to be acting contrary to its obligations pursuant to this Regulation
+      basis_segment_ids: [AIA-TEXT-A054-P009]
   mandatory_content:
   - the mandate termination
   - the reasons for termination
+  temporal_regime_id: AIA-TEMP-A054-P5-NOTIFY-IMMEDIATELY
   implementation_refs:
   - AIA-RULE-GPAR-A54-5
   verification_mode: reported_not_judged
@@ -178,13 +263,23 @@ records:
     AI models presenting systemic risk
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A054-P010]
   targets: []
   kind: applicability
   conditions:
-  - the licence permits access, usage, modification, and distribution
-  - model parameters including weights, architecture information, and usage information are public
+    operator: all_of
+    operands:
+    - text: released under a free and open-source licence that allows for the access, usage, modification, and distribution of the model
+      basis_segment_ids: [AIA-TEXT-A054-P010]
+    - text: whose parameters, including the weights, the information on the model architecture, and the information on model usage, are made publicly available
+      basis_segment_ids: [AIA-TEXT-A054-P010]
   exceptions:
-  - the general-purpose AI model presents systemic risk
+    operator: any_of
+    operands:
+    - text: unless the general-purpose AI models present systemic risks
+      basis_segment_ids: [AIA-TEXT-A054-P010]
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-GP-A54-1
   - AIA-RULE-GP-A54-2
@@ -192,5 +287,18 @@ records:
   - AIA-RULE-GP-A54-4
   - AIA-RULE-GPAR-A54-5
   implementation_reason: Each Article 54 rule encodes this exception in its activation condition.
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   verified_by: vidibro
+norm_relations:
+- relation_id: AIA-REL-A054-P3-MANDATE-EMPOWER-TASKS-RELIES-ON-NORMS
+  source_norm_id: AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
+  kind: relies_on_norms
+  target_norm_ids:
+  - AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
+  - AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
+  - AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
+  - AIA-NORM-A054-P3-D-COOPERATE
+  legal_basis_spans:
+  - AIA-TEXT-A054-P003
+  detail: The provider's mandate must give the representative powers matching each enumerated Article
+    54(3) task.

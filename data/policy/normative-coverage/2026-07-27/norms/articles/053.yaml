@@ -383,10 +383,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the licence permits access, usage, modification, and distribution
+    - text: released under a free and open-source licence that allows for the access, usage, modification,
+        and distribution of the model
       basis_segment_ids:
       - AIA-TEXT-A053-P008
-    - text: model parameters including weights, architecture information, and usage information are public
+    - text: whose parameters, including the weights, the information on the model architecture, and the
+        information on model usage, are made publicly available
       basis_segment_ids:
       - AIA-TEXT-A053-P008
   exceptions: null
@@ -434,7 +436,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the general-purpose AI model presents systemic risk
+    - text: general-purpose AI models with systemic risks
       basis_segment_ids:
       - AIA-TEXT-A053-P008
   exceptions: null
@@ -613,7 +615,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider neither adheres to an approved code nor complies with a covering harmonised standard
+    - text: who do not adhere to an approved code of practice or do not comply with a European harmonised
+        standard
       basis_segment_ids:
       - AIA-TEXT-A053-P010
   exceptions: null
@@ -744,7 +747,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the downstream provider obtains information or documentation under Article 53
+    - text: Any information or documentation obtained pursuant to this Article, including trade secrets
       basis_segment_ids:
       - AIA-TEXT-A053-P013
   exceptions: null

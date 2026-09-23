@@ -99,6 +99,7 @@ segments:
   norm_ids:
   - AIA-NORM-A054-P3-PERFORM-MANDATE
   - AIA-NORM-A054-P3-PROVIDE-MANDATE
+  - AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
   qualifying_norm_ids:
   - AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
   - AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
@@ -297,7 +298,11 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A054-P1-APPOINT-REPRESENTATIVE
+  - AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
+  - AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
+  - AIA-NORM-A054-P4-AUTHORITY-ADDRESS-TERM
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

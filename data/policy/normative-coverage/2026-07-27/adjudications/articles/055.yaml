@@ -1,0 +1,37 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '55'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 8
+  norms_scanned: 8
+  finding_count: 1
+  audit_sha256: c1a2e8c0314e45322f52327df608228c0d6dc820c8fb39b988feb1f61612118a
+decisions:
+- finding_id: AIA-VALID-ED689062F10131C8
+  target: AIA-NORM-A055-P3-CONFIDENTIAL-TREATMENT:actor:public_authority:AIA-TEXT-A055-P004
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A055-P007
+  source_sha256: 59d4f0a69faf5fbaab635759f0ef2dea4490733746c71aeb7407c56711296f19
+  target_sha256: fb62decd2c3a7372c0eaf606ddedcbf7e35dd576e89a0430b35fc4a344d26802
+  decision: accepted_with_basis
+  reason: 'Paragraph 3 is passive and names no party. It binds whoever obtains information or documentation
+    pursuant to Article 55, and paragraph 1(c) names who that is: the AI Office and, as appropriate, national
+    competent authorities. Those are public authorities, but the Act never calls them that here, so no
+    span can name the actor by its label.'
+  legal_basis:
+  - span_id: AIA-TEXT-A055-P004
+    source_sha256: 627d70b895d2ea89a2cb5ba03b08ea2d16801d10ad9ff2a20b9f6577615317a2
+    quote: report, without undue delay, to the AI Office and, as appropriate, to national competent authorities
+  - span_id: AIA-TEXT-A055-P007
+    source_sha256: 59d4f0a69faf5fbaab635759f0ef2dea4490733746c71aeb7407c56711296f19
+    quote: Any information or documentation obtained pursuant to this Article, including trade secrets,
+      shall be treated in accordance with the confidentiality obligations set out in Article 78
+  reviewed_by: vidibro

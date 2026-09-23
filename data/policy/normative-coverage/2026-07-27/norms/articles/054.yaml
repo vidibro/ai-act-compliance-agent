@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A054-P010
   targets: []
   action: appoint by written mandate a Union-established authorised representative before placing the
     model on the Union market
@@ -21,7 +23,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the provider is established in a third country
+    - text: Prior to placing a general-purpose AI model on the Union market
+      basis_segment_ids:
+      - AIA-TEXT-A054-P001
+    - text: providers established in third countries
       basis_segment_ids:
       - AIA-TEXT-A054-P001
   exceptions: null
@@ -42,11 +47,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A054-P010
   targets: []
   action: enable the authorised representative to perform every task specified in its mandate
   norm_text: The provider shall enable its authorised representative to perform the tasks specified in
@@ -77,11 +85,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P003
   targets: []
   action: perform every task specified in the provider's mandate
   norm_text: The authorised representative shall perform the tasks specified in the mandate received from
@@ -112,11 +123,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P3-PROVIDE-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P003
   targets: []
   action: provide the AI Office a mandate copy in an official Union-institution language on request
   norm_text: It shall provide a copy of the mandate to the AI Office upon request, in one of the official
@@ -131,7 +145,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office requests a copy of the mandate
+    - text: upon request
       basis_segment_ids:
       - AIA-TEXT-A054-P003
   exceptions: null
@@ -152,11 +166,63 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
+- norm_id: AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A054-P010
+  targets: []
+  action: ensure the written mandate empowers the authorised representative to carry out every Article
+    54(3)(a) to (d) task
+  norm_text: 'For the purposes of this Regulation, the mandate shall empower the authorised representative
+    to carry out the following tasks:'
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A054-P003
+  qualifier_spans: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: For the purposes of this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A054-P003
+  exceptions: null
+  mandatory_content:
+  - authority to verify the Annex XI documentation and the provider's fulfilment of Article 53 and, where
+    applicable, Article 55
+  - authority to keep the Annex XI documentation and the provider's contact details available for 10 years
+  - authority to provide the AI Office with compliance information on reasoned request
+  - authority to cooperate with the AI Office and competent authorities on reasoned request
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-GP-A54-1
+  implementation_reason: ''
+  verification_mode: reported_not_judged
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P003
   targets: []
   action: verify Annex XI documentation and provider fulfilment of Articles 53 and, where applicable,
     55
@@ -189,11 +255,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P003
   targets: []
   action: retain Annex XI documentation and appointing-provider contact details for authorities for 10
     years after market placement
@@ -230,11 +299,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A054-P3-B-TEN-YEAR-RETENTION
 - norm_id: AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P003
   targets: []
   action: provide all information and documentation necessary to demonstrate Chapter V compliance on reasoned
     AI Office request
@@ -252,7 +324,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office makes a reasoned request
+    - text: upon a reasoned request
       basis_segment_ids:
       - AIA-TEXT-A054-P006
   exceptions: null
@@ -273,11 +345,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P3-D-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P003
   targets: []
   action: cooperate on reasoned request in authority actions concerning the model, including integrated
     systems in the Union
@@ -295,7 +370,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office or a competent authority makes a reasoned request
+    - text: upon a reasoned request
       basis_segment_ids:
       - AIA-TEXT-A054-P007
   exceptions: null
@@ -316,11 +391,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P4-AUTHORITY-ADDRESS-TERM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A054-P010
   targets: []
   action: empower the representative to be addressed in addition to or instead of the provider on all
     compliance issues
@@ -353,11 +431,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P5-TERMINATE-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P009
   targets: []
   action: terminate the mandate when the provider is or appears to be acting contrary to regulatory obligations
   norm_text: The authorised representative shall terminate the mandate if it considers or has reason to
@@ -372,7 +453,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the representative considers or has reason to consider the provider non-compliant
+    - text: if it considers or has reason to consider the provider to be acting contrary to its obligations
+        pursuant to this Regulation
       basis_segment_ids:
       - AIA-TEXT-A054-P009
   exceptions: null
@@ -393,11 +475,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: authorised_representative
+    basis_segment_ids:
+    - AIA-TEXT-A054-P009
   targets: []
   action: immediately inform the AI Office of the mandate termination and its reasons
   norm_text: In such a case, it shall also immediately inform the AI Office about the termination of the
@@ -412,7 +497,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the representative terminates the mandate under Article 54(5)
+    - text: if it considers or has reason to consider the provider to be acting contrary to its obligations
+        pursuant to this Regulation
       basis_segment_ids:
       - AIA-TEXT-A054-P009
   exceptions: null
@@ -435,11 +521,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A054-P5-NOTIFY-IMMEDIATELY
 - norm_id: AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A054-P010
   targets: []
   action: disapply Article 54 where every enacted free-and-open-source condition is met, except for general-purpose
     AI models presenting systemic risk
@@ -459,22 +548,24 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the licence permits access, usage, modification, and distribution
+    - text: released under a free and open-source licence that allows for the access, usage, modification,
+        and distribution of the model
       basis_segment_ids:
       - AIA-TEXT-A054-P010
-    - text: model parameters including weights, architecture information, and usage information are public
+    - text: whose parameters, including the weights, the information on the model architecture, and the
+        information on model usage, are made publicly available
       basis_segment_ids:
       - AIA-TEXT-A054-P010
   exceptions:
     operator: any_of
     operands:
-    - text: the general-purpose AI model presents systemic risk
+    - text: unless the general-purpose AI models present systemic risks
       basis_segment_ids:
       - AIA-TEXT-A054-P010
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-GP-A54-1
   - AIA-RULE-GP-A54-2
@@ -482,7 +573,7 @@ norms:
   - AIA-RULE-GP-A54-4
   - AIA-RULE-GPAR-A54-5
   implementation_reason: Each Article 54 rule encodes this exception in its activation condition.
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -492,3 +583,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V

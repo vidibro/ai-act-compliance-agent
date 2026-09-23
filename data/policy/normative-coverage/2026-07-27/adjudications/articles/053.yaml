@@ -4,6 +4,7 @@ source:
   kind: article
   document: '53'
   required_field_validations:
+  - logical_expression_evidence
   - actor_evidence
   - target_evidence
   - temporal_regime
@@ -12,60 +13,24 @@ audit:
   segments_scanned: 14
   norms_scanned: 17
   finding_count: 4
-  audit_sha256: 8e88dfdb242c3e57c23985919c6ac45b35c3cb9124608437b3e7bb73d5c264d5
+  audit_sha256: ffe31d3b0d622dc55a0ae423db666449f774aa71acc03549f22aa708bd5169ef
 decisions:
-- finding_id: AIA-VALID-B7C082C11A137C24
-  target: AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION:actor:gpai_provider:AIA-TEXT-A053-P008
-  rule: actor_basis_does_not_name_actor
-  source_ref: AIA-TEXT-A053-P008
-  source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
-  target_sha256: e5180dc9b1d2809bd723d7f40df6db9a40a650c0eeae58a90e20e71c99369a30
-  decision: accepted_with_basis
-  reason: 'Paragraph 2 says "providers of AI models", dropping the "general-purpose"
-    the rest of the Article carries. It can address no one else: it disapplies "the
-    obligations set out in paragraph 1, points (a) and (b)", and paragraph 1 binds
-    providers of general-purpose AI models. A party outside paragraph 1 has nothing
-    here to be relieved of.'
-  legal_basis:
-  - span_id: AIA-TEXT-A053-P001
-    source_sha256: 1c1fc2cf912dc5c99713f7cbf99f12997a4cd19a9cfaa7ebc6e836111cbe7f79
-    quote: 'Providers of general-purpose AI models shall:'
-  - span_id: AIA-TEXT-A053-P008
-    source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
-    quote: The obligations set out in paragraph 1, points (a) and (b), shall not apply
-      to providers of AI models that are released under a free and open-source licence
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-88DEC1ED930FC4A4
-  target: AIA-NORM-A053-P2-SYSTEMIC-RISK-OVERRIDE:actor:gpai_provider:AIA-TEXT-A053-P008
-  rule: actor_basis_does_not_name_actor
-  source_ref: AIA-TEXT-A053-P008
-  source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
-  target_sha256: 369443faa44828d9e3ce45ed2691cf445ebd277f8945a99835a3ffff60e9768c
-  decision: accepted_with_basis
-  reason: The override restores the paragraph 1 duties for models with systemic risk,
-    so its duty-holder is the paragraph 1 duty-holder. The sentence names the MODEL
-    rather than the provider because it is the model's systemic risk that withdraws
-    the paragraph 2 relief.
-  legal_basis:
-  - span_id: AIA-TEXT-A053-P001
-    source_sha256: 1c1fc2cf912dc5c99713f7cbf99f12997a4cd19a9cfaa7ebc6e836111cbe7f79
-    quote: 'Providers of general-purpose AI models shall:'
-  - span_id: AIA-TEXT-A053-P008
-    source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
-    quote: This exception shall not apply to general-purpose AI models with systemic
-      risks.
-  reviewed_by: vidibro
-- finding_id: AIA-VALID-C71E7536A753DE32
+- finding_id: AIA-VALID-2263B2CD7AC2F336
   target: AIA-NORM-A053-P1-B-PROTECT-RIGHTS
-  rule: exception_not_structured_or_retained
+  rule: exception_expression_missing
   source_ref: AIA-TEXT-A053-P003
   source_sha256: cf2a54fcdabc696eadccd7ea50d0bb039188b918c76f17c0ee8480a331b705ab
   target_sha256: 59e09c50f6a293ee9f1bbdc5ec6fab38b52476555cea5674e97535924d89f865
   decision: false_positive
-  reason: "\u201CWithout prejudice to the need to observe and protect\u201D preserves\
-    \ the concurrent intellectual-property, confidential-business-information and\
-    \ trade-secret duty; it does not excuse or narrow the Article 53(1)(b) documentation\
-    \ duty. The norm action retains that affirmative duty."
+  reason: '"Without prejudice to the need to observe and protect" keeps the concurrent intellectual-property,
+    confidential-business-information and trade-secret duty running; it does not excuse or narrow the
+    Article 53(1)(b) documentation duty in any case. The norm states that affirmative duty as its action,
+    so there is no exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A053-P003
+    source_sha256: cf2a54fcdabc696eadccd7ea50d0bb039188b918c76f17c0ee8480a331b705ab
+    quote: Without prejudice to the need to observe and protect intellectual property rights and confidential
+      business information or trade secrets in accordance with Union and national law
   reviewed_by: vidibro
 - finding_id: AIA-VALID-10C5185B23AC6AE2
   target: AIA-TEXT-A053-P003
@@ -74,12 +39,49 @@ decisions:
   source_sha256: cf2a54fcdabc696eadccd7ea50d0bb039188b918c76f17c0ee8480a331b705ab
   target_sha256: bb18ea92cbf44e610eba0477c7436972a7d7416d97cf0d4d97bcd66ea40cd47e
   decision: accepted_with_basis
-  reason: "\u201CThe information and documentation shall\u201D is the shared chapeau\
-    \ for the separate Article 53(1)(b) capability-and-limitation and Annex XII content\
-    \ norms. It introduces no independent provider action beyond those two named norms\
-    \ and the principal documentation-delivery norm."
+  reason: “The information and documentation shall” is the shared chapeau for the separate Article 53(1)(b)
+    capability-and-limitation and Annex XII content norms. It introduces no independent provider action
+    beyond those two named norms and the principal documentation-delivery norm.
   legal_basis:
   - span_id: AIA-TEXT-A053-P003
     source_sha256: cf2a54fcdabc696eadccd7ea50d0bb039188b918c76f17c0ee8480a331b705ab
     quote: 'the information and documentation shall:'
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B7C082C11A137C24
+  target: AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION:actor:gpai_provider:AIA-TEXT-A053-P008
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A053-P008
+  source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
+  target_sha256: e5180dc9b1d2809bd723d7f40df6db9a40a650c0eeae58a90e20e71c99369a30
+  decision: accepted_with_basis
+  reason: 'Paragraph 2 says "providers of AI models", dropping the "general-purpose" the rest of the Article
+    carries. It can address no one else: it disapplies "the obligations set out in paragraph 1, points
+    (a) and (b)", and paragraph 1 binds providers of general-purpose AI models. A party outside paragraph
+    1 has nothing here to be relieved of.'
+  legal_basis:
+  - span_id: AIA-TEXT-A053-P001
+    source_sha256: 1c1fc2cf912dc5c99713f7cbf99f12997a4cd19a9cfaa7ebc6e836111cbe7f79
+    quote: 'Providers of general-purpose AI models shall:'
+  - span_id: AIA-TEXT-A053-P008
+    source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
+    quote: The obligations set out in paragraph 1, points (a) and (b), shall not apply to providers of
+      AI models that are released under a free and open-source licence
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-88DEC1ED930FC4A4
+  target: AIA-NORM-A053-P2-SYSTEMIC-RISK-OVERRIDE:actor:gpai_provider:AIA-TEXT-A053-P008
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A053-P008
+  source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
+  target_sha256: 369443faa44828d9e3ce45ed2691cf445ebd277f8945a99835a3ffff60e9768c
+  decision: accepted_with_basis
+  reason: The override restores the paragraph 1 duties for models with systemic risk, so its duty-holder
+    is the paragraph 1 duty-holder. The sentence names the MODEL rather than the provider because it is
+    the model's systemic risk that withdraws the paragraph 2 relief.
+  legal_basis:
+  - span_id: AIA-TEXT-A053-P001
+    source_sha256: 1c1fc2cf912dc5c99713f7cbf99f12997a4cd19a9cfaa7ebc6e836111cbe7f79
+    quote: 'Providers of general-purpose AI models shall:'
+  - span_id: AIA-TEXT-A053-P008
+    source_sha256: 7df54b2de08d010e1f97488b6616e61fde33c32a3602d876fb672352d816bcb6
+    quote: This exception shall not apply to general-purpose AI models with systemic risks.
   reviewed_by: vidibro

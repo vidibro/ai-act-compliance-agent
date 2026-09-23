@@ -2200,16 +2200,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2112,
+        "approved": 2113,
         "proposed": 822,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2935
+    assert metrics.total_review_records == 2936
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 544
-    assert metrics.shall_token_candidate_recall == pytest.approx(860 / 1404)
+    assert metrics.shall_token_candidate_recall == pytest.approx(861 / 1405)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2224,14 +2224,14 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
-    assert metrics.mapping_shape.one_norm_to_one_target == 36
-    assert metrics.mapping_shape.many_norms_to_one_target == 440
+    assert metrics.mapping_shape.one_norm_to_one_target == 37
+    assert metrics.mapping_shape.many_norms_to_one_target == 438
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 900
+    assert metrics.mapping_shape.unmapped == 902
     assert metrics.semantic_vs_existing_implementation_disagreements == 70
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
@@ -3183,12 +3183,26 @@ def test_article_fifty_four_maps_representative_mandate_lifecycle():
 
     assert len(segments) == 11
     assert_segments_are_independently_approved(segments)
-    assert len(norms) == 12
+    assert len(norms) == 13
     assert all(norm.implementation_refs for norm in norms.values())
     assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     exception = norms["AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION"]
     assert len(exception.implementation_refs) == 5
-    assert exception.exceptions == ["the general-purpose AI model presents systemic risk"]
+    assert [operand.text for operand in exception.exceptions] == [
+        "unless the general-purpose AI models present systemic risks"
+    ]
+    # The paragraph 3 chapeau binds the provider's mandate, as Article 22(3) does.
+    mandate = norms["AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS"]
+    assert mandate.assigned_actors[0].actor_ref == "gpai_provider"
+    assert mandate.implementation_refs == ["AIA-RULE-GP-A54-1"]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        mandate.norm_id, NormRelationKind.RELIES_ON_NORMS
+    ) == [
+        "AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE",
+        "AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION",
+        "AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION",
+        "AIA-NORM-A054-P3-D-COOPERATE",
+    ]
     representative = [
         norm
         for norm in norms.values()
@@ -3214,8 +3228,14 @@ def test_article_fifty_five_maps_systemic_risk_provider_controls():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 8
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
-    assert len(mapped) == 7
+    assert len(mapped) == 5
     assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
+    # The code-of-practice route and the harmonised-standard presumption are options, not actions.
+    for norm_id in (
+        "AIA-NORM-A055-P2-RELY-ON-CODES",
+        "AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION",
+    ):
+        assert norms[norm_id].product_scope.value == "no_product_action"
     assert {ref for norm in mapped for ref in norm.implementation_refs} == {
         "AIA-RULE-GP-A55-1A",
         "AIA-RULE-GP-A55-1B",

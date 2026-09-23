@@ -127,7 +127,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A055-P3-CONFIDENTIAL-TREATMENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
