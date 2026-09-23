@@ -5,6 +5,8 @@ norms:
   kind: power
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P001
   targets: []
   action: allow Article 60a real-world testing of Section B AI-enabled products to assess Articles 8 to
     15 conformity
@@ -37,11 +39,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P2-ADOPT-TESTING-FRAMEWORK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P002
   targets: []
   action: adopt an individual or joint real-world testing framework when allowing Article 60a testing
   norm_text: Member States that choose to allow testing as referred to in paragraph 1 shall, individually
@@ -55,7 +60,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Member State chooses to allow Article 60a testing
+    - text: Member States that choose to allow testing as referred to in paragraph 1
       basis_segment_ids:
       - AIA-TEXT-A060A-P002
   exceptions: null
@@ -75,11 +80,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P3-NOTIFY-FRAMEWORK
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P003
   targets: []
   action: notify the Commission of an adopted testing framework before implementation
   norm_text: Each Member State shall notify the Commission of any real-world testing framework it adopts
@@ -108,11 +116,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P3-PRESERVE-COMMISSION-COMPETENCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P003
   targets: []
   action: preserve Commission competences under Section B harmonisation legislation
   norm_text: This shall not affect the competences of the Commission under the Union harmonisation legislation
@@ -142,11 +153,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P4-COOPERATE-AND-REMOVE-OBSTACLES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P004
   targets: []
   action: ensure that the relevant national competent, relevant and infrastructure or product authorities
     cooperate closely with each other in good faith and remove practical obstacles necessary to implement
@@ -167,7 +181,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Member State has adopted a real-world testing framework
+    - text: Member States that have adopted real-world testing frameworks
       basis_segment_ids:
       - AIA-TEXT-A060A-P004
   exceptions: null
@@ -190,11 +204,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P002
   targets: []
   action: make every enacted plan compliance governance and protection element part of the real-world
     testing framework
@@ -233,32 +250,36 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
-  - actor_ref: prospective_provider
+  - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P002
   targets: []
-  action: agree a mandatory real-world testing plan with the competent or relevant authority under applicable
-    Section B legislation
+  action: include in the national framework a mandatory real-world testing plan to be agreed between the
+    provider or prospective provider and the national competent or relevant authority
   norm_text: include the provision of a mandatory real-world testing plan to be agreed between the provider
     or prospective provider and the national competent authority or relevant authority in accordance with
     the Union harmonisation legislation listed in Section B of Annex I;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060A-P006
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060A-P005
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
   implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -268,15 +289,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
-  - actor_ref: provider
-  - actor_ref: prospective_provider
+  - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P002
   targets: []
-  action: comply with the incorporated Article 60 testing safeguards using the competent-authority substitution
-    required by Section B legislation
+  action: ensure the national framework secures compliance with Article 60(2), (3), (4)(d)-(j) and (5)-(9),
+    reading market surveillance authorities as the national competent or relevant authority
   norm_text: ensure compliance with the requirements laid down in Article 60(2), (3), (4)(d)-(j) and (5)-(9),
     where any reference to market surveillance authorities in those provisions shall be read as a reference
     to the national competent authority or relevant authority, as appropriate in accordance with the Union
@@ -284,18 +307,20 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060A-P007
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060A-P005
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
   implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -305,12 +330,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P001
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P001
   targets: []
   action: comply with the applicable provisions of the Section B Union harmonisation legislation when
     conducting the real-world testing
@@ -325,12 +355,13 @@ norms:
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
+  product_scope: no_product_action
+  product_scope_reason: The duty is compliance with the Section B Union harmonisation legislation itself,
+    which this product does not assess; it reports nothing for Section B systems.
+  implementation_mode: none_required
   implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
+  implementation_reason: No independent product action is required.
+  verification_mode: not_reported
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -340,12 +371,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
 - norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P001
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A060A-P001
   targets: []
   action: keep the Section B requirements from affecting the application of Article 60a to the extent
     necessary to enable the paragraph 1 testing
@@ -377,3 +413,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI

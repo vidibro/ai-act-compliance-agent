@@ -47,7 +47,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060A-P1-ALLOW-SECTION-B-TESTING
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW
+  - AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -73,7 +75,10 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060A-P2-ADOPT-TESTING-FRAMEWORK
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
+  - AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN
+  - AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -158,7 +163,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN
+  - AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

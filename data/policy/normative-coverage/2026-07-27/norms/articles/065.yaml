@@ -5,7 +5,11 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: european_parliament
+    basis_segment_ids:
+    - AIA-TEXT-A065-P001
   - actor_ref: council
+    basis_segment_ids:
+    - AIA-TEXT-A065-P001
   targets: []
   action: establish the European Artificial Intelligence Board
   norm_text: "A European Artificial Intelligence Board (the \u2018 Board \u2019) is hereby established."
@@ -33,11 +37,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P2-BOARD-COMPOSITION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P002
   targets: []
   action: compose the Board of one representative per Member State
   norm_text: The Board shall be composed of one representative per Member State.
@@ -65,11 +72,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P2-EDPS-OBSERVER
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A065-P002
   targets: []
   action: participate in the Board as observer
   norm_text: The European Data Protection Supervisor shall participate as observer.
@@ -97,11 +107,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P2-AI-OFFICE-ATTENDANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A065-P002
   targets: []
   action: attend Board meetings without voting
   norm_text: "The AI Office shall also attend the Board\u2019s meetings, without taking part in the votes."
@@ -129,11 +142,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P2-INVITE-RELEVANT-PARTICIPANTS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P002
   targets: []
   action: invite relevant national or Union authorities bodies or experts to Board meetings case by case
   norm_text: Other national and Union authorities, bodies or experts may be invited to the meetings by
@@ -147,7 +163,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the issues discussed are relevant to the invited participant
+    - text: where the issues discussed are of relevance for them
       basis_segment_ids:
       - AIA-TEXT-A065-P002
   exceptions: null
@@ -167,11 +183,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P3-DESIGNATE-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A065-P003
   targets: []
   action: designate the Board representative for a three-year term renewable once
   norm_text: Each representative shall be designated by their Member State for a period of three years,
@@ -200,11 +219,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P4-REPRESENTATIVE-CAPABILITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A065-P004
   targets: []
   action: ensure Board representatives possess every enacted competence contact-point and coordination
     capability
@@ -240,11 +262,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P5-ADOPT-RULES-OF-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P008
   targets: []
   action: adopt by two-thirds majority rules covering Chair selection mandate and tasks voting and Board
     and subgroup organisation
@@ -282,11 +307,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P6-ESTABLISH-STANDING-SUBGROUPS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P009
   targets: []
   action: establish standing market-surveillance and notifying-authority cooperation subgroups
   norm_text: The Board shall establish two standing sub-groups to provide a platform for cooperation and
@@ -318,11 +346,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P6-ADCO-ROLE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P009
   targets: []
   action: act as the Regulation's Article 30 administrative cooperation group
   norm_text: The standing sub-group for market surveillance should act as the administrative cooperation
@@ -350,11 +381,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P6-OTHER-SUBGROUPS-AND-OBSERVERS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P011
   targets: []
   action: establish other issue-specific subgroups and invite appropriate advisory-forum observers
   norm_text: The Board may establish other standing or temporary sub-groups as appropriate for the purpose
@@ -366,7 +400,15 @@ norms:
   primary_spans:
   - AIA-TEXT-A065-P011
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: as appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A065-P011
+    - text: Where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A065-P011
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -384,11 +426,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P7-SAFEGUARD-OBJECTIVITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P012
   targets: []
   action: organise and operate the Board to safeguard objectivity and impartiality
   norm_text: The Board shall be organised and operated so as to safeguard the objectivity and impartiality
@@ -417,11 +462,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P8-MEMBER-STATE-CHAIR
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: board
+    basis_segment_ids:
+    - AIA-TEXT-A065-P013
   targets: []
   action: select a Member State representative to chair the Board
   norm_text: The Board shall be chaired by one of the representatives of the Member States.
@@ -449,11 +497,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P8-AI-OFFICE-SECRETARIAT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A065-P013
   targets: []
   action: provide the secretariat for the Board
   norm_text: The AI Office shall provide the secretariat for the Board
@@ -481,23 +532,29 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P8-CONVENE-MEETINGS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A065-P013
   targets: []
   action: convene the Board's meetings upon request of the Chair
-  norm_text: convene the meetings upon request of the Chair
+  norm_text: The AI Office shall provide the secretariat for the Board, convene the meetings upon request
+    of the Chair, and prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation
+    and its rules of procedure.
   detection_channels:
   - semantic_legal_effect
+  - shall_token
   primary_spans:
   - AIA-TEXT-A065-P013
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the Chair requests the meeting
+    - text: upon request of the Chair
       basis_segment_ids:
       - AIA-TEXT-A065-P013
   exceptions: null
@@ -517,18 +574,23 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
 - norm_id: AIA-NORM-A065-P8-PREPARE-AGENDA
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A065-P013
   targets: []
   action: prepare the agenda in accordance with the Board's tasks under this Regulation and its rules
     of procedure
-  norm_text: prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation
+  norm_text: The AI Office shall provide the secretariat for the Board, convene the meetings upon request
+    of the Chair, and prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation
     and its rules of procedure.
   detection_channels:
   - semantic_legal_effect
+  - shall_token
   primary_spans:
   - AIA-TEXT-A065-P013
   qualifier_spans: []
@@ -550,3 +612,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII

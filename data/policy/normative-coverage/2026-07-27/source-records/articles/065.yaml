@@ -5,9 +5,12 @@ records:
   action: establish the European Artificial Intelligence Board
   actors:
   - actor_ref: european_parliament
+    basis_segment_ids: [AIA-TEXT-A065-P001]
   - actor_ref: council
+    basis_segment_ids: [AIA-TEXT-A065-P001]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -19,7 +22,9 @@ records:
   action: compose the Board of one representative per Member State
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -31,7 +36,9 @@ records:
   action: participate in the Board as observer
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A065-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -43,7 +50,9 @@ records:
   action: attend Board meetings without voting
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A065-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -51,13 +60,20 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P2-INVITE-RELEVANT-PARTICIPANTS
   source: A065-P002
-  quote: Other national and Union authorities, bodies or experts may be invited to the meetings by the Board on a case by case basis, where the issues discussed are of relevance for them.
+  quote: Other national and Union authorities, bodies or experts may be invited to the meetings by the
+    Board on a case by case basis, where the issues discussed are of relevance for them.
   action: invite relevant national or Union authorities bodies or experts to Board meetings case by case
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P002]
   targets: []
   kind: power
-  conditions: [the issues discussed are relevant to the invited participant]
+  conditions:
+    operator: all_of
+    operands:
+    - text: where the issues discussed are of relevance for them
+      basis_segment_ids: [AIA-TEXT-A065-P002]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -65,11 +81,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P3-DESIGNATE-REPRESENTATIVE
   source: A065-P003
-  quote: Each representative shall be designated by their Member State for a period of three years, renewable once.
+  quote: Each representative shall be designated by their Member State for a period of three years, renewable
+    once.
   action: designate the Board representative for a three-year term renewable once
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A065-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -78,12 +97,21 @@ records:
 - norm_id: AIA-NORM-A065-P4-REPRESENTATIVE-CAPABILITIES
   source: A065-P004
   quote: 'Member States shall ensure that their representatives on the Board:'
-  action: ensure Board representatives possess every enacted competence contact-point and coordination capability
+  action: ensure Board representatives possess every enacted competence contact-point and coordination
+    capability
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A065-P004]
   targets: []
-  mandatory_content: [competences and powers to contribute actively to Article 66 tasks, single Board contact point and where appropriate stakeholder contact point, power to facilitate national consistency and coordination including data collection]
-  qualifier_spans: [A065-P005, A065-P006, A065-P007]
+  mandatory_content:
+  - competences and powers to contribute actively to Article 66 tasks
+  - single Board contact point and where appropriate stakeholder contact point
+  - power to facilitate national consistency and coordination including data collection
+  qualifier_spans:
+  - A065-P005
+  - A065-P006
+  - A065-P007
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -91,12 +119,24 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P5-ADOPT-RULES-OF-PROCEDURE
   source: A065-P008
-  quote: The designated representatives of the Member States shall adopt the Board’s rules of procedure by a two-thirds majority. The rules of procedure shall, in particular, lay down procedures for the selection process, the duration of the mandate of, and specifications of the tasks of, the Chair, detailed arrangements for voting, and the organisation of the Board’s activities and those of its sub-groups.
-  action: adopt by two-thirds majority rules covering Chair selection mandate and tasks voting and Board and subgroup organisation
+  quote: The designated representatives of the Member States shall adopt the Board’s rules of procedure
+    by a two-thirds majority. The rules of procedure shall, in particular, lay down procedures for the
+    selection process, the duration of the mandate of, and specifications of the tasks of, the Chair,
+    detailed arrangements for voting, and the organisation of the Board’s activities and those of its
+    sub-groups.
+  action: adopt by two-thirds majority rules covering Chair selection mandate and tasks voting and Board
+    and subgroup organisation
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P008]
   targets: []
-  mandatory_content: [Chair selection process, Chair mandate duration, Chair task specifications, detailed voting arrangements, organisation of Board and subgroup activities]
+  mandatory_content:
+  - Chair selection process
+  - Chair mandate duration
+  - Chair task specifications
+  - detailed voting arrangements
+  - organisation of Board and subgroup activities
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -104,12 +144,18 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P6-ESTABLISH-STANDING-SUBGROUPS
   source: A065-P009
-  quote: The Board shall establish two standing sub-groups to provide a platform for cooperation and exchange among market surveillance authorities and notifying authorities about issues related to market surveillance and notified bodies respectively.
+  quote: The Board shall establish two standing sub-groups to provide a platform for cooperation and exchange
+    among market surveillance authorities and notifying authorities about issues related to market surveillance
+    and notified bodies respectively.
   action: establish standing market-surveillance and notifying-authority cooperation subgroups
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P009]
   targets: []
-  mandatory_content: [market-surveillance cooperation and exchange, notifying-authority cooperation and exchange on notified bodies]
+  mandatory_content:
+  - market-surveillance cooperation and exchange
+  - notifying-authority cooperation and exchange on notified bodies
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,11 +163,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P6-ADCO-ROLE
   source: A065-P010
-  quote: The standing sub-group for market surveillance should act as the administrative cooperation group (ADCO) for this Regulation within the meaning of Article 30 of Regulation (EU) 2019/1020.
+  quote: The standing sub-group for market surveillance should act as the administrative cooperation group
+    (ADCO) for this Regulation within the meaning of Article 30 of Regulation (EU) 2019/1020.
   action: act as the Regulation's Article 30 administrative cooperation group
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -129,24 +178,38 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P6-OTHER-SUBGROUPS-AND-OBSERVERS
   source: A065-P011
-  quote: The Board may establish other standing or temporary sub-groups as appropriate for the purpose of examining specific issues. Where appropriate, representatives of the advisory forum referred to in Article 67 may be invited to such sub-groups or to specific meetings of those subgroups as observers.
+  quote: The Board may establish other standing or temporary sub-groups as appropriate for the purpose
+    of examining specific issues. Where appropriate, representatives of the advisory forum referred to
+    in Article 67 may be invited to such sub-groups or to specific meetings of those subgroups as observers.
   action: establish other issue-specific subgroups and invite appropriate advisory-forum observers
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P011]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: as appropriate
+      basis_segment_ids: [AIA-TEXT-A065-P011]
+    - text: Where appropriate
+      basis_segment_ids: [AIA-TEXT-A065-P011]
 - norm_id: AIA-NORM-A065-P7-SAFEGUARD-OBJECTIVITY
   source: A065-P012
-  quote: The Board shall be organised and operated so as to safeguard the objectivity and impartiality of its activities.
+  quote: The Board shall be organised and operated so as to safeguard the objectivity and impartiality
+    of its activities.
   action: organise and operate the Board to safeguard objectivity and impartiality
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -158,7 +221,9 @@ records:
   action: select a Member State representative to chair the Board
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A065-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -170,7 +235,9 @@ records:
   action: provide the secretariat for the Board
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A065-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -178,12 +245,20 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P8-CONVENE-MEETINGS
   source: A065-P013
-  quote: convene the meetings upon request of the Chair
+  quote: The AI Office shall provide the secretariat for the Board, convene the meetings upon request
+    of the Chair, and prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation
+    and its rules of procedure.
   action: convene the Board's meetings upon request of the Chair
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A065-P013]
   targets: []
-  conditions: [the Chair requests the meeting]
+  conditions:
+    operator: all_of
+    operands:
+    - text: upon request of the Chair
+      basis_segment_ids: [AIA-TEXT-A065-P013]
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -191,12 +266,16 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A065-P8-PREPARE-AGENDA
   source: A065-P013
-  quote: prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation and its rules of procedure.
+  quote: The AI Office shall provide the secretariat for the Board, convene the meetings upon request
+    of the Chair, and prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation
+    and its rules of procedure.
   action: prepare the agenda in accordance with the Board's tasks under this Regulation and its rules
     of procedure
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A065-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

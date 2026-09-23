@@ -1,0 +1,34 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: 60a
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 11
+  norms_scanned: 10
+  finding_count: 1
+  audit_sha256: e0f702c90718db93279e96e93c073d542006b98deab999860e3721d83d748985
+decisions:
+- finding_id: AIA-VALID-14958FA215F67DE3
+  target: AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A060A-P007
+  source_sha256: b07c85cd3ded0e5fc7f79b59ff7e6b9784ef9efeef3124a0c68213de86597496
+  target_sha256: 396a7910eb1fc81dea0c341be0e80a6cc2f50800acdb6332e405ac99f5a1e501
+  decision: false_positive
+  reason: '"Where any reference to market surveillance authorities ... shall be read as a reference to
+    the national competent authority or relevant authority" is a reading instruction for the incorporated
+    Article 60 provisions, not a circumstance on which the framework duty depends. Every framework must
+    secure those provisions, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A060A-P007
+    source_sha256: b07c85cd3ded0e5fc7f79b59ff7e6b9784ef9efeef3124a0c68213de86597496
+    quote: where any reference to market surveillance authorities in those provisions shall be read as
+      a reference to the national competent authority or relevant authority
+  reviewed_by: vidibro

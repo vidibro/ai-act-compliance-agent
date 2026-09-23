@@ -250,7 +250,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A065-P6-ESTABLISH-STANDING-SUBGROUPS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A065-P6-ADCO-ROLE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

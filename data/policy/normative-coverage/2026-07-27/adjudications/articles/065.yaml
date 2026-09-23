@@ -1,0 +1,46 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '65'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 14
+  norms_scanned: 16
+  finding_count: 2
+  audit_sha256: f020fc6f0de44cb62b7543ec9ae91e45ff5ee6329b72b4bc7e4d0d8d75310e25
+decisions:
+- finding_id: AIA-VALID-6C3AE1F4D33CDFDF
+  target: AIA-NORM-A065-P1-ESTABLISH-BOARD:actor:council:AIA-TEXT-A065-P001
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A065-P001
+  source_sha256: 0fabc54adca8371b3b3b2056d79d63cfcefb2595646306ccc4c91bd76eaf6d69
+  target_sha256: ea12f259cc17d8d6260a341b437692b4f8ba431c1c9c039781ea0e5284eecc85
+  decision: accepted_with_basis
+  reason: '"Is hereby established" is passive: the Regulation itself creates the Board, so the act falls
+    to the institutions that adopted it. The sentence names neither the European Parliament nor the Council,
+    so no span of it can name the actor.'
+  legal_basis:
+  - &id001
+    span_id: AIA-TEXT-A065-P001
+    source_sha256: 0fabc54adca8371b3b3b2056d79d63cfcefb2595646306ccc4c91bd76eaf6d69
+    quote: A European Artificial Intelligence Board (the ‘ Board ’) is hereby established
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B04E7FA3E3C990A9
+  target: AIA-NORM-A065-P1-ESTABLISH-BOARD:actor:european_parliament:AIA-TEXT-A065-P001
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A065-P001
+  source_sha256: 0fabc54adca8371b3b3b2056d79d63cfcefb2595646306ccc4c91bd76eaf6d69
+  target_sha256: 2b9a10c12192e17cbf0bf0b4a17ad7dff78d8d75e6b7c2aaa6ab9b12cf860017
+  decision: accepted_with_basis
+  reason: '"Is hereby established" is passive: the Regulation itself creates the Board, so the act falls
+    to the institutions that adopted it. The sentence names neither the European Parliament nor the Council,
+    so no span of it can name the actor.'
+  legal_basis:
+  - *id001
+  reviewed_by: vidibro

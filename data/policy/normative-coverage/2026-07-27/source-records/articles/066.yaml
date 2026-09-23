@@ -7,7 +7,9 @@ records:
     and effective application of this Regulation
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -20,6 +22,7 @@ records:
     tasks to that end; the enumeration is not exhaustive and none of its entries is individually mandatory
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
   qualifier_spans:
@@ -38,6 +41,7 @@ records:
   - A066-P021
   - A066-P022
   - A066-P023
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -53,8 +57,10 @@ records:
     of the market surveillance authorities concerned, support their Article 74(11) joint activities
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -68,8 +74,10 @@ records:
   action: collect and share technical and regulatory expertise and best practices among Member States
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -85,8 +93,10 @@ records:
     AI models
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -104,8 +114,10 @@ records:
     sandbox functioning and Articles 57, 59 and 60 real-world testing
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -121,8 +133,10 @@ records:
     benefits, risks, safeguards, rights and obligations of using AI systems
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -139,8 +153,10 @@ records:
     operators and competent authorities, including by contributing to benchmarks
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -158,8 +174,10 @@ records:
     in the enacted fields
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -175,8 +193,10 @@ records:
     organisations
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -193,8 +213,10 @@ records:
     technical expertise the Regulation requires, including by assessing staff training needs
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -211,8 +233,10 @@ records:
     development, and facilitate cooperation and information-sharing among sandboxes
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -226,8 +250,10 @@ records:
   action: contribute to and advise on the development of guidance documents
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -241,8 +267,10 @@ records:
   action: advise the Commission on international AI matters
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -256,8 +284,10 @@ records:
   action: provide the Commission with opinions on qualified alerts regarding general-purpose AI models
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -274,8 +304,10 @@ records:
     experience and practice
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -293,6 +325,7 @@ records:
     of this Regulation
   actors:
   - actor_ref: board
+    basis_segment_ids: [AIA-TEXT-A066-P001]
   targets: []
   kind: power
   mandatory_content:
@@ -314,6 +347,7 @@ records:
   - A066-P011
   - A066-P012
   - A066-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-VII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

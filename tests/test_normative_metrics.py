@@ -2215,8 +2215,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 542
-    assert metrics.shall_token_candidate_recall == pytest.approx(863 / 1405)
+    assert metrics.shall_vs_semantic_disagreements == 540
+    assert metrics.shall_token_candidate_recall == pytest.approx(865 / 1405)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2239,7 +2239,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
     assert metrics.mapping_shape.unmapped == 880
-    assert metrics.semantic_vs_existing_implementation_disagreements == 48
+    assert metrics.semantic_vs_existing_implementation_disagreements == 45
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2254,9 +2254,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A050-P5-MANNER",
-        "AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN",
-        "AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS",
-        "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
@@ -2291,9 +2288,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN",
-        "AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS",
-        "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
@@ -3614,12 +3608,19 @@ def test_article_sixty_a_extracts_section_b_testing_framework():
     framework = norms["AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS"]
     assert len(framework.qualifier_spans) == 4
     assert len(framework.mandatory_content) == 4
-    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 3
+    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 0
+
+    # Paragraph 5 addresses the national frameworks, so its points are owed by the Member State
+    # that adopts one; a provider meets them under that national measure.
+    for suffix in ("P5-A-AGREE-TESTING-PLAN", "P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS"):
+        point = norms[f"AIA-NORM-A060A-{suffix}"]
+        assert [actor.actor_ref for actor in point.actors] == ["member_state"]
+        assert point.product_scope.value == "outside_supported_actor"
 
     # Cooperation and necessary obstacle removal are the two contents of one requirement.
     cooperate = norms["AIA-NORM-A060A-P4-COOPERATE-AND-REMOVE-OBSTACLES"]
-    adopted = "the Member State has adopted a real-world testing framework"
-    assert cooperate.conditions == [adopted]
+    adopted = "Member States that have adopted real-world testing frameworks"
+    assert [operand.text for operand in cooperate.conditions] == [adopted]
     assert len(cooperate.mandatory_content) == 2
     assert any("physical public infrastructure" in item for item in cooperate.mandatory_content)
 
@@ -3627,7 +3628,9 @@ def test_article_sixty_a_extracts_section_b_testing_framework():
     comply = norms["AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW"]
     limit = norms["AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT"]
     assert comply.kind.value == "obligation"
-    assert comply.implementation_mode.value == "missing"
+    # Compliance with the Section B legislation is assessed under that legislation, not here.
+    assert comply.product_scope.value == "no_product_action"
+    assert comply.implementation_mode.value == "none_required"
     assert limit.kind.value == "legal_consequence"
     assert limit.product_scope.value == "no_product_action"
     assert "to the extent necessary to enable the paragraph 1 testing" in limit.action
@@ -3816,7 +3819,7 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     agenda = norms["AIA-NORM-A065-P8-PREPARE-AGENDA"]
     assert not secretariat.mandatory_content
     assert not secretariat.conditions
-    assert convene.conditions == ["the Chair requests the meeting"]
+    assert [operand.text for operand in convene.conditions] == ["upon request of the Chair"]
     assert not agenda.conditions
     assert "rules of procedure" in agenda.action
     assert all(

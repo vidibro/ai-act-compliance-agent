@@ -1,0 +1,50 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '66'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 24
+  norms_scanned: 17
+  finding_count: 2
+  audit_sha256: b01c3fa108a0f5c4a4a1d0ab32f65674aa26b0b03c571e07060eb669b64890ac
+decisions:
+- finding_id: AIA-VALID-E69A3EF2DDEEF241
+  target: AIA-NORM-A066-A-TASK
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A066-P002
+  source_sha256: 47f62e9f02d227bbd382b3cde80a13e0fc91a0b636baaa5d363459edb165ab94
+  target_sha256: 57838b8ee6cb0536117048705bdfa7084ba21e1b34e5c522aa616b094d5f3881
+  decision: accepted_with_basis
+  reason: '"Subject to the agreement of the market surveillance authorities concerned" governs only the
+    second limb of point (a), supporting their joint activities. Recording it as a condition on the whole
+    norm would also condition the coordination limb, which the text does not do. The action keeps the
+    agreement on the joint-activities limb.'
+  legal_basis:
+  - span_id: AIA-TEXT-A066-P002
+    source_sha256: 47f62e9f02d227bbd382b3cde80a13e0fc91a0b636baaa5d363459edb165ab94
+    quote: in cooperation with and subject to the agreement of the market surveillance authorities concerned,
+      support joint activities of market surveillance authorities referred to in Article 74(11)
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-4F91A4ED11ABAF91
+  target: AIA-NORM-A066-D-TASK
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A066-P005
+  source_sha256: 7a423888e76c95aede82dde03228876200e42241965ce29e2c26919e2ba5fb95
+  target_sha256: 6b38dd5b3d5b74642a52b1bb6d56c2776f5facce58b16fd22f82a68e2a6d019b
+  decision: false_positive
+  reason: '"The derogation from the conformity assessment procedures referred to in Article 46" names
+    a subject the Board helps harmonise, not an exception to this task. The task holds in full, so there
+    is no exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A066-P005
+    source_sha256: 7a423888e76c95aede82dde03228876200e42241965ce29e2c26919e2ba5fb95
+    quote: including in relation to the derogation from the conformity assessment procedures referred
+      to in Article 46
+  reviewed_by: vidibro
