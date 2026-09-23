@@ -1,11 +1,15 @@
 temporal_regimes:
+- regime_id: AIA-TEMP-ARTICLE-78
+  application_start: 2025-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 - regime_id: AIA-TEMP-A078-P3-IMMEDIATE-ACCESS
-  application_start: 2026-08-02
+  application_start: 2025-08-02
   qualitative_deadline:
     kind: immediately
     trigger: upon request
   legal_basis_spans:
-  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A078-P009
 records:
 - norm_id: AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
@@ -31,7 +35,7 @@ records:
   - A078-P004
   - A078-P005
   - A078-P006
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: outside_supported_actor
   product_scope_reason: The cross-actor confidentiality rule is represented at specific supported-operator
     receipt points rather than reported here generically.
@@ -49,7 +53,7 @@ records:
   - actor_ref: public_authority
     basis_segment_ids: [AIA-TEXT-A078-P007]
   targets: []
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -66,7 +70,7 @@ records:
   - actor_ref: public_authority
     basis_segment_ids: [AIA-TEXT-A078-P007]
   targets: []
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -98,7 +102,7 @@ records:
       basis_segment_ids: [AIA-TEXT-A078-P008]
     - text: when such disclosure would jeopardise public and national security interests
       basis_segment_ids: [AIA-TEXT-A078-P008]
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,7 +121,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A078-P008]
   targets: []
   kind: prohibition
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -138,7 +142,7 @@ records:
     operands:
     - text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI systems referred to in point 1, 6 or 7 of Annex III
       basis_segment_ids: [AIA-TEXT-A078-P009]
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   implementation_refs:
   - AIA-RULE-PO-A78-3
   verification_mode: reported_not_judged
@@ -177,7 +181,7 @@ records:
     basis_segment_ids: [AIA-TEXT-A078-P009]
   targets: []
   kind: prohibition
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -197,7 +201,7 @@ records:
   - target_ref: Paragraphs 1, 2 and 3
     basis_segment_ids: [AIA-TEXT-A078-P010]
   kind: legal_consequence
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: no_product_action
   product_scope_reason: This saving clause qualifies other duties without creating an independent product
     action.
@@ -224,7 +228,7 @@ records:
     operands:
     - text: where necessary
       basis_segment_ids: [AIA-TEXT-A078-P011]
-  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  temporal_regime_id: AIA-TEMP-ARTICLE-78
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

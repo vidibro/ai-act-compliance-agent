@@ -4593,15 +4593,21 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A077-P004
+- regime_id: AIA-TEMP-ARTICLE-78
+  application_start: '2025-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-B
 - regime_id: AIA-TEMP-A078-P3-IMMEDIATE-ACCESS
-  application_start: '2026-08-02'
+  application_start: '2025-08-02'
   application_end: null
   qualitative_deadline:
     kind: immediately
     trigger: upon request
   timing_conditions: []
   legal_basis_spans:
-  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A113-B
   - AIA-TEXT-A078-P009
 - regime_id: AIA-TEMP-A079-P2-REQUIRE-CORRECTION
   application_start: '2026-08-02'
