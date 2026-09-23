@@ -5,7 +5,9 @@ norms:
   kind: applicability
   actors: none
   targets:
-  - target_ref: representative_action_framework
+  - target_ref: Annex I to Directive (EU) 2020/1828
+    basis_segment_ids:
+    - AIA-TEXT-A110-P001
   action: add the AI Act to Directive 2020/1828 Annex I so its representative-action framework applies
   norm_text: Regulation (EU) 2024/1689 of the European Parliament and of the Council
   detection_channels:
@@ -35,3 +37,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110

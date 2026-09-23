@@ -2,11 +2,20 @@ records:
 - norm_id: AIA-NORM-A108-ARTICLE17-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   source: A108-P002
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
-  action: account for AI Act Chapter III Section 2 in Article 17 aviation safety-component AI implementing acts
+  action: account for AI Act Chapter III Section 2 in Article 17 aviation safety-component AI implementing
+    acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A108-P002]
   targets: []
-  qualifier_spans: [A108-P001]
+  qualifier_spans:
+  - A108-P001
+  conditions:
+    operator: all_of
+    operands:
+    - text: when adopting implementing acts pursuant to paragraph 1 concerning Artificial Intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689
+      basis_segment_ids: [AIA-TEXT-A108-P002]
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -15,11 +24,20 @@ records:
 - norm_id: AIA-NORM-A108-ARTICLE19-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   source: A108-P003
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
-  action: account for AI Act Chapter III Section 2 in Article 19 aviation safety-component AI delegated acts
+  action: account for AI Act Chapter III Section 2 in Article 19 aviation safety-component AI delegated
+    acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A108-P003]
   targets: []
-  qualifier_spans: [A108-P001]
+  qualifier_spans:
+  - A108-P001
+  conditions:
+    operator: all_of
+    operands:
+    - text: When adopting delegated acts pursuant to paragraphs 1 and 2 concerning Artificial Intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689
+      basis_segment_ids: [AIA-TEXT-A108-P003]
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -28,11 +46,20 @@ records:
 - norm_id: AIA-NORM-A108-ARTICLE43-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   source: A108-P004
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
-  action: account for AI Act Chapter III Section 2 in Article 43 aviation safety-component AI implementing acts
+  action: account for AI Act Chapter III Section 2 in Article 43 aviation safety-component AI implementing
+    acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A108-P004]
   targets: []
-  qualifier_spans: [A108-P001]
+  qualifier_spans:
+  - A108-P001
+  conditions:
+    operator: all_of
+    operands:
+    - text: When adopting implementing acts pursuant to paragraph 1 concerning Artificial Intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689
+      basis_segment_ids: [AIA-TEXT-A108-P004]
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -41,11 +68,20 @@ records:
 - norm_id: AIA-NORM-A108-ARTICLE47-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   source: A108-P005
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
-  action: account for AI Act Chapter III Section 2 in Article 47 aviation safety-component AI delegated acts
+  action: account for AI Act Chapter III Section 2 in Article 47 aviation safety-component AI delegated
+    acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A108-P005]
   targets: []
-  qualifier_spans: [A108-P001]
+  qualifier_spans:
+  - A108-P001
+  conditions:
+    operator: all_of
+    operands:
+    - text: When adopting delegated acts pursuant to paragraphs 1 and 2 concerning Artificial Intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689
+      basis_segment_ids: [AIA-TEXT-A108-P005]
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -54,11 +90,20 @@ records:
 - norm_id: AIA-NORM-A108-ARTICLE57-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   source: A108-P006
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
-  action: account for AI Act Chapter III Section 2 in Article 57 aviation safety-component AI implementing acts
+  action: account for AI Act Chapter III Section 2 in Article 57 aviation safety-component AI implementing
+    acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A108-P006]
   targets: []
-  qualifier_spans: [A108-P001]
+  qualifier_spans:
+  - A108-P001
+  conditions:
+    operator: all_of
+    operands:
+    - text: When adopting those implementing acts concerning Artificial Intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689
+      basis_segment_ids: [AIA-TEXT-A108-P006]
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -67,11 +112,20 @@ records:
 - norm_id: AIA-NORM-A108-ARTICLE58-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   source: A108-P007
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
-  action: account for AI Act Chapter III Section 2 in Article 58 aviation safety-component AI delegated acts
+  action: account for AI Act Chapter III Section 2 in Article 58 aviation safety-component AI delegated
+    acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A108-P007]
   targets: []
-  qualifier_spans: [A108-P001]
+  qualifier_spans:
+  - A108-P001
+  conditions:
+    operator: all_of
+    operands:
+    - text: When adopting delegated acts pursuant to paragraphs 1 and 2 concerning Artificial Intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689
+      basis_segment_ids: [AIA-TEXT-A108-P007]
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

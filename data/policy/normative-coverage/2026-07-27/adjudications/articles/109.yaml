@@ -1,0 +1,32 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '109'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 3
+  norms_scanned: 1
+  finding_count: 1
+  audit_sha256: 5244f8d19816ca4a68bb7f10ad80ea21cb0c0614d65b832e3c8b143a3d636326
+decisions:
+- finding_id: AIA-VALID-EDC32A5F1358B029
+  target: AIA-NORM-A109-P3-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A109-P002
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A109-P002
+  source_sha256: da3c80f9ad2568620e0cc97139ef2e1c61e046215d69fb7a30ae3452308ff0fb
+  target_sha256: fe8d3752bb03921fd2ec393eef156fc3e182b2c87c8b8323cc46211d1cfd2e07
+  decision: accepted_with_basis
+  reason: The added provision binds whoever adopts the implementing acts under Article 11 of Regulation
+    (EU) 2019/2144. That act gives the power to the Commission, but the provision itself names no one,
+    so the Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A109-P002
+    source_sha256: da3c80f9ad2568620e0cc97139ef2e1c61e046215d69fb7a30ae3452308ff0fb
+    quote: When adopting the implementing acts pursuant to paragraph 2
+  reviewed_by: vidibro

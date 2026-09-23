@@ -5,11 +5,15 @@ records:
   action: add the AI Act to Directive 2020/1828 Annex I so its representative-action framework applies
   actors: none
   targets:
-  - target_ref: representative_action_framework
+  - target_ref: Annex I to Directive (EU) 2020/1828
+    basis_segment_ids: [AIA-TEXT-A110-P001]
   kind: applicability
-  qualifier_spans: [A110-P001]
+  qualifier_spans:
+  - A110-P001
+  temporal_regime_id: AIA-TEMP-ARTICLES-102-110
   product_scope: no_product_action
-  product_scope_reason: This amendment enables collective consumer redress rather than imposing an independent operator action.
+  product_scope_reason: This amendment enables collective consumer redress rather than imposing an independent
+    operator action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported

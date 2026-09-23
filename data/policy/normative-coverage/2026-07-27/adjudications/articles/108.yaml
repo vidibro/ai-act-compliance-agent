@@ -1,0 +1,107 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '108'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 8
+  norms_scanned: 6
+  finding_count: 6
+  audit_sha256: fe2aea4dd4709a2ddadb0581d5ee777ec92480f2cdf5ad05e9fc50d653bda724
+decisions:
+- finding_id: AIA-VALID-57E5A1DEF68AEC0E
+  target: AIA-NORM-A108-ARTICLE17-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A108-P002
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A108-P002
+  source_sha256: afc7fe2997aab1566e95fec91875d333748e0981a96f370b3e32c8cc2484989b
+  target_sha256: 823bcd51bdf819cd97a11f39b919b5258347fe99440af8f0c0abb7709faf26fb
+  decision: accepted_with_basis
+  reason: The added provision binds whoever adopts the implementing acts under Article 17 of Regulation
+    (EU) 2018/1139. That act gives the power to the Commission, but the provision itself names no one,
+    so the Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A108-P002
+    source_sha256: afc7fe2997aab1566e95fec91875d333748e0981a96f370b3e32c8cc2484989b
+    quote: when adopting implementing acts pursuant to paragraph 1
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-DCA3A2500246AE53
+  target: AIA-NORM-A108-ARTICLE19-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A108-P003
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A108-P003
+  source_sha256: 58a045b61f225bc8fab8232332f17b25ee01aa8b60390c4b3a56c8267b49277a
+  target_sha256: acb437a128f3b853804658bbb70bcfb08bb0081929b4bc255613a737b1d5b91d
+  decision: accepted_with_basis
+  reason: The added provision binds whoever adopts the delegated acts under Article 19 of Regulation (EU)
+    2018/1139. That act gives the power to the Commission, but the provision itself names no one, so the
+    Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A108-P003
+    source_sha256: 58a045b61f225bc8fab8232332f17b25ee01aa8b60390c4b3a56c8267b49277a
+    quote: When adopting delegated acts pursuant to paragraphs 1 and 2
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-A3843E08C73DEAC9
+  target: AIA-NORM-A108-ARTICLE43-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A108-P004
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A108-P004
+  source_sha256: c6e2d3fc278d961f68fb93ae40acf19b0d7db46f713ef35e2d806bb23aec64d7
+  target_sha256: c749965e3472931c6827ae0c53e8ee78d7e262ab9ed45ff58b517b1a011cd29b
+  decision: accepted_with_basis
+  reason: The added provision binds whoever adopts the implementing acts under Article 43 of Regulation
+    (EU) 2018/1139. That act gives the power to the Commission, but the provision itself names no one,
+    so the Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A108-P004
+    source_sha256: c6e2d3fc278d961f68fb93ae40acf19b0d7db46f713ef35e2d806bb23aec64d7
+    quote: When adopting implementing acts pursuant to paragraph 1
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-F53AB9D8D0683BE1
+  target: AIA-NORM-A108-ARTICLE47-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A108-P005
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A108-P005
+  source_sha256: 36f1842b76225ec5797aa7a5698a67b73daab0024bbd5f0ce3a2b10cd9f89e12
+  target_sha256: fc2114193d443b4bcf0c76052bfd38e19ce9269e9c25df6f7cae996182a8b425
+  decision: accepted_with_basis
+  reason: The added provision binds whoever adopts the delegated acts under Article 47 of Regulation (EU)
+    2018/1139. That act gives the power to the Commission, but the provision itself names no one, so the
+    Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A108-P005
+    source_sha256: 36f1842b76225ec5797aa7a5698a67b73daab0024bbd5f0ce3a2b10cd9f89e12
+    quote: When adopting delegated acts pursuant to paragraphs 1 and 2
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-DE684FFC0384C871
+  target: AIA-NORM-A108-ARTICLE57-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A108-P006
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A108-P006
+  source_sha256: 14fdaf29cba16df401fea66201b25d16507ebc774f645331023285629d34f3ce
+  target_sha256: 6d1a3f096eaa5298a03193b1163acf895f1f8b546e3bb18a24aa366db219a016
+  decision: accepted_with_basis
+  reason: The added provision binds whoever adopts the implementing acts under Article 57 of Regulation
+    (EU) 2018/1139. That act gives the power to the Commission, but the provision itself names no one,
+    so the Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A108-P006
+    source_sha256: 14fdaf29cba16df401fea66201b25d16507ebc774f645331023285629d34f3ce
+    quote: When adopting those implementing acts
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-CE422F637DE122EF
+  target: AIA-NORM-A108-ARTICLE58-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS:actor:commission:AIA-TEXT-A108-P007
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A108-P007
+  source_sha256: 9a6122814bd52f72d312cfcfa6e702d3e816ac3a0a853bcd5c68c6df68c87547
+  target_sha256: fffbdb9b9b7883942ca47741430b18a0b8c5c2b16d4c17705b7a0aaa99e436c8
+  decision: accepted_with_basis
+  reason: The added provision binds whoever adopts the delegated acts under Article 58 of Regulation (EU)
+    2018/1139. That act gives the power to the Commission, but the provision itself names no one, so the
+    Commission role records the adopter and no span here can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A108-P007
+    source_sha256: 9a6122814bd52f72d312cfcfa6e702d3e816ac3a0a853bcd5c68c6df68c87547
+    quote: When adopting delegated acts pursuant to paragraphs 1 and 2
+  reviewed_by: vidibro
