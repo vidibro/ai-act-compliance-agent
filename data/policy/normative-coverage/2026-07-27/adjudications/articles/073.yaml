@@ -1,0 +1,65 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '73'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 14
+  norms_scanned: 18
+  finding_count: 3
+  audit_sha256: cdd7857f0fe271b692f14ad63bde9a13e2405107e781404d4206c3054076df2f
+decisions:
+- finding_id: AIA-VALID-40E20B469A53D29E
+  target: AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A073-P001
+  source_sha256: 7da0d323fc7b52aab9b839ad509c3587122fdb391cade42ea2723b6ae1c2edf4
+  target_sha256: 718a37d66296388ffd6efb0d3144ae2693386a3cc311050c9001c8e2710b6443
+  decision: false_positive
+  reason: '"Where that incident occurred" says which Member States'' authorities receive the report. It
+    does not limit when the report is owed: every serious incident must be reported, so there is no condition
+    to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A073-P001
+    source_sha256: 7da0d323fc7b52aab9b839ad509c3587122fdb391cade42ea2723b6ae1c2edf4
+    quote: shall report any serious incident to the market surveillance authorities of the Member States
+      where that incident occurred
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-0D9B10DED578C82E
+  target: AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A073-P002
+  source_sha256: 4f878930f37385f2d7f045fcf935d6526fe28cb3f4a2cfea8cb50388bd2621d9
+  target_sha256: e20639da4fa9a8803aff8d8ac2f7e19665abf4d7b1b548ecc3739b7fde4526c1
+  decision: accepted_with_basis
+  reason: '"Where applicable" says whose awareness starts the 15 days: the provider''s, or the deployer''s
+    where the deployer owes the report. It does not limit the deadline itself, which binds every report.
+    The regime''s trigger keeps the words as enacted.'
+  legal_basis:
+  - span_id: AIA-TEXT-A073-P002
+    source_sha256: 4f878930f37385f2d7f045fcf935d6526fe28cb3f4a2cfea8cb50388bd2621d9
+    quote: not later than 15 days after the provider or, where applicable, the deployer, becomes aware
+      of the serious incident
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-0BBCB75D6183C258
+  target: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A073-P008
+  source_sha256: 9c8c52fc66a61469833abca7fd1209d0cd31b45f8fda7fc7c44449a253b1d988
+  target_sha256: 0a08d909d76830da682404be220b1bee7d862d2e98958c65f3c47835badb7556
+  decision: accepted_with_basis
+  reason: '"Where relevant" qualifies one addressee only, the notified body. Cooperation with the competent
+    authorities during the investigations is always owed. The action keeps the qualifier on the notified
+    body.'
+  legal_basis:
+  - span_id: AIA-TEXT-A073-P008
+    source_sha256: 9c8c52fc66a61469833abca7fd1209d0cd31b45f8fda7fc7c44449a253b1d988
+    quote: The provider shall cooperate with the competent authorities, and where relevant with the notified
+      body concerned, during the investigations referred to in the first subparagraph
+  reviewed_by: vidibro

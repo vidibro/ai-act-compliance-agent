@@ -95,7 +95,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 181
+    assert len(expected_content) == 180
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     baseline_content["AIA-NORM-A002-P11-MORE-FAVOURABLE-WORKER-RULES"] = 2
     baseline_content["AIA-NORM-A005-P6-PROVIDE-TEMPLATE"] = 2
@@ -196,6 +196,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A073-P8-SEVEN-DAY-AUTHORITY-ACTION"] = 2
     baseline_content["AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING"] = 2
     baseline_content.pop("AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS", None)
+    # Art. 75(1) points (a) and (b) became two norms whose conditions name the systems.
+    baseline_content.pop("AIA-NORM-A075-P1-COMPETENCE", None)
     baseline_content["AIA-NORM-A075-P2A-RESPOND-AND-UPDATE"] = 1
     baseline_content["AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS"] = 2
     baseline_content["AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS"] = 2

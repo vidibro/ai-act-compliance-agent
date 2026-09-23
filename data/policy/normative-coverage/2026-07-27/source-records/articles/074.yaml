@@ -1,3 +1,11 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A074-P7-PRUDENTIAL-REPORTING
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A074-P011
 records:
 - norm_id: AIA-NORM-A074-P1-APPLY-MARKET-SURVEILLANCE-REGULATION
   source: A074-P001
@@ -6,6 +14,7 @@ records:
   action: apply Regulation 2019/1020 using the enacted expanded operator and product meanings
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P001]
   targets: []
   kind: applicability
   mandatory_content:
@@ -14,6 +23,7 @@ records:
   qualifier_spans:
   - A074-P002
   - A074-P003
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -29,7 +39,9 @@ records:
     information of potential interest for applying Union competition law
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -43,10 +55,12 @@ records:
     the measures taken
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P004]
   targets: []
   mandatory_content:
   - use of prohibited practices that occurred during that year
   - measures taken
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -61,9 +75,11 @@ records:
     is designated
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A074-P006]
   targets: []
   qualifier_spans:
   - A074-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -79,17 +95,22 @@ records:
     to 83
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P007]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI system is related to a product covered by Union harmonisation legislation listed in Section
-    A of Annex I
-  - that legislation already provides procedures with the same objective and an equivalent level of protection
+    operator: all_of
+    operands:
+    - text: AI systems related to products covered by the Union harmonisation legislation listed in section A of Annex I
+      basis_segment_ids: [AIA-TEXT-A074-P007]
+    - text: where such legal acts already provide for procedures ensuring an equivalent level of protection and having the same objective
+      basis_segment_ids: [AIA-TEXT-A074-P007]
   verified_by: vidibro
 - norm_id: AIA-NORM-A074-P5-REMOTE-SURVEILLANCE-POWERS
   source: A074-P008
@@ -100,8 +121,10 @@ records:
   action: exercise Article 14(4)(d) and (j) surveillance powers remotely as appropriate
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P008]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,7 +140,9 @@ records:
   action: assign directly connected financial-services AI surveillance to the relevant financial supervisor
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A074-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -131,8 +156,10 @@ records:
   action: designate another relevant authority as the market-surveillance authority for the Regulation
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A074-P010]
   targets: []
   qualifier_spans: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -140,8 +167,12 @@ records:
   verification_mode: not_reported
   kind: permission
   conditions:
-  - the circumstances are appropriate
-  - coordination with the relevant financial supervisory authority is ensured
+    operator: all_of
+    operands:
+    - text: in appropriate circumstances
+      basis_segment_ids: [AIA-TEXT-A074-P010]
+    - text: provided that coordination is ensured
+      basis_segment_ids: [AIA-TEXT-A074-P010]
   verified_by: vidibro
 - norm_id: AIA-NORM-A074-P7-REPORT-PRUDENTIALLY-RELEVANT-INFORMATION
   source: A074-P011
@@ -154,14 +185,18 @@ records:
     relevant to its prudential-supervision tasks
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P011]
   targets: []
   kind: recommendation
+  temporal_regime_id: AIA-TEMP-A074-P7-PRUDENTIAL-REPORTING
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_reason: This is a non-binding recommendation to a public authority.
   conditions:
-  - the authority supervises regulated credit institutions under Directive 2013/36/EU that participate
-    in the Single Supervisory Mechanism
+    operator: all_of
+    operands:
+    - text: National market surveillance authorities supervising regulated credit institutions regulated under Directive 2013/36/EU, which are participating in the Single Supervisory Mechanism established by Regulation (EU) No 1024/2013
+      basis_segment_ids: [AIA-TEXT-A074-P011]
   verified_by: vidibro
 - norm_id: AIA-NORM-A074-P8-SENSITIVE-SECTOR-AUTHORITIES
   source: A074-P012
@@ -177,7 +212,9 @@ records:
     surveillance authorities
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A074-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -191,8 +228,10 @@ records:
     or otherwise interferes with their activities when acting in their judicial capacity
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P012]
   targets: []
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -206,16 +245,24 @@ records:
   action: supervise in-scope Union bodies except the Court acting judicially
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids: [AIA-TEXT-A074-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - a Union institution, body, office or agency falls within the scope of the Regulation
+    operator: all_of
+    operands:
+    - text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation
+      basis_segment_ids: [AIA-TEXT-A074-P013]
   exceptions:
-  - the Court of Justice of the European Union acting in its judicial capacity
+    operator: any_of
+    operands:
+    - text: except in relation to the Court of Justice of the European Union acting in its judicial capacity
+      basis_segment_ids: [AIA-TEXT-A074-P013]
   verified_by: vidibro
 - norm_id: AIA-NORM-A074-P10-FACILITATE-NATIONAL-COORDINATION
   source: A074-P014
@@ -226,7 +273,9 @@ records:
   action: facilitate coordination between AI surveillance and other relevant national authorities
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A074-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -244,9 +293,12 @@ records:
     found to present a serious risk across two or more Member States
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P015]
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A074-P015]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -258,7 +310,9 @@ records:
   action: provide coordination support for joint investigations
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A074-P015]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -276,14 +330,18 @@ records:
     remote access where appropriate
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A074-P016]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A74-12
   verification_mode: reported_not_judged
   verified_by: vidibro
   conditions:
-  - the access is relevant and limited to what is necessary for the market-surveillance authority to fulfil
-    its tasks
+    operator: all_of
+    operands:
+    - text: where relevant and limited to what is necessary to fulfil their tasks
+      basis_segment_ids: [AIA-TEXT-A074-P016]
 - norm_id: AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS
   source: A074-P017
   quote: 'Market surveillance authorities shall be granted access to the source code of the high-risk
@@ -292,19 +350,26 @@ records:
     are met
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A074-P019]
   targets: []
   mandatory_content: []
   qualifier_spans:
   - A074-P018
   - A074-P019
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A74-13
   verification_mode: reported_not_judged
   verified_by: vidibro
   conditions:
-  - source-code access is necessary for assessing conformity with Chapter III Section 2 requirements
-  - testing, auditing and verification procedures based on data and documentation provided by the provider
-    have been exhausted or proved insufficient
+    operator: all_of
+    operands:
+    - text: upon a reasoned request
+      basis_segment_ids: [AIA-TEXT-A074-P017]
+    - text: access to source code is necessary to assess the conformity of a high-risk AI system with the requirements set out in Chapter III, Section 2
+      basis_segment_ids: [AIA-TEXT-A074-P018]
+    - text: testing or auditing procedures and verifications based on the data and documentation provided by the provider have been exhausted or proved insufficient
+      basis_segment_ids: [AIA-TEXT-A074-P019]
 - norm_id: AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY
   source: A074-P020
   quote: Any information or documentation obtained by market surveillance authorities shall be treated
@@ -312,7 +377,9 @@ records:
   action: treat obtained information and documentation under Article 78 confidentiality
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A074-P020]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

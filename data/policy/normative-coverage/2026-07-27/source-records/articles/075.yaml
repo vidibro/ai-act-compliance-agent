@@ -1,15 +1,35 @@
 temporal_regimes:
 - regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+  application_start: 2026-08-02
   qualitative_deadline:
     kind: without_delay
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A075-P022
 - regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-THIRTY-DAYS
+  application_start: 2026-08-02
   relative_deadline:
     quantity: 30
     unit: day
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A075-P022
+- regime_id: AIA-TEMP-A075-P1D-NOTIFY-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A075-P012
+- regime_id: AIA-TEMP-A075-P2A-FOUR-MONTH-REPLY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+  timing_conditions:
+  - in any event no later than four months following receipt of the request
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A075-P021
 norm_relations:
 - relation_id: AIA-REL-A075-P3-SUPPLY-INFORMATION-PARALLEL-DEADLINES
   source_norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
@@ -23,34 +43,60 @@ records:
   source: A075-P001
   quote: 'The AI Office shall be exclusively competent for the supervision and enforcement of the obligations
     under this Regulation in relation to the following AI systems:'
-  action: hold exclusive supervision and enforcement competence for the listed systems
+  action: hold exclusive supervision and enforcement competence for AI systems based on general-purpose
+    AI models developed by the same provider or undertaking, except the four excluded classes
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P001]
   targets: []
   kind: legal_consequence
-  mandatory_content:
-  - AI systems based on general-purpose AI models where the model and the system are developed by the
-    same provider, or by providers forming part of the same undertaking as that provider, except for AI
-    systems related to products covered by the Annex I Union harmonisation legislation, AI systems referred
-    to in point 2 of Annex III, AI systems provided by law enforcement authorities, border management
-    authorities and financial institutions insofar as they fall under Article 74(6), and AI systems referred
-    to in point 8 of Annex III as regards the administration of justice
-  - AI systems that constitute or that are integrated into a very large online platform or very large
-    online search engine designated in accordance with Regulation (EU) 2022/2065
   exceptions:
-  - point (a) only, AI systems related to products covered by the Union harmonisation legislation listed
-    in Annex I
-  - point (a) only, AI systems referred to in point 2 of Annex III
-  - point (a) only, AI systems provided by law enforcement authorities, border management authorities
-    and financial institutions, insofar as those AI systems fall under Article 74(6)
-  - point (a) only, AI systems referred to in point 8 of Annex III as regards the administration of justice
+    operator: any_of
+    operands:
+    - text: AI systems related to products covered by the Union harmonisation legislation listed in Annex I
+      basis_segment_ids: [AIA-TEXT-A075-P003]
+    - text: AI systems referred to in point 2 of Annex III
+      basis_segment_ids: [AIA-TEXT-A075-P004]
+    - text: AI systems provided by law enforcement authorities, border management authorities and financial institutions, insofar as those AI systems fall under Article 74(6)
+      basis_segment_ids: [AIA-TEXT-A075-P005]
+    - text: AI systems referred to in point 8 of Annex III as regards the administration of justice
+      basis_segment_ids: [AIA-TEXT-A075-P006]
   qualifier_spans:
   - A075-P002
   - A075-P003
   - A075-P004
   - A075-P005
   - A075-P006
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: AI systems based on general-purpose AI models where the model and the system are developed by the same provider, or by providers forming part of the same undertaking as that provider
+      basis_segment_ids: [AIA-TEXT-A075-P002]
+- norm_id: AIA-NORM-A075-P1-PLATFORM-COMPETENCE
+  source: A075-P001
+  quote: 'The AI Office shall be exclusively competent for the supervision and enforcement of the obligations
+    under this Regulation in relation to the following AI systems:'
+  action: hold exclusive supervision and enforcement competence for AI systems that constitute or are
+    integrated into a designated very large online platform or search engine
+  actors:
+  - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P001]
+  targets: []
+  kind: legal_consequence
+  qualifier_spans:
   - A075-P007
+  conditions:
+    operator: all_of
+    operands:
+    - text: AI systems that constitute or that are integrated into a very large online platform or very large online search engine designated in accordance with Regulation (EU) 2022/2065
+      basis_segment_ids: [AIA-TEXT-A075-P007]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -65,8 +111,10 @@ records:
     or in its undertaking
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P001]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -80,9 +128,14 @@ records:
   action: report serious incidents to the AI Office rather than through the Article 73 route
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A075-P009]
   targets: []
   conditions:
-  - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
+    operator: all_of
+    operands:
+    - text: providers of high-risk AI systems subject to the competence of the AI Office pursuant to paragraph 1 of this Article
+      basis_segment_ids: [AIA-TEXT-A075-P009]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A75-1a
   verification_mode: reported_not_judged
@@ -93,14 +146,22 @@ records:
   action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A075-P009]
   targets: []
   kind: applicability
   conditions:
-  - a serious incident is reported to the AI Office under Article 75(1a)
+    operator: all_of
+    operands:
+    - text: providers of high-risk AI systems subject to the competence of the AI Office pursuant to paragraph 1 of this Article
+      basis_segment_ids: [AIA-TEXT-A075-P009]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A75-1a
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   verified_by: vidibro
+  implementation_reason: The rule's evidence names the Article 73 deadlines and post-report duties that
+    apply unchanged.
 - norm_id: AIA-NORM-A075-P1A-TRANSMIT-INCIDENT-INFORMATION
   source: A075-P009
   quote: The AI Office shall promptly transmit the relevant information to the market surveillance authority
@@ -109,7 +170,9 @@ records:
     authority
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -121,11 +184,13 @@ records:
     the AI Office and provide the AI Office the necessary assistance for the exercise of its powers, including,
     where necessary, in connection with inspections or other enforcement measures carried out in the territory
     of a Member State.
-  action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
-    inspections and enforcement
+  action: actively cooperate with and provide necessary assistance to the AI Office including, where necessary,
+    for territorial inspections and enforcement
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A075-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -139,32 +204,41 @@ records:
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A075-P010]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the authorities assist the AI Office under Article 75(1b)
+    operator: all_of
+    operands:
+    - text: where relevant and limited to what is necessary to fulfil their tasks under this paragraph
+      basis_segment_ids: [AIA-TEXT-A075-P010]
 - norm_id: AIA-NORM-A075-P1C-ASSIST-PUBLIC-DATA-ACTION
   source: A075-P011
-  quote: "When taking investigatory or enforcement action in the territory of a Member State that involves\
-    \ access to a public authority\u2019s data or AI system, the AI Office shall be assisted by the relevant\
-    \ market surveillance authority."
+  quote: When taking investigatory or enforcement action in the territory of a Member State that involves
+    access to a public authority’s data or AI system, the AI Office shall be assisted by the relevant
+    market surveillance authority.
   action: assist AI Office territorial action involving access to a public authority's data or AI system
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075-P011]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI Office takes investigatory or enforcement action in a Member State involving access to a public
-    authority's data or AI system
+    operator: all_of
+    operands:
+    - text: When taking investigatory or enforcement action in the territory of a Member State that involves access to a public authority’s data or AI system
+      basis_segment_ids: [AIA-TEXT-A075-P011]
 - norm_id: AIA-NORM-A075-P1D-NOTIFY-MARKET-AUTHORITY
   source: A075-P012
   quote: Before taking a decision that would have the effect of prohibiting or restricting the AI system
@@ -175,14 +249,21 @@ records:
     or recall decision
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-A075-P1D-NOTIFY-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - before the AI Office takes a national-market prohibition, restriction, withdrawal or recall decision
+    operator: any_of
+    operands:
+    - text: Before taking a decision that would have the effect of prohibiting or restricting the AI system being made available or put into service on a national market
+      basis_segment_ids: [AIA-TEXT-A075-P012]
+    - text: a decision to withdraw or recall the AI system from such market
+      basis_segment_ids: [AIA-TEXT-A075-P012]
 - norm_id: AIA-NORM-A075-P1D-CONSULT-AUTHORITIES
   source: A075-P012
   quote: The AI Office shall consult the authorities involved in the application of this Regulation, where
@@ -190,12 +271,19 @@ records:
   action: consult involved authorities where appropriate on application and enforcement matters
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids: [AIA-TEXT-A075-P012]
 - norm_id: AIA-NORM-A075-P1E-RESPONSIBLE
   source: A075-P013
   quote: The AI Office shall be responsible for conformity assessments and tests of AI systems referred
@@ -204,15 +292,19 @@ records:
   action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - an Article 75(1) AI system is classified as high-risk and subject to third-party conformity assessment
-    under Article 43 before market placement or putting into service
+    operator: all_of
+    operands:
+    - text: that are classified as high-risk and subject to a third-party conformity assessment pursuant to Article 43
+      basis_segment_ids: [AIA-TEXT-A075-P013]
 - norm_id: AIA-NORM-A075-P1E-VERIFY
   source: A075-P013
   quote: Those tests and assessments shall verify that the systems comply with the relevant requirements
@@ -221,21 +313,23 @@ records:
   action: verify regulatory conformity and market eligibility
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - the AI Office performs paragraph 1e conformity assessments or tests
 - norm_id: AIA-NORM-A075-P1E-ENTRUST
   source: A075-P013
   quote: The Commission shall entrust the performance of those tests or assessments to notified bodies
   action: entrust tests or assessments to designated notified bodies
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A075-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -247,14 +341,16 @@ records:
   action: act on the Commission's behalf when entrusted
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-A075-P013]
   targets: []
+  qualifier_spans:
+  - A075-P013
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - the Commission entrusts paragraph 1e tests or assessments to the notified body
 - norm_id: AIA-NORM-A075-P1E-WITHDRAW
   source: A075-P013
   quote: If a notified body to which the Commission has delegated tasks under this paragraph does not
@@ -262,15 +358,20 @@ records:
   action: withdraw an inadequately performed delegation immediately
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A075-P013]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the notified body does not adequately perform the paragraph 1e tasks delegated to it
+    operator: all_of
+    operands:
+    - text: If a notified body to which the Commission has delegated tasks under this paragraph does not perform those tasks adequately
+      basis_segment_ids: [AIA-TEXT-A075-P013]
 - norm_id: AIA-NORM-A075-P1E-FEES
   source: A075-P014
   quote: The fees for testing and assessment activities shall be levied on the provider of a high-risk
@@ -278,10 +379,13 @@ records:
   action: bear testing and assessment fees
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A075-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A75-1E
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A075-P1E-PAY
   source: A075-P014
   quote: The provider shall pay the costs related to the services entrusted by the Commission to the notified
@@ -289,10 +393,13 @@ records:
   action: pay entrusted-service costs directly to the notified body
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A075-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-PO-A75-1E
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
   source: A075-P015
   quote: they shall cooperate with the AI Office to carry out compliance evaluations, and shall inform
@@ -301,10 +408,16 @@ records:
     market surveillance authorities accordingly
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075-P015]
   targets: []
+  qualifier_spans:
+  - A075-P015
   conditions:
-  - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
-    deployers for at least one high-risk purpose are non-compliant
+    operator: all_of
+    operands:
+    - text: Where the relevant market surveillance authorities have sufficient reason to consider general-purpose AI systems that can be used directly by deployers for at least one purpose that is classified as high-risk pursuant to this Regulation to be non-compliant with the requirements laid down in this Regulation
+      basis_segment_ids: [AIA-TEXT-A075-P015]
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -326,6 +439,7 @@ records:
     compliance
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075-P016]
   targets: []
   kind: power
   mandatory_content:
@@ -336,21 +450,26 @@ records:
   - A075-P017
   - A075-P018
   - A075-P019
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the market-surveillance authority has well-founded and sufficient reasons to suspect that a provider
-    or deployer of an Article 75(1) system infringed the Regulation
+    operator: all_of
+    operands:
+    - text: Where a market surveillance authority has well-founded and sufficient reasons to suspect that a provider or a deployer of an AI system referred to in paragraph 1 of this Article has infringed this Regulation
+      basis_segment_ids: [AIA-TEXT-A075-P016]
 - norm_id: AIA-NORM-A075-P2A-ACCOUNT-FOR-REQUEST
   source: A075-P020
   quote: The AI Office shall take utmost account of the request
   action: take utmost account of a market surveillance authority's assessment request
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P020]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -360,17 +479,20 @@ records:
   source: A075-P020
   quote: the market surveillance authority shall cooperate actively and provide the AI Office the necessary
     assistance for the exercise of its powers
-  action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
+  action: after making an Article 75(2a) request, actively cooperate with and provide necessary assistance
+    to the AI Office on the requested assessment
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075-P020]
   targets: []
+  qualifier_spans:
+  - A075-P020
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  conditions:
-  - the market-surveillance authority has made an Article 75(2a) assessment request
 - norm_id: AIA-NORM-A075-P2A-RESPOND-AND-UPDATE
   source: A075-P021
   quote: The AI Office shall, without undue delay and in any event no later than four months following
@@ -381,9 +503,11 @@ records:
     exercising them
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P021]
   targets: []
   mandatory_content:
   - the intention to exercise the Article 75a powers, or the reasons for not exercising them
+  temporal_regime_id: AIA-TEMP-A075-P2A-FOUR-MONTH-REPLY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -398,12 +522,17 @@ records:
     and about their outcome, without disclosing any confidential information
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P021]
   targets: []
   conditions:
-  - the AI Office decides to exercise its powers in accordance with Article 75a
+    operator: all_of
+    operands:
+    - text: If the AI Office decides to exercise its powers in accordance with Article 75a
+      basis_segment_ids: [AIA-TEXT-A075-P021]
   mandatory_content:
   - major developments in the proceedings
   - the outcome of the proceedings
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -419,22 +548,27 @@ records:
     information needed to conclude an investigation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075-P022]
   targets: []
   kind: power
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the market-surveillance authority cannot conclude its high-risk-system investigation because it cannot
-    access general-purpose-model information despite all appropriate efforts to obtain it
+    operator: all_of
+    operands:
+    - text: Where a market surveillance authority is unable to conclude its investigation of the high-risk AI system because of its inability to access certain information related to the general-purpose AI model despite having made all appropriate efforts to obtain that information
+      basis_segment_ids: [AIA-TEXT-A075-P022]
 - norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
   source: A075-P022
   quote: In that case, the AI Office shall supply to the applicant authority without delay
   action: supply relevant requested compliance information without delay
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P022]
   targets: []
   temporal_regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
   product_scope: outside_supported_actor
@@ -443,15 +577,19 @@ records:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the market-surveillance authority submits the reasoned information-access request described in Article
-    75(3)
+    operator: all_of
+    operands:
+    - text: it may submit a reasoned request to the AI Office, by which access to that information shall be enforced
+      basis_segment_ids: [AIA-TEXT-A075-P022]
 - norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHIN-THIRTY-DAYS
   source: A075-P022
-  quote: in any event within 30 days, any information that the AI Office considers to be relevant in
-    order to establish whether a high-risk AI system is non-compliant.
-  action: supply relevant requested compliance information within 30 days where the Article 75(3) request case applies
+  quote: in any event within 30 days, any information that the AI Office considers to be relevant in order
+    to establish whether a high-risk AI system is non-compliant.
+  action: supply relevant requested compliance information within 30 days where the Article 75(3) request
+    case applies
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P022]
   targets: []
   qualifier_spans:
   - A075-P022
@@ -462,8 +600,10 @@ records:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the market-surveillance authority submits the reasoned information-access request described in Article
-    75(3)
+    operator: all_of
+    operands:
+    - text: it may submit a reasoned request to the AI Office, by which access to that information shall be enforced
+      basis_segment_ids: [AIA-TEXT-A075-P022]
 - norm_id: AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
   source: A075-P022
   quote: Market surveillance authorities shall safeguard the confidentiality of the information that they
@@ -471,7 +611,9 @@ records:
   action: safeguard obtained information under Article 78 confidentiality
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075-P022]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -483,9 +625,12 @@ records:
   action: apply the Regulation 2019/1020 Chapter VI procedure with necessary adaptations
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A075-P022]
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A075-P022]
   targets: []
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

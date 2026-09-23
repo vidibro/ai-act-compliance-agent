@@ -5,8 +5,11 @@ norms:
   kind: legal_consequence
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P001
   targets: []
-  action: hold exclusive supervision and enforcement competence for the listed systems
+  action: hold exclusive supervision and enforcement competence for AI systems based on general-purpose
+    AI models developed by the same provider or undertaking, except the four excluded classes
   norm_text: 'The AI Office shall be exclusively competent for the supervision and enforcement of the
     obligations under this Regulation in relation to the following AI systems:'
   detection_channels:
@@ -22,35 +25,31 @@ norms:
   - AIA-TEXT-A075-P004
   - AIA-TEXT-A075-P005
   - AIA-TEXT-A075-P006
-  - AIA-TEXT-A075-P007
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: AI systems based on general-purpose AI models where the model and the system are developed
+        by the same provider, or by providers forming part of the same undertaking as that provider
+      basis_segment_ids:
+      - AIA-TEXT-A075-P002
   exceptions:
     operator: any_of
     operands:
-    - text: point (a) only, AI systems related to products covered by the Union harmonisation legislation
-        listed in Annex I
+    - text: AI systems related to products covered by the Union harmonisation legislation listed in Annex
+        I
       basis_segment_ids:
-      - AIA-TEXT-A075-P001
-    - text: point (a) only, AI systems referred to in point 2 of Annex III
+      - AIA-TEXT-A075-P003
+    - text: AI systems referred to in point 2 of Annex III
       basis_segment_ids:
-      - AIA-TEXT-A075-P001
-    - text: point (a) only, AI systems provided by law enforcement authorities, border management authorities
-        and financial institutions, insofar as those AI systems fall under Article 74(6)
+      - AIA-TEXT-A075-P004
+    - text: AI systems provided by law enforcement authorities, border management authorities and financial
+        institutions, insofar as those AI systems fall under Article 74(6)
       basis_segment_ids:
-      - AIA-TEXT-A075-P001
-    - text: point (a) only, AI systems referred to in point 8 of Annex III as regards the administration
-        of justice
+      - AIA-TEXT-A075-P005
+    - text: AI systems referred to in point 8 of Annex III as regards the administration of justice
       basis_segment_ids:
-      - AIA-TEXT-A075-P001
-  mandatory_content:
-  - AI systems based on general-purpose AI models where the model and the system are developed by the
-    same provider, or by providers forming part of the same undertaking as that provider, except for AI
-    systems related to products covered by the Annex I Union harmonisation legislation, AI systems referred
-    to in point 2 of Annex III, AI systems provided by law enforcement authorities, border management
-    authorities and financial institutions insofar as they fall under Article 74(6), and AI systems referred
-    to in point 8 of Annex III as regards the administration of justice
-  - AI systems that constitute or that are integrated into a very large online platform or very large
-    online search engine designated in accordance with Regulation (EU) 2022/2065
+      - AIA-TEXT-A075-P006
+  mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -66,11 +65,60 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+- norm_id: AIA-NORM-A075-P1-PLATFORM-COMPETENCE
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  actors:
+  - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P001
+  targets: []
+  action: hold exclusive supervision and enforcement competence for AI systems that constitute or are
+    integrated into a designated very large online platform or search engine
+  norm_text: 'The AI Office shall be exclusively competent for the supervision and enforcement of the
+    obligations under this Regulation in relation to the following AI systems:'
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A075-P001
+  qualifier_spans:
+  - AIA-TEXT-A075-P007
+  conditions:
+    operator: all_of
+    operands:
+    - text: AI systems that constitute or that are integrated into a very large online platform or very
+        large online search engine designated in accordance with Regulation (EU) 2022/2065
+      basis_segment_ids:
+      - AIA-TEXT-A075-P007
+  exceptions: null
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1-COMPETENCE-ADDRESSEES
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P001
   targets: []
   action: apply the AI Office's exclusive competence to providers and only to deployers that are the provider
     or in its undertaking
@@ -102,11 +150,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A075-P009
   targets: []
   action: report serious incidents to the AI Office rather than through the Article 73 route
   norm_text: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence
@@ -122,8 +173,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is subject to the competence of the AI Office pursuant to Article
-        75(1)
+    - text: providers of high-risk AI systems subject to the competence of the AI Office pursuant to paragraph
+        1 of this Article
       basis_segment_ids:
       - AIA-TEXT-A075-P009
   exceptions: null
@@ -144,11 +195,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1A-APPLY-ARTICLE-73-PROCEDURE
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A075-P009
   targets: []
   action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
   norm_text: Article 73 (2) to (9), shall apply mutatis mutandis.
@@ -163,18 +217,20 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a serious incident is reported to the AI Office under Article 75(1a)
+    - text: providers of high-risk AI systems subject to the competence of the AI Office pursuant to paragraph
+        1 of this Article
       basis_segment_ids:
       - AIA-TEXT-A075-P009
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A75-1a
-  implementation_reason: ''
-  verification_mode: reported_not_judged
+  implementation_reason: The rule's evidence names the Article 73 deadlines and post-report duties that
+    apply unchanged.
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -184,11 +240,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1A-TRANSMIT-INCIDENT-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P009
   targets: []
   action: promptly transmit relevant incident information to the territorially competent market surveillance
     authority
@@ -219,14 +278,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1B-COOPERATE-AND-ASSIST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P010
   targets: []
-  action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
-    inspections and enforcement
+  action: actively cooperate with and provide necessary assistance to the AI Office including, where necessary,
+    for territorial inspections and enforcement
   norm_text: The authorities involved in the application of this Regulation shall cooperate actively with
     the AI Office and provide the AI Office the necessary assistance for the exercise of its powers, including,
     where necessary, in connection with inspections or other enforcement measures carried out in the territory
@@ -255,11 +317,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1B-AUTHORITY-POWERS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P010
   targets: []
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
   norm_text: To that end, those authorities shall enjoy the powers provided for pursuant to this Regulation
@@ -274,7 +339,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the authorities assist the AI Office under Article 75(1b)
+    - text: where relevant and limited to what is necessary to fulfil their tasks under this paragraph
       basis_segment_ids:
       - AIA-TEXT-A075-P010
   exceptions: null
@@ -294,11 +359,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1C-ASSIST-PUBLIC-DATA-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P011
   targets: []
   action: assist AI Office territorial action involving access to a public authority's data or AI system
   norm_text: "When taking investigatory or enforcement action in the territory of a Member State that\
@@ -313,8 +381,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office takes investigatory or enforcement action in a Member State involving access
-        to a public authority's data or AI system
+    - text: "When taking investigatory or enforcement action in the territory of a Member State that involves\
+        \ access to a public authority\u2019s data or AI system"
       basis_segment_ids:
       - AIA-TEXT-A075-P011
   exceptions: null
@@ -334,11 +402,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1D-NOTIFY-MARKET-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P012
   targets: []
   action: notify the competent market authority without undue delay before a prohibition restriction withdrawal
     or recall decision
@@ -353,10 +424,13 @@ norms:
   - AIA-TEXT-A075-P012
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: before the AI Office takes a national-market prohibition, restriction, withdrawal or recall
-        decision
+    - text: Before taking a decision that would have the effect of prohibiting or restricting the AI system
+        being made available or put into service on a national market
+      basis_segment_ids:
+      - AIA-TEXT-A075-P012
+    - text: a decision to withdraw or recall the AI system from such market
       basis_segment_ids:
       - AIA-TEXT-A075-P012
   exceptions: null
@@ -376,11 +450,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A075-P1D-NOTIFY-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A075-P1D-CONSULT-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P012
   targets: []
   action: consult involved authorities where appropriate on application and enforcement matters
   norm_text: The AI Office shall consult the authorities involved in the application of this Regulation,
@@ -390,6 +467,92 @@ norms:
   - shall_token
   primary_spans:
   - AIA-TEXT-A075-P012
+  qualifier_spans: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids:
+      - AIA-TEXT-A075-P012
+  exceptions: null
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+- norm_id: AIA-NORM-A075-P1E-RESPONSIBLE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P013
+  targets: []
+  action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
+  norm_text: The AI Office shall be responsible for conformity assessments and tests of AI systems referred
+    to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party conformity
+    assessment pursuant to Article 43 before such AI systems are placed on the market or put into service.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P013
+  qualifier_spans: []
+  conditions:
+    operator: all_of
+    operands:
+    - text: that are classified as high-risk and subject to a third-party conformity assessment pursuant
+        to Article 43
+      basis_segment_ids:
+      - AIA-TEXT-A075-P013
+  exceptions: null
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+- norm_id: AIA-NORM-A075-P1E-VERIFY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P013
+  targets: []
+  action: verify regulatory conformity and market eligibility
+  norm_text: Those tests and assessments shall verify that the systems comply with the relevant requirements
+    of this Regulation and may be placed on the market or put into service in the Union in accordance
+    with this Regulation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A075-P013
   qualifier_spans: []
   conditions: null
   exceptions: null
@@ -409,91 +572,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A075-P1E-RESPONSIBLE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  actors:
-  - actor_ref: ai_office
-  targets: []
-  action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
-  norm_text: The AI Office shall be responsible for conformity assessments and tests of AI systems referred
-    to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party conformity
-    assessment pursuant to Article 43 before such AI systems are placed on the market or put into service.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A075-P013
-  qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: an Article 75(1) AI system is classified as high-risk and subject to third-party conformity
-        assessment under Article 43 before market placement or putting into service
-      basis_segment_ids:
-      - AIA-TEXT-A075-P013
-  exceptions: null
-  mandatory_content: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A075-P1E-VERIFY
-  act_version_date: '2026-07-27'
-  kind: obligation
-  actors:
-  - actor_ref: ai_office
-  targets: []
-  action: verify regulatory conformity and market eligibility
-  norm_text: Those tests and assessments shall verify that the systems comply with the relevant requirements
-    of this Regulation and may be placed on the market or put into service in the Union in accordance
-    with this Regulation.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - other_modal
-  primary_spans:
-  - AIA-TEXT-A075-P013
-  qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the AI Office performs paragraph 1e conformity assessments or tests
-      basis_segment_ids:
-      - AIA-TEXT-A075-P013
-  exceptions: null
-  mandatory_content: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1E-ENTRUST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A075-P013
   targets: []
   action: entrust tests or assessments to designated notified bodies
   norm_text: The Commission shall entrust the performance of those tests or assessments to notified bodies
@@ -521,26 +607,26 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1E-ACT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids:
+    - AIA-TEXT-A075-P013
   targets: []
   action: act on the Commission's behalf when entrusted
   norm_text: the notified body shall act on behalf of the Commission
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A075-P013
-  qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the Commission entrusts paragraph 1e tests or assessments to the notified body
-      basis_segment_ids:
-      - AIA-TEXT-A075-P013
+  qualifier_spans:
+  - AIA-TEXT-A075-P013
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -558,11 +644,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1E-WITHDRAW
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A075-P013
   targets: []
   action: withdraw an inadequately performed delegation immediately
   norm_text: If a notified body to which the Commission has delegated tasks under this paragraph does
@@ -576,7 +665,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the notified body does not adequately perform the paragraph 1e tasks delegated to it
+    - text: If a notified body to which the Commission has delegated tasks under this paragraph does not
+        perform those tasks adequately
       basis_segment_ids:
       - AIA-TEXT-A075-P013
   exceptions: null
@@ -596,11 +686,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1E-FEES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A075-P014
   targets: []
   action: bear testing and assessment fees
   norm_text: The fees for testing and assessment activities shall be levied on the provider of a high-risk
@@ -623,19 +716,22 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P1E-PAY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A075-P014
   targets: []
   action: pay entrusted-service costs directly to the notified body
   norm_text: The provider shall pay the costs related to the services entrusted by the Commission to the
@@ -658,19 +754,22 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P015
   targets: []
   action: cooperate with the AI Office to carry out compliance evaluations and inform the Board and other
     market surveillance authorities accordingly
@@ -679,14 +778,18 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A075-P015
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A075-P015
   conditions:
     operator: all_of
     operands:
-    - text: the authority has sufficient reason to consider that general-purpose AI systems usable directly
-        by deployers for at least one high-risk purpose are non-compliant
+    - text: Where the relevant market surveillance authorities have sufficient reason to consider general-purpose
+        AI systems that can be used directly by deployers for at least one purpose that is classified
+        as high-risk pursuant to this Regulation to be non-compliant with the requirements laid down in
+        this Regulation
       basis_segment_ids:
       - AIA-TEXT-A075-P015
   exceptions: null
@@ -708,11 +811,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P016
   targets: []
   action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI Office
     assessment of the matter so that the necessary supervisory and enforcement measures ensure prompt
@@ -737,8 +843,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market-surveillance authority has well-founded and sufficient reasons to suspect that
-        a provider or deployer of an Article 75(1) system infringed the Regulation
+    - text: Where a market surveillance authority has well-founded and sufficient reasons to suspect that
+        a provider or a deployer of an AI system referred to in paragraph 1 of this Article has infringed
+        this Regulation
       basis_segment_ids:
       - AIA-TEXT-A075-P016
   exceptions: null
@@ -761,11 +868,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P2A-ACCOUNT-FOR-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P020
   targets: []
   action: take utmost account of a market surveillance authority's assessment request
   norm_text: The AI Office shall take utmost account of the request
@@ -793,27 +903,28 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P2A-ASSIST-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P020
   targets: []
-  action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
+  action: after making an Article 75(2a) request, actively cooperate with and provide necessary assistance
+    to the AI Office on the requested assessment
   norm_text: the market surveillance authority shall cooperate actively and provide the AI Office the
     necessary assistance for the exercise of its powers
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A075-P020
-  qualifier_spans: []
-  conditions:
-    operator: all_of
-    operands:
-    - text: the market-surveillance authority has made an Article 75(2a) assessment request
-      basis_segment_ids:
-      - AIA-TEXT-A075-P020
+  qualifier_spans:
+  - AIA-TEXT-A075-P020
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -831,11 +942,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P2A-RESPOND-AND-UPDATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P021
   targets: []
   action: inform the single point of contact, without undue delay and no later than four months after
     receiving the request, of the intention to exercise the Article 75a powers or of the reasons for not
@@ -868,11 +982,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A075-P2A-FOUR-MONTH-REPLY
 - norm_id: AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P021
   targets: []
   action: periodically inform the single point of contact about major developments in the proceedings
     and about their outcome, without disclosing any confidential information
@@ -888,7 +1005,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI Office decides to exercise its powers in accordance with Article 75a
+    - text: If the AI Office decides to exercise its powers in accordance with Article 75a
       basis_segment_ids:
       - AIA-TEXT-A075-P021
   exceptions: null
@@ -910,11 +1027,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P3-REQUEST-INFORMATION-ACCESS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P022
   targets: []
   action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model
     information needed to conclude an investigation
@@ -932,8 +1052,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market-surveillance authority cannot conclude its high-risk-system investigation because
-        it cannot access general-purpose-model information despite all appropriate efforts to obtain it
+    - text: Where a market surveillance authority is unable to conclude its investigation of the high-risk
+        AI system because of its inability to access certain information related to the general-purpose
+        AI model despite having made all appropriate efforts to obtain that information
       basis_segment_ids:
       - AIA-TEXT-A075-P022
   exceptions: null
@@ -953,11 +1074,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P022
   targets: []
   action: supply relevant requested compliance information without delay
   norm_text: In that case, the AI Office shall supply to the applicant authority without delay
@@ -970,8 +1094,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market-surveillance authority submits the reasoned information-access request described
-        in Article 75(3)
+    - text: it may submit a reasoned request to the AI Office, by which access to that information shall
+        be enforced
       basis_segment_ids:
       - AIA-TEXT-A075-P022
   exceptions: null
@@ -997,6 +1121,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P022
   targets: []
   action: supply relevant requested compliance information within 30 days where the Article 75(3) request
     case applies
@@ -1012,8 +1138,8 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the market-surveillance authority submits the reasoned information-access request described
-        in Article 75(3)
+    - text: it may submit a reasoned request to the AI Office, by which access to that information shall
+        be enforced
       basis_segment_ids:
       - AIA-TEXT-A075-P022
   exceptions: null
@@ -1039,6 +1165,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P022
   targets: []
   action: safeguard obtained information under Article 78 confidentiality
   norm_text: Market surveillance authorities shall safeguard the confidentiality of the information that
@@ -1067,12 +1195,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A075-P3-APPLY-MUTUAL-ASSISTANCE-PROCEDURE
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A075-P022
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A075-P022
   targets: []
   action: apply the Regulation 2019/1020 Chapter VI procedure with necessary adaptations
   norm_text: The procedure provided for in Chapter VI of Regulation (EU) 2019/1020 shall apply mutatis
@@ -1102,3 +1235,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

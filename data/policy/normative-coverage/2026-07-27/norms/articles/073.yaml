@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P001
   targets: []
   action: report every serious incident to the market surveillance authority where it occurred
   norm_text: Providers of high-risk AI systems placed on the Union market shall report any serious incident
@@ -35,12 +37,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P2-REPORT-IMMEDIATELY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P002
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P002
   targets: []
   action: report immediately after establishing a causal link or reasonable likelihood
   norm_text: The report referred to in paragraph 1 shall be made immediately after the provider has established
@@ -64,9 +71,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -78,7 +85,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P002
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P002
   targets: []
   action: report no later than 15 days after awareness, taking account of the severity of the serious
     incident
@@ -93,12 +104,7 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A073-P002
   - AIA-TEXT-A073-P003
-  conditions:
-    operator: all_of
-    operands:
-    - text: a deployer is applicable
-      basis_segment_ids:
-      - AIA-TEXT-A073-P002
+  conditions: null
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -109,9 +115,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -123,7 +129,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P004
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P004
   targets: []
   action: report a widespread infringement or Article 3(49)(b) incident immediately
   norm_text: Notwithstanding paragraph 2 of this Article, in the event of a widespread infringement or
@@ -137,9 +147,12 @@ norms:
   - AIA-TEXT-A073-P004
   qualifier_spans: []
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: a widespread infringement or Article 3(49)(b) serious incident occurs
+    - text: in the event of a widespread infringement
+      basis_segment_ids:
+      - AIA-TEXT-A073-P004
+    - text: a serious incident as defined in Article 3, point (49)(b)
       basis_segment_ids:
       - AIA-TEXT-A073-P004
   exceptions: null
@@ -152,9 +165,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -166,7 +179,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P004
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P004
   targets: []
   action: report a widespread infringement or Article 3(49)(b) incident no later than two days after awareness
   norm_text: and not later than two days after the provider or, where applicable, the deployer becomes
@@ -180,9 +197,12 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A073-P004
   conditions:
-    operator: all_of
+    operator: any_of
     operands:
-    - text: a widespread infringement or Article 3(49)(b) serious incident occurs
+    - text: in the event of a widespread infringement
+      basis_segment_ids:
+      - AIA-TEXT-A073-P004
+    - text: a serious incident as defined in Article 3, point (49)(b)
       basis_segment_ids:
       - AIA-TEXT-A073-P004
   exceptions: null
@@ -209,7 +229,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P005
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P005
   targets: []
   action: report a death immediately on established or suspected causality
   norm_text: Notwithstanding paragraph 2, in the event of the death of a person, the report shall be provided
@@ -225,7 +249,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a person has died in the serious incident
+    - text: in the event of the death of a person
       basis_segment_ids:
       - AIA-TEXT-A073-P005
   exceptions: null
@@ -252,7 +276,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P005
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P005
   targets: []
   action: report a death no later than ten days after awareness
   norm_text: but not later than 10 days after the date on which the provider or, where applicable, the
@@ -268,7 +296,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a person has died in the serious incident
+    - text: in the event of the death of a person
       basis_segment_ids:
       - AIA-TEXT-A073-P005
   exceptions: null
@@ -295,7 +323,11 @@ norms:
   kind: permission
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P006
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P006
   targets: []
   action: submit an initial incomplete report followed by a complete report where needed for timeliness
   norm_text: Where necessary to ensure timely reporting, the provider or, where applicable, the deployer,
@@ -307,16 +339,21 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P006
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where necessary to ensure timely reporting
+      basis_segment_ids:
+      - AIA-TEXT-A073-P006
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-ALL-A73
-  implementation_reason: ''
-  verification_mode: reported_not_judged
+  implementation_reason: The rule's evidence names the Article 73(5) initial incomplete report.
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -326,11 +363,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P6-INVESTIGATE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P007
   targets: []
   action: perform, without delay, the necessary investigations into the serious incident and the AI system
     concerned
@@ -347,7 +387,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a serious incident has been reported pursuant to paragraph 1
+    - text: Following the reporting of a serious incident pursuant to paragraph 1
       basis_segment_ids:
       - AIA-TEXT-A073-P007
   exceptions: null
@@ -361,19 +401,22 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P6-INVESTIGATE-WITHOUT-DELAY
 - norm_id: AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P007
   targets: []
   action: include a risk assessment of the reported serious incident and corrective action in the investigation
   norm_text: This shall include a risk assessment of the incident, and corrective action.
@@ -387,7 +430,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a serious incident has been reported pursuant to paragraph 1
+    - text: Following the reporting of a serious incident pursuant to paragraph 1
       basis_segment_ids:
       - AIA-TEXT-A073-P007
   exceptions: null
@@ -402,19 +445,22 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P008
   targets: []
   action: cooperate with the competent authorities, and where relevant with the notified body concerned,
     during the first-subparagraph investigations
@@ -446,11 +492,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P008
   targets: []
   action: perform no investigation that alters the AI system concerned in a way which may affect any subsequent
     evaluation of the causes of the incident before informing the competent authorities of such action
@@ -461,10 +510,12 @@ norms:
   - semantic_legal_effect
   - shall_token
   - other_modal
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A073-P008
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A073-P008
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -472,7 +523,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-RULE-ALL-A73
+  - AIA-RULE-PO-A73-6-ALTERATION-PROHIBITION
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -484,11 +535,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P7-INFORM-FUNDAMENTAL-RIGHTS-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A073-P009
   targets: []
   action: inform Article 77(1) authorities of Article 3(49)(c) incident notifications
   norm_text: Upon receiving a notification related to a serious incident referred to in Article 3, point
@@ -500,7 +554,13 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P009
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: Upon receiving a notification related to a serious incident referred to in Article 3, point
+        (49)(c)
+      basis_segment_ids:
+      - AIA-TEXT-A073-P009
   exceptions: null
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -518,11 +578,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P7-COMMISSION-REPORTING-GUIDANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A073-P009
   targets: []
   action: issue incident-reporting guidance by 2 August 2025 and assess it regularly
   norm_text: The Commission shall develop dedicated guidance to facilitate compliance with the obligations
@@ -552,11 +615,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P7-GUIDANCE-BY
 - norm_id: AIA-NORM-A073-P8-SEVEN-DAY-AUTHORITY-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A073-P010
   targets: []
   action: take the appropriate measures provided for in Article 19 of Regulation (EU) 2019/1020 within
     seven days of receiving the paragraph 1 notification and follow that Regulation's notification procedures
@@ -590,11 +656,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P8-SEVEN-DAY-MEASURES
 - norm_id: AIA-NORM-A073-P9-EQUIVALENT-REPORTING-LIMIT
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P011
   targets: []
   action: limit reporting to Article 3(49)(c) incidents where equivalent Union reporting legislation applies
   norm_text: For high-risk AI systems referred to in Annex III that are placed on the market or put into
@@ -609,16 +678,23 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P011
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in Annex III that are placed on the market or put into
+        service by providers that are subject to Union legislative instruments laying down reporting obligations
+        equivalent to those set out in this Regulation
+      basis_segment_ids:
+      - AIA-TEXT-A073-P011
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-ALL-A73
-  implementation_reason: ''
-  verification_mode: reported_not_judged
+  implementation_reason: The rule's evidence names the Article 73(9) narrowing to Article 3, point (49)(c).
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -628,12 +704,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A073-P001
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A073-P002
   targets: []
   action: limit covered medical-device reports to Article 3(49)(c) incidents and send them to the designated
     national competent authority
@@ -649,7 +730,20 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P012
   qualifier_spans: []
-  conditions: null
+  conditions:
+    operator: all_of
+    operands:
+    - operator: any_of
+      operands:
+      - text: For high-risk AI systems which are safety components of devices
+        basis_segment_ids:
+        - AIA-TEXT-A073-P012
+      - text: are themselves devices
+        basis_segment_ids:
+        - AIA-TEXT-A073-P012
+    - text: covered by Regulations (EU) 2017/745 and (EU) 2017/746
+      basis_segment_ids:
+      - AIA-TEXT-A073-P012
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -668,11 +762,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A073-P11-NOTIFY-COMMISSION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A073-P013
   targets: []
   action: immediately notify the Commission of every serious incident under Article 20 regardless of action
     taken
@@ -702,3 +799,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P11-IMMEDIATE-NOTIFICATION

@@ -128,7 +128,10 @@ def test_shipped_spec_loads():
     # only rules besides Art. 25(2) whose activation is decided by a question rather than by the
     # classification: the duties exist for a provider that elects to trial the system on live
     # inputs before placing it on the market, and for nobody else.
-    assert len(spec.rules) == 124
+    #
+    # Art. 73(6)'s bar on altering the system before informing the authorities is a rule of its
+    # own beside AIA-RULE-ALL-A73, because a rule implements one legal kind.
+    assert len(spec.rules) == 125
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

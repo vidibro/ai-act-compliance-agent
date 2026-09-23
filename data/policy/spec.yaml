@@ -2611,13 +2611,54 @@ rules:
       for certainty before reporting at all is wrong. Then Art. 73(6): WITHOUT DELAY, the necessary
       investigations in relation to the incident and the system, and those shall include a risk
       assessment of the incident AND CORRECTIVE ACTION — investigating is not the end of it. Also
-      cooperate with the authority, and take no action that alters the system before informing
-      them.
+      cooperate with the authorities and, where relevant, the notified body; the bar on altering the
+      system before informing them is judged under AIA-RULE-PO-A73-6-ALTERATION-PROHIBITION. Art.
+      73(9) NARROWS the reportable set to Art. 3(49)(c) incidents for Annex III systems whose
+      providers are subject to Union instruments laying down equivalent reporting obligations.
       A relational post-market obligation, not visible in the technical documentation — confirm
       separately.
     document_verifiable: false
     effective_date: 2026-08-02
+    criteria:
+      - norm_id: AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
+      - norm_id: AIA-NORM-A073-P2-REPORT-IMMEDIATELY
+      - norm_id: AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
+      - norm_id: AIA-NORM-A073-P3-REPORT-IMMEDIATELY
+      - norm_id: AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS
+      - norm_id: AIA-NORM-A073-P4-REPORT-IMMEDIATELY
+      - norm_id: AIA-NORM-A073-P4-REPORT-NO-LATER-THAN-TEN-DAYS
+      - norm_id: AIA-NORM-A073-P6-INVESTIGATE
+      - norm_id: AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION
+      - norm_id: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
     status: active
+
+  # THE ONE PROHIBITION IN ART. 73, judged apart because a rule implements one legal kind. During
+  # the Art. 73(6) investigations the provider "shall not perform any investigation which involves
+  # altering the AI system concerned" in a way that may affect evaluating the incident's causes,
+  # until it has informed the competent authorities.
+  - rule_id: AIA-RULE-PO-A73-6-ALTERATION-PROHIBITION
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 73
+      paragraph: 6
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      The provider is investigating a serious incident it reported under Art. 73(1).
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      No investigation step that alters the AI system in a way which may affect a later evaluation
+      of the incident's causes is taken before the competent authorities are informed of it. This
+      is distinct from the duty to investigate under AIA-RULE-ALL-A73 and is assessed separately
+      because it is a prohibition. An operational process, not visible in the technical
+      documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
 
   - rule_id: AIA-RULE-PO-A75-1a
     source:
@@ -5044,6 +5085,9 @@ rules:
     effective_date_note: >-
       Art. 75 sits in Chapter IX, which Art. 113 does not carve out — general date, as the other
       Art. 75 rules.
+    criteria:
+      - norm_id: AIA-NORM-A075-P1E-FEES
+      - norm_id: AIA-NORM-A075-P1E-PAY
     status: active
 
   # THE OTHER END OF ART. 53(1)(b). AIA-RULE-GP-A53-1B binds the MODEL provider to hand the Annex XII

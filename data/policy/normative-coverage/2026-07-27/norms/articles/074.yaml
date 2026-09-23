@@ -5,6 +5,8 @@ norms:
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P001
   targets: []
   action: apply Regulation 2019/1020 using the enacted expanded operator and product meanings
   norm_text: 'Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation. For the
@@ -39,11 +41,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P2-ANNUAL-SURVEILLANCE-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P004
   targets: []
   action: report annually to the Commission and the relevant national competition authorities any surveillance
     information of potential interest for applying Union competition law
@@ -76,11 +81,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P004
   targets: []
   action: report annually to the Commission on the use of prohibited practices during that year and on
     the measures taken
@@ -112,11 +120,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P3-SECTORAL-SURVEILLANCE-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A074-P006
   targets: []
   action: assign Section A product surveillance to the sectoral authority unless a coordinated alternative
     is designated
@@ -150,11 +161,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P4-USE-EQUIVALENT-SECTORAL-PROCEDURES
   act_version_date: '2026-07-27'
   kind: applicability
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P007
   targets: []
   action: substitute same-objective sectoral procedures providing equivalent protection for Articles 79
     to 83
@@ -172,12 +186,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the AI system is related to a product covered by Union harmonisation legislation listed in
-        Section A of Annex I
+    - text: AI systems related to products covered by the Union harmonisation legislation listed in section
+        A of Annex I
       basis_segment_ids:
       - AIA-TEXT-A074-P007
-    - text: that legislation already provides procedures with the same objective and an equivalent level
-        of protection
+    - text: where such legal acts already provide for procedures ensuring an equivalent level of protection
+        and having the same objective
       basis_segment_ids:
       - AIA-TEXT-A074-P007
   exceptions: null
@@ -197,11 +211,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P5-REMOTE-SURVEILLANCE-POWERS
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P008
   targets: []
   action: exercise Article 14(4)(d) and (j) surveillance powers remotely as appropriate
   norm_text: Without prejudice to the powers of market surveillance authorities under Article 14 of Regulation
@@ -232,11 +249,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P6-FINANCIAL-SUPERVISOR-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A074-P010
   targets: []
   action: assign directly connected financial-services AI surveillance to the relevant financial supervisor
   norm_text: For high-risk AI systems placed on the market, put into service, or used by financial institutions
@@ -268,11 +288,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P7-COORDINATED-FINANCIAL-DEROGATION
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A074-P010
   targets: []
   action: designate another relevant authority as the market-surveillance authority for the Regulation
   norm_text: By way of derogation from paragraph 6, in appropriate circumstances, and provided that coordination
@@ -287,10 +310,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the circumstances are appropriate
+    - text: in appropriate circumstances
       basis_segment_ids:
       - AIA-TEXT-A074-P010
-    - text: coordination with the relevant financial supervisory authority is ensured
+    - text: provided that coordination is ensured
       basis_segment_ids:
       - AIA-TEXT-A074-P010
   exceptions: null
@@ -310,11 +333,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P7-REPORT-PRUDENTIALLY-RELEVANT-INFORMATION
   act_version_date: '2026-07-27'
   kind: recommendation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P011
   targets: []
   action: should report without delay to the European Central Bank market-surveillance information potentially
     relevant to its prudential-supervision tasks
@@ -332,8 +358,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the authority supervises regulated credit institutions under Directive 2013/36/EU that participate
-        in the Single Supervisory Mechanism
+    - text: National market surveillance authorities supervising regulated credit institutions regulated
+        under Directive 2013/36/EU, which are participating in the Single Supervisory Mechanism established
+        by Regulation (EU) No 1024/2013
       basis_segment_ids:
       - AIA-TEXT-A074-P011
   exceptions: null
@@ -353,11 +380,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A074-P7-PRUDENTIAL-REPORTING
 - norm_id: AIA-NORM-A074-P8-SENSITIVE-SECTOR-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A074-P012
   targets: []
   action: designate, for the enacted Annex III systems, either the competent data protection supervisory
     authorities or another authority designated under the same Articles 41 to 44 conditions as market
@@ -393,11 +423,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE
   act_version_date: '2026-07-27'
   kind: prohibition
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P012
   targets: []
   action: conduct no market surveillance activity that affects the independence of judicial authorities
     or otherwise interferes with their activities when acting in their judicial capacity
@@ -427,11 +460,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P9-EDPS-SURVEILLANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: european_data_protection_supervisor
+    basis_segment_ids:
+    - AIA-TEXT-A074-P013
   targets: []
   action: supervise in-scope Union bodies except the Court acting judicially
   norm_text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation,
@@ -446,13 +482,13 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a Union institution, body, office or agency falls within the scope of the Regulation
+    - text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation
       basis_segment_ids:
       - AIA-TEXT-A074-P013
   exceptions:
     operator: any_of
     operands:
-    - text: the Court of Justice of the European Union acting in its judicial capacity
+    - text: except in relation to the Court of Justice of the European Union acting in its judicial capacity
       basis_segment_ids:
       - AIA-TEXT-A074-P013
   mandatory_content: []
@@ -471,11 +507,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P10-FACILITATE-NATIONAL-COORDINATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A074-P014
   targets: []
   action: facilitate coordination between AI surveillance and other relevant national authorities
   norm_text: Member States shall facilitate coordination between market surveillance authorities designated
@@ -506,12 +545,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P11-JOINT-ACTIVITIES
   act_version_date: '2026-07-27'
   kind: power
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P015
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A074-P015
   targets: []
   action: propose joint activities, including joint investigations, on categories of high-risk AI systems
     found to present a serious risk across two or more Member States
@@ -545,11 +589,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P11-AI-OFFICE-COORDINATION-SUPPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A074-P015
   targets: []
   action: provide coordination support for joint investigations
   norm_text: The AI Office shall provide coordination support for joint investigations.
@@ -577,11 +624,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P12-GRANT-DOCUMENTATION-AND-DATA-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A074-P016
   targets: []
   action: grant necessary full authority access to documentation and development data sets including safeguarded
     remote access where appropriate
@@ -601,8 +651,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the access is relevant and limited to what is necessary for the market-surveillance authority
-        to fulfil its tasks
+    - text: where relevant and limited to what is necessary to fulfil their tasks
       basis_segment_ids:
       - AIA-TEXT-A074-P016
   exceptions: null
@@ -623,11 +672,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A074-P019
   targets: []
   action: grant source-code access on a reasoned request only after both necessity and exhaustion conditions
     are met
@@ -646,13 +698,17 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: source-code access is necessary for assessing conformity with Chapter III Section 2 requirements
+    - text: upon a reasoned request
       basis_segment_ids:
       - AIA-TEXT-A074-P017
-    - text: testing, auditing and verification procedures based on data and documentation provided by
-        the provider have been exhausted or proved insufficient
+    - text: access to source code is necessary to assess the conformity of a high-risk AI system with
+        the requirements set out in Chapter III, Section 2
       basis_segment_ids:
-      - AIA-TEXT-A074-P017
+      - AIA-TEXT-A074-P018
+    - text: testing or auditing procedures and verifications based on the data and documentation provided
+        by the provider have been exhausted or proved insufficient
+      basis_segment_ids:
+      - AIA-TEXT-A074-P019
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
@@ -671,11 +727,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
 - norm_id: AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids:
+    - AIA-TEXT-A074-P020
   targets: []
   action: treat obtained information and documentation under Article 78 confidentiality
   norm_text: Any information or documentation obtained by market surveillance authorities shall be treated
@@ -704,3 +763,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX

@@ -1,0 +1,113 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '74'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 21
+  norms_scanned: 18
+  finding_count: 6
+  audit_sha256: 9190e698d06a7a0eb865cfd5cb77208d57f3e4e20c793013f6ce8a81a819a993
+decisions:
+- finding_id: AIA-VALID-98DAE2F20623CC11
+  target: AIA-NORM-A074-P1-APPLY-MARKET-SURVEILLANCE-REGULATION:actor:market_surveillance_authority:AIA-TEXT-A074-P001
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A074-P001
+  source_sha256: 80a67d67a8896ea5c2b1c2c632687e9fb080f634d80cd5275fd3ae678b7bdb22
+  target_sha256: faf76f97a0875c4dc107fdd8204e353b1cd6befeb1cf733e8a5aed819227c309
+  decision: accepted_with_basis
+  reason: Paragraph 1 applies Regulation (EU) 2019/1020 to AI systems without naming who applies it. That
+    Regulation is the market surveillance authorities' instrument, so the role records them, but no span
+    in the paragraph can name the actor.
+  legal_basis:
+  - span_id: AIA-TEXT-A074-P001
+    source_sha256: 80a67d67a8896ea5c2b1c2c632687e9fb080f634d80cd5275fd3ae678b7bdb22
+    quote: Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B0D3C7FEFD1478C4
+  target: AIA-NORM-A074-P4-USE-EQUIVALENT-SECTORAL-PROCEDURES:actor:market_surveillance_authority:AIA-TEXT-A074-P007
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A074-P007
+  source_sha256: ab77c372eebbe13101e126c28fc9e351581bb81f4d71799f19a4b42babd829b3
+  target_sha256: b723cbddfa1bb5651ad9f9314bb560d2184e57b8996c5eef2130cb6f3ad82a2a
+  decision: accepted_with_basis
+  reason: 'Paragraph 4 is passive: the Articles 79 to 83 procedures "shall not apply" and the sectoral
+    procedures "shall apply instead". Those are market surveillance procedures, so the role records the
+    authorities that run them, but the paragraph names no actor.'
+  legal_basis:
+  - span_id: AIA-TEXT-A074-P007
+    source_sha256: ab77c372eebbe13101e126c28fc9e351581bb81f4d71799f19a4b42babd829b3
+    quote: The procedures referred to in Articles 79 to 83 of this Regulation shall not apply to AI systems
+      related to products covered by the Union harmonisation legislation listed in section A of Annex
+      I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-AFE1D33D9A719756
+  target: AIA-NORM-A074-P5-REMOTE-SURVEILLANCE-POWERS
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A074-P008
+  source_sha256: 37db67d948aaa6979c5b27cd83c3b1b8ac9720337669da9c84e3427b5274cf66
+  target_sha256: 9623bb841f639f967e3f8a8c05b1888214bf8790899fae66dfb587693f47b292
+  decision: false_positive
+  reason: '"Without prejudice to the powers of market surveillance authorities under Article 14" keeps
+    the existing powers running alongside the remote exercise. It takes no case out of the power, so there
+    is no exception branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A074-P008
+    source_sha256: 37db67d948aaa6979c5b27cd83c3b1b8ac9720337669da9c84e3427b5274cf66
+    quote: Without prejudice to the powers of market surveillance authorities under Article 14 of Regulation
+      (EU) 2019/1020
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-CB7FCDE2FB73C707
+  target: AIA-NORM-A074-P7-COORDINATED-FINANCIAL-DEROGATION
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A074-P010
+  source_sha256: f066547a636152245a663018f2212451353f9322001002dd9b89c361edc8dae5
+  target_sha256: 2834e6f8a70f53a927fcec500f6e0e8ca9758544eece281eedff49b3a1240771
+  decision: false_positive
+  reason: '"By way of derogation from paragraph 6" names the default rule this permission departs from.
+    It is the permission itself, not an exception to it. The permission''s own limits, appropriate circumstances
+    and ensured coordination, are its conditions.'
+  legal_basis:
+  - span_id: AIA-TEXT-A074-P010
+    source_sha256: f066547a636152245a663018f2212451353f9322001002dd9b89c361edc8dae5
+    quote: By way of derogation from paragraph 6, in appropriate circumstances, and provided that coordination
+      is ensured
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-519271234BD5BF49
+  target: AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A074-P012
+  source_sha256: 326b7a9649d0ac2f35fb770d28f6f267acb52f50a35fdcd6426fff1b22282ca9
+  target_sha256: d07962fe0f10e1672cdaf829d814f989a7d036555a4fdaf80d59eb64dae6e7e7
+  decision: accepted_with_basis
+  reason: '"When acting in their judicial capacity" qualifies the second limb only, interference with
+    the judicial authorities'' activities. Market surveillance may never affect their independence. A
+    condition on the whole norm would narrow that first limb too. The action keeps the qualifier on the
+    second limb.'
+  legal_basis:
+  - span_id: AIA-TEXT-A074-P012
+    source_sha256: 326b7a9649d0ac2f35fb770d28f6f267acb52f50a35fdcd6426fff1b22282ca9
+    quote: Market surveillance activities shall in no way affect the independence of judicial authorities,
+      or otherwise interfere with their activities when acting in their judicial capacity
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-EADFBD3B180E5549
+  target: AIA-NORM-A074-P12-GRANT-DOCUMENTATION-AND-DATA-ACCESS
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A074-P016
+  source_sha256: af1d902ba3a9d7f3bd6a8c32c19b6f03aebd1ffd0a5b2b3fd2ac93c7d4d6332c
+  target_sha256: 1f28b1740dd3d8cda1c75a0ef8976bac19d675f3c93b0f4343472ef9ee51ca19
+  decision: false_positive
+  reason: '"Without prejudice to the powers provided for under Regulation (EU) 2019/1020" keeps those
+    powers running alongside the access duty. It takes no case out of the duty, so there is no exception
+    branch to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A074-P016
+    source_sha256: af1d902ba3a9d7f3bd6a8c32c19b6f03aebd1ffd0a5b2b3fd2ac93c7d4d6332c
+    quote: Without prejudice to the powers provided for under Regulation (EU) 2019/1020
+  reviewed_by: vidibro

@@ -4421,7 +4421,7 @@ temporal_regimes:
   - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A072-P003
 - regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   qualitative_deadline:
     kind: immediately
@@ -4429,9 +4429,10 @@ temporal_regimes:
       or the reasonable likelihood of such a link
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P002
 - regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   relative_deadline:
     quantity: 15
@@ -4439,18 +4440,20 @@ temporal_regimes:
     trigger: the provider or, where applicable, the deployer, becomes aware of the serious incident
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P002
 - regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   qualitative_deadline:
     kind: immediately
     trigger: null
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P004
 - regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   relative_deadline:
     quantity: 2
@@ -4458,9 +4461,10 @@ temporal_regimes:
     trigger: the provider or, where applicable, the deployer becomes aware of that incident
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P004
 - regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   qualitative_deadline:
     kind: immediately
@@ -4468,9 +4472,10 @@ temporal_regimes:
       between the high-risk AI system and the serious incident
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P005
 - regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   relative_deadline:
     quantity: 10
@@ -4478,18 +4483,69 @@ temporal_regimes:
     trigger: the provider or, where applicable, the deployer becomes aware of the serious incident
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P005
-- regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+- regime_id: AIA-TEMP-A073-P6-INVESTIGATE-WITHOUT-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: the reporting of a serious incident pursuant to paragraph 1
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A073-P007
+- regime_id: AIA-TEMP-A073-P7-GUIDANCE-BY
   application_start: null
+  application_end: null
+  deadline: '2025-08-02'
+  timing_conditions:
+  - shall be assessed regularly
+  legal_basis_spans:
+  - AIA-TEXT-A073-P009
+- regime_id: AIA-TEMP-A073-P8-SEVEN-DAY-MEASURES
+  application_start: '2026-08-02'
+  application_end: null
+  relative_deadline:
+    quantity: 7
+    unit: day
+    trigger: the date it received the notification referred to in paragraph 1 of this Article
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A073-P010
+- regime_id: AIA-TEMP-A073-P11-IMMEDIATE-NOTIFICATION
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A073-P013
+- regime_id: AIA-TEMP-A074-P7-PRUDENTIAL-REPORTING
+  application_start: '2026-08-02'
   application_end: null
   qualitative_deadline:
     kind: without_delay
     trigger: null
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A074-P011
+- regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A075-P022
 - regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-THIRTY-DAYS
-  application_start: null
+  application_start: '2026-08-02'
   application_end: null
   relative_deadline:
     quantity: 30
@@ -4497,7 +4553,29 @@ temporal_regimes:
     trigger: null
   timing_conditions: []
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A075-P022
+- regime_id: AIA-TEMP-A075-P1D-NOTIFY-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A075-P012
+- regime_id: AIA-TEMP-A075-P2A-FOUR-MONTH-REPLY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions:
+  - in any event no later than four months following receipt of the request
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A075-P021
 - regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
   application_start: null
   application_end: null

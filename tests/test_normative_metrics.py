@@ -2207,16 +2207,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2130,
-        "proposed": 805,
+        "approved": 2137,
+        "proposed": 799,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2936
+    assert metrics.total_review_records == 2937
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 540
-    assert metrics.shall_token_candidate_recall == pytest.approx(865 / 1405)
+    assert metrics.shall_token_candidate_recall == pytest.approx(866 / 1406)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2227,18 +2227,19 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # Primary links measure norms yielded by a segment; qualifier-only chapeaux do not count.
-    assert metrics.normative_segments_with_multiple_norms == 235
+    assert metrics.normative_segments_with_multiple_norms == 236
     # `AIA-RULE-GP-A91-5` and `AIA-RULE-PO-A75-1a` each carry two norms since Article 91(5) was
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
-    # 55(1)(a) is one model-evaluation norm rather than three overlapping records.
-    assert metrics.mapping_shape.one_norm_to_one_target == 38
-    assert metrics.mapping_shape.many_norms_to_one_target == 459
+    # 55(1)(a) is one model-evaluation norm rather than three overlapping records. Article 73(6)'s
+    # alteration prohibition left `AIA-RULE-ALL-A73` for a rule of its own.
+    assert metrics.mapping_shape.one_norm_to_one_target == 39
+    assert metrics.mapping_shape.many_norms_to_one_target == 458
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 880
+    assert metrics.mapping_shape.unmapped == 881
     assert metrics.semantic_vs_existing_implementation_disagreements == 45
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
@@ -4172,7 +4173,11 @@ def test_article_seventy_three_maps_complete_incident_lifecycle():
     default_mapped = [
         norm for norm in norms.values() if norm.implementation_refs == ["AIA-RULE-ALL-A73"]
     ]
-    assert len(default_mapped) == 13
+    # The alteration prohibition is judged under its own rule, since a rule implements one kind.
+    assert len(default_mapped) == 12
+    assert norms["AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION"].implementation_refs == [
+        "AIA-RULE-PO-A73-6-ALTERATION-PROHIBITION"
+    ]
     assert norms["AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING"].implementation_refs == [
         "AIA-RULE-ALL-A73-10"
     ]
@@ -4180,11 +4185,12 @@ def test_article_seventy_three_maps_complete_incident_lifecycle():
     # The two sentences have separately verifiable outcomes.
     investigate = norms["AIA-NORM-A073-P6-INVESTIGATE"]
     correct = norms["AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION"]
-    reported = "a serious incident has been reported pursuant to paragraph 1"
+    reported = "Following the reporting of a serious incident pursuant to paragraph 1"
     assert investigate.mandatory_content == [
         "necessary investigation of the serious incident and the AI system concerned",
     ]
-    assert investigate.conditions == correct.conditions == [reported]
+    assert investigate.conditions == correct.conditions
+    assert [operand.text for operand in investigate.conditions.operands] == [reported]
     assert correct.mandatory_content == ["risk assessment of the incident", "corrective action"]
     assert "corrective action" not in investigate.action
     assert "corrective action" not in investigate.norm_text
@@ -4278,21 +4284,21 @@ def test_article_seventy_five_separates_provider_and_authority_effects():
 
     assert len(segments) == 23
     assert_segments_are_independently_approved(segments)
-    assert len(norms) == 28
+    assert len(norms) == 29
     assert norms["AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS"].implementation_refs == [
         "AIA-RULE-PO-A75-1a"
     ]
     assert norms["AIA-NORM-A075-P1E-FEES"].implementation_refs == ["AIA-RULE-PO-A75-1E"]
 
-    # The four exclusions belong to point (a) only, not to the platform branch in point (b).
+    # The four exclusions belong to point (a) only, so the platform branch in point (b) is its
+    # own norm and none of them reaches it.
     competence = norms["AIA-NORM-A075-P1-COMPETENCE"]
-    assert len(competence.mandatory_content) == 2
-    assert all(item.text.startswith("point (a) only, ") for item in competence.exceptions)
-    assert len(competence.exceptions) == 4
-    assert "very large online platform" in competence.mandatory_content[1]
-    assert "very large online platform" not in " ".join(
-        item.text for item in competence.exceptions
-    )
+    platform = norms["AIA-NORM-A075-P1-PLATFORM-COMPETENCE"]
+    assert competence.exceptions is not None
+    assert len(competence.exceptions.operands) == 4
+    assert "same undertaking" in competence.conditions.operands[0].text
+    assert "very large online platform" in platform.conditions.operands[0].text
+    assert platform.exceptions is None
 
     # Cooperation and the resulting notifications are one coordinated duty.
     cooperate = norms["AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS"]
@@ -4311,8 +4317,8 @@ def test_article_seventy_five_separates_provider_and_authority_effects():
     updates = norms["AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS"]
     assert "four months" in reply.action
     assert "four months" not in updates.action
-    assert updates.conditions == [
-        "the AI Office decides to exercise its powers in accordance with Article 75a"
+    assert [operand.text for operand in updates.conditions.operands] == [
+        "If the AI Office decides to exercise its powers in accordance with Article 75a"
     ]
     assert not reply.conditions
     assert "without disclosing any confidential information" in updates.action

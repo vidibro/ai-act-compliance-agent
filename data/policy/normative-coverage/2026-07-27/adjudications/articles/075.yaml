@@ -1,0 +1,96 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '75'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 23
+  norms_scanned: 29
+  finding_count: 5
+  audit_sha256: d8c771fc04a66e8b61f86e93ead90d50a542cb88637361dbc27cceaf3b9739ac
+decisions:
+- finding_id: AIA-VALID-1B18EF98AF4EA700
+  target: AIA-NORM-A075-P1-COMPETENCE-ADDRESSEES
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075-P008
+  source_sha256: e390dd1d8674fba33a69787fb82e5b8dcdcb231b0a3fd3fabb3b0da0302516c6
+  target_sha256: 05a8cf26f5b6c2759dff57c3db9cdd6f9b94d3f5753c83b2f0b2b4c1ea998957
+  decision: accepted_with_basis
+  reason: '"Only when" limits the second sentence only, the deployers reached. The exclusive competence
+    applies to the providers of the systems without condition. A condition on the whole norm would narrow
+    the providers too. The action keeps the limit on deployers.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075-P008
+    source_sha256: e390dd1d8674fba33a69787fb82e5b8dcdcb231b0a3fd3fabb3b0da0302516c6
+    quote: It shall apply to the deployers of those systems only when they are also the provider or form
+      part of the same undertaking as the provider
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-C3B00E6E8DDD251E
+  target: AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A075-P009
+  source_sha256: e4ba417f10a1cafa81b6091b88575e045b3edf88d12a945390669dc5608497c4
+  target_sha256: 0c9dac603c55456919c65c90168ccdc6f36a3a47cc2980521e5f477f751fba88
+  decision: false_positive
+  reason: '"By way of derogation from Article 73" names the default this duty replaces: the report goes
+    to the AI Office instead of the national authority. It is the duty itself, not an exception to it.
+    Who owes it is the condition.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075-P009
+    source_sha256: e4ba417f10a1cafa81b6091b88575e045b3edf88d12a945390669dc5608497c4
+    quote: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence
+      of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the
+      AI Office
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-8D35301B58D12145
+  target: AIA-NORM-A075-P1B-AUTHORITY-POWERS:actor:public_authority:AIA-TEXT-A075-P010
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A075-P010
+  source_sha256: e106f8606d2c7abee66d08305dff3a62e6a803d5c271b0e67f436f6aacceb7ec
+  target_sha256: c5ea6336735ceca5fff7c95b64f53551a85a1fae160a0f9ca26ba29963e641c2
+  decision: accepted_with_basis
+  reason: '"Those authorities" are the authorities involved in the application of this Regulation, a group
+    no single role covers. The public-authority role records the group, and no span can name it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075-P010
+    source_sha256: e106f8606d2c7abee66d08305dff3a62e6a803d5c271b0e67f436f6aacceb7ec
+    quote: those authorities shall enjoy the powers provided for pursuant to this Regulation and Regulation
+      (EU) 2019/1020
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-A5850D1DEE019480
+  target: AIA-NORM-A075-P1B-COOPERATE-AND-ASSIST
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-A075-P010
+  source_sha256: e106f8606d2c7abee66d08305dff3a62e6a803d5c271b0e67f436f6aacceb7ec
+  target_sha256: 5a6992903ba2b445f3e1d1cc91582fb89dd0a5b75c2b9223accde82ab312e51d
+  decision: accepted_with_basis
+  reason: '"Where necessary" qualifies one example of the assistance, the help with inspections and enforcement
+    in a Member State. Active cooperation and the necessary assistance are always owed. The action keeps
+    the qualifier on that example.'
+  legal_basis:
+  - span_id: AIA-TEXT-A075-P010
+    source_sha256: e106f8606d2c7abee66d08305dff3a62e6a803d5c271b0e67f436f6aacceb7ec
+    quote: including, where necessary, in connection with inspections or other enforcement measures carried
+      out in the territory of a Member State
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-F8FD7BF5A56F48B0
+  target: AIA-NORM-A075-P1B-COOPERATE-AND-ASSIST:actor:public_authority:AIA-TEXT-A075-P010
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A075-P010
+  source_sha256: e106f8606d2c7abee66d08305dff3a62e6a803d5c271b0e67f436f6aacceb7ec
+  target_sha256: 21143b1e7944026c8cb2be68038813cd3ed322797bcfa482409c29c736cf7339
+  decision: accepted_with_basis
+  reason: The paragraph binds "the authorities involved in the application of this Regulation", a group
+    no single role covers. The public-authority role records the group, and no span can name it.
+  legal_basis:
+  - span_id: AIA-TEXT-A075-P010
+    source_sha256: e106f8606d2c7abee66d08305dff3a62e6a803d5c271b0e67f436f6aacceb7ec
+    quote: The authorities involved in the application of this Regulation shall cooperate actively with
+      the AI Office
+  reviewed_by: vidibro

@@ -43,7 +43,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075-P1-COMPETENCE
-  qualifying_norm_ids: []
+  - AIA-NORM-A075-P1-PLATFORM-COMPETENCE
+  qualifying_norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE-ADDRESSEES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -199,7 +201,7 @@ segments:
   disposition_reason: ''
   norm_ids: []
   qualifying_norm_ids:
-  - AIA-NORM-A075-P1-COMPETENCE
+  - AIA-NORM-A075-P1-PLATFORM-COMPETENCE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -382,7 +384,8 @@ segments:
   - AIA-NORM-A075-P1E-ENTRUST
   - AIA-NORM-A075-P1E-ACT
   - AIA-NORM-A075-P1E-WITHDRAW
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A075-P1E-ACT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -440,7 +443,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -575,7 +579,8 @@ segments:
   norm_ids:
   - AIA-NORM-A075-P2A-ACCOUNT-FOR-REQUEST
   - AIA-NORM-A075-P2A-ASSIST-AI-OFFICE
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A075-P2A-ASSIST-AI-OFFICE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -294,7 +294,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P7-COORDINATED-FINANCIAL-DEROGATION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A074-P6-FINANCIAL-SUPERVISOR-AUTHORITY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

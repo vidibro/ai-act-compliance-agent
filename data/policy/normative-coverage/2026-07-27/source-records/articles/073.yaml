@@ -1,42 +1,86 @@
 temporal_regimes:
 - regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
+  application_start: 2026-08-02
   qualitative_deadline:
     kind: immediately
-    trigger: the provider has established a causal link between the AI system and the serious incident or the reasonable likelihood of such a link
+    trigger: the provider has established a causal link between the AI system and the serious incident
+      or the reasonable likelihood of such a link
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P002
 - regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
+  application_start: 2026-08-02
   relative_deadline:
     quantity: 15
     unit: day
     trigger: the provider or, where applicable, the deployer, becomes aware of the serious incident
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P002
 - regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
+  application_start: 2026-08-02
   qualitative_deadline:
     kind: immediately
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P004
 - regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
+  application_start: 2026-08-02
   relative_deadline:
     quantity: 2
     unit: day
     trigger: the provider or, where applicable, the deployer becomes aware of that incident
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P004
 - regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
+  application_start: 2026-08-02
   qualitative_deadline:
     kind: immediately
-    trigger: the provider or the deployer has established, or as soon as it suspects, a causal relationship between the high-risk AI system and the serious incident
+    trigger: the provider or the deployer has established, or as soon as it suspects, a causal relationship
+      between the high-risk AI system and the serious incident
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P005
 - regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
+  application_start: 2026-08-02
   relative_deadline:
     quantity: 10
     unit: day
     trigger: the provider or, where applicable, the deployer becomes aware of the serious incident
   legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
   - AIA-TEXT-A073-P005
+- regime_id: AIA-TEMP-A073-P6-INVESTIGATE-WITHOUT-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_delay
+    trigger: the reporting of a serious incident pursuant to paragraph 1
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A073-P007
+- regime_id: AIA-TEMP-A073-P7-GUIDANCE-BY
+  deadline: 2025-08-02
+  timing_conditions:
+  - shall be assessed regularly
+  legal_basis_spans:
+  - AIA-TEXT-A073-P009
+- regime_id: AIA-TEMP-A073-P8-SEVEN-DAY-MEASURES
+  application_start: 2026-08-02
+  relative_deadline:
+    quantity: 7
+    unit: day
+    trigger: the date it received the notification referred to in paragraph 1 of this Article
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A073-P010
+- regime_id: AIA-TEMP-A073-P11-IMMEDIATE-NOTIFICATION
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: immediately
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A073-P013
 records:
 - norm_id: AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
   source: A073-P001
@@ -45,7 +89,9 @@ records:
   action: report every serious incident to the market surveillance authority where it occurred
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
@@ -58,30 +104,35 @@ records:
   action: report immediately after establishing a causal link or reasonable likelihood
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P002]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P002]
   targets: []
   temporal_regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
   implementation_refs:
   - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
   source: A073-P002
-  quote: in any event, not later than 15 days after the provider or, where applicable, the deployer,
-    becomes aware of the serious incident.
-  action: report no later than 15 days after awareness, taking account of the severity of the serious incident
+  quote: in any event, not later than 15 days after the provider or, where applicable, the deployer, becomes
+    aware of the serious incident.
+  action: report no later than 15 days after awareness, taking account of the severity of the serious
+    incident
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P002]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P002]
   targets: []
   qualifier_spans:
   - A073-P002
   - A073-P003
-  conditions:
-  - a deployer is applicable
   temporal_regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
   implementation_refs:
   - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A073-P3-REPORT-IMMEDIATELY
   source: A073-P004
   quote: Notwithstanding paragraph 2 of this Article, in the event of a widespread infringement or a serious
@@ -90,14 +141,22 @@ records:
   action: report a widespread infringement or Article 3(49)(b) incident immediately
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P004]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P004]
   targets: []
   conditions:
-  - a widespread infringement or Article 3(49)(b) serious incident occurs
+    operator: any_of
+    operands:
+    - text: in the event of a widespread infringement
+      basis_segment_ids: [AIA-TEXT-A073-P004]
+    - text: a serious incident as defined in Article 3, point (49)(b)
+      basis_segment_ids: [AIA-TEXT-A073-P004]
   temporal_regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
   implementation_refs:
   - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS
   source: A073-P004
   quote: and not later than two days after the provider or, where applicable, the deployer becomes aware
@@ -105,12 +164,19 @@ records:
   action: report a widespread infringement or Article 3(49)(b) incident no later than two days after awareness
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P004]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P004]
   targets: []
   qualifier_spans:
   - A073-P004
   conditions:
-  - a widespread infringement or Article 3(49)(b) serious incident occurs
+    operator: any_of
+    operands:
+    - text: in the event of a widespread infringement
+      basis_segment_ids: [AIA-TEXT-A073-P004]
+    - text: a serious incident as defined in Article 3, point (49)(b)
+      basis_segment_ids: [AIA-TEXT-A073-P004]
   temporal_regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
   implementation_refs:
   - AIA-RULE-ALL-A73
@@ -124,10 +190,15 @@ records:
   action: report a death immediately on established or suspected causality
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P005]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P005]
   targets: []
   conditions:
-  - a person has died in the serious incident
+    operator: all_of
+    operands:
+    - text: in the event of the death of a person
+      basis_segment_ids: [AIA-TEXT-A073-P005]
   temporal_regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
   implementation_refs:
   - AIA-RULE-ALL-A73
@@ -140,12 +211,17 @@ records:
   action: report a death no later than ten days after awareness
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P005]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P005]
   targets: []
   qualifier_spans:
   - A073-P005
   conditions:
-  - a person has died in the serious incident
+    operator: all_of
+    operands:
+    - text: in the event of the death of a person
+      basis_segment_ids: [AIA-TEXT-A073-P005]
   temporal_regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
   implementation_refs:
   - AIA-RULE-ALL-A73
@@ -158,13 +234,23 @@ records:
   action: submit an initial incomplete report followed by a complete report where needed for timeliness
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P006]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P006]
   targets: []
   kind: permission
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-ALL-A73
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   verified_by: vidibro
+  conditions:
+    operator: all_of
+    operands:
+    - text: Where necessary to ensure timely reporting
+      basis_segment_ids: [AIA-TEXT-A073-P006]
+  implementation_reason: The rule's evidence names the Article 73(5) initial incomplete report.
 - norm_id: AIA-NORM-A073-P6-INVESTIGATE
   source: A073-P007
   quote: Following the reporting of a serious incident pursuant to paragraph 1, the provider shall, without
@@ -174,29 +260,41 @@ records:
     concerned
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P007]
   targets: []
   conditions:
-  - a serious incident has been reported pursuant to paragraph 1
+    operator: all_of
+    operands:
+    - text: Following the reporting of a serious incident pursuant to paragraph 1
+      basis_segment_ids: [AIA-TEXT-A073-P007]
   mandatory_content:
   - necessary investigation of the serious incident and the AI system concerned
+  temporal_regime_id: AIA-TEMP-A073-P6-INVESTIGATE-WITHOUT-DELAY
   implementation_refs:
   - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION
   source: A073-P007
   quote: This shall include a risk assessment of the incident, and corrective action.
   action: include a risk assessment of the reported serious incident and corrective action in the investigation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P007]
   targets: []
   conditions:
-  - a serious incident has been reported pursuant to paragraph 1
+    operator: all_of
+    operands:
+    - text: Following the reporting of a serious incident pursuant to paragraph 1
+      basis_segment_ids: [AIA-TEXT-A073-P007]
   mandatory_content:
   - risk assessment of the incident
   - corrective action
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
   source: A073-P008
   quote: The provider shall cooperate with the competent authorities, and where relevant with the notified
@@ -205,7 +303,9 @@ records:
     during the first-subparagraph investigations
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P008]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-ALL-A73
   verification_mode: reported_not_judged
@@ -219,10 +319,14 @@ records:
     evaluation of the causes of the incident before informing the competent authorities of such action
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P008]
   targets: []
+  qualifier_spans:
+  - A073-P008
   kind: prohibition
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
-  - AIA-RULE-ALL-A73
+  - AIA-RULE-PO-A73-6-ALTERATION-PROHIBITION
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A073-P7-INFORM-FUNDAMENTAL-RIGHTS-AUTHORITIES
@@ -233,12 +337,19 @@ records:
   action: inform Article 77(1) authorities of Article 3(49)(c) incident notifications
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A073-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+    operator: all_of
+    operands:
+    - text: Upon receiving a notification related to a serious incident referred to in Article 3, point (49)(c)
+      basis_segment_ids: [AIA-TEXT-A073-P009]
 - norm_id: AIA-NORM-A073-P7-COMMISSION-REPORTING-GUIDANCE
   source: A073-P009
   quote: The Commission shall develop dedicated guidance to facilitate compliance with the obligations
@@ -247,7 +358,9 @@ records:
   action: issue incident-reporting guidance by 2 August 2025 and assess it regularly
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A073-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-A073-P7-GUIDANCE-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -263,7 +376,9 @@ records:
     seven days of receiving the paragraph 1 notification and follow that Regulation's notification procedures
   actors:
   - actor_ref: market_surveillance_authority
+    basis_segment_ids: [AIA-TEXT-A073-P010]
   targets: []
+  temporal_regime_id: AIA-TEMP-A073-P8-SEVEN-DAY-MEASURES
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -281,12 +396,21 @@ records:
   action: limit reporting to Article 3(49)(c) incidents where equivalent Union reporting legislation applies
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P011]
   targets: []
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-ALL-A73
-  verification_mode: reported_not_judged
+  verification_mode: reported_conditionally
   verified_by: vidibro
+  conditions:
+    operator: all_of
+    operands:
+    - text: For high-risk AI systems referred to in Annex III that are placed on the market or put into service by providers that are subject to Union legislative instruments laying down reporting obligations equivalent to those set out in this Regulation
+      basis_segment_ids: [AIA-TEXT-A073-P011]
+  implementation_reason: The rule's evidence names the Article 73(9) narrowing to Article 3, point (49)(c).
 - norm_id: AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING
   source: A073-P012
   quote: For high-risk AI systems which are safety components of devices, or are themselves devices, covered
@@ -297,12 +421,26 @@ records:
     national competent authority
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A073-P001]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A073-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-IX
   implementation_refs:
   - AIA-RULE-ALL-A73-10
   verification_mode: reported_not_judged
   verified_by: vidibro
+  conditions:
+    operator: all_of
+    operands:
+    - operator: any_of
+      operands:
+      - text: For high-risk AI systems which are safety components of devices
+        basis_segment_ids: [AIA-TEXT-A073-P012]
+      - text: are themselves devices
+        basis_segment_ids: [AIA-TEXT-A073-P012]
+    - text: covered by Regulations (EU) 2017/745 and (EU) 2017/746
+      basis_segment_ids: [AIA-TEXT-A073-P012]
 - norm_id: AIA-NORM-A073-P11-NOTIFY-COMMISSION
   source: A073-P013
   quote: National competent authorities shall immediately notify the Commission of any serious incident,
@@ -311,7 +449,9 @@ records:
     taken
   actors:
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A073-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-A073-P11-IMMEDIATE-NOTIFICATION
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
