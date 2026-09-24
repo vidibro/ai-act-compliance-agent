@@ -5,7 +5,9 @@ records:
   action: prohibit a conformity-assessment body from carrying out assessments unless it is designated under the Regulation and acting within its designated AI-system scope
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: prohibition
   product_scope: &outside_scope outside_supported_actor
   product_scope_reason: &outside_reason The present product does not report compliance for this addressee.
@@ -18,7 +20,9 @@ records:
   action: use the Annex XIV code mappings as the legal scope of an Article 30 notified conformity-assessment body's designation
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: legal_consequence
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -31,7 +35,9 @@ records:
   action: map code AIP 0102 to AI systems subject to Annex I Section A point 2
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -44,7 +50,9 @@ records:
   action: map code AIP 0103 to AI systems subject to Annex I Section A point 3
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -57,7 +65,9 @@ records:
   action: map code AIP 0104 to AI systems subject to Annex I Section A point 4
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -70,7 +80,9 @@ records:
   action: map code AIP 0105 to AI systems subject to Annex I Section A point 5
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -83,7 +95,9 @@ records:
   action: map code AIP 0106 to AI systems subject to Annex I Section A point 6
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -96,7 +110,9 @@ records:
   action: map code AIP 0107 to AI systems subject to Annex I Section A point 7
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -109,7 +125,9 @@ records:
   action: map code AIP 0108 to AI systems subject to Annex I Section A point 8
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -122,7 +140,9 @@ records:
   action: map code AIP 0109 to AI systems subject to Annex I Section A point 9
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -135,7 +155,9 @@ records:
   action: map code AIP 0110 to AI systems subject to Annex I Section A point 10
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -148,7 +170,9 @@ records:
   action: map code AIP 0111 to AI systems subject to Annex I Section A point 11
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -161,7 +185,9 @@ records:
   action: map code AIP 0112 to AI systems subject to Annex I Section A point 12
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -174,7 +200,9 @@ records:
   action: map code AIB 0201 to remote biometric identification systems under Annex III point 1
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -187,7 +215,9 @@ records:
   action: map code AIB 0202 to biometric-categorisation AI systems under Annex III point 1
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -200,7 +230,9 @@ records:
   action: map code AIB 0203 to emotion-recognition AI systems under Annex III point 1
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -213,7 +245,9 @@ records:
   action: map code AIH 0101 to symbolic AI, expert and knowledge-based systems, and search-and-optimisation systems
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -226,7 +260,9 @@ records:
   action: map code AIH 0201 to AI systems that process structured data
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -239,7 +275,9 @@ records:
   action: map code AIH 0202 to AI systems that process signal and audio data
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -252,7 +290,9 @@ records:
   action: map code AIH 0203 to AI systems that process text data
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -265,7 +305,9 @@ records:
   action: map code AIH 0204 to AI systems that process image and video
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -278,10 +320,15 @@ records:
   action: map code AIH 0205 to environment-learning AI systems not covered by AIH 0401
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   exceptions:
-  - AI systems covered by code AIH 0401
+    operator: any_of
+    operands:
+    - text: excluding AI systems covered under AIH 0401
+      basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P007]
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
@@ -293,7 +340,9 @@ records:
   action: map code AIH 0301 to generative AI systems, including systems based on general-purpose AI models
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -306,10 +355,15 @@ records:
   action: map code AIH 0401 to other emerging AI technologies not covered by another code, including agentic AI
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
   kind: applicability
   conditions:
-  - the emerging AI technology is not covered by another Annex XIV code
+    operator: all_of
+    operands:
+    - text: not covered by other codes
+      basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P007]
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
@@ -321,7 +375,14 @@ records:
   action: use the Annex XIV lists when specifying AI-system types in an Article 29 designation application
   actors:
   - actor_ref: conformity_assessment_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-4
+  conditions:
+    operator: all_of
+    operands:
+    - text: when specifying the types of AI systems in the application for designation referred to in Article 29
+      basis_segment_ids: [AIA-TEXT-ANNEX-XIV-P009]
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
   implementation_mode: *none_required

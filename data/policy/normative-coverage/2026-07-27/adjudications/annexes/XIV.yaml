@@ -1,0 +1,187 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: annex
+  document: XIV
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 10
+  norms_scanned: 25
+  finding_count: 12
+  audit_sha256: 60b2a21ea94f6a89d1eedd59c6bb5a928e890cae0d8218a1a0e2563c9be1410c
+decisions:
+- finding_id: AIA-VALID-142A9BB4DA0CDC7D
+  target: AIA-TEXT-ANNEX-XIV-P003
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-XIV-P003
+  source_sha256: f206550db190db4a031d20c9f486577486bb378c427f779db70d350dac0572bb
+  target_sha256: 088d9cc158bdec447bc71439ae6b1554cf911c25dcba2e33dbf2765a7bd4c78b
+  decision: false_positive
+  reason: '"May require" introduces the Annex by saying that a conformity assessment can involve a body.
+    Whether it does is set by Article 43, so the sentence states a possibility and carries no legal effect
+    of its own.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P003
+    source_sha256: f206550db190db4a031d20c9f486577486bb378c427f779db70d350dac0572bb
+    quote: Conformity assessment of high-risk AI systems pursuant to this Regulation may require the involvement
+      of conformity assessment bodies.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-D7A03964ADF2390F
+  target: AIA-NORM-ANNEX-XIV-AIP-0102
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: 9338ac8de52611c0d905a7072e7c88b9055b435fe4f845ad9784cda15d2fd53f
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    2 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 2 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-9688D94AC33DF2B4
+  target: AIA-NORM-ANNEX-XIV-AIP-0103
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: e9e5fb81a5e68f3d36ac0522f67d31a9c189edbdc8c6be24a4689a450b8eb3db
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    3 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 3 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B55D29B953708C0B
+  target: AIA-NORM-ANNEX-XIV-AIP-0104
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: 8653cbcde3075b1fa35dbaca5c498197544ed276115ad580ba775882e72c9951
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    4 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 4 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-259B4105F4618DFF
+  target: AIA-NORM-ANNEX-XIV-AIP-0105
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: 115340f20431936493321b0549c319994a2977e913068ca31e9241b9f8b86761
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    5 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 5 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-6FD8EBFAE8971799
+  target: AIA-NORM-ANNEX-XIV-AIP-0106
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: a77ffd3c49ce2eb10f07b6c0182110c29ce1a211f7cccf4572c31f982ce58b6c
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    6 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 6 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-21EC602EC028E5F3
+  target: AIA-NORM-ANNEX-XIV-AIP-0107
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: ca4c6decfd683bbea2e3a4dadec80b0667e2bb2bc94054ee837d4acec425e5a3
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    7 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 7 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-B6461227F0ACF8E0
+  target: AIA-NORM-ANNEX-XIV-AIP-0108
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: 7a9a61d6a62aea27db98ac240676060d8771e9010c9cfe819879972c0f350323
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    8 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 8 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-0F760C91A964828C
+  target: AIA-NORM-ANNEX-XIV-AIP-0109
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: d023bce9018f33ec7e66119d2b78a6ecf31a956355e73c4bb23177656f051fcb
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    9 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 9 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-E84AE45F388EB9DB
+  target: AIA-NORM-ANNEX-XIV-AIP-0110
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: b1720652878d21a05f0d164ec6b8ff7c9a9e3879d3ae0e2ac459d9145ad36d20
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    10 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 10 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-14B50C086B1B30EF
+  target: AIA-NORM-ANNEX-XIV-AIP-0111
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: 896790fe28aeb65fde8d87294178328b214a2182b3dc2319fdae018791087a0f
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    11 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 11 of Section A of Annex I
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-1CD90D53376A6164
+  target: AIA-NORM-ANNEX-XIV-AIP-0112
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-XIV-P005
+  source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+  target_sha256: f52b67076c01791c7f714df0693c41c655da700abc52d61cc1d8f635e460d17b
+  decision: false_positive
+  reason: '"Subject to" names the category the code covers, the AI systems that Annex I Section A point
+    12 reaches. It defines the code''s content and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-XIV-P005
+    source_sha256: 33708d3f7e2584466b557629deaeed4174590e880dfdb3b53d22d52cee4408b1
+    quote: AI systems subject to point 12 of Section A of Annex I
+  reviewed_by: vidibro

@@ -517,28 +517,31 @@ def test_in_scope_permission_cannot_be_hidden_in_a_compliance_rule(bundle, spec)
     ) in traceability_errors(broken, spec, LEDGER)
 
 
-def test_the_checker_names_each_broken_link(bundle, spec):
+def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
     criteria = a15(spec).criteria
     model_flaws = next(c for c in criteria if c.norm_id == MODEL_FLAWS)
     others = [c for c in criteria if c.norm_id != MODEL_FLAWS]
     stranger = model_flaws.model_copy(update={"norm_id": "AIA-NORM-A015-P9-NOT-A-NORM"})
-    enforced_scope = {
-        (entry.kind, entry.document)
-        for entry in load_adjudication_ledger(LEDGER).enforced_scope
-    }
-    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    # Every document is enforced, so one annex is taken out of scope to have a norm outside it.
+    ledger = load_adjudication_ledger(LEDGER).model_dump(mode="json")
+    ledger["enforced_scope"] = [
+        entry for entry in ledger["enforced_scope"] if entry["document"] != "XIV"
+    ]
+    ledger["decisions"] = [
+        decision
+        for decision in ledger["decisions"]
+        if not decision["source_ref"].startswith("AIA-TEXT-ANNEX-XIV-")
+    ]
+    narrowed = tmp_path / "adjudications.yaml"
+    narrowed.write_text(yaml.safe_dump(ledger, sort_keys=False), encoding="utf-8")
     outside_scope = next(
-        n
-        for n in bundle.norm_inventory.norms
-        if (segments[n.primary_spans[0]].source.kind, segments[n.primary_spans[0]].source.document)
-        not in enforced_scope
-        and RULE not in n.implementation_refs
+        n for n in bundle.norm_inventory.norms if n.norm_id.startswith("AIA-NORM-ANNEX-XIV-")
     )
     unrelated = model_flaws.model_copy(update={"norm_id": outside_scope.norm_id})
     edited = model_flaws.model_copy(update={"action": "implement measures against model flaws"})
 
     def errors(new: list[RuleCriterion]) -> str:
-        return "\n".join(traceability_errors(bundle, with_criteria(spec, new), LEDGER))
+        return "\n".join(traceability_errors(bundle, with_criteria(spec, new), narrowed))
 
     assert f"{RULE} omits criterion {MODEL_FLAWS}" in errors(others)
     assert f"{RULE} lists criterion {MODEL_FLAWS} more than once" in errors(
