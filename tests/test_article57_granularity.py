@@ -5,6 +5,14 @@ import pytest
 from aiact.norm_loader import load_normative_coverage
 
 
+def _texts(expression) -> list[str]:
+    """The enacted words of a condition expression, leaf by leaf in order."""
+    texts: list[str] = []
+    for operand in expression.operands:
+        texts += _texts(operand) if hasattr(operand, "operands") else [operand.text]
+    return texts
+
+
 @pytest.fixture(scope="module")
 def norms():
     return {
@@ -35,7 +43,10 @@ def test_establishment_powers_are_not_cooperation_or_access_duties(norms):
         duty = norms[f"P3A-{suffix}"]
         assert duty.kind.value == "obligation"
         assert duty.actors[0].actor_ref == "ai_office"
-        assert duty.conditions == ["the AI Office establishes the sandbox under paragraph 3a"]
+        assert _texts(duty.conditions) == [
+            "The AI Office may establish an AI regulatory sandbox at Union level for AI systems "
+            "covered by Article 75(1)"
+        ]
     assert "other Union-law compliance" in norms["P3A-COOPERATE-WITH-AUTHORITIES"].action
     assert "SMEs, including start-ups, and SMCs" in norms["P3A-PRIORITY-ACCESS"].action
 
@@ -52,7 +63,8 @@ def test_resources_cooperation_permission_and_savings_have_distinct_effects(norm
     assert involvement.kind.value == "permission"
     assert cooperation.actors[0].actor_ref == "national_competent_authority"
     assert involvement.actors == cooperation.actors
-    assert cooperation.conditions == involvement.conditions == ["where appropriate"]
+    assert cooperation.conditions == involvement.conditions
+    assert _texts(cooperation.conditions) == ["Where appropriate"]
     assert norms["P4-PRESERVE-OTHER-SANDBOXES"].kind.value == "legal_consequence"
     other = norms["P4-INTER-SANDBOX-COOPERATION"]
     assert other.actors[0].actor_ref == "member_state"
@@ -71,16 +83,14 @@ def test_real_world_testing_is_optional_and_its_plan_only_applies_conditionally(
     assert "supervised" in testing.action
     plan = norms["P5-INCORPORATE-TESTING-PLAN"]
     assert plan.kind.value == "obligation"
-    assert plan.conditions == [
-        "where the Articles 60 and 60a real-world testing plan is applicable"
-    ]
+    assert _texts(plan.conditions) == ["Where applicable"]
 
 
 def test_written_proof_is_requested_but_exit_report_is_not(norms):
     proof = norms["P7-SANDBOX-EVIDENCE-PACKAGE"]
     report = norms["P7-EXIT-REPORT"]
-    assert proof.conditions == [
-        "the provider or prospective provider of the AI system requests written proof"
+    assert _texts(proof.conditions) == [
+        "Upon request of the provider or prospective provider of the AI system"
     ]
     assert "successfully carried out" in proof.action
     assert not report.conditions
@@ -116,18 +126,15 @@ def test_report_access_consideration_and_public_release_do_not_share_one_gate(no
     assert publication.kind.value == "permission"
     assert access.actors == consideration.actors
     assert [actor.actor_ref for actor in access.actors] == ["commission", "board"]
-    assert access.conditions == [
-        "Article 78 confidentiality provisions are observed",
-        "the provider or prospective provider agrees to access",
+    assert _texts(access.conditions) == [
+        "Subject to the confidentiality provisions in Article 78",
+        "with the agreement of the provider or prospective provider",
     ]
-    assert consideration.conditions == [
-        *access.conditions,
-        "where appropriate when exercising tasks under this Regulation",
-    ]
-    assert publication.conditions == [
-        "the provider or prospective provider explicitly agrees to public release",
-        "the national competent authority explicitly agrees to public release",
-        "Article 78 confidentiality provisions are observed",
+    assert _texts(consideration.conditions) == [*_texts(access.conditions), "as appropriate"]
+    assert _texts(publication.conditions) == [
+        "If both the provider or prospective provider and the national competent authority "
+        "explicitly agree",
+        "Subject to the confidentiality provisions in Article 78",
     ]
     assert "single information platform" in publication.action
 
@@ -141,17 +148,15 @@ def test_mitigation_does_not_make_suspension_mandatory_or_gate_all_supervision(n
     notification = norms["P11-NOTIFY-SUSPENSION"]
     discretion = norms["P11-LAWFUL-SUPERVISORY-DISCRETION"]
     assert mitigation.kind.value == "obligation"
-    assert "significant risks" in mitigation.conditions[0]
+    assert "significant risks" in _texts(mitigation.conditions)[0]
     assert "suspend" not in mitigation.action
     assert suspension.kind.value == "power"
-    assert suspension.conditions[-1] == "no effective mitigation is possible"
+    assert _texts(suspension.conditions)[-1] == "if no effective mitigation is possible"
     assert "temporarily or permanently" in suspension.action
     assert "testing or participation" in suspension.action
     assert notification.kind.value == "obligation"
-    assert notification.conditions == [
-        "a decision temporarily or permanently suspending testing or sandbox participation "
-        "has been taken"
-    ]
+    # Notifying follows the same trigger as the suspension it reports.
+    assert notification.conditions == suspension.conditions
     assert "AI Office" in notification.action
     assert discretion.kind.value == "obligation"
     assert not discretion.conditions
@@ -167,20 +172,20 @@ def test_liability_and_two_no_fine_protections_preserve_different_conditions(nor
     assert all(n.kind.value == "legal_consequence" for n in (liability, ai_act, other_law))
     assert [actor.actor_ref for actor in liability.actors] == ["provider", "prospective_provider"]
     assert "third-party damage resulting from sandbox experimentation" in liability.action
-    assert not any("guidance" in condition for condition in liability.conditions)
+    assert not any("guidance" in text for text in _texts(liability.conditions))
     # The pinned text specifically says prospective providers for the AI Act safe harbour.
     assert ai_act.actors[0].actor_ref == "prospective_provider"
-    assert ai_act.conditions == [
-        "the prospective provider observes the specific sandbox plan",
-        "the prospective provider observes the terms and conditions of participation",
-        "the prospective provider follows national competent authority guidance in good faith",
+    assert _texts(ai_act.conditions) == [
+        "provided that the prospective providers observe the specific plan and the terms and "
+        "conditions for their participation and follow in good faith the guidance given by the "
+        "national competent authority"
     ]
     assert "infringements of this Regulation" in ai_act.action
-    assert other_law.conditions == [
-        "the provider or prospective provider participates in the sandbox",
-        "competent authorities responsible for the other law were actively involved in "
-        "supervision of the AI system in the sandbox",
-        "those competent authorities provided guidance for compliance with that law",
+    assert _texts(other_law.conditions) == [
+        "Providers and prospective providers participating in the AI regulatory sandbox",
+        "Where other competent authorities responsible for other Union and national law were "
+        "actively involved in the supervision of the AI system in the sandbox and provided "
+        "guidance for compliance",
     ]
     assert "other Union or national law" in other_law.action
 

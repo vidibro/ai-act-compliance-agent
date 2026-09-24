@@ -241,7 +241,10 @@ article_rulings:
     44: CASCADE prohibited — 'publicly accessible space', a condition of the Art. 5(1)(h) ban.
     45: "'law enforcement authority'. Feeds the law-enforcement carve-outs throughout."
     46: "'law enforcement'. Feeds Annex III(6) and the Art. 50 carve-outs."
-    47: "'AI Office'. An EU body; its powers are Arts. 75a-75d, out of scope."
+    47: >-
+      'AI Office'. An EU body, whose powers are Arts. 75a-75d. The two operator duties inside those
+      Articles, a correct voluntary reply (75a(3)) and the report of measures taken (75c(3)), have
+      rules of their own.
     48: "'national competent authority'. An authority this tool reports duties toward."
     49: "'serious incident'. Feeds Art. 73, cited whole by the Article 73 requirement."
     50: "'personal data'. Borrowed from Regulation (EU) 2016/679."
@@ -2729,20 +2732,6 @@ role_mentions:
     The same permission as to timing and partnering: a provider may test at any time before placing
     on the market, alone or in partnership with one or more deployers. The deployer is named as an
     optional partner. Still a permission.
-  "60(4)": >-
-    The Article 60 requirement binds the provider to the eleven conditions. THE DEPLOYER LIMBS ARE READ AS
-    CONDITIONS ON THE PROVIDER, and the reading is arguable rather than plain. Two of them name the
-    deployer as a subject: point (h) says the provider "and the deployer or prospective deployer
-    SHALL CONCLUDE AN AGREEMENT" specifying their roles, and point (j) requires the testing to be
-    overseen by the provider "AS WELL AS BY" deployers through suitably qualified persons. Read on
-    their own those are bilateral, the shape this ledger recognises at Art. 25(4). What decides it
-    the other way is the chapeau: paragraph 4 opens on providers who "may conduct the testing only
-    where all of the following conditions are met", so the list states what the PROVIDER must have
-    in place before it is permitted to start, and a deployer that never signs simply leaves the
-    provider without its permission. The cost of the reading is real and named here rather than
-    hidden: a deployer partnering in a trial reads no report of the agreement it must sign or the
-    qualified oversight staff it must find. the Article 60 requirement names both limbs as two-party instruments
-    so the provider at least knows what it has to obtain and from whom.
   "60(6)": >-
     A duty on MEMBER STATES to confer inspection powers on their market surveillance authorities.
     The provider is named as the party those powers are exercised against.
@@ -2851,10 +2840,6 @@ role_mentions:
   "80(3)": >-
     The authority informs the Commission and other Member States of the evaluation and of what it
     required the provider to do. Institutional, and the provider is named as the subject.
-  "80(4)": >-
-    The provider ensures the necessary action is taken, on pain of Art. 99 fines. Its content is
-    Art. 20 and the Section 2 requirements once an authority has ruled, and the Article 20 requirement and
-    the Article 79 requirement carry the corrective duty; this paragraph adds the penalty rather than a new duty.
   "80(5)": >-
     The provider ensures corrective action across every unit it has made available on the Union
     market. The same duty as Art. 20 and Art. 79(4), which the Article 20 requirement and the Article 79 requirement carry.

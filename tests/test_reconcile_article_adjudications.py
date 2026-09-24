@@ -38,10 +38,12 @@ def test_article_selection_keeps_decisions_in_their_declared_shard():
 
 
 def test_article_selection_refuses_an_article_outside_the_closed_scope():
-    """The article is read off the ledger so the enforced scope can grow without editing it."""
+    """The article is read off the ledger so the enforced scope can grow without editing it. Once
+    every Article is enforced it is a number past Article 113, which the scope check refuses the
+    same way."""
     ledger = load_adjudication_ledger(LEDGER)
     enforced = {scope.document for scope in ledger.enforced_scope}
-    outside = next(str(number) for number in range(1, 114) if str(number) not in enforced)
+    outside = next(str(number) for number in range(1, 1000) if str(number) not in enforced)
 
     with pytest.raises(ValueError, match="not in the enforced adjudication scope"):
         reconcile_article_adjudications._article_scope(ledger, outside)
