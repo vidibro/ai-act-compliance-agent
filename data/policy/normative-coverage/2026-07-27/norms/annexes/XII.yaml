@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A053-P001
   targets: []
   action: include all Annex XII model-description, integration, interaction, software, architecture, input-output,
     licence, and development-data information in documentation for downstream providers
@@ -61,3 +63,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V

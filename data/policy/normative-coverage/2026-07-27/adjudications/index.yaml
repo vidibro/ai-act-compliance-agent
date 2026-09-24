@@ -913,6 +913,13 @@ enforced_scope:
       - actor_evidence
       - target_evidence
       - temporal_regime
+  - kind: annex
+    document: "XII"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
 
 shards:
   - kind: article
@@ -1305,3 +1312,6 @@ shards:
   - kind: annex
     document: "XI"
     file: annexes/XI.yaml
+  - kind: annex
+    document: "XII"
+    file: annexes/XII.yaml

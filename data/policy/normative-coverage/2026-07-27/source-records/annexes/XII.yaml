@@ -5,7 +5,9 @@ records:
   action: include all Annex XII model-description, integration, interaction, software, architecture, input-output, licence, and development-data information in documentation for downstream providers
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A053-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(b) Annex XII content norm.
   verification_mode: judged_by_gap_analysis
