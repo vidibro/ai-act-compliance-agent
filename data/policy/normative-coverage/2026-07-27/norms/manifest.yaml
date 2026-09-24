@@ -4124,6 +4124,31 @@ relations:
   - AIA-TEXT-A043-P1
   - AIA-TEXT-A043-P3
   detail: ''
+- relation_id: AIA-REL-ANNEX-VIII-A-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VIII-A
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
+  - AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VIII-A
+  - AIA-TEXT-A071-P002
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VIII-C-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VIII-C
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VIII-C
+  - AIA-TEXT-A071-P003
+  detail: ''
 - relation_id: AIA-REL-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   kind: carried_by_norms

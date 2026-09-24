@@ -2,29 +2,29 @@ records:
 - norm_id: AIA-NORM-ANNEX-VIII-A
   source: ANNEX-VIII-A
   quote: The following information shall be provided and thereafter kept up to date
-  action: submit and maintain the Section A provider registration information; entries 2, 3, 8 and 9
-    apply only where their enacted condition is met, entry 12 is withheld for the enacted
-    law-enforcement, migration, asylum and border-control systems, and entry 13 is optional
+  action: submit and maintain the Section A provider registration information; entries 2, 3, 8 and 9 apply
+    only where their enacted condition is met, entry 12 is withheld for the enacted law-enforcement, migration,
+    asylum and border-control systems, and entry 13 is optional
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VIII-A]
   targets: []
-  implementation_refs:
-  - AIA-RULE-PO-A71-2
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 71(2) database-entry norms.
   verification_mode: reported_not_judged
-  exceptions:
-  - entry 12 only, the electronic instructions for use are not provided for high-risk AI systems in
-    the areas of law enforcement or migration, asylum and border control management referred to in
-    Annex III, points 1, 6 and 7
   mandatory_content_source: numbered_items
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VIII-B
   source: ANNEX-VIII-B
   quote: The following information shall be provided and thereafter kept up to date
-  action: submit and maintain the Section B not-high-risk registration information; entries 2 and 3
-    apply only where their enacted condition is met
+  action: submit and maintain the Section B not-high-risk registration information; entries 2 and 3 apply
+    only where their enacted condition is met
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VIII-B]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_refs:
   - AIA-RULE-NHR-A71-2
   verification_mode: reported_not_judged
@@ -36,9 +36,29 @@ records:
   action: submit and maintain the Section C deployer registration information
   actors:
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-ANNEX-VIII-C]
   targets: []
-  implementation_refs:
-  - AIA-RULE-DP-A71-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 71(3) database-entry norms.
   verification_mode: reported_not_judged
   mandatory_content_source: numbered_items
   verified_by: vidibro
+norm_relations:
+- relation_id: AIA-REL-ANNEX-VIII-A-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VIII-A
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
+  - AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VIII-A
+  - AIA-TEXT-A071-P002
+- relation_id: AIA-REL-ANNEX-VIII-C-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VIII-C
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VIII-C
+  - AIA-TEXT-A071-P003

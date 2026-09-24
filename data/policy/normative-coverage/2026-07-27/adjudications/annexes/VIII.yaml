@@ -1,0 +1,35 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: annex
+  document: VIII
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 4
+  norms_scanned: 3
+  finding_count: 1
+  audit_sha256: 8bf0de58178b9cf37ef967c565bcdd82a9739fa5fdd8545bed35be4badec7b26
+decisions:
+- finding_id: AIA-VALID-0E511EDF25189111
+  target: AIA-TEXT-ANNEX-VIII-A
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-VIII-A
+  source_sha256: 533a4720fbd58361eb575b1488eb35956a28f8032a0c65d30c773e886db86a62
+  target_sha256: 0c04be79f22c7acde0895e80448e461800c9bfc6dcbda064494c53b890100538
+  decision: accepted_with_basis
+  reason: The rest of Section A is the numbered list of what the registration holds, which the norm carries
+    as its mandatory content. Its one further "shall" withholds entry 12, the electronic instructions
+    for use, for the law-enforcement, migration, asylum and border-control systems of Annex III points
+    1, 6 and 7. That limits one item of the list, not the duty, so the norm's action states it rather
+    than a separate norm.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-VIII-A
+    source_sha256: 533a4720fbd58361eb575b1488eb35956a28f8032a0c65d30c773e886db86a62
+    quote: this information shall not be provided for high-risk AI systems in the areas of law enforcement
+      or migration, asylum and border control management referred to in Annex III, points 1, 6 and 7
+  reviewed_by: vidibro

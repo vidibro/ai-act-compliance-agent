@@ -2233,16 +2233,17 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records. Article 73(6)'s
     # alteration prohibition left `AIA-RULE-ALL-A73` for a rule of its own, and the operator duties
     # in Articles 75a(3) and 75c(3) each map to one rule, as do Article 111's four transitions.
-    # Annex VI's three internal-control checks are carried by the Article 43 route norms.
-    assert metrics.mapping_shape.one_norm_to_one_target == 45
-    assert metrics.mapping_shape.many_norms_to_one_target == 455
+    # Annex VI's three internal-control checks are carried by the Article 43 route norms, and
+    # Annex VIII's Sections A and C by the Article 71 database-entry norms.
+    assert metrics.mapping_shape.one_norm_to_one_target == 46
+    assert metrics.mapping_shape.many_norms_to_one_target == 452
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII's provider duties are carried by the Article 43 route norms rather than named on
     # `AIA-RULE-PO-A43-1B` and `AIA-RULE-PO-A43-3`, which leaves only the retraining consequence
     # shared between them.
     assert metrics.mapping_shape.many_to_many == 17
-    assert metrics.mapping_shape.unmapped == 890
-    assert metrics.semantic_vs_existing_implementation_disagreements == 51
+    assert metrics.mapping_shape.unmapped == 892
+    assert metrics.semantic_vs_existing_implementation_disagreements == 53
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2278,6 +2279,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VII-QMS-MAINTAIN",
         "AIA-NORM-ANNEX-VII-SURVEILLANCE",
         "AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION",
+        "AIA-NORM-ANNEX-VIII-A",
+        "AIA-NORM-ANNEX-VIII-C",
         "AIA-NORM-ANNEX-X-ECRIS-TCN",
         "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
         "AIA-NORM-ANNEX-X-ETIAS",
@@ -5103,11 +5106,9 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
     # The 13 entries are not 13 unconditional checks: one is optional and one is withheld.
     assert section_a.mandatory_content[12].endswith("(optional).")
     assert "entry 13 is optional" in section_a.action
-    assert section_a.exceptions == [
-        "entry 12 only, the electronic instructions for use are not provided for high-risk AI "
-        "systems in the areas of law enforcement or migration, asylum and border control "
-        "management referred to in Annex III, points 1, 6 and 7"
-    ]
+    # Entry 12's withholding limits one item, not the duty, so it is not an exception to the norm.
+    assert "entry 12 is withheld" in section_a.action
+    assert not section_a.exceptions
     assert "where their enacted condition is met" in norms["AIA-NORM-ANNEX-VIII-B"].action
 
     annex_four = norms["AIA-NORM-ANNEX-IV-CONTENT"]
