@@ -5,7 +5,11 @@ norms:
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P009
   - actor_ref: prospective_provider
+    basis_segment_ids:
+    - AIA-TEXT-A060-P009
   targets: []
   action: provide and keep current all five Annex IX information items when registering real-world testing
     under Article 60
@@ -47,3 +51,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-VI
