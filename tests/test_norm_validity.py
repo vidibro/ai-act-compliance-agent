@@ -756,9 +756,12 @@ def test_legal_basis_must_be_an_exact_source_quote(tmp_path):
 
 
 def _article_outside_scope(manifest: dict) -> str:
-    """Read off the ledger so the enforced scope can grow without editing these tests."""
+    """Read off the ledger so the enforced scope can grow without editing these tests.
+
+    Once every Article is enforced this is a number past Article 113. The ledger checks these
+    tests exercise compare shard declarations only, so they need no enacted text behind it."""
     enforced = {scope["document"] for scope in manifest["enforced_scope"]}
-    return next(str(number) for number in range(1, 114) if str(number) not in enforced)
+    return next(str(number) for number in range(1, 1000) if str(number) not in enforced)
 
 
 def test_manifest_rejects_an_undeclared_shard(tmp_path):

@@ -1,3 +1,9 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-ENTRY-INTO-FORCE
+  timing_conditions:
+  - on the twentieth day following that of its publication in the Official Journal of the European Union
+  legal_basis_spans:
+  - AIA-TEXT-A113-ENTRY
 records:
 - norm_id: AIA-NORM-A113-ENTRY
   source: A113-ENTRY
@@ -6,8 +12,10 @@ records:
   action: enter into force twenty days after publication
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: This Regulation
+    basis_segment_ids: [AIA-TEXT-A113-ENTRY]
   kind: legal_consequence
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
@@ -19,8 +27,10 @@ records:
   action: apply generally from 2 August 2026
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: This Regulation
+    basis_segment_ids: [AIA-TEXT-A113-ENTRY]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
@@ -32,24 +42,32 @@ records:
   action: apply Chapters I and II from 2 February 2025
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapters I and II
+    basis_segment_ids: [AIA-TEXT-A113-A]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
   exceptions:
-  - Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b) apply from 2 December
-    2026 instead
+    operator: any_of
+    operands:
+    - text: with the exception of Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b)
+      basis_segment_ids: [AIA-TEXT-A113-A]
 - norm_id: AIA-NORM-A113-A-LATE
   source: A113-A
   quote: shall apply from 2 December 2026
   action: apply the listed Article 5 amendments from 2 December 2026
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b)
+    basis_segment_ids: [AIA-TEXT-A113-A]
   kind: applicability
+  qualifier_spans:
+  - A113-A
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
@@ -62,15 +80,20 @@ records:
   action: apply the listed chapters and Article 78 from 2 August 2025 except Article 101
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapter III Section 4, Chapter V, Chapter VII and Chapter XII and Article 78
+    basis_segment_ids: [AIA-TEXT-A113-B]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
   exceptions:
-  - Article 101 is excluded from the 2 August 2025 application date
+    operator: any_of
+    operands:
+    - text: with the exception of Article 101
+      basis_segment_ids: [AIA-TEXT-A113-B]
 - norm_id: AIA-NORM-A113-C-ANNEXIII
   source: A113-C
   quote: "Chapter III, Sections 1, 2, and 3, with the exception of Article 6(5), shall apply from:\n \
@@ -79,16 +102,20 @@ records:
   action: apply Chapter III Sections 1 to 3 to the Annex III route from 2 December 2027
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapter III, Sections 1, 2, and 3
+    basis_segment_ids: [AIA-TEXT-A113-C]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
   exceptions:
-  - Article 6(5), which remains governed by the general application date rather than this deferred Annex
-    III route date
+    operator: any_of
+    operands:
+    - text: with the exception of Article 6(5)
+      basis_segment_ids: [AIA-TEXT-A113-C]
 - norm_id: AIA-NORM-A113-C-ANNEXI
   source: A113-C
   quote: (ii) 2 August 2028 as regards AI systems classified as high-risk pursuant to Article 6(1) and
@@ -96,24 +123,30 @@ records:
   action: apply Chapter III Sections 1 to 3 to the Annex I route from 2 August 2028
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapter III, Sections 1, 2, and 3
+    basis_segment_ids: [AIA-TEXT-A113-C]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
   exceptions:
-  - Article 6(5), which remains governed by the general application date rather than this deferred Annex
-    I route date
+    operator: any_of
+    operands:
+    - text: with the exception of Article 6(5)
+      basis_segment_ids: [AIA-TEXT-A113-C]
 - norm_id: AIA-NORM-A113-D
   source: A113-D
   quote: Articles 102 to 110 shall apply from 27 July 2026.
   action: apply Articles 102 to 110 from 27 July 2026
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Articles 102 to 110
+    basis_segment_ids: [AIA-TEXT-A113-D]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required

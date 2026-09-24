@@ -4820,6 +4820,122 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A113-D
+- regime_id: AIA-TEMP-CHAPTER-XIII
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A111-P1-LARGE-SCALE-IT-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2030-12-31'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P001
+- regime_id: AIA-TEMP-A111-P2-PUBLIC-AUTHORITY-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2030-08-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P003
+- regime_id: AIA-TEMP-A111-P3-LEGACY-GPAI-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2027-08-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P004
+- regime_id: AIA-TEMP-A111-P4-LEGACY-SYNTHETIC-CONTENT-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2026-12-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P005
+- regime_id: AIA-TEMP-A112-P1-ANNUAL-ASSESSMENT
+  application_start: '2026-08-02'
+  application_end: null
+  timing_conditions:
+  - once a year following the entry into force of this Regulation, and until the end of the period of
+    the delegation of power laid down in Article 97
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P001
+- regime_id: AIA-TEMP-A112-P2-EVALUATION-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2028-08-02'
+  timing_conditions:
+  - every four years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P002
+- regime_id: AIA-TEMP-A112-P3-REVIEW-REPORT-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2029-08-02'
+  timing_conditions:
+  - every four years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P006
+- regime_id: AIA-TEMP-A112-P5-AI-OFFICE-EVALUATION-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2028-08-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P012
+- regime_id: AIA-TEMP-A112-P6-STANDARDISATION-REPORT-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2028-08-02'
+  timing_conditions:
+  - every four years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P013
+- regime_id: AIA-TEMP-A112-P7-CODES-EVALUATION-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2028-08-02'
+  timing_conditions:
+  - every three years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P014
+- regime_id: AIA-TEMP-A112-P8-INFORMATION-WITHOUT-UNDUE-DELAY
+  application_start: '2026-08-02'
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: upon its request
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P015
+- regime_id: AIA-TEMP-A112-P13-ENFORCEMENT-ASSESSMENT-BY
+  application_start: '2026-08-02'
+  application_end: null
+  deadline: '2031-08-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P023
+- regime_id: AIA-TEMP-ENTRY-INTO-FORCE
+  application_start: null
+  application_end: null
+  timing_conditions:
+  - on the twentieth day following that of its publication in the Official Journal of the European Union
+  legal_basis_spans:
+  - AIA-TEXT-A113-ENTRY
 - regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   application_start: '2025-02-02'
   application_end: null

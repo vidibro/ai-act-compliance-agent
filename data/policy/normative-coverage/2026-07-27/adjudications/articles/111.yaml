@@ -1,0 +1,65 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '111'
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 6
+  norms_scanned: 6
+  finding_count: 3
+  audit_sha256: 4d58d1cde6ab815b61d9c2b6437c907a866fb2a7fe8c0433f8de394462d4f6f3
+decisions:
+- finding_id: AIA-VALID-D0BA6CD44C20200B
+  target: AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  rule: exception_expression_missing
+  source_ref: AIA-TEXT-A111-P001
+  source_sha256: 18be91e932b2cb3fb917ff7350f3fb008358797103cc2a2dbf6d3caa2256e491
+  target_sha256: 2dcaa1896fb9b0e1da21f12d74d866de1efdd8efb4df00a19f940de1bba0c75b
+  decision: false_positive
+  reason: '"Without prejudice to the application of Article 5" keeps the prohibitions applying to these
+    systems from their own date. It takes no system out of the 2030 duty, so there is no exception branch
+    to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-A111-P001
+    source_sha256: 18be91e932b2cb3fb917ff7350f3fb008358797103cc2a2dbf6d3caa2256e491
+    quote: Without prejudice to the application of Article 5 as referred to in Article 113(3), point (a)
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-97FE5CF4A1BE198E
+  target: AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE:actor:operator:AIA-TEXT-A111-P001
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A111-P001
+  source_sha256: 18be91e932b2cb3fb917ff7350f3fb008358797103cc2a2dbf6d3caa2256e491
+  target_sha256: 5c79750e26de3b94a28c74c762423ff1a6469435440b3207f27faef3d14de1ad
+  decision: accepted_with_basis
+  reason: 'Paragraph 1 is passive: the systems "shall be brought into compliance". It binds whichever
+    operator holds the system, which the operator role records, but the paragraph names no one, so no
+    span can name it.'
+  legal_basis:
+  - span_id: AIA-TEXT-A111-P001
+    source_sha256: 18be91e932b2cb3fb917ff7350f3fb008358797103cc2a2dbf6d3caa2256e491
+    quote: AI systems which are components of the large-scale IT systems established by the legal acts
+      listed in Annex X that have been placed on the market or put into service before 2 August 2027 shall
+      be brought into compliance with this Regulation by 31 December 2030
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-F1C5D3102680D2CC
+  target: AIA-NORM-A111-P1-ACCOUNT-FOR-REQUIREMENTS-IN-EVALUATION:actor:public_authority:AIA-TEXT-A111-P002
+  rule: actor_basis_does_not_name_actor
+  source_ref: AIA-TEXT-A111-P002
+  source_sha256: c040e8d854512579b6d29ead7b8bf90781a104f296ade74bbf26e63ac9f55e16
+  target_sha256: ca1b503410cdecc3550930fed1214c909cdeb6ed19223b531818ff821e7db875
+  decision: accepted_with_basis
+  reason: The requirements "shall be taken into account" in each evaluation the Annex X legal acts provide
+    for. Those acts give the evaluations to different Union and national bodies, so the public-authority
+    role records the group, and the subparagraph names none of them.
+  legal_basis:
+  - span_id: AIA-TEXT-A111-P002
+    source_sha256: c040e8d854512579b6d29ead7b8bf90781a104f296ade74bbf26e63ac9f55e16
+    quote: The requirements laid down in this Regulation shall be taken into account in the evaluation
+      of each large-scale IT system established by the legal acts listed in Annex X
+  reviewed_by: vidibro

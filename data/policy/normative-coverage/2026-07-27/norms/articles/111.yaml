@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: operator
+    basis_segment_ids:
+    - AIA-TEXT-A111-P001
   targets: []
   action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by
     31 December 2030
@@ -15,47 +17,47 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A111-P001
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the AI system is a component of a large-scale IT system established by a legal act listed
-        in Annex X
+    - text: AI systems which are components of the large-scale IT systems established by the legal acts
+        listed in Annex X
       basis_segment_ids:
       - AIA-TEXT-A111-P001
-    - text: the system was placed on the market or put into service before 2 August 2027
+    - text: that have been placed on the market or put into service before 2 August 2027
       basis_segment_ids:
       - AIA-TEXT-A111-P001
-  exceptions:
-    operator: any_of
-    operands:
-    - text: application of Article 5 under Article 113(3)(a) is unaffected
-      basis_segment_ids:
-      - AIA-TEXT-A111-P001
+  exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for operators of AI components in covered
     systems.
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: No current rule represents this legacy-system transition.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A111-1
+  implementation_reason: ''
+  verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A111-P1-LARGE-SCALE-IT-BY
 - norm_id: AIA-NORM-A111-P1-ACCOUNT-FOR-REQUIREMENTS-IN-EVALUATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: public_authority
+    basis_segment_ids:
+    - AIA-TEXT-A111-P002
   targets: []
   action: account for AI Act requirements when evaluating or replacing each Annex X large-scale IT system
   norm_text: The requirements laid down in this Regulation shall be taken into account in the evaluation
@@ -83,12 +85,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: this Regulation
+    basis_segment_ids:
+    - AIA-TEXT-A111-P003
   action: apply the Regulation to legacy high-risk systems other than paragraph 1 systems only when their
     design changes significantly from the Chapter III application date
   norm_text: Without prejudice to the application of Article 5 as referred to in Article 113, third paragraph,
@@ -106,20 +111,17 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system was placed on the market or put into service before Chapter III's
-        Article 113 application date
+    - text: that have been placed on the market or put into service before the date of application of
+        Chapter III referred to in Article 113
       basis_segment_ids:
       - AIA-TEXT-A111-P003
-    - text: from that date, the system is subject to significant design changes
+    - text: only if, as from that date, those systems are subject to significant changes in their designs
       basis_segment_ids:
       - AIA-TEXT-A111-P003
   exceptions:
     operator: any_of
     operands:
-    - text: the paragraph 1 large-scale IT systems are excluded
-      basis_segment_ids:
-      - AIA-TEXT-A111-P003
-    - text: application of Article 5 under Article 113 third paragraph point (a) is unaffected
+    - text: other than the systems referred to in paragraph 1 of this Article
       basis_segment_ids:
       - AIA-TEXT-A111-P003
   mandatory_content: []
@@ -138,12 +140,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A111-P003
   - actor_ref: deployer
+    basis_segment_ids:
+    - AIA-TEXT-A111-P003
   targets: []
   action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August
     2030
@@ -153,37 +160,42 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A111-P003
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the high-risk AI system is intended to be used by public authorities
+    - text: high-risk AI systems intended to be used by public authorities
       basis_segment_ids:
       - AIA-TEXT-A111-P003
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers and deployers.
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: Existing rules do not represent this public-authority-use transition date.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A111-2
+  implementation_reason: ''
+  verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A111-P2-PUBLIC-AUTHORITY-BY
 - norm_id: AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-A111-P004
   targets: []
   action: bring GPAI models placed on the market before 2 August 2025 into compliance by 2 August 2027
   norm_text: Providers of general-purpose AI models that have been placed on the market before 2 August
@@ -192,37 +204,42 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A111-P004
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the general-purpose AI model was placed on the market before 2 August 2025
+    - text: that have been placed on the market before 2 August 2025
       basis_segment_ids:
       - AIA-TEXT-A111-P004
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported GPAI providers.
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: Existing rules do not represent this legacy-model transition date.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-GP-A111-3
+  implementation_reason: ''
+  verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A111-P3-LEGACY-GPAI-BY
 - norm_id: AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-A111-P005
   targets: []
   action: bring pre-2-August-2026 synthetic-content-generating AI systems into Article 50(2) compliance
     by 2 December 2026
@@ -232,32 +249,35 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A111-P005
   qualifier_spans: []
   conditions:
     operator: all_of
     operands:
-    - text: the AI system generates synthetic audio, image, video, or text content
+    - text: generating synthetic audio, image, video or text content
       basis_segment_ids:
       - AIA-TEXT-A111-P005
-    - text: the AI system was placed on the market before 2 August 2026
+    - text: that have been placed on the market before 2 August 2026
       basis_segment_ids:
       - AIA-TEXT-A111-P005
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers.
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: Existing Article 50 rules do not represent this legacy-system transition date.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-TR-A111-4
+  implementation_reason: ''
+  verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A111-P4-LEGACY-SYNTHETIC-CONTENT-BY

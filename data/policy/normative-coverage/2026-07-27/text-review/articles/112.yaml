@@ -73,7 +73,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -479,7 +480,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A112-P12-ACCOUNT-FOR-SECTOR-SPECIFICITIES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

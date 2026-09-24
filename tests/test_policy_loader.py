@@ -137,7 +137,10 @@ def test_shipped_spec_loads():
     #
     # Art. 80(4) and (5) bind the provider of a system it classified as not high-risk once an
     # authority finds it high-risk, so they are a not-high-risk rule rather than part of Art. 20.
-    assert len(spec.rules) == 127
+    #
+    # FOUR ARE ARTICLE 111'S TRANSITIONS, one per paragraph, each filed at the date by which a
+    # system or model already on the market must comply.
+    assert len(spec.rules) == 131
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

@@ -5,7 +5,9 @@ norms:
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: This Regulation
+    basis_segment_ids:
+    - AIA-TEXT-A113-ENTRY
   action: enter into force twenty days after publication
   norm_text: This Regulation shall enter into force on the twentieth day following that of its publication
     in the Official Journal of the European Union.
@@ -34,12 +36,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
 - norm_id: AIA-NORM-A113-GENERAL
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: This Regulation
+    basis_segment_ids:
+    - AIA-TEXT-A113-ENTRY
   action: apply generally from 2 August 2026
   norm_text: It shall apply from 2 August 2026.
   detection_channels:
@@ -67,12 +72,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
 - norm_id: AIA-NORM-A113-A-EARLY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapters I and II
+    basis_segment_ids:
+    - AIA-TEXT-A113-A
   action: apply Chapters I and II from 2 February 2025
   norm_text: Chapters I and II shall apply from 2 February 2025
   detection_channels:
@@ -86,8 +94,8 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b) apply from
-        2 December 2026 instead
+    - text: with the exception of Article 5(1), first subparagraph, points (ba) and (bb), and Article
+        5(1a) and (1b)
       basis_segment_ids:
       - AIA-TEXT-A113-A
   mandatory_content: []
@@ -106,21 +114,26 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
 - norm_id: AIA-NORM-A113-A-LATE
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b)
+    basis_segment_ids:
+    - AIA-TEXT-A113-A
   action: apply the listed Article 5 amendments from 2 December 2026
   norm_text: shall apply from 2 December 2026
   detection_channels:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A113-A
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A113-A
   conditions: null
   exceptions: null
   mandatory_content: []
@@ -139,12 +152,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
 - norm_id: AIA-NORM-A113-B
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapter III Section 4, Chapter V, Chapter VII and Chapter XII and Article 78
+    basis_segment_ids:
+    - AIA-TEXT-A113-B
   action: apply the listed chapters and Article 78 from 2 August 2025 except Article 101
   norm_text: Chapter III Section 4, Chapter V, Chapter VII and Chapter XII and Article 78 shall apply
     from 2 August 2025, with the exception of Article 101
@@ -159,7 +175,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: Article 101 is excluded from the 2 August 2025 application date
+    - text: with the exception of Article 101
       basis_segment_ids:
       - AIA-TEXT-A113-B
   mandatory_content: []
@@ -178,12 +194,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
 - norm_id: AIA-NORM-A113-C-ANNEXIII
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapter III, Sections 1, 2, and 3
+    basis_segment_ids:
+    - AIA-TEXT-A113-C
   action: apply Chapter III Sections 1 to 3 to the Annex III route from 2 December 2027
   norm_text: "Chapter III, Sections 1, 2, and 3, with the exception of Article 6(5), shall apply from:\n\
     \            (i) 2 December 2027 as regards AI systems classified as high-risk pursuant to Article\
@@ -199,8 +218,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: Article 6(5), which remains governed by the general application date rather than this deferred
-        Annex III route date
+    - text: with the exception of Article 6(5)
       basis_segment_ids:
       - AIA-TEXT-A113-C
   mandatory_content: []
@@ -219,12 +237,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
 - norm_id: AIA-NORM-A113-C-ANNEXI
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Chapter III, Sections 1, 2, and 3
+    basis_segment_ids:
+    - AIA-TEXT-A113-C
   action: apply Chapter III Sections 1 to 3 to the Annex I route from 2 August 2028
   norm_text: (ii) 2 August 2028 as regards AI systems classified as high-risk pursuant to Article 6(1)
     and Annex I
@@ -238,8 +259,7 @@ norms:
   exceptions:
     operator: any_of
     operands:
-    - text: Article 6(5), which remains governed by the general application date rather than this deferred
-        Annex I route date
+    - text: with the exception of Article 6(5)
       basis_segment_ids:
       - AIA-TEXT-A113-C
   mandatory_content: []
@@ -258,12 +278,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE
 - norm_id: AIA-NORM-A113-D
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: Articles 102 to 110
+    basis_segment_ids:
+    - AIA-TEXT-A113-D
   action: apply Articles 102 to 110 from 27 July 2026
   norm_text: Articles 102 to 110 shall apply from 27 July 2026.
   detection_channels:
@@ -291,3 +314,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-ENTRY-INTO-FORCE

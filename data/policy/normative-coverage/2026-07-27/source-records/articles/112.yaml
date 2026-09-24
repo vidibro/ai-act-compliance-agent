@@ -1,3 +1,64 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A112-P1-ANNUAL-ASSESSMENT
+  application_start: 2026-08-02
+  timing_conditions:
+  - once a year following the entry into force of this Regulation, and until the end of the period of
+    the delegation of power laid down in Article 97
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P001
+- regime_id: AIA-TEMP-A112-P2-EVALUATION-BY
+  application_start: 2026-08-02
+  deadline: 2028-08-02
+  timing_conditions:
+  - every four years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P002
+- regime_id: AIA-TEMP-A112-P3-REVIEW-REPORT-BY
+  application_start: 2026-08-02
+  deadline: 2029-08-02
+  timing_conditions:
+  - every four years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P006
+- regime_id: AIA-TEMP-A112-P5-AI-OFFICE-EVALUATION-BY
+  application_start: 2026-08-02
+  deadline: 2028-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P012
+- regime_id: AIA-TEMP-A112-P6-STANDARDISATION-REPORT-BY
+  application_start: 2026-08-02
+  deadline: 2028-08-02
+  timing_conditions:
+  - every four years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P013
+- regime_id: AIA-TEMP-A112-P7-CODES-EVALUATION-BY
+  application_start: 2026-08-02
+  deadline: 2028-08-02
+  timing_conditions:
+  - every three years thereafter
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P014
+- regime_id: AIA-TEMP-A112-P8-INFORMATION-WITHOUT-UNDUE-DELAY
+  application_start: 2026-08-02
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: upon its request
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P015
+- regime_id: AIA-TEMP-A112-P13-ENFORCEMENT-ASSESSMENT-BY
+  application_start: 2026-08-02
+  deadline: 2031-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A112-P023
 records:
 - norm_id: AIA-NORM-A112-P1-ANNUAL-AMENDMENT-ASSESSMENT
   source: A112-P001
@@ -9,7 +70,9 @@ records:
     period
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-A112-P1-ANNUAL-ASSESSMENT
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -22,7 +85,9 @@ records:
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -36,6 +101,7 @@ records:
     and governance amendments
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P002]
   targets: []
   mandatory_content:
   - extending or adding Annex III area headings
@@ -45,6 +111,7 @@ records:
   - A112-P003
   - A112-P004
   - A112-P005
+  temporal_regime_id: AIA-TEMP-A112-P2-EVALUATION-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -56,11 +123,13 @@ records:
     evaluation and review of this Regulation to the European Parliament and to the Council. The report
     shall include an assessment with regard to the structure of enforcement and the possible need for
     a Union agency to resolve any identified shortcomings.
-  action: submit a public four-year Regulation review report assessing enforcement structure and possible
-    need for a Union agency
+  action: submit by 2 August 2029 and every four years thereafter a public Regulation review report assessing
+    the enforcement structure and the possible need for a Union agency
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-A112-P3-REVIEW-REPORT-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -73,21 +142,28 @@ records:
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the report's findings make an amendment proposal appropriate
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids: [AIA-TEXT-A112-P006]
 - norm_id: AIA-NORM-A112-P3-PUBLISH-REPORTS
   source: A112-P006
   quote: The reports shall be made public
   action: make Article 112(3) review reports public
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P006]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -100,6 +176,7 @@ records:
     paragraph 2 reports
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P002]
   targets: []
   mandatory_content:
   - national competent authority financial technical and human resources
@@ -111,6 +188,7 @@ records:
   - A112-P009
   - A112-P010
   - A112-P011
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -126,7 +204,9 @@ records:
     needs
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-A112-P5-AI-OFFICE-EVALUATION-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -139,7 +219,9 @@ records:
   action: submit the AI Office evaluation report to Parliament and Council
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P012]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -151,11 +233,13 @@ records:
     review of the progress on the development of standardisation deliverables on the energy-efficient
     development of general-purpose AI models, and asses the need for further measures or actions, including
     binding measures or actions.
-  action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation
-    and the need for further measures
+  action: report by 2 August 2028 and every four years thereafter on energy-efficient GPAI standardisation
+    progress and assess the need for further, including binding, measures
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-A112-P6-STANDARDISATION-REPORT-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -163,11 +247,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P6-SUBMIT-STANDARDISATION-REPORT
   source: A112-P013
-  quote: The report shall be submitted to the European Parliament and to the Council, and it shall be made public
-  action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it public
+  quote: The report shall be submitted to the European Parliament and to the Council, and it shall be
+    made public
+  action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it
+    public
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -182,11 +270,13 @@ records:
     effectiveness of voluntary codes of conduct to foster the application of the requirements set out
     in Chapter III, Section 2 for AI systems other than high-risk AI systems and possibly other additional
     requirements for AI systems other than high-risk AI systems, including as regards environmental sustainability.
-  action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk
-    AI codes
+  action: evaluate by 2 August 2028 and every three years thereafter the impact and effectiveness of voluntary
+    codes of conduct for AI systems other than high-risk AI systems
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P014]
   targets: []
+  temporal_regime_id: AIA-TEMP-A112-P7-CODES-EVALUATION-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -199,15 +289,21 @@ records:
   action: provide requested information without undue delay for Article 112 evaluations and reviews
   actors:
   - actor_ref: member_state
+    basis_segment_ids: [AIA-TEXT-A112-P015]
   - actor_ref: national_competent_authority
+    basis_segment_ids: [AIA-TEXT-A112-P015]
   targets: []
+  temporal_regime_id: AIA-TEMP-A112-P8-INFORMATION-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission requests the information for a paragraph 1 to 7 evaluation or review
+    operator: all_of
+    operands:
+    - text: upon its request
+      basis_segment_ids: [AIA-TEXT-A112-P015]
 - norm_id: AIA-NORM-A112-P9-ACCOUNT-FOR-INSTITUTIONAL-POSITIONS
   source: A112-P016
   quote: In carrying out the evaluations and reviews referred to in paragraphs 1 to 7, the Commission
@@ -217,14 +313,19 @@ records:
     or sources in Article 112 reviews
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P016]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission is carrying out a paragraph 1 to 7 evaluation or review
+    operator: all_of
+    operands:
+    - text: In carrying out the evaluations and reviews referred to in paragraphs 1 to 7
+      basis_segment_ids: [AIA-TEXT-A112-P016]
 - norm_id: AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS
   source: A112-P017
   quote: The Commission shall, if necessary, submit appropriate proposals to amend this Regulation
@@ -232,14 +333,19 @@ records:
     and information-society developments
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P017]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the Commission considers amendment necessary
+    operator: all_of
+    operands:
+    - text: if necessary
+      basis_segment_ids: [AIA-TEXT-A112-P017]
 - norm_id: AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
   source: A112-P018
   quote: To guide the evaluations and reviews referred to in paragraphs 1 to 7 of this Article, the AI
@@ -249,6 +355,7 @@ records:
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
   actors:
   - actor_ref: ai_office
+    basis_segment_ids: [AIA-TEXT-A112-P018]
   targets: []
   mandatory_content:
   - Annex III systems and area headings
@@ -258,6 +365,7 @@ records:
   - A112-P019
   - A112-P020
   - A112-P021
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -273,15 +381,19 @@ records:
     enforcement structures in relevant amendments and acts
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P017]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - a paragraph 10 amendment or relevant delegated or implementing act concerns sectoral Union harmonisation
-    legislation listed in Section B of Annex I
+    operator: all_of
+    operands:
+    - text: which concerns sectoral Union harmonisation legislation listed in Section B of Annex I
+      basis_segment_ids: [AIA-TEXT-A112-P022]
 - norm_id: AIA-NORM-A112-P13-ASSESS-ENFORCEMENT
   source: A112-P023
   quote: By 2 August 2031, the Commission shall carry out an assessment of the enforcement of this Regulation
@@ -291,7 +403,9 @@ records:
     Economic and Social Committee
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P023]
   targets: []
+  temporal_regime_id: AIA-TEMP-A112-P13-ENFORCEMENT-ASSESSMENT-BY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -306,11 +420,16 @@ records:
     structure and possible Union agency need
   actors:
   - actor_ref: commission
+    basis_segment_ids: [AIA-TEXT-A112-P023]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the enforcement assessment findings make an amendment proposal appropriate
+    operator: all_of
+    operands:
+    - text: where appropriate
+      basis_segment_ids: [AIA-TEXT-A112-P023]

@@ -4520,6 +4520,107 @@ rules:
       with the Art. 101 fines that back it.
     status: active
 
+  # ARTICLE 111 — THE TRANSITIONAL DUTIES. Each paragraph takes systems or models already on the
+  # market before a cut-off and gives them a later date by which to comply. The duties they point
+  # at are judged by their own rules; these rules exist so a reader holding a legacy system sees
+  # the date that actually binds it. Each is filed at that date, because the paragraph's legal
+  # effect is the deadline: the steps must be complete by then.
+  - rule_id: AIA-RULE-ALL-A111-1
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 111
+      paragraph: 1 # Annex X large-scale IT systems: comply by 31 December 2030
+      annex: "X"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [provider, deployer, importer, distributor, authorised_representative]
+    activation_condition: >-
+      The AI system is a component of a large-scale IT system established by a legal act listed in
+      Annex X (the Schengen Information System, the Visa Information System, Eurodac, the
+      Entry/Exit System, ETIAS, ECRIS-TCN and the interoperability framework) and was placed on
+      the market or put into service before 2 August 2027. Paragraph 1 is passive — such systems
+      "shall be brought into compliance" — so it binds whichever operator holds the system. Art. 5
+      still applies to them from its own date. Not derivable from a description of the system.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A plan bringing the Annex X component into compliance with the Regulation BY 31 DECEMBER
+      2030. Until then the Regulation's requirements are still taken into account in each
+      evaluation of the large-scale IT system under its own legal act. A programme-level
+      commitment, not visible in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2030-12-31
+    status: active
+
+  - rule_id: AIA-RULE-ALL-A111-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 111
+      paragraph: 2 # high-risk systems for public authorities: comply by 2 August 2030
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider, deployer]
+    activation_condition: >-
+      A high-risk AI system INTENDED TO BE USED BY PUBLIC AUTHORITIES, placed on the market or put
+      into service before the Chapter III application date for its route. Other legacy high-risk
+      systems fall under the Regulation only if their design changes significantly from that date;
+      these do in any case. Who the system is intended for is not derivable from its description.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The necessary steps taken so that the legacy system complies with the Regulation's
+      requirements and obligations BY 2 AUGUST 2030, owed by the provider and the deployer alike.
+      The significant-change test does not relieve these systems. A transition plan, not visible
+      in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2030-08-02
+    status: active
+
+  - rule_id: AIA-RULE-GP-A111-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 111
+      paragraph: 3 # general-purpose AI models already on the market: comply by 2 August 2027
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [gpai_provider]
+    activation_condition: >-
+      The general-purpose AI model was placed on the market before 2 August 2025. A model placed on
+      the market from that date owes Chapter V from the day it is placed.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The necessary steps taken so that the model complies with the obligations of the Regulation
+      BY 2 AUGUST 2027 — for a general-purpose AI model that means Articles 53 and 54, and Article
+      55 where it has systemic risk. A transition plan across the model's documentation and
+      policies — confirm separately.
+    document_verifiable: false
+    effective_date: 2027-08-02
+    status: active
+
+  - rule_id: AIA-RULE-TR-A111-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 111
+      paragraph: 4 # synthetic-content generators already on the market: Art. 50(2) by 2 Dec 2026
+      act_version_date: 2026-07-27
+    applies_to_transparency_duty: [synthetic_content_marking]
+    applies_to_role: [provider]
+    activation_condition: >-
+      The AI system, including a general-purpose AI system, generates synthetic audio, image, video
+      or text content and was placed on the market before 2 August 2026. A system placed on the
+      market from that date owes Art. 50(2) from the day it is placed.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The necessary steps taken so that the system's outputs are marked in a machine-readable
+      format and detectable as artificially generated or manipulated, as Art. 50(2) requires, BY 2
+      DECEMBER 2026. The marking itself is judged under AIA-RULE-TR-A50-2; this rule carries the
+      later date a legacy system has to reach it.
+    document_verifiable: false
+    effective_date: 2026-12-02
+    status: active
+
   - rule_id: AIA-RULE-GP-A53-3
     source:
       instrument: "Regulation (EU) 2024/1689"

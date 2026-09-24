@@ -43,7 +43,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A113-ENTRY
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A113-GENERAL
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -120,7 +121,8 @@ segments:
   norm_ids:
   - AIA-NORM-A113-A-EARLY
   - AIA-NORM-A113-A-LATE
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A113-A-LATE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

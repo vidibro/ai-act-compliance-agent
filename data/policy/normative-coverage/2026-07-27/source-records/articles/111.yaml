@@ -1,3 +1,32 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-CHAPTER-XIII
+  application_start: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A111-P1-LARGE-SCALE-IT-BY
+  application_start: 2026-08-02
+  deadline: 2030-12-31
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P001
+- regime_id: AIA-TEMP-A111-P2-PUBLIC-AUTHORITY-BY
+  application_start: 2026-08-02
+  deadline: 2030-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P003
+- regime_id: AIA-TEMP-A111-P3-LEGACY-GPAI-BY
+  application_start: 2026-08-02
+  deadline: 2027-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P004
+- regime_id: AIA-TEMP-A111-P4-LEGACY-SYNTHETIC-CONTENT-BY
+  application_start: 2026-08-02
+  deadline: 2026-12-02
+  legal_basis_spans:
+  - AIA-TEXT-A113-GENERAL
+  - AIA-TEXT-A111-P005
 records:
 - norm_id: AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
   source: A111-P001
@@ -9,26 +38,33 @@ records:
     31 December 2030
   actors:
   - actor_ref: operator
+    basis_segment_ids: [AIA-TEXT-A111-P001]
   targets: []
   conditions:
-  - the AI system is a component of a large-scale IT system established by a legal act listed in Annex
-    X
-  - the system was placed on the market or put into service before 2 August 2027
+    operator: all_of
+    operands:
+    - text: AI systems which are components of the large-scale IT systems established by the legal acts listed in Annex X
+      basis_segment_ids: [AIA-TEXT-A111-P001]
+    - text: that have been placed on the market or put into service before 2 August 2027
+      basis_segment_ids: [AIA-TEXT-A111-P001]
+  temporal_regime_id: AIA-TEMP-A111-P1-LARGE-SCALE-IT-BY
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for operators of AI components in covered
     systems.
-  implementation_mode: missing
-  implementation_reason: No current rule represents this legacy-system transition.
-  verification_mode: reported_conditionally
-  exceptions:
-  - application of Article 5 under Article 113(3)(a) is unaffected
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A111-1
+  verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A111-P1-ACCOUNT-FOR-REQUIREMENTS-IN-EVALUATION
   source: A111-P002
   quote: The requirements laid down in this Regulation shall be taken into account in the evaluation
   action: account for AI Act requirements when evaluating or replacing each Annex X large-scale IT system
   actors:
   - actor_ref: public_authority
+    basis_segment_ids: [AIA-TEXT-A111-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -45,20 +81,27 @@ records:
     design changes significantly from the Chapter III application date
   actors: none
   targets:
-  - target_ref: regulation
+  - target_ref: this Regulation
+    basis_segment_ids: [AIA-TEXT-A111-P003]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
   product_scope: dependency_only
   product_scope_reason: This proposition determines whether other operator obligations apply.
   implementation_mode: none_required
   implementation_reason: Represented as an applicability dependency rather than an independent finding.
   verification_mode: not_reported
   conditions:
-  - the high-risk AI system was placed on the market or put into service before Chapter III's Article
-    113 application date
-  - from that date, the system is subject to significant design changes
+    operator: all_of
+    operands:
+    - text: that have been placed on the market or put into service before the date of application of Chapter III referred to in Article 113
+      basis_segment_ids: [AIA-TEXT-A111-P003]
+    - text: only if, as from that date, those systems are subject to significant changes in their designs
+      basis_segment_ids: [AIA-TEXT-A111-P003]
   exceptions:
-  - the paragraph 1 large-scale IT systems are excluded
-  - application of Article 5 under Article 113 third paragraph point (a) is unaffected
+    operator: any_of
+    operands:
+    - text: other than the systems referred to in paragraph 1 of this Article
+      basis_segment_ids: [AIA-TEXT-A111-P003]
 - norm_id: AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE
   source: A111-P003
   quote: In any case, the providers and deployers of high-risk AI systems intended to be used by public
@@ -68,15 +111,23 @@ records:
     2030
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A111-P003]
   - actor_ref: deployer
+    basis_segment_ids: [AIA-TEXT-A111-P003]
   targets: []
   conditions:
-  - the high-risk AI system is intended to be used by public authorities
+    operator: all_of
+    operands:
+    - text: high-risk AI systems intended to be used by public authorities
+      basis_segment_ids: [AIA-TEXT-A111-P003]
+  temporal_regime_id: AIA-TEMP-A111-P2-PUBLIC-AUTHORITY-BY
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers and deployers.
-  implementation_mode: missing
-  implementation_reason: Existing rules do not represent this public-authority-use transition date.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A111-2
+  verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE
   source: A111-P004
   quote: Providers of general-purpose AI models that have been placed on the market before 2 August 2025
@@ -85,14 +136,21 @@ records:
   action: bring GPAI models placed on the market before 2 August 2025 into compliance by 2 August 2027
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids: [AIA-TEXT-A111-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-A111-P3-LEGACY-GPAI-BY
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported GPAI providers.
-  implementation_mode: missing
-  implementation_reason: Existing rules do not represent this legacy-model transition date.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-GP-A111-3
+  verification_mode: reported_not_judged
   conditions:
-  - the general-purpose AI model was placed on the market before 2 August 2025
+    operator: all_of
+    operands:
+    - text: that have been placed on the market before 2 August 2025
+      basis_segment_ids: [AIA-TEXT-A111-P004]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE
   source: A111-P005
   quote: Providers of AI systems, including general-purpose AI systems, generating synthetic audio, image,
@@ -102,12 +160,20 @@ records:
     by 2 December 2026
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A111-P005]
   targets: []
+  temporal_regime_id: AIA-TEMP-A111-P4-LEGACY-SYNTHETIC-CONTENT-BY
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers.
-  implementation_mode: missing
-  implementation_reason: Existing Article 50 rules do not represent this legacy-system transition date.
-  verification_mode: reported_conditionally
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-TR-A111-4
+  verification_mode: reported_not_judged
   conditions:
-  - the AI system generates synthetic audio, image, video, or text content
-  - the AI system was placed on the market before 2 August 2026
+    operator: all_of
+    operands:
+    - text: generating synthetic audio, image, video or text content
+      basis_segment_ids: [AIA-TEXT-A111-P005]
+    - text: that have been placed on the market before 2 August 2026
+      basis_segment_ids: [AIA-TEXT-A111-P005]
+  verified_by: vidibro

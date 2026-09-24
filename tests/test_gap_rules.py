@@ -416,10 +416,13 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
         product = AnnexIProduct.MEDICAL_DEVICES if annex_i else None
         # high_risk where the rule names it, because that is the case the fixture is built around;
         # otherwise the first tier it does name, any of which is a use case it must be selected for.
+        # A rule gated on an Art. 50 duty names no tier and is owed at any, minimal included.
         tier = (
             RiskClass.HIGH_RISK
             if RiskClass.HIGH_RISK in rule.applies_to_risk_class
             else rule.applies_to_risk_class[0]
+            if rule.applies_to_risk_class
+            else RiskClass.MINIMAL
         )
         annex_iii = tier in (RiskClass.HIGH_RISK, RiskClass.NOT_HIGH_RISK)
         for role in rule.applies_to_role:
@@ -436,6 +439,7 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
                     reallocation=moved,
                     real_world_testing=testing,
                     prohibited_practice=practice,
+                    transparency_duties=list(rule.applies_to_transparency_duty),
                 )
                 assert rule.rule_id in {r.rule_id for r in active.all_rules}, (
                     f"{rule.rule_id} states a condition and was withheld for {role}/{area} — "
@@ -528,7 +532,11 @@ def test_a_minimal_system_owes_a_transparency_duty(spec):
     """The direction a tier-gated rule gets wrong. A text generator can be minimal risk and still
     owe 50(2) — that is the whole reason Art. 50 is answered on its own axis."""
     duties = [TransparencyDuty.SYNTHETIC_CONTENT_MARKING]
-    assert _tr_ids(spec, _a_minimal_use_case(), ActorRole.PROVIDER, duties) == {"AIA-RULE-TR-A50-2"}
+    # Art. 111(4) gives a generator already on the market until 2 December 2026 for the same duty.
+    assert _tr_ids(spec, _a_minimal_use_case(), ActorRole.PROVIDER, duties) == {
+        "AIA-RULE-TR-A50-2",
+        "AIA-RULE-TR-A111-4",
+    }
 
 
 def test_a_high_risk_system_owing_no_duty_owes_no_transparency_rule(spec):
@@ -563,7 +571,7 @@ def test_a_transparency_duty_is_added_to_chapter_iii_never_instead_of_it(spec):
         ).all_rules
     }
     assert without < with_duty, "the duty removed a Chapter III obligation"
-    assert with_duty - without == {"AIA-RULE-TR-A50-2"}
+    assert with_duty - without == {"AIA-RULE-TR-A50-2", "AIA-RULE-TR-A111-4"}
 
 
 def test_transparency_rules_are_filed_under_the_role_that_owes_them(spec):

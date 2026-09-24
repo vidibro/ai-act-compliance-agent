@@ -2207,8 +2207,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2138,
-        "proposed": 801,
+        "approved": 2142,
+        "proposed": 797,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2940
@@ -2232,16 +2232,16 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # split by addressee and Article 75(1a)'s procedure sentence gained its own norm. Article
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records. Article 73(6)'s
     # alteration prohibition left `AIA-RULE-ALL-A73` for a rule of its own, and the operator duties
-    # in Articles 75a(3) and 75c(3) each map to one rule.
-    assert metrics.mapping_shape.one_norm_to_one_target == 41
+    # in Articles 75a(3) and 75c(3) each map to one rule, as do Article 111's four transitions.
+    assert metrics.mapping_shape.one_norm_to_one_target == 45
     assert metrics.mapping_shape.many_norms_to_one_target == 458
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 882
-    assert metrics.semantic_vs_existing_implementation_disagreements == 43
+    assert metrics.mapping_shape.unmapped == 878
+    assert metrics.semantic_vs_existing_implementation_disagreements == 39
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2256,10 +2256,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A050-P5-MANNER",
-        "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
-        "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
-        "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
-        "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
         "AIA-NORM-ANNEX-IV-CONTENT",
         "AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION",
         "AIA-NORM-ANNEX-V-DECLARATION-CONTENT",
@@ -2288,10 +2284,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
-        "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
-        "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
-        "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
         "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
@@ -4920,13 +4912,27 @@ def test_article_one_hundred_eleven_extracts_transition_rules_and_debt():
     }
 
     assert len(norms) == 6
-    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 4
+    # Each transition maps to its own rule, filed at the date a legacy system must comply by.
+    assert {
+        norm.norm_id: norm.implementation_refs
+        for norm in norms.values()
+        if norm.implementation_mode.value == "compliance_rule"
+    } == {
+        "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE": ["AIA-RULE-ALL-A111-1"],
+        "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE": ["AIA-RULE-ALL-A111-2"],
+        "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE": ["AIA-RULE-GP-A111-3"],
+        "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE": ["AIA-RULE-TR-A111-4"],
+    }
     assert norms["AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY"].kind.value == ("applicability")
     legacy = norms["AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY"]
-    assert len(legacy.conditions) == 2
-    assert len(legacy.exceptions) == 2
-    assert norms["AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE"].conditions == [
-        "the general-purpose AI model was placed on the market before 2 August 2025"
+    assert len(legacy.conditions.operands) == 2
+    # "Without prejudice to the application of Article 5" keeps Art. 5 applying; it excepts nothing.
+    assert [operand.text for operand in legacy.exceptions.operands] == [
+        "other than the systems referred to in paragraph 1 of this Article"
+    ]
+    gpai = norms["AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE"]
+    assert [operand.text for operand in gpai.conditions.operands] == [
+        "that have been placed on the market before 2 August 2025"
     ]
 
 
@@ -4944,10 +4950,11 @@ def test_article_one_hundred_twelve_extracts_review_framework():
     assert len(norms["AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS"].mandatory_content) == 4
     methodology = norms["AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY"]
     assert len(methodology.mandatory_content) == 3
-    assert norms["AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS"].conditions == [
-        "the Commission considers amendment necessary"
-    ]
-    assert len(norms["AIA-NORM-A112-P12-ACCOUNT-FOR-SECTOR-SPECIFICITIES"].conditions) == 1
+    assert [
+        operand.text
+        for operand in norms["AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS"].conditions.operands
+    ] == ["if necessary"]
+    assert len(norms["AIA-NORM-A112-P12-ACCOUNT-FOR-SECTOR-SPECIFICITIES"].conditions.operands) == 1
 
 
 def test_article_one_hundred_thirteen_preserves_deferred_application_exceptions():
@@ -4959,9 +4966,10 @@ def test_article_one_hundred_thirteen_preserves_deferred_application_exceptions(
     }
 
     assert len(norms) == 8
-    assert "2 December 2026" in norms["AIA-NORM-A113-A-EARLY"].exceptions[0]
-    assert norms["AIA-NORM-A113-B"].exceptions == [
-        "Article 101 is excluded from the 2 August 2025 application date"
+    # The excepted provisions' own later date is the separate A-LATE norm.
+    assert "Article 5(1a) and (1b)" in norms["AIA-NORM-A113-A-EARLY"].exceptions.operands[0].text
+    assert [operand.text for operand in norms["AIA-NORM-A113-B"].exceptions.operands] == [
+        "with the exception of Article 101"
     ]
     assert norms["AIA-NORM-A113-C-ANNEXIII"].exceptions
     assert norms["AIA-NORM-A113-C-ANNEXI"].exceptions

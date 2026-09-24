@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P001
   targets: []
   action: assess annually the need to amend Annex III and Article 5 lists through the Article 97 delegation
     period
@@ -36,11 +38,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P1-ANNUAL-ASSESSMENT
 - norm_id: AIA-NORM-A112-P1-SUBMIT-ASSESSMENT-FINDINGS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P001
   targets: []
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
   norm_text: The Commission shall submit the findings of that assessment to the European Parliament and
@@ -69,11 +74,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P002
   targets: []
   action: evaluate and report by 2 August 2028 and every four years on specified Annex III transparency
     and governance amendments
@@ -110,14 +118,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P2-EVALUATION-BY
 - norm_id: AIA-NORM-A112-P3-REGULATION-REVIEW-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P006
   targets: []
-  action: submit a public four-year Regulation review report assessing enforcement structure and possible
-    need for a Union agency
+  action: submit by 2 August 2029 and every four years thereafter a public Regulation review report assessing
+    the enforcement structure and the possible need for a Union agency
   norm_text: By 2 August 2029 and every four years thereafter, the Commission shall submit a report on
     the evaluation and review of this Regulation to the European Parliament and to the Council. The report
     shall include an assessment with regard to the structure of enforcement and the possible need for
@@ -146,11 +157,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P3-REVIEW-REPORT-BY
 - norm_id: AIA-NORM-A112-P3-ACCOMPANY-AMENDMENT-PROPOSAL
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P006
   targets: []
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
   norm_text: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
@@ -164,7 +178,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the report's findings make an amendment proposal appropriate
+    - text: where appropriate
       basis_segment_ids:
       - AIA-TEXT-A112-P006
   exceptions: null
@@ -184,11 +198,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P3-PUBLISH-REPORTS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P006
   targets: []
   action: make Article 112(3) review reports public
   norm_text: The reports shall be made public
@@ -216,11 +233,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P002
   targets: []
   action: address the specified authority-resource penalty standardisation and market-entry matters in
     paragraph 2 reports
@@ -258,11 +278,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P5-EVALUATE-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P012
   targets: []
   action: evaluate by 2 August 2028 the AI Office's functioning powers competences status and resource
     needs
@@ -294,11 +317,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P5-AI-OFFICE-EVALUATION-BY
 - norm_id: AIA-NORM-A112-P5-REPORT-AI-OFFICE-EVALUATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P012
   targets: []
   action: submit the AI Office evaluation report to Parliament and Council
   norm_text: The Commission shall submit a report on its evaluation to the European Parliament and to
@@ -327,14 +353,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P6-REVIEW-ENERGY-STANDARDISATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P013
   targets: []
-  action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation
-    and the need for further measures
+  action: report by 2 August 2028 and every four years thereafter on energy-efficient GPAI standardisation
+    progress and assess the need for further, including binding, measures
   norm_text: By 2 August 2028 and every four years thereafter, the Commission shall submit a report on
     the review of the progress on the development of standardisation deliverables on the energy-efficient
     development of general-purpose AI models, and asses the need for further measures or actions, including
@@ -363,11 +392,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P6-STANDARDISATION-REPORT-BY
 - norm_id: AIA-NORM-A112-P6-SUBMIT-STANDARDISATION-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P013
   targets: []
   action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it
     public
@@ -399,14 +431,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P7-EVALUATE-VOLUNTARY-CODES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P014
   targets: []
-  action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk
-    AI codes
+  action: evaluate by 2 August 2028 and every three years thereafter the impact and effectiveness of voluntary
+    codes of conduct for AI systems other than high-risk AI systems
   norm_text: By 2 August 2028 and every three years thereafter, the Commission shall evaluate the impact
     and effectiveness of voluntary codes of conduct to foster the application of the requirements set
     out in Chapter III, Section 2 for AI systems other than high-risk AI systems and possibly other additional
@@ -435,12 +470,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P7-CODES-EVALUATION-BY
 - norm_id: AIA-NORM-A112-P8-PROVIDE-REVIEW-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
+    basis_segment_ids:
+    - AIA-TEXT-A112-P015
   - actor_ref: national_competent_authority
+    basis_segment_ids:
+    - AIA-TEXT-A112-P015
   targets: []
   action: provide requested information without undue delay for Article 112 evaluations and reviews
   norm_text: For the purposes of paragraphs 1 to 7, the Board, the Member States and national competent
@@ -454,7 +494,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission requests the information for a paragraph 1 to 7 evaluation or review
+    - text: upon its request
       basis_segment_ids:
       - AIA-TEXT-A112-P015
   exceptions: null
@@ -474,11 +514,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P8-INFORMATION-WITHOUT-UNDUE-DELAY
 - norm_id: AIA-NORM-A112-P9-ACCOUNT-FOR-INSTITUTIONAL-POSITIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P016
   targets: []
   action: account for positions and findings of the Board Parliament Council and other relevant bodies
     or sources in Article 112 reviews
@@ -494,7 +537,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission is carrying out a paragraph 1 to 7 evaluation or review
+    - text: In carrying out the evaluations and reviews referred to in paragraphs 1 to 7
       basis_segment_ids:
       - AIA-TEXT-A112-P016
   exceptions: null
@@ -514,11 +557,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P017
   targets: []
   action: submit necessary AI Act amendment proposals considering technological health safety fundamental-rights
     and information-society developments
@@ -532,7 +578,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the Commission considers amendment necessary
+    - text: if necessary
       basis_segment_ids:
       - AIA-TEXT-A112-P017
   exceptions: null
@@ -552,11 +598,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
+    basis_segment_ids:
+    - AIA-TEXT-A112-P018
   targets: []
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
   norm_text: To guide the evaluations and reviews referred to in paragraphs 1 to 7 of this Article, the
@@ -594,11 +643,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P12-ACCOUNT-FOR-SECTOR-SPECIFICITIES
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P017
   targets: []
   action: account for sector regulatory specificities and existing governance conformity-assessment and
     enforcement structures in relevant amendments and acts
@@ -615,8 +667,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: a paragraph 10 amendment or relevant delegated or implementing act concerns sectoral Union
-        harmonisation legislation listed in Section B of Annex I
+    - text: which concerns sectoral Union harmonisation legislation listed in Section B of Annex I
       basis_segment_ids:
       - AIA-TEXT-A112-P022
   exceptions: null
@@ -636,11 +687,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-A112-P13-ASSESS-ENFORCEMENT
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P023
   targets: []
   action: assess AI Act enforcement by 2 August 2031 and report to Parliament Council and the European
     Economic and Social Committee
@@ -671,11 +725,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A112-P13-ENFORCEMENT-ASSESSMENT-BY
 - norm_id: AIA-NORM-A112-P13-ACCOMPANY-ENFORCEMENT-PROPOSAL
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-A112-P023
   targets: []
   action: accompany the enforcement report when appropriate with an amendment proposal addressing enforcement
     structure and possible Union agency need
@@ -691,7 +748,7 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the enforcement assessment findings make an amendment proposal appropriate
+    - text: where appropriate
       basis_segment_ids:
       - AIA-TEXT-A112-P023
   exceptions: null
@@ -711,3 +768,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
