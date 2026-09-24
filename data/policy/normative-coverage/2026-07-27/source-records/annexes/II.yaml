@@ -5,10 +5,12 @@ records:
   action: treat terrorism as a qualifying Annex II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: terrorism
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P002]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: &chapeau
+  qualifier_spans:
   - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
@@ -20,10 +22,13 @@ records:
   action: treat trafficking in human beings as a qualifying Annex II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: trafficking in human beings
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P003]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -31,13 +36,17 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
   source: ANNEX-II-P004
   quote: sexual exploitation of children, and child pornography
-  action: treat sexual exploitation of children and child pornography as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  action: treat sexual exploitation of children and child pornography as a qualifying Annex II offence
+    category for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: sexual exploitation of children, and child pornography
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P004]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -45,13 +54,17 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
   source: ANNEX-II-P005
   quote: illicit trafficking in narcotic drugs or psychotropic substances
-  action: treat illicit trafficking in narcotic drugs or psychotropic substances as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  action: treat illicit trafficking in narcotic drugs or psychotropic substances as a qualifying Annex
+    II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trafficking in narcotic drugs or psychotropic substances
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P005]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -59,13 +72,17 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
   source: ANNEX-II-P006
   quote: illicit trafficking in weapons, munitions or explosives
-  action: treat illicit trafficking in weapons, munitions, or explosives as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  action: treat illicit trafficking in weapons, munitions, or explosives as a qualifying Annex II offence
+    for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trafficking in weapons, munitions or explosives
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P006]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -73,13 +90,17 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
   source: ANNEX-II-P007
   quote: murder, grievous bodily injury
-  action: treat murder and grievous bodily injury as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  action: treat murder and grievous bodily injury as a qualifying Annex II offence category for Article
+    5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: murder, grievous bodily injury
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P007]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -90,10 +111,13 @@ records:
   action: treat illicit trade in human organs or tissue as a qualifying Annex II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trade in human organs or tissue
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P008]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -101,13 +125,17 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
   source: ANNEX-II-P009
   quote: illicit trafficking in nuclear or radioactive materials
-  action: treat illicit trafficking in nuclear or radioactive materials as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  action: treat illicit trafficking in nuclear or radioactive materials as a qualifying Annex II offence
+    for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trafficking in nuclear or radioactive materials
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P009]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -115,13 +143,17 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
   source: ANNEX-II-P010
   quote: kidnapping, illegal restraint or hostage-taking
-  action: treat kidnapping, illegal restraint, or hostage-taking as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  action: treat kidnapping, illegal restraint, or hostage-taking as a qualifying Annex II offence category
+    for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: kidnapping, illegal restraint or hostage-taking
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P010]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -129,13 +161,17 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-10-ICC-CRIMES
   source: ANNEX-II-P011
   quote: crimes within the jurisdiction of the International Criminal Court
-  action: treat crimes within the International Criminal Court's jurisdiction as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  action: treat crimes within the International Criminal Court's jurisdiction as a qualifying Annex II
+    offence category for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: crimes within the jurisdiction of the International Criminal Court
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P011]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -146,10 +182,13 @@ records:
   action: treat unlawful seizure of aircraft or ships as a qualifying Annex II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: unlawful seizure of aircraft or ships
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P012]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -160,10 +199,13 @@ records:
   action: treat rape as a qualifying Annex II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: rape
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P013]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -174,10 +216,13 @@ records:
   action: treat environmental crime as a qualifying Annex II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: environmental crime
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P014]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -188,10 +233,13 @@ records:
   action: treat organised or armed robbery as a qualifying Annex II offence category for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: organised or armed robbery
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P015]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -202,10 +250,13 @@ records:
   action: treat sabotage as a qualifying Annex II offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: sabotage
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P016]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -213,13 +264,18 @@ records:
 - norm_id: AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
   source: ANNEX-II-P017
   quote: participation in a criminal organisation involved in one or more of the offences listed above
-  action: treat participation in a criminal organisation involved in one or more other Annex II offences as a qualifying offence for Article 5(1)(h)(iii)
+  action: treat participation in a criminal organisation involved in one or more other Annex II offences
+    as a qualifying offence for Article 5(1)(h)(iii)
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: participation in a criminal organisation involved in one or more of the offences listed
+      above
+    basis_segment_ids: [AIA-TEXT-ANNEX-II-P017]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
   verification_mode: answered_by_classification
-  qualifier_spans: *chapeau
+  qualifier_spans:
+  - ANNEX-II-P001
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED

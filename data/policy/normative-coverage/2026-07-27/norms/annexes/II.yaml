@@ -5,7 +5,9 @@ norms:
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: terrorism
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P002
   action: treat terrorism as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: terrorism
   detection_channels:
@@ -36,12 +38,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: trafficking in human beings
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P003
   action: treat trafficking in human beings as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: trafficking in human beings
   detection_channels:
@@ -72,12 +77,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: sexual exploitation of children, and child pornography
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P004
   action: treat sexual exploitation of children and child pornography as a qualifying Annex II offence
     category for Article 5(1)(h)(iii)
   norm_text: sexual exploitation of children, and child pornography
@@ -109,12 +117,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trafficking in narcotic drugs or psychotropic substances
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P005
   action: treat illicit trafficking in narcotic drugs or psychotropic substances as a qualifying Annex
     II offence for Article 5(1)(h)(iii)
   norm_text: illicit trafficking in narcotic drugs or psychotropic substances
@@ -146,12 +157,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trafficking in weapons, munitions or explosives
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P006
   action: treat illicit trafficking in weapons, munitions, or explosives as a qualifying Annex II offence
     for Article 5(1)(h)(iii)
   norm_text: illicit trafficking in weapons, munitions or explosives
@@ -183,12 +197,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: murder, grievous bodily injury
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P007
   action: treat murder and grievous bodily injury as a qualifying Annex II offence category for Article
     5(1)(h)(iii)
   norm_text: murder, grievous bodily injury
@@ -220,12 +237,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-07-HUMAN-ORGANS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trade in human organs or tissue
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P008
   action: treat illicit trade in human organs or tissue as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: illicit trade in human organs or tissue
   detection_channels:
@@ -256,12 +276,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: illicit trafficking in nuclear or radioactive materials
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P009
   action: treat illicit trafficking in nuclear or radioactive materials as a qualifying Annex II offence
     for Article 5(1)(h)(iii)
   norm_text: illicit trafficking in nuclear or radioactive materials
@@ -293,12 +316,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: kidnapping, illegal restraint or hostage-taking
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P010
   action: treat kidnapping, illegal restraint, or hostage-taking as a qualifying Annex II offence category
     for Article 5(1)(h)(iii)
   norm_text: kidnapping, illegal restraint or hostage-taking
@@ -330,12 +356,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-10-ICC-CRIMES
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: crimes within the jurisdiction of the International Criminal Court
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P011
   action: treat crimes within the International Criminal Court's jurisdiction as a qualifying Annex II
     offence category for Article 5(1)(h)(iii)
   norm_text: crimes within the jurisdiction of the International Criminal Court
@@ -367,12 +396,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: unlawful seizure of aircraft or ships
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P012
   action: treat unlawful seizure of aircraft or ships as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: unlawful seizure of aircraft or ships
   detection_channels:
@@ -403,12 +435,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-12-RAPE
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: rape
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P013
   action: treat rape as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: rape
   detection_channels:
@@ -439,12 +474,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: environmental crime
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P014
   action: treat environmental crime as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: environmental crime
   detection_channels:
@@ -475,12 +513,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-14-ROBBERY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: organised or armed robbery
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P015
   action: treat organised or armed robbery as a qualifying Annex II offence category for Article 5(1)(h)(iii)
   norm_text: organised or armed robbery
   detection_channels:
@@ -511,12 +552,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-15-SABOTAGE
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: sabotage
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P016
   action: treat sabotage as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: sabotage
   detection_channels:
@@ -547,12 +591,16 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
 - norm_id: AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: article_5_remote_biometric_identification_use
+  - target_ref: participation in a criminal organisation involved in one or more of the offences listed
+      above
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-II-P017
   action: treat participation in a criminal organisation involved in one or more other Annex II offences
     as a qualifying offence for Article 5(1)(h)(iii)
   norm_text: participation in a criminal organisation involved in one or more of the offences listed above
@@ -584,3 +632,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
