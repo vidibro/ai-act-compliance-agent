@@ -5347,6 +5347,12 @@ def test_annex_thirteen_separates_commission_criteria_from_the_user_presumption(
     assert presumption.kind.value == "legal_consequence"
     assert presumption.product_scope.value == "dependency_only"
     assert "10,000" in presumption.action
+    # Point (f) completes the Commission's chapeau, which names the model the presumption is about.
+    assert presumption.qualifier_spans == ["AIA-TEXT-ANNEX-XIII-P001"]
+    assert [operand.text for operand in presumption.conditions.operands] == [
+        "when it has been made available to at least 10000 registered business users established "
+        "in the Union"
+    ]
 
 
 def test_annex_fourteen_extracts_atomic_designation_code_mappings():

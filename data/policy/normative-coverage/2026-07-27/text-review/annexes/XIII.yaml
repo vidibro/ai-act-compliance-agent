@@ -45,7 +45,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-XIII-TEN-THOUSAND-BUSINESS-USERS-PRESUMPTION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

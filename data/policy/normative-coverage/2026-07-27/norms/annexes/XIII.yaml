@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: commission
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-XIII-P001
   targets: []
   action: take all seven Annex XIII criteria into account when determining whether a GPAI model has capabilities
     or impact equivalent to Article 51(1)(a)
@@ -51,12 +53,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-ANNEX-XIII-TEN-THOUSAND-BUSINESS-USERS-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
   actors: none
   targets:
-  - target_ref: general_purpose_ai_model
+  - target_ref: general-purpose AI model
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-XIII-P001
   action: presume that a GPAI model has high internal-market impact due to reach once it is available
     to at least 10,000 registered Union business users
   norm_text: whether it has a high impact on the internal market due to its reach, which shall be presumed
@@ -65,14 +70,16 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIII-P007
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-XIII-P001
   conditions:
     operator: all_of
     operands:
-    - text: the model has been made available to at least 10,000 registered business users established
-        in the Union
+    - text: when it has been made available to at least 10000 registered business users established in
+        the Union
       basis_segment_ids:
       - AIA-TEXT-ANNEX-XIII-P007
   exceptions: null
@@ -93,3 +100,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
