@@ -5,7 +5,9 @@ norms:
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_vi_internal_control_procedure
+  - target_ref: conformity assessment procedure based on internal control
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-VI-P001
   action: define the Annex VI internal-control conformity assessment as comprising the checks in points
     2, 3, and 4
   norm_text: The conformity assessment procedure based on internal control is the conformity assessment
@@ -25,9 +27,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -38,18 +40,20 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-VI-P002
   targets: []
   action: verify that the established quality management system complies with Article 17
   norm_text: The provider verifies that the established quality management system is in compliance with
     the requirements of Article 17.
   detection_channels:
   - semantic_legal_effect
-  - existing_implementation
   primary_spans:
   - AIA-TEXT-ANNEX-VI-P002
   qualifier_spans: []
@@ -58,10 +62,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-RULE-PO-A17
-  implementation_reason: ''
+  implementation_mode: carried_by_other_norm
+  implementation_refs: []
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   verification_mode: reported_not_judged
   review:
     status: approved
@@ -72,11 +75,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-VI-P003
   targets: []
   action: examine the technical documentation to assess the AI system's compliance with the relevant Chapter
     III Section 2 requirements
@@ -85,7 +91,6 @@ norms:
     III, Section 2.
   detection_channels:
   - semantic_legal_effect
-  - existing_implementation
   primary_spans:
   - AIA-TEXT-ANNEX-VI-P003
   qualifier_spans: []
@@ -94,10 +99,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-RULE-HR-A11
-  implementation_reason: ''
+  implementation_mode: carried_by_other_norm
+  implementation_refs: []
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   verification_mode: judged_by_gap_analysis
   review:
     status: approved
@@ -108,11 +112,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
 - norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-VI-P004
   targets: []
   action: verify that the AI system's design and development process and Article 72 post-market monitoring
     are consistent with its technical documentation
@@ -120,7 +127,6 @@ norms:
     post-market monitoring as referred to in Article 72 is consistent with the technical documentation.
   detection_channels:
   - semantic_legal_effect
-  - existing_implementation
   primary_spans:
   - AIA-TEXT-ANNEX-VI-P004
   qualifier_spans: []
@@ -129,10 +135,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-RULE-PO-A72
-  implementation_reason: ''
+  implementation_mode: carried_by_other_norm
+  implementation_refs: []
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   verification_mode: reported_not_judged
   review:
     status: approved
@@ -143,3 +148,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5

@@ -5,7 +5,11 @@ records:
   action: define the Annex VI internal-control conformity assessment as comprising the checks in points 2, 3, and 4
   actors: none
   targets:
-  - target_ref: annex_vi_internal_control_procedure
+  - target_ref: conformity assessment procedure based on internal control
+    basis_segment_ids: [AIA-TEXT-ANNEX-VI-P001]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   kind: applicability
   qualifier_spans:
   - ANNEX-VI-P002
@@ -19,10 +23,12 @@ records:
   action: verify that the established quality management system complies with Article 17
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VI-P002]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   verification_mode: reported_not_judged
-  implementation_refs:
-  - AIA-RULE-PO-A17
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
   source: ANNEX-VI-P003
@@ -30,10 +36,12 @@ records:
   action: examine the technical documentation to assess the AI system's compliance with the relevant Chapter III Section 2 requirements
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VI-P003]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   verification_mode: judged_by_gap_analysis
-  implementation_refs:
-  - AIA-RULE-HR-A11
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
   source: ANNEX-VI-P004
@@ -41,8 +49,31 @@ records:
   action: verify that the AI system's design and development process and Article 72 post-market monitoring are consistent with its technical documentation
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VI-P004]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(2) internal-control route norms.
   verification_mode: reported_not_judged
-  implementation_refs:
-  - AIA-RULE-PO-A72
   verified_by: vidibro
+norm_relations:
+- relation_id: AIA-REL-ANNEX-VI-P1-PROCEDURE-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
+  kind: carried_by_norms
+  target_norm_ids: [AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE, AIA-NORM-A043-P2-INTERNAL-CONTROL]
+  legal_basis_spans: [AIA-TEXT-ANNEX-VI-P001, AIA-TEXT-A043-P1, AIA-TEXT-A043-P2]
+- relation_id: AIA-REL-ANNEX-VI-P2-VERIFY-QMS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
+  kind: carried_by_norms
+  target_norm_ids: [AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE, AIA-NORM-A043-P2-INTERNAL-CONTROL]
+  legal_basis_spans: [AIA-TEXT-ANNEX-VI-P002, AIA-TEXT-A043-P1, AIA-TEXT-A043-P2]
+- relation_id: AIA-REL-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
+  kind: carried_by_norms
+  target_norm_ids: [AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE, AIA-NORM-A043-P2-INTERNAL-CONTROL]
+  legal_basis_spans: [AIA-TEXT-ANNEX-VI-P003, AIA-TEXT-A043-P1, AIA-TEXT-A043-P2]
+- relation_id: AIA-REL-ANNEX-VI-P4-VERIFY-CONSISTENCY-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
+  kind: carried_by_norms
+  target_norm_ids: [AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE, AIA-NORM-A043-P2-INTERNAL-CONTROL]
+  legal_basis_spans: [AIA-TEXT-ANNEX-VI-P004, AIA-TEXT-A043-P1, AIA-TEXT-A043-P2]

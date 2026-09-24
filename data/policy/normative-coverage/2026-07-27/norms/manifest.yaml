@@ -3868,6 +3868,62 @@ relations:
   legal_basis_spans:
   - AIA-TEXT-ANNEX-V-P001
   detail: ''
+- relation_id: AIA-REL-ANNEX-VI-P1-PROCEDURE-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P2-INTERNAL-CONTROL
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VI-P001
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P2
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VI-P2-VERIFY-QMS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P2-INTERNAL-CONTROL
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VI-P002
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P2
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P2-INTERNAL-CONTROL
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VI-P003
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P2
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VI-P4-VERIFY-CONSISTENCY-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P2-INTERNAL-CONTROL
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VI-P004
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P2
+  detail: ''
 - relation_id: AIA-REL-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   kind: carried_by_norms

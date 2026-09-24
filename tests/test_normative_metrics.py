@@ -2233,15 +2233,16 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # 55(1)(a) is one model-evaluation norm rather than three overlapping records. Article 73(6)'s
     # alteration prohibition left `AIA-RULE-ALL-A73` for a rule of its own, and the operator duties
     # in Articles 75a(3) and 75c(3) each map to one rule, as do Article 111's four transitions.
+    # Annex VI's three internal-control checks are carried by the Article 43 route norms.
     assert metrics.mapping_shape.one_norm_to_one_target == 45
-    assert metrics.mapping_shape.many_norms_to_one_target == 458
+    assert metrics.mapping_shape.many_norms_to_one_target == 455
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
     # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
     # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
     assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 878
-    assert metrics.semantic_vs_existing_implementation_disagreements == 39
+    assert metrics.mapping_shape.unmapped == 881
+    assert metrics.semantic_vs_existing_implementation_disagreements == 42
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2260,6 +2261,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION",
         "AIA-NORM-ANNEX-V-DECLARATION-CONTENT",
         "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
+        "AIA-NORM-ANNEX-VI-P2-VERIFY-QMS",
+        "AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION",
+        "AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
         "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
@@ -2284,7 +2288,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
         "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
@@ -5187,6 +5190,8 @@ def test_annex_six_internal_control_defines_and_applies_all_three_checks():
     assert procedure.qualifier_spans == [f"AIA-TEXT-ANNEX-VI-P{index:03d}" for index in range(2, 5)]
     provider_checks = [norm for key, norm in norms.items() if "P1" not in key]
     assert all(norm.assigned_actors[0].actor_ref == "provider" for norm in provider_checks)
+    # The Article 43 route norms that make Annex VI owed carry all four.
+    assert all(norm.implementation_mode.value == "carried_by_other_norm" for norm in norms.values())
 
 
 def test_annex_seven_completion_covers_change_control_and_certificate_content():
