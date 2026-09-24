@@ -146,7 +146,6 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     assert sorted(r.rule_id for r in minimal.all_rules) == [
         "AIA-RULE-ALL-A04",
         "AIA-RULE-ALL-A04A",
-        "AIA-RULE-ALL-A111-1",
         "AIA-RULE-ALL-A75a-3",
         "AIA-RULE-ALL-A75c-3",
             "AIA-RULE-ALL-A79",
@@ -176,7 +175,6 @@ def test_each_role_gets_its_own_obligations(spec):
     assert deployer_ids == {
         "AIA-RULE-ALL-A04",
         "AIA-RULE-ALL-A04A",
-        "AIA-RULE-ALL-A111-1",
         "AIA-RULE-ALL-A111-2",
         "AIA-RULE-ALL-A73",
         "AIA-RULE-ALL-A73-10",
@@ -209,7 +207,6 @@ def test_each_role_gets_its_own_obligations(spec):
     assert provider_ids & deployer_ids == {
             "AIA-RULE-ALL-A04",
             "AIA-RULE-ALL-A04A",
-            "AIA-RULE-ALL-A111-1",
             "AIA-RULE-ALL-A111-2",
             "AIA-RULE-ALL-A73",
         "AIA-RULE-ALL-A73-10",
@@ -295,7 +292,6 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-RULE-ALL-A04",
         "AIA-RULE-ALL-A04A",
-        "AIA-RULE-ALL-A111-1",
         "AIA-RULE-ALL-A111-2",
         "AIA-RULE-ALL-A73",
         "AIA-RULE-ALL-A73-10",
@@ -442,17 +438,14 @@ def test_the_supply_chain_roles_each_owe_their_own_article(spec):
 
     Arts. 79 and 82 sit beside each of them and are subtracted here rather than listed three times:
     both bind the OPERATOR, which Art. 3(8) defines to include all three, so they are the rules
-    these roles share with the provider and with each other. Art. 111(1) is the third: its Annex X
-    systems "shall be brought into compliance" by whichever operator holds them."""
+    these roles share with the provider and with each other."""
     scoring = a_use_case("scoring", RiskClass.HIGH_RISK)
     owed = {
         role: {r.rule_id for r in select_rules(spec, scoring, role).all_rules}
         for role in (ActorRole.IMPORTER, ActorRole.DISTRIBUTOR, ActorRole.AUTHORISED_REPRESENTATIVE)
     }
-    shared = {"AIA-RULE-ALL-A79", "AIA-RULE-ALL-A82", "AIA-RULE-ALL-A111-1"}
-    assert all(shared <= ids for ids in owed.values()), (
-        "Arts. 79, 82 and 111(1) bind every operator"
-    )
+    shared = {"AIA-RULE-ALL-A79", "AIA-RULE-ALL-A82"}
+    assert all(shared <= ids for ids in owed.values()), "Arts. 79 and 82 bind every operator"
     assert owed[ActorRole.IMPORTER] - shared == {"AIA-RULE-IM-A23"}
     assert owed[ActorRole.DISTRIBUTOR] - shared == {"AIA-RULE-DI-A24"}
     # The representative owes one more than its own Article: Art. 71(2) names it in the paragraph

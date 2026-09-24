@@ -4532,8 +4532,12 @@ rules:
       paragraph: 1 # Annex X large-scale IT systems: comply by 31 December 2030
       annex: "X"
       act_version_date: 2026-07-27
-    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_risk_class: [high_risk]
     applies_to_role: [provider, deployer, importer, distributor, authorised_representative]
+    # GATED ON THE AREAS THE ANNEX X SYSTEMS SERVE. Every Annex X act sets up a border, visa, asylum
+    # or criminal-records database, so an AI component of one is an Annex III point 6 or 7 system.
+    # Ungated, the rule would reach every report at every tier for a duty almost no reader holds.
+    applies_to_annex_iii_area: [law_enforcement, migration]
     activation_condition: >-
       The AI system is a component of a large-scale IT system established by a legal act listed in
       Annex X (the Schengen Information System, the Visa Information System, Eurodac, the

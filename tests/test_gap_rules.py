@@ -377,6 +377,18 @@ def test_a_narrowed_duty_names_the_organisations_it_binds(spec):
     assert not re.search(r"\byou(r|rs|rself)?\b", condition, re.I)
 
 
+def test_art_111_1_reaches_only_the_areas_annex_x_systems_serve(spec):
+    """Every Annex X act sets up a border, visa, asylum or criminal-records database, so the 2030
+    deadline reaches high-risk systems in the law enforcement and migration areas and no others —
+    not an employment system, and not a minimal one."""
+    rule = "AIA-RULE-ALL-A111-1"
+    for area in (AnnexIIIArea.LAW_ENFORCEMENT, AnnexIIIArea.MIGRATION):
+        for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER, ActorRole.IMPORTER):
+            assert rule in _rule_ids(spec, a_use_case(area=area), role)
+    assert rule not in _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT))
+    assert rule not in _rule_ids(spec, _a_minimal_use_case())
+
+
 def test_art_27_never_reaches_the_systems_it_excludes(spec):
     """Art. 27(1) reaches Art. 6(2) systems "with the exception of" Annex III point 2. An Annex I
     safety component is not an Art. 6(2) system at all, so it is outside on the same words."""

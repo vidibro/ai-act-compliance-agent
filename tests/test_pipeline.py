@@ -156,7 +156,6 @@ def test_a_minimal_system_still_owes_article_4(spec):
     assert report.not_document_verifiable[ActorRole.PROVIDER] == [
         "AIA-RULE-ALL-A04",
         "AIA-RULE-ALL-A04A",
-        "AIA-RULE-ALL-A111-1",
         "AIA-RULE-ALL-A75a-3",
         "AIA-RULE-ALL-A75c-3",
         "AIA-RULE-ALL-A79",
@@ -166,7 +165,6 @@ def test_a_minimal_system_still_owes_article_4(spec):
     assert report.not_document_verifiable[ActorRole.DEPLOYER] == [
         "AIA-RULE-ALL-A04",
         "AIA-RULE-ALL-A04A",
-        "AIA-RULE-ALL-A111-1",
         "AIA-RULE-ALL-A75a-3",
         "AIA-RULE-ALL-A75c-3",
         "AIA-RULE-ALL-A79",
@@ -216,7 +214,6 @@ def test_the_report_covers_both_duty_holders(spec):
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-RULE-ALL-A04",
         "AIA-RULE-ALL-A04A",
-        "AIA-RULE-ALL-A111-1",
         "AIA-RULE-ALL-A111-2",
         "AIA-RULE-ALL-A73",
         "AIA-RULE-ALL-A73-10",
