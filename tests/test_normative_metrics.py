@@ -5129,7 +5129,15 @@ def test_annex_one_extracts_each_harmonisation_instrument_and_its_uav_limit():
     for norm in norms.values():
         heading = "P001" if norm.primary_spans[0] in section_a else "P014"
         assert norm.qualifier_spans == [f"AIA-TEXT-ANNEX-I-{heading}"]
-    assert len(norms["AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT"].conditions) == 1
+    # Point 20 reaches Regulation (EU) 2018/1139 only for the listed aircraft and only where it
+    # concerns unmanned aircraft; both limits are kept in the enacted words.
+    uav = norms["AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT"]
+    assert [operand.text.split(",")[0] for operand in uav.conditions.operands] == [
+        "in so far as the design",
+        "where it concerns unmanned aircraft and their engines",
+    ]
+    # Each norm's target is the listed instrument itself.
+    assert all(norm.targets[0].target_ref == norm.norm_text for norm in norms.values())
     assert all(norm.kind.value == "applicability" for norm in norms.values())
 
 

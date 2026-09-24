@@ -5,7 +5,9 @@ norms:
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2006/42/EC
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P002
   action: include products covered by Directive 2006/42/EC on machinery in the Annex I Section A harmonisation-legislation
     scope
   norm_text: Directive 2006/42/EC
@@ -37,12 +39,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-02-TOY-SAFETY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2009/48/EC
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P003
   action: include products covered by Directive 2009/48/EC on toy safety in the Annex I Section A harmonisation-legislation
     scope
   norm_text: Directive 2009/48/EC
@@ -74,12 +79,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2013/53/EU
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P004
   action: include products covered by Directive 2013/53/EU on recreational craft and personal watercraft
     in the Annex I Section A harmonisation-legislation scope
   norm_text: Directive 2013/53/EU
@@ -111,12 +119,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-04-LIFTS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2014/33/EU
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P005
   action: include products covered by Directive 2014/33/EU on lifts and lift safety components in the
     Annex I Section A harmonisation-legislation scope
   norm_text: Directive 2014/33/EU
@@ -148,12 +159,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2014/34/EU
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P006
   action: include products covered by Directive 2014/34/EU on equipment and protective systems for potentially
     explosive atmospheres in the Annex I Section A harmonisation-legislation scope
   norm_text: Directive 2014/34/EU
@@ -185,12 +199,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2014/53/EU
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P007
   action: include products covered by Directive 2014/53/EU on radio equipment in the Annex I Section A
     harmonisation-legislation scope
   norm_text: Directive 2014/53/EU
@@ -222,12 +239,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2014/68/EU
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P008
   action: include products covered by Directive 2014/68/EU on pressure equipment in the Annex I Section
     A harmonisation-legislation scope
   norm_text: Directive 2014/68/EU
@@ -259,12 +279,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-08-CABLEWAYS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2016/424
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P009
   action: include products covered by Regulation (EU) 2016/424 on cableway installations in the Annex
     I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2016/424
@@ -296,12 +319,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2016/425
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P010
   action: include products covered by Regulation (EU) 2016/425 on personal protective equipment in the
     Annex I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2016/425
@@ -333,12 +359,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2016/426
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P011
   action: include products covered by Regulation (EU) 2016/426 on appliances burning gaseous fuels in
     the Annex I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2016/426
@@ -370,12 +399,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2017/745
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P012
   action: include products covered by Regulation (EU) 2017/745 on medical devices in the Annex I Section
     A harmonisation-legislation scope
   norm_text: Regulation (EU) 2017/745
@@ -407,12 +439,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2017/746
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P013
   action: include products covered by Regulation (EU) 2017/746 on in vitro diagnostic medical devices
     in the Annex I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2017/746
@@ -444,12 +479,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EC) No 300/2008
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P015
   action: include products covered by Regulation (EC) No 300/2008 on civil-aviation security in the Annex
     I Section B harmonisation-legislation scope
   norm_text: Regulation (EC) No 300/2008
@@ -481,12 +519,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) No 168/2013
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P016
   action: include products covered by Regulation (EU) No 168/2013 on two- or three-wheel vehicles and
     quadricycles in the Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) No 168/2013
@@ -518,12 +559,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) No 167/2013
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P017
   action: include products covered by Regulation (EU) No 167/2013 on agricultural and forestry vehicles
     in the Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) No 167/2013
@@ -555,12 +599,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive 2014/90/EU
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P018
   action: include products covered by Directive 2014/90/EU on marine equipment in the Annex I Section
     B harmonisation-legislation scope
   norm_text: Directive 2014/90/EU
@@ -592,12 +639,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Directive (EU) 2016/797
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P019
   action: include products covered by Directive (EU) 2016/797 on Union rail-system interoperability in
     the Annex I Section B harmonisation-legislation scope
   norm_text: Directive (EU) 2016/797
@@ -629,12 +679,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2018/858
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P020
   action: include products covered by Regulation (EU) 2018/858 on motor-vehicle approval and market surveillance
     in the Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) 2018/858
@@ -666,12 +719,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2019/2144
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P021
   action: include products covered by Regulation (EU) 2019/2144 on motor-vehicle general safety in the
     Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) 2019/2144
@@ -703,12 +759,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2018/1139
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P022
   action: include the specified unmanned-aircraft products covered by Regulation (EU) 2018/1139 in the
     Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) 2018/1139
@@ -724,9 +783,12 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the product concerns the design, production, or placing on the market of unmanned aircraft
-        referred to in Article 2(1)(a) or (b) of Regulation (EU) 2018/1139, or their engines, propellers,
-        parts, or remote-control equipment
+    - text: in so far as the design, production and placing on the market of aircrafts referred to in
+        Article 2(1), points (a) and (b) thereof
+      basis_segment_ids:
+      - AIA-TEXT-ANNEX-I-P022
+    - text: where it concerns unmanned aircraft and their engines, propellers, parts and equipment to
+        control them remotely
       basis_segment_ids:
       - AIA-TEXT-ANNEX-I-P022
   exceptions: null
@@ -747,12 +809,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION
 - norm_id: AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_i_product_or_safety_component
+  - target_ref: Regulation (EU) 2023/1230
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-I-P023
   action: include products covered by Regulation (EU) 2023/1230 on machinery in the Annex I Section B
     harmonisation-legislation scope
   norm_text: Regulation (EU) 2023/1230
@@ -784,3 +849,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-I-HIGH-RISK-APPLICATION

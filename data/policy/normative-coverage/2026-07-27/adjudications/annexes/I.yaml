@@ -1,0 +1,77 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: annex
+  document: I
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 24
+  norms_scanned: 21
+  finding_count: 4
+  audit_sha256: 5cf8329732aef2d69be02a5605ebdd73a0ada20cad133d69bf0fd7aa4b10bd8d
+decisions:
+- finding_id: AIA-VALID-7020D1925DFF2B7D
+  target: AIA-TEXT-ANNEX-I-P002
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-I-P002
+  source_sha256: 5024c0ede787bc12cd88fbb0be477bae71f4e73d4156410286ba9ae82a4ca0b5
+  target_sha256: 1b8f3e863d7ff8abea916888145143a3527fcc3620e09877f0f6fdf77c708a14
+  decision: false_positive
+  reason: The flagged word is "May", the month in the listed act's date of adoption, not the verb. The
+    rest of the entry is that act's title and publication reference, which has no legal effect of its
+    own; the norm quotes the citation that identifies the act.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-I-P002
+    source_sha256: 5024c0ede787bc12cd88fbb0be477bae71f4e73d4156410286ba9ae82a4ca0b5
+    quote: Directive 2006/42/EC of the European Parliament and of the Council of 17 May 2006
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-973F6B805E6F95EE
+  target: AIA-TEXT-ANNEX-I-P008
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-I-P008
+  source_sha256: 89e5a89c7a4cbc7b4fc15f9ab5730614cfbc9c8ced9f0d607ef13929aa5db412
+  target_sha256: d3d5125a528ac509ea106256965b4396a8638c6a5c15e231e38b796d18576047
+  decision: false_positive
+  reason: The flagged word is "May", the month in the listed act's date of adoption, not the verb. The
+    rest of the entry is that act's title and publication reference, which has no legal effect of its
+    own; the norm quotes the citation that identifies the act.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-I-P008
+    source_sha256: 89e5a89c7a4cbc7b4fc15f9ab5730614cfbc9c8ced9f0d607ef13929aa5db412
+    quote: Directive 2014/68/EU of the European Parliament and of the Council of 15 May 2014
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-9128F2D6DDF24119
+  target: AIA-TEXT-ANNEX-I-P019
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-I-P019
+  source_sha256: 4cbf89f86dd5ee0b05c192dfae4589a15b153da889ec393aa0285eae58819b2e
+  target_sha256: 5d77252543a535f2586a184ca93c50fbda6a3c1d16178be2137a4557b0677a85
+  decision: false_positive
+  reason: The flagged word is "May", the month in the listed act's date of adoption, not the verb. The
+    rest of the entry is that act's title and publication reference, which has no legal effect of its
+    own; the norm quotes the citation that identifies the act.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-I-P019
+    source_sha256: 4cbf89f86dd5ee0b05c192dfae4589a15b153da889ec393aa0285eae58819b2e
+    quote: Directive (EU) 2016/797 of the European Parliament and of the Council of 11 May 2016
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-EAB4AF0A66F38F33
+  target: AIA-TEXT-ANNEX-I-P020
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-I-P020
+  source_sha256: 993bb3730d906cda3f5f054ba379810f04bafaa69be6af6276ee877784643fb3
+  target_sha256: 3e700de21287f88a8d7da3002a5aaf3851676c426c5a4618158c1dc467e6fd50
+  decision: false_positive
+  reason: The flagged word is "May", the month in the listed act's date of adoption, not the verb. The
+    rest of the entry is that act's title and publication reference, which has no legal effect of its
+    own; the norm quotes the citation that identifies the act.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-I-P020
+    source_sha256: 993bb3730d906cda3f5f054ba379810f04bafaa69be6af6276ee877784643fb3
+    quote: Regulation (EU) 2018/858 of the European Parliament and of the Council of 30 May 2018
+  reviewed_by: vidibro
