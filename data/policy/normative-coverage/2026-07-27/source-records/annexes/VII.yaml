@@ -6,10 +6,15 @@ records:
   action: define the Annex VII conformity-assessment procedure as comprising points 2 to 5
   actors: none
   targets:
-  - target_ref: annex_vii_conformity_assessment
+  - target_ref: Conformity based on an assessment of the quality management system and an assessment of
+      the technical documentation
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P002]
   kind: applicability
   qualifier_spans:
   - ANNEX-VII-P004
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) Annex VII route norms.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
@@ -21,11 +26,16 @@ records:
     it to surveillance under point 5
   actors: none
   targets:
-  - target_ref: annex_vii_conformity_assessment
+  - target_ref: Conformity based on an assessment of the quality management system and an assessment of
+      the technical documentation
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P002]
   kind: applicability
   mandatory_content:
   - examination of the approved quality management system under point 3
   - surveillance of that system under point 5
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   source: ANNEX-VII-P004
@@ -33,8 +43,13 @@ records:
   action: examine the AI system's technical documentation under Annex VII point 4
   actors: none
   targets:
-  - target_ref: annex_vii_conformity_assessment
+  - target_ref: Conformity based on an assessment of the quality management system and an assessment of
+      the technical documentation
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P002]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) Annex VII route norms.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
@@ -43,9 +58,8 @@ records:
   action: complete the Annex VII quality-management application
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P006]
   targets: []
-  conditions:
-  - the provider lodges an application for assessment of the quality management system
   qualifier_spans:
   - ANNEX-VII-P007
   - ANNEX-VII-P008
@@ -53,9 +67,9 @@ records:
   - ANNEX-VII-P010
   - ANNEX-VII-P011
   - ANNEX-VII-P012
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   mandatory_content:
   - the name and address of the provider
@@ -76,12 +90,11 @@ records:
     adequate and efficient
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P014]
   targets: []
-  conditions:
-  - the notified body approved the quality management system
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
@@ -91,22 +104,28 @@ records:
   action: notify the notified body of intended QMS or covered-system-list changes
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P015]
   targets: []
   conditions:
-  - the notified body approved the quality management system
-  - the provider intends to change that system or the list of AI systems it covers
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+    operator: all_of
+    operands:
+    - text: Any intended change to the approved quality management system or the list of AI systems covered by the latter
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P015]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-ASSESS
   source: ANNEX-VII-P013
-  quote: The quality management system shall be assessed by the notified body
+  quote: The quality management system shall be assessed by the notified body, which shall determine whether
+    it satisfies the requirements referred to in Article 17.
   action: assess whether the quality-management system satisfies Article 17
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -114,11 +133,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-QMS-DECISION
   source: ANNEX-VII-P013
-  quote: The decision shall be notified to the provider or its authorised representative.
+  quote: The decision shall be notified to the provider or its authorised representative. The notification
+    shall contain the conclusions of the assessment of the quality management system and the reasoned
+    assessment decision.
   action: notify the quality-management assessment decision to the provider or its authorised representative
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P013]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -136,7 +159,9 @@ records:
     satisfies the point 3.2 requirements or whether a reassessment is necessary
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P015]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -149,7 +174,9 @@ records:
   action: notify the provider of that decision
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P015]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -168,10 +195,18 @@ records:
     documentation of the covered AI system
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P017]
   targets: []
   conditions:
-  - the provider intends to place the AI system on the market or put it into service
-  - the AI system is covered by the point 3 quality management system
+    operator: all_of
+    operands:
+    - text: which the provider intends to place on the market or put into service
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P017]
+    - text: which is covered by the quality management system referred to under point 3
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P017]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) Annex VII route norms.
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
   source: ANNEX-VII-P018
@@ -179,9 +214,8 @@ records:
   action: include all three point 4.2 items in the technical-documentation assessment application
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P017]
   targets: []
-  conditions:
-  - the provider lodges the point 4.1 application for assessment of the technical documentation
   qualifier_spans:
   - ANNEX-VII-P019
   - ANNEX-VII-P020
@@ -190,6 +224,9 @@ records:
   - provider name and address
   - written declaration that the same application has not been lodged with another notified body
   - Annex IV technical documentation
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) Annex VII route norms.
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-DOC-EXAMINE
@@ -198,7 +235,9 @@ records:
   action: examine the technical documentation
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P022]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -210,18 +249,22 @@ records:
     be granted full access to the training, validation, and testing data sets used, including, where appropriate
     and subject to security safeguards, through API or other relevant technical means and tools enabling
     remote access.
-  action: grant the notified body necessary full dataset access
+  action: grant the notified body full access to the training, validation and testing data sets, including
+    remote access through an API or other technical means where appropriate and subject to security safeguards
   actors:
   - actor_ref: provider
   targets: []
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   conditions:
-  - access is relevant and limited to what is necessary for the notified body to fulfil its tasks
-  - any remote access is provided through an API or another relevant technical means or tool where appropriate
-  - applicable security safeguards are observed
+    operator: all_of
+    operands:
+    - text: Where relevant
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P022]
+    - text: limited to what is necessary to fulfil its tasks
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P022]
 - norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
   source: ANNEX-VII-P023
   quote: In examining the technical documentation, the notified body may require that the provider supply
@@ -230,14 +273,19 @@ records:
   action: supply further evidence or tests required for the conformity assessment
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P023]
   targets: []
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   conditions:
-  - the notified body requires the evidence or tests while examining the technical documentation
-  - the evidence or tests enable proper assessment of conformity with Chapter III Section 2
+    operator: all_of
+    operands:
+    - text: In examining the technical documentation
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P023]
+    - text: the notified body may require that the provider supply further evidence or carry out further tests
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P023]
 - norm_id: AIA-NORM-ANNEX-VII-TESTS
   source: ANNEX-VII-P023
   quote: Where the notified body is not satisfied with the tests carried out by the provider, the notified
@@ -245,7 +293,9 @@ records:
   action: carry out adequate tests when provider testing is unsatisfactory
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P023]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -265,14 +315,19 @@ records:
   actors:
   - actor_ref: provider
   targets: []
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   conditions:
-  - access is necessary to assess compliance with Chapter III Section 2
-  - all other reasonable means of verifying conformity have been exhausted and proved insufficient
-  - the notified body makes a reasoned request
+    operator: all_of
+    operands:
+    - text: Where necessary to assess the conformity of the high-risk AI system with the requirements set out in Chapter III, Section 2
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P024]
+    - text: after all other reasonable means to verify conformity have been exhausted and have proven to be insufficient
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P024]
+    - text: upon a reasoned request
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P024]
 - norm_id: AIA-NORM-ANNEX-VII-RETRAIN
   source: ANNEX-VII-P025
   quote: Where the AI system does not meet the requirement relating to the data used to train it, re-training
@@ -280,10 +335,13 @@ records:
   action: retrain before reapplying where training data fail the requirement
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
   targets: []
   kind: legal_consequence
   conditions:
   - the AI system does not meet the requirement relating to the data used to train it
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-PO-A43-1B
   - AIA-RULE-PO-A43-3
@@ -292,10 +350,14 @@ records:
 - norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
   source: ANNEX-VII-P025
   quote: The decision of the notified body shall be notified to the provider or its authorised representative.
+    The notification shall contain the conclusions of the assessment of the technical documentation and
+    the reasoned assessment decision.
   action: notify the technical-documentation assessment decision to the provider or its authorised representative
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -311,14 +373,19 @@ records:
   action: issue the certificate where the system conforms
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI system conforms with Chapter III Section 2
+    operator: all_of
+    operands:
+    - text: Where the AI system is in conformity with the requirements set out in Chapter III, Section 2
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
 - norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT
   source: ANNEX-VII-P025
   quote: The certificate shall indicate the name and address of the provider, the conclusions of the examination,
@@ -329,7 +396,9 @@ records:
     control information in the Union technical-documentation assessment certificate and its annexes
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -350,14 +419,19 @@ records:
   action: refuse certification and give detailed reasons where the system does not conform
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI system does not conform with Chapter III Section 2
+    operator: all_of
+    operands:
+    - text: Where the AI system is not in conformity with the requirements set out in Chapter III, Section 2
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
 - norm_id: AIA-NORM-ANNEX-VII-DATA-REASONS
   source: ANNEX-VII-P025
   quote: In this case, the reasoned assessment decision of the notified body refusing to issue the Union
@@ -366,14 +440,19 @@ records:
   action: state specific training-data non-compliance considerations in the refusal decision
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   conditions:
-  - the AI system fails to meet the requirement relating to the data used to train it
+    operator: all_of
+    operands:
+    - text: Where the AI system does not meet the requirement relating to the data used to train it
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P025]
   mandatory_content:
   - specific considerations on the quality of the training data
   - reasons for non-compliance
@@ -385,7 +464,9 @@ records:
   action: assess any AI-system change that could affect compliance or intended purpose
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -399,13 +480,22 @@ records:
     compliance or intended purpose
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
   targets: []
   conditions:
-  - a notified body issued a Union technical documentation assessment certificate for the AI system
-  - the change could affect the AI system's compliance with the requirements or its intended purpose
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+    operator: all_of
+    operands:
+    - text: Any change to the AI system that could affect the compliance of the AI system with the requirements or its intended purpose
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
+    - operator: any_of
+      operands:
+      - text: its intention to introduce any of the abovementioned changes
+        basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
+      - text: if it otherwise becomes aware of the occurrence of such changes
+        basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) Annex VII route norms.
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
@@ -417,7 +507,9 @@ records:
     or a certificate supplement
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -429,13 +521,17 @@ records:
     and, where the changes are approved, issue to the provider a supplement to the Union technical documentation
     assessment certificate.
   action: assess changes eligible for the supplement route, notify the provider of the decision, and issue
-    an approved certificate supplement
+    a certificate supplement where the changes are approved
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
   targets: []
   conditions:
-  - the change can be addressed through a supplement to the Union technical-documentation assessment certificate
-  - issuance of the supplement requires approval of the change
+    operator: all_of
+    operands:
+    - text: they could be addressed by means of a supplement to the Union technical documentation assessment certificate
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P026]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -449,12 +545,11 @@ records:
     and tested
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P029]
   targets: []
-  conditions:
-  - the notified body carries out point 5 surveillance of the approved quality management system
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
@@ -463,21 +558,23 @@ records:
   action: share all information the notified body needs for surveillance
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P029]
   targets: []
-  conditions:
-  - the notified body carries out point 5 surveillance of the approved quality management system
-  implementation_refs:
-  - AIA-RULE-PO-A43-1B
-  - AIA-RULE-PO-A43-3
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-AUDIT
   source: ANNEX-VII-P030
-  quote: The notified body shall carry out periodic audits
+  quote: The notified body shall carry out periodic audits to make sure that the provider maintains and
+    applies the quality management system and shall provide the provider with an audit report.
   action: carry out periodic audits and provide the provider an audit report
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P030]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -490,13 +587,164 @@ records:
   action: carry out additional tests during surveillance audits of certified AI systems
   actors:
   - actor_ref: notified_body
+    basis_segment_ids: [AIA-TEXT-ANNEX-VII-P030]
   targets: []
   kind: power
   conditions:
-  - the notified body is conducting a periodic surveillance audit
-  - the AI system has a Union technical-documentation assessment certificate
+    operator: all_of
+    operands:
+    - text: In the context of those audits
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P030]
+    - text: for which a Union technical documentation assessment certificate was issued
+      basis_segment_ids: [AIA-TEXT-ANNEX-VII-P030]
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+norm_relations:
+- relation_id: AIA-REL-ANNEX-VII-PROCEDURE-COMPOSITION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P002
+  - AIA-TEXT-A043-P1
+- relation_id: AIA-REL-ANNEX-VII-OVERVIEW-QMS-EXAMINATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P004
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P004
+  - AIA-TEXT-A043-P1
+- relation_id: AIA-REL-ANNEX-VII-QMS-APPLICATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P006
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-QMS-MAINTAIN-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P014
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-QMS-CHANGE-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P015
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-DOC-APPLICATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P017
+  - AIA-TEXT-A043-P1
+- relation_id: AIA-REL-ANNEX-VII-DOC-APPLICATION-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P018
+  - AIA-TEXT-A043-P1
+- relation_id: AIA-REL-ANNEX-VII-DATA-ACCESS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-DATA-ACCESS
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P022
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-EVIDENCE-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P023
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-MODEL-ACCESS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-MODEL-ACCESS
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P024
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-INFORM-CHANGES-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-INFORM-CHANGES
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P026
+  - AIA-TEXT-A043-P1
+- relation_id: AIA-REL-ANNEX-VII-SURVEILLANCE-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P029
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+- relation_id: AIA-REL-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P029
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3

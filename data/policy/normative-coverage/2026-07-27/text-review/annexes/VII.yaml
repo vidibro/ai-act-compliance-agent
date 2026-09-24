@@ -68,7 +68,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
+  - AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -465,7 +467,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VII-DOC-APPLICATION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

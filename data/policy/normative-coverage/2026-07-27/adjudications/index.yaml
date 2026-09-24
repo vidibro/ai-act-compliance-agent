@@ -878,6 +878,13 @@ enforced_scope:
       - actor_evidence
       - target_evidence
       - temporal_regime
+  - kind: annex
+    document: "VII"
+    required_field_validations:
+      - logical_expression_evidence
+      - actor_evidence
+      - target_evidence
+      - temporal_regime
 
 shards:
   - kind: article
@@ -1255,3 +1262,6 @@ shards:
   - kind: annex
     document: "VI"
     file: annexes/VI.yaml
+  - kind: annex
+    document: "VII"
+    file: annexes/VII.yaml

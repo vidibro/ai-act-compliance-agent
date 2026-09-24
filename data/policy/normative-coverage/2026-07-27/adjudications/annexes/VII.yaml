@@ -1,0 +1,98 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: annex
+  document: VII
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 31
+  norms_scanned: 31
+  finding_count: 5
+  audit_sha256: d38f7b7e7a273bae64056f17b2a479b43d9498f167a6b2ec96ad470d8bfc1db2
+decisions:
+- finding_id: AIA-VALID-0DC2F3176D9B16E8
+  target: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-VII-P004
+  source_sha256: 3bd662e96a4462ab92729a8041da5a35e3be8e5344cb2f769652ab0d0ec341ea
+  target_sha256: 0aedc73ea3e087d044ce761050b69aefee2303503072ecb0a5816c367b2b02b4
+  decision: false_positive
+  reason: '"Subject to surveillance" states what the approved system undergoes under point 5. It attaches
+    an effect and limits nothing, so there is no condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-VII-P004
+    source_sha256: 3bd662e96a4462ab92729a8041da5a35e3be8e5344cb2f769652ab0d0ec341ea
+    quote: shall be subject to surveillance as specified in point 5
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-2FB4C9224799D957
+  target: AIA-NORM-ANNEX-VII-DATA-ACCESS:actor:provider
+  rule: actor_basis_missing
+  source_ref: AIA-TEXT-ANNEX-VII-P022
+  source_sha256: 742a2d06b7e2520b2b6ea68361af0a034428c10fbb4be6188f7f6696690cb0ec
+  target_sha256: 9345930fc149e362dd3f30a79a8c6900ee180a8050101f36573cc4dc17dfc456
+  decision: accepted_with_basis
+  reason: The sentence grants the notified body access in the passive voice and names no grantor. The
+    provider holds the data sets and models and lodged the application under point 4.1, so the access
+    is its to give; the record keeps the provider without a basis in this sentence.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-VII-P022
+    source_sha256: 742a2d06b7e2520b2b6ea68361af0a034428c10fbb4be6188f7f6696690cb0ec
+    quote: the notified body shall be granted full access to the training, validation, and testing data
+      sets used
+  - span_id: AIA-TEXT-ANNEX-VII-P017
+    source_sha256: 780a309cedbc818cbbfa4dc016d4b3ea4ca00968f78c9c39f02efb6d28bc4446
+    quote: shall be lodged by the provider
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-496FD504E3DF6C1A
+  target: AIA-NORM-ANNEX-VII-MODEL-ACCESS:actor:provider
+  rule: actor_basis_missing
+  source_ref: AIA-TEXT-ANNEX-VII-P024
+  source_sha256: bc4224740e09306c4ad77803a14ddb939daf30bd0c091598dbdd169c0a1d7299
+  target_sha256: c9f25f1841e868ea0fb9e32b5c31c72f33462432c8168cade3676f7dd9b83027
+  decision: accepted_with_basis
+  reason: The sentence grants the notified body access in the passive voice and names no grantor. The
+    provider holds the data sets and models and lodged the application under point 4.1, so the access
+    is its to give; the record keeps the provider without a basis in this sentence.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-VII-P024
+    source_sha256: bc4224740e09306c4ad77803a14ddb939daf30bd0c091598dbdd169c0a1d7299
+    quote: the notified body shall also be granted access to the training and trained models of the AI
+      system
+  - span_id: AIA-TEXT-ANNEX-VII-P017
+    source_sha256: 780a309cedbc818cbbfa4dc016d4b3ea4ca00968f78c9c39f02efb6d28bc4446
+    quote: shall be lodged by the provider
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-1D689EB9B886C592
+  target: AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-VII-P025
+  source_sha256: 1a3248f551953197c6a29cfcd002c9d31c7098e681c2a6887cacf2754a912414
+  target_sha256: 8a78e510ac9b916aae12eb4377a1b189c125205e280c412382b2c12057072cf1
+  decision: accepted_with_basis
+  reason: '"Where applicable" limits only the information for control of the system while in use, one
+    of the certificate''s contents. The rest of the content is owed in every case, so the qualifier stays
+    on that item of the mandatory content.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-VII-P025
+    source_sha256: 1a3248f551953197c6a29cfcd002c9d31c7098e681c2a6887cacf2754a912414
+    quote: to allow for control of the AI system while in use, where applicable
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-D96FA1024DEB522F
+  target: AIA-NORM-ANNEX-VII-SURVEILLANCE
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-VII-P029
+  source_sha256: c1d12bf6d830eefa8f45ecf85cf56618ac8a056c08a36aad3eaa221bca23bd56
+  target_sha256: 76b784af9aac325a274c6f3a602299d52a41fe92f2de8dba130ddeeb14424017
+  decision: false_positive
+  reason: '"Where" here names the premises in which design, development and testing take place. It is
+    a relative clause of place, not a condition on the duty.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-VII-P029
+    source_sha256: c1d12bf6d830eefa8f45ecf85cf56618ac8a056c08a36aad3eaa221bca23bd56
+    quote: the premises where the design, development, testing of the AI systems is taking place
+  reviewed_by: vidibro

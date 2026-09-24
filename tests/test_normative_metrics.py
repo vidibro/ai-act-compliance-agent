@@ -2237,12 +2237,12 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.one_norm_to_one_target == 45
     assert metrics.mapping_shape.many_norms_to_one_target == 455
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
-    # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
-    # notified body gained the refs its siblings already carried, so `AIA-RULE-PO-A43-1B` and
-    # `AIA-RULE-PO-A43-3` each pick up two more of the norms they shared.
-    assert metrics.mapping_shape.many_to_many == 26
-    assert metrics.mapping_shape.unmapped == 881
-    assert metrics.semantic_vs_existing_implementation_disagreements == 42
+    # Annex VII's provider duties are carried by the Article 43 route norms rather than named on
+    # `AIA-RULE-PO-A43-1B` and `AIA-RULE-PO-A43-3`, which leaves only the retraining consequence
+    # shared between them.
+    assert metrics.mapping_shape.many_to_many == 17
+    assert metrics.mapping_shape.unmapped == 890
+    assert metrics.semantic_vs_existing_implementation_disagreements == 51
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2264,11 +2264,20 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VI-P2-VERIFY-QMS",
         "AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION",
         "AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY",
+        "AIA-NORM-ANNEX-VII-DATA-ACCESS",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
+        "AIA-NORM-ANNEX-VII-EVIDENCE",
+        "AIA-NORM-ANNEX-VII-INFORM-CHANGES",
+        "AIA-NORM-ANNEX-VII-MODEL-ACCESS",
         "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
         "AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION",
+        "AIA-NORM-ANNEX-VII-QMS-APPLICATION",
+        "AIA-NORM-ANNEX-VII-QMS-CHANGE",
+        "AIA-NORM-ANNEX-VII-QMS-MAINTAIN",
+        "AIA-NORM-ANNEX-VII-SURVEILLANCE",
+        "AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION",
         "AIA-NORM-ANNEX-X-ECRIS-TCN",
         "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
         "AIA-NORM-ANNEX-X-ETIAS",
@@ -2288,11 +2297,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
-        "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
-        "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
-        "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
-        "AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION",
         "AIA-NORM-ANNEX-X-ECRIS-TCN",
         "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
         "AIA-NORM-ANNEX-X-ETIAS",

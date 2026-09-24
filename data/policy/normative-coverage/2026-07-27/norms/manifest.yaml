@@ -3924,6 +3924,206 @@ relations:
   - AIA-TEXT-A043-P1
   - AIA-TEXT-A043-P2
   detail: ''
+- relation_id: AIA-REL-ANNEX-VII-PROCEDURE-COMPOSITION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P002
+  - AIA-TEXT-A043-P1
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-OVERVIEW-QMS-EXAMINATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P004
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P004
+  - AIA-TEXT-A043-P1
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-QMS-APPLICATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P006
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-QMS-MAINTAIN-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P014
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-QMS-CHANGE-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P015
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-DOC-APPLICATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P017
+  - AIA-TEXT-A043-P1
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-DOC-APPLICATION-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P018
+  - AIA-TEXT-A043-P1
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-DATA-ACCESS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-DATA-ACCESS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P022
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-EVIDENCE-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P023
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-MODEL-ACCESS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-MODEL-ACCESS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P024
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-INFORM-CHANGES-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-INFORM-CHANGES
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P026
+  - AIA-TEXT-A043-P1
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-SURVEILLANCE-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P029
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
+- relation_id: AIA-REL-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P3-QMS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P029
+  - AIA-TEXT-A043-P1
+  - AIA-TEXT-A043-P3
+  detail: ''
 - relation_id: AIA-REL-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   kind: carried_by_norms
