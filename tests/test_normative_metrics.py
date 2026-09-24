@@ -2207,8 +2207,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2142,
-        "proposed": 797,
+        "approved": 2143,
+        "proposed": 796,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2940
@@ -5273,7 +5273,7 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     evaluation = norms["AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION"]
     testing = norms["AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS"]
     architecture = norms["AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE"]
-    systemic_risk = "the general-purpose AI model has systemic risk"
+    systemic_risk = "general-purpose AI models with systemic risk"
     # Each item has its own span now that the source renders them as separate lines, and all three
     # are qualified by the Section 2 heading that names the addressee and the systemic-risk gate.
     for norm, span in (
@@ -5283,29 +5283,30 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     ):
         assert norm.primary_spans == [span]
         assert norm.qualifier_spans == ["AIA-TEXT-ANNEX-XI-P017", "AIA-TEXT-ANNEX-XI-P018"]
-        assert norm.conditions[0] == systemic_risk
+        assert norm.conditions.operands[0].text == systemic_risk
+        assert norm.conditions.operands[0].basis_segment_ids == ["AIA-TEXT-ANNEX-XI-P018"]
         assert bundle.norm_inventory.target_norm_ids_for(
             norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
         ) == ["AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION"]
         assert norm.verification_mode.value == "judged_by_gap_analysis"
 
-    # Item 1 is owed unconditionally; only items 2 and 3 carry the where-applicable gate.
-    assert len(evaluation.conditions) == 2
-    bases = evaluation.conditions[1]
-    assert isinstance(bases, LogicalExpression) and bases.operator == "any_of"
-    assert bases.operands == [
-        "the evaluation strategies are described on the basis of available public evaluation "
-        "protocols and tools",
-        "the evaluation strategies are described on the basis of other evaluation methodologies",
-    ]
+    # Item 1 is owed for every systemic-risk model; only items 2 and 3 carry "Where applicable".
+    # The public protocols or other methodologies say how the evaluation is done, not when.
+    assert [operand.text for operand in evaluation.conditions.operands] == [systemic_risk]
     assert evaluation.mandatory_content == [
         "a detailed description of the evaluation strategies, including evaluation results",
         "evaluation criteria",
         "metrics",
         "the methodology on the identification of limitations",
     ]
-    assert testing.conditions == [systemic_risk, "where applicable"]
-    assert architecture.conditions == [systemic_risk, "where applicable"]
+    assert [operand.text for operand in testing.conditions.operands] == [
+        systemic_risk,
+        "Where applicable",
+    ]
+    assert [operand.text for operand in architecture.conditions.operands] == [
+        systemic_risk,
+        "Where applicable",
+    ]
 
     # Red teaming stays an example and the and/or of internal and external testing survives.
     assert testing.mandatory_content == [

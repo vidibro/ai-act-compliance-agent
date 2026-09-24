@@ -5,6 +5,8 @@ norms:
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-XI-P002
   targets: []
   action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical
     documentation, proportionate to model size and risk profile
@@ -65,11 +67,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS
   act_version_date: '2026-07-27'
   kind: permission
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-XI-P002
   targets: []
   action: base unknown model energy consumption on information about computational resources used
   norm_text: With regard to point (e), where the energy consumption of the model is unknown, the energy
@@ -84,32 +89,35 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the model's energy consumption is unknown
+    - text: where the energy consumption of the model is unknown
       basis_segment_ids:
       - AIA-TEXT-ANNEX-XI-P011
   exceptions: null
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-RULE-GP-A53-1A
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-XI-P018
   targets: []
   action: include a detailed description of the evaluation strategies, with their results, in the technical
     documentation for a general-purpose AI model with systemic risk
@@ -129,18 +137,9 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the general-purpose AI model has systemic risk
+    - text: general-purpose AI models with systemic risk
       basis_segment_ids:
-      - AIA-TEXT-ANNEX-XI-P019
-    - operator: any_of
-      operands:
-      - text: the evaluation strategies are described on the basis of available public evaluation protocols
-          and tools
-        basis_segment_ids:
-        - AIA-TEXT-ANNEX-XI-P019
-      - text: the evaluation strategies are described on the basis of other evaluation methodologies
-        basis_segment_ids:
-        - AIA-TEXT-ANNEX-XI-P019
+      - AIA-TEXT-ANNEX-XI-P018
   exceptions: null
   mandatory_content:
   - a detailed description of the evaluation strategies, including evaluation results
@@ -162,11 +161,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-XI-P018
   targets: []
   action: include a detailed description of the adversarial-testing measures and the model adaptations
     in the technical documentation for a general-purpose AI model with systemic risk
@@ -184,10 +186,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the general-purpose AI model has systemic risk
+    - text: general-purpose AI models with systemic risk
       basis_segment_ids:
-      - AIA-TEXT-ANNEX-XI-P020
-    - text: where applicable
+      - AIA-TEXT-ANNEX-XI-P018
+    - text: Where applicable
       basis_segment_ids:
       - AIA-TEXT-ANNEX-XI-P020
   exceptions: null
@@ -210,11 +212,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: gpai_provider
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-XI-P018
   targets: []
   action: include a detailed description of the system architecture, explaining how software components
     build or feed into each other and integrate into the overall processing, in the technical documentation
@@ -232,10 +237,10 @@ norms:
   conditions:
     operator: all_of
     operands:
-    - text: the general-purpose AI model has systemic risk
+    - text: general-purpose AI models with systemic risk
       basis_segment_ids:
-      - AIA-TEXT-ANNEX-XI-P021
-    - text: where applicable
+      - AIA-TEXT-ANNEX-XI-P018
+    - text: Where applicable
       basis_segment_ids:
       - AIA-TEXT-ANNEX-XI-P021
   exceptions: null
@@ -255,3 +260,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-V
