@@ -4149,6 +4149,150 @@ relations:
   - AIA-TEXT-ANNEX-VIII-C
   - AIA-TEXT-A071-P003
   detail: ''
+- relation_id: AIA-REL-ANNEX-X-SIS-RETURN-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-SIS-RETURN
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P002
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-SIS-BORDER-CHECKS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P003
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-SIS-POLICE-JUDICIAL-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P004
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-VIS-ACCESS-CONDITIONS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P006
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-VIS-REFORM-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-VIS-REFORM
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P007
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-EURODAC-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-EURODAC
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P009
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-ENTRY-EXIT-SYSTEM-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P011
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-ETIAS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ETIAS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P013
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-ETIAS-EUROPOL-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P014
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-ECRIS-TCN-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P016
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-INTEROPERABILITY-BORDERS-VISA-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P018
+  - AIA-TEXT-A111-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P019
+  - AIA-TEXT-A111-P001
+  detail: ''
 - relation_id: AIA-REL-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   kind: carried_by_norms

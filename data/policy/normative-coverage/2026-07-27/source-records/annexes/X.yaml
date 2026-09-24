@@ -2,51 +2,81 @@ records:
 - norm_id: AIA-NORM-ANNEX-X-SIS-RETURN
   source: ANNEX-X-P002
   quote: Regulation (EU) 2018/1860
-  action: names Regulation (EU) 2018/1860 (Schengen Information System — return of illegally staying third-country nationals) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2018/1860 (Schengen Information System — return of illegally staying third-country
+    nationals) as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1860
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P002]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
   source: ANNEX-X-P003
   quote: Regulation (EU) 2018/1861
-  action: names Regulation (EU) 2018/1861 (Schengen Information System — border checks) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2018/1861 (Schengen Information System — border checks) as an Annex X
+    large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1861
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P003]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
   source: ANNEX-X-P004
   quote: Regulation (EU) 2018/1862
-  action: names Regulation (EU) 2018/1862 (Schengen Information System — police and judicial cooperation) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2018/1862 (Schengen Information System — police and judicial cooperation)
+    as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1862
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P004]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
   source: ANNEX-X-P006
   quote: Regulation (EU) 2021/1133
-  action: names Regulation (EU) 2021/1133 (Visa Information System — access to other EU information systems) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2021/1133 (Visa Information System — access to other EU information systems)
+    as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2021/1133
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P006]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-VIS-REFORM
   source: ANNEX-X-P007
   quote: Regulation (EU) 2021/1134
-  action: names Regulation (EU) 2021/1134 (Visa Information System — reform) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2021/1134 (Visa Information System — reform) as an Annex X large-scale
+    IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2021/1134
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P007]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-EURODAC
@@ -55,8 +85,13 @@ records:
   action: names Regulation (EU) 2024/1358 (Eurodac) as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2024/1358
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P009]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
@@ -65,28 +100,45 @@ records:
   action: names Regulation (EU) 2017/2226 (Entry/Exit System) as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2017/2226
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P011]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-ETIAS
   source: ANNEX-X-P013
   quote: Regulation (EU) 2018/1240
-  action: names Regulation (EU) 2018/1240 (European Travel Information and Authorisation System) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2018/1240 (European Travel Information and Authorisation System) as an
+    Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1240
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P013]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
   source: ANNEX-X-P014
   quote: Regulation (EU) 2018/1241
-  action: names Regulation (EU) 2018/1241 (European Travel Information and Authorisation System — Europol) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2018/1241 (European Travel Information and Authorisation System — Europol)
+    as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1241
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P014]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
@@ -95,27 +147,141 @@ records:
   action: names Regulation (EU) 2019/816 (ECRIS-TCN) as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2019/816
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P016]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
   source: ANNEX-X-P018
   quote: Regulation (EU) 2019/817
-  action: names Regulation (EU) 2019/817 (interoperability — borders and visa) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2019/817 (interoperability — borders and visa) as an Annex X large-scale
+    IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2019/817
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P018]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
   source: ANNEX-X-P019
   quote: Regulation (EU) 2019/818
-  action: names Regulation (EU) 2019/818 (interoperability — police and judicial cooperation, asylum and migration) as an Annex X large-scale IT system
+  action: names Regulation (EU) 2019/818 (interoperability — police and judicial cooperation, asylum and
+    migration) as an Annex X large-scale IT system
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2019/818
+    basis_segment_ids: [AIA-TEXT-ANNEX-X-P019]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   verified_by: vidibro
+norm_relations:
+- relation_id: AIA-REL-ANNEX-X-SIS-RETURN-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-SIS-RETURN
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P002
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-SIS-BORDER-CHECKS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P003
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-SIS-POLICE-JUDICIAL-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P004
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-VIS-ACCESS-CONDITIONS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P006
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-VIS-REFORM-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-VIS-REFORM
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P007
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-EURODAC-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-EURODAC
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P009
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-ENTRY-EXIT-SYSTEM-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P011
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-ETIAS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ETIAS
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P013
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-ETIAS-EUROPOL-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P014
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-ECRIS-TCN-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P016
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-INTEROPERABILITY-BORDERS-VISA-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P018
+  - AIA-TEXT-A111-P001
+- relation_id: AIA-REL-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
+  kind: carried_by_norms
+  target_norm_ids:
+  - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-X-P019
+  - AIA-TEXT-A111-P001

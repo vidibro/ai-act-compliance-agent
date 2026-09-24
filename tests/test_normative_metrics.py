@@ -2299,20 +2299,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION",
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
-    assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-ANNEX-X-ECRIS-TCN",
-        "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
-        "AIA-NORM-ANNEX-X-ETIAS",
-        "AIA-NORM-ANNEX-X-ETIAS-EUROPOL",
-        "AIA-NORM-ANNEX-X-EURODAC",
-        "AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA",
-        "AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION",
-        "AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS",
-        "AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL",
-        "AIA-NORM-ANNEX-X-SIS-RETURN",
-        "AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS",
-        "AIA-NORM-ANNEX-X-VIS-REFORM",
-    ]
+    # Annex X is carried by the Article 111(1) norm, so no norm is left as implementation debt.
+    assert metrics.implementation_debt_norm_ids == []
 
 
 def test_article_50_guidance_stays_non_binding_and_separate(metrics):

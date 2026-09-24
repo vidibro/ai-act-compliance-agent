@@ -1,0 +1,59 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: annex
+  document: X
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 20
+  norms_scanned: 12
+  finding_count: 3
+  audit_sha256: ea342801d44bcfe6f32a4698c0ec70f0f61b36fcad200d09153357897b08ebb5
+decisions:
+- finding_id: AIA-VALID-AF077EF03DD3204E
+  target: AIA-TEXT-ANNEX-X-P009
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-X-P009
+  source_sha256: 12c055d344665c751a074e6e5c4596de65ba80ef0a0dcc5a9280cfa6f0a3ffd6
+  target_sha256: 2374429f90ad6369ede68686de517cdd672e947b9922f95e12ade1a944f3783f
+  decision: false_positive
+  reason: The only modal the scan finds is "May" in "14 May 2024", the adoption date in the listed act's
+    title. The entry names an act and carries no legal effect beyond the listing its norm already records.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-X-P009
+    source_sha256: 12c055d344665c751a074e6e5c4596de65ba80ef0a0dcc5a9280cfa6f0a3ffd6
+    quote: of the European Parliament and of the Council of 14 May 2024
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-F9B0F4A23A7B4F0F
+  target: AIA-TEXT-ANNEX-X-P018
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-X-P018
+  source_sha256: e917c92457f2f7744ffb9d48db88816f637e0cb8d699e2a54f2b1e6aa09abddd
+  target_sha256: 9775fbe46eb188d2d7189abd7118a3eaceead669961cf9cec935b89de781f7f4
+  decision: false_positive
+  reason: The only modal the scan finds is "May" in "20 May 2019", the adoption date in the listed act's
+    title. The entry names an act and carries no legal effect beyond the listing its norm already records.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-X-P018
+    source_sha256: e917c92457f2f7744ffb9d48db88816f637e0cb8d699e2a54f2b1e6aa09abddd
+    quote: of the European Parliament and of the Council of 20 May 2019
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-DA34E88352806AF6
+  target: AIA-TEXT-ANNEX-X-P019
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-ANNEX-X-P019
+  source_sha256: 67d1d81a5c7de3cd58358118f069b30e2f1064661535d763a27db6a302a4f74e
+  target_sha256: 527c8c5435d7d4afa16a432b9bf9c1605890376256e43ed86539252bc9f8e22e
+  decision: false_positive
+  reason: The only modal the scan finds is "May" in "20 May 2019", the adoption date in the listed act's
+    title. The entry names an act and carries no legal effect beyond the listing its norm already records.
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-X-P019
+    source_sha256: 67d1d81a5c7de3cd58358118f069b30e2f1064661535d763a27db6a302a4f74e
+    quote: of the European Parliament and of the Council of 20 May 2019
+  reviewed_by: vidibro

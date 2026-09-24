@@ -5,7 +5,9 @@ norms:
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1860
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P002
   action: "names Regulation (EU) 2018/1860 (Schengen Information System \u2014 return of illegally staying\
     \ third-country nationals) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1860
@@ -20,9 +22,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -33,12 +36,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1861
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P003
   action: "names Regulation (EU) 2018/1861 (Schengen Information System \u2014 border checks) as an Annex\
     \ X large-scale IT system"
   norm_text: Regulation (EU) 2018/1861
@@ -53,9 +59,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -66,12 +73,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1862
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P004
   action: "names Regulation (EU) 2018/1862 (Schengen Information System \u2014 police and judicial cooperation)\
     \ as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1862
@@ -86,9 +96,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -99,12 +110,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2021/1133
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P006
   action: "names Regulation (EU) 2021/1133 (Visa Information System \u2014 access to other EU information\
     \ systems) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2021/1133
@@ -119,9 +133,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -132,12 +147,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-VIS-REFORM
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2021/1134
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P007
   action: "names Regulation (EU) 2021/1134 (Visa Information System \u2014 reform) as an Annex X large-scale\
     \ IT system"
   norm_text: Regulation (EU) 2021/1134
@@ -152,9 +170,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -165,12 +184,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-EURODAC
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2024/1358
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P009
   action: names Regulation (EU) 2024/1358 (Eurodac) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2024/1358
   detection_channels:
@@ -184,9 +206,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -197,12 +220,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2017/2226
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P011
   action: names Regulation (EU) 2017/2226 (Entry/Exit System) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2017/2226
   detection_channels:
@@ -216,9 +242,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -229,12 +256,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-ETIAS
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1240
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P013
   action: names Regulation (EU) 2018/1240 (European Travel Information and Authorisation System) as an
     Annex X large-scale IT system
   norm_text: Regulation (EU) 2018/1240
@@ -249,9 +279,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -262,12 +293,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2018/1241
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P014
   action: "names Regulation (EU) 2018/1241 (European Travel Information and Authorisation System \u2014\
     \ Europol) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1241
@@ -282,9 +316,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -295,12 +330,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2019/816
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P016
   action: names Regulation (EU) 2019/816 (ECRIS-TCN) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2019/816
   detection_channels:
@@ -314,9 +352,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -327,12 +366,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2019/817
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P018
   action: "names Regulation (EU) 2019/817 (interoperability \u2014 borders and visa) as an Annex X large-scale\
     \ IT system"
   norm_text: Regulation (EU) 2019/817
@@ -347,9 +389,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -360,12 +403,15 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
   act_version_date: '2026-07-27'
   kind: applicability
   actors: none
   targets:
-  - target_ref: annex_x_large_scale_it_system
+  - target_ref: Regulation (EU) 2019/818
+    basis_segment_ids:
+    - AIA-TEXT-ANNEX-X-P019
   action: "names Regulation (EU) 2019/818 (interoperability \u2014 police and judicial cooperation, asylum\
     \ and migration) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2019/818
@@ -380,9 +426,10 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
+  implementation_reason: Carried by the Article 111(1) norm, whose condition names the acts listed in
+    Annex X.
   verification_mode: reported_conditionally
   review:
     status: approved
@@ -393,3 +440,4 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-CHAPTER-XIII
