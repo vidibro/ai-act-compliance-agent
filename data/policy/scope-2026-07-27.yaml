@@ -1756,33 +1756,28 @@ article_rulings:
   # 111(1) is out of scope by subject rather than reported.
   111:
     1: >-
-      Annex X large-scale IT system components placed before 2 August 2027 comply by 31 December
-      2030, and the requirements are taken into account when those legal acts are evaluated. A
-      TRANSITIONAL DEFERRAL, and its subject is the AI SYSTEM that is a component — whose provider
-      is an ordinary provider this tool does assess — rather than the Annex X system it sits in. It
-      is out because the paragraph only POSTPONES: this tool applies the Regulation to such a
-      component now, which is over-inclusive against a provider entitled to wait until 31 December
-      2030, and over-inclusive is the direction it accepts.
+      RULE AIA-RULE-ALL-A111-1. Annex X large-scale IT system components placed before 2 August 2027
+      comply by 31 December 2030. Gated on the law enforcement and migration areas, where every
+      Annex X system sits. The legacy note does not carry this limb.
     2: >-
-      RELIEF, and the widest thing in this Article. A high-risk system placed on the market before
-      Chapter III applies to it — 2 December 2027 by the Annex III route, 2 August 2028 by Annex I,
-      per Art. 113(c) — is reached only once SIGNIFICANTLY REDESIGNED. Not the Art. 5 prohibitions,
-      and not a system intended for public authorities, which comply by 2 August 2030 regardless.
-      Worth a practitioner's eye: the original Act fixed this window at "before 2 August 2026", and
-      this version replaced the fixed date with a cross-reference to Chapter III's own application
-      date, which then moved sixteen months later. The window widened as a consequence, and on a
-      literal reading it now covers most high-risk systems on the market today. Whether that was
-      intended is not a question this tool can answer, which is why it is named and never acted on.
+      RULE AIA-RULE-ALL-A111-2 for the public-authority limb: providers and deployers of high-risk
+      systems intended to be used by public authorities comply by 2 August 2030. The rest of the
+      paragraph is RELIEF, not a duty, and stays in the legacy note: a high-risk system placed
+      before Chapter III applies to it (2 December 2027 by the Annex III route, 2 August 2028 by
+      Annex I, per Art. 113(c)) is reached only once significantly redesigned. Not the Art. 5
+      prohibitions. Worth a practitioner's eye: the original Act fixed this window at "before 2
+      August 2026", and this version replaced the fixed date with a cross-reference to Chapter
+      III's own application date, which then moved sixteen months later. On a literal reading the
+      window now covers most high-risk systems on the market today; whether that was intended is
+      not a question this tool can answer, which is why it is named and never acted on.
     3: >-
-      Legacy general-purpose AI models placed before 2 August 2025 comply by 2 August 2027 — a
-      DEFERRAL of the Chapter V duties the Chapter V rules carry, and the one date in this ruleset
-      that runs later than the obligation it defers. Not gated on: whether a model was placed
-      before 2 August 2025 is not a fact the cascade asks, so nothing is withheld on it and the
-      limb is reported instead, by ComplianceReport._article_111_3_note.
+      RULE AIA-RULE-GP-A111-3. Legacy general-purpose AI models placed before 2 August 2025 comply by
+      2 August 2027. The legacy note also names the deferral, because whether a model was placed
+      before that date is not a fact the cascade asks, so nothing is withheld on it.
     4: >-
-      RELIEF at a shorter range: a synthetic-content generator placed before 2 August 2026 has until
-      2 December 2026 for Art. 50(2) — LATER than the date the Article 50 requirement carries. Reported in the
-      legacy note; the rule's own date is corrected as part of M4d-5, when dates become live.
+      RULE AIA-RULE-TR-A111-4. A synthetic-content generator placed before 2 August 2026 has until 2
+      December 2026 for Art. 50(2), later than AIA-RULE-TR-A50-2's date. The legacy note names it
+      too, for the same reason as paragraph 3.
   112:
     1: Annual Commission assessment of the need to amend Annex III and Art. 5. Institutional.
     2: Four-yearly evaluation and report on the (a)-(c) subjects. Institutional.
@@ -2917,20 +2912,6 @@ role_mentions:
   "101(2)": >-
     Preliminary findings are communicated to the model provider and it is given an opportunity to
     be heard. A procedural right of the provider.
-  # --- Art. 111 — the legacy systems. Each of these is a RELIEF that moves a date, and each is
-  # reported through the legacy note rather than by changing a rule's own effective date.
-  "111(2)": >-
-    A relief for operators of high-risk systems placed before Chapter III applies: they are reached
-    only if the system undergoes significant changes in design after that date. It then closes off
-    that relief for the providers and deployers of systems INTENDED TO BE USED BY PUBLIC
-    AUTHORITIES, who must comply by 2 August 2030 regardless. A date, not a duty.
-  "111(3)": >-
-    A deferral for providers of general-purpose AI models placed before 2 August 2025: comply by
-    2 August 2027. It moves when the Chapter V duties the Chapter V rules carry bite, and adds none.
-  "111(4)": >-
-    A deferral for providers of synthetic-content generators placed before 2 August 2026: comply
-    with Art. 50(2) by 2 December 2026. Later than the date the Article 50 requirement carries, and reported in
-    the legacy note so the rule's own date stays the one the Act sets for a new system.
   "3(3)": >-
     Defines 'provider'. Who the party IS, not what it owes: develops or has developed a system or
     model and places it on the market or into service under its own name, paid or free. The whole

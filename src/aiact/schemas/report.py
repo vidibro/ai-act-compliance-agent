@@ -451,8 +451,10 @@ class ComplianceReport(BaseModel):
         Three limbs, because the Article gives three different reliefs and a reader told about one
         would carry it across to the others. 111(2) is about Chapter III whole; 111(3) is about
         Chapter V and reaches a general-purpose model rather than a system; 111(4) is about
-        Art. 50(2) alone, and it is the tighter deadline of the three. 111(1) is not here: it is
-        about components of the Annex X large-scale IT systems, which this tool does not assess.
+        Art. 50(2) alone, and it is the tighter deadline of the three. 111(1) is not here: its
+        Annex X components are reported by AIA-RULE-ALL-A111-1, gated on the areas those systems
+        serve. The dated duties in 111(2) to (4) have rules of their own too; this note carries
+        what a rule cannot, the relief and the fact that the placement date is unknown.
 
         No limb fires for every report and 111(3) fires for the reports the others cannot reach —
         `_article_111_2_note` returns None where no use case is high-risk, which is always true of
