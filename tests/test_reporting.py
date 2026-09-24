@@ -173,7 +173,7 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
     assert "AIA-NORM-A015-P4-REDUNDANCY" in text
     assert "conditional legal effects:" in text
     assert "AIA-NORM-A017-P4-FINANCIAL-DEEMING" in text
-    assert "Article 17(1)(g), (h), and (i) remain independently required" in text
+    assert "with the exception of paragraph 1, points (g), (h) and (i) of this Article" in text
     assert "conditional scope limits:" in text
     assert "AIA-NORM-A010-P6-TESTING-DATA-ONLY" in text
     assert (

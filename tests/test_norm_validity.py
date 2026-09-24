@@ -79,9 +79,18 @@ def refresh_article_fifteen_audit(
     bundle,
     required_field_validations: dict[tuple[SourceKind, str], set[FieldValidation]] | None = None,
 ) -> None:
-    """A recorded fix changes the audited norm snapshot and therefore requires a fresh audit."""
+    """A recorded fix changes the audited norm snapshot and therefore requires a fresh audit.
+
+    Without explicit requirements the audit is taken under the gates the shard itself declares.
+    """
     shard_path = root / "articles" / "015.yaml"
     shard = yaml.safe_load(shard_path.read_text(encoding="utf-8"))
+    if required_field_validations is None:
+        required_field_validations = {
+            (SourceKind.ARTICLE, "15"): {
+                FieldValidation(item) for item in shard["source"]["required_field_validations"]
+            }
+        }
     shard["audit"] = audit_attestation(
         bundle,
         scope={(SourceKind.ARTICLE, "15")},
@@ -131,10 +140,12 @@ def test_changed_norm_record_requires_a_new_adjudication():
 
 def test_actor_basis_is_checked_deterministically_and_hash_bound():
     bundle = load_bundle().model_copy(deep=True)
+    # A provider duty given a different actor whose basis still names it: no finding, yet the
+    # changed record no longer matches the attested audit.
     norm = next(
         item
         for item in bundle.norm_inventory.norms
-        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+        if item.norm_id == "AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY"
     )
     norm.actors = [
         NormActor(
@@ -442,6 +453,7 @@ def test_temporal_gate_requires_a_regime_for_a_relative_deadline():
     )
     norm.norm_text = "The provider shall act within 15 calendar days of receipt."
     norm.action = "act within 15 calendar days of receipt"
+    norm.temporal_regime_id = None
     requirements = {
         (SourceKind.ARTICLE, "15"): {FieldValidation.TEMPORAL_REGIME},
     }
@@ -660,7 +672,13 @@ def test_article_ninety_nine_splits_initial_and_amendment_notifications():
 
 
 def test_field_validation_gate_requires_complete_actor_evidence_for_an_article(tmp_path):
-    bundle = load_bundle()
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY"
+    )
+    norm.actors = [norm.actors[0].model_copy(update={"basis_segment_ids": []})]
     requirements = {
         (SourceKind.ARTICLE, "15"): {FieldValidation.ACTOR_EVIDENCE},
     }
@@ -812,9 +830,9 @@ def _fixed_p2_ledger(tmp_path: Path) -> tuple[Path, Path, bytes, bytes]:
     target.write_bytes(before)
 
     manifest = yaml.safe_load((LEDGER / "index.yaml").read_text(encoding="utf-8"))
-    manifest["enforced_scope"] = [{"kind": "article", "document": "15"}]
-    manifest["shards"] = [{"kind": "article", "document": "15", "file": "articles/015.yaml"}]
     shard = yaml.safe_load(SHARD.read_text(encoding="utf-8"))
+    manifest["enforced_scope"] = [shard["source"]]
+    manifest["shards"] = [{"kind": "article", "document": "15", "file": "articles/015.yaml"}]
     fixed = next(
         item
         for item in shard["decisions"]
