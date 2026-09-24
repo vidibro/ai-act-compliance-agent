@@ -1,0 +1,33 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: annex
+  document: III
+  required_field_validations:
+  - logical_expression_evidence
+  - actor_evidence
+  - target_evidence
+  - temporal_regime
+audit:
+  audit_schema_version: 1
+  segments_scanned: 34
+  norms_scanned: 25
+  finding_count: 1
+  audit_sha256: 45440075e2d84754880598431c5d2cd909a40159c2b4a7406e7bc35681b40b67
+decisions:
+- finding_id: AIA-VALID-502C9A9855ECE1A1
+  target: AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES
+  rule: condition_expression_missing
+  source_ref: AIA-TEXT-ANNEX-III-P009
+  source_sha256: c710091b8957a7c1d84c79cd996ae0a835a9f87d1e62e98c61340fa679ead9d8
+  target_sha256: 084a025321d4ac503c9e1659d46df1ec08cc3e3212187efc1f7e8c6d538e25a0
+  decision: false_positive
+  reason: '"Including when those outcomes are used to steer the learning process" widens the use case
+    to evaluations that also steer learning. It does not limit when the entry applies, so there is no
+    condition to state.'
+  legal_basis:
+  - span_id: AIA-TEXT-ANNEX-III-P009
+    source_sha256: c710091b8957a7c1d84c79cd996ae0a835a9f87d1e62e98c61340fa679ead9d8
+    quote: AI systems intended to be used to evaluate learning outcomes, including when those outcomes
+      are used to steer the learning process of natural persons
+  reviewed_by: vidibro

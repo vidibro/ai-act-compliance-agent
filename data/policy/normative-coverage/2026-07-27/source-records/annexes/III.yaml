@@ -7,16 +7,24 @@ records:
   action: classify remote biometric identification systems as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: remote_biometric_identification_system
+  - target_ref: remote biometric identification systems
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P003]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P002
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P002]
   exceptions:
-  - biometric verification used solely to confirm that a specific person is who they claim to be
+    operator: any_of
+    operands:
+    - text: This shall not include AI systems intended to be used for biometric verification the sole purpose of which is to confirm that a specific natural person is the person he or she claims to be
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P003]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -29,14 +37,20 @@ records:
     as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: biometric_categorisation_system
+  - target_ref: AI systems intended to be used for biometric categorisation, according to sensitive or
+      protected attributes or characteristics based on the inference of those attributes or characteristics
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P004]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P002
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P002]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -47,14 +61,19 @@ records:
   action: classify emotion-recognition systems as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: emotion_recognition_system
+  - target_ref: AI systems intended to be used for emotion recognition
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P005]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P002
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P002]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -67,8 +86,11 @@ records:
     Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: critical_infrastructure_ai_system
+  - target_ref: AI systems intended to be used as safety components in the management and operation of
+      critical digital infrastructure, road traffic, or in the supply of water, gas, heating or electricity
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P006]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -84,8 +106,11 @@ records:
     as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: education_access_ai_system
+  - target_ref: AI systems intended to be used to determine access or admission or to assign natural persons
+      to educational and vocational training institutions at all levels
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P008]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -103,8 +128,12 @@ records:
     use case
   actors: none
   targets:
-  - target_ref: learning_outcome_ai_system
+  - target_ref: AI systems intended to be used to evaluate learning outcomes, including when those outcomes
+      are used to steer the learning process of natural persons in educational and vocational training
+      institutions at all levels
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P009]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -122,8 +151,12 @@ records:
     use case
   actors: none
   targets:
-  - target_ref: education_level_ai_system
+  - target_ref: AI systems intended to be used for the purpose of assessing the appropriate level of education
+      that an individual will receive or will be able to access, in the context of or within educational
+      and vocational training institutions at all levels
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P010]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -140,8 +173,12 @@ records:
     use case
   actors: none
   targets:
-  - target_ref: student_test_monitoring_ai_system
+  - target_ref: AI systems intended to be used for monitoring and detecting prohibited behaviour of students
+      during tests in the context of or within educational and vocational training institutions at all
+      levels
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P011]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -158,8 +195,12 @@ records:
     and candidate evaluation, as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: recruitment_ai_system
+  - target_ref: AI systems intended to be used for the recruitment or selection of natural persons, in
+      particular to place targeted job advertisements, to analyse and filter job applications, and to
+      evaluate candidates
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P013]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -178,8 +219,13 @@ records:
     an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: worker_management_ai_system
+  - target_ref: AI systems intended to be used to make decisions affecting terms of work-related relationships,
+      the promotion or termination of work-related contractual relationships, to allocate tasks based
+      on individual behaviour or personal traits or characteristics or to monitor and evaluate the performance
+      and behaviour of persons in such relationships
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P014]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -197,8 +243,13 @@ records:
     and services as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: essential_public_benefits_ai_system
+  - target_ref: AI systems intended to be used by public authorities or on behalf of public authorities
+      to evaluate the eligibility of natural persons for essential public assistance benefits and services,
+      including healthcare services, as well as to grant, reduce, revoke, or reclaim such benefits and
+      services
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P016]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -215,14 +266,21 @@ records:
     III high-risk use case
   actors: none
   targets:
-  - target_ref: creditworthiness_ai_system
+  - target_ref: AI systems intended to be used to evaluate the creditworthiness of natural persons or
+      establish their credit score, with the exception of AI systems used for the purpose of detecting
+      financial fraud
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P017]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
   exceptions:
-  - AI systems used to detect financial fraud
+    operator: any_of
+    operands:
+    - text: with the exception of AI systems used for the purpose of detecting financial fraud
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P017]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -235,8 +293,11 @@ records:
     III high-risk use case
   actors: none
   targets:
-  - target_ref: life_health_insurance_ai_system
+  - target_ref: AI systems intended to be used for risk assessment and pricing in relation to natural
+      persons in the case of life and health insurance
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P018]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -254,8 +315,13 @@ records:
     healthcare triage as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: emergency_response_ai_system
+  - target_ref: AI systems intended to evaluate and classify emergency calls by natural persons or to
+      be used to dispatch, or to establish priority in the dispatching of, emergency first response services,
+      including by police, firefighters and medical aid, as well as of emergency healthcare patient triage
+      systems
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P019]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -273,14 +339,21 @@ records:
     III high-risk use case
   actors: none
   targets:
-  - target_ref: crime_victim_risk_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of law enforcement authorities, or by Union
+      institutions, bodies, offices or agencies in support of law enforcement authorities or on their
+      behalf to assess the risk of a natural person becoming the victim of criminal offences
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P021]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P020]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -292,14 +365,21 @@ records:
   action: classify law-enforcement polygraphs or similar tools as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: law_enforcement_polygraph_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of law enforcement authorities or by Union
+      institutions, bodies, offices or agencies in support of law enforcement authorities as polygraphs
+      or similar tools
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P022]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P020]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -313,14 +393,21 @@ records:
     prosecution as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: evidence_reliability_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of law enforcement authorities, or by Union
+      institutions, bodies, offices or agencies, in support of law enforcement authorities to evaluate
+      the reliability of evidence in the course of the investigation or prosecution of criminal offences
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P023]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P020]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -336,15 +423,23 @@ records:
     assessment as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: offending_risk_ai_system
+  - target_ref: AI systems intended to be used by law enforcement authorities or on their behalf or by
+      Union institutions, bodies, offices or agencies in support of law enforcement authorities for assessing
+      the risk of a natural person offending or re-offending not solely on the basis of the profiling
+      of natural persons as referred to in Article 3(4) of Directive (EU) 2016/680, or to assess personality
+      traits and characteristics or past criminal behaviour of natural persons or groups
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P024]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
   conditions:
-  - the use is permitted under relevant Union or national law
-  - offending or reoffending risk is not assessed solely from profiling under Directive (EU) 2016/680
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P020]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -359,14 +454,22 @@ records:
     high-risk use case
   actors: none
   targets:
-  - target_ref: law_enforcement_profiling_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of law enforcement authorities or by Union
+      institutions, bodies, offices or agencies in support of law enforcement authorities for the profiling
+      of natural persons as referred to in Article 3(4) of Directive (EU) 2016/680 in the course of the
+      detection, investigation or prosecution of criminal offences
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P025]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P020]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -379,14 +482,20 @@ records:
     use case
   actors: none
   targets:
-  - target_ref: border_polygraph_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of competent public authorities or by Union
+      institutions, bodies, offices or agencies as polygraphs or similar tools
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P027]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P026]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -401,14 +510,22 @@ records:
     a Member State as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: border_risk_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of competent public authorities or by Union
+      institutions, bodies, offices or agencies to assess a risk, including a security risk, a risk of
+      irregular migration, or a health risk, posed by a natural person who intends to enter or who has
+      entered into the territory of a Member State
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P028]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P026]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -424,14 +541,23 @@ records:
     or evidence reliability as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: asylum_visa_residence_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of competent public authorities or by Union
+      institutions, bodies, offices or agencies to assist competent public authorities for the examination
+      of applications for asylum, visa or residence permits and for associated complaints with regard
+      to the eligibility of the natural persons applying for a status, including related assessments of
+      the reliability of evidence
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P029]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P026]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -446,16 +572,27 @@ records:
     management as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: border_identification_ai_system
+  - target_ref: AI systems intended to be used by or on behalf of competent public authorities, or by
+      Union institutions, bodies, offices or agencies, in the context of migration, asylum or border control
+      management, for the purpose of detecting, recognising or identifying natural persons, with the exception
+      of the verification of travel documents
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P030]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
   conditions:
-  - the use is permitted under relevant Union or national law
+    operator: all_of
+    operands:
+    - text: in so far as their use is permitted under relevant Union or national law
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P026]
   exceptions:
-  - verification of travel documents
+    operator: any_of
+    operands:
+    - text: with the exception of the verification of travel documents
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P030]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -469,8 +606,12 @@ records:
     or application of law as an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: justice_ai_system
+  - target_ref: AI systems intended to be used by a judicial authority or on their behalf to assist a
+      judicial authority in researching and interpreting facts and the law and in applying the law to
+      a concrete set of facts, or to be used in a similar way in alternative dispute resolution
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P032]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
@@ -490,14 +631,20 @@ records:
     an Annex III high-risk use case
   actors: none
   targets:
-  - target_ref: election_influence_ai_system
+  - target_ref: AI systems intended to be used for influencing the outcome of an election or referendum
+      or the voting behaviour of natural persons in the exercise of their vote in elections or referenda
+    basis_segment_ids: [AIA-TEXT-ANNEX-III-P033]
   kind: applicability
+  temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P031
   exceptions:
-  - administrative or logistical campaign tools whose outputs do not directly expose natural persons
+    operator: any_of
+    operands:
+    - text: This does not include AI systems to the output of which natural persons are not directly exposed, such as tools used to organise, optimise or structure political campaigns from an administrative or logistical point of view
+      basis_segment_ids: [AIA-TEXT-ANNEX-III-P033]
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
