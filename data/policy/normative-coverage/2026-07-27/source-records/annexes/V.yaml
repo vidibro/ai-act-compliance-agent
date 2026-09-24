@@ -5,7 +5,9 @@ records:
   action: include all eight Annex V information items in the EU declaration of conformity
   actors:
   - actor_ref: provider
+    basis_segment_ids: [AIA-TEXT-A047-P001]
   targets: []
+  temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 47(2) Annex V declaration-content norm.
   verification_mode: judged_by_gap_analysis
