@@ -320,6 +320,22 @@ def traceability_errors(
             else:
                 errors.append(f"{rule_id} omits criterion {norm.norm_id}, which names it")
 
+    # Rule -> norm: a rule fires on an enacted duty, so some reviewed norm must name it, through its
+    # criteria, a compliance or report-only link, or a typed relation. A rule nothing names is a
+    # verdict with no legal text behind it.
+    named_rule_ids = set().union(*relation_targets_by_norm.values())
+    for norm in norms.values():
+        if (
+            in_scope(norm)
+            and norm.review.status is not ReviewStatus.SUPERSEDED
+            and norm.implementation_mode
+            in {ImplementationMode.COMPLIANCE_RULE, ImplementationMode.REPORT_ONLY}
+        ):
+            named_rule_ids.update(norm.implementation_refs)
+    for rule_id, rule in sorted(rules.items()):
+        if not rule.criteria and rule_id not in named_rule_ids:
+            errors.append(f"{rule_id} is named by no norm")
+
     # A norm marked as carried by another norm is not an implementation gap we report twice.
     # It still needs one explicit, live path to a policy rule.  Without this check Article 16(c),
     # (d), (e), or (j) could lose its relation and silently disappear from the report.

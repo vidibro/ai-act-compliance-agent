@@ -517,6 +517,21 @@ def test_in_scope_permission_cannot_be_hidden_in_a_compliance_rule(bundle, spec)
     ) in traceability_errors(broken, spec, LEDGER)
 
 
+def test_a_rule_no_norm_names_fails_the_build(bundle, spec):
+    """A rule fires a verdict, so a rule with no criteria that no norm names has no enacted text
+    behind it. Report-only links count as naming: the Article 5(2) to (4) deployer rules are named
+    only by report-only norms and are not flagged."""
+    orphan = a15(spec).model_copy(
+        update={"rule_id": "AIA-RULE-HR-A15-ORPHAN", "criteria": []}
+    )
+    widened = spec.model_copy(update={"rules": [*spec.rules, orphan]})
+
+    errors = traceability_errors(bundle, widened, LEDGER)
+
+    assert "AIA-RULE-HR-A15-ORPHAN is named by no norm" in errors
+    assert not any(e.startswith("AIA-RULE-DP-A05-") for e in errors)
+
+
 def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
     criteria = a15(spec).criteria
     model_flaws = next(c for c in criteria if c.norm_id == MODEL_FLAWS)
