@@ -260,6 +260,7 @@ def build_graph(
                 )
         outstanding = {role: sorted(ids) for role, ids in outstanding.items() if ids}
         permissions: dict[ActorRole, list[str]] = {}
+        rights: dict[ActorRole, list[str]] = {}
         legal_consequences: dict[ActorRole, list[str]] = {}
         conditional_applicability: dict[ActorRole, list[str]] = {}
         public_authority_statements: list[str] = []
@@ -296,19 +297,16 @@ def build_graph(
                     and active.role not in exact_actor_roles
                 ):
                     continue
-                destination = (
-                    permissions
-                    if report_norm.kind is NormKind.PERMISSION
-                    else (
-                        legal_consequences
-                        if report_norm.kind is NormKind.LEGAL_CONSEQUENCE
-                        else conditional_applicability
-                    )
-                )
+                destination = {
+                    NormKind.PERMISSION: permissions,
+                    NormKind.ENTITLEMENT: rights,
+                    NormKind.LEGAL_CONSEQUENCE: legal_consequences,
+                }.get(report_norm.kind, conditional_applicability)
                 ids = destination.setdefault(active.role, [])
                 if report_norm.norm_id not in ids:
                     ids.append(report_norm.norm_id)
         permissions = {role: sorted(ids) for role, ids in permissions.items() if ids}
+        rights = {role: sorted(ids) for role, ids in rights.items() if ids}
         legal_consequences = {role: sorted(ids) for role, ids in legal_consequences.items() if ids}
         conditional_applicability = {
             role: sorted(ids) for role, ids in conditional_applicability.items() if ids
@@ -325,6 +323,7 @@ def build_graph(
                 not_document_verifiable=outstanding,
                 timing_not_active=timing_not_active,
                 permissions=permissions,
+                rights=rights,
                 legal_consequences=legal_consequences,
                 conditional_applicability=conditional_applicability,
                 public_authority_statements=public_authority_statements,

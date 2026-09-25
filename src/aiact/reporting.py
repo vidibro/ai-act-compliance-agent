@@ -218,6 +218,7 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
         outstanding = report.not_document_verifiable.get(role, [])
         timing_not_active = [notice for notice in report.timing_not_active if notice.role == role]
         permissions = report.permissions.get(role, [])
+        rights = report.rights.get(role, [])
         legal_consequences = report.legal_consequences.get(role, [])
         conditional_applicability = report.conditional_applicability.get(role, [])
         if (
@@ -225,6 +226,7 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
             and not outstanding
             and not timing_not_active
             and not permissions
+            and not rights
             and not legal_consequences
             and not conditional_applicability
         ):
@@ -283,6 +285,11 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
         if permissions:
             out.append("  permitted implementation routes:")
             for norm_id in permissions:
+                norm = report_norms.get(norm_id)
+                out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
+        if rights:
+            out.append("  rights you may exercise:")
+            for norm_id in rights:
                 norm = report_norms.get(norm_id)
                 out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
         if legal_consequences:

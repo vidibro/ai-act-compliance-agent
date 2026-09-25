@@ -157,6 +157,7 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
     report = _report(spec, {}).model_copy(
         update={
             "permissions": {ActorRole.PROVIDER: ["AIA-NORM-A015-P4-REDUNDANCY"]},
+            "rights": {ActorRole.PROVIDER: ["AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT"]},
             "legal_consequences": {
                 ActorRole.PROVIDER: ["AIA-NORM-A017-P4-FINANCIAL-DEEMING"]
             },
@@ -171,6 +172,10 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
     text = render_report(report, spec)
     assert "permitted implementation routes:" in text
     assert "AIA-NORM-A015-P4-REDUNDANCY" in text
+    # A right is shown with what exercising it takes, never as a verdict.
+    assert "rights you may exercise:" in text
+    assert "AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT" in text
+    assert "duly reasoned" in " ".join(text.split())
     assert "conditional legal effects:" in text
     assert "AIA-NORM-A017-P4-FINANCIAL-DEEMING" in text
     assert "with the exception of paragraph 1, points (g), (h) and (i) of this Article" in text

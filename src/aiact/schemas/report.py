@@ -353,6 +353,14 @@ class ComplianceReport(BaseModel):
     are separate from findings so a permission can never make an obligation pass or fail.
     """
 
+    rights: dict[ActorRole, list[str]] = {}
+    """Canonical entitlement norm ids, keyed by the active duty-holder role.
+
+    Rights the reader may exercise, such as being heard or lodging a complaint. What a request or
+    complaint must contain is carried by the right, so it is stated beside the right rather than
+    judged. Like permissions, a right can never make an obligation pass or fail.
+    """
+
     legal_consequences: dict[ActorRole, list[str]] = {}
     """Canonical legal-effect norm ids, keyed by the active duty-holder role.
 
@@ -778,6 +786,7 @@ class ComplianceReport(BaseModel):
             report_norms = {norm.norm_id: norm for norm in spec.report_norms}
             for field_name, accepted_kinds in (
                 ("permissions", {"permission"}),
+                ("rights", {"entitlement"}),
                 ("legal_consequences", {"legal_consequence"}),
                 ("conditional_applicability", {"applicability", "obligation"}),
             ):

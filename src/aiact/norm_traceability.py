@@ -71,6 +71,7 @@ def _report_reconstruction_errors(
         norm.kind
         not in {
             NormKind.PERMISSION,
+            NormKind.ENTITLEMENT,
             NormKind.LEGAL_CONSEQUENCE,
             NormKind.APPLICABILITY,
         }
@@ -159,15 +160,15 @@ def traceability_errors(
                     f"{norm.norm_id} names unknown classification question(s) {unknown_questions}"
                 )
 
-    # A permission or legal consequence has no pass/fail answer.  A norm may either materialise
-    # directly as report-only, or be an exact duplicate carried by such a norm.  It can never use
-    # a compliance rule: that would allow a reader-facing allowed/legal-effect route to disappear
-    # into a pass/fail result.
+    # A permission, right or legal consequence has no pass/fail answer.  A norm may either
+    # materialise directly as report-only, or be an exact duplicate carried by such a norm.  It can
+    # never use a compliance rule: that would allow a reader-facing allowed/legal-effect route to
+    # disappear into a pass/fail result.
     for norm in sorted(norms.values(), key=lambda item: item.norm_id):
         if not in_scope(norm) or norm.review.status is ReviewStatus.SUPERSEDED:
             continue
         if (
-            norm.kind in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
+            norm.kind in {NormKind.PERMISSION, NormKind.ENTITLEMENT, NormKind.LEGAL_CONSEQUENCE}
             and norm.product_scope is ProductScope.IN_SCOPE
             and norm.implementation_mode is not ImplementationMode.APPLICABILITY_QUESTION
             and norm.implementation_mode
@@ -196,6 +197,7 @@ def traceability_errors(
             norm.kind
             not in {
                 NormKind.PERMISSION,
+                NormKind.ENTITLEMENT,
                 NormKind.LEGAL_CONSEQUENCE,
                 NormKind.APPLICABILITY,
             }
@@ -284,7 +286,8 @@ def traceability_errors(
         if (
             not in_scope(norm)
             or norm.review.status is ReviewStatus.SUPERSEDED
-            or norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
+            or norm.kind
+            not in {NormKind.PERMISSION, NormKind.ENTITLEMENT, NormKind.LEGAL_CONSEQUENCE}
             or norm.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM
         ):
             continue
