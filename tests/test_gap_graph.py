@@ -265,9 +265,11 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A015-P4-REDUNDANCY",
         "AIA-NORM-A017-P3-SECTORAL-INTEGRATION",
+        "AIA-NORM-A057-P7-EVIDENTIARY-USE",
         "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING",
         "AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT",
+        "AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS",
     ]
     assert report.legal_consequences[ActorRole.PROVIDER] == [
         "AIA-NORM-A017-P4-FINANCIAL-DEEMING",

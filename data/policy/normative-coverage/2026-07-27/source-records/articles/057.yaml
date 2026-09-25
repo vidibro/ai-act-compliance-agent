@@ -465,12 +465,10 @@ records:
   targets: []
   kind: permission
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
-    rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A43-1, AIA-RULE-PO-A43-2, AIA-RULE-PO-A43-3]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A057-P7-SURVEILLANCE-EVIDENCE-CONSIDERATION
   source: A057-P011
   quote: In this regard, the exit reports and the written proof provided by the national competent authority

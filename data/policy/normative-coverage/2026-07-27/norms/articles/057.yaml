@@ -903,23 +903,26 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A057-P011
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
-    rather than an independent product action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A43-1
+  - AIA-RULE-PO-A43-2
+  - AIA-RULE-PO-A43-3
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
