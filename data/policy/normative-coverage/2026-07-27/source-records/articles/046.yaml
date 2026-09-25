@@ -140,11 +140,9 @@ records:
   targets: []
   kind: permission
   temporal_regime_id: AIA-TEMP-A046-P2-REQUEST-WITHOUT-UNDUE-DELAY
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-DP-A46-2]
+  verification_mode: reported_not_judged
   conditions:
     operator: all_of
     operands:
@@ -152,6 +150,7 @@ records:
       basis_segment_ids: [AIA-TEXT-A046-P002]
     - text: provided that such authorisation is requested during or after the use without undue delay
       basis_segment_ids: [AIA-TEXT-A046-P002]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A046-P2-REFUSAL-RESPONSE
   source: A046-P002
   quote: If the authorisation referred to in paragraph 1 is refused, the use of the high-risk AI system
@@ -165,16 +164,15 @@ records:
     basis_segment_ids: [AIA-TEXT-A046-P002]
   targets: []
   temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-DP-A46-2]
+  verification_mode: reported_not_judged
   conditions:
     operator: all_of
     operands:
     - text: If the authorisation referred to in paragraph 1 is refused
       basis_segment_ids: [AIA-TEXT-A046-P002]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
   source: A046-P002
   quote: all the results and outputs of such use shall be immediately discarded.
@@ -189,16 +187,15 @@ records:
     basis_segment_ids: [AIA-TEXT-A046-P002]
   targets: []
   temporal_regime_id: AIA-TEMP-A046-P2-IMMEDIATE-DISCARD
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-DP-A46-2]
+  verification_mode: reported_not_judged
   conditions:
     operator: all_of
     operands:
     - text: If the authorisation referred to in paragraph 1 is refused
       basis_segment_ids: [AIA-TEXT-A046-P002]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A046-P3-NOTIFY-AUTHORISATION
   source: A046-P003
   quote: The market surveillance authority shall inform the Commission and the other Member States of

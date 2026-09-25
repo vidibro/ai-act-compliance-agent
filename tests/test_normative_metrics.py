@@ -2207,8 +2207,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2153,
-        "proposed": 786,
+        "approved": 2156,
+        "proposed": 783,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2940
@@ -2234,15 +2234,16 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # alteration prohibition left `AIA-RULE-ALL-A73` for a rule of its own, and the operator duties
     # in Articles 75a(3) and 75c(3) each map to one rule, as do Article 111's four transitions.
     # Annex VI's three internal-control checks are carried by the Article 43 route norms, and
-    # Annex VIII's Sections A and C by the Article 71 database-entry norms.
+    # Annex VIII's Sections A and C by the Article 71 database-entry norms. Article 46(2)'s three
+    # norms are reported beside `AIA-RULE-DP-A46-2`, as Article 5(3)'s are beside its rule.
     assert metrics.mapping_shape.one_norm_to_one_target == 46
-    assert metrics.mapping_shape.many_norms_to_one_target == 452
+    assert metrics.mapping_shape.many_norms_to_one_target == 455
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII's provider duties are carried by the Article 43 route norms rather than named on
     # `AIA-RULE-PO-A43-1B` and `AIA-RULE-PO-A43-3`, which leaves only the retraining consequence
     # shared between them.
     assert metrics.mapping_shape.many_to_many == 17
-    assert metrics.mapping_shape.unmapped == 892
+    assert metrics.mapping_shape.unmapped == 889
     assert metrics.semantic_vs_existing_implementation_disagreements == 53
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
@@ -2819,7 +2820,11 @@ def test_article_forty_six_preserves_derogation_lifecycle():
         assert obligation.kind.value == "obligation"
         assert obligation.primary_spans == ["AIA-TEXT-A046-P002"]
         assert obligation.mandatory_content == []  # Actions are separate norms, not payload items.
-        assert obligation.implementation_mode.value == "none_required"
+    # The authorities stay the actors, so the duties are reported beside the deployer rule rather
+    # than passing it, as Article 5(3)'s stop-and-delete duties are.
+    for norm in (refusal, discard, norms["AIA-NORM-A046-P2-URGENT-USE-PERMISSION"]):
+        assert norm.implementation_mode.value == "report_only"
+        assert norm.implementation_refs == ["AIA-RULE-DP-A46-2"]
     permission = norms["AIA-NORM-A046-P2-URGENT-USE-PERMISSION"]
     assert permission.kind.value == "permission"
     assert len(permission.conditions) == 2
