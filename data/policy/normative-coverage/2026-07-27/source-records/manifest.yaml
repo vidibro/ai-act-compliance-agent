@@ -294,6 +294,8 @@ norm_relations:
     detail: >-
       The other Union law supplies the requirements the marking must also indicate compliance with;
       this Regulation records the duty but does not reproduce or independently check them.
+  - {relation_id: AIA-REL-A052-P5-REQUEST-CONTENT-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A052-P5-REQUEST-CONTENT, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS], legal_basis_spans: [AIA-TEXT-A052-P006]}
+  - {relation_id: AIA-REL-A089-P2-COMPLAINT-CONTENT-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A089-P2-COMPLAINT-CONTENT, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT], legal_basis_spans: [AIA-TEXT-A089-P002]}
   - {relation_id: AIA-REL-A048-P1-GENERAL-CE-PRINCIPLES-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A048-P3-AFFIX-CE-MARKING], legal_basis_spans: [AIA-TEXT-A048-P001]}
   - {relation_id: AIA-REL-A008-P1-COMPLY-SECTION-REQUIREMENTS-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A016-A-SECTION-2-COMPLIANCE], legal_basis_spans: [AIA-TEXT-A008-P001]}
   - {relation_id: AIA-REL-A016-J-CORRECTIVE-ACTION-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A016-J-CORRECTIVE-ACTION, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A020-P1-CORRECTIVE-RESPONSE, AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN, AIA-NORM-A020-P2-INVESTIGATE-RISK], legal_basis_spans: [AIA-TEXT-A016-P011]}

@@ -51,28 +51,32 @@ norms:
     basis_segment_ids:
     - AIA-TEXT-A089-P002
   targets: []
-  action: lodge a complaint alleging a GPAI provider's infringement of this Regulation
+  action: lodge a complaint alleging a GPAI provider's infringement of this Regulation, duly reasoned
+    and indicating at least the provider's point of contact, the relevant facts, provisions and reasons,
+    and any other relevant information
   norm_text: Downstream providers shall have the right to lodge a complaint alleging an infringement of
     this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A089-P002
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: This is an optional procedural entitlement rather than a compliance action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent mandatory product action arises.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A53-7
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -105,12 +109,12 @@ norms:
   - GPAI provider point of contact
   - relevant facts provisions and reasons supporting alleged infringement
   - any other information considered relevant including information gathered on the complainant's initiative
-  product_scope: no_product_action
-  product_scope_reason: The content rule applies only when exercising the optional complaint entitlement.
-  implementation_mode: none_required
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: No standing compliance action arises.
-  verification_mode: not_reported
+  implementation_reason: Carried by the Article 89(2) complaint right, whose action states the content.
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

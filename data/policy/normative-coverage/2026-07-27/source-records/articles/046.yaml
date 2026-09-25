@@ -299,11 +299,9 @@ records:
   targets: []
   kind: entitlement
   temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
-  product_scope: no_product_action
-  product_scope_reason: Grants procedural participation rather than imposing a compliance action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A46-1]
+  verification_mode: reported_conditionally
   conditions:
     operator: all_of
     operands:

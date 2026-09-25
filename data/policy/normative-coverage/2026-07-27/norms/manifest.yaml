@@ -197,6 +197,28 @@ relations:
   - AIA-TEXT-A048-P005
   detail: The other Union law supplies the requirements the marking must also indicate compliance with;
     this Regulation records the duty but does not reproduce or independently check them.
+- relation_id: AIA-REL-A052-P5-REQUEST-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A052-P5-REQUEST-CONTENT
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A052-P006
+  detail: ''
+- relation_id: AIA-REL-A089-P2-COMPLAINT-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A089-P2-COMPLAINT-CONTENT
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A089-P002
+  detail: ''
 - relation_id: AIA-REL-A048-P1-GENERAL-CE-PRINCIPLES-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES
   kind: carried_by_norms

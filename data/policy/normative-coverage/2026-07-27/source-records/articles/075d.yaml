@@ -46,11 +46,9 @@ records:
   targets: []
   kind: entitlement
   temporal_regime_id: AIA-TEMP-CHAPTER-IX
-  product_scope: no_product_action
-  product_scope_reason: This is a procedural entitlement rather than a product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-ALL-A75c-3]
+  verification_mode: reported_conditionally
   conditions:
     operator: all_of
     operands:
@@ -65,6 +63,7 @@ records:
       basis_segment_ids: [AIA-TEXT-A075D-P002]
     - text: correspondence between the AI Office and those authorities
       basis_segment_ids: [AIA-TEXT-A075D-P002]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A075D-P2-FILE-ACCESS-LIMITS
   source: A075D-P002
   quote: The right of access to the file shall not extend to confidential information and internal documents

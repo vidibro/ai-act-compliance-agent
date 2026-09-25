@@ -253,11 +253,9 @@ records:
   - detailed reasons
   - new reasons arising since the designation decision
   temporal_regime_id: AIA-TEMP-CHAPTER-V
-  product_scope: no_product_action
-  product_scope_reason: The content rule applies only when exercising the optional reassessment request.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 52(5) reassessment permission, whose action states the content.
+  verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS
   source: A052-P006
@@ -266,7 +264,7 @@ records:
     AI model with systemic risk, providers may request reassessment at the earliest six months after that
     decision.
   action: request reassessment no earlier than six months after the applicable designation or maintenance
-    decision
+    decision, giving objective, detailed and new reasons that have arisen since the designation decision
   actors:
   - actor_ref: gpai_provider
     basis_segment_ids: [AIA-TEXT-A052-P002]
@@ -280,11 +278,10 @@ records:
     - text: Where the Commission, following its reassessment, decides to maintain the designation as a general-purpose AI model with systemic risk, providers may request reassessment at the earliest six months after that decision
       basis_segment_ids: [AIA-TEXT-A052-P006]
   temporal_regime_id: AIA-TEMP-CHAPTER-V
-  product_scope: no_product_action
-  product_scope_reason: Grants a timed procedural option rather than imposing a compliance action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-GP-A52-1]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A052-P6-PUBLISH-LIST
   source: A052-P007
   quote: The Commission shall ensure that a list of general-purpose AI models with systemic risk is published

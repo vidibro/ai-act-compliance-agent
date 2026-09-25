@@ -2207,8 +2207,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2156,
-        "proposed": 783,
+        "approved": 2159,
+        "proposed": 780,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2940
@@ -2235,16 +2235,18 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # in Articles 75a(3) and 75c(3) each map to one rule, as do Article 111's four transitions.
     # Annex VI's three internal-control checks are carried by the Article 43 route norms, and
     # Annex VIII's Sections A and C by the Article 71 database-entry norms. Article 46(2)'s three
-    # norms are reported beside `AIA-RULE-DP-A46-2`, as Article 5(3)'s are beside its rule.
-    assert metrics.mapping_shape.one_norm_to_one_target == 46
-    assert metrics.mapping_shape.many_norms_to_one_target == 455
+    # norms are reported beside `AIA-RULE-DP-A46-2`, as Article 5(3)'s are beside its rule. The
+    # rights and reassessment permission in Articles 46(5), 52(5), 75d(2) and 89(2) are reported
+    # beside the rules of the procedures they belong to.
+    assert metrics.mapping_shape.one_norm_to_one_target == 44
+    assert metrics.mapping_shape.many_norms_to_one_target == 461
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII's provider duties are carried by the Article 43 route norms rather than named on
     # `AIA-RULE-PO-A43-1B` and `AIA-RULE-PO-A43-3`, which leaves only the retraining consequence
     # shared between them.
     assert metrics.mapping_shape.many_to_many == 17
-    assert metrics.mapping_shape.unmapped == 889
-    assert metrics.semantic_vs_existing_implementation_disagreements == 53
+    assert metrics.mapping_shape.unmapped == 885
+    assert metrics.semantic_vs_existing_implementation_disagreements == 55
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2259,6 +2261,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A050-P5-MANNER",
+        "AIA-NORM-A052-P5-REQUEST-CONTENT",
+        "AIA-NORM-A089-P2-COMPLAINT-CONTENT",
         "AIA-NORM-ANNEX-IV-CONTENT",
         "AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION",
         "AIA-NORM-ANNEX-V-DECLARATION-CONTENT",
@@ -3068,8 +3072,12 @@ def test_article_fifty_two_separates_notification_and_reassessment_procedure():
     assert consequence.implementation_mode.value == "applicability_question"
     assert consequence.implementation_refs == ["AIA-CQ-SYSTEMIC-RISK"]
     request_content = norms["AIA-NORM-A052-P5-REQUEST-CONTENT"]
-    # The content rule binds only a provider that chooses to request reassessment.
-    assert request_content.product_scope.value == "no_product_action"
+    # The content rule binds only a provider that chooses to request reassessment, so the
+    # reassessment permission carries it and is reported beside the Article 52(1) rule.
+    assert request_content.implementation_mode.value == "carried_by_other_norm"
+    assert bundle.norm_inventory.target_norm_ids_for(
+        request_content.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    ) == ["AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS"]
     assert request_content.mandatory_content == [
         "objective reasons",
         "detailed reasons",
@@ -3077,7 +3085,10 @@ def test_article_fifty_two_separates_notification_and_reassessment_procedure():
     ]
     permissions = [norm for norm in norms.values() if norm.kind.value == "permission"]
     assert len(permissions) == 2
-    assert all(norm.implementation_mode.value == "none_required" for norm in permissions)
+    reassessment = norms["AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS"]
+    assert reassessment.implementation_mode.value == "report_only"
+    assert reassessment.implementation_refs == ["AIA-RULE-GP-A52-1"]
+    assert "new reasons" in reassessment.action
     published_list = norms["AIA-NORM-A052-P6-PUBLISH-LIST"]
     assert "keep the published list up to date" in published_list.mandatory_content
     assert any("trade secrets" in item for item in published_list.mandatory_content)
