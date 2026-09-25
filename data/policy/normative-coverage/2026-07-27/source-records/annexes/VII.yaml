@@ -37,6 +37,7 @@ records:
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 43(1) and 43(3) Annex VII route norms.
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   source: ANNEX-VII-P004
   quote: The technical documentation of the AI system shall be examined in accordance with point 4.
@@ -208,6 +209,7 @@ records:
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 43(1) Annex VII route norms.
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
   source: ANNEX-VII-P018
   quote: 'The application shall include:'
@@ -265,6 +267,7 @@ records:
       basis_segment_ids: [AIA-TEXT-ANNEX-VII-P022]
     - text: limited to what is necessary to fulfil its tasks
       basis_segment_ids: [AIA-TEXT-ANNEX-VII-P022]
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
   source: ANNEX-VII-P023
   quote: In examining the technical documentation, the notified body may require that the provider supply
@@ -286,6 +289,7 @@ records:
       basis_segment_ids: [AIA-TEXT-ANNEX-VII-P023]
     - text: the notified body may require that the provider supply further evidence or carry out further tests
       basis_segment_ids: [AIA-TEXT-ANNEX-VII-P023]
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-TESTS
   source: ANNEX-VII-P023
   quote: Where the notified body is not satisfied with the tests carried out by the provider, the notified
@@ -328,6 +332,7 @@ records:
       basis_segment_ids: [AIA-TEXT-ANNEX-VII-P024]
     - text: upon a reasoned request
       basis_segment_ids: [AIA-TEXT-ANNEX-VII-P024]
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-RETRAIN
   source: ANNEX-VII-P025
   quote: Where the AI system does not meet the requirement relating to the data used to train it, re-training

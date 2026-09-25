@@ -2207,8 +2207,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2143,
-        "proposed": 796,
+        "approved": 2153,
+        "proposed": 786,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2940
@@ -5316,11 +5316,9 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     ]
     assert not architecture.mandatory_content
     assert "build or feed into each other" in architecture.action
-    # The four obligation norms were reviewed against their spans; the Section 1 energy permission
-    # is not a gap-judged obligation and was never part of that pass.
-    reviewed = {k: v for k, v in norms.items() if k != "AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"}
-    assert all(norm.review.status.value == "proposed" for norm in reviewed.values())
-    assert all(not norm.review.verified_by for norm in reviewed.values())
+    # All five norms carry a human sign-off, the extraction pass's own approval never counting.
+    assert all(norm.review.status.value == "approved" for norm in norms.values())
+    assert all(norm.review.verified_by for norm in norms.values())
     assert_extraction_never_approves(norms.values())
 
 

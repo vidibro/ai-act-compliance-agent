@@ -45,6 +45,7 @@ records:
   - ANNEX-XI-P014
   - ANNEX-XI-P015
   - ANNEX-XI-P016
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS
   source: ANNEX-XI-P011
   quote: With regard to point (e), where the energy consumption of the model is unknown, the energy consumption
@@ -95,6 +96,7 @@ records:
   - evaluation criteria
   - metrics
   - the methodology on the identification of limitations
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
   source: ANNEX-XI-P020
   qualifier_spans:
@@ -124,6 +126,7 @@ records:
   - the measures put in place for the purpose of conducting internal and/or external adversarial testing
     (e.g. red teaming)
   - model adaptations, including alignment and fine-tuning
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
   source: ANNEX-XI-P021
   qualifier_spans:
@@ -149,6 +152,7 @@ records:
       basis_segment_ids: [AIA-TEXT-ANNEX-XI-P018]
     - text: Where applicable
       basis_segment_ids: [AIA-TEXT-ANNEX-XI-P021]
+  verified_by: vidibro
 norm_relations:
 - relation_id: AIA-REL-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
