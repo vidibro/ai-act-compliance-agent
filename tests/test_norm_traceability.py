@@ -532,6 +532,25 @@ def test_a_rule_no_norm_names_fails_the_build(bundle, spec):
     assert not any(e.startswith("AIA-RULE-DP-A05-") for e in errors)
 
 
+def test_an_operator_route_marked_as_needing_nothing_fails_the_build(bundle, spec):
+    """A permission or right of a supported operator is something the report owes its reader.
+    Marking one `none_required` would drop it from every report, so the build refuses it."""
+    changed = bundle.model_copy(deep=True)
+    route = next(
+        norm
+        for norm in changed.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A055-P2-RELY-ON-CODES"
+    )
+    route.implementation_mode = ImplementationMode.NONE_REQUIRED
+
+    errors = traceability_errors(changed, spec, LEDGER)
+
+    assert any(
+        e.startswith("AIA-NORM-A055-P2-RELY-ON-CODES is a permission of a supported operator")
+        for e in errors
+    )
+
+
 def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
     criteria = a15(spec).criteria
     model_flaws = next(c for c in criteria if c.norm_id == MODEL_FLAWS)

@@ -180,6 +180,30 @@ def traceability_errors(
                 "legal consequences must be report_only or carried_by_other_norm"
             )
 
+    # A route a supported operator may take is something the report owes its reader, whatever the
+    # route's product scope. Marking it as needing nothing would drop it from every report.
+    for norm in sorted(norms.values(), key=lambda item: item.norm_id):
+        if (
+            in_scope(norm)
+            and norm.review.status is not ReviewStatus.SUPERSEDED
+            and norm.kind in {NormKind.PERMISSION, NormKind.ENTITLEMENT}
+            and any(
+                actor.category is ActorCategory.SUPPORTED_OPERATOR
+                for actor in norm.assigned_actors
+            )
+            and norm.implementation_mode
+            not in {
+                ImplementationMode.REPORT_ONLY,
+                ImplementationMode.CARRIED_BY_OTHER_NORM,
+                ImplementationMode.APPLICABILITY_QUESTION,
+            }
+        ):
+            errors.append(
+                f"{norm.norm_id} is a {norm.kind.value} of a supported operator but "
+                f"implementation_mode is {norm.implementation_mode.value}; it must reach the "
+                "report as report_only, carried_by_other_norm or applicability_question"
+            )
+
     # Report-only legal statements are not criteria: they tell a reader what is allowed, what
     # relief applies, or when a rule is narrowed, never whether an obligation passed. They still
     # need an exact bidirectional activation link, or could silently disappear.
