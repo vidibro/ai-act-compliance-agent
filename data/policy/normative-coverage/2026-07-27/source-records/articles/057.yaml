@@ -756,12 +756,10 @@ records:
     - text: for any damage inflicted on third parties as a result of the experimentation taking place in the sandbox
       basis_segment_ids: [AIA-TEXT-A057-P021]
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
-    rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A59-P1-E, AIA-RULE-PP-A59-P1]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A057-P12-AI-ACT-NO-FINE-PROTECTION
   source: A057-P021
   quote: However, provided that the prospective providers observe the specific plan and the terms and
@@ -780,12 +778,10 @@ records:
     - text: provided that the prospective providers observe the specific plan and the terms and conditions for their participation and follow in good faith the guidance given by the national competent authority
       basis_segment_ids: [AIA-TEXT-A057-P021]
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
-    rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PP-A59-P1]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A057-P12-OTHER-LAW-NO-FINE-PROTECTION
   source: A057-P021
   quote: Where other competent authorities responsible for other Union and national law were actively
@@ -808,12 +804,10 @@ records:
     - text: Where other competent authorities responsible for other Union and national law were actively involved in the supervision of the AI system in the sandbox and provided guidance for compliance
       basis_segment_ids: [AIA-TEXT-A057-P021]
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Defines an optional evidentiary route or liability and enforcement consequences,
-    rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A59-P1-E, AIA-RULE-PP-A59-P1]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A057-P13-CROSS-BORDER-DESIGN
   source: A057-P022
   quote: The AI regulatory sandboxes shall be designed and implemented in such a way that, where relevant,

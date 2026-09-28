@@ -112,11 +112,10 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-V
-  product_scope: no_product_action
-  product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-GP-A55-2]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A055-P2-ALTERNATIVE-COMPLIANCE
   source: A055-P006
   quote: Providers of general-purpose AI models with systemic risks who do not adhere to an approved code

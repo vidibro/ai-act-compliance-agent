@@ -4976,6 +4976,76 @@ rules:
     status: active
 
   # ------------------------------------------------------------------------------------------
+  # ART. 5(1) — THE PROHIBITIONS THEMSELVES, as a duty. The classification answers `prohibited` and
+  # names the point; these rules put the duty that follows in front of the reader, so the Art. 99(3)
+  # fine has a duty to sit beside. Two rules because two dates: points (ba) and (bb) were added by
+  # the Omnibus and apply later than the rest of Chapter II.
+  - rule_id: AIA-RULE-ALL-A05-1
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 5
+      paragraph: 1 # points (a) to (h), without (ba) and (bb)
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [prohibited]
+    applies_to_role: [provider, importer, deployer]
+    applies_to_prohibited_practice:
+      [
+        subliminal_manipulation,
+        exploiting_vulnerabilities,
+        social_scoring,
+        criminal_offence_prediction,
+        facial_image_scraping,
+        emotion_inference_workplace_education,
+        biometric_categorisation_sensitive,
+        realtime_remote_biometric_identification,
+      ]
+    activation_condition: >-
+      Owed by every provider, importer and deployer of a system the classification places under one
+      of the Art. 5(1) points. For real-time remote biometric identification under point (h) only
+      the USE is banned, and it is lifted for a law enforcement deployer operating under a national
+      authorisation; that branch is governed by AIA-RULE-DP-A05-2 to AIA-RULE-DP-A05-4.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The system is NOT PLACED ON THE MARKET, NOT PUT INTO SERVICE AND NOT USED for the prohibited
+      practice, or it is withdrawn if it already is. Nothing in a technical file can make a
+      prohibited practice compliant; what counts is that it stops. The Art. 5(1) point the
+      classification names says which practice, and its own exceptions are where any argument
+      lives. A decision about the system's existence rather than a property of its documentation —
+      confirm separately.
+    document_verifiable: false
+    effective_date: 2025-02-02
+    effective_date_note: >-
+      Art. 113(a) applies Chapters I and II from 2 February 2025. Points (ba) and (bb), deferred by
+      the Omnibus, are AIA-RULE-ALL-A05-1BA.
+    status: active
+
+  - rule_id: AIA-RULE-ALL-A05-1BA
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 5
+      paragraph: 1 # points (ba) and (bb), inserted by the Omnibus
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [prohibited]
+    applies_to_role: [provider, importer, deployer]
+    applies_to_prohibited_practice: [non_consensual_intimate_imagery, child_sexual_abuse_material]
+    activation_condition: >-
+      Owed by every provider, importer and deployer of a system the classification places under
+      Art. 5(1), point (ba) or (bb).
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The system is NOT PLACED ON THE MARKET, NOT PUT INTO SERVICE AND NOT USED for generating the
+      material the point names, or it is withdrawn if it already is. As for the other Art. 5(1)
+      points, nothing in a technical file makes the practice compliant — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-12-02
+    effective_date_note: >-
+      The Omnibus inserted points (ba) and (bb) and Art. 113(a) applies them from 2 December 2026,
+      later than the rest of Chapter II.
+    status: active
+
+  # ------------------------------------------------------------------------------------------
   # ART. 5(2)-(4) — THE LAWFUL BRANCH OF THE REAL-TIME BIOMETRIC PROHIBITION.
   #
   # Every other point of Art. 5(1) bans outright, and a banned practice owes withdrawal and nothing

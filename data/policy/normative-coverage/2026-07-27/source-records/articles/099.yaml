@@ -133,16 +133,15 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-XII
-  product_scope: no_product_action
-  product_scope_reason: This is an enforcement consequence rather than an independent compliance action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-ALL-A05-1, AIA-RULE-ALL-A05-1BA]
+  verification_mode: reported_conditionally
   conditions:
     operator: all_of
     operands:
     - text: Non-compliance with the prohibition of the AI practices referred to in Article 5
       basis_segment_ids: [AIA-TEXT-A099-P003]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A099-P4-OPERATOR-FINE
   source: A099-P004
   quote: shall be subject to administrative fines of up to EUR 15000000 or, if the offender is an undertaking,

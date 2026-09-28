@@ -265,14 +265,24 @@ def test_information_interface_does_not_swallow_conditional_coordination(norms):
 
 def test_corrections_remain_proposed_and_do_not_invent_runtime_coverage(norms):
     assert len(norms) == 49
-    # The one operator route, using sandbox documentation as evidence, is reported beside the
-    # conformity-assessment rules; every other Article 57 norm binds an authority.
-    evidence = norms["P7-EVIDENTIARY-USE"]
-    assert evidence.implementation_mode.value == "report_only"
-    assert evidence.review.verified_by
+    # The operator routes and legal effects, the sandbox evidence route and the 57(12) liability
+    # and fine effects, are reported beside the rules that reach a sandbox provider; every other
+    # Article 57 norm binds an authority.
+    reported = [
+        norms[key]
+        for key in (
+            "P7-EVIDENTIARY-USE",
+            "P12-LIABILITY-AND-FINE-SAFE-HARBOUR",
+            "P12-AI-ACT-NO-FINE-PROTECTION",
+            "P12-OTHER-LAW-NO-FINE-PROTECTION",
+        )
+    ]
+    for norm in reported:
+        assert norm.implementation_mode.value == "report_only"
+        assert norm.review.verified_by
     for norm in norms.values():
         assert norm.primary_spans[0].startswith("AIA-TEXT-A057-")
-        if norm is evidence:
+        if norm in reported:
             continue
         assert norm.review.status.value == "proposed"
         assert norm.implementation_mode.value == "none_required"

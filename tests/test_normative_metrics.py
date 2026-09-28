@@ -897,9 +897,9 @@ def test_article_five_is_fully_approved():
     assert all(segment.disposition.value == "normative" for segment in segments[1:])
     assert all(segment.review.status.value == "approved" for segment in segments[1:])
     assert all(segment.review.verified_by == "vidibro" for segment in segments[1:])
-    assert len(norms) == 40
+    assert len(norms) == 41
     assert sum(norm.kind.value == "obligation" for norm in norms) == 19
-    assert sum(norm.kind.value == "prohibition" for norm in norms) == 12
+    assert sum(norm.kind.value == "prohibition" for norm in norms) == 13
     assert sum(norm.kind.value == "applicability" for norm in norms) == 2
     assert sum(norm.kind.value == "legal_consequence" for norm in norms) == 3
     assert sum(norm.kind.value == "permission" for norm in norms) == 1
@@ -919,7 +919,8 @@ def test_article_five_paragraph_one_chapeau_qualifies_ten_prohibitions():
         if norm.norm_id in segment.qualifying_norm_ids
     }
 
-    assert segment.norm_ids == []
+    # The chapeau's own norm states the ban as a duty, for the Article 5(1) rules to check.
+    assert segment.norm_ids == ["AIA-NORM-A005-P1-PROHIBITED-PRACTICES"]
     assert len(norms) == 10
     assert all(norm.kind.value == "prohibition" for norm in norms.values())
     assert all(norm.qualifier_spans[0] == segment.segment_id for norm in norms.values())
@@ -2207,16 +2208,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2164,
-        "proposed": 775,
+        "approved": 2179,
+        "proposed": 761,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2940
+    assert metrics.total_review_records == 2941
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 541
-    assert metrics.shall_token_candidate_recall == pytest.approx(868 / 1409)
+    assert metrics.shall_token_candidate_recall == pytest.approx(869 / 1410)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2238,15 +2239,16 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # norms are reported beside `AIA-RULE-DP-A46-2`, as Article 5(3)'s are beside its rule. The
     # rights and reassessment permission in Articles 46(5), 52(5), 75d(2) and 89(2) are reported
     # beside the rules of the procedures they belong to, as are the operator permissions in
-    # Articles 52(2), 55(2), 56(7), 57(7) and 75c(3).
+    # Articles 52(2), 55(2), 56(7), 57(7) and 75c(3), and the operator legal effects in Articles
+    # 55(2), 57(12), 59(3), 60, 63(2), 75c(4), 80 and 99(3).
     assert metrics.mapping_shape.one_norm_to_one_target == 43
-    assert metrics.mapping_shape.many_norms_to_one_target == 466
+    assert metrics.mapping_shape.many_norms_to_one_target == 478
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII's provider duties are carried by the Article 43 route norms rather than named on
     # `AIA-RULE-PO-A43-1B` and `AIA-RULE-PO-A43-3`, which leaves only the retraining consequence
     # shared between them.
-    assert metrics.mapping_shape.many_to_many == 18
-    assert metrics.mapping_shape.unmapped == 880
+    assert metrics.mapping_shape.many_to_many == 22
+    assert metrics.mapping_shape.unmapped == 865
     assert metrics.semantic_vs_existing_implementation_disagreements == 55
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
@@ -3190,14 +3192,16 @@ def test_article_fifty_five_maps_systemic_risk_provider_controls():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 8
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
-    assert len(mapped) == 6
+    assert len(mapped) == 7
     assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     # The code-of-practice route is a permitted route, reported beside the alternative-means rule.
     codes = norms["AIA-NORM-A055-P2-RELY-ON-CODES"]
     assert codes.implementation_mode.value == "report_only"
     assert codes.implementation_refs == ["AIA-RULE-GP-A55-2"]
+    # The harmonised-standard presumption is a legal effect reported beside the same rule.
     presumption = norms["AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION"]
-    assert presumption.product_scope.value == "no_product_action"
+    assert presumption.implementation_mode.value == "report_only"
+    assert presumption.implementation_refs == ["AIA-RULE-GP-A55-2"]
     assert {ref for norm in mapped for ref in norm.implementation_refs} == {
         "AIA-RULE-GP-A55-1A",
         "AIA-RULE-GP-A55-1B",
@@ -3274,10 +3278,15 @@ def test_article_fifty_seven_extracts_complete_sandbox_lifecycle():
     assert segments[6].qualifying_norm_ids == ["AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX"]
     assert len(norms) == 49
     evidence = norms["AIA-NORM-A057-P7-EVIDENTIARY-USE"]
+    reported = [
+        norm
+        for norm in norms.values()
+        if norm.assigned_actors and norm.assigned_actors[0].category.value == "supported_operator"
+    ]
     assert all(
         norm.implementation_mode.value == "none_required"
         for norm in norms.values()
-        if norm is not evidence
+        if norm not in reported
     )
     objectives = norms["AIA-NORM-A057-P9-SANDBOX-OBJECTIVES"]
     assert len(objectives.mandatory_content) == 5
@@ -3288,14 +3297,9 @@ def test_article_fifty_seven_extracts_complete_sandbox_lifecycle():
         if norm.assigned_actors and norm.assigned_actors[0].category.value == "supported_operator"
     ]
     assert len(provider_consequences) == 4
-    # The evidentiary route is reported; the three liability and enforcement effects are not.
+    # The evidentiary route and the three liability and fine effects all reach the reader.
     assert evidence in provider_consequences
-    assert evidence.implementation_mode.value == "report_only"
-    assert all(
-        norm.product_scope.value == "no_product_action"
-        for norm in provider_consequences
-        if norm is not evidence
-    )
+    assert all(norm.implementation_mode.value == "report_only" for norm in provider_consequences)
 
 
 def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
@@ -3448,9 +3452,9 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     assert norms["AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS"].product_scope.value == (
         "outside_supported_actor"
     )
-    assert norms["AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW"].product_scope.value == (
-        "no_product_action"
-    )
+    preserved = norms["AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW"]
+    assert preserved.implementation_mode.value == "report_only"
+    assert preserved.implementation_refs == ["AIA-RULE-SP-A59-P1-J"]
 
 
 def test_article_sixty_extracts_real_world_testing_lifecycle():
@@ -3789,9 +3793,9 @@ def test_article_sixty_three_limits_the_sme_derogation():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     assert norms["AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT"].kind.value == ("permission")
-    assert norms["AIA-NORM-A063-P2-NO-BROADER-EXEMPTION"].product_scope.value == (
-        "no_product_action"
-    )
+    no_broader = norms["AIA-NORM-A063-P2-NO-BROADER-EXEMPTION"]
+    assert no_broader.implementation_mode.value == "report_only"
+    assert no_broader.implementation_refs == ["AIA-RULE-PO-A17"]
 
 
 def test_article_sixty_four_extracts_ai_office_support_duties():
@@ -4492,8 +4496,9 @@ def test_article_eighty_maps_reclassified_provider_correction():
     assert len(norms) == 9
     # Reclassification binds a provider whose own classification was not high-risk, so the
     # duties sit under a not-high-risk rule rather than Article 20.
+    # The two correction duties and the two fines for failing them.
     mapped = [norm for norm in norms.values() if norm.implementation_refs == ["AIA-RULE-NHR-A80"]]
-    assert len(mapped) == 2
+    assert len(mapped) == 4
     assert sum(norm.kind.value == "legal_consequence" for norm in norms.values()) == 2
 
 

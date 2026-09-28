@@ -1183,7 +1183,12 @@ def test_every_legal_enum_still_matches_the_enacted_list_it_names():
 
     # Art. 5(1). The Art. 5(1)(h) GDPR saving sits under the same prefix and bans nothing, so the
     # comparison is against the prohibitions rather than everything the paragraph carries.
-    banned = [n for n in under("AIA-NORM-A005-P1-") if n.kind is NormKind.PROHIBITION]
+    # One per lettered point; the chapeau's own norm states the ban as a duty and names no point.
+    banned = [
+        n
+        for n in under("AIA-NORM-A005-P1-")
+        if n.kind is NormKind.PROHIBITION and n.primary_spans != ["AIA-TEXT-A005-P001"]
+    ]
     assert len(ProhibitedPractice) == len(banned), (
         f"{len(ProhibitedPractice)} prohibited practices for {len(banned)} Art. 5(1) prohibitions"
     )

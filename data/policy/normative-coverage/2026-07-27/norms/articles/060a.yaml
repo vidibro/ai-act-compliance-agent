@@ -375,14 +375,12 @@ norms:
 - norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  actors:
-  - actor_ref: provider
+  actors: none
+  targets:
+  - target_ref: Any requirements laid down in those provisions
+    target_kind: external_requirement
     basis_segment_ids:
-    - AIA-TEXT-A060A-P001
-  - actor_ref: prospective_provider
-    basis_segment_ids:
-    - AIA-TEXT-A060A-P001
-  targets: []
+    - AIA-TEXT-A060A-P010
   action: keep the Section B requirements from affecting the application of Article 60a to the extent
     necessary to enable the paragraph 1 testing
   norm_text: Any requirements laid down in those provisions shall not affect the application of this Article

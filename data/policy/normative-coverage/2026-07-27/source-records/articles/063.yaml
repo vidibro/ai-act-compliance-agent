@@ -53,9 +53,7 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Limits the simplification's legal effect rather than creating an independent product
-    action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A17]
+  verification_mode: reported_conditionally
+  verified_by: vidibro

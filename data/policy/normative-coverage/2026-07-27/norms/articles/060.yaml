@@ -120,22 +120,24 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A060-P003
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: Preserves other applicable law rather than creating an independent product action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -203,23 +205,24 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A060-P005
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: Preserves an independently applicable review requirement rather than creating
-    a new one.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -1124,22 +1127,24 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A060-P018
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: Defines a withdrawal consequence rather than an independent product action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -1426,22 +1431,24 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A060-P022
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: Establishes liability consequences rather than an independent product action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A60-4
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

@@ -40,7 +40,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids: []
+  norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   qualifying_norm_ids:
   - AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   - AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
@@ -80,7 +81,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -109,7 +111,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -136,7 +139,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -162,7 +166,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -190,7 +195,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-C-SOCIAL-SCORING
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -273,7 +279,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -300,7 +307,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -328,7 +336,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -358,7 +367,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -383,7 +393,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-H-REAL-TIME-RBI
-  qualifying_norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

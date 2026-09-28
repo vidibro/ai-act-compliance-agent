@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1409 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1410 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory does not decide classification,
 rule selection, or judging. It does materialise rule criteria and report-only legal boundaries into
@@ -84,7 +84,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - article 48: 7
 - article 49: 9
 - article 4a: 8
-- article 5: 40
+- article 5: 41
 - article 50: 12
 - article 51: 4
 - article 52: 13
@@ -250,6 +250,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - AIA-TEXT-A004A-P007: 1
 - AIA-TEXT-A004A-P008: 1
 - AIA-TEXT-A004A-P011: 1
+- AIA-TEXT-A005-P001: 1
 - AIA-TEXT-A005-P002: 1
 - AIA-TEXT-A005-P003: 1
 - AIA-TEXT-A005-P004: 1
@@ -1164,11 +1165,11 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - Semantic candidates a shall-token pass missed: 541
 - Shall-token candidate recall: 61.6%
 - In-scope semantic candidates absent from existing implementation: 55
-- Detection-channel counts: cross_reference_structure=474, deeming_or_consequence=273, existing_implementation=529, other_modal=170, semantic_legal_effect=1409, shall_token=868
-- Mapping shapes, by norm: one-to-one=43, many-to-one=466, one-to-many=2, many-to-many=18, unmapped=880
+- Detection-channel counts: cross_reference_structure=475, deeming_or_consequence=273, existing_implementation=545, other_modal=170, semantic_legal_effect=1410, shall_token=869
+- Mapping shapes, by norm: one-to-one=43, many-to-one=478, one-to-many=2, many-to-many=22, unmapped=865
 - Implementation debt candidates: 0
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2940
+- Review records with measured elapsed time: 0/2941
 - Parallel-duty groups: 23, linking 67 norms
 - National-law alignment notices: 4
 

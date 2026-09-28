@@ -923,6 +923,8 @@ def test_only_chapter_iii_sections_1_to_3_carry_two_start_dates(spec):
 # --- Art. 5(1)(h) — the one prohibition with a lawful branch --------------------------------------
 
 _ART_5_LAWFUL_BRANCH = {"AIA-RULE-DP-A05-2", "AIA-RULE-DP-A05-3", "AIA-RULE-DP-A05-4"}
+# The ban itself as a duty: points (ba) and (bb) apply later than the rest, hence two rules.
+_ART_5_BAN = {"AIA-RULE-ALL-A05-1", "AIA-RULE-ALL-A05-1BA"}
 
 
 def test_the_lawful_branch_duties_reach_only_the_practice_that_has_one(spec):
@@ -940,15 +942,16 @@ def test_the_lawful_branch_duties_reach_only_the_practice_that_has_one(spec):
         ActorRole.DEPLOYER,
         prohibited_practice=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
     )
-    assert {r.rule_id for r in lawful.all_rules} == _ART_5_LAWFUL_BRANCH
+    assert {r.rule_id for r in lawful.all_rules} == _ART_5_LAWFUL_BRANCH | {"AIA-RULE-ALL-A05-1"}
 
     for practice in ProhibitedPractice:
         if practice is ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION:
             continue
         other = select_rules(spec, use_case, ActorRole.DEPLOYER, prohibited_practice=practice)
-        assert not other.all_rules, (
-            f"{practice.value} bans outright and owes withdrawal, but "
-            f"{[r.rule_id for r in other.all_rules]} were selected for it"
+        selected = [r.rule_id for r in other.all_rules]
+        assert len(selected) == 1 and selected[0] in _ART_5_BAN, (
+            f"{practice.value} bans outright and owes withdrawal alone, but {selected} were "
+            "selected for it"
         )
 
 
@@ -968,9 +971,10 @@ def test_a_prohibited_classification_never_reaches_a_chapter_iii_duty(spec):
             prohibited_practice=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
         )
         for rule in active.all_rules:
-            assert rule.rule_id in _ART_5_LAWFUL_BRANCH, (
+            assert rule.rule_id in _ART_5_LAWFUL_BRANCH | _ART_5_BAN, (
                 f"{rule.rule_id} was selected for a prohibited system. Only Art. 5's own "
-                f"conditions belong here — nothing in Chapter III applies to a banned practice."
+                f"ban and conditions belong here — nothing in Chapter III applies to a banned "
+                f"practice."
             )
 
 

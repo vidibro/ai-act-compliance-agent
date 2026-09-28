@@ -11,9 +11,9 @@ source:
 audit:
   audit_schema_version: 1
   segments_scanned: 35
-  norms_scanned: 40
+  norms_scanned: 41
   finding_count: 9
-  audit_sha256: a097677cc9c79b5bed49e07a5d38478747b68c4dcf4d943dc9deb5b3c3030b4f
+  audit_sha256: 21fc236e595ca952f99e60646f4033647b4a0a508a4318ca7d489ab3c6dc917e
 decisions:
 - finding_id: AIA-VALID-6AB4108E5A6666D2
   target: AIA-NORM-A005-P1-H-GDPR-SAVING

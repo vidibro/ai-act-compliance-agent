@@ -192,11 +192,10 @@ records:
     - text: failure to comply with a commitment made binding by a decision pursuant to Article 75b
       basis_segment_ids: [AIA-TEXT-A075C-P008]
   temporal_regime_id: AIA-TEMP-CHAPTER-IX
-  product_scope: no_product_action
-  product_scope_reason: This is an enforcement consequence rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-ALL-A75c-3]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A075C-P4-INFORMATION-FINE
   source: A075C-P009
   quote: The supply of incorrect, incomplete or misleading information to the AI Office in reply to a
@@ -209,16 +208,15 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-IX
-  product_scope: no_product_action
-  product_scope_reason: This is an enforcement consequence rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-ALL-A75c-3]
+  verification_mode: reported_conditionally
   conditions:
     operator: all_of
     operands:
     - text: The supply of incorrect, incomplete or misleading information to the AI Office in reply to a request
       basis_segment_ids: [AIA-TEXT-A075C-P009]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   source: A075C-P010
   quote: 'The AI Office may adopt a decision imposing periodic penalty payments to compel the operators

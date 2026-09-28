@@ -87,11 +87,10 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Preserves other applicable law rather than creating an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A60-4]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION
   source: A060-P004
   quote: Providers or prospective providers may conduct testing of high-risk AI systems referred to in
@@ -126,12 +125,10 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Preserves an independently applicable review requirement rather than creating
-    a new one.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A60-4]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-PERMISSION
   source: A060-P006
   quote: Providers or prospective providers may conduct the testing in real world conditions only where
@@ -598,11 +595,10 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Defines a withdrawal consequence rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A60-4]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS
   source: A060-P019
   quote: In accordance with Article 75, Member States shall confer on their market surveillance authorities
@@ -738,8 +734,7 @@ records:
   targets: []
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: Establishes liability consequences rather than an independent product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-PO-A60-4]
+  verification_mode: reported_conditionally
+  verified_by: vidibro

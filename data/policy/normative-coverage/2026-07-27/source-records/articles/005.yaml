@@ -25,6 +25,31 @@ norm_relations:
   legal_basis_spans:
   - AIA-TEXT-A005-P028
 records:
+- norm_id: AIA-NORM-A005-P1-PROHIBITED-PRACTICES
+  source: A005-P001
+  temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
+  quote: The following AI practices shall be prohibited
+  action: do not place on the market, put into service or use an AI system for any of the practices
+    listed in Article 5(1), points (a) to (h)
+  actors: []
+  targets: []
+  kind: prohibition
+  qualifier_spans:
+  - A005-P002
+  - A005-P003
+  - A005-P004
+  - A005-P005
+  - A005-P006
+  - A005-P009
+  - A005-P010
+  - A005-P011
+  - A005-P012
+  - A005-P013
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-RULE-ALL-A05-1
+  - AIA-RULE-ALL-A05-1BA
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   source: A005-P002
   temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION

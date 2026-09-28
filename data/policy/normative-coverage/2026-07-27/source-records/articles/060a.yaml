@@ -195,12 +195,11 @@ records:
     to the extent necessary to enable the testing referred to in paragraph 1.
   action: keep the Section B requirements from affecting the application of Article 60a to the extent
     necessary to enable the paragraph 1 testing
-  actors:
-  - actor_ref: provider
-    basis_segment_ids: [AIA-TEXT-A060A-P001]
-  - actor_ref: prospective_provider
-    basis_segment_ids: [AIA-TEXT-A060A-P001]
-  targets: []
+  actors: none
+  targets:
+  - target_ref: Any requirements laid down in those provisions
+    target_kind: external_requirement
+    basis_segment_ids: [AIA-TEXT-A060A-P010]
   kind: legal_consequence
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
   product_scope: no_product_action

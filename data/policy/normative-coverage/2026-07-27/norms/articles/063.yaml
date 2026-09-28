@@ -102,23 +102,24 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A063-P002
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: Limits the simplification's legal effect rather than creating an independent product
-    action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-PO-A17
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
