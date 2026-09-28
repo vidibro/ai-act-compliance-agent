@@ -180,13 +180,17 @@ def traceability_errors(
                 "legal consequences must be report_only or carried_by_other_norm"
             )
 
-    # A route a supported operator may take is something the report owes its reader, whatever the
-    # route's product scope. Marking it as needing nothing would drop it from every report.
+    # A route a supported operator may take, or a legal effect that reaches one, is something the
+    # report owes its reader. Marking it as needing nothing would drop it from every report. A
+    # `dependency_only` effect is exempt: the product applies it itself, as the gap layer does with
+    # an Article 25 role transfer, rather than telling the reader about it.
     for norm in sorted(norms.values(), key=lambda item: item.norm_id):
         if (
             in_scope(norm)
             and norm.review.status is not ReviewStatus.SUPERSEDED
-            and norm.kind in {NormKind.PERMISSION, NormKind.ENTITLEMENT}
+            and norm.kind
+            in {NormKind.PERMISSION, NormKind.ENTITLEMENT, NormKind.LEGAL_CONSEQUENCE}
+            and norm.product_scope is not ProductScope.DEPENDENCY_ONLY
             and any(
                 actor.category is ActorCategory.SUPPORTED_OPERATOR
                 for actor in norm.assigned_actors

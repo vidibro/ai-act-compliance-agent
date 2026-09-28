@@ -532,23 +532,24 @@ def test_a_rule_no_norm_names_fails_the_build(bundle, spec):
     assert not any(e.startswith("AIA-RULE-DP-A05-") for e in errors)
 
 
-def test_an_operator_route_marked_as_needing_nothing_fails_the_build(bundle, spec):
-    """A permission or right of a supported operator is something the report owes its reader.
-    Marking one `none_required` would drop it from every report, so the build refuses it."""
+@pytest.mark.parametrize(
+    ("norm_id", "kind"),
+    [
+        ("AIA-NORM-A055-P2-RELY-ON-CODES", "permission"),
+        ("AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION", "legal_consequence"),
+    ],
+)
+def test_an_operator_route_marked_as_needing_nothing_fails_the_build(bundle, spec, norm_id, kind):
+    """A permission, right or legal effect of a supported operator is something the report owes
+    its reader. Marking one `none_required` would drop it from every report, so the build refuses
+    it."""
     changed = bundle.model_copy(deep=True)
-    route = next(
-        norm
-        for norm in changed.norm_inventory.norms
-        if norm.norm_id == "AIA-NORM-A055-P2-RELY-ON-CODES"
-    )
+    route = next(norm for norm in changed.norm_inventory.norms if norm.norm_id == norm_id)
     route.implementation_mode = ImplementationMode.NONE_REQUIRED
 
     errors = traceability_errors(changed, spec, LEDGER)
 
-    assert any(
-        e.startswith("AIA-NORM-A055-P2-RELY-ON-CODES is a permission of a supported operator")
-        for e in errors
-    )
+    assert any(e.startswith(f"{norm_id} is a {kind} of a supported operator") for e in errors)
 
 
 def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
