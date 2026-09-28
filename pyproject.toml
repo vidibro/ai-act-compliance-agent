@@ -24,6 +24,7 @@ dev = [
     "pytest>=8.2",
     "ruff>=0.5",
     "mypy>=1.10",
+    "pytest-xdist>=3.8.0",
 ]
 
 [build-system]
@@ -44,6 +45,8 @@ select = ["E", "F", "I", "UP", "B", "W"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+# Parallel across all cores; pass `-n0` to run in one process, e.g. under a debugger.
+addopts = "-n auto"
 
 [tool.mypy]
 # Type-checks our code — including Protocol conformance (that e.g. ScriptedBrain and LLMBrain
