@@ -36,6 +36,7 @@ from aiact.schemas.norm import (
 )
 from aiact.schemas.policy import PolicyRuleset
 from aiact.schemas.review import ReviewStatus
+from aiact.scope_notes import SCOPE_NOTES
 
 _ACCEPTED_DECISIONS = {"accepted_with_basis", "false_positive"}
 
@@ -159,6 +160,36 @@ def traceability_errors(
                 errors.append(
                     f"{norm.norm_id} names unknown classification question(s) {unknown_questions}"
                 )
+
+        if norm.implementation_mode is ImplementationMode.SCOPE_NOTE:
+            # A scope note is the norm's only report entry, so it must state the enacted text.
+            for note_id in norm.implementation_refs:
+                if note_id not in SCOPE_NOTES:
+                    errors.append(f"{norm.norm_id} names unknown scope note {note_id}")
+                elif norm.norm_text not in SCOPE_NOTES[note_id]:
+                    errors.append(
+                        f"{norm.norm_id} scope note {note_id} does not state its enacted text"
+                    )
+
+    # Every norm a supported operator holds must reach them: as a rule, a report entry, a
+    # classification question, a scope note, or through the norm that carries it. `none_required`
+    # would drop it from every report. A `dependency_only` effect is exempt: the product applies it
+    # itself, as the gap layer does with an Article 25 role transfer.
+    for norm in sorted(norms.values(), key=lambda item: item.norm_id):
+        if (
+            in_scope(norm)
+            and norm.review.status is not ReviewStatus.SUPERSEDED
+            and norm.implementation_mode is ImplementationMode.NONE_REQUIRED
+            and norm.product_scope is not ProductScope.DEPENDENCY_ONLY
+            and any(
+                actor.category is ActorCategory.SUPPORTED_OPERATOR
+                for actor in norm.assigned_actors
+            )
+        ):
+            errors.append(
+                f"{norm.norm_id} binds a supported operator but implementation_mode is "
+                "none_required; it must reach them through a rule, the report or a scope note"
+            )
 
     # A permission, right or legal consequence has no pass/fail answer.  A norm may either
     # materialise directly as report-only, or be an exact duplicate carried by such a norm.  It can

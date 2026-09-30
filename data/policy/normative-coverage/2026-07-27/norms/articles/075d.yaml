@@ -17,22 +17,24 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A075D-P001
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: This grants procedural protection rather than imposing a product action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-ALL-A75c-3
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -158,12 +160,13 @@ norms:
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: This limits a procedural entitlement rather than requiring a product action.
-  implementation_mode: none_required
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_reason: Carried by the Article 75d(2) negotiated file access right, whose exceptions
+    state these limits.
+  verification_mode: reported_conditionally
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

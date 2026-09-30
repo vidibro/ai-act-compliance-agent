@@ -133,6 +133,7 @@ implementation_targets:
 - AIA-RULE-NHR-A71-2
 - AIA-RULE-NHR-A80
 - AIA-RULE-DP-A71-3
+- AIA-SCOPE-NOTE-SECTION-B
 - AIA-CQ-IS-AI
 - AIA-CQ-TERRITORIAL
 - AIA-CQ-SCOPE
@@ -297,6 +298,7 @@ norm_relations:
       The other Union law supplies the requirements the marking must also indicate compliance with;
       this Regulation records the duty but does not reproduce or independently check them.
   - {relation_id: AIA-REL-A052-P5-REQUEST-CONTENT-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A052-P5-REQUEST-CONTENT, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS], legal_basis_spans: [AIA-TEXT-A052-P006]}
+  - {relation_id: AIA-REL-A075D-P2-FILE-ACCESS-LIMITS-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A075D-P2-FILE-ACCESS-LIMITS, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS], legal_basis_spans: [AIA-TEXT-A075D-P002]}
   - {relation_id: AIA-REL-A089-P2-COMPLAINT-CONTENT-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A089-P2-COMPLAINT-CONTENT, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT], legal_basis_spans: [AIA-TEXT-A089-P002]}
   - {relation_id: AIA-REL-A048-P1-GENERAL-CE-PRINCIPLES-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A048-P3-AFFIX-CE-MARKING], legal_basis_spans: [AIA-TEXT-A048-P001]}
   - {relation_id: AIA-REL-A008-P1-COMPLY-SECTION-REQUIREMENTS-CARRIED-BY-NORMS, source_norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS, kind: carried_by_norms, target_norm_ids: [AIA-NORM-A016-A-SECTION-2-COMPLIANCE], legal_basis_spans: [AIA-TEXT-A008-P001]}

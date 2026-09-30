@@ -30,6 +30,7 @@ from aiact.schemas.enums import ProhibitedPractice, RiskClass
 from aiact.schemas.policy import PolicyRuleset
 from aiact.schemas.question import Question
 from aiact.schemas.report import ComplianceReport, ReportSummary
+from aiact.scope_notes import section_b_note
 
 _PROHIBITED_NOTE = (
     "No obligation check was run: the practice is prohibited under Art. 5. Chapter III sets out "
@@ -97,25 +98,6 @@ _NEEDS_REVIEW_NOTE = (
     "not yet known. Checking against a guessed risk class would produce findings a provider could "
     "act on that may not be owed. Resolve the classification first."
 )
-
-
-def _section_b_note(products: list[str]) -> str:
-    """A Section B system is high-risk and owes no Chapter III. Both halves have to be said, or the
-    empty findings list reads as a clean bill of health rather than a scope limit."""
-    return (
-        f"High-risk under Art. 6(1), but Chapter III was NOT checked: this system is a safety "
-        f"component of a product covered by Annex I Section B ({', '.join(products)}). Under "
-        f"Art. 2(2) only Art. 6(1), Art. 60a and Arts. 102-112 of this Regulation apply to such a "
-        f"system, plus Arts. 57 to 59 on sandboxes where the high-risk requirements have been "
-        f"integrated into that sectoral legislation — the requirements of Art. 9-15 and the "
-        f"provider obligations of Art. 16 onward do not. Its safety duties come from that sectoral "
-        f"legislation instead, which is outside this tool's scope. ART. 60a IS THE ONE THAT STILL "
-        f"BITES HERE: if this system is tested in real world conditions, the Member State "
-        f"framework allowing that must under "
-        f"Art. 60a(5)(b) ensure compliance with Art. 60(2), (3), (4)(d) to (j) and (5) to (9). "
-        f"Those conditions reach the provider through national law rather than through this "
-        f"Regulation, so no obligation for them is listed above — confirm them separately."
-    )
 
 
 _GPAI_NOTE = (
@@ -243,7 +225,7 @@ def review(
     ]
     section_b = sorted({uc.annex_i_product.value for uc in withheld if uc.annex_i_product})
     if section_b and len(withheld) == len(high_risk):
-        return report.model_copy(update={"scope_note": _section_b_note(section_b)})
+        return report.model_copy(update={"scope_note": section_b_note(section_b)})
 
     # The Art. 5 verdict, carried through to a report that now has findings behind it. The note is
     # unchanged for a practice banned outright — nothing was selected and the findings list is

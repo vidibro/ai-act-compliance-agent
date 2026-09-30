@@ -669,10 +669,12 @@ def test_yaml_inventory_shards_merge_metadata_lists_and_mappings(tmp_path):
 
 
 def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
-    """Targets come in two families, each resolved against its own registry: an obligation is
-    implemented by a policy rule, an applicability question by a cascade node. Both must name
-    something that exists, or the norm claims an implementation it does not have."""
+    """Targets come in three families, each resolved against its own registry: an obligation is
+    implemented by a policy rule, an applicability question by a cascade node, a scope note by the
+    note registry. Each must name something that exists, or the norm claims an implementation it
+    does not have."""
     from aiact.classify.graph import QUESTIONS
+    from aiact.scope_notes import SCOPE_NOTES
 
     source_path = ROOT / "data" / "policy" / "normative-coverage" / "2026-07-27" / "source-records"
     source_inventory = NormSourceInventory.model_validate(
@@ -681,7 +683,9 @@ def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
     policy = load_policy_spec()
     targets = set(source_inventory.implementation_targets)
     questions = {target for target in targets if target.startswith("AIA-CQ-")}
+    notes = {target for target in targets if target.startswith("AIA-SCOPE-NOTE-")}
 
     assert source_inventory.act_version_date == policy.act_version_date
-    assert targets - questions <= {rule.rule_id for rule in policy.rules}
+    assert targets - questions - notes <= {rule.rule_id for rule in policy.rules}
+    assert notes <= set(SCOPE_NOTES)
     assert questions == {f"AIA-CQ-{node.upper().replace('_', '-')}" for node in QUESTIONS}

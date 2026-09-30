@@ -182,12 +182,9 @@ records:
     basis_segment_ids: [AIA-TEXT-A060A-P001]
   targets: []
   temporal_regime_id: AIA-TEMP-CHAPTER-VI
-  product_scope: no_product_action
-  product_scope_reason: The duty is compliance with the Section B Union harmonisation legislation itself,
-    which this product does not assess; it reports nothing for Section B systems.
-  implementation_mode: none_required
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  implementation_mode: scope_note
+  implementation_refs: [AIA-SCOPE-NOTE-SECTION-B]
+  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
   source: A060A-P010

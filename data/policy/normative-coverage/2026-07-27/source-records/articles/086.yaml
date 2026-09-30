@@ -74,11 +74,10 @@ records:
   targets: []
   kind: applicability
   temporal_regime_id: AIA-TEMP-CHAPTER-IX
-  product_scope: no_product_action
-  product_scope_reason: This qualifies the mapped explanation duty rather than creating another action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-DP-A86]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A086-P3-SUBSIDIARY-RIGHT
   source: A086-P003
   quote: This Article shall apply only to the extent that the right referred to in paragraph 1 is not

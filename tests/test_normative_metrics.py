@@ -2208,8 +2208,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2179,
-        "proposed": 761,
+        "approved": 2183,
+        "proposed": 757,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2941
@@ -2239,17 +2239,18 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # norms are reported beside `AIA-RULE-DP-A46-2`, as Article 5(3)'s are beside its rule. The
     # rights and reassessment permission in Articles 46(5), 52(5), 75d(2) and 89(2) are reported
     # beside the rules of the procedures they belong to, as are the operator permissions in
-    # Articles 52(2), 55(2), 56(7), 57(7) and 75c(3), and the operator legal effects in Articles
-    # 55(2), 57(12), 59(3), 60, 63(2), 75c(4), 80 and 99(3).
-    assert metrics.mapping_shape.one_norm_to_one_target == 43
-    assert metrics.mapping_shape.many_norms_to_one_target == 478
+    # Articles 52(2), 55(2), 56(7), 57(7), 75c(3) and 95(3), the operator legal effects in Articles
+    # 55(2), 57(12), 59(3), 60, 63(2), 75c(4), 80 and 99(3), and the scope limits and procedural
+    # rights in Articles 75d(1), 86(2) and 94.
+    assert metrics.mapping_shape.one_norm_to_one_target == 41
+    assert metrics.mapping_shape.many_norms_to_one_target == 484
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII's provider duties are carried by the Article 43 route norms rather than named on
     # `AIA-RULE-PO-A43-1B` and `AIA-RULE-PO-A43-3`, which leaves only the retraining consequence
     # shared between them.
-    assert metrics.mapping_shape.many_to_many == 22
-    assert metrics.mapping_shape.unmapped == 865
-    assert metrics.semantic_vs_existing_implementation_disagreements == 55
+    assert metrics.mapping_shape.many_to_many == 23
+    assert metrics.mapping_shape.unmapped == 860
+    assert metrics.semantic_vs_existing_implementation_disagreements == 56
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A010-P5-B-REUSE-SECURITY",
@@ -2265,6 +2266,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A050-P5-MANNER",
         "AIA-NORM-A052-P5-REQUEST-CONTENT",
+        "AIA-NORM-A075D-P2-FILE-ACCESS-LIMITS",
         "AIA-NORM-A089-P2-COMPLAINT-CONTENT",
         "AIA-NORM-ANNEX-IV-CONTENT",
         "AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION",
@@ -3654,9 +3656,9 @@ def test_article_sixty_a_extracts_section_b_testing_framework():
     comply = norms["AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW"]
     limit = norms["AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT"]
     assert comply.kind.value == "obligation"
-    # Compliance with the Section B legislation is assessed under that legislation, not here.
-    assert comply.product_scope.value == "no_product_action"
-    assert comply.implementation_mode.value == "none_required"
+    # A Section B system gets no rules, only a scope note, so the note carries this duty.
+    assert comply.implementation_mode.value == "scope_note"
+    assert comply.implementation_refs == ["AIA-SCOPE-NOTE-SECTION-B"]
     assert limit.kind.value == "legal_consequence"
     assert limit.product_scope.value == "no_product_action"
     assert "to the extent necessary to enable the paragraph 1 testing" in limit.action
@@ -4736,7 +4738,7 @@ def test_article_ninety_four_applies_gpai_procedural_rights():
 
     assert len(norms) == 1
     assert norms[0].kind.value == "applicability"
-    assert norms[0].product_scope.value == "no_product_action"
+    assert norms[0].implementation_mode.value == "report_only"
 
 
 def test_article_ninety_five_extracts_voluntary_code_framework():
@@ -4757,7 +4759,7 @@ def test_article_ninety_five_extracts_voluntary_code_framework():
     assert len(facilitated.qualifier_spans) == 5
     assert "not exhaustive" in facilitated.action
     assert "voluntary" in facilitated.action
-    assert norms["AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES"].kind.value == "power"
+    assert norms["AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES"].kind.value == "permission"
 
 
 def test_articles_ninety_six_to_ninety_eight_extract_institutional_procedures():

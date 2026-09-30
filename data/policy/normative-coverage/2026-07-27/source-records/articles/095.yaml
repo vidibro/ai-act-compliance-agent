@@ -70,14 +70,12 @@ records:
   - actor_ref: deployer
     basis_segment_ids: [AIA-TEXT-A095-P008]
   targets: []
-  kind: power
+  kind: permission
   temporal_regime_id: AIA-TEMP-CHAPTER-X
-  product_scope: no_product_action
-  product_scope_reason: This is permission to participate in voluntary code development rather than a
-    compliance obligation.
-  implementation_mode: none_required
-  implementation_reason: No mandatory product action arises.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-ALL-A04]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A095-P4-ACCOUNT-FOR-SMALL-BUSINESS-NEEDS
   source: A095-P009
   quote: The AI Office and the Member States shall take into account the specific interests and needs

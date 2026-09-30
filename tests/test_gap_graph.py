@@ -270,6 +270,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         "AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING",
         "AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT",
         "AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS",
+        "AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES",
     ]
     assert report.legal_consequences[ActorRole.PROVIDER] == [
         "AIA-NORM-A017-P4-FINANCIAL-DEEMING",
@@ -293,6 +294,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         "AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY",
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
         "AIA-NORM-A075-P1A-APPLY-ARTICLE-73-PROCEDURE",
+        "AIA-NORM-A075D-P1-APPLY-PROCEDURAL-RIGHTS",
     ]
     assert "AIA-RULE-PO-A17" not in judge.asked
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.

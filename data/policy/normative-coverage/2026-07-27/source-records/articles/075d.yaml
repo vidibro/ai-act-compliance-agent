@@ -12,11 +12,10 @@ records:
   targets: []
   kind: applicability
   temporal_regime_id: AIA-TEMP-CHAPTER-IX
-  product_scope: no_product_action
-  product_scope_reason: This grants procedural protection rather than imposing a product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs: [AIA-RULE-ALL-A75c-3]
+  verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A075D-P2-RESPECT-DEFENCE-AND-FILE-RIGHTS
   source: A075D-P002
   quote: The rights of defence and of access to the file of operators falling within the scope of Article
@@ -78,11 +77,10 @@ records:
   targets: []
   kind: applicability
   temporal_regime_id: AIA-TEMP-CHAPTER-IX
-  product_scope: no_product_action
-  product_scope_reason: This limits a procedural entitlement rather than requiring a product action.
-  implementation_mode: none_required
-  implementation_reason: No independent product action arises.
-  verification_mode: not_reported
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 75d(2) negotiated file access right, whose exceptions
+    state these limits.
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-A075D-P2-SET-DISCLOSURE-TERMS
   source: A075D-P002
   quote: The AI Office shall have the power to adopt decisions setting out such terms of disclosure in

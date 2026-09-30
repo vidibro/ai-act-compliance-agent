@@ -349,19 +349,20 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A060A-P010
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: The duty is compliance with the Section B Union harmonisation legislation itself,
-    which this product does not assess; it reports nothing for Section B systems.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No independent product action is required.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: scope_note
+  implementation_refs:
+  - AIA-SCOPE-NOTE-SECTION-B
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

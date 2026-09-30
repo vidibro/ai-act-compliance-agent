@@ -96,7 +96,7 @@ norms:
   temporal_regime_id: AIA-TEMP-CHAPTER-X
 - norm_id: AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES
   act_version_date: '2026-07-27'
-  kind: power
+  kind: permission
   actors:
   - actor_ref: provider
     basis_segment_ids:
@@ -115,23 +115,24 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A095-P008
   qualifier_spans: []
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: no_product_action
-  product_scope_reason: This is permission to participate in voluntary code development rather than a
-    compliance obligation.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: No mandatory product action arises.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-RULE-ALL-A04
+  implementation_reason: ''
+  verification_mode: reported_conditionally
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

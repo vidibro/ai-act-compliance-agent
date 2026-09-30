@@ -19,6 +19,7 @@ from pathlib import Path
 import pytest
 import yaml
 
+from aiact import scope_notes
 from aiact.classify import ScriptedBrain
 from aiact.gap.criteria import settle
 from aiact.gap.graph import analyse
@@ -550,6 +551,42 @@ def test_an_operator_route_marked_as_needing_nothing_fails_the_build(bundle, spe
     errors = traceability_errors(changed, spec, LEDGER)
 
     assert any(e.startswith(f"{norm_id} is a {kind} of a supported operator") for e in errors)
+
+
+@pytest.mark.parametrize(
+    "norm_id",
+    ["AIA-NORM-A086-P1-PROVIDE-EXPLANATION", "AIA-NORM-A086-P2-LEGAL-EXCEPTIONS"],
+)
+def test_any_operator_norm_marked_as_needing_nothing_fails_the_build(bundle, spec, norm_id):
+    """Whatever its kind, a norm a supported operator holds must reach them. Only a
+    `dependency_only` effect, which the product applies itself, may need nothing."""
+    changed = bundle.model_copy(deep=True)
+    norm = next(norm for norm in changed.norm_inventory.norms if norm.norm_id == norm_id)
+    norm.implementation_mode = ImplementationMode.NONE_REQUIRED
+
+    errors = traceability_errors(changed, spec, LEDGER)
+
+    assert (
+        f"{norm_id} binds a supported operator but implementation_mode is none_required; "
+        "it must reach them through a rule, the report or a scope note"
+    ) in errors
+    assert not any(e.startswith("AIA-NORM-A025-P1-A-NAME-ROLE-TRANSFER") for e in errors)
+
+
+def test_a_scope_note_norm_must_be_stated_by_its_note(bundle, spec, monkeypatch):
+    """A scope note is the norm's only report entry, so the note must exist and quote it."""
+    norm_id = "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW"
+    renamed = bundle.model_copy(deep=True)
+    norm = next(norm for norm in renamed.norm_inventory.norms if norm.norm_id == norm_id)
+    norm.implementation_refs = ["AIA-SCOPE-NOTE-UNKNOWN"]
+    assert f"{norm_id} names unknown scope note AIA-SCOPE-NOTE-UNKNOWN" in traceability_errors(
+        renamed, spec, LEDGER
+    )
+
+    monkeypatch.setitem(scope_notes.SCOPE_NOTES, scope_notes.SECTION_B, "Chapter III not checked.")
+    assert f"{norm_id} scope note {scope_notes.SECTION_B} does not state its enacted text" in (
+        traceability_errors(bundle, spec, LEDGER)
+    )
 
 
 def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
