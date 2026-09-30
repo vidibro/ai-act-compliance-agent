@@ -6,6 +6,7 @@ binding: false
 topic: Art. 5(1)(f) emotion recognition — "workplace" covers the recruitment/hiring stage, and the
   five worked examples that bound the prohibition in both directions
 locator: paragraph (254), p. 86
+paragraphs: [254]
 source_url: https://ai-act-service-desk.ec.europa.eu/sites/default/files/2025-08/guidelines_on_prohibited_artificial_intelligence_practices_established_by_regulation_eu_20241689_ai_act_english_ied3r5nwo50xggpcfmwckm3nuc_112367-1.PDF
 extraction: pdftotext -layout; layout line-wraps rejoined into sentences and footnote reference
   markers dropped; wording otherwise verbatim. The authoritative form is the PDF at the cited page —

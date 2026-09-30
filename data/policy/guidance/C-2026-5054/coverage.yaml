@@ -1,0 +1,40 @@
+# Decision for every numbered paragraph of paragraphs.yaml, checked by aiact.guidance_coverage.
+# used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
+# with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
+# not yet read is listed under awaiting_review — declared debt, never silence.
+awaiting_review: 1-5, 7-29, 31-69, 72-74, 77-86, 89, 93-132, 137-155
+decisions:
+  6:
+    decision: no_effect
+    reason: >-
+      A table summarising each paragraph of Art. 50 with its duty-holder, obligation and exceptions.
+      It restates the Article and adds nothing a question or rule would answer differently.
+  30: {decision: used}
+  70: {decision: used}
+  71: {decision: used}
+  75: {decision: used}
+  76: {decision: used}
+  87:
+    decision: not_followed
+    reason: >-
+      Adds a fourth exception to Art. 50(2), whose exceptions are listed in the Article: standard
+      editing, no substantial alteration, authorisation by law. The Commission's reading cannot add
+      one, so AIA-RULE-TR-A50-2 applies to strictly technical industrial output as the Act does.
+  88:
+    decision: not_followed
+    reason: >-
+      Lets ephemeral real-time content skip marking where marking is not feasible. Art. 50(2)'s
+      "as far as this is technically feasible" qualifies how effective, interoperable, robust and
+      reliable the marking solution must be, not whether outputs are marked; the Article's listed
+      exceptions do not include this one, so AIA-RULE-TR-A50-2 applies as the Act does.
+  90: {decision: used}
+  91: {decision: used}
+  92: {decision: used}
+  133: {decision: used}
+  134: {decision: used}
+  135: {decision: used}
+  136: {decision: used}
+visually_checked:
+  6:
+    checked_by: vidibro
+    note: The engines read the table's cells in different orders; the four rows match the page.

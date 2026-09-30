@@ -12,17 +12,30 @@ deterministically, and a test asserts every `requirement` is a literal substring
 text. Commission guidance is a **Communication** (e.g. `C(2025) 5052 final`) distributed only as a
 **PDF** — never in the Official Journal, so there is no Formex, no CELEX, no structured source to
 derive. PDF text extraction is lossy and extractor-dependent, so a machine transcription of the
-whole document could not carry the same "verbatim, checkable" guarantee.
+whole document cannot carry the same "verbatim, checkable" guarantee on its own; two independent
+engines agreeing on it is what earns it trust.
 
 So the trust model is explicit:
 
 | artifact | trust | role |
 |---|---|---|
 | `<doc>/source.pdf` | **authoritative, byte-exact** (sha256 in `source.md`) | the anchor everything traces to |
-| `<doc>/snippets/*.md` | **hand-verified** (quoted by a person, checked against the cited page) | the citable unit |
+| `<doc>/paragraphs.yaml` | **derived, two engines** (regenerated from the PDF and compared byte for byte in tests) | the list of numbered paragraphs, and the text quotes are checked against |
+| `<doc>/coverage.yaml` | **reviewed** (a decision per paragraph) | what was read, and what it did to the product |
+| `<doc>/snippets/*.md` | **hand-verified, then machine-checked** (quoted by a person, matched against `paragraphs.yaml`) | the citable unit |
 
-We deliberately do **not** store a machine-extracted full text. We only need specific passages, and
-each is lifted by hand and page-referenced so it stays checkable.
+The extraction is never the authority. pdfplumber reads each numbered paragraph's body text — the
+font sizes and page area `source.md` declares, which leaves out footnotes, footnote markers and page
+numbers — and PDFium, an independent engine, reads the same body again. Where both yield the same
+characters, spacing aside, the paragraph's text is trusted; where they differ (so far only the
+overview table each document opens with), a decision resting on it needs a person to check the page.
+
+`coverage.yaml` gives every paragraph a decision — `used`, `not_followed` or `no_effect`, the last
+two with a reason — or lists it under `awaiting_review`, which is declared debt and may only shrink.
+`aiact.guidance_coverage` fails the build on a paragraph with neither, on a quote that does not match
+the extracted text, and on a `used` passage no question or rule receives (or a `not_followed` one that
+some question or rule does). No build can prove a decision right; it proves none was skipped.
+Regenerate the extraction with `scripts/extract_guidance_paragraphs.py`.
 
 ## Layout
 
@@ -30,9 +43,11 @@ each is lifted by hand and page-referenced so it stays checkable.
 guidance/
   <doc-ref>/            one directory per guidance document, e.g. C-2025-5052/
     source.pdf          the authoritative binary
-    source.md           document metadata + sha256 of the PDF + non-binding caveat
+    source.md           document metadata + sha256 of the PDF + non-binding caveat + body layout
+    paragraphs.yaml     GENERATED machine extraction of the numbered paragraphs
+    coverage.yaml       a decision for every paragraph, or awaiting review
     snippets/
-      <slug>.md         one verbatim passage: quote + locator (paragraph/page) + source URL
+      <slug>.md         one verbatim passage: quote + locator + `paragraphs:` + source URL
 ```
 
 ## Snippets are reusable across domains

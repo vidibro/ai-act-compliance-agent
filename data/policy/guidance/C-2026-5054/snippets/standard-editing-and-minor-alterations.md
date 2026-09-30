@@ -6,6 +6,7 @@ binding: false
 topic: "Art. 50(2) exceptions — standard editing and non-substantial alteration; translations and
   transcriptions fall inside, summaries fall outside"
 locator: paragraphs (90) to (92) and the two example lists that follow, pp. 29–30
+paragraphs: [90, 91, 92]
 source_url: https://ai-act-service-desk.ec.europa.eu/sites/default/files/2026-07/guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_ai_systems_under_article_50_of_the_ai_act_bzptwqhk0ikg1dtlddap41psfy_131215.pdf
 extraction: pdftotext -layout; layout line-wraps rejoined into sentences and page footers
   dropped; wording otherwise verbatim. The authoritative form is the PDF at the cited page —

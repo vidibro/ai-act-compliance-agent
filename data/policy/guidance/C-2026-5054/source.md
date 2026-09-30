@@ -16,12 +16,17 @@ supersedes: >-
   Nothing. This is the first Commission guidance on Art. 50. It replaces the draft published for
   consultation, which is not stored here.
 retrieved_at: 2026-08-20
+# What `paragraphs.yaml` reads as body text: these font sizes, above this line (points from the
+# page head). That leaves out footnotes, footnote markers and page numbers; the contents page
+# comes before paragraph (1) and is dropped with the cover.
+body_font_sizes: [10.6, 11.0, 12.0, 13.0]
+body_bottom_limit: 790
 ---
 
-The authoritative document is `source.pdf` (sha256 above). This store does NOT parse or reproduce
-the full 51 pages: PDF text extraction is lossy and extractor-dependent, so a machine transcription
-could not be trusted as verbatim. Instead, `snippets/` holds the specific passages we rely on, each
-quoted by hand and checked against its cited PDF page.
+The authoritative document is `source.pdf` (sha256 above). `paragraphs.yaml` is a machine
+extraction of its numbered paragraphs, read by two independent engines and never authoritative;
+`coverage.yaml` records a decision for each. `snippets/` holds the passages we rely on, each quoted
+by hand, checked against its cited PDF page, and matched against the extraction by the build.
 
 These are the Commission's **non-binding** interpretation of Article 50 (`binding: false`). The
 Court of Justice of the EU is the only authoritative interpreter. Any verdict that rests on a

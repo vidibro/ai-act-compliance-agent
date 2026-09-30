@@ -6,6 +6,7 @@ binding: false
 topic: "Art. 50(4) second subparagraph — what counts as human review or editorial control: substantive
   examination with fact-checking, never a bare policy or cursory approval"
 locator: paragraphs (133) to (136), pp. 44–45
+paragraphs: [133, 134, 135, 136]
 source_url: https://ai-act-service-desk.ec.europa.eu/sites/default/files/2026-07/guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_ai_systems_under_article_50_of_the_ai_act_bzptwqhk0ikg1dtlddap41psfy_131215.pdf
 extraction: pdftotext -layout; layout line-wraps rejoined into sentences and page footers
   dropped; wording otherwise verbatim. The authoritative form is the PDF at the cited page —

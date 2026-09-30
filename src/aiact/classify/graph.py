@@ -742,8 +742,9 @@ _QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
 QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
     "prohibited": ("C-2025-5052/workplace-covers-recruitment",),
     # Art. 50 leaves open what "directly", "standard editing" and "human review" mean. The
-    # Commission's paragraph (87) carve-out for industrial output is NOT supplied: it adds an
-    # exception Art. 50(2) does not contain (see AIA-RULE-TR-A50-2).
+    # Commission's carve-outs for industrial output (para 87) and ephemeral real-time content
+    # (para 88) are NOT supplied: they add exceptions Art. 50(2) does not contain (see
+    # AIA-RULE-TR-A50-2).
     "transparency": (
         "C-2026-5054/agent-assist-is-not-direct-interaction",
         "C-2026-5054/standard-editing-and-minor-alterations",

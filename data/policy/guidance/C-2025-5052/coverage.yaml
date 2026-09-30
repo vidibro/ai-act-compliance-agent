@@ -1,0 +1,17 @@
+# Decision for every numbered paragraph of paragraphs.yaml, checked by aiact.guidance_coverage.
+# used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
+# with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
+# not yet read is listed under awaiting_review — declared debt, never silence.
+awaiting_review: 1-8, 10-253, 255-433
+decisions:
+  9:
+    decision: no_effect
+    reason: >-
+      A table summarising each Art. 5(1) prohibition, points (a) to (h), with a one-line
+      description. It restates the Article and adds nothing a question or rule would answer
+      differently.
+  254: {decision: used}
+visually_checked:
+  9:
+    checked_by: vidibro
+    note: The engines read the table's cells in different orders; the eight rows match the page.

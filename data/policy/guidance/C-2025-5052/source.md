@@ -16,12 +16,17 @@ supersedes: >-
   C(2025) 884 final (4 Feb 2025) — that was only the "approval of the content of the draft"
   communication; C(2025) 5052 final (29 Jul 2025) is the finalised guidelines. Cite 5052.
 retrieved_at: 2026-07-22
+# What `paragraphs.yaml` reads as body text: these font sizes, above this line (points from the
+# page head). That leaves out footnotes, footnote markers and page numbers; the contents page
+# comes before paragraph (1) and is dropped with the cover.
+body_font_sizes: [10.0, 11.0, 12.0, 13.6]
+body_bottom_limit: 790
 ---
 
-The authoritative document is `source.pdf` (sha256 above). This store does NOT parse or reproduce
-the full 100+ pages: PDF text extraction is lossy and extractor-dependent, so a machine transcription
-could not be trusted as verbatim law. Instead, `snippets/` holds the specific passages we rely on,
-each quoted by hand and checked against its cited PDF page.
+The authoritative document is `source.pdf` (sha256 above). `paragraphs.yaml` is a machine
+extraction of its numbered paragraphs, read by two independent engines and never authoritative;
+`coverage.yaml` records a decision for each. `snippets/` holds the passages we rely on, each quoted
+by hand, checked against its cited PDF page, and matched against the extraction by the build.
 
 These are the Commission's **non-binding** interpretation of Article 5 (`binding: false`). The Court
 of Justice of the EU is the only authoritative interpreter. Any verdict that rests on a snippet here

@@ -6,6 +6,7 @@ binding: false
 topic: Art. 50(2) — marking and detection are TWO elements and both must be met; marking alone does
   not comply
 locator: paragraph (70), p. 25
+paragraphs: [70]
 source_url: https://ai-act-service-desk.ec.europa.eu/sites/default/files/2026-07/guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_ai_systems_under_article_50_of_the_ai_act_bzptwqhk0ikg1dtlddap41psfy_131215.pdf
 extraction: pdftotext -layout; layout line-wraps rejoined into sentences and footnote
   reference markers dropped; wording otherwise verbatim. The authoritative form is the PDF

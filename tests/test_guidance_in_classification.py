@@ -84,13 +84,19 @@ def test_bare_questions_carry_no_guidance():
     assert all(q.guidance_sources == () for q in QUESTIONS.values())
 
 
-def test_the_industrial_carve_out_is_stored_but_never_supplied():
-    """Para (87) adds a marking exception Art. 50(2) does not contain, so it is on record and
-    reaches neither a question nor a rule."""
+@pytest.mark.parametrize(
+    ("ref", "phrase"),
+    [
+        ("C-2026-5054/industrial-b2b-no-marking", "business to business"),
+        ("C-2026-5054/ephemeral-realtime-no-marking", "ephemeral and consumed immediately"),
+    ],
+)
+def test_the_art_50_2_carve_outs_are_stored_but_never_supplied(ref, phrase):
+    """Paras (87) and (88) add marking exceptions Art. 50(2) does not contain, so they are on
+    record and reach neither a question nor a rule."""
     from aiact.guidance import load_snippet
 
-    ref = "C-2026-5054/industrial-b2b-no-marking"
-    assert "business to business" in load_snippet(ref, GUID).body
+    assert phrase in load_snippet(ref, GUID).body
     assert all(ref not in [g.snippet_ref for g in q.guidance_sources] for q in anchored().values())
     assert all(ref not in rule.guidance_refs for rule in load_policy_spec().rules)
 
