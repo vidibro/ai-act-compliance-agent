@@ -3,8 +3,8 @@
 const UNDECIDED = new Set(["missing", "unresolved"]);
 let DATA;
 const VIEWS = {};
-const SETS = ["actors", "status", "scope", "kind", "source", "timing", "has"];
-const STRINGS = ["view", "q", "nq", "doc", "id", "asof"];
+const SETS = ["actors", "status", "scope", "kind", "source", "timing", "has", "rtype", "risk", "checks"];
+const STRINGS = ["view", "q", "nq", "rq", "doc", "id", "rule", "asof"];
 const state = { gaps: false };
 
 const el = (tag, attrs = {}, ...kids) => {
@@ -32,12 +32,12 @@ function readHash() {
   for (const k of STRINGS) state[k] = params.get(k) || "";
   for (const k of SETS) state[k] = new Set((params.get(k) || "").split(",").filter(Boolean));
   state.gaps = params.get("gaps") === "1";
-  if (!VIEWS[state.view]) state.view = "map";
+  if (!VIEWS[state.view]) state.view = "rules";
 }
 function hashFor(overrides = {}) {
   const merged = { ...state, ...overrides };
   const params = new URLSearchParams();
-  for (const k of STRINGS) if (merged[k] && !(k === "view" && merged[k] === "map")) params.set(k, merged[k]);
+  for (const k of STRINGS) if (merged[k] && !(k === "view" && merged[k] === "rules")) params.set(k, merged[k]);
   for (const k of SETS) if (merged[k].size) params.set(k, [...merged[k]].join(","));
   if (merged.gaps) params.set("gaps", "1");
   return "#" + params.toString();
@@ -66,25 +66,28 @@ function searchBox(key, placeholder) {
   return box;
 }
 function activeFilters() {
-  const own = VIEWS[state.view].activeFilters?.() || 0;
+  const view = VIEWS[state.view];
+  const own = view.activeFilters?.() || 0;
+  if (view.ownFilters) return own;
   return ["actors", "status", "scope", "kind", "source"].reduce((n, k) => n + state[k].size, 0) + own;
 }
 function renderFilters() {
   const view = VIEWS[state.view];
   const active = activeFilters();
-  const reset = () => go({ q: "", nq: "", doc: "", id: "", asof: "", gaps: false,
+  const reset = () => go({ q: "", nq: "", rq: "", doc: "", id: "", rule: "", asof: "", gaps: false,
     ...Object.fromEntries(SETS.map((k) => [k, new Set()])) });
   document.getElementById("filters").replaceChildren(
     el("summary", {}, chev(), "Filters", active ? el("span", { class: "badge" }, active) : null,
        active ? el("button", { class: "link", onclick: (e) => { e.preventDefault(); reset(); } }, "Reset all") : null),
     el("div", { class: "fbody" },
       view.filterHead(),
+      view.ownFilters ? view.filterRows() : [
       chipRow("Actor", "actors", count(DATA.norms, "actors")),
       chipRow("Review", "status", count(DATA.norms, "status")),
       chipRow("Scope", "scope", count(DATA.norms, "scope")),
       chipRow("Norm kind", "kind", count(DATA.norms, "kind")),
       chipRow("Source", "source", count(DATA.documents, "kind"), { fmt: (v) => v + "s" }),
-      view.filterRows?.() || []),
+      view.filterRows?.() || []]),
   );
 }
 function normFilter(n) {
@@ -100,7 +103,7 @@ function render() {
   for (const node of document.querySelectorAll("[data-for]"))
     node.hidden = node.dataset.for !== state.view;
   renderFilters();
-  if (state.id) document.getElementById("filters").open = false;
+  if (state.id || state.rule) document.getElementById("filters").open = false;
   VIEWS[state.view].render();
   writeHash();
 }

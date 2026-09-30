@@ -8,7 +8,8 @@ from aiact.ui.app import app
 def test_coverage_map_serves_page_and_consistent_payload() -> None:
     with TestClient(app) as client:
         assert "AI Act Coverage" in client.get("/").text
-        assert client.get("/static/norms.js").status_code == 200
+        for asset in ("core.js", "map.js", "norms.js", "rules.js", "ui.css"):
+            assert client.get(f"/static/{asset}").status_code == 200
         data = client.get("/api/coverage").json()
 
     doc_keys = {doc["key"] for doc in data["documents"]}
@@ -35,3 +36,9 @@ def test_norm_cards_resolve_every_reference() -> None:
         assert set(relation["target_norm_ids"]) <= set(norms)
     for link in cards["interpretations"]:
         assert set(link["snippet_refs"]) <= set(cards["snippets"])
+    for rule in cards["rules"].values():
+        assert set(rule["criteria"]) <= set(norms)
+    question_ids = {question["id"] for question in cards["questions"]}
+    implemented = {ref for norm in norms.values() for ref in norm["implementation_refs"]}
+    assert {ref for ref in implemented if ref.startswith("AIA-CQ-")} <= question_ids
+

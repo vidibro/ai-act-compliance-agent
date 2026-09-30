@@ -116,22 +116,34 @@ function phrase(norm) {
   }
 }
 function headline(norm) {
-  const [s, modal, action] = phrase(norm);
+  let [s, modal, action] = phrase(norm);
+  // A norm that assigns no actor reads as a plain statement, not a modal without a subject.
+  if (!s && modal && modal !== "Defines") [modal, action] = [null, cap(action)];
   return [s ? el("span", { class: "subj" }, s) : null, s ? " " : null,
           modal ? el("span", { class: "modal" }, modal) : null, modal ? " " : null, action];
 }
 
+const connector = (expr) => (expr.operator === "all_of" ? "AND" : "OR");
+function exprItem(op) {
+  // A nested group of one adds nothing, so it reads as its single member.
+  while (op.operator && op.operands.length === 1) op = op.operands[0];
+  return op.operator
+    ? el("div", { class: "group" }, exprList(op))
+    : el("span", {}, op.text, " ", segChips(op.basis_segment_ids));
+}
 function exprList(expr) {
-  return el("ul", { class: "expr" }, expr.operands.map((op) => op.operator
-    ? el("li", {}, el("span", { class: "op" }, op.operator === "all_of" ? "all of" : "any of"), exprList(op))
-    : el("li", {}, op.text, " ", segChips(op.basis_segment_ids))));
+  return el("ul", { class: "expr" }, expr.operands.flatMap((op, i) => [
+    i ? el("li", { class: "conn" }, connector(expr)) : null,
+    (() => { const item = exprItem(op); return el("li", { class: item.classList.contains("group") ? "grp" : null }, item); })(),
+  ]));
 }
 function exprLine(lead, expr) {
   if (!expr) return null;
-  const only = expr.operands.length === 1 && !expr.operands[0].operator ? expr.operands[0] : null;
+  let top = expr;
+  while (top.operator && top.operands.length === 1 && top.operands[0].operator) top = top.operands[0];
+  const single = top.operands.length === 1;
   return el("div", { class: "line" }, el("span", { class: "lead" }, lead),
-    only ? el("div", {}, only.text, " ", segChips(only.basis_segment_ids))
-         : el("div", {}, el("span", { class: "op" }, expr.operator === "all_of" ? "all of" : "any of"), exprList(expr)));
+    el("div", {}, single ? exprItem(top.operands[0]) : exprList(top)));
 }
 function timingLine(norm) {
   const r = CARDS.regimes[norm.temporal_regime_id];
@@ -252,9 +264,34 @@ function reviewSection(norm) {
       norm.product_scope_reason ? el("span", { class: "muted" }, " " + norm.product_scope_reason) : null));
 }
 
+function normLines(norm) {
+  return el("div", { class: "lines" },
+    norm.targets.length && norm.kind !== "definition" ? el("div", { class: "line" }, el("span", { class: "lead" }, "concerning"),
+      el("div", {}, norm.targets.map((t) => el("div", {}, t.target_ref, " ", segChips(t.basis_segment_ids))))) : null,
+    norm.kind === "definition" ? el("div", { class: "line" }, el("span", { class: "lead" }, "means"),
+      el("div", { class: "quote" }, norm.norm_text)) : null,
+    exprLine("if", norm.conditions),
+    exprLine("unless", norm.exceptions),
+    timingLine(norm),
+    (IDX.out[norm.norm_id] || []).map((r) => relationLine(r, 0)));
+}
+function normBlock(norm, role) {
+  // A norm as it reads under a rule: the card's sentence and lines, without its sections.
+  const sum = IDX.sum[norm.norm_id];
+  return el("div", { class: "nblock" },
+    el("div", { class: "nbhead" },
+      el("span", { class: "kind" }, norm.kind.replaceAll("_", " ")),
+      role ? el("span", { class: "tag role" }, role) : null,
+      el("a", { class: "doclink", href: hashFor({ view: "norms", doc: sum.doc, id: "" }) }, docLabel(sum.doc)),
+      cardLink(norm.norm_id),
+      el("span", { class: "spacer" }),
+      norm.review.status === "approved" ? null : el("span", { class: "tag part" }, norm.review.status)),
+    el("div", { class: "sentence" }, headline(norm), " ",
+      segChips(norm.actors === "none" ? [] : norm.actors.flatMap((a) => a.basis_segment_ids))),
+    normLines(norm));
+}
 function card(norm) {
   const sum = IDX.sum[norm.norm_id];
-  const out = IDX.out[norm.norm_id] || [];
   const incoming = IDX.in[norm.norm_id] || [];
   const guidance = IDX.interp[norm.norm_id] || [];
   return el("article", { class: "ncard", id: norm.norm_id },
@@ -267,15 +304,7 @@ function card(norm) {
       el("span", { class: "tag" }, norm.product_scope.replaceAll("_", " "))),
     el("div", { class: "sentence" }, headline(norm), " ",
       segChips(norm.actors === "none" ? [] : norm.actors.flatMap((a) => a.basis_segment_ids))),
-    el("div", { class: "lines" },
-      norm.targets.length && norm.kind !== "definition" ? el("div", { class: "line" }, el("span", { class: "lead" }, "concerning"),
-        el("div", {}, norm.targets.map((t) => el("div", {}, t.target_ref, " ", segChips(t.basis_segment_ids))))) : null,
-      norm.kind === "definition" ? el("div", { class: "line" }, el("span", { class: "lead" }, "means"),
-        el("div", { class: "quote" }, norm.norm_text)) : null,
-      exprLine("if", norm.conditions),
-      exprLine("unless", norm.exceptions),
-      timingLine(norm),
-      out.map((r) => relationLine(r, 0))),
+    normLines(norm),
     el("div", { class: "secs" },
       sourceSection(norm),
       norm.mandatory_content.length ? section("Mandatory content", norm.mandatory_content.length,
@@ -296,16 +325,18 @@ function matches(sum) {
   const q = state.nq.trim().toLowerCase();
   return !q || `${sum.id} ${norm.action} ${norm.norm_text}`.toLowerCase().includes(q);
 }
+function ensureCards(box) {
+  if (CARDS) return true;
+  box.replaceChildren(el("div", { class: "empty" }, "Loading…"));
+  if (!CARDS_LOADING) {
+    CARDS_LOADING = true;
+    fetch("/api/norms").then((r) => r.json()).then((data) => { CARDS = data; indexCards(); render(); });
+  }
+  return false;
+}
 function renderCards() {
   const box = document.getElementById("cards");
-  if (!CARDS) {
-    box.replaceChildren(el("div", { class: "empty" }, "Loading norm cards…"));
-    if (!CARDS_LOADING) {
-      CARDS_LOADING = true;
-      fetch("/api/norms").then((r) => r.json()).then((data) => { CARDS = data; indexCards(); render(); });
-    }
-    return;
-  }
+  if (!ensureCards(box)) return;
   const hits = DATA.norms.filter(matches);
   document.getElementById("normcount").textContent = state.id ? "" : `${hits.length} of ${DATA.norms.length} norms`;
   shown = PAGE;
