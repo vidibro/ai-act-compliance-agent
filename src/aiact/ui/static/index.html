@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Act Coverage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/ui.css">
+<script>
+  // Applied before first paint so a saved theme never flashes the other one.
+  try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="mark">AI</div>
+  <div class="brand">AI Act Coverage</div>
+  <nav class="tabs" id="tabs">
+    <a href="#view=map" data-view="map">Coverage map</a>
+    <a href="#view=norms" data-view="norms">Norm cards</a>
+  </nav>
+  <div class="meta" id="meta">Loading…</div>
+  <div class="theme" id="theme" role="group" aria-label="Color theme">
+    <button data-theme="auto" title="Follow the system setting">Auto</button>
+    <button data-theme="light">Light</button>
+    <button data-theme="dark">Dark</button>
+  </div>
+</div></div>
+<main>
+  <div class="kpis" id="kpis" data-for="map"></div>
+
+  <details class="filters" id="filters" open></details>
+
+  <section data-for="map">
+    <div class="section-title">
+      <h2>Coverage by document</h2><span class="muted" id="rowcount"></span>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--ok)"></i>complete</span>
+        <span><i class="dot" style="background:var(--orange)"></i>partial</span>
+        <span><i class="dot" style="background:var(--red)"></i>missing</span>
+        <span><i class="dot" style="background:var(--faint)"></i>n/a</span>
+      </div>
+    </div>
+    <div class="map" id="map"></div>
+
+    <div class="section-title"><h2>Guidance documents</h2><span class="muted">paragraph decisions</span></div>
+    <div class="gdocs" id="gdocs"></div>
+  </section>
+
+  <section data-for="norms">
+    <div class="section-title">
+      <h2>Norm cards</h2><span class="muted" id="normcount"></span>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+</main>
+<script src="/static/core.js"></script>
+<script src="/static/map.js"></script>
+<script src="/static/norms.js"></script>
+</body>
+</html>

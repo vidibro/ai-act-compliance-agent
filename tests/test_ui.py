@@ -8,6 +8,7 @@ from aiact.ui.app import app
 def test_coverage_map_serves_page_and_consistent_payload() -> None:
     with TestClient(app) as client:
         assert "AI Act Coverage" in client.get("/").text
+        assert client.get("/static/norms.js").status_code == 200
         data = client.get("/api/coverage").json()
 
     doc_keys = {doc["key"] for doc in data["documents"]}
@@ -18,3 +19,19 @@ def test_coverage_map_serves_page_and_consistent_payload() -> None:
     for guidance in data["guidance"]:
         decided = sum(guidance.get(k, 0) for k in ("used", "not_followed", "no_effect"))
         assert decided + guidance["awaiting"] == guidance["paragraphs"]
+
+
+def test_norm_cards_resolve_every_reference() -> None:
+    with TestClient(app) as client:
+        cards = client.get("/api/norms").json()
+
+    norms, segments = cards["norms"], cards["segments"]
+    for norm in norms.values():
+        assert set(norm["primary_spans"]) <= set(segments)
+        regime = norm["temporal_regime_id"]
+        assert regime is None or regime in cards["regimes"]
+    for relation in cards["relations"]:
+        assert relation["source_norm_id"] in norms
+        assert set(relation["target_norm_ids"]) <= set(norms)
+    for link in cards["interpretations"]:
+        assert set(link["snippet_refs"]) <= set(cards["snippets"])

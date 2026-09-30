@@ -23,8 +23,7 @@ from aiact.guidance_coverage import (
     GuidanceCoverage,
     parse_ranges,
 )
-from aiact.norm_loader import load_normative_coverage
-from aiact.policy_loader import load_policy_spec, source_body
+from aiact.policy_loader import source_body
 from aiact.schemas.eval import GoldenSet
 from aiact.schemas.norm import NormativeCoverageBundle, SegmentSource, SourceKind
 from aiact.schemas.policy import PolicyRuleset
@@ -170,9 +169,11 @@ def _guidance(root: Path) -> list[dict[str, Any]]:
     return documents
 
 
-def build_coverage_map(guidance_root: Path = DEFAULT_GUIDANCE_ROOT) -> dict[str, Any]:
-    bundle = load_normative_coverage()
-    spec = load_policy_spec()
+def build_coverage_map(
+    bundle: NormativeCoverageBundle,
+    spec: PolicyRuleset,
+    guidance_root: Path = DEFAULT_GUIDANCE_ROOT,
+) -> dict[str, Any]:
     return {
         "act_version_date": bundle.norm_inventory.act_version_date.isoformat(),
         "documents": _documents(bundle),
