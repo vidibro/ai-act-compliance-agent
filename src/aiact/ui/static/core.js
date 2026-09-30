@@ -19,6 +19,8 @@ const el = (tag, attrs = {}, ...kids) => {
 };
 const count = (items, key) => items.reduce((acc, item) => {
   for (const v of [].concat(item[key])) acc[v] = (acc[v] || 0) + 1; return acc; }, {});
+// A value tag that names its field, so "presence" reads as "check: presence".
+const ftag = (field, value, cls = "") => el("span", { class: `tag ${cls}`.trim() }, el("span", { class: "k" }, `${field}: `), value);
 const chev = () => el("span", { class: "chev" });
 const pass = (set, value) => !set.size || [].concat(value).some((v) => set.has(v));
 const docLabel = (key) => {

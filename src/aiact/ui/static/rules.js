@@ -56,7 +56,7 @@ function itemMatches(item) {
 
 // ---- one rule ----------------------------------------------------------------------------------
 const lineOf = (lead, ...body) => el("div", { class: "line" }, el("span", { class: "lead" }, lead), el("div", {}, body));
-const tags = (xs) => xs.map((x) => el("span", { class: "tag" }, human(x)));
+const tags = (field, xs) => xs.map((x) => ftag(field, human(x)));
 
 function normsSection(target, title, openByDefault) {
   const entries = (RULE_IDX.norms[target] || []).filter((e) => CARDS.norms[e.id]);
@@ -100,7 +100,7 @@ function questionCard(q, step) {
       ruleLink(q.id),
       el("span", { class: "muted" }, q.source),
       el("span", { class: "spacer" }),
-      el("span", { class: "tag" }, `answer: ${human(q.answer_type)}`)),
+      ftag("answer", human(q.answer_type))),
     el("div", { class: "rtitle" }, q.label),
     el("div", { class: "lines" }, lineOf("asks", el("span", { class: "quote" }, q.text))),
     el("div", { class: "secs" },
@@ -118,12 +118,13 @@ function whenLine(r) {
 function gapCard(item) {
   const { r, c } = item;
   const cases = r.document_verifiable
-    ? el("span", { class: "tag" + (c.cases_dev ? "" : " bad") }, `cases ${c.cases_dev || 0} dev · ${c.cases_heldout || 0} held-out`)
+    ? ftag("golden cases", `${c.cases_dev || 0} dev · ${c.cases_heldout || 0} held-out`, c.cases_dev ? "" : "bad")
     : null;
   const scope = [
-    ...tags(r.risk_classes),
-    r.route ? el("span", { class: "tag" }, ROUTES[r.route] || human(r.route)) : null,
-    ...tags(r.transparency_duties), ...tags(r.annex_iii_areas), ...tags(r.prohibited_practices),
+    ...tags("risk class", r.risk_classes),
+    r.route ? ftag("route", ROUTES[r.route] || human(r.route)) : null,
+    ...tags("transparency duty", r.transparency_duties), ...tags("Annex III area", r.annex_iii_areas),
+    ...tags("prohibited practice", r.prohibited_practices),
     r.requires_provider_reallocation ? el("span", { class: "tag part" }, "only after provider reallocation") : null,
     r.requires_real_world_testing ? el("span", { class: "tag part" }, "only with real-world testing") : null,
   ];
@@ -133,8 +134,8 @@ function gapCard(item) {
       ruleLink(item.id),
       el("span", { class: "muted" }, r.source),
       el("span", { class: "spacer" }),
-      el("span", { class: "tag" }, r.check_type),
-      el("span", { class: "tag" }, r.document_verifiable ? "document-verifiable" : "confirm separately"),
+      ftag("check", r.check_type),
+      ftag("docs", r.document_verifiable ? "verifiable" : "confirm separately"),
       cases),
     el("div", { class: "rtitle" }, el("span", { class: "subj" }, joinAnd(r.roles.map(actorName))), " ",
       el("span", { class: "modal" }, "must meet"), " ", r.source),

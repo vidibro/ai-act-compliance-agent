@@ -166,7 +166,7 @@ function timingLine(norm) {
   const status = timingOf(norm);
   return el("div", { class: "line" }, el("span", { class: "lead" }, "when"),
     el("div", {}, cap(parts.join("; ")) || "No start date recorded.", " ",
-      el("span", { class: "tag " + (status === "in_force" ? "" : status === "expired" ? "bad" : "part") }, TIMING[status]),
+      ftag("status", TIMING[status], status === "in_force" ? "" : status === "expired" ? "bad" : "part"),
       " ", segChips(r.legal_basis_spans)));
 }
 function relationLine(rel, depth) {
@@ -217,7 +217,7 @@ function ruleBlock(id, normId) {
   const others = rule.criteria.filter((c) => c !== normId);
   return el("div", { class: "rule" },
     el("div", { class: "rulehead" }, el("span", { class: "mono b" }, id),
-      el("span", { class: "tag" }, rule.check_type), rule.document_verifiable ? el("span", { class: "tag" }, "document-verifiable") : null,
+      ftag("check", rule.check_type), ftag("docs", rule.document_verifiable ? "verifiable" : "confirm separately"),
       rule.effective_date ? el("span", { class: "muted" }, `effective ${fmtDate(rule.effective_date)}`) : null),
     el("div", { class: "req" }, rule.requirement),
     rule.activation_condition ? el("div", { class: "kv" }, el("b", {}, "Activates when "), rule.activation_condition) : null,
@@ -237,8 +237,8 @@ function implementationSection(norm) {
 }
 function guidanceSection(links) {
   return section("Guidance", links.length, links.map((link) => el("div", { class: "rule" },
-    el("div", { class: "rulehead" }, el("span", { class: "tag part" }, link.effect.replaceAll("_", " ")),
-      el("span", { class: "tag" }, link.status), link.targets.map((t) => el("span", { class: "tag mono" }, t))),
+    el("div", { class: "rulehead" }, ftag("effect", link.effect.replaceAll("_", " "), "part"),
+      ftag("review", link.status), link.targets.map((t) => ftag("for", t, "mono"))),
     el("div", { class: "req" }, link.explanation),
     link.snippet_refs.map((ref) => {
       const s = CARDS.snippets[ref];
@@ -281,11 +281,11 @@ function normBlock(norm, role) {
   return el("div", { class: "nblock" },
     el("div", { class: "nbhead" },
       el("span", { class: "kind" }, norm.kind.replaceAll("_", " ")),
-      role ? el("span", { class: "tag role" }, role) : null,
+      role ? ftag("link", role, "role") : null,
       el("a", { class: "doclink", href: hashFor({ view: "norms", doc: sum.doc, id: "" }) }, docLabel(sum.doc)),
       cardLink(norm.norm_id),
       el("span", { class: "spacer" }),
-      norm.review.status === "approved" ? null : el("span", { class: "tag part" }, norm.review.status)),
+      norm.review.status === "approved" ? null : ftag("review", norm.review.status, "part")),
     el("div", { class: "sentence" }, headline(norm), " ",
       segChips(norm.actors === "none" ? [] : norm.actors.flatMap((a) => a.basis_segment_ids))),
     normLines(norm));
@@ -300,8 +300,8 @@ function card(norm) {
       el("a", { class: "doclink", href: hashFor({ view: "norms", doc: sum.doc, id: "" }) }, docLabel(sum.doc)),
       cardLink(norm.norm_id),
       el("span", { class: "spacer" }),
-      el("span", { class: "tag" + (norm.review.status === "approved" ? "" : " part") }, norm.review.status),
-      el("span", { class: "tag" }, norm.product_scope.replaceAll("_", " "))),
+      ftag("review", norm.review.status, norm.review.status === "approved" ? "" : "part"),
+      ftag("scope", norm.product_scope.replaceAll("_", " "))),
     el("div", { class: "sentence" }, headline(norm), " ",
       segChips(norm.actors === "none" ? [] : norm.actors.flatMap((a) => a.basis_segment_ids))),
     normLines(norm),
