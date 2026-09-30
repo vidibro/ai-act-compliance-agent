@@ -170,27 +170,45 @@ function timingLine(norm) {
       " ", segChips(r.legal_basis_spans)));
 }
 function relationLine(rel, depth, path = []) {
-  const content = [];
+  const lead = el("span", { class: "lead" }, RELATIONS[rel.kind] || rel.kind.replaceAll("_", " "));
   const targetItem = (id) => el("li", {}, CARDS.norms[id] ? miniSentence(CARDS.norms[id], depth + 1, [...path, rel.source_norm_id]) : id);
   const ids = rel.target_norm_ids;
-  // Long lists (a whole annex) show three and fold the rest; each is drawn only when opened.
-  if (ids.length > 5) {
-    const rest = el("ul", { class: "expr" });
-    const more = el("details", { class: "sub" }, el("summary", {}, chev(), `${ids.length - 3} more`), rest);
-    more.addEventListener("toggle", () => {
-      if (more.open && !rest.childElementCount) rest.append(...ids.slice(3).map(targetItem));
+  const targets = () => {
+    // Long lists (a whole annex) show three and fold the rest; each is drawn only when opened.
+    if (ids.length > 5) {
+      const rest = el("ul", { class: "expr" });
+      const more = el("details", { class: "sub" }, el("summary", {}, chev(), `${ids.length - 3} more`), rest);
+      more.addEventListener("toggle", () => {
+        if (more.open && !rest.childElementCount) rest.append(...ids.slice(3).map(targetItem));
+      });
+      return [el("ul", { class: "expr" }, ids.slice(0, 3).map(targetItem)), more];
+    }
+    return ids.length ? [el("ul", { class: "expr" }, ids.map(targetItem))] : [];
+  };
+  const extras = () => [
+    rel.target_rule_ids.length ? el("div", {}, rel.target_rule_ids.map((id) => el("span", { class: "tag mono" }, id))) : null,
+    rel.external_requirements.length ? el("div", {}, rel.external_requirements.join("; ")) : null,
+  ];
+
+  if (rel.kind === "relies_on_norms") {
+    // A dependency is background, not part of the sentence: it folds, and draws its norms on open.
+    const first = CARDS.norms[ids[0]];
+    const label = rel.detail || (first ? cap(first.action) : ids[0]);
+    const body = el("div", { class: "relbody" });
+    const block = el("details", { class: "relblock" },
+      el("summary", { class: "line rel" }, lead,
+        el("div", {}, chev(), " ", label, el("span", { class: "n" }, ` ${ids.length} norm${ids.length === 1 ? "" : "s"}`))),
+      body);
+    block.addEventListener("toggle", () => {
+      if (block.open && !body.childElementCount) body.append(...[...targets(), ...extras()].filter(Boolean), el("div", {}, segChips(rel.legal_basis_spans)));
     });
-    content.push(el("ul", { class: "expr" }, ids.slice(0, 3).map(targetItem)), more);
-  } else if (ids.length) {
-    content.push(el("ul", { class: "expr" }, ids.map(targetItem)));
+    return block;
   }
-  if (rel.target_rule_ids.length) content.push(el("div", {}, rel.target_rule_ids.map((id) => el("span", { class: "tag mono" }, id))));
-  if (rel.external_requirements.length) content.push(el("div", {}, rel.external_requirements.join("; ")));
-  if (rel.detail) content.push(el("div", { class: "muted" }, rel.detail));
+
   const bad = rel.kind === "unresolved_dependency" || rel.kind === "missing_dependency";
-  return el("div", { class: "line rel" + (bad ? " badline" : "") },
-    el("span", { class: "lead" }, RELATIONS[rel.kind] || rel.kind.replaceAll("_", " ")),
-    el("div", {}, content, segChips(rel.legal_basis_spans)));
+  return el("div", { class: "line rel" + (bad ? " badline" : "") }, lead,
+    el("div", {}, targets(), extras(), rel.detail ? el("div", { class: "muted" }, rel.detail) : null,
+      segChips(rel.legal_basis_spans)));
 }
 function miniSentence(norm, depth, path = []) {
   // Linked norms read inline, one level deep; deeper links open their own card.
