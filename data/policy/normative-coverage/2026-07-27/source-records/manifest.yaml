@@ -2548,3 +2548,71 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P1-C2026-5054
+  snippet_refs:
+  - C-2026-5054/agent-assist-is-not-direct-interaction
+  norm_ids:
+  - AIA-NORM-A050-P1-DISCLOSE
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-TRANSPARENCY
+  effect: narrows_scope
+  effect_explanation: A tool that helps a human reply, where the human sends the reply, does not interact directly.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraph (30), lead-in and point iii, with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P2-EXCEPTIONS-C2026-5054
+  snippet_refs:
+  - C-2026-5054/standard-editing-and-minor-alterations
+  norm_ids:
+  - AIA-NORM-A050-P2-MARK-DETECT
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-TRANSPARENCY
+  effect: clarifies_term
+  effect_explanation: Places translation and transcription inside the standard-editing and minor-alteration exceptions, and summaries outside them.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (90) to (92) and the text bullets of the two example lists, with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P4-TEXT-C2026-5054
+  snippet_refs:
+  - C-2026-5054/substantive-human-review
+  norm_ids:
+  - AIA-NORM-A050-P4-TEXT
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-TRANSPARENCY
+  - kind: policy_rule
+    target_id: AIA-RULE-TR-A50-4
+  effect: defines_evidence
+  effect_explanation: Human review or editorial control must examine the substance and check facts; a policy, a formal check or a cursory approval does not count.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (133) to (136), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null

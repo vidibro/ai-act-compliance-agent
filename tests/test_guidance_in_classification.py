@@ -17,6 +17,7 @@ from pydantic import ValidationError
 
 from aiact.classify.graph import classify, load_questions
 from aiact.classify.scripted_brain import ScriptedBrain
+from aiact.policy_loader import load_policy_spec
 from aiact.schemas.enums import ProhibitedPractice, RiskClass
 from aiact.schemas.policy import GuidanceSource
 
@@ -56,14 +57,21 @@ def test_a_snippet_becomes_a_guidance_source():
 
 
 # --- guidance is attached only where the enacted text is open -----------------------------------
-def test_guidance_is_attached_to_the_prohibited_node_only():
+def test_guidance_is_attached_only_where_the_enacted_text_is_open():
     q = anchored()
     assert q["prohibited"].guidance_context, "Art. 5 leaves 'workplace covers hiring?' open"
     assert q["prohibited"].guidance_sources[0].snippet_ref == REF
     # the verbatim interpretive sentence is actually in the prompt context
     assert "candidates during the selection and hiring process" in q["prohibited"].guidance_context
+    # Art. 50 leaves "directly", "standard editing" and "human review" open.
+    assert [g.snippet_ref for g in q["transparency"].guidance_sources] == [
+        "C-2026-5054/agent-assist-is-not-direct-interaction",
+        "C-2026-5054/standard-editing-and-minor-alterations",
+        "C-2026-5054/substantive-human-review",
+    ]
+    assert "AI-generated translations of text" in q["transparency"].guidance_context
     # every other node is guidance-free
-    for node_id in ("is_ai", "annex_iii", "profiling", "derogation", "transparency"):
+    for node_id in ("is_ai", "annex_iii", "profiling", "derogation"):
         assert q[node_id].guidance_context == "", f"{node_id} should carry no guidance"
         assert q[node_id].guidance_sources == ()
 
@@ -74,6 +82,17 @@ def test_bare_questions_carry_no_guidance():
 
     assert all(q.guidance_context == "" for q in QUESTIONS.values())
     assert all(q.guidance_sources == () for q in QUESTIONS.values())
+
+
+def test_the_industrial_carve_out_is_stored_but_never_supplied():
+    """Para (87) adds a marking exception Art. 50(2) does not contain, so it is on record and
+    reaches neither a question nor a rule."""
+    from aiact.guidance import load_snippet
+
+    ref = "C-2026-5054/industrial-b2b-no-marking"
+    assert "business to business" in load_snippet(ref, GUID).body
+    assert all(ref not in [g.snippet_ref for g in q.guidance_sources] for q in anchored().values())
+    assert all(ref not in rule.guidance_refs for rule in load_policy_spec().rules)
 
 
 # --- the verdict records it rested on non-binding interpretation --------------------------------

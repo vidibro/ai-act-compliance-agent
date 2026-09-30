@@ -3304,6 +3304,13 @@ rules:
     # do about it; (75) and (76) settle what DETECTION has to be — available to the persons
     # exposed, human-readable, and resting on publicly-available industry standards where they
     # exist. All three are the Commission's non-binding reading, cited rather than asserted.
+    #
+    # PARA (87) IS NOT FOLLOWED. It says strictly technical industrial or business-to-business
+    # output owes no marking and no detection, on three cumulative conditions. Art. 50(2) names its
+    # exceptions — standard editing, no substantial alteration, authorisation by law — and this is
+    # not one of them; the Commission's reading cannot add a fourth. This rule applies to such a
+    # system as the Act does, and the passage is stored as C-2026-5054/industrial-b2b-no-marking
+    # so the disagreement is on record rather than looking like an oversight.
     guidance_refs:
       - C-2026-5054/machine-readable-marking-defined
       - C-2026-5054/both-elements-required
@@ -3378,6 +3385,11 @@ rules:
     # same law and citing it identically.
     applies_to_transparency_duty: [deep_fake_disclosure, public_interest_text_disclosure]
     applies_to_role: [deployer]
+    # The text exception turns on what "human review or editorial control" means, which the Act
+    # leaves open. Paras (133) to (136) read it as substantive examination with fact-checking —
+    # never a policy on paper or a cursory sign-off — lost again if AI changes the text afterwards.
+    guidance_refs:
+      - C-2026-5054/substantive-human-review
     # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
     # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
     # applicable accessibility requirements. Attached to each of the four rather than modelled once,
@@ -3392,8 +3404,10 @@ rules:
       evidently artistic, creative, satirical or fictional work the duty is reduced to disclosing
       that such content exists, in a way that does not hamper enjoyment of the work. For published
       text informing the public on matters of public interest, the duty falls away where the content
-      had human review or editorial control and a named person holds editorial responsibility — so
-      whether such a process exists is what settles it. Art. 50(5) SETS THE MOMENT AND THE FORM for
+      had human review or editorial control and a named person holds editorial responsibility. The
+      review has to engage with the substance and check the facts: an editorial policy, a
+      spell-check, an automated check or a cursory approval does not lift the duty, and AI changes
+      made after the sign-off bring it back. Art. 50(5) SETS THE MOMENT AND THE FORM for
       whatever disclosure remains owed: clearly and distinguishably, AT THE LATEST AT THE TIME OF
       THE FIRST INTERACTION OR EXPOSURE, and conforming to the applicable accessibility
       requirements. A publication practice, not a property of the system — confirm separately.

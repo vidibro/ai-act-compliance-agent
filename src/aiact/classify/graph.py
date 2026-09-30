@@ -646,12 +646,14 @@ QUESTIONS: dict[str, Question] = {
         "does. Answer regardless of the risk tier: Art. 50 is independent of it.\n"
         "- direct_interaction (50(1), the PROVIDER's duty): the system is intended to interact "
         "directly with natural persons. Not owed where that is obvious to a reasonably "
-        "well-informed person.\n"
+        "well-informed person. A tool that helps a human write replies the human then sends is "
+        "NOT direct interaction; a system that sends its own replies to people is.\n"
         "- synthetic_content_marking (50(2), the PROVIDER's duty): it generates synthetic audio, "
         "image, video or text, which must be marked machine-readably. NOT owed where the system "
         "performs an assistive function for standard editing, or does not substantially alter the "
-        "deployer's input data or its semantics — polishing a person's own text is that carve-out; "
-        "drafting the text is not.\n"
+        "deployer's input data or its semantics — polishing a person's own text, translating it or "
+        "transcribing speech is that carve-out; drafting, summarising or rewriting the text is "
+        "not.\n"
         "- emotion_or_biometric_categorisation (50(3), the DEPLOYER's duty): it is an emotion "
         "recognition or biometric categorisation system. Both are DEFINED and supplied: emotion "
         "recognition (Art. 3(39)) infers emotions ON THE BASIS OF BIOMETRIC DATA, so sentiment "
@@ -666,7 +668,9 @@ QUESTIONS: dict[str, Question] = {
         "- public_interest_text_disclosure (50(4), the DEPLOYER's duty): it generates text "
         "published to inform the public on matters of public interest. NOT owed where the content "
         "undergoes human review or editorial control with a person holding editorial "
-        "responsibility.\n"
+        "responsibility. That review must examine the substance, fact-checking included: a "
+        "spell-check, an editorial policy on paper, an automated check or a cursory sign-off does "
+        "not count, and AI changes made after the sign-off bring the duty back.\n"
         "Every duty is disapplied where the system is authorised by law to detect, prevent, "
         "investigate or prosecute criminal offences.",
         "transparency_duties",
@@ -737,6 +741,14 @@ _QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
 # only relevant to its Art. 5(1)(f) sub-question, harmless where it is not.)
 _QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
     "prohibited": ("C-2025-5052/workplace-covers-recruitment",),
+    # Art. 50 leaves open what "directly", "standard editing" and "human review" mean. The
+    # Commission's paragraph (87) carve-out for industrial output is NOT supplied: it adds an
+    # exception Art. 50(2) does not contain (see AIA-RULE-TR-A50-2).
+    "transparency": (
+        "C-2026-5054/agent-assist-is-not-direct-interaction",
+        "C-2026-5054/standard-editing-and-minor-alterations",
+        "C-2026-5054/substantive-human-review",
+    ),
 }
 
 
