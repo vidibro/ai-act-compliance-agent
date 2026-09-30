@@ -169,12 +169,21 @@ function timingLine(norm) {
       ftag("status", TIMING[status], status === "in_force" ? "" : status === "expired" ? "bad" : "part"),
       " ", segChips(r.legal_basis_spans)));
 }
-function relationLine(rel, depth) {
+function relationLine(rel, depth, path = []) {
   const content = [];
-  if (rel.target_norm_ids.length) content.push(el("ul", { class: "expr" }, rel.target_norm_ids.map((id) => {
-    const target = CARDS.norms[id];
-    return el("li", {}, target ? miniSentence(target, depth + 1) : id);
-  })));
+  const targetItem = (id) => el("li", {}, CARDS.norms[id] ? miniSentence(CARDS.norms[id], depth + 1, [...path, rel.source_norm_id]) : id);
+  const ids = rel.target_norm_ids;
+  // Long lists (a whole annex) show three and fold the rest; each is drawn only when opened.
+  if (ids.length > 5) {
+    const rest = el("ul", { class: "expr" });
+    const more = el("details", { class: "sub" }, el("summary", {}, chev(), `${ids.length - 3} more`), rest);
+    more.addEventListener("toggle", () => {
+      if (more.open && !rest.childElementCount) rest.append(...ids.slice(3).map(targetItem));
+    });
+    content.push(el("ul", { class: "expr" }, ids.slice(0, 3).map(targetItem)), more);
+  } else if (ids.length) {
+    content.push(el("ul", { class: "expr" }, ids.map(targetItem)));
+  }
   if (rel.target_rule_ids.length) content.push(el("div", {}, rel.target_rule_ids.map((id) => el("span", { class: "tag mono" }, id))));
   if (rel.external_requirements.length) content.push(el("div", {}, rel.external_requirements.join("; ")));
   if (rel.detail) content.push(el("div", { class: "muted" }, rel.detail));
@@ -183,13 +192,16 @@ function relationLine(rel, depth) {
     el("span", { class: "lead" }, RELATIONS[rel.kind] || rel.kind.replaceAll("_", " ")),
     el("div", {}, content, segChips(rel.legal_basis_spans)));
 }
-function miniSentence(norm, depth) {
+function miniSentence(norm, depth, path = []) {
   // Linked norms read inline, one level deep; deeper links open their own card.
-  const nested = depth < 2 ? (IDX.out[norm.norm_id] || []).filter((r) => r.target_norm_ids.length) : [];
+  // A link back to a norm already open above it adds nothing, so it is left out.
+  const nested = depth < 2
+    ? (IDX.out[norm.norm_id] || []).filter((r) => r.target_norm_ids.some((t) => !path.includes(t)))
+    : [];
   return el("div", { class: "mini" },
     el("div", {}, headline(norm), " ", cardLink(norm.norm_id, "↗")),
     exprLine("if", norm.conditions), exprLine("unless", norm.exceptions),
-    nested.map((r) => relationLine(r, depth)));
+    nested.map((r) => relationLine(r, depth, path)));
 }
 
 // ---- collapsible sections ----------------------------------------------------------------------

@@ -1423,9 +1423,16 @@ def test_article_eleven_separates_documentation_content_and_assessment_duties():
     single_set = norms["AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET"]
     assert single_set.primary_spans == ["AIA-TEXT-A011-P2"]
     assert single_set.implementation_refs == ["AIA-RULE-HR-A11-2"]
-    assert bundle.norm_inventory.target_norm_ids_for(
+    single_set_targets = bundle.norm_inventory.target_norm_ids_for(
         single_set.norm_id, NormRelationKind.RELIES_ON_NORMS
-    ) == ["AIA-NORM-A011-P1-ANNEX-IV"]
+    )
+    assert single_set_targets[0] == "AIA-NORM-A011-P1-ANNEX-IV"
+    # The cited Annex I Section A items, one per harmonisation act.
+    assert [t for t in single_set_targets if t.startswith("AIA-NORM-ANNEX-I-")] == [
+        n.norm_id
+        for n in bundle.norm_inventory.norms
+        if n.norm_id.startswith("AIA-NORM-ANNEX-I-") and int(n.norm_id[17:19]) <= 12
+    ]
     assert bundle.norm_inventory.external_requirements_for(single_set.norm_id) == [
         "Annex I, Section A Union harmonisation legislation"
     ]
@@ -2676,7 +2683,11 @@ def test_article_forty_three_reconciles_all_conformity_routes():
         len(
             bundle.norm_inventory.target_norm_ids_for(qms.norm_id, NormRelationKind.RELIES_ON_NORMS)
         )
-        == 28
+        == 29
+    )
+    # 28 Annex VII procedure norms plus the Article 17 quality management system it cites.
+    assert "AIA-NORM-A017-P1-QMS" in bundle.norm_inventory.target_norm_ids_for(
+        qms.norm_id, NormRelationKind.RELIES_ON_NORMS
     )
     exclusion = norms["AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION"]
     assert exclusion.kind.value == "applicability"

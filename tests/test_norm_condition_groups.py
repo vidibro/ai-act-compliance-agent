@@ -212,6 +212,10 @@ def test_article_forty_three_preserves_routes_and_exceptions(corrected_bundle):
     assert "procedure referred to in Annex VII" in choice.conditions[0].text
     assert "law enforcement, immigration or asylum" in choice.exceptions[0].text
     assert "Article 74(8) or (9)" in choice.exceptions[0].text
-    assert corrected_bundle.norm_inventory.target_norm_ids_for(
+    choice_targets = corrected_bundle.norm_inventory.target_norm_ids_for(
         choice.norm_id, NormRelationKind.RELIES_ON_NORMS
-    ) == ["AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY"]
+    )
+    assert choice_targets[0] == "AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY"
+    # The cited Annex VII procedure.
+    assert all(t.startswith("AIA-NORM-ANNEX-VII-") for t in choice_targets[1:])
+    assert len(choice_targets) > 1
