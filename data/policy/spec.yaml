@@ -3266,6 +3266,12 @@ rules:
       act_version_date: 2026-07-27
     applies_to_transparency_duty: [direct_interaction]
     applies_to_role: [provider]
+    # Art. 50(1) names no disclosure technique and never says what "obvious" means. Paras (34),
+    # (35), (38) and (40) say what a disclosure must do and what does not count; paras (42) to (45)
+    # say the exception is narrow and must be shown for the whole likely audience.
+    guidance_refs:
+      - C-2026-5054/what-an-interaction-disclosure-must-do
+      - C-2026-5054/obvious-interaction-exception
     # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
     # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
     # applicable accessibility requirements. Attached to each of the four rather than modelled once,
@@ -3278,9 +3284,14 @@ rules:
     evidence_expected: >-
       A description of how the system tells the people it interacts with that they are dealing with
       an AI system — an opening disclosure, a persistent label, a spoken statement. The duty is on
-      the DESIGN, so the technical documentation is where it shows. A provider relying on the
-      "obvious to a reasonably well-informed, observant and circumspect person" exception should say
-      so and say why; it is a judgement about the context of use, not a default.
+      the DESIGN, so the technical documentation is where it shows. The disclosure has to reach the
+      person IN the interaction: one placed only in terms and conditions or documentation, a vague
+      label such as "assistant", a site-wide "our services use AI", or a machine-readable mark no
+      one can perceive does not reach the obligation. Where children, the elderly or people with
+      disabilities are likely users, it must be adapted to them, and the system must say it is AI
+      when asked. A provider relying on the "obvious to a reasonably well-informed, observant and
+      circumspect person" exception should say so and say why, for the whole audience the system
+      is likely to reach; it is a narrow judgement about the context of use, not a default.
     document_verifiable: true
     effective_date: 2026-08-02
     status: active

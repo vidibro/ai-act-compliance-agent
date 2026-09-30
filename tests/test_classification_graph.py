@@ -561,6 +561,17 @@ def test_every_transparency_duty_knows_its_paragraph_and_its_role():
     ]
 
 
+def test_the_law_enforcement_exception_keeps_art_50_1_for_public_crime_reporting():
+    """Art. 50(1) lifts the interaction duty for systems authorised for criminal-law purposes
+    "unless those systems are available for the public to report a criminal offence". The question
+    must carry that proviso, or a police reporting chatbot would be told it owes nothing."""
+    text = " ".join(QUESTIONS["transparency"].text.split())
+    assert (
+        "EXCEPT direct_interaction for a system available to the public to report a criminal "
+        "offence"
+    ) in text
+
+
 def test_transparency_never_influences_the_risk_class():
     """A low-confidence Art. 50 answer must NOT drag the classification to needs_review — the two
     axes are independent."""

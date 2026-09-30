@@ -65,11 +65,21 @@ def test_guidance_is_attached_only_where_the_enacted_text_is_open():
     assert "candidates during the selection and hiring process" in q["prohibited"].guidance_context
     # Art. 50 leaves "directly", "standard editing" and "human review" open.
     assert [g.snippet_ref for g in q["transparency"].guidance_sources] == [
+        "C-2026-5054/interactive-systems-in-and-out-of-scope",
+        "C-2026-5054/obvious-interaction-exception",
+        "C-2026-5054/law-enforcement-exception-for-interaction",
         "C-2026-5054/agent-assist-is-not-direct-interaction",
         "C-2026-5054/standard-editing-and-minor-alterations",
         "C-2026-5054/substantive-human-review",
     ]
     assert "AI-generated translations of text" in q["transparency"].guidance_context
+    # Art. 2 leaves open when third-country output "is used" here and what "purely personal" means.
+    assert [g.snippet_ref for g in q["territorial"].guidance_sources] == [
+        "C-2026-5054/third-country-incidental-use-not-covered"
+    ]
+    assert [g.snippet_ref for g in q["scope"].guidance_sources] == [
+        "C-2026-5054/purely-personal-use-defined"
+    ]
     # every other node is guidance-free
     for node_id in ("is_ai", "annex_iii", "profiling", "derogation"):
         assert q[node_id].guidance_context == "", f"{node_id} should carry no guidance"

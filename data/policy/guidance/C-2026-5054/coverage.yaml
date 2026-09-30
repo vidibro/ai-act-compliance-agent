@@ -2,14 +2,189 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 1-5, 7-29, 31-69, 72-74, 77-86, 89, 93-132, 137-155
+awaiting_review: 55-69, 72-74, 77-86, 89, 93-132, 137-155
 decisions:
+  1:
+    decision: no_effect
+    reason: >-
+      Background: the Act's entry into force and aims.
+  2:
+    decision: no_effect
+    reason: >-
+      Background: the risk-based approach and when Art. 50 applies.
+  3:
+    decision: no_effect
+    reason: >-
+      States the guidelines' legal basis (Art. 96(1)(d)) and purpose.
+  4:
+    decision: no_effect
+    reason: >-
+      How the guidelines were drafted.
+  5:
+    decision: no_effect
+    reason: >-
+      States the guidelines are non-binding; the store already treats them so.
   6:
     decision: no_effect
     reason: >-
       A table summarising each paragraph of Art. 50 with its duty-holder, obligation and exceptions.
       It restates the Article and adds nothing a question or rule would answer differently.
+  7:
+    decision: no_effect
+    reason: >-
+      Signposts Sections 3 to 7 and restates Art. 50(5).
+  8:
+    decision: no_effect
+    reason: >-
+      Duties under Art. 50 add up on one system; the transparency question already answers them
+      cumulatively.
+  9:
+    decision: no_effect
+    reason: >-
+      Rationale of the transparency duties, from Recitals 132 to 136.
+  10: {decision: used}
+  11:
+    decision: no_effect
+    reason: >-
+      Who is a provider and when its duties bite. The product reports every role's duties whoever
+      reads it, so it never decides who the provider is.
+  12:
+    decision: no_effect
+    reason: >-
+      Who is a deployer, and labelling along a distribution chain. The product reports every role's
+      duties, so it never decides who the deployer is.
+  13: {decision: used}
+  14:
+    decision: no_effect
+    reason: >-
+      Employees and contractors are not separate deployers. The product reports every role's duties,
+      so it never decides who the deployer is.
+  15:
+    decision: no_effect
+    reason: >-
+      One operator can hold both roles; the product already reports both.
+  16:
+    decision: no_effect
+    reason: >-
+      Hosting services and broadcasters that only pass content on are not deployers. The product
+      never decides who the deployer is.
+  17:
+    decision: no_effect
+    reason: >-
+      Other disseminators are encouraged to label content; no duty under this Regulation.
+  18:
+    decision: no_effect
+    reason: >-
+      Cross-reference to the prohibited-practices guidelines on Art. 2.
+  19: {decision: used}
+  20:
+    decision: no_effect
+    reason: >-
+      Art. 2(10) lifts only the personal deployer's duties, never the provider's; the scope question
+      already says so.
+  21:
+    decision: no_effect
+    reason: >-
+      Restates Art. 2(6), which already covers systems 'including their output'; the scope question
+      asks it.
+  22:
+    decision: no_effect
+    reason: >-
+      Restates Art. 2(8) and its real-world testing limit; the scope question already carries both.
+  23:
+    decision: no_effect
+    reason: >-
+      Restates Art. 2(12): open-source systems still owe Art. 50; the product already reads it so.
+  24:
+    decision: no_effect
+    reason: >-
+      Open-source components that are not AI systems owe nothing under Art. 50; follows from Art.
+      3(1).
+  25:
+    decision: no_effect
+    reason: >-
+      Art. 50 compliance does not make a use lawful and sits beside Arts. 4, 5 and the high-risk
+      rules; the product already assesses them independently.
+  26:
+    decision: no_effect
+    reason: >-
+      GPAI systems are AI systems within Art. 50; the transparency question already applies to any
+      system.
+  27:
+    decision: no_effect
+    reason: >-
+      Art. 50 does not apply to GPAI models; the product already keeps Art. 50 off a model. The rest
+      encourages voluntary model-level measures.
+  28:
+    decision: no_effect
+    reason: >-
+      Purpose of Art. 50(1), from Recital 132.
+  29:
+    decision: no_effect
+    reason: >-
+      Restates Art. 50(1) and its two exceptions.
   30: {decision: used}
+  31: {decision: used}
+  32:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 50(1) duty, including for AI agents and GPAI systems.
+  33:
+    decision: no_effect
+    reason: >-
+      Restates Art. 50(5)'s timing and that the duty lasts for the system's life; rule AIA-TR-A50-1
+      is already qualified by Art. 50(5).
+  34: {decision: used}
+  35: {decision: used}
+  36:
+    decision: no_effect
+    reason: >-
+      Examples of written, visual and spoken disclosures; illustrations, not requirements.
+  37:
+    decision: no_effect
+    reason: >-
+      Recommended disclosure techniques as best practice; not requirements a document can fail.
+  38: {decision: used}
+  39:
+    decision: no_effect
+    reason: >-
+      Advice to keep disclosures proportionate and avoid banner blindness; not a requirement.
+  40: {decision: used}
+  41:
+    decision: no_effect
+    reason: >-
+      Signposts the two exceptions.
+  42: {decision: used}
+  43: {decision: used}
+  44: {decision: used}
+  45: {decision: used}
+  46:
+    decision: no_effect
+    reason: >-
+      Restates the law-enforcement exception in Art. 50(1).
+  47: {decision: used}
+  48: {decision: used}
+  49: {decision: used}
+  50:
+    decision: no_effect
+    reason: >-
+      Consumer protection disclosures apply alongside; the product reads only this Regulation.
+  51:
+    decision: no_effect
+    reason: >-
+      DSA recommender transparency applies alongside; the product reads only this Regulation.
+  52:
+    decision: no_effect
+    reason: >-
+      Data protection information duties apply alongside; the product reads only this Regulation.
+  53:
+    decision: no_effect
+    reason: >-
+      Criminal procedure information rules apply alongside; the product reads only this Regulation.
+  54:
+    decision: no_effect
+    reason: >-
+      Purpose of Art. 50(2).
   70: {decision: used}
   71: {decision: used}
   75: {decision: used}
@@ -23,8 +198,8 @@ decisions:
   88:
     decision: not_followed
     reason: >-
-      Lets ephemeral real-time content skip marking where marking is not feasible. Art. 50(2)'s
-      "as far as this is technically feasible" qualifies how effective, interoperable, robust and
+      Lets ephemeral real-time content skip marking where marking is not feasible. Art. 50(2)'s "as
+      far as this is technically feasible" qualifies how effective, interoperable, robust and
       reliable the marking solution must be, not whether outputs are marked; the Article's listed
       exceptions do not include this one, so AIA-RULE-TR-A50-2 applies as the Act does.
   90: {decision: used}

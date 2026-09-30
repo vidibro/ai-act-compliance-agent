@@ -192,7 +192,10 @@ QUESTIONS: dict[str, Question] = {
         "provider selling into the Union is squarely within this limb.\n"
         "- eu_deployer (2(1)(b)): the deployer is established or located in the Union.\n"
         "- third_country_output_used_in_union (2(1)(c)): provider and deployer are both "
-        "outside the Union, but the OUTPUT the system produces is used in the Union.\n"
+        "outside the Union, but the OUTPUT the system produces is used in the Union. That use "
+        "must be intended or foreseeable: output that reaches the Union only incidentally, "
+        "without authorisation or through channels the provider or deployer does not control "
+        "does not bring the system in.\n"
         "- eu_supply_chain (2(1)(d)-(f)): an importer, distributor, product manufacturer "
         "placing the system with its own product, or an authorised representative of a non-Union "
         "provider.\n"
@@ -243,8 +246,10 @@ QUESTIONS: dict[str, Question] = {
         "service. Not available once the system is sold, supplied or in operational use, and not "
         "available for testing in real-world conditions.\n"
         "- 2(10) the deployer is a natural person using it in a PURELY personal, non-professional "
-        "activity. This lifts that person's obligations only; the provider keeps all of theirs, so "
-        "answer none when the description is written from the provider's side.\n"
+        "activity. Any activity bringing an economic benefit on a regular basis is professional, "
+        "and so is any use on behalf of a professional deployer. This lifts that person's "
+        "obligations only; the provider keeps all of theirs, so answer none when the description "
+        "is written from the provider's side.\n"
         "- 2(12) released under a free and open-source licence. Answer this whenever the licence "
         "is free and open-source; whether the paragraph's exceptions take it back is decided "
         "later in this assessment, not by you.\n"
@@ -645,9 +650,13 @@ QUESTIONS: dict[str, Question] = {
         "applies — they are cumulative, and one system can owe several — or an empty list if none "
         "does. Answer regardless of the risk tier: Art. 50 is independent of it.\n"
         "- direct_interaction (50(1), the PROVIDER's duty): the system is intended to interact "
-        "directly with natural persons. Not owed where that is obvious to a reasonably "
-        "well-informed person. A tool that helps a human write replies the human then sends is "
-        "NOT direct interaction; a system that sends its own replies to people is.\n"
+        "directly with natural persons. An AI agent that books, corresponds, negotiates or buys "
+        "for someone does. A tool that helps a human write replies the human then sends does NOT, "
+        "and neither do recommender systems, spam filters, search, auto-completion or back-end "
+        "decision support whose output a person only sees. Not owed where the interaction is "
+        "obvious to a reasonably well-informed person — an exception read NARROWLY and judged by "
+        "the whole audience the system is likely to reach: where that includes the public, "
+        "children, the elderly or people with disabilities, it rarely holds.\n"
         "- synthetic_content_marking (50(2), the PROVIDER's duty): it generates synthetic audio, "
         "image, video or text, which must be marked machine-readably. NOT owed where the system "
         "performs an assistive function for standard editing, or does not substantially alter the "
@@ -671,8 +680,10 @@ QUESTIONS: dict[str, Question] = {
         "responsibility. That review must examine the substance, fact-checking included: a "
         "spell-check, an editorial policy on paper, an automated check or a cursory sign-off does "
         "not count, and AI changes made after the sign-off bring the duty back.\n"
-        "Every duty is disapplied where the system is authorised by law to detect, prevent, "
-        "investigate or prosecute criminal offences.",
+        "Every duty is disapplied where the system is authorised by Union or national law to "
+        "detect, prevent, investigate or prosecute criminal offences and is used for that purpose "
+        "— EXCEPT direct_interaction for a system available to the public to report a criminal "
+        "offence, which still owes it.",
         "transparency_duties",
         label="Must people be told they are dealing with AI?",
     ),
@@ -741,11 +752,19 @@ _QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
 # only relevant to its Art. 5(1)(f) sub-question, harmless where it is not.)
 QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
     "prohibited": ("C-2025-5052/workplace-covers-recruitment",),
+    # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
+    # "intended to be used" there, which is the reading paras (10) and (13) apply.
+    "territorial": ("C-2026-5054/third-country-incidental-use-not-covered",),
+    # Art. 2(10) never defines "purely personal, non-professional"; para (19) does.
+    "scope": ("C-2026-5054/purely-personal-use-defined",),
     # Art. 50 leaves open what "directly", "standard editing" and "human review" mean. The
     # Commission's carve-outs for industrial output (para 87) and ephemeral real-time content
     # (para 88) are NOT supplied: they add exceptions Art. 50(2) does not contain (see
     # AIA-RULE-TR-A50-2).
     "transparency": (
+        "C-2026-5054/interactive-systems-in-and-out-of-scope",
+        "C-2026-5054/obvious-interaction-exception",
+        "C-2026-5054/law-enforcement-exception-for-interaction",
         "C-2026-5054/agent-assist-is-not-direct-interaction",
         "C-2026-5054/standard-editing-and-minor-alterations",
         "C-2026-5054/substantive-human-review",
