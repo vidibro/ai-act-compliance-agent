@@ -3322,117 +3322,152 @@ relations:
   legal_basis_spans:
   - AIA-TEXT-A005-P030
   detail: National law supplies the detailed notification rules.
-- relation_id: AIA-REL-A002-P7-PRIVACY-LAW-SAVING-UNRESOLVED-DEPENDENCY-01
+- relation_id: AIA-REL-A002-P7-PRIVACY-LAW-SAVING-REFERENCE-01
   source_norm_id: AIA-NORM-A002-P7-PRIVACY-LAW-SAVING
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A002-P016
-  detail: 'Unresolved reference: Articles 4a and 59 of this Regulation. The saving clause is expressly
-    qualified by these provisions.'
-- relation_id: AIA-REL-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION-UNRESOLVED-DEPENDENCY-01
+  detail: The saving clause is qualified by the Article 4a and Article 59 personal-data processing permissions.
+- relation_id: AIA-REL-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION-REFERENCE-01
   source_norm_id: AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A002-P021
-  detail: 'Unresolved reference: Article 5 of this Regulation. Article 5 determines one exception to the
-    exclusion and has not yet been semantically reviewed in this inventory.'
-- relation_id: AIA-REL-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION-UNRESOLVED-DEPENDENCY-02
+  detail: Article 5 practices are one exception to the open-source exclusion.
+- relation_id: AIA-REL-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION-REFERENCE-02
   source_norm_id: AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A050-P1-DISCLOSE
+  - AIA-NORM-A050-P2-MARK-DETECT
+  - AIA-NORM-A050-P3-INFORM
+  - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-TEXT
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A002-P021
-  detail: 'Unresolved reference: Article 50 of this Regulation. Article 50 determines one exception but
-    has not yet been completely semantically reviewed.'
-- relation_id: AIA-REL-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS-UNRESOLVED-DEPENDENCY-01
+  detail: Systems within Article 50 are one exception to the open-source exclusion.
+- relation_id: AIA-REL-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS-REFERENCE-01
   source_norm_id: AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+  - AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
+  - AIA-NORM-A010-P1-QUALIFY-DATASETS
+  - AIA-NORM-A011-P1-DRAW
+  - AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+  - AIA-NORM-A013-P1-TRANSPARENT-OPERATION
+  - AIA-NORM-A014-P1-EFFECTIVE-OVERSIGHT
+  - AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY
+  - AIA-NORM-A017-P1-QMS
+  - AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
+  - AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
+  - AIA-NORM-A020-P1-CORRECTIVE-RESPONSE
+  - AIA-NORM-A021-P1-PROVIDE-CONFORMITY-INFORMATION
+  - AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE
+  - AIA-NORM-A023-P1-A-VERIFY-CONFORMITY-ASSESSMENT
+  - AIA-NORM-A024-P1-VERIFY-CE-MARKING
+  - AIA-NORM-A025-P1-A-NAME-ROLE-TRANSFER
+  - AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+  - AIA-NORM-ANNEX-I-02-TOY-SAFETY
+  - AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+  - AIA-NORM-ANNEX-I-04-LIFTS
+  - AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+  - AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+  - AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-08-CABLEWAYS
+  - AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+  - AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+  - AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A002-P022
-  detail: 'Unresolved reference: Article 6(1), Articles 9 to 15 and 17 to 25, and Annex I Section A of
-    this Regulation. These provisions define the affected systems, limitable requirements, and relevant
-    harmonisation legislation and are not all semantically reviewed yet.'
-- relation_id: AIA-REL-A002-P13-COMMISSION-DELEGATED-ACTS-UNRESOLVED-DEPENDENCY-01
+  detail: Article 6(1) defines the affected systems, Articles 9 to 15 and 17 to 25 the limitable requirements,
+    and Annex I Section A the relevant harmonisation legislation.
+- relation_id: AIA-REL-A002-P13-COMMISSION-DELEGATED-ACTS-REFERENCE-01
   source_norm_id: AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A002-P025
-  detail: 'Unresolved reference: Article 97 of this Regulation. Article 97 supplies the delegated-act
-    procedure and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A003-D020-CONFORMITY-ASSESSMENT-UNRESOLVED-DEPENDENCY-01
+  detail: Article 97 supplies the delegated-act procedure.
+- relation_id: AIA-REL-A003-D020-CONFORMITY-ASSESSMENT-REFERENCE-01
   source_norm_id: AIA-NORM-A003-D020-CONFORMITY-ASSESSMENT
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A003-P023
-  detail: 'Unresolved reference: Chapter III, Section 2 of this Regulation. The referenced high-risk requirements
-    have not all been semantically reviewed.'
-- relation_id: AIA-REL-A003-D023-SUBSTANTIAL-MODIFICATION-UNRESOLVED-DEPENDENCY-01
+  detail: The definition refers to the Chapter III Section 2 requirements.
+- relation_id: AIA-REL-A003-D023-SUBSTANTIAL-MODIFICATION-REFERENCE-01
   source_norm_id: AIA-NORM-A003-D023-SUBSTANTIAL-MODIFICATION
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A003-P026
-  detail: 'Unresolved reference: Chapter III, Section 2 of this Regulation. The referenced high-risk requirements
-    have not all been semantically reviewed.'
-- relation_id: AIA-REL-A003-D024-CE-MARKING-UNRESOLVED-DEPENDENCY-01
+  detail: The definition refers to the Chapter III Section 2 requirements.
+- relation_id: AIA-REL-A003-D024-CE-MARKING-REFERENCE-01
   source_norm_id: AIA-NORM-A003-D024-CE-MARKING
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A003-P027
-  detail: 'Unresolved reference: Chapter III, Section 2 of this Regulation. The referenced high-risk requirements
-    have not all been semantically reviewed.'
-- relation_id: AIA-REL-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS-UNRESOLVED-DEPENDENCY-01
+  detail: The definition refers to the Chapter III Section 2 requirements.
+- relation_id: AIA-REL-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS-REFERENCE-01
   source_norm_id: AIA-NORM-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A057-P5-SUPERVISED-REAL-WORLD-TESTING
+  - AIA-NORM-A060-P4-PERMISSION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A003-P066
-  detail: 'Unresolved reference: Articles 57 and 60 of this Regulation. The definition depends on conditions
-    in provisions not yet semantically reviewed.'
-- relation_id: AIA-REL-A004-P2-PUBLISH-PRACTICAL-EXAMPLES-UNRESOLVED-DEPENDENCY-01
+  detail: Articles 57 and 60 supply the conditions for testing in real-world conditions.
+- relation_id: AIA-REL-A004-P2-PUBLISH-PRACTICAL-EXAMPLES-REFERENCE-01
   source_norm_id: AIA-NORM-A004-P2-PUBLISH-PRACTICAL-EXAMPLES
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A062-P3-B-INFORMATION-PLATFORM
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A004-P002
-  detail: 'Unresolved reference: Article 62(3), point (b), of this Regulation. The referenced single information
-    platform provision has not yet been semantically reviewed.'
+  detail: Article 62(3)(b) establishes the single information platform the examples are published on.
 - relation_id: AIA-REL-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING-RELIES-ON-BIAS-CONTROLS
   source_norm_id: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   kind: relies_on_norms
@@ -3446,361 +3481,458 @@ relations:
   - AIA-TEXT-A004A-P001
   detail: Article 10(2)(f) and (g) identify the bias examination and mitigation purpose for the exceptional
     processing route.
-- relation_id: AIA-REL-A005-P1-H-REAL-TIME-RBI-UNRESOLVED-DEPENDENCY-01
+- relation_id: AIA-REL-A005-P1-H-REAL-TIME-RBI-REFERENCE-01
   source_norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-ANNEX-II-01-TERRORISM
+  - AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING
+  - AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
+  - AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
+  - AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
+  - AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
+  - AIA-NORM-ANNEX-II-07-HUMAN-ORGANS
+  - AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
+  - AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
+  - AIA-NORM-ANNEX-II-10-ICC-CRIMES
+  - AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE
+  - AIA-NORM-ANNEX-II-12-RAPE
+  - AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME
+  - AIA-NORM-ANNEX-II-14-ROBBERY
+  - AIA-NORM-ANNEX-II-15-SABOTAGE
+  - AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A005-P013
-  detail: 'Unresolved reference: Annex II of this Regulation. Point (h)(iii) depends on the offence list
-    in Annex II, which has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A005-P2-COMPLETE-FRIA-UNRESOLVED-DEPENDENCY-01
+  detail: Point (h)(iii) relies on the offence list in Annex II.
+- relation_id: AIA-REL-A005-P2-COMPLETE-FRIA-REFERENCE-01
   source_norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A027-P1-PERFORM-FRIA
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A005-P027
-  detail: 'Unresolved reference: Article 27 of this Regulation. Article 27 defines the impact-assessment
-    requirements and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A005-P2-REGISTER-SYSTEM-UNRESOLVED-DEPENDENCY-01
+  detail: Article 27 defines the fundamental-rights impact assessment.
+- relation_id: AIA-REL-A005-P2-REGISTER-SYSTEM-REFERENCE-01
   source_norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A049-P3-DEPLOYER-REGISTER-USE
+  - AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A005-P027
-  detail: 'Unresolved reference: Article 49 of this Regulation. Article 49 defines the EU-database registration
-    and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A005-P4-NOTIFICATION-CONTENT-UNRESOLVED-DEPENDENCY-01
+  detail: Article 49 defines the EU-database registration, in its secure non-public section for law enforcement.
+- relation_id: AIA-REL-A005-P4-NOTIFICATION-CONTENT-REFERENCE-01
   source_norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A005-P030
-  detail: 'Unresolved reference: Article 5(6) of this Regulation. Article 5(6) supplies the minimum notification
-    information and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A006-P1-ANNEX-I-HIGH-RISK-UNRESOLVED-DEPENDENCY-01
+  detail: Article 5(6) supplies the minimum information the notification contains.
+- relation_id: AIA-REL-A006-P1-ANNEX-I-HIGH-RISK-REFERENCE-01
   source_norm_id: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+  - AIA-NORM-ANNEX-I-02-TOY-SAFETY
+  - AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+  - AIA-NORM-ANNEX-I-04-LIFTS
+  - AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+  - AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+  - AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-08-CABLEWAYS
+  - AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+  - AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+  - AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
+  - AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
+  - AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
+  - AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
+  - AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
+  - AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
+  - AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
+  - AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
+  - AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A006-P001
-  detail: 'Unresolved reference: Annex I of this Regulation and the Union harmonisation legislation listed
-    there. Annex I and the referenced legislation determine the covered products and conformity-assessment
-    requirements.'
-- relation_id: AIA-REL-A006-P2-ANNEX-III-HIGH-RISK-UNRESOLVED-DEPENDENCY-01
+  detail: Annex I lists the Union harmonisation legislation that determines the covered products.
+- relation_id: AIA-REL-A006-P2-ANNEX-III-HIGH-RISK-REFERENCE-01
   source_norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION
+  - AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION
+  - AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION
+  - AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE
+  - AIA-NORM-ANNEX-III-3A-EDUCATION-ACCESS
+  - AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES
+  - AIA-NORM-ANNEX-III-3C-EDUCATION-LEVEL
+  - AIA-NORM-ANNEX-III-3D-TEST-BEHAVIOUR
+  - AIA-NORM-ANNEX-III-4A-RECRUITMENT
+  - AIA-NORM-ANNEX-III-4B-WORKER-MANAGEMENT
+  - AIA-NORM-ANNEX-III-5A-ESSENTIAL-BENEFITS
+  - AIA-NORM-ANNEX-III-5B-CREDITWORTHINESS
+  - AIA-NORM-ANNEX-III-5C-LIFE-HEALTH-INSURANCE
+  - AIA-NORM-ANNEX-III-5D-EMERGENCY-RESPONSE
+  - AIA-NORM-ANNEX-III-6A-VICTIM-RISK
+  - AIA-NORM-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH
+  - AIA-NORM-ANNEX-III-6C-EVIDENCE-RELIABILITY
+  - AIA-NORM-ANNEX-III-6D-OFFENDING-RISK
+  - AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING
+  - AIA-NORM-ANNEX-III-7A-BORDER-POLYGRAPH
+  - AIA-NORM-ANNEX-III-7B-BORDER-RISK
+  - AIA-NORM-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE
+  - AIA-NORM-ANNEX-III-7D-BORDER-IDENTIFICATION
+  - AIA-NORM-ANNEX-III-8A-JUSTICE
+  - AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A006-P007
-  detail: 'Unresolved reference: Annex III of this Regulation. Annex III supplies the high-risk use-case
-    areas and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A006-P4-REGISTER-SYSTEM-UNRESOLVED-DEPENDENCY-01
+  detail: Annex III supplies the high-risk use-case areas.
+- relation_id: AIA-REL-A006-P4-REGISTER-SYSTEM-REFERENCE-01
   source_norm_id: AIA-NORM-A006-P4-REGISTER-SYSTEM
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
+  - AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A006-P015
-  detail: 'Unresolved reference: Article 49(2) of this Regulation. Article 49(2) supplies the detailed
-    registration obligation and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A006-P5-PROVIDE-GUIDELINES-UNRESOLVED-DEPENDENCY-01
+  detail: Article 49(2) supplies the registration obligation.
+- relation_id: AIA-REL-A006-P5-PROVIDE-GUIDELINES-REFERENCE-01
   source_norm_id: AIA-NORM-A006-P5-PROVIDE-GUIDELINES
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A006-P016
-  detail: 'Unresolved reference: Article 96 of this Regulation. Article 96 governs Commission guidelines
-    and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A006-P6-AMEND-EXCEPTIONS-UNRESOLVED-DEPENDENCY-01
+  detail: Article 96 governs Commission guidelines.
+- relation_id: AIA-REL-A006-P6-AMEND-EXCEPTIONS-REFERENCE-01
   source_norm_id: AIA-NORM-A006-P6-AMEND-EXCEPTIONS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A006-P017
-  detail: 'Unresolved reference: Article 97 of this Regulation. Article 97 supplies the delegated-act
-    procedure and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A006-P7-DELETE-EXCEPTIONS-UNRESOLVED-DEPENDENCY-01
+  detail: Article 97 supplies the delegated-act procedure.
+- relation_id: AIA-REL-A006-P7-DELETE-EXCEPTIONS-REFERENCE-01
   source_norm_id: AIA-NORM-A006-P7-DELETE-EXCEPTIONS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A006-P018
-  detail: 'Unresolved reference: Article 97 of this Regulation. Article 97 supplies the delegated-act
-    procedure and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A006-P8-NO-REDUCED-PROTECTION-UNRESOLVED-DEPENDENCY-01
+  detail: Article 97 supplies the delegated-act procedure.
+- relation_id: AIA-REL-A006-P8-NO-REDUCED-PROTECTION-REFERENCE-01
   source_norm_id: AIA-NORM-A006-P8-NO-REDUCED-PROTECTION
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A007-P1-AMEND-ANNEX-III
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A006-P019
-  detail: 'Unresolved reference: Article 7(1) of this Regulation. Article 7(1) governs related delegated
-    acts and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A007-P1-AMEND-ANNEX-III-UNRESOLVED-DEPENDENCY-01
+  detail: Article 7(1) governs the related delegated acts.
+- relation_id: AIA-REL-A007-P1-AMEND-ANNEX-III-REFERENCE-01
   source_norm_id: AIA-NORM-A007-P1-AMEND-ANNEX-III
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A007-P001
-  detail: 'Unresolved reference: Article 97 of this Regulation. Article 97 supplies the delegated-act
-    procedure and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A007-P3-REMOVE-ANNEX-III-USE-CASE-UNRESOLVED-DEPENDENCY-01
+  detail: Article 97 supplies the delegated-act procedure.
+- relation_id: AIA-REL-A007-P3-REMOVE-ANNEX-III-USE-CASE-REFERENCE-01
   source_norm_id: AIA-NORM-A007-P3-REMOVE-ANNEX-III-USE-CASE
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A007-P018
-  detail: 'Unresolved reference: Article 97 of this Regulation. Article 97 supplies the delegated-act
-    procedure and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A008-P1-COMPLY-SECTION-REQUIREMENTS-UNRESOLVED-DEPENDENCY-01
+  detail: Article 97 supplies the delegated-act procedure.
+- relation_id: AIA-REL-A008-P1-COMPLY-SECTION-REQUIREMENTS-REFERENCE-01
   source_norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
+  - AIA-NORM-A010-P1-QUALIFY-DATASETS
+  - AIA-NORM-A011-P1-DRAW
+  - AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+  - AIA-NORM-A013-P1-TRANSPARENT-OPERATION
+  - AIA-NORM-A014-P1-EFFECTIVE-OVERSIGHT
+  - AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A008-P001
-  detail: 'Unresolved reference: Articles 9 to 15 of this Regulation. Articles 9 to 15 supply the detailed
-    high-risk AI-system requirements. All are reviewed; the reference names a range of articles rather
-    than one norm, so it resolves to no single target.'
-- relation_id: AIA-REL-A008-P2-ENSURE-PRODUCT-COMPLIANCE-UNRESOLVED-DEPENDENCY-01
+  detail: Articles 9 to 15 supply the Section 2 requirements.
+- relation_id: AIA-REL-A008-P2-ENSURE-PRODUCT-COMPLIANCE-REFERENCE-01
   source_norm_id: AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+  - AIA-NORM-ANNEX-I-02-TOY-SAFETY
+  - AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+  - AIA-NORM-ANNEX-I-04-LIFTS
+  - AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+  - AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+  - AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-08-CABLEWAYS
+  - AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+  - AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+  - AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A008-P002
-  detail: 'Unresolved reference: Annex I, Section A, of this Regulation and the Union harmonisation legislation
-    listed there. The relevant external legislation supplies the applicable product requirements.'
-- relation_id: AIA-REL-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES-UNRESOLVED-DEPENDENCY-01
+  detail: Annex I Section A lists the Union harmonisation legislation whose requirements apply to the
+    product.
+- relation_id: AIA-REL-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES-REFERENCE-01
   source_norm_id: AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+  - AIA-NORM-ANNEX-I-02-TOY-SAFETY
+  - AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+  - AIA-NORM-ANNEX-I-04-LIFTS
+  - AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+  - AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+  - AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-08-CABLEWAYS
+  - AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+  - AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+  - AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A008-P002
-  detail: 'Unresolved reference: Annex I, Section A, of this Regulation and the Union harmonisation legislation
-    listed there. The relevant external legislation supplies the existing product documentation and procedures
-    into which AI compliance work may be integrated.'
-- relation_id: AIA-REL-A009-P2-C-POST-MARKET-RISKS-UNRESOLVED-DEPENDENCY-01
+  detail: Annex I Section A lists the Union harmonisation legislation whose documentation and procedures
+    the work may be integrated into.
+- relation_id: AIA-REL-A009-P2-C-POST-MARKET-RISKS-REFERENCE-01
   source_norm_id: AIA-NORM-A009-P2-C-POST-MARKET-RISKS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
+  - AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A009-P005
-  detail: 'Unresolved reference: Article 72 of this Regulation. Article 72 supplies the post-market monitoring
-    requirements and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A009-P7-REAL-WORLD-TESTING-UNRESOLVED-DEPENDENCY-01
+  detail: Article 72 supplies the post-market monitoring system and its data.
+- relation_id: AIA-REL-A009-P7-REAL-WORLD-TESTING-REFERENCE-01
   source_norm_id: AIA-NORM-A009-P7-REAL-WORLD-TESTING
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION
+  - AIA-NORM-A060-P4-PERMISSION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A009-P016
-  detail: 'Unresolved reference: Article 60 of this Regulation. Article 60 supplies the requirements for
-    testing in real-world conditions but has only been partially semantically reviewed.'
-- relation_id: AIA-REL-A011-P3-AMEND-UNRESOLVED-DEPENDENCY-01
+  detail: Article 60 supplies the requirements for testing in real-world conditions.
+- relation_id: AIA-REL-A011-P3-AMEND-REFERENCE-01
   source_norm_id: AIA-NORM-A011-P3-AMEND
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A011-P3
-  detail: 'Unresolved reference: Article 97 of this Regulation. Article 97 supplies a multi-norm delegated-act
-    procedure that is recorded elsewhere in this inventory.'
-- relation_id: AIA-REL-A012-P2-A-RISK-MODIFICATION-EVENTS-UNRESOLVED-DEPENDENCY-01
+  detail: Article 97 supplies the delegated-act procedure.
+- relation_id: AIA-REL-A012-P2-A-RISK-MODIFICATION-EVENTS-REFERENCE-01
   source_norm_id: AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A079-P1-RISK-DEFINITION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A012-P003
-  detail: 'Unresolved reference: Article 79(1) of this Regulation. Article 79(1) defines the referenced
-    risk situation and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A012-P2-B-POST-MARKET-EVENTS-UNRESOLVED-DEPENDENCY-01
+  detail: Article 79(1) defines the referenced risk situation.
+- relation_id: AIA-REL-A012-P2-B-POST-MARKET-EVENTS-REFERENCE-01
   source_norm_id: AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
+  - AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A012-P004
-  detail: 'Unresolved reference: Article 72 of this Regulation. Article 72 supplies the post-market monitoring
-    requirements and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES-UNRESOLVED-DEPENDENCY-01
+  detail: Article 72 supplies the post-market monitoring requirements.
+- relation_id: AIA-REL-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES-REFERENCE-01
   source_norm_id: AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A013-P007
-  detail: 'Unresolved reference: Article 15 of this Regulation. Article 15 supplies the referenced accuracy,
-    robustness, and cybersecurity requirements and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A017-P1-H-POST-MARKET-MONITORING-UNRESOLVED-DEPENDENCY-01
+  detail: Article 15 supplies the accuracy, robustness and cybersecurity requirements.
+- relation_id: AIA-REL-A017-P1-H-POST-MARKET-MONITORING-REFERENCE-01
   source_norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
+  - AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A017-P009
-  detail: 'Unresolved reference: Article 72 of this Regulation. Article 72 supplies the post-market monitoring
-    requirements and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A017-P1-I-INCIDENT-REPORTING-UNRESOLVED-DEPENDENCY-01
+  detail: Article 72 supplies the post-market monitoring requirements.
+- relation_id: AIA-REL-A017-P1-I-INCIDENT-REPORTING-REFERENCE-01
   source_norm_id: AIA-NORM-A017-P1-I-INCIDENT-REPORTING
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A017-P010
-  detail: 'Unresolved reference: Article 73 of this Regulation. Article 73 supplies the serious-incident
-    reporting requirements and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A018-P1-E-EU-DECLARATION-UNRESOLVED-DEPENDENCY-01
+  detail: Article 73 supplies the serious-incident reporting requirements.
+- relation_id: AIA-REL-A018-P1-E-EU-DECLARATION-REFERENCE-01
   source_norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A047-P1-DRAW-UP-DECLARATION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A018-P006
-  detail: 'Unresolved reference: Article 47 of this Regulation. Article 47 supplies the EU declaration
-    requirements and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A020-P2-INVESTIGATE-RISK-UNRESOLVED-DEPENDENCY-01
+  detail: Article 47 supplies the EU declaration of conformity.
+- relation_id: AIA-REL-A020-P2-INVESTIGATE-RISK-REFERENCE-01
   source_norm_id: AIA-NORM-A020-P2-INVESTIGATE-RISK
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A079-P1-RISK-DEFINITION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A020-P002
-  detail: 'Unresolved reference: Article 79(1) of this Regulation. Article 79(1) defines the referenced
-    risk situation and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A020-P2-INVESTIGATE-RISK-UNRESOLVED-DEPENDENCY-02
+  detail: Article 79(1) defines the referenced risk situation.
+- relation_id: AIA-REL-A020-P2-INVESTIGATE-RISK-REFERENCE-02
   source_norm_id: AIA-NORM-A020-P2-INVESTIGATE-RISK
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A044-P1-CERTIFICATE-LANGUAGE
+  - AIA-NORM-A044-P3-CERTIFICATE-MEASURE
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A020-P002
-  detail: 'Unresolved reference: Article 44 of this Regulation. Article 44 supplies the referenced certification
-    framework and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A021-P3-CONFIDENTIALITY-UNRESOLVED-DEPENDENCY-01
+  detail: Article 44 supplies the certificates the notified body issued and acts on.
+- relation_id: AIA-REL-A021-P3-CONFIDENTIALITY-REFERENCE-01
   source_norm_id: AIA-NORM-A021-P3-CONFIDENTIALITY
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A021-P003
-  detail: 'Unresolved reference: Article 78 of this Regulation. Article 78 supplies the confidentiality
-    obligations and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A023-P2-INFORM-RISK-UNRESOLVED-DEPENDENCY-01
+  detail: Article 78 supplies the confidentiality obligations.
+- relation_id: AIA-REL-A023-P2-INFORM-RISK-REFERENCE-01
   source_norm_id: AIA-NORM-A023-P2-INFORM-RISK
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A079-P1-RISK-DEFINITION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A023-P006
-  detail: 'Unresolved reference: Article 79(1) of this Regulation. Article 79(1) defines the referenced
-    risk situation and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A024-P2-INFORM-RISK-UNRESOLVED-DEPENDENCY-01
+  detail: Article 79(1) defines the referenced risk situation.
+- relation_id: AIA-REL-A024-P2-INFORM-RISK-REFERENCE-01
   source_norm_id: AIA-NORM-A024-P2-INFORM-RISK
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A079-P1-RISK-DEFINITION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A024-P002
-  detail: 'Unresolved reference: Article 79(1) of this Regulation. Article 79(1) defines the referenced
-    risk situation and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A024-P4-NOTIFY-RISK-UNRESOLVED-DEPENDENCY-01
+  detail: Article 79(1) defines the referenced risk situation.
+- relation_id: AIA-REL-A024-P4-NOTIFY-RISK-REFERENCE-01
   source_norm_id: AIA-NORM-A024-P4-NOTIFY-RISK
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A079-P1-RISK-DEFINITION
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A024-P004
-  detail: 'Unresolved reference: Article 79(1) of this Regulation. Article 79(1) defines the referenced
-    risk situation and has not yet been semantically reviewed.'
-- relation_id: AIA-REL-A026-P11-INFORM-NATURAL-PERSONS-UNRESOLVED-DEPENDENCY-01
+  detail: Article 79(1) defines the referenced risk situation.
+- relation_id: AIA-REL-A026-P11-INFORM-NATURAL-PERSONS-REFERENCE-01
   source_norm_id: AIA-NORM-A026-P11-INFORM-NATURAL-PERSONS
-  kind: unresolved_dependency
+  kind: relies_on_norms
   target_rule_ids: []
-  target_norm_ids: []
+  target_norm_ids:
+  - AIA-NORM-A050-P1-DISCLOSE
+  - AIA-NORM-A050-P2-MARK-DETECT
+  - AIA-NORM-A050-P3-INFORM
+  - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-TEXT
   external_requirements: []
   guidance_refs: []
   legal_basis_spans:
   - AIA-TEXT-A026-P11
-  detail: 'Unresolved reference: Article 50 of this Regulation. The Article 26(11) notice duty operates
-    without prejudice to Article 50.'
+  detail: The Article 26(11) notice duty operates without prejudice to Article 50.
 - relation_id: AIA-REL-A005-P3-URGENT-USE-CONDITIONAL-ON-AUTHORISATION-REQUEST-DEADLINES
   source_norm_id: AIA-NORM-A005-P3-URGENT-USE
   kind: conditional_on_norms

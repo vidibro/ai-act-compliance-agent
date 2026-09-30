@@ -102,27 +102,16 @@ def test_national_law_relations_are_targetless_report_boundaries(metrics):
         assert norm_id in report
 
 
-def test_unresolved_dependencies_are_canonical_targetless_relations():
-    """No norm retains the old free-form dependency field after migration."""
+def test_every_cross_reference_resolves_to_a_norm():
+    """Every provision a norm cites is in the inventory, so no reference stays targetless."""
     bundle = load_normative_coverage()
-    relations = [
-        relation
+    unresolved = [
+        relation.relation_id
         for relation in bundle.norm_inventory.relations
         if relation.kind is NormRelationKind.UNRESOLVED_DEPENDENCY
     ]
 
-    assert len(relations) == 42
-    assert len({relation.relation_id for relation in relations}) == 42
-    assert all(relation.detail.startswith("Unresolved reference: ") for relation in relations)
-    assert all(
-        not (
-            relation.target_rule_ids
-            or relation.target_norm_ids
-            or relation.external_requirements
-            or relation.guidance_refs
-        )
-        for relation in relations
-    )
+    assert unresolved == []
 
 
 def test_segment_primary_links_are_supported_by_the_segments_own_text():
