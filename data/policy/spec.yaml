@@ -3417,6 +3417,7 @@ rules:
     # leaves open. Paras (133) to (136) read it as substantive examination with fact-checking —
     # never a policy on paper or a cursory sign-off — lost again if AI changes the text afterwards.
     guidance_refs:
+      - C-2026-5054/deep-fake-disclosure
       - C-2026-5054/substantive-human-review
     # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
     # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
@@ -3428,9 +3429,13 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      The deployer's disclosure that the content is artificially generated or manipulated. For an
-      evidently artistic, creative, satirical or fictional work the duty is reduced to disclosing
-      that such content exists, in a way that does not hamper enjoyment of the work. For published
+      The deployer's disclosure that the content is artificially generated or manipulated, as a
+      label people can see or hear without any tool; the provider's machine-readable mark does not
+      count. For an evidently artistic, creative, satirical or fictional work the duty is reduced to
+      disclosing that such content exists, in a way that does not hamper enjoyment of the work.
+      "Evidently" is read strictly: where the content is also informative, as news or a plain
+      advertisement, the full label applies, and even the reduced disclosure must respect third
+      parties' rights. For published
       text informing the public on matters of public interest, the duty falls away where the content
       had human review or editorial control and a named person holds editorial responsibility. The
       review has to engage with the substance and check the facts: an editorial policy, a

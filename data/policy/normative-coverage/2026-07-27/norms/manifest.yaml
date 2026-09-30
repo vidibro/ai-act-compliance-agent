@@ -4708,6 +4708,53 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P4-DEEPFAKE-DEFINED-C2026-5054
+  snippet_refs:
+  - C-2026-5054/deep-fake-defined
+  norm_ids:
+  - AIA-NORM-A050-P4-DEEPFAKE
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-TRANSPARENCY
+  effect: expands_scope
+  effect_explanation: Reads "existing" in Art. 3(60) as realistic subjects that exist or plausibly could,
+    so a realistic AI person who never existed counts; also sets context, audience and minor-edit limits.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (113) to (116), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P4-DEEPFAKE-DISCLOSURE-C2026-5054
+  snippet_refs:
+  - C-2026-5054/deep-fake-disclosure
+  norm_ids:
+  - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE
+  targets:
+  - kind: policy_rule
+    target_id: AIA-RULE-TR-A50-4
+  effect: defines_evidence
+  effect_explanation: The label must be perceivable without tools; the lighter regime is only for evidently
+    artistic, creative, satirical or fictional works, read strictly.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (117) and (119) to (124), with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A050-P4-TEXT-C2026-5054
   snippet_refs:
   - C-2026-5054/substantive-human-review

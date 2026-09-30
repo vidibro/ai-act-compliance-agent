@@ -2,7 +2,7 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 111-132, 137-155
+awaiting_review: 129-132, 137-155
 decisions:
   1:
     decision: no_effect
@@ -324,6 +324,49 @@ decisions:
     reason: >-
       Art. 50(3) does not make a use lawful, and data protection information duties apply alongside;
       the product reads only this Regulation and assesses Art. 5 separately.
+  111:
+    decision: no_effect
+    reason: >-
+      Restates the two Art. 50(4) duties and that they sit beside Art. 50(2).
+  112:
+    decision: no_effect
+    reason: >-
+      Restates the conditions of the Art. 50(4) deep fake duty.
+  113: {decision: used}
+  114: {decision: used}
+  115: {decision: used}
+  116: {decision: used}
+  117: {decision: used}
+  118:
+    decision: no_effect
+    reason: >-
+      An adequate code of practice under Art. 50(7) can show compliance; the product does not assess
+      codes of practice.
+  119: {decision: used}
+  120: {decision: used}
+  121: {decision: used}
+  122: {decision: used}
+  123: {decision: used}
+  124: {decision: used}
+  125:
+    decision: no_effect
+    reason: >-
+      The law-enforcement exception for deep fakes reads as paras (46) to (48), already applied to
+      the transparency question.
+  126:
+    decision: no_effect
+    reason: >-
+      DSA interplay for very large platforms; a platform's labelling tool is one means of
+      disclosure, which rule AIA-TR-A50-4 already leaves open.
+  127:
+    decision: no_effect
+    reason: >-
+      Data protection law applies to deep fakes of identifiable people; the product reads only this
+      Regulation.
+  128:
+    decision: no_effect
+    reason: >-
+      Intellectual property law applies alongside; the product reads only this Regulation.
   133: {decision: used}
   134: {decision: used}
   135: {decision: used}

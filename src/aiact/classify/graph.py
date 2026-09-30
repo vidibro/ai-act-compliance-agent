@@ -678,7 +678,12 @@ QUESTIONS: dict[str, Question] = {
         "- deep_fake_disclosure (50(4), the DEPLOYER's duty): it generates or manipulates image, "
         "audio or video constituting a deep fake — DEFINED at Art. 3(60) and supplied below, "
         "which requires that the content resemble existing persons, objects, places, entities or "
-        "events and would FALSELY APPEAR to a person to be authentic or truthful.\n"
+        "events and would FALSELY APPEAR to a person to be authentic or truthful. The resemblance "
+        "must be appreciable, to realistic subjects that exist or plausibly could; whether it "
+        "falsely appears authentic turns on the context and the likely audience, children "
+        "included. Unrealistic subjects (a flying sphinx, talking mice), background effects, "
+        "colour correction and other minor edits are not deep fakes; AI actors, digital replicas, "
+        "cloned voices and de-ageing are.\n"
         "- public_interest_text_disclosure (50(4), the DEPLOYER's duty): it generates text "
         "published to inform the public on matters of public interest. NOT owed where the content "
         "undergoes human review or editorial control with a person holding editorial "
@@ -776,6 +781,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2026-5054/agent-assist-is-not-direct-interaction",
         "C-2026-5054/synthetic-content-in-and-out-of-scope",
         "C-2026-5054/standard-editing-and-minor-alterations",
+        "C-2026-5054/deep-fake-defined",
         "C-2026-5054/substantive-human-review",
     ),
 }
