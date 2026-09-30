@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Act Coverage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff; --surface: #f7f7f6; --raised: #ffffff; --ink: #0b0b0b; --muted: #6d6d6a;
+    --faint: #a3a3a0; --line: #e7e7e4; --line-strong: #d4d4d0;
+    --orange: #ff5a00; --orange-ink: #c2410c; --orange-soft: rgba(255, 90, 0, .08);
+    --red: #d92d20; --track: #ececea;
+    --ok: var(--ink); --part: var(--orange); --bad: var(--red); --na: var(--faint);
+    --on: #0b0b0b; --on-text: #ffffff;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .03);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0b0b; --surface: #121212; --raised: #161616; --ink: #f5f5f4; --muted: #9b9b97;
+      --faint: #5c5c59; --line: #242423; --line-strong: #333331;
+      --orange: #ff6a14; --orange-ink: #ff8a3d; --orange-soft: rgba(255, 106, 20, .10);
+      --red: #f04438; --track: #262625;
+      --on: #f5f5f4; --on-text: #0b0b0b;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 13px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+         -webkit-font-smoothing: antialiased; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  .muted { color: var(--muted); }
+
+  /* ---- top bar --------------------------------------------------------------------------- */
+  .topbar { background: #0b0b0b; color: #ffffff; border-bottom: 3px solid var(--orange); }
+  .topbar-in { max-width: 1440px; margin: 0 auto; padding: 14px 24px; display: flex;
+               align-items: center; gap: 14px; }
+  .mark { width: 26px; height: 26px; background: var(--orange); border-radius: 5px; display: grid;
+          place-items: center; font-weight: 700; font-size: 13px; color: #0b0b0b; letter-spacing: -.02em; }
+  .brand { font-weight: 700; font-size: 15px; letter-spacing: -.01em; }
+  .brand span { color: #8c8c88; font-weight: 500; margin-left: 6px; }
+  .topbar .meta { margin-left: auto; color: #a8a8a4; font-size: 12px; display: flex; gap: 16px; }
+  .topbar .meta b { color: #ffffff; font-weight: 600; }
+
+  main { max-width: 1440px; margin: 0 auto; padding: 24px; }
+  .section-title { display: flex; align-items: baseline; gap: 10px; margin: 28px 0 12px; }
+  .section-title h2 { font-size: 13px; font-weight: 700; text-transform: uppercase;
+                      letter-spacing: .08em; margin: 0; }
+  .section-title .muted { font-size: 12px; }
+
+  /* ---- KPI tiles ------------------------------------------------------------------------- */
+  .kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 1000px) { .kpis { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); } }
+  .kpi { background: var(--raised); border: 1px solid var(--line); border-radius: 10px;
+         padding: 14px 16px 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+  .kpi::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--ok); }
+  .kpi.part::before { background: var(--orange); } .kpi.bad::before { background: var(--red); }
+  .kpi .k { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+  .kpi .big { font-size: 28px; font-weight: 700; letter-spacing: -.03em; margin: 4px 0 2px;
+              font-variant-numeric: tabular-nums; }
+  .kpi .big small { font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 6px; }
+  .kpi .s { font-size: 12px; color: var(--muted); }
+  .kpi .bar { margin-top: 10px; height: 4px; }
+
+  /* ---- filters --------------------------------------------------------------------------- */
+  .filters { background: var(--raised); border: 1px solid var(--line); border-radius: 10px;
+             box-shadow: var(--shadow); margin-top: 16px; }
+  .filters > summary { padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+                       font-weight: 600; }
+  .filters[open] > summary { border-bottom: 1px solid var(--line); }
+  .fbody { padding: 12px 16px 14px; display: grid; gap: 10px; }
+  .frow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .frow > .lbl { width: 92px; flex: none; font-size: 11px; font-weight: 600; text-transform: uppercase;
+                 letter-spacing: .07em; color: var(--muted); }
+  .chip { border: 1px solid var(--line-strong); background: var(--raised); color: var(--ink);
+          border-radius: 6px; padding: 3px 9px; cursor: pointer; font: inherit; font-size: 12px;
+          transition: border-color .12s, background .12s; }
+  .chip:hover { border-color: var(--ink); }
+  .chip.on { background: var(--on); color: var(--on-text); border-color: var(--on); }
+  .chip .n { color: var(--muted); margin-left: 5px; font-variant-numeric: tabular-nums; }
+  .chip.on .n { color: var(--orange); }
+  .badge { background: var(--orange); color: #0b0b0b; border-radius: 999px; padding: 0 7px;
+           font-size: 11px; font-weight: 700; }
+  input[type=search] { font: inherit; padding: 6px 10px; border: 1px solid var(--line-strong);
+                       border-radius: 6px; background: var(--bg); color: var(--ink); width: 260px; outline: none; }
+  input[type=search]:focus { border-color: var(--orange); box-shadow: 0 0 0 3px var(--orange-soft); }
+  .link { background: none; border: 0; color: var(--orange-ink); cursor: pointer; font: inherit;
+          font-size: 12px; font-weight: 500; padding: 0 4px; }
+  .link:hover { text-decoration: underline; }
+  .toggle { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 12px;
+            border: 0; background: none; color: var(--ink); font-family: inherit; padding: 0 6px; }
+  .toggle .sw { width: 28px; height: 16px; border-radius: 999px; background: var(--line-strong);
+                position: relative; transition: background .15s; }
+  .toggle .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px;
+                       border-radius: 50%; background: #ffffff; transition: transform .15s; }
+  .toggle.on .sw { background: var(--orange); } .toggle.on .sw::after { transform: translateX(12px); }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 12px; margin-left: auto; }
+  .dot { display: inline-block; width: 10px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+
+  /* ---- map ------------------------------------------------------------------------------- */
+  .map { background: var(--raised); border: 1px solid var(--line); border-radius: 10px;
+         box-shadow: var(--shadow); overflow-x: auto; }
+  .grid { display: grid; grid-template-columns: 104px minmax(200px, 1fr) repeat(8, 108px);
+          align-items: center; min-width: 1150px; }
+  .head { position: sticky; top: 0; z-index: 1; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .head > div { padding: 10px 12px; font-size: 11px; font-weight: 600; text-transform: uppercase;
+                letter-spacing: .07em; color: var(--muted); }
+  .head > div[title] { cursor: help; }
+  .head > div[title]:hover { color: var(--ink); }
+  summary.grid > div, .total > div { padding: 9px 12px; }
+  .total { background: var(--surface); border-bottom: 1px solid var(--line); font-weight: 600; }
+  details.doc { border-bottom: 1px solid var(--line); }
+  details.doc:last-child { border-bottom: 0; }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  summary.grid { border-left: 3px solid transparent; transition: background .1s; }
+  summary.grid:hover { background: var(--orange-soft); }
+  details[open] > summary.grid { border-left-color: var(--orange); background: var(--orange-soft); }
+  .docid { white-space: nowrap; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .chev { width: 8px; height: 8px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted);
+          transform: rotate(-45deg); transition: transform .15s; flex: none; }
+  details[open] > summary .chev, details[open] > summary > .chev { transform: rotate(45deg); }
+  .title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .cell { display: grid; gap: 5px; }
+  .cell .v { font-variant-numeric: tabular-nums; font-size: 12px; }
+  .cell .v .of { color: var(--muted); }
+  .bar { height: 4px; border-radius: 2px; background: var(--track); overflow: hidden; }
+  .bar > i { display: block; height: 100%; border-radius: 2px; }
+  .ok .bar > i, .kpi.ok .bar > i { background: var(--ok); }
+  .part .bar > i, .kpi.part .bar > i { background: var(--orange); }
+  .bad .bar > i, .kpi.bad .bar > i { background: var(--red); }
+  .cell.bad .v { color: var(--red); font-weight: 600; }
+  .cell.bad .v .of { color: var(--red); opacity: .7; }
+  .na { color: var(--faint); }
+
+  /* ---- row detail ------------------------------------------------------------------------ */
+  .body { padding: 6px 20px 18px 119px; display: grid; gap: 8px; background: var(--bg);
+          border-top: 1px solid var(--line); }
+  .body .segs { font-size: 12px; color: var(--muted); padding-top: 8px; }
+  .body details > summary { font-weight: 600; padding: 6px 0; display: flex; align-items: center; gap: 8px; }
+  .body details > summary:hover { color: var(--orange-ink); }
+  table { border-collapse: collapse; width: 100%; margin: 2px 0 8px; font-size: 12px; }
+  th, td { text-align: left; padding: 7px 12px 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  tr:last-child td { border-bottom: 0; }
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; background: var(--surface);
+         border: 1px solid var(--line); margin: 1px 3px 1px 0; font-size: 11px; white-space: nowrap; }
+  .tag.bad { color: var(--red); border-color: var(--red); background: none; }
+  .tag.part { color: var(--orange-ink); border-color: var(--orange); background: var(--orange-soft); }
+
+  /* ---- guidance -------------------------------------------------------------------------- */
+  .gdocs { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 12px; }
+  .gdoc { background: var(--raised); border: 1px solid var(--line); border-radius: 10px;
+          padding: 16px; box-shadow: var(--shadow); }
+  .gdoc .top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .gdoc b { font-size: 14px; }
+  .gdoc .pct { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+  .stack { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin: 10px 0 10px;
+           background: var(--track); gap: 2px; }
+  .stack > i { display: block; height: 100%; }
+  .gdoc .legend { margin: 0; }
+  .empty { padding: 32px; color: var(--muted); text-align: center; }
+  @media (max-width: 700px) {
+    main, .topbar-in { padding: 16px; }
+    .topbar .meta { display: none; }
+    .frow > .lbl { width: 100%; }
+    input[type=search] { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="mark">AI</div>
+  <div class="brand">AI Act Coverage<span>Act &amp; guidance</span></div>
+  <div class="meta" id="meta">Loading…</div>
+</div></div>
+<main>
+  <div class="kpis" id="kpis"></div>
+
+  <details class="filters" id="filters" open></details>
+
+  <div class="section-title">
+    <h2>Coverage by document</h2><span class="muted" id="rowcount"></span>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--ok)"></i>complete</span>
+      <span><i class="dot" style="background:var(--orange)"></i>partial</span>
+      <span><i class="dot" style="background:var(--red)"></i>missing</span>
+      <span><i class="dot" style="background:var(--faint)"></i>n/a</span>
+    </div>
+  </div>
+  <div class="map" id="map"></div>
+
+  <div class="section-title"><h2>Guidance documents</h2><span class="muted">paragraph decisions</span></div>
+  <div class="gdocs" id="gdocs"></div>
+</main>
+
+<script>
+const UNDECIDED = new Set(["missing", "unresolved"]);
+const COLUMNS = [
+  ["Text", "Segments with a settled disposition / all segments. Hover for the normative count."],
+  ["Norms", "Norms extracted from this document (after filters). Red when normative text has no norm."],
+  ["Approved", "Norms approved by a reviewer / all norms."],
+  ["In scope", "Norms the product must act on (product_scope = in_scope)."],
+  ["Decided", "In-scope norms with an implementation mode other than missing or unresolved."],
+  ["Rules", "Policy rules citing this document (filtered by role when actors are selected)."],
+  ["Cases", "Document-verifiable rules with a dev golden case / all document-verifiable rules. Held-out count on hover."],
+  ["Guidance", "Norms with an interpretation link + rules with guidance refs."],
+];
+const GUIDE_COLORS = { used: "var(--ink)", not_followed: "var(--orange)", no_effect: "var(--faint)", awaiting: "transparent" };
+
+let DATA;
+const state = { q: "", actors: new Set(), status: new Set(), scope: new Set(), kind: new Set(),
+                source: new Set(), gaps: false };
+
+const el = (tag, attrs = {}, ...kids) => {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") node.className = v;
+    else if (k.startsWith("on")) node.addEventListener(k.slice(2), v);
+    else if (v !== undefined && v !== null) node.setAttribute(k, v);
+  }
+  for (const kid of kids.flat()) if (kid !== null && kid !== undefined) node.append(kid);
+  return node;
+};
+const count = (items, key) => items.reduce((acc, item) => {
+  for (const v of [].concat(item[key])) acc[v] = (acc[v] || 0) + 1; return acc; }, {});
+
+// ---- state <-> URL hash, so a filtered view can be linked -------------------------------------
+function readHash() {
+  const params = new URLSearchParams(location.hash.slice(1));
+  state.q = params.get("q") || "";
+  for (const k of ["actors", "status", "scope", "kind", "source"])
+    state[k] = new Set((params.get(k) || "").split(",").filter(Boolean));
+  state.gaps = params.get("gaps") === "1";
+}
+function writeHash() {
+  const params = new URLSearchParams();
+  if (state.q) params.set("q", state.q);
+  for (const k of ["actors", "status", "scope", "kind", "source"])
+    if (state[k].size) params.set(k, [...state[k]].join(","));
+  if (state.gaps) params.set("gaps", "1");
+  history.replaceState(null, "", "#" + params.toString());
+}
+
+// ---- filters -----------------------------------------------------------------------------------
+const expanded = new Set();
+function chipRow(label, key, counts, fmt = (v) => v, limit = 12) {
+  const all = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+  const values = expanded.has(key) ? all : all.filter((v, i) => i < limit || state[key].has(v));
+  const more = all.length - values.length;
+  return el("div", { class: "frow" }, el("span", { class: "lbl" }, label),
+    values.map((v) => el("button", {
+      class: "chip" + (state[key].has(v) ? " on" : ""),
+      onclick: () => { state[key].has(v) ? state[key].delete(v) : state[key].add(v); render(); },
+    }, fmt(v), el("span", { class: "n" }, counts[v]))),
+    more ? el("button", { class: "link", onclick: () => { expanded.add(key); renderFilters(); } }, `+${more} more`) : null,
+    state[key].size ? el("button", { class: "link", onclick: () => { state[key].clear(); render(); } }, "clear") : null);
+}
+const chev = () => el("span", { class: "chev" });
+function activeFilters() {
+  return ["actors", "status", "scope", "kind", "source"].reduce((n, k) => n + state[k].size, 0)
+       + (state.q ? 1 : 0) + (state.gaps ? 1 : 0);
+}
+function renderFilters() {
+  const box = document.getElementById("filters");
+  const search = el("input", { type: "search", placeholder: "Search article, annex or title", value: state.q });
+  search.addEventListener("input", () => { state.q = search.value; renderMap(); writeHash(); });
+  const gaps = el("button", { class: "toggle" + (state.gaps ? " on" : ""),
+    onclick: () => { state.gaps = !state.gaps; render(); } }, el("span", { class: "sw" }), "Only rows with gaps");
+  const active = activeFilters();
+  box.replaceChildren(
+    el("summary", {}, chev(), "Filters", active ? el("span", { class: "badge" }, active) : null,
+       active ? el("button", { class: "link", onclick: (e) => { e.preventDefault(); location.hash = ""; readHash(); render(); } }, "Reset all") : null),
+    el("div", { class: "fbody" },
+      el("div", { class: "frow" }, el("span", { class: "lbl" }, "Find"), search, gaps),
+      chipRow("Actor", "actors", count(DATA.norms, "actors")),
+      chipRow("Review", "status", count(DATA.norms, "status")),
+      chipRow("Scope", "scope", count(DATA.norms, "scope")),
+      chipRow("Norm kind", "kind", count(DATA.norms, "kind")),
+      chipRow("Source", "source", count(DATA.documents, "kind"), (v) => v + "s")),
+  );
+}
+
+// ---- aggregation -------------------------------------------------------------------------------
+const pass = (set, value) => !set.size || [].concat(value).some((v) => set.has(v));
+function normFilter(n) {
+  return pass(state.actors, n.actors) && pass(state.status, n.status)
+      && pass(state.scope, n.scope) && pass(state.kind, n.kind);
+}
+function ruleFilter(r) { return pass(state.actors, r.roles); }
+
+const statusOf = (num, den) => (num >= den ? "ok" : num === 0 ? "bad" : "part");
+function cell(num, den, { neutral = false, title } = {}) {
+  if (den === 0) return el("div", { class: "cell na", title }, el("span", { class: "v" }, "—"));
+  if (neutral) return el("div", { class: "cell", title }, el("span", { class: "v" }, String(num)));
+  const pct = Math.round((100 * num) / den);
+  return el("div", { class: "cell " + statusOf(num, den), title },
+    el("span", { class: "v" }, String(num), el("span", { class: "of" }, ` / ${den}`)),
+    el("div", { class: "bar" }, el("i", { style: `width:${pct}%` })));
+}
+
+function rowStats(doc, norms, rules) {
+  const seg = doc.segments, segTotal = Object.values(seg).reduce((a, b) => a + b, 0);
+  const normative = seg.normative || 0, needs = seg.needs_review || 0;
+  const inScope = norms.filter((n) => n.scope === "in_scope");
+  const verifiable = rules.filter((r) => r.document_verifiable);
+  return {
+    segTotal, normative, needs, norms: norms.length,
+    approved: norms.filter((n) => n.status === "approved").length,
+    inScope: inScope.length,
+    decided: inScope.filter((n) => !UNDECIDED.has(n.mode)).length,
+    rules: rules.length, verifiable: verifiable.length,
+    casesDev: verifiable.filter((r) => r.cases_dev).length,
+    casesHeld: verifiable.filter((r) => r.cases_heldout).length,
+    guidance: norms.filter((n) => n.guidance).length + rules.filter((r) => r.guidance).length,
+  };
+}
+function hasGap(s, unfilteredNorms) {
+  return s.needs > 0 || (s.normative > 0 && unfilteredNorms === 0) || s.approved < s.norms
+      || s.decided < s.inScope || s.casesDev < s.verifiable;
+}
+function cells(s, unfilteredNorms) {
+  return [
+    cell(s.segTotal - s.needs, s.segTotal, { title: `${s.normative} normative, ${s.needs} need review` }),
+    s.normative > 0 && unfilteredNorms === 0
+      ? cell(0, 1, { title: "Normative text with no norm" })
+      : cell(s.norms, s.norms, { neutral: true }),
+    cell(s.approved, s.norms),
+    cell(s.inScope, s.inScope, { neutral: true }),
+    cell(s.decided, s.inScope),
+    cell(s.rules, s.rules, { neutral: true }),
+    cell(s.casesDev, s.verifiable, { title: `held-out: ${s.casesHeld} / ${s.verifiable}` }),
+    cell(s.guidance, s.guidance, { neutral: true }),
+  ];
+}
+
+// ---- summary tiles -----------------------------------------------------------------------------
+function kpi(label, num, den, note) {
+  const pct = den ? Math.round((100 * num) / den) : 0;
+  return el("div", { class: "kpi " + (den ? statusOf(num, den) : "ok") },
+    el("div", { class: "k" }, label),
+    el("div", { class: "big" }, den ? `${pct}%` : "—", el("small", {}, `${num} / ${den}`)),
+    el("div", { class: "s" }, note),
+    el("div", { class: "bar" }, el("i", { style: `width:${pct}%` })));
+}
+function renderKpis(t) {
+  const g = DATA.guidance.reduce((a, d) => ({ p: a.p + d.paragraphs, w: a.w + d.awaiting }), { p: 0, w: 0 });
+  document.getElementById("kpis").replaceChildren(
+    kpi("Text reviewed", (t.segTotal || 0) - (t.needs || 0), t.segTotal || 0, "segments with a settled disposition"),
+    kpi("Norms approved", t.approved || 0, t.norms || 0, "signed off by a reviewer"),
+    kpi("In-scope decided", t.decided || 0, t.inScope || 0, "implementation mode chosen"),
+    kpi("Golden cases", t.casesDev || 0, t.verifiable || 0, `document-verifiable rules · held-out ${t.casesHeld || 0}`),
+    kpi("Guidance read", g.p - g.w, g.p, `paragraphs decided · ${DATA.guidance.length} documents`),
+  );
+}
+
+// ---- row detail --------------------------------------------------------------------------------
+function normTable(norms) {
+  return el("table", {},
+    el("tr", {}, ["Norm", "Action", "Kind", "Actors", "Scope", "Mode", "Review", "Implemented by"].map((h) => el("th", {}, h))),
+    norms.map((n) => el("tr", {},
+      el("td", { class: "mono" }, n.id),
+      el("td", {}, n.action),
+      el("td", {}, n.kind),
+      el("td", {}, n.actors.map((a) => el("span", { class: "tag" }, a))),
+      el("td", {}, n.scope),
+      el("td", {}, el("span", { class: UNDECIDED.has(n.mode) && n.scope === "in_scope" ? "tag bad" : "tag" }, n.mode)),
+      el("td", {}, el("span", { class: n.status === "approved" ? "tag" : "tag part" }, n.status)),
+      el("td", { class: "mono" }, n.refs.join(", ") || "—"))));
+}
+function ruleTable(rules) {
+  return el("table", {},
+    el("tr", {}, ["Rule", "Roles", "Document-verifiable", "Cases (dev / held-out)", "Guidance refs", "Effective"].map((h) => el("th", {}, h))),
+    rules.map((r) => el("tr", {},
+      el("td", { class: "mono" }, r.id),
+      el("td", {}, r.roles.map((a) => el("span", { class: "tag" }, a))),
+      el("td", {}, r.document_verifiable ? "yes" : "no"),
+      el("td", {}, r.document_verifiable && !r.cases_dev
+        ? el("span", { class: "tag bad" }, "none") : `${r.cases_dev} / ${r.cases_heldout}`),
+      el("td", {}, String(r.guidance || "—")),
+      el("td", {}, r.effective_date || "—"))));
+}
+function detailBody(doc, norms, rules) {
+  const segs = Object.entries(doc.segments).map(([k, v]) => `${v} ${k.replace("_", " ")}`).join(" · ");
+  return el("div", { class: "body" },
+    el("div", { class: "segs" }, `Segments: ${segs}`),
+    el("details", { open: norms.length <= 12 ? "" : null },
+      el("summary", {}, chev(), `Norms (${norms.length})`), norms.length ? normTable(norms) : el("div", { class: "muted" }, "None match the filters.")),
+    el("details", { open: "" },
+      el("summary", {}, chev(), `Rules (${rules.length})`), rules.length ? ruleTable(rules) : el("div", { class: "muted" }, "No rule cites this document.")));
+}
+
+// ---- map ---------------------------------------------------------------------------------------
+function renderMap() {
+  const q = state.q.trim().toLowerCase();
+  const byDocNorms = {}, byDocAll = {}, byDocRules = {};
+  for (const n of DATA.norms) {
+    byDocAll[n.doc] = (byDocAll[n.doc] || 0) + 1;
+    if (normFilter(n)) (byDocNorms[n.doc] ||= []).push(n);
+  }
+  for (const r of DATA.rules) if (ruleFilter(r)) (byDocRules[r.doc] ||= []).push(r);
+  const normFiltersOn = state.actors.size || state.status.size || state.scope.size || state.kind.size;
+
+  const rows = [], totals = {};
+  for (const doc of DATA.documents) {
+    if (!pass(state.source, doc.kind)) continue;
+    const label = (doc.kind === "article" ? "Art. " : "Annex ") + doc.number;
+    if (q && !`${label} ${doc.number} ${doc.title}`.toLowerCase().includes(q)) continue;
+    const norms = byDocNorms[doc.key] || [], rules = byDocRules[doc.key] || [];
+    if (normFiltersOn && !norms.length && !rules.length) continue;
+    const s = rowStats(doc, norms, rules), all = byDocAll[doc.key] || 0;
+    if (state.gaps && !hasGap(s, all)) continue;
+    for (const [k, v] of Object.entries(s)) totals[k] = (totals[k] || 0) + v;
+    const row = el("details", { class: "doc", id: doc.key },
+      el("summary", { class: "grid" },
+        el("div", { class: "docid mono" }, chev(), label),
+        el("div", { class: "title", title: doc.title }, doc.title),
+        cells(s, all)));
+    row.addEventListener("toggle", () => {
+      if (row.open && row.children.length === 1) row.append(detailBody(doc, norms, rules));
+    });
+    rows.push(row);
+  }
+
+  const head = el("div", { class: "grid head" }, el("div", {}, "Doc"), el("div", {}, "Title"),
+    COLUMNS.map(([name, help]) => el("div", { title: help }, name)));
+  const total = rows.length ? el("div", { class: "grid total" },
+    el("div", {}, "Total"), el("div", { class: "muted" }, `${rows.length} documents`), cells(totals, 1)) : null;
+  document.getElementById("map").replaceChildren(head, total || el("div", { class: "empty" }, "No documents match these filters."), ...rows);
+  document.getElementById("rowcount").textContent = `${rows.length} of ${DATA.documents.length} documents`;
+  renderKpis(totals);
+}
+
+function renderGuidance() {
+  const kinds = ["used", "not_followed", "no_effect", "awaiting"];
+  document.getElementById("gdocs").replaceChildren(...DATA.guidance.map((g) => {
+    const decided = g.paragraphs - g.awaiting;
+    return el("div", { class: "gdoc" },
+      el("div", { class: "top" },
+        el("div", {}, el("b", {}, g.document), el("div", { class: "muted" }, `${decided} of ${g.paragraphs} paragraphs decided`)),
+        el("div", { class: "pct" }, `${Math.round((100 * decided) / g.paragraphs)}%`)),
+      el("div", { class: "stack" }, kinds.map((k) => g[k] && GUIDE_COLORS[k] !== "transparent"
+        ? el("i", { style: `width:${(100 * g[k]) / g.paragraphs}%;background:${GUIDE_COLORS[k]}`, title: `${k.replace("_", " ")}: ${g[k]}` }) : null)),
+      el("div", { class: "legend" }, kinds.map((k) =>
+        el("span", {}, el("i", { class: "dot", style: `background:${k === "awaiting" ? "var(--track)" : GUIDE_COLORS[k]}` }), `${k.replace("_", " ")} ${g[k] || 0}`))));
+  }));
+}
+
+function render() { renderFilters(); renderMap(); writeHash(); }
+
+fetch("/api/coverage").then((r) => r.json()).then((data) => {
+  DATA = data;
+  document.getElementById("meta").replaceChildren(
+    el("span", {}, "Act version ", el("b", {}, data.act_version_date)),
+    el("span", {}, el("b", {}, data.norms.length), " norms"),
+    el("span", {}, el("b", {}, data.rules.length), " rules"));
+  readHash(); render(); renderGuidance();
+  window.addEventListener("hashchange", () => { readHash(); renderFilters(); renderMap(); });
+}).catch((err) => { document.getElementById("meta").textContent = "Failed to load: " + err; });
+</script>
+</body>
+</html>
