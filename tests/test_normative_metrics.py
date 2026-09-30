@@ -2212,7 +2212,7 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
         "proposed": 755,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2953
+    assert metrics.total_review_records == 2955
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
@@ -2315,7 +2315,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
 
 def test_article_50_guidance_stays_non_binding_and_separate(metrics):
     bundle = load_normative_coverage()
-    assert metrics.interpretive_links == 13
+    assert metrics.interpretive_links == 15
     assert all(link.binding is False for link in bundle.norm_inventory.interpretations)
     link = next(
         link

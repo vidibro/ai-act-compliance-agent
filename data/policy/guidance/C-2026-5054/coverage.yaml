@@ -2,7 +2,7 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 100-132, 137-155
+awaiting_review: 111-132, 137-155
 decisions:
   1:
     decision: no_effect
@@ -286,6 +286,44 @@ decisions:
     decision: no_effect
     reason: >-
       Restates the Art. 50(3) duty.
+  100:
+    decision: no_effect
+    reason: >-
+      Purpose of Art. 50(3); it applies to live and after-the-fact use alike, and the transparency
+      question already attaches the duty to the system type.
+  101:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 3(39) definition, which the transparency question already supplies; points
+      to the draft high-risk classification guidelines, not stored.
+  102:
+    decision: no_effect
+    reason: >-
+      Emotion recognition is also high-risk under Annex III(1)(c); the product already assesses
+      both.
+  103:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 3(40) definition, which the transparency question already supplies; points
+      to the draft high-risk classification guidelines, not stored.
+  104:
+    decision: no_effect
+    reason: >-
+      Art. 50(3) reaches biometric categorisation whether high-risk or not; the product already
+      applies it by system type.
+  105: {decision: used}
+  106: {decision: used}
+  107: {decision: used}
+  108:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 50(5) timing, which already qualifies rule AIA-TR-A50-3.
+  109: {decision: used}
+  110:
+    decision: no_effect
+    reason: >-
+      Art. 50(3) does not make a use lawful, and data protection information duties apply alongside;
+      the product reads only this Regulation and assesses Art. 5 separately.
   133: {decision: used}
   134: {decision: used}
   135: {decision: used}

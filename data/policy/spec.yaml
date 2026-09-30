@@ -3375,6 +3375,10 @@ rules:
       act_version_date: 2026-07-27
     applies_to_transparency_duty: [emotion_or_biometric_categorisation]
     applies_to_role: [deployer]
+    # Art. 50(3) says only "inform ... of the operation of the system"; paras (105) to (107) say
+    # what that covers, whom it reaches and by what means.
+    guidance_refs:
+      - C-2026-5054/emotion-biometric-information-content
     # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
     # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
     # applicable accessibility requirements. Attached to each of the four rather than modelled once,
@@ -3385,8 +3389,11 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      How the deployer informs the people exposed to the emotion recognition or biometric
-      categorisation system that it is operating, and the data-protection basis under Regulation
+      How the deployer informs everyone exposed to the emotion recognition or biometric
+      categorisation system, children included, that it is operating. The reasons for using it need
+      not be given, and any means that fits the place and the audience will do: a notice at each
+      entrance, an onboarding message, standard icons, a spoken statement. Also the data-protection
+      basis under Regulation
       (EU) 2016/679, Regulation (EU) 2018/1725 or Directive (EU) 2016/680. Discharged in front of
       those people, by the operating organisation — a provider's technical file cannot show it, so
       confirm separately.

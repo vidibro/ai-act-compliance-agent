@@ -688,7 +688,9 @@ QUESTIONS: dict[str, Question] = {
         "Every duty is disapplied where the system is authorised by Union or national law to "
         "detect, prevent, investigate or prosecute criminal offences and is used for that purpose "
         "— EXCEPT direct_interaction for a system available to the public to report a criminal "
-        "offence, which still owes it.",
+        "offence, which still owes it. For emotion_or_biometric_categorisation the bar is lower: "
+        "it is enough that the law governing police powers PERMITS its use to detect, prevent or "
+        "investigate criminal offences without informing the people concerned.",
         "transparency_duties",
         label="Must people be told they are dealing with AI?",
     ),
@@ -770,6 +772,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2026-5054/interactive-systems-in-and-out-of-scope",
         "C-2026-5054/obvious-interaction-exception",
         "C-2026-5054/law-enforcement-exception-for-interaction",
+        "C-2026-5054/emotion-biometric-law-enforcement-exception",
         "C-2026-5054/agent-assist-is-not-direct-interaction",
         "C-2026-5054/synthetic-content-in-and-out-of-scope",
         "C-2026-5054/standard-editing-and-minor-alterations",

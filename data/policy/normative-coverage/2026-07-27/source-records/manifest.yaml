@@ -2792,6 +2792,50 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P3-INFORM-C2026-5054
+  snippet_refs:
+  - C-2026-5054/emotion-biometric-information-content
+  norm_ids:
+  - AIA-NORM-A050-P3-INFORM
+  targets:
+  - kind: policy_rule
+    target_id: AIA-RULE-TR-A50-3
+  effect: defines_evidence
+  effect_explanation: Everyone exposed, children included, must be told the system is operating, by any fitting means; reasons need not be given.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (105) to (107), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P3-LAW-ENFORCEMENT-C2026-5054
+  snippet_refs:
+  - C-2026-5054/emotion-biometric-law-enforcement-exception
+  norm_ids:
+  - AIA-NORM-A050-P3-INFORM
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-TRANSPARENCY
+  effect: clarifies_term
+  effect_explanation: For Art. 50(3) the law on police powers need only permit the use without informing people.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraph (109), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A050-P4-TEXT-C2026-5054
   snippet_refs:
   - C-2026-5054/substantive-human-review
