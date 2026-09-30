@@ -589,6 +589,39 @@ def test_a_scope_note_norm_must_be_stated_by_its_note(bundle, spec, monkeypatch)
     )
 
 
+def test_every_guidance_use_is_recorded_as_an_interpretation_link(bundle, spec):
+    """Handing a question or rule Commission guidance changes its answers, so each use needs a
+    link naming the norm it reads; deleting the Article 5 link must fail the build."""
+    unlinked = bundle.model_copy(deep=True)
+    unlinked.norm_inventory.interpretations = [
+        link
+        for link in unlinked.norm_inventory.interpretations
+        if link.interpretation_id != "AIA-INT-A005-P1-F-C2025-5052"
+    ]
+
+    assert (
+        "AIA-CQ-PROHIBITED uses guidance C-2025-5052/workplace-covers-recruitment but no "
+        "interpretation link records it"
+    ) in traceability_errors(unlinked, spec, LEDGER)
+
+
+def test_an_interpretation_link_may_claim_only_a_real_use(bundle, spec):
+    """A link naming a rule that is never handed the passage would record an interpretation the
+    product does not apply."""
+    rules = [
+        rule.model_copy(update={"guidance_refs": []})
+        if rule.rule_id == "AIA-RULE-TR-A50-4"
+        else rule
+        for rule in spec.rules
+    ]
+    unused = spec.model_copy(update={"rules": rules})
+
+    assert (
+        "AIA-INT-A050-P4-TEXT-C2026-5054 says AIA-RULE-TR-A50-4 uses guidance "
+        "C-2026-5054/substantive-human-review, but it does not"
+    ) in traceability_errors(bundle, unused, LEDGER)
+
+
 def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
     criteria = a15(spec).criteria
     model_flaws = next(c for c in criteria if c.norm_id == MODEL_FLAWS)

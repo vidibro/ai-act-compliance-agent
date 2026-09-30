@@ -739,7 +739,7 @@ _QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
 # discipline as _QUESTION_CONTEXT, one level up. A verdict reached with it says it rested on
 # interpretation, not law. (Coarse for now: attached to the whole `prohibited` node; the snippet is
 # only relevant to its Art. 5(1)(f) sub-question, harmless where it is not.)
-_QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
+QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
     "prohibited": ("C-2025-5052/workplace-covers-recruitment",),
     # Art. 50 leaves open what "directly", "standard editing" and "human review" mean. The
     # Commission's paragraph (87) carve-out for industrial output is NOT supplied: it adds an
@@ -771,7 +771,7 @@ def load_questions(
     return anchor_questions(
         QUESTIONS,
         _QUESTION_CONTEXT,
-        _QUESTION_GUIDANCE,
+        QUESTION_GUIDANCE,
         version=version,
         articles_root=articles_root,
         annexes_root=annexes_root,

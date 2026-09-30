@@ -4382,6 +4382,28 @@ relations:
   - AIA-TEXT-ANNEX-XII-P001
   detail: ''
 interpretations:
+- interpretation_id: AIA-INT-A005-P1-F-C2025-5052
+  snippet_refs:
+  - C-2025-5052/workplace-covers-recruitment
+  norm_ids:
+  - AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-PROHIBITED
+  effect: clarifies_term
+  effect_explanation: Reads "workplace" as covering candidates during selection and hiring.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraph (254), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A050-P2-C2026-5054
   snippet_refs:
   - C-2026-5054/machine-readable-marking-defined

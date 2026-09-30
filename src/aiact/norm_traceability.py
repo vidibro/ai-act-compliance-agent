@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from aiact.classify.graph import QUESTIONS
+from aiact.classify.graph import QUESTION_GUIDANCE, QUESTIONS
 from aiact.norm_validity import (
     FieldValidation,
     audit_norm_validity,
@@ -24,6 +24,7 @@ from aiact.norm_validity import (
 )
 from aiact.policy_loader import criterion_from_norm, load_policy_spec, report_norm_from_norm
 from aiact.schemas.enums import ActorCategory
+from aiact.schemas.interpretation import InterpretationTargetKind
 from aiact.schemas.norm import (
     ImplementationMode,
     Norm,
@@ -283,6 +284,29 @@ def traceability_errors(
             norm, external_conditional_obligation=external_conditional_obligation
         ):
             errors.append(f"{norm.norm_id} cannot be materialised as a report norm: {problem}")
+
+    # Guidance <-> interpretation link, both ways. Every place a question or rule is handed
+    # Commission guidance is a behaviour-affecting use of non-binding text, so each must be
+    # recorded as an interpretation link naming the norm it reads; and a link may claim only a use
+    # that exists.
+    guidance_uses = {
+        (f"AIA-CQ-{node.upper().replace('_', '-')}", ref)
+        for node, refs in QUESTION_GUIDANCE.items()
+        for ref in refs
+    } | {(rule.rule_id, ref) for rule in spec.rules for ref in rule.guidance_refs}
+    linked_uses: dict[tuple[str, str], str] = {
+        (target.target_id, ref): link.interpretation_id
+        for link in bundle.norm_inventory.interpretations
+        for target in link.targets
+        if target.kind
+        in {InterpretationTargetKind.CLASSIFICATION_QUESTION, InterpretationTargetKind.POLICY_RULE}
+        for ref in link.snippet_refs
+    }
+    for target_id, ref in sorted(guidance_uses - set(linked_uses)):
+        errors.append(f"{target_id} uses guidance {ref} but no interpretation link records it")
+    for (target_id, ref), link_id in sorted(linked_uses.items()):
+        if (target_id, ref) not in guidance_uses:
+            errors.append(f"{link_id} says {target_id} uses guidance {ref}, but it does not")
 
     direct_norms_by_rule: dict[str, list[Norm]] = {}
     for norm in norms.values():
