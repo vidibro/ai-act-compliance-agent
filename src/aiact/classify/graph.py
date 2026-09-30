@@ -657,8 +657,13 @@ QUESTIONS: dict[str, Question] = {
         "obvious to a reasonably well-informed person — an exception read NARROWLY and judged by "
         "the whole audience the system is likely to reach: where that includes the public, "
         "children, the elderly or people with disabilities, it rarely holds.\n"
-        "- synthetic_content_marking (50(2), the PROVIDER's duty): it generates synthetic audio, "
-        "image, video or text, which must be marked machine-readably. NOT owed where the system "
+        "- synthetic_content_marking (50(2), the PROVIDER's duty): it generates or manipulates "
+        "audio, image, video or text people perceive — including 3-D, virtual reality, content "
+        "mixed with human work, and what an AI agent produces for people — which must be marked "
+        "machine-readably. NOT synthetic content: source code, single words, captions, alt-text "
+        "or interface labels, output only machines process, rendering, ranking or arranging "
+        "existing content, sensor recordings, and intermediate files of a production workflow "
+        "(its final output is still marked). NOT owed where the system "
         "performs an assistive function for standard editing, or does not substantially alter the "
         "deployer's input data or its semantics — polishing a person's own text, translating it or "
         "transcribing speech is that carve-out; drafting, summarising or rewriting the text is "
@@ -766,6 +771,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2026-5054/obvious-interaction-exception",
         "C-2026-5054/law-enforcement-exception-for-interaction",
         "C-2026-5054/agent-assist-is-not-direct-interaction",
+        "C-2026-5054/synthetic-content-in-and-out-of-scope",
         "C-2026-5054/standard-editing-and-minor-alterations",
         "C-2026-5054/substantive-human-review",
     ),

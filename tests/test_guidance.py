@@ -173,6 +173,7 @@ def test_the_marking_rule_resolves_its_guidance_at_load():
         "C-2026-5054/machine-readable-marking-defined",
         "C-2026-5054/both-elements-required",
         "C-2026-5054/detection-must-be-available",
+        "C-2026-5054/marking-and-detection-quality",
     ]
     assert "without human intervention" in rule.guidance_context
     assert all(g.binding is False for g in rule.guidance_sources)

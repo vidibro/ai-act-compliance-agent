@@ -2,7 +2,7 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 55-69, 72-74, 77-86, 89, 93-132, 137-155
+awaiting_review: 100-132, 137-155
 decisions:
   1:
     decision: no_effect
@@ -185,10 +185,58 @@ decisions:
     decision: no_effect
     reason: >-
       Purpose of Art. 50(2).
+  55:
+    decision: no_effect
+    reason: >-
+      Who benefits from Art. 50(2).
+  56:
+    decision: no_effect
+    reason: >-
+      Restates the conditions and exceptions of Art. 50(2).
+  57: {decision: used}
+  58:
+    decision: no_effect
+    reason: >-
+      Restates that generative systems, narrow or general-purpose, are covered.
+  59: {decision: used}
+  60: {decision: used}
+  61: {decision: used}
+  62:
+    decision: no_effect
+    reason: >-
+      Digital twins producing audio, image, video or text are already reached by Art. 50(2); its
+      pointers to paras (87) and (88) are exceptions this product does not follow.
+  63: {decision: used}
+  64: {decision: used}
+  65: {decision: used}
+  66: {decision: used}
+  67: {decision: used}
+  68: {decision: used}
+  69:
+    decision: no_effect
+    reason: >-
+      Restates the two elements of Art. 50(2), already quoted from para (70).
   70: {decision: used}
   71: {decision: used}
+  72: {decision: used}
+  73: {decision: used}
+  74: {decision: used}
   75: {decision: used}
   76: {decision: used}
+  77: {decision: used}
+  78: {decision: used}
+  79: {decision: used}
+  80: {decision: used}
+  81: {decision: used}
+  82: {decision: used}
+  83: {decision: used}
+  84:
+    decision: no_effect
+    reason: >-
+      An adequate code of practice under Art. 50(7) can show compliance; the product does not assess
+      codes of practice.
+  85: {decision: used}
+  86: {decision: used}
   87:
     decision: not_followed
     reason: >-
@@ -202,9 +250,42 @@ decisions:
       far as this is technically feasible" qualifies how effective, interoperable, robust and
       reliable the marking solution must be, not whether outputs are marked; the Article's listed
       exceptions do not include this one, so AIA-RULE-TR-A50-2 applies as the Act does.
+  89:
+    decision: no_effect
+    reason: >-
+      Signposts the three exceptions.
   90: {decision: used}
   91: {decision: used}
   92: {decision: used}
+  93:
+    decision: no_effect
+    reason: >-
+      The law-enforcement exception for Art. 50(2) reads as paras (46) to (48), already applied to
+      the transparency question.
+  94:
+    decision: no_effect
+    reason: >-
+      Data protection law applies to marking and detection; the product reads only this Regulation.
+  95:
+    decision: no_effect
+    reason: >-
+      Relevance of marking for the DSA; the product reads only this Regulation.
+  96:
+    decision: no_effect
+    reason: >-
+      Marking does not affect DSA illegality assessments; the product reads only this Regulation.
+  97:
+    decision: no_effect
+    reason: >-
+      Marks help very large platforms meet DSA duties; the product reads only this Regulation.
+  98:
+    decision: no_effect
+    reason: >-
+      Platforms are encouraged to preserve marks; no duty under this Regulation.
+  99:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 50(3) duty.
   133: {decision: used}
   134: {decision: used}
   135: {decision: used}

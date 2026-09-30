@@ -4590,6 +4590,54 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P2-SCOPE-C2026-5054
+  snippet_refs:
+  - C-2026-5054/synthetic-content-in-and-out-of-scope
+  norm_ids:
+  - AIA-NORM-A050-P2-MARK-DETECT
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-TRANSPARENCY
+  effect: clarifies_term
+  effect_explanation: Manipulated, mixed, 3-D, VR and agent outputs are synthetic content; source code,
+    short labels, machine-only output, rendering, ranking, recordings and intermediate workflow outputs
+    are not.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (57), (59) to (61) and (63) to (68), with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A050-P2-QUALITY-C2026-5054
+  snippet_refs:
+  - C-2026-5054/marking-and-detection-quality
+  norm_ids:
+  - AIA-NORM-A050-P2-MARK-DETECT
+  targets:
+  - kind: policy_rule
+    target_id: AIA-RULE-TR-A50-2
+  effect: defines_evidence
+  effect_explanation: Defines the four quality requirements, technical feasibility and state of the art,
+    allows delegated marking under the provider's responsibility, and lets metadata suffice in a closed
+    product environment.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (72) to (74), (77) to (83), (85) and (86), with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-09-30
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A050-P2-EXCEPTIONS-C2026-5054
   snippet_refs:
   - C-2026-5054/standard-editing-and-minor-alterations

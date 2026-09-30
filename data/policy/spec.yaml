@@ -3330,6 +3330,7 @@ rules:
       - C-2026-5054/machine-readable-marking-defined
       - C-2026-5054/both-elements-required
       - C-2026-5054/detection-must-be-available
+      - C-2026-5054/marking-and-detection-quality
     # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
     # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
     # applicable accessibility requirements. Attached to each of the four rather than modelled once,
@@ -3356,7 +3357,12 @@ rules:
       whether its result is human-readable. Silence on detection is a GAP even where the marking
       scheme is described in full.
       The paragraph also asks that the solutions be effective, interoperable, robust and reliable as
-      far as technically feasible, and a single technique or a combination may be used.
+      far as technically feasible, and a single technique or a combination may be used. The provider
+      may rely on an upstream model's or a third party's marking or detection, but stays responsible
+      for it meeting these requirements; no full provenance chain is required. "Technically
+      feasible" is objective, never a provider's own resources, and the solution must follow the
+      state of the art. Where outputs stay inside a closed product environment and cannot leave it,
+      as in a vehicle's navigation system, metadata marking alone can suffice.
     document_verifiable: true
     effective_date: 2026-08-02
     status: active

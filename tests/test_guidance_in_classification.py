@@ -69,6 +69,7 @@ def test_guidance_is_attached_only_where_the_enacted_text_is_open():
         "C-2026-5054/obvious-interaction-exception",
         "C-2026-5054/law-enforcement-exception-for-interaction",
         "C-2026-5054/agent-assist-is-not-direct-interaction",
+        "C-2026-5054/synthetic-content-in-and-out-of-scope",
         "C-2026-5054/standard-editing-and-minor-alterations",
         "C-2026-5054/substantive-human-review",
     ]
