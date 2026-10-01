@@ -56,7 +56,7 @@ function itemMatches(item) {
 
 // ---- one rule ----------------------------------------------------------------------------------
 const lineOf = (lead, ...body) => el("div", { class: "line" }, el("span", { class: "lead" }, lead), el("div", {}, body));
-const tags = (field, xs) => xs.map((x) => ftag(field, human(x)));
+const tags = (field, xs, cls) => xs.map((x) => ftag(field, human(x), cls));
 
 function normsSection(target, title, openByDefault) {
   const entries = (RULE_IDX.norms[target] || []).filter((e) => CARDS.norms[e.id]);
@@ -121,7 +121,6 @@ function gapCard(item) {
     ? ftag("golden cases", `${c.cases_dev || 0} dev · ${c.cases_heldout || 0} held-out`, c.cases_dev ? "" : "bad")
     : null;
   const scope = [
-    ...tags("risk class", r.risk_classes),
     r.route ? ftag("route", ROUTES[r.route] || human(r.route)) : null,
     ...tags("transparency duty", r.transparency_duties), ...tags("Annex III area", r.annex_iii_areas),
     ...tags("prohibited practice", r.prohibited_practices),
@@ -134,6 +133,7 @@ function gapCard(item) {
       ruleLink(item.id),
       el("span", { class: "muted" }, r.source),
       el("span", { class: "spacer" }),
+      tags("risk class", r.risk_classes, "risk"),
       ftag("check", r.check_type),
       ftag("docs", r.document_verifiable ? "verifiable" : "confirm separately"),
       cases),
@@ -141,7 +141,7 @@ function gapCard(item) {
       el("span", { class: "modal" }, "must meet"), " ", r.source),
     el("div", { class: "lines" },
       lineOf("requires", requirementText(r.requirement)),
-      lineOf("applies to", scope),
+      scope.some(Boolean) ? lineOf("applies to", scope) : null,
       r.activation_condition ? lineOf("only if", r.activation_condition) : null,
       r.qualified_by.length ? lineOf("qualified by", r.qualified_by.join("; ")) : null,
       whenLine(r)),

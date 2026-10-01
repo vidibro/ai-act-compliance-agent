@@ -300,3 +300,4 @@ details.relblock[open] > summary > div { color: var(--ink); }
 .relbody { margin: 2px 0 6px 122px; padding-left: 10px; border-left: 2px solid var(--line-strong); }
 .mini .relbody, .nblock .relbody { margin-left: 82px; }
 @media (max-width: 700px) { .relbody, .mini .relbody, .nblock .relbody { margin-left: 0; } }
+.tag.risk { color: var(--orange-ink); font-weight: 600; }
