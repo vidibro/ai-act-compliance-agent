@@ -249,7 +249,7 @@ class ClassificationCase(BaseModel):
     training compute figure and refuses to estimate, so a card that gives neither is answered, not
     abstained on."""
 
-    expected_open_source_release: OpenSourceRelease | None = None
+    expected_gpai_open_source_release: OpenSourceRelease | None = None
     """Arts. 53(2) and 54(6) — whether the release meets the open-source carve-out on all four
     limbs. Pinned on a GPAI case for the same reason, and `NOT_STATED` is the ordinary answer for
     the same one: a card that calls itself open-weight without stating its licence terms has not
@@ -264,7 +264,7 @@ class ClassificationCase(BaseModel):
     figure are both quotable, and an answer key that cannot point at the words is a guess with a
     label on it."""
 
-    open_source_release_basis: str = ""
+    gpai_open_source_release_basis: str = ""
     """WHICH of Art. 53(2)'s four limbs the description settles, and how. Optional for the reason
     `systemic_risk_basis` is, and most useful on a `NOT_OPEN` case: that answer says a specific
     limb FAILS, which is a claim about the text rather than an absence in it."""

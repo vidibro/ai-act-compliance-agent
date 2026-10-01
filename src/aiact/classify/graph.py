@@ -322,8 +322,8 @@ QUESTIONS: dict[str, Question] = {
         "systemic_risk",
         label="Does the description state that the model carries systemic risk?",
     ),
-    "open_source_release": Question(
-        "open_source_release",
+    "gpai_open_source_release": Question(
+        "gpai_open_source_release",
         _src(53, 2),
         "Does the description state that this model's release meets the open-source exception in "
         "Article 53(2) and Article 54(6)? It is a CONJUNCTION OF FOUR THINGS and every one must be "
@@ -343,7 +343,7 @@ QUESTIONS: dict[str, Question] = {
         "to answer. Answer this rather than assuming either way.\n"
         "Do NOT answer on whether the model is popular, self-hostable, or available on a model "
         "hub — none of that is the test.",
-        "open_source_release",
+        "gpai_open_source_release",
         label="Is the model released under a free and open-source licence with public weights?",
     ),
     "prohibited": Question(
@@ -726,7 +726,7 @@ _QUESTION_CONTEXT: dict[str, Provisions] = {
     "systemic_risk": (("51", "52"), ()),
     # Arts. 53 and 54 both, because the carve-out is written twice with the same four limbs and
     # lifts different duties each time.
-    "open_source_release": (("53", "54"), ()),
+    "gpai_open_source_release": (("53", "54"), ()),
     "prohibited": (("5",), ()),  # Art. 5 — the prohibited practices
     "annex_i": (("6",), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
     # Art. 2 as well: 2(2) is what makes the Section A/B split matter, and the model is
@@ -831,7 +831,7 @@ class GraphState(BaseModel):
     scope_exclusion: Answer | None = None
     gpai_model: Answer | None = None
     systemic_risk: Answer | None = None
-    open_source_release: Answer | None = None
+    gpai_open_source_release: Answer | None = None
     prohibited: Answer | None = None
     in_annex_i: Answer | None = None
     third_party_assessment: Answer | None = None
@@ -862,7 +862,7 @@ def _every_answer(state: GraphState) -> list[Answer]:
         state.scope_exclusion,
         state.gpai_model,
         state.systemic_risk,
-        state.open_source_release,
+        state.gpai_open_source_release,
         state.prohibited,
         state.in_annex_i,
         state.third_party_assessment,
@@ -880,8 +880,8 @@ def _get_answers(state: GraphState) -> list[Answer]:
 
     THREE ARE DELIBERATELY ABSENT, on one reasoning. `transparency` is a separate axis rather than
     a step in the risk cascade — a minimal-risk generator and a high-risk chatbot can both trigger
-    it — and `systemic_risk` and `open_source_release` are the same shape one chapter over: they
-    decide which Chapter V obligations a MODEL owes, and a model is already `gpai_model` before
+    it — and `systemic_risk` and `gpai_open_source_release` are the same shape one chapter over:
+    they decide which Chapter V obligations a MODEL owes, and a model is already `gpai_model` before
     either is asked. Counting any of them here would let a low-confidence answer drag a
     classification the node had no part in to needs_review, and would make an Art. 50 or Art. 51
     finding look as though it had influenced the tier. None of them does."""
@@ -915,8 +915,8 @@ _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "model, whether it is general enough to serve a wide range of distinct tasks",
     "systemic_risk": "whether the model has been designated or notified as carrying systemic risk, "
     "or what its cumulative training compute in floating point operations was",
-    "open_source_release": "the model's licence terms, and whether the weights, the architecture "
-    "information and the usage information are publicly available",
+    "gpai_open_source_release": "the model's licence terms, and whether the weights, the "
+    "architecture information and the usage information are publicly available",
     "prohibited": "whether it infers emotions, categorises people biometrically, scores social "
     "behaviour, or predicts who will commit an offence — and, where it does, whether an Art. 5 "
     "exception applies (medical or safety use, a lawfully acquired dataset, a human assessment on "
@@ -1545,7 +1545,7 @@ def build_graph(
         return {"systemic_risk": _ask("systemic_risk", state.description)}
 
     def node_open_source(state: GraphState) -> dict[str, Any]:
-        return {"open_source_release": _ask("open_source_release", state.description)}
+        return {"gpai_open_source_release": _ask("gpai_open_source_release", state.description)}
 
     def node_third_party(state: GraphState) -> dict[str, Any]:
         return {"third_party_assessment": _ask("third_party_assessment", state.description)}
@@ -1584,7 +1584,7 @@ def build_graph(
             annex_i_product=state.in_annex_i.value if state.in_annex_i else None,
             third_party_assessment=state.third_party_assessment,
             systemic_risk=state.systemic_risk,
-            open_source_release=state.open_source_release,
+            gpai_open_source_release=state.gpai_open_source_release,
             annex_iii_area=state.in_annex_iii.value if state.in_annex_iii else None,
             performs_profiling=state.performs_profiling,
             derogation=state.derogation,
@@ -1614,7 +1614,7 @@ def build_graph(
     g.add_node("scope", node_scope)
     g.add_node("gpai_model", node_gpai)
     g.add_node("systemic_risk", node_systemic_risk)
-    g.add_node("open_source_release", node_open_source)
+    g.add_node("gpai_open_source_release", node_open_source)
     g.add_node("prohibited", node_prohibited)
     g.add_node("annex_i", node_annex_i)
     g.add_node("third_party_assessment", node_third_party)
@@ -1646,8 +1646,8 @@ def build_graph(
     # The two Chapter V gates, in series and then out. Nothing branches on either: they answer
     # what the report says about which side of each line the document falls on, and a model on
     # this path has already left the Art. 6 track.
-    g.add_edge("systemic_risk", "open_source_release")
-    g.add_edge("open_source_release", "assemble")
+    g.add_edge("systemic_risk", "gpai_open_source_release")
+    g.add_edge("gpai_open_source_release", "assemble")
     g.add_conditional_edges(
         "prohibited", _route_prohibited, {"annex_i": "annex_i", "assemble": "assemble"}
     )
@@ -1688,7 +1688,7 @@ def build_graph(
 # steer the cascade — but the walk below follows `_ROUTERS` and would stop at a node with no entry,
 # which would then tell a golden case that pins the second one that the cascade never reaches it.
 def _route_systemic_risk(state: GraphState) -> str:
-    return "open_source_release"
+    return "gpai_open_source_release"
 
 
 def _route_open_source(state: GraphState) -> str:
@@ -1701,7 +1701,7 @@ _ROUTERS = {
     "scope": _route_scope,
     "gpai_model": _route_gpai,
     "systemic_risk": _route_systemic_risk,
-    "open_source_release": _route_open_source,
+    "gpai_open_source_release": _route_open_source,
     "prohibited": _route_prohibited,
     "annex_i": _route_annex_i,
     "third_party_assessment": _route_third_party,
@@ -1715,7 +1715,7 @@ _STATE_FIELD = {
     "scope": "scope_exclusion",
     "gpai_model": "gpai_model",
     "systemic_risk": "systemic_risk",
-    "open_source_release": "open_source_release",
+    "gpai_open_source_release": "gpai_open_source_release",
     "prohibited": "prohibited",
     "annex_i": "in_annex_i",
     "third_party_assessment": "third_party_assessment",

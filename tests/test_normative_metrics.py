@@ -3158,7 +3158,7 @@ def test_article_fifty_three_maps_provider_duties_and_open_source_carveout():
     assert open_source.implementation_refs == [
         "AIA-RULE-GP-A53-1A",
         "AIA-RULE-GP-A53-1B",
-        "AIA-CQ-OPEN-SOURCE-RELEASE",
+        "AIA-CQ-GPAI-OPEN-SOURCE-RELEASE",
     ]
     assert systemic_override.implementation_refs == ["AIA-RULE-GP-A53-1A", "AIA-RULE-GP-A53-1B"]
     provider_rules = {
@@ -3195,7 +3195,7 @@ def test_article_fifty_four_maps_representative_mandate_lifecycle():
     assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     exception = norms["AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION"]
     assert len(exception.implementation_refs) == 6
-    assert exception.implementation_refs[-1] == "AIA-CQ-OPEN-SOURCE-RELEASE"
+    assert exception.implementation_refs[-1] == "AIA-CQ-GPAI-OPEN-SOURCE-RELEASE"
     assert [operand.text for operand in exception.exceptions] == [
         "unless the general-purpose AI models present systemic risks"
     ]

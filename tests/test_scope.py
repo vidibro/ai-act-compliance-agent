@@ -111,7 +111,7 @@ def test_a_non_ai_system_is_still_minimal_not_out_of_scope():
 
 
 # --- Art. 2(12): the carve-back the scope node cannot settle --------------------------------------
-def test_an_open_source_release_owing_nothing_else_is_excluded():
+def test_an_gpai_open_source_release_owing_nothing_else_is_excluded():
     result = classify(
         "x",
         brain(scope=ScopeExclusion.FREE_OPEN_SOURCE, annex_iii=None, transparency=False),
@@ -132,7 +132,7 @@ def test_an_art_50_obligation_lifts_the_open_source_exclusion():
     assert result.overall_risk_class == RiskClass.MINIMAL
 
 
-def test_a_prohibited_open_source_release_stays_prohibited():
+def test_a_prohibited_gpai_open_source_release_stays_prohibited():
     result = classify(
         "x",
         brain(scope=ScopeExclusion.FREE_OPEN_SOURCE, prohibited=ProhibitedPractice.SOCIAL_SCORING),
@@ -141,7 +141,7 @@ def test_a_prohibited_open_source_release_stays_prohibited():
     assert result.overall_risk_class == RiskClass.PROHIBITED
 
 
-def test_a_high_risk_open_source_release_stays_high_risk():
+def test_a_high_risk_gpai_open_source_release_stays_high_risk():
     result = classify(
         "x",
         brain(
@@ -154,7 +154,7 @@ def test_a_high_risk_open_source_release_stays_high_risk():
     assert result.overall_risk_class == RiskClass.HIGH_RISK
 
 
-def test_an_unresolved_open_source_release_is_not_excluded():
+def test_an_unresolved_gpai_open_source_release_is_not_excluded():
     """NEEDS_REVIEW is not one of the tiers Art. 2(12) survives. An unresolved cascade has not
     established that the exceptions are absent, and granting the exclusion anyway would read
     silence as evidence — the failure this project exists to avoid."""

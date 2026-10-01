@@ -567,7 +567,7 @@ class ComplianceReport(BaseModel):
         for a model with systemic risk, so a fully open release lifts nothing until Art. 51 is
         answered. A reader told only about the licence would draw exactly the wrong conclusion."""
         risk = self.classification.stated_systemic_risk
-        release = self.classification.stated_open_source_release
+        release = self.classification.stated_gpai_open_source_release
         if risk is None and release is None:
             return None
         return " ".join(p for p in (_systemic_risk_note(risk), _release_note(risk, release)) if p)

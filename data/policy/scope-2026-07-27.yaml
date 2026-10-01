@@ -845,7 +845,7 @@ article_rulings:
   # tool reports for.
   #
   # THE GATES ARE ANSWERED AND NOTHING IS WITHHELD ON THEM. `systemic_risk` and
-  # `open_source_release` read a STATED claim and answer `not_stated` rather than estimating, and
+  # `gpai_open_source_release` read a STATED claim and answer `not_stated` rather than estimating, and
   # their answers reach the reader as `ComplianceReport.chapter_v_gate_note` — which side of each
   # line the document falls on. Every Chapter V rule is still selected for every model and still
   # carries its condition, because a model card mis-read on a compute figure or on one licence
@@ -899,7 +899,7 @@ article_rulings:
       by the 53(2) open-source carve-out, while (c) the copyright policy and (d) the public
       training-content summary are owed by every provider whatever its licence.
     2: >-
-      CASCADE open_source_release — OPEN-SOURCE CARVE-OUT from 53(1)(a) and (b): a free and
+      CASCADE gpai_open_source_release — OPEN-SOURCE CARVE-OUT from 53(1)(a) and (b): a free and
       open-source licence allowing access, use, modification and distribution, AND public
       parameters, architecture information and usage information. A conjunction of four limbs, and
       DISAPPLIED for a systemic-risk model — so the node is read with `systemic_risk` and never
@@ -950,7 +950,7 @@ article_rulings:
       reason to consider, the provider to be acting contrary to the Regulation, and immediately
       tells the AI Office, with reasons.
     6: >-
-      CASCADE open_source_release — OPEN-SOURCE CARVE-OUT from the WHOLE Article, on the same four
+      CASCADE gpai_open_source_release — OPEN-SOURCE CARVE-OUT from the WHOLE Article, on the same four
       limbs as 53(2) and disapplied for a systemic-risk model in the same way. Wider than 53(2) in
       what it lifts and identical in what it requires, which is why one node answers both.
   55:
@@ -2660,7 +2660,7 @@ role_mentions:
     reassessment, at the earliest six months after the decision and again six months after any
     decision maintaining it. A right the provider holds, not a duty.
   "53(2)": >-
-    CASCADE open_source_release. Lifts Art. 53(1)(a) and (b) from a provider releasing under a free
+    CASCADE gpai_open_source_release. Lifts Art. 53(1)(a) and (b) from a provider releasing under a free
     and open-source licence with public parameters, architecture and usage information — and not
     where the model carries systemic risk. An exemption, answered by the cascade so the report can
     tell the provider which side of the line its own release falls on.
@@ -2679,7 +2679,7 @@ role_mentions:
     The Article 54 requirement binds the authorised representative to terminate the mandate and tell the
     AI Office. The provider is named as the party whose conduct triggers termination.
   "54(6)": >-
-    CASCADE open_source_release. Lifts the whole of Art. 54 from a provider releasing under a free
+    CASCADE gpai_open_source_release. Lifts the whole of Art. 54 from a provider releasing under a free
     and open-source licence on the same four limbs as 53(2), and not where the model carries
     systemic risk. An exemption, not a duty.
   "56(3)": >-

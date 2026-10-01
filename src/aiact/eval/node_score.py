@@ -63,7 +63,7 @@ NODE_KEYS: dict[str, str | None] = {
     "scope": "expected_scope_exclusion",
     "gpai_model": "expected_gpai_status",
     "systemic_risk": "expected_systemic_risk",
-    "open_source_release": "expected_open_source_release",
+    "gpai_open_source_release": "expected_gpai_open_source_release",
     "prohibited": "expected_prohibited_practice",
     "annex_i": "expected_annex_i_product",
     "third_party_assessment": "expected_third_party_assessment",

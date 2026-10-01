@@ -984,7 +984,7 @@ def test_a_model_is_asked_both_chapter_v_gates_and_a_system_is_asked_neither():
                 "gpai_model": status,
             }
         )
-        assert "systemic_risk" in walked and "open_source_release" in walked, status
+        assert "systemic_risk" in walked and "gpai_open_source_release" in walked, status
         # And nothing on the Art. 6 track: a model has no tier for those questions to compute.
         assert not {"prohibited", "annex_i", "annex_iii"} & set(walked), status
 
@@ -997,7 +997,7 @@ def test_a_model_is_asked_both_chapter_v_gates_and_a_system_is_asked_neither():
             "prohibited": None,
         }
     )
-    assert not {"systemic_risk", "open_source_release"} & set(system)
+    assert not {"systemic_risk", "gpai_open_source_release"} & set(system)
 
 
 def test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation():
@@ -1025,7 +1025,7 @@ def test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation():
                     "is_ai": True,
                     "gpai_model": GpaiStatus.GENERAL_PURPOSE_MODEL,
                     "systemic_risk": risk,
-                    "open_source_release": release,
+                    "gpai_open_source_release": release,
                 }
             ),
             "m",
@@ -1080,7 +1080,7 @@ def _risk_deciding_nodes() -> set[str]:
     """Which nodes' answers decide the tier, read off `_get_answers` rather than listed here.
 
     Every field is populated and the function is asked what it keeps. `transparency`,
-    `systemic_risk` and `open_source_release` are excluded there on purpose — none of them is a
+    `systemic_risk` and `gpai_open_source_release` are excluded there on purpose — none of them is a
     step in the risk cascade — and this derivation inherits that reasoning instead of restating
     it."""
     state = GraphState(description="")
@@ -1123,9 +1123,9 @@ def test_the_readme_draws_an_abstention_for_every_node_that_can_abstain():
 
     Drawing one where the code cannot abstain promises an escape hatch that is not there; omitting
     one where it can hides the tool's own uncertainty from the reader deciding whether to trust it.
-    `systemic_risk` and `open_source_release` have no dashed edge because a low-confidence answer
-    on either must not drag a settled classification to needs_review — the picture is where that
-    decision is visible."""
+    `systemic_risk` and `gpai_open_source_release` have no dashed edge because a low-confidence
+    answer on either must not drag a settled classification to needs_review — the picture is where
+    that decision is visible."""
     abstaining = set(_DIAGRAM_ABSTAINS.findall(_cascade_diagram()))
     deciding = _risk_deciding_nodes()
     assert abstaining == deciding, (

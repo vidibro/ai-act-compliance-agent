@@ -123,8 +123,8 @@ flowchart TD
     scope -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
     scope -->|yes| gpai_model{"Is this a general-purpose MODEL,<br/>or a system?<br/>Art. 3(63)"}
     gpai_model -->|"a model — placed, or not yet"| systemic_risk{"Does the card STATE systemic risk?<br/>a designation, or compute over 10^25<br/>Art. 51(1), Art. 51(2)"}
-    systemic_risk --> open_source_release{"Does it STATE a free and open-source<br/>release with public weights?<br/>Art. 53(2), Art. 54(6)"}
-    open_source_release --> GP([general-purpose AI model<br/>Chapter V obligations, listed not judged]):::gpai
+    systemic_risk --> gpai_open_source_release{"Does it STATE a free and open-source<br/>release with public weights?<br/>Art. 53(2), Art. 54(6)"}
+    gpai_open_source_release --> GP([general-purpose AI model<br/>Chapter V obligations, listed not judged]):::gpai
     gpai_model -->|"a system, incl. one built<br/>on such a model"| prohibited{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
     prohibited -->|"yes — a named point bans it"| BAN([prohibited]):::ban
     prohibited -->|no| annex_i{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}

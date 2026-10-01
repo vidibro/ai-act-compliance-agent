@@ -430,8 +430,8 @@ cases:
       Art. 51(1) turns on one or the other, so the honest answer is that the description does not
       say. A run answering high_impact_capabilities here has estimated FLOP from a parameter count,
       which is the guess this node exists to refuse.
-    expected_open_source_release: not_stated
-    open_source_release_basis: >-
+    expected_gpai_open_source_release: not_stated
+    gpai_open_source_release_basis: >-
       "Open-weight" and "the licence terms" are not the four limbs Art. 53(2) requires. The card
       states that terms exist without stating that they permit access, use, modification AND
       distribution, and says nothing about the architecture and usage information being publicly
@@ -477,8 +477,8 @@ cases:
       presumption, so the two limbs agree here — which is the point of the case: `designated` is the
       stronger answer and a run that returns high_impact_capabilities has read the compute and
       missed the notification.
-    expected_open_source_release: not_open
-    open_source_release_basis: >-
+    expected_gpai_open_source_release: not_open
+    gpai_open_source_release_basis: >-
       Every limb fails and the card says so: the weights are not distributed at all, access is
       through an API, and the terms forbid redistribution and reverse engineering. Art. 53(2) needs
       a licence permitting access, use, modification AND distribution together with public
@@ -517,8 +517,8 @@ cases:
     systemic_risk_basis: >-
       The write-up records that a compute budget exists and never gives the figure, and no
       designation could have been made for a model nobody outside the team has seen.
-    expected_open_source_release: not_open
-    open_source_release_basis: >-
+    expected_gpai_open_source_release: not_open
+    gpai_open_source_release_basis: >-
       Positively established rather than merely unstated: the lab says the model has not been
       released, licensed or made available to anyone outside the team, and that the decision on
       publishing weights has not been taken. Parameters that are not public fail Art. 53(2) on its

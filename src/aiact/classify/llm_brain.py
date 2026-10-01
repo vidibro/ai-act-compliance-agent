@@ -160,7 +160,7 @@ def _answer_instructions(answer_type: str) -> str:
             f"neither a designation nor a training compute figure, which is the ordinary case. Do "
             f"not estimate the compute from anything else"
         )
-    if answer_type == "open_source_release":
+    if answer_type == "gpai_open_source_release":
         releases = ", ".join(o.value for o in OpenSourceRelease)
         return (
             f'set "value" to one of [{releases}] — use "not_stated" where the description does not '
@@ -279,7 +279,7 @@ VALUE_TYPES: dict[str, type | tuple[type, ...]] = {
     "territorial_link": TerritorialLink,
     "gpai_status": GpaiStatus,
     "systemic_risk": SystemicRisk,
-    "open_source_release": OpenSourceRelease,
+    "gpai_open_source_release": OpenSourceRelease,
     "prohibited_practice": ProhibitedPractice,
     "deployer_type": DeployerType,
     "real_world_testing": RealWorldTesting,
@@ -357,7 +357,7 @@ def _read_value(answer_type: str, value: object) -> object:
             return SystemicRisk(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 51(1) systemic-risk answer") from exc
-    if answer_type == "open_source_release":
+    if answer_type == "gpai_open_source_release":
         try:
             return OpenSourceRelease(str(value).strip().lower())
         except ValueError as exc:

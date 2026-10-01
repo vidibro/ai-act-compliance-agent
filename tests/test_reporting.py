@@ -331,7 +331,7 @@ def test_a_model_is_told_which_side_of_each_chapter_v_gate_it_falls_on(
     provider that four obligations had fallen away."""
     report = _report(spec, {})
     report.classification.use_cases[0].systemic_risk = _answer(report, risk)
-    report.classification.use_cases[0].open_source_release = _answer(report, release)
+    report.classification.use_cases[0].gpai_open_source_release = _answer(report, release)
     assert report.chapter_v_gate_note, "the note is no longer composed — re-derive this test"
     text = " ".join(render_report(report, spec).split())
     assert " ".join(report.chapter_v_gate_note.split()) in text

@@ -118,7 +118,7 @@ class UseCaseClassification(BaseModel):
     reading of a compute figure would be a clearance, and a clearance is the one error direction
     this project does not accept — the same reasoning `deployer_type` records for Art. 27."""
 
-    open_source_release: Answer | None = None
+    gpai_open_source_release: Answer | None = None
     """Arts. 53(2) and 54(6) — whether the release meets the open-source carve-out on all four
     limbs. Asked of a model, and read WITH `systemic_risk`, never alone: both carve-outs are
     disapplied for a model with systemic risk, so a fully open release lifts nothing until the
@@ -248,9 +248,9 @@ class ClassificationResult(BaseModel):
         return self._model_answer("systemic_risk", SystemicRisk)
 
     @property
-    def stated_open_source_release(self) -> OpenSourceRelease | None:
+    def stated_gpai_open_source_release(self) -> OpenSourceRelease | None:
         """Arts. 53(2) and 54(6) as the documentation answered them, or None where not put."""
-        return self._model_answer("open_source_release", OpenSourceRelease)
+        return self._model_answer("gpai_open_source_release", OpenSourceRelease)
 
     def _model_answer(self, node_id: str, kind: type[_E]) -> _E | None:
         """The value of a Chapter V gate answer, from whichever use case carries it.
