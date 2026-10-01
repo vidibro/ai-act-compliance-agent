@@ -70,7 +70,7 @@ def test_the_store_has_no_coverage_defect(consumed):
     assert guidance_coverage_errors(ROOT, consumed) == []
 
 
-@pytest.mark.parametrize(("doc", "awaiting"), [("C-2025-5052", 431), ("C-2026-5054", 0)])
+@pytest.mark.parametrize(("doc", "awaiting"), [("C-2025-5052", 375), ("C-2026-5054", 0)])
 def test_paragraphs_awaiting_review_only_shrink(doc, awaiting):
     """Declared debt. Reading a paragraph moves it into `decisions`; lower the number with it."""
     coverage = yaml.safe_load((ROOT / doc / "coverage.yaml").read_text(encoding="utf-8"))
@@ -85,10 +85,7 @@ def _edit_coverage(store: Path, doc: str, edit) -> None:
 
 
 def test_a_paragraph_nobody_decided_fails(store, consumed):
-    def drop_first(data):
-        data["awaiting_review"] = data["awaiting_review"].replace("1-8", "2-8", 1)
-
-    _edit_coverage(store, "C-2025-5052", drop_first)
+    _edit_coverage(store, "C-2025-5052", lambda data: data["decisions"].pop(1))
 
     assert "C-2025-5052 ¶1 has no decision and is not listed as awaiting review" in (
         guidance_coverage_errors(store, consumed)
@@ -143,11 +140,9 @@ def test_a_followed_passage_must_be_handed_to_something(store, consumed):
 
 
 def test_a_decision_without_a_quote_or_reason_is_refused(store, consumed):
-    def unquoted(data):
-        data["awaiting_review"] = data["awaiting_review"].replace("1-8", "2-8", 1)
-        data["decisions"][1] = {"decision": "used"}
-
-    _edit_coverage(store, "C-2025-5052", unquoted)
+    _edit_coverage(
+        store, "C-2025-5052", lambda data: data["decisions"].update({1: {"decision": "used"}})
+    )
     assert "C-2025-5052 ¶1 is used but no snippet quotes it" in guidance_coverage_errors(
         store, consumed
     )

@@ -208,6 +208,7 @@ def test_no_other_rule_leans_on_interpretation():
     spec = load_policy_spec()
     citing = {r.rule_id for r in spec.rules if r.guidance_refs}
     assert citing == {
+        "AIA-RULE-ALL-A05-1",
         "AIA-RULE-TR-A50-1",
         "AIA-RULE-TR-A50-2",
         "AIA-RULE-TR-A50-3",

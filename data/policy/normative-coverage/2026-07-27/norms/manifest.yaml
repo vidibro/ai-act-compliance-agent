@@ -10181,6 +10181,75 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A002-P3-P4-C2025-5052
+  snippet_refs:
+  - C-2025-5052/national-security-and-cooperation-exclusions
+  norm_ids:
+  - AIA-NORM-A002-P3-MILITARY-EXCLUSION
+  - AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-SCOPE
+  effect: clarifies_term
+  effect_explanation: National security turns on purpose, is read strictly and excludes dual use and policing;
+    the cooperation exclusion can reach entrusted private entities.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (22) to (27) and (29), with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-01
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A002-P10-C2025-5052
+  snippet_refs:
+  - C-2025-5052/purely-personal-excludes-crime
+  norm_ids:
+  - AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-SCOPE
+  effect: clarifies_term
+  effect_explanation: Criminal activity is never purely personal use.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraph (34), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-01
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P1-MISUSE-C2025-5052
+  snippet_refs:
+  - C-2025-5052/misuse-and-provider-safeguards
+  norm_ids:
+  - AIA-NORM-A005-P1-PROHIBITED-PRACTICES
+  targets:
+  - kind: policy_rule
+    target_id: AIA-RULE-ALL-A05-1
+  effect: clarifies_term
+  effect_explanation: Use includes any misuse; providers must not supply systems reasonably likely to
+    be used for a prohibited practice and must build in safeguards.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (14), (40) and (41), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-01
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A005-P1-F-C2025-5052
   snippet_refs:
   - C-2025-5052/workplace-covers-recruitment

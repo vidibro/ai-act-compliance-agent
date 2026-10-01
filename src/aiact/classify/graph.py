@@ -237,9 +237,13 @@ QUESTIONS: dict[str, Question] = {
         "lists law enforcement and Annex III(7) lists migration, asylum and border control "
         "management as HIGH-RISK areas, so reading ordinary policing or border work as national "
         "security would empty both of those entries. Protecting a national frontier is border "
-        "control.\n"
+        "control. National security means protecting the State's essential functions against "
+        "threats such as terrorism — not road safety or the administration of justice. EXCLUSIVELY "
+        "is strict: a system also offered or used for civilian or law-enforcement purposes (dual "
+        "use) stays in scope.\n"
         "- 2(4) a third-country public authority or international organisation, under a law "
-        "enforcement or judicial cooperation agreement with the Union. See the caution below.\n"
+        "enforcement or judicial cooperation agreement with the Union, including private entities "
+        "that authority entrusts with tasks in that cooperation. See the caution below.\n"
         "- 2(6) developed and put into service for the SOLE purpose of scientific research and "
         "development — science as the end, not a stage before a product.\n"
         "- 2(8) research, testing or development PRIOR to being placed on the market or put into "
@@ -247,7 +251,8 @@ QUESTIONS: dict[str, Question] = {
         "available for testing in real-world conditions.\n"
         "- 2(10) the deployer is a natural person using it in a PURELY personal, non-professional "
         "activity. Any activity bringing an economic benefit on a regular basis is professional, "
-        "and so is any use on behalf of a professional deployer. This lifts that person's "
+        "and so is any use on behalf of a professional deployer; criminal activity is never purely "
+        "personal. This lifts that person's "
         "obligations only; the provider keeps all of theirs, so answer none when the description "
         "is written from the provider's side.\n"
         "- 2(12) released under a free and open-source licence. Answer this whenever the licence "
@@ -773,8 +778,13 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
     # "intended to be used" there, which is the reading paras (10) and (13) apply.
     "territorial": ("C-2026-5054/third-country-incidental-use-not-covered",),
-    # Art. 2(10) never defines "purely personal, non-professional"; para (19) does.
-    "scope": ("C-2026-5054/purely-personal-use-defined",),
+    # Art. 2 never defines "national security", "exclusively" or "purely personal,
+    # non-professional"; the two guidance documents do.
+    "scope": (
+        "C-2025-5052/national-security-and-cooperation-exclusions",
+        "C-2026-5054/purely-personal-use-defined",
+        "C-2025-5052/purely-personal-excludes-crime",
+    ),
     # Art. 50 leaves open what "directly", "standard editing" and "human review" mean. The
     # Commission's carve-outs for industrial output (para 87) and ephemeral real-time content
     # (para 88) are NOT supplied: they add exceptions Art. 50(2) does not contain (see

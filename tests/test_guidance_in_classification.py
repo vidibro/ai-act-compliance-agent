@@ -83,7 +83,9 @@ def test_guidance_is_attached_only_where_the_enacted_text_is_open():
         "C-2026-5054/third-country-incidental-use-not-covered"
     ]
     assert [g.snippet_ref for g in q["scope"].guidance_sources] == [
-        "C-2026-5054/purely-personal-use-defined"
+        "C-2025-5052/national-security-and-cooperation-exclusions",
+        "C-2026-5054/purely-personal-use-defined",
+        "C-2025-5052/purely-personal-excludes-crime",
     ]
     # every other node is guidance-free
     for node_id in ("is_ai", "annex_iii", "profiling", "derogation"):

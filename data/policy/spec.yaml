@@ -5046,6 +5046,10 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [prohibited]
     applies_to_role: [provider, importer, deployer]
+    # Art. 5 bans placing, putting into service and use, and says nothing on misuse or on what a
+    # provider owes against it; paras (14), (40) and (41) say both.
+    guidance_refs:
+      - C-2025-5052/misuse-and-provider-safeguards
     applies_to_prohibited_practice:
       [
         subliminal_manipulation,
@@ -5069,8 +5073,11 @@ rules:
       practice, or it is withdrawn if it already is. Nothing in a technical file can make a
       prohibited practice compliant; what counts is that it stops. The Art. 5(1) point the
       classification names says which practice, and its own exceptions are where any argument
-      lives. A decision about the system's existence rather than a property of its documentation —
-      confirm separately.
+      lives. "Use" includes any misuse, so a deployer's ban holds whatever the provider's terms say.
+      A provider must not supply a system reasonably likely to be used for the practice, and is
+      expected to build in safeguards, exclude the prohibited use in its terms and instructions, and
+      act on misuse it learns of. A decision about the system's existence rather than a property of
+      its documentation — confirm separately.
     document_verifiable: false
     effective_date: 2025-02-02
     effective_date_note: >-

@@ -2,14 +2,237 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 1-8, 10-253, 255-433
+awaiting_review: 58-253, 255-433
 decisions:
+  1:
+    decision: no_effect
+    reason: >-
+      Background: the Act, its risk tiers, the guidelines' legal basis, purpose, drafting and non-
+      binding status.
+  2:
+    decision: no_effect
+    reason: >-
+      Background: the Act, its risk tiers, the guidelines' legal basis, purpose, drafting and non-
+      binding status.
+  3:
+    decision: no_effect
+    reason: >-
+      Background: the Act, its risk tiers, the guidelines' legal basis, purpose, drafting and non-
+      binding status.
+  4:
+    decision: no_effect
+    reason: >-
+      Background: the Act, its risk tiers, the guidelines' legal basis, purpose, drafting and non-
+      binding status.
+  5:
+    decision: no_effect
+    reason: >-
+      Background: the Act, its risk tiers, the guidelines' legal basis, purpose, drafting and non-
+      binding status.
+  6:
+    decision: no_effect
+    reason: >-
+      Background: the Act, its risk tiers, the guidelines' legal basis, purpose, drafting and non-
+      binding status.
+  7:
+    decision: no_effect
+    reason: >-
+      Background: the Act, its risk tiers, the guidelines' legal basis, purpose, drafting and non-
+      binding status.
+  8:
+    decision: no_effect
+    reason: >-
+      Why the practices are prohibited, from Recital 28 and the Charter.
   9:
     decision: no_effect
     reason: >-
       A table summarising each Art. 5(1) prohibition, points (a) to (h), with a one-line
       description. It restates the Article and adds nothing a question or rule would answer
       differently.
+  10:
+    decision: no_effect
+    reason: >-
+      The Act's two Treaty legal bases.
+  11:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 3 definitions of AI system, placing on the market and putting into service.
+  12:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 3 definitions of AI system, placing on the market and putting into service.
+  13:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 3 definitions of AI system, placing on the market and putting into service.
+  14: {decision: used}
+  15:
+    decision: no_effect
+    reason: >-
+      Who is a provider or deployer, and dual roles. The product reports every role's duties, so it
+      never decides who holds which role.
+  16:
+    decision: no_effect
+    reason: >-
+      Who is a provider or deployer, and dual roles. The product reports every role's duties, so it
+      never decides who holds which role.
+  17:
+    decision: no_effect
+    reason: >-
+      Who is a provider or deployer, and dual roles. The product reports every role's duties, so it
+      never decides who holds which role.
+  18:
+    decision: no_effect
+    reason: >-
+      Who is a provider or deployer, and dual roles. The product reports every role's duties, so it
+      never decides who holds which role.
+  19:
+    decision: no_effect
+    reason: >-
+      Who is a provider or deployer, and dual roles. The product reports every role's duties, so it
+      never decides who holds which role.
+  20:
+    decision: no_effect
+    reason: >-
+      Compliance lasts the whole lifecycle and responsibilities follow each role's control; no
+      answer changes.
+  21:
+    decision: no_effect
+    reason: >-
+      Signposts the Art. 2 exclusions.
+  22: {decision: used}
+  23: {decision: used}
+  24: {decision: used}
+  25: {decision: used}
+  26: {decision: used}
+  27: {decision: used}
+  28:
+    decision: no_effect
+    reason: >-
+      Europol and Frontex are within the Act; nothing in Art. 2 suggested otherwise.
+  29: {decision: used}
+  30:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 2(6) and 2(8) research exclusions and their real-world testing limit, which
+      the scope question already carries.
+  31:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 2(6) and 2(8) research exclusions and their real-world testing limit, which
+      the scope question already carries.
+  32:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 2(6) and 2(8) research exclusions and their real-world testing limit, which
+      the scope question already carries.
+  33:
+    decision: no_effect
+    reason: >-
+      Research must follow ethical standards and other Union law; no duty under this Regulation.
+  34: {decision: used}
+  35:
+    decision: no_effect
+    reason: >-
+      Art. 2(10) lifts only the personal deployer's duties, never the provider's; the scope question
+      already says so.
+  36:
+    decision: no_effect
+    reason: >-
+      Restates Art. 2(12): open-source systems stay within Art. 5; the product already reads it so.
+  37:
+    decision: no_effect
+    reason: >-
+      Art. 5 sits beside the high-risk rules, and an Art. 6(3) exemption does not escape it; the
+      cascade already asks Art. 5 first for every system.
+  38:
+    decision: no_effect
+    reason: >-
+      Art. 5 sits beside the high-risk rules, and an Art. 6(3) exemption does not escape it; the
+      cascade already asks Art. 5 first for every system.
+  39:
+    decision: no_effect
+    reason: >-
+      The bans reach general-purpose systems too; the prohibited question already applies to any
+      system.
+  40: {decision: used}
+  41: {decision: used}
+  42:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  43:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  44:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  45:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  46:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  47:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  48:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  49:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  50:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  51:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  52:
+    decision: no_effect
+    reason: >-
+      How Art. 5 sits with other Union law (data protection, consumer, DSA, liability, the Charter);
+      the product reads only this Regulation.
+  53:
+    decision: no_effect
+    reason: >-
+      Who enforces Art. 5 and the Union safeguard procedure; no duty for a provider or deployer.
+  54:
+    decision: no_effect
+    reason: >-
+      Who enforces Art. 5 and the Union safeguard procedure; no duty for a provider or deployer.
+  55:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 99 fine ceilings, which the product already reports as legal consequences.
+  56:
+    decision: no_effect
+    reason: >-
+      Ne bis in idem where one conduct breaches two provisions; concerns fining, not what is owed.
+  57:
+    decision: no_effect
+    reason: >-
+      The bans are read narrowly; the prohibited question already says each point is narrow and none
+      is the ordinary answer.
   254: {decision: used}
 visually_checked:
   9:
