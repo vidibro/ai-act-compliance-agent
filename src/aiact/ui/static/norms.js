@@ -36,6 +36,8 @@ const actorName = (ref) => ACTOR_NAMES[ref] || cap(ref.replaceAll("_", " "));
 const joinAnd = (xs) => (xs.length <= 1 ? xs[0] || "" : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
 const fmtDate = (d) => new Date(d + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 const asOf = () => state.asof || new Date().toISOString().slice(0, 10);
+// A norm's id, linked to its card. Shown wherever one norm points at another.
+const idTag = (id) => el("a", { class: "idtag mono", href: hashFor({ view: "norms", id, doc: "" }), title: "Open this norm's card" }, id);
 const cardLink = (id, text) => el("a", { class: "idlink mono", href: hashFor({ view: "norms", id, doc: "" }) }, text || id);
 
 // ---- indexes -----------------------------------------------------------------------------------
@@ -217,7 +219,7 @@ function miniSentence(norm, depth, path = []) {
     ? (IDX.out[norm.norm_id] || []).filter((r) => r.target_norm_ids.some((t) => !path.includes(t)))
     : [];
   return el("div", { class: "mini" },
-    el("div", {}, headline(norm), " ", cardLink(norm.norm_id, "↗")),
+    el("div", {}, headline(norm), " ", idTag(norm.norm_id)),
     exprLine("if", norm.conditions), exprLine("unless", norm.exceptions),
     nested.map((r) => relationLine(r, depth, path)));
 }
@@ -281,7 +283,7 @@ function referencedSection(rels) {
   return section("Referenced by", rels.length, el("ul", { class: "expr" }, rels.map((r) => {
     const src = CARDS.norms[r.source_norm_id];
     return el("li", {}, el("span", { class: "op" }, RELATIONS[r.kind] || r.kind), " ",
-      src ? headline(src) : r.source_norm_id, " ", cardLink(r.source_norm_id, "↗"));
+      src ? headline(src) : null, " ", idTag(r.source_norm_id));
   })));
 }
 function reviewSection(norm) {
