@@ -22,7 +22,12 @@ from aiact.norm_validity import (
     audit_norm_validity,
     load_adjudication_ledger,
 )
-from aiact.policy_loader import criterion_from_norm, load_policy_spec, report_norm_from_norm
+from aiact.policy_loader import (
+    criterion_from_norm,
+    load_policy_spec,
+    report_activation_rules,
+    report_norm_from_norm,
+)
 from aiact.schemas.enums import ActorCategory
 from aiact.schemas.interpretation import InterpretationTargetKind
 from aiact.schemas.norm import (
@@ -275,7 +280,7 @@ def traceability_errors(
         if projection is None:
             errors.append(f"{norm.norm_id} has no materialised report norm")
             continue
-        if list(projection.activation_rule_ids) != list(norm.implementation_refs):
+        if list(projection.activation_rule_ids) != report_activation_rules(norm):
             errors.append(
                 f"{norm.norm_id} report activation rules {projection.activation_rule_ids} differ "
                 f"from canonical implementation_refs {norm.implementation_refs}"

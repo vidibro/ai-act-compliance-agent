@@ -17,6 +17,7 @@ norms:
   - semantic_legal_effect
   - other_modal
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A003-P002
   qualifier_spans:
@@ -24,14 +25,13 @@ norms:
   conditions: null
   exceptions: null
   mandatory_content: []
-  product_scope: dependency_only
-  product_scope_reason: This definition constrains downstream classification and norm interpretation but
-    creates no independent product-facing action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Definitions are represented as legal dependencies rather than standalone product
-    rules.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-IS-AI
+  implementation_reason: The classification cascade asks whether the described system is an AI system.
+  verification_mode: answered_by_classification
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -2672,6 +2672,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A003-P077
   qualifier_spans:
@@ -2690,14 +2691,14 @@ norms:
       basis_segment_ids:
       - AIA-TEXT-A003-P077
   mandatory_content: []
-  product_scope: dependency_only
-  product_scope_reason: This definition constrains downstream classification and norm interpretation but
-    creates no independent product-facing action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Definitions are represented as legal dependencies rather than standalone product
-    rules.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-GPAI-MODEL
+  implementation_reason: The classification cascade asks whether the description is of a general-purpose
+    AI model.
+  verification_mode: answered_by_classification
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

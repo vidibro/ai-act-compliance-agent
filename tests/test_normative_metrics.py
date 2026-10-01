@@ -141,6 +141,24 @@ def test_every_classification_question_target_names_a_cascade_node():
     assert declared == {f"AIA-CQ-{node.upper().replace('_', '-')}" for node in QUESTIONS}
 
 
+def test_every_classification_question_rests_on_a_norm():
+    """A cascade node asks a legal question, so at least one norm must name it in its
+    implementation_refs. Without one, the Rules view shows a question the law never reaches."""
+    from aiact.classify.graph import QUESTIONS
+
+    bundle = load_normative_coverage()
+    referenced = {ref for norm in bundle.norm_inventory.norms for ref in norm.implementation_refs}
+    # Art. 50's duties reach the transparency node through recorded guidance interpretations.
+    referenced |= {
+        target.target_id
+        for link in bundle.norm_inventory.interpretations
+        for target in link.targets
+    }
+    questions = {f"AIA-CQ-{node.upper().replace('_', '-')}" for node in QUESTIONS}
+
+    assert sorted(questions - referenced) == []
+
+
 def test_a_classification_answered_norm_points_at_a_cascade_node():
     """The two columns must agree: a norm the cascade answers is implemented by a question, and a
     norm implemented by a question is one the cascade answers."""
@@ -653,9 +671,20 @@ def test_article_three_is_fully_reviewed_as_definitions_and_embedded_consequence
     assert len(norms) == 72
     assert sum(norm.kind.value == "definition" for norm in norms) == 70
     assert sum(norm.kind.value == "legal_consequence" for norm in norms) == 2
-    definition_norms = [norm for norm in norms if norm.kind.value == "definition"]
+    # Two definitions are what a cascade node asks; every other one is a legal dependency.
+    asked = {
+        "AIA-NORM-A003-D001-AI-SYSTEM": "AIA-CQ-IS-AI",
+        "AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL": "AIA-CQ-GPAI-MODEL",
+    }
+    definition_norms = [
+        norm for norm in norms if norm.kind.value == "definition" and norm.norm_id not in asked
+    ]
     assert all(norm.product_scope.value == "dependency_only" for norm in definition_norms)
     assert all(norm.implementation_mode.value == "none_required" for norm in definition_norms)
+    for norm in norms:
+        if norm.norm_id in asked:
+            assert norm.implementation_mode.value == "applicability_question"
+            assert norm.implementation_refs == [asked[norm.norm_id]]
 
 
 def test_article_three_chapeau_and_nested_lists_are_qualifier_spans():
@@ -2238,14 +2267,15 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # Articles 52(2), 55(2), 56(7), 57(7), 75c(3) and 95(3), the operator legal effects in Articles
     # 55(2), 57(12), 59(3), 60, 63(2), 75c(4), 80 and 99(3), and the scope limits and procedural
     # rights in Articles 75d(1), 86(2) and 94.
-    assert metrics.mapping_shape.one_norm_to_one_target == 41
+    # The "AI system" and "general-purpose AI model" definitions each answer one cascade node.
+    assert metrics.mapping_shape.one_norm_to_one_target == 43
     assert metrics.mapping_shape.many_norms_to_one_target == 484
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     # Annex VII's provider duties are carried by the Article 43 route norms rather than named on
     # `AIA-RULE-PO-A43-1B` and `AIA-RULE-PO-A43-3`, which leaves only the retraining consequence
     # shared between them.
     assert metrics.mapping_shape.many_to_many == 23
-    assert metrics.mapping_shape.unmapped == 860
+    assert metrics.mapping_shape.unmapped == 858
     assert metrics.semantic_vs_existing_implementation_disagreements == 56
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
@@ -3124,9 +3154,16 @@ def test_article_fifty_three_maps_provider_duties_and_open_source_carveout():
     assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     open_source = norms["AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION"]
     systemic_override = norms["AIA-NORM-A053-P2-SYSTEMIC-RISK-OVERRIDE"]
-    assert open_source.implementation_refs == ["AIA-RULE-GP-A53-1A", "AIA-RULE-GP-A53-1B"]
+    # The open-source question answers the exception's condition; the two rules report it.
+    assert open_source.implementation_refs == [
+        "AIA-RULE-GP-A53-1A",
+        "AIA-RULE-GP-A53-1B",
+        "AIA-CQ-OPEN-SOURCE-RELEASE",
+    ]
     assert systemic_override.implementation_refs == ["AIA-RULE-GP-A53-1A", "AIA-RULE-GP-A53-1B"]
-    provider_rules = {ref for norm in mapped for ref in norm.implementation_refs}
+    provider_rules = {
+        ref for norm in mapped for ref in norm.implementation_refs if ref.startswith("AIA-RULE-")
+    }
     assert provider_rules == {
         "AIA-RULE-GP-A53-1A",
         "AIA-RULE-GP-A53-1B",
@@ -3157,7 +3194,8 @@ def test_article_fifty_four_maps_representative_mandate_lifecycle():
     assert all(norm.implementation_refs for norm in norms.values())
     assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     exception = norms["AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION"]
-    assert len(exception.implementation_refs) == 5
+    assert len(exception.implementation_refs) == 6
+    assert exception.implementation_refs[-1] == "AIA-CQ-OPEN-SOURCE-RELEASE"
     assert [operand.text for operand in exception.exceptions] == [
         "unless the general-purpose AI models present systemic risks"
     ]

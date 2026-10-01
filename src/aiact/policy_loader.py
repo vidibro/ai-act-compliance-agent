@@ -334,6 +334,12 @@ def criterion_from_norm(norm: Norm) -> RuleCriterion:
     )
 
 
+def report_activation_rules(norm: Norm) -> list[str]:
+    """The rules that activate a report-only norm. A classification question named beside them
+    answers the norm's condition; it activates nothing."""
+    return [ref for ref in norm.implementation_refs if ref.startswith("AIA-RULE-")]
+
+
 def report_norm_from_norm(norm: Norm) -> ReportNorm:
     """The report-only projection of a canonical non-judged statement."""
     return ReportNorm(
@@ -348,7 +354,7 @@ def report_norm_from_norm(norm: Norm) -> ReportNorm:
         conditions=norm.conditions,
         exceptions=norm.exceptions,
         source_spans=norm.all_spans,
-        activation_rule_ids=list(norm.implementation_refs),
+        activation_rule_ids=report_activation_rules(norm),
         verification_mode=norm.verification_mode,
     )
 

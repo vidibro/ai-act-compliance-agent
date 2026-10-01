@@ -14,13 +14,13 @@ records:
   kind: definition
   qualifier_spans:
   - A003-P001
-  product_scope: dependency_only
-  product_scope_reason: This definition constrains downstream classification and norm interpretation but
-    creates no independent product-facing action.
-  implementation_mode: none_required
-  implementation_reason: Definitions are represented as legal dependencies rather than standalone product
-    rules.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-IS-AI
+  implementation_reason: The classification cascade asks whether the described system is an AI system.
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A003-D002-RISK
   source: A003-P003
   temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
@@ -1464,13 +1464,13 @@ records:
     - text: AI models that are used for research, development or prototyping activities before they are placed on the market
       basis_segment_ids:
       - AIA-TEXT-A003-P077
-  product_scope: dependency_only
-  product_scope_reason: This definition constrains downstream classification and norm interpretation but
-    creates no independent product-facing action.
-  implementation_mode: none_required
-  implementation_reason: Definitions are represented as legal dependencies rather than standalone product
-    rules.
-  verification_mode: not_reported
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-GPAI-MODEL
+  implementation_reason: The classification cascade asks whether the description is of a general-purpose AI model.
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A003-D064-HIGH-IMPACT-CAPABILITIES
   source: A003-P078
   temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
