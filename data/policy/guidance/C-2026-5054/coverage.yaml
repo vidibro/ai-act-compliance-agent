@@ -2,7 +2,7 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 145-155
+awaiting_review: ""
 decisions:
   1:
     decision: no_effect
@@ -405,6 +405,57 @@ decisions:
     decision: no_effect
     reason: >-
       Art. 50 adds no accessibility requirements of its own; the product reads only this Regulation.
+  145:
+    decision: no_effect
+    reason: >-
+      Signposts Section 8.
+  146:
+    decision: no_effect
+    reason: >-
+      An adequate code of practice under Art. 50(7) can show compliance; the product does not assess
+      codes of practice.
+  147:
+    decision: no_effect
+    reason: >-
+      How authorities supervise signatories of an adequate code of practice; the product does not
+      assess codes of practice.
+  148:
+    decision: no_effect
+    reason: >-
+      Non-signatories show compliance by other adequate means and may face more information
+      requests; the rules already ask for those means, and the rest concerns supervision.
+  149:
+    decision: no_effect
+    reason: >-
+      Code commitments as a mitigating factor for fines; the product reports the fine ceilings,
+      never their amount.
+  150:
+    decision: no_effect
+    reason: >-
+      The Commission's power under Art. 50(7) to adopt implementing rules; none adopted.
+  151:
+    decision: no_effect
+    reason: >-
+      Who enforces Art. 50 and the right to complain; no duty for a provider or deployer.
+  152:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 99 fine ceilings, which the product already reports as legal consequences.
+  153:
+    decision: no_effect
+    reason: >-
+      The Art. 111(4) transition for marking only, with Art. 50(1) owed from 2 August 2026; rule
+      AIA-TR-A111-4 already carries it for marking alone.
+  154:
+    decision: no_effect
+    reason: >-
+      Outputs made before 2 August 2026 need no retroactive marking or label; the product assesses a
+      system's measures, not dated outputs.
+  155:
+    decision: no_effect
+    reason: >-
+      The Commission will review the guidelines; a re-issue is caught by the stored PDF's sha256 and
+      source URL.
 visually_checked:
   6:
     checked_by: vidibro
