@@ -415,7 +415,11 @@ QUESTIONS: dict[str, Question] = {
         "Place-based predictive policing (unless the area's risk feeds one person's profile), "
         "companies, and administrative offences are not this.\n"
         "- (e) creating or expanding facial recognition databases by UNTARGETED scraping of facial "
-        "images from the internet or CCTV.\n"
+        "images from the internet or CCTV. Any collection usable for recognition is a database; "
+        "untargeted means vacuum-cleaner collection, and building it step by step does not "
+        "escape. Searching for given people or a defined group, and reverse image search on one "
+        "photo, are targeted and not this; nor are other biometrics such as voice, face sets used "
+        "only to train models with no one identified, or generators of fictitious faces.\n"
         "- (f) inferring emotions of a natural person in the workplace or in education "
         "institutions, EXCEPT for medical or safety reasons.\n"
         "- (g) biometric categorisation deducing race, political opinions, trade union membership, "
@@ -801,6 +805,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2025-5052/vulnerabilities-and-lawful-persuasion",
         "C-2025-5052/social-scoring-elements",
         "C-2025-5052/crime-prediction-elements",
+        "C-2025-5052/facial-scraping-elements",
         "C-2025-5052/workplace-covers-recruitment",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output

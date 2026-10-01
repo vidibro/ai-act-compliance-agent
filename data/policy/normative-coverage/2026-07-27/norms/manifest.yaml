@@ -10344,6 +10344,29 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P1-E-C2025-5052
+  snippet_refs:
+  - C-2025-5052/facial-scraping-elements
+  norm_ids:
+  - AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-PROHIBITED
+  effect: clarifies_term
+  effect_explanation: What a facial recognition database and untargeted scraping are, what targeted search
+    is, no step-by-step circumvention, and what is out of scope.
+  review_scope: passage_with_context
+  review_scope_detail: Ten stored paragraphs of section 6, with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-01
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A005-P1-F-C2025-5052
   snippet_refs:
   - C-2025-5052/workplace-covers-recruitment
