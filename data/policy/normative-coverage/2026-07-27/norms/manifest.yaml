@@ -4009,61 +4009,6 @@ relations:
   legal_basis_spans:
   - AIA-TEXT-A002-P009
   detail: Cites Articles 57, 58 and 59.
-- relation_id: AIA-REL-A003-D028-COMMON-SPECIFICATION-CITES-01
-  source_norm_id: AIA-NORM-A003-D028-COMMON-SPECIFICATION
-  kind: relies_on_norms
-  target_rule_ids: []
-  target_norm_ids:
-  - AIA-NORM-A002-P1-A-PROVIDER
-  external_requirements: []
-  guidance_refs: []
-  legal_basis_spans:
-  - AIA-TEXT-A003-P031
-  detail: Cites Article 2.
-- relation_id: AIA-REL-A003-D050-PERSONAL-DATA-CITES-01
-  source_norm_id: AIA-NORM-A003-D050-PERSONAL-DATA
-  kind: relies_on_norms
-  target_rule_ids: []
-  target_norm_ids:
-  - AIA-NORM-A004-P1-AI-LITERACY-MEASURES
-  external_requirements: []
-  guidance_refs: []
-  legal_basis_spans:
-  - AIA-TEXT-A003-P059
-  detail: Cites Article 4.
-- relation_id: AIA-REL-A003-D051-NON-PERSONAL-DATA-CITES-01
-  source_norm_id: AIA-NORM-A003-D051-NON-PERSONAL-DATA
-  kind: relies_on_norms
-  target_rule_ids: []
-  target_norm_ids:
-  - AIA-NORM-A004-P1-AI-LITERACY-MEASURES
-  external_requirements: []
-  guidance_refs: []
-  legal_basis_spans:
-  - AIA-TEXT-A003-P060
-  detail: Cites Article 4.
-- relation_id: AIA-REL-A003-D052-PROFILING-CITES-01
-  source_norm_id: AIA-NORM-A003-D052-PROFILING
-  kind: relies_on_norms
-  target_rule_ids: []
-  target_norm_ids:
-  - AIA-NORM-A004-P1-AI-LITERACY-MEASURES
-  external_requirements: []
-  guidance_refs: []
-  legal_basis_spans:
-  - AIA-TEXT-A003-P061
-  detail: Cites Article 4.
-- relation_id: AIA-REL-A003-D062-CRITICAL-INFRASTRUCTURE-CITES-01
-  source_norm_id: AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
-  kind: relies_on_norms
-  target_rule_ids: []
-  target_norm_ids:
-  - AIA-NORM-A002-P1-A-PROVIDER
-  external_requirements: []
-  guidance_refs: []
-  legal_basis_spans:
-  - AIA-TEXT-A003-P076
-  detail: Cites Article 2.
 - relation_id: AIA-REL-A006-P3-INSIGNIFICANT-RISK-EXCEPTION-CITES-01
   source_norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   kind: relies_on_norms
@@ -8519,17 +8464,6 @@ relations:
   legal_basis_spans:
   - AIA-TEXT-A078-P009
   detail: Cites Article 74(8) and (9).
-- relation_id: AIA-REL-A079-P1-RISK-DEFINITION-CITES-01
-  source_norm_id: AIA-NORM-A079-P1-RISK-DEFINITION
-  kind: relies_on_norms
-  target_rule_ids: []
-  target_norm_ids:
-  - AIA-NORM-A003-D001-AI-SYSTEM
-  external_requirements: []
-  guidance_refs: []
-  legal_basis_spans:
-  - AIA-TEXT-A079-P001
-  detail: Cites Article 3.
 - relation_id: AIA-REL-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS-CITES-01
   source_norm_id: AIA-NORM-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS
   kind: relies_on_norms

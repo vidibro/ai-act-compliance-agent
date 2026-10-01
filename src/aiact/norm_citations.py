@@ -32,7 +32,11 @@ _ANNEX = re.compile(
     r"(?P<after>,? points? \d+(?:\([a-z]\))?(?: (?:to|and) \d+(?:\([a-z]\))?)?)?"
 )
 # Text right after a citation that makes it another instrument's provision.
-_OTHER_INSTRUMENT = re.compile(r"^,?\s*(?:(?:of|to) (?!this Regulation)|TFEU\b|TEU\b)")
+# A pinpoint ("point (4)", "first subparagraph") may sit between the number and the instrument.
+_OTHER_INSTRUMENT = re.compile(
+    r"^(?:,? (?:(?:first|second|third|fourth|fifth) )?(?:points?|subparagraphs?|paragraphs?)"
+    r"(?: \(?\w+\)?)?)*,?\s*(?:(?:of|to) (?!this Regulation)|TFEU\b|TEU\b)"
+)
 
 
 @dataclass(frozen=True)

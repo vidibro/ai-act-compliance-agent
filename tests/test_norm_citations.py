@@ -38,6 +38,8 @@ def test_citations_of_this_regulation_are_read(text: str, expected: list[object]
         "Articles 101 and 102 TFEU",
         "Article 2 of the Annex to Recommendation 2003/361/EC",
         "Annex I to Regulation (EU) 2019/1020",
+        "profiling as defined in Article 4, point (4), of Regulation (EU) 2016/679",
+        "Article 6(1), first subparagraph, point (a), of Directive 2016/680",
     ],
 )
 def test_citations_of_other_instruments_are_skipped(text: str) -> None:
