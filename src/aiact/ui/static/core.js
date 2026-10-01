@@ -108,6 +108,11 @@ function render() {
   if (state.id || state.rule) document.getElementById("filters").open = false;
   VIEWS[state.view].render();
   writeHash();
+  // After a live data refresh, keep the reader where they were once the view has drawn.
+  if (pendingScroll !== null && (state.view === "map" || CARDS)) {
+    window.scrollTo(0, pendingScroll);
+    pendingScroll = null;
+  }
 }
 
 // ---- theme -------------------------------------------------------------------------------------
@@ -118,18 +123,63 @@ function setTheme(theme) {
   for (const b of document.querySelectorAll("#theme button")) b.classList.toggle("on", b.dataset.theme === theme);
 }
 
+// ---- live data -----------------------------------------------------------------------------------
+// Views register a reset for anything they cached from the payloads.
+const ON_NEW_DATA = [];
+let pendingScroll = null;
+
+function loadCoverage() {
+  return fetch("/api/coverage").then((r) => {
+    if (!r.ok) return r.json().then((body) => Promise.reject(new Error(body.detail || r.statusText)));
+    return r.json();
+  }).then((data) => {
+    DATA = data;
+    for (const reset of ON_NEW_DATA) reset();
+    document.getElementById("meta").replaceChildren(
+      el("span", {}, "Act version ", el("b", {}, data.act_version_date)),
+      el("span", {}, el("b", {}, data.norms.length), " norms"),
+      el("span", {}, el("b", {}, data.rules.length), " rules"));
+  });
+}
+
+function showError(message) {
+  const banner = document.getElementById("banner");
+  banner.hidden = !message;
+  banner.textContent = message ? `The data on disk does not load, so this page shows the last good version. ${message}` : "";
+}
+
+// Polls the server; new data is fetched in place, new page files reload the page.
+function watch() {
+  let seen = null, busy = false;
+  setInterval(async () => {
+    if (busy) return;
+    busy = true;
+    try {
+      const version = await fetch("/api/version").then((r) => r.json());
+      showError(version.error);
+      if (seen && version.page !== seen.page) location.reload();
+      else if (seen && version.data !== seen.data && !version.error) {
+        pendingScroll = window.scrollY;
+        await loadCoverage();
+        render();
+      }
+      seen = version;
+    } catch {
+      // The server is restarting after a code change; try again on the next tick.
+    } finally {
+      busy = false;
+    }
+  }, 3000);
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   for (const b of document.querySelectorAll("#theme button")) b.addEventListener("click", () => setTheme(b.dataset.theme));
   setTheme(document.documentElement.dataset.theme || "auto");
   for (const tab of document.querySelectorAll("#tabs a"))
     tab.addEventListener("click", (e) => { e.preventDefault(); go({ view: tab.dataset.view }); });
-  fetch("/api/coverage").then((r) => r.json()).then((data) => {
-    DATA = data;
-    document.getElementById("meta").replaceChildren(
-      el("span", {}, "Act version ", el("b", {}, data.act_version_date)),
-      el("span", {}, el("b", {}, data.norms.length), " norms"),
-      el("span", {}, el("b", {}, data.rules.length), " rules"));
+  loadCoverage().then(() => {
     readHash(); render();
     window.addEventListener("hashchange", () => { readHash(); render(); window.scrollTo(0, 0); });
-  }).catch((err) => { document.getElementById("meta").textContent = "Failed to load: " + err; });
+  }).catch((err) => { document.getElementById("meta").textContent = "Failed to load: " + err.message; });
+  watch();
 });

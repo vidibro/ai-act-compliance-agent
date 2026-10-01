@@ -1,16 +1,19 @@
 """Internal read-only UI over the Act and guidance coverage artifacts.
 
-Run with `make ui`. The payloads are built once at startup; restart to pick up data changes.
+Run with `make ui`. The data files are watched: a request after an edit rebuilds the payloads, and
+the page polls `/api/version` to pick the change up. Python edits restart the server (`--reload`).
 """
 
 from __future__ import annotations
 
+import hashlib
+import threading
 from collections.abc import AsyncIterator, Awaitable, Callable
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -21,14 +24,63 @@ from aiact.ui.coverage_map import build_coverage_map
 from aiact.ui.norm_cards import build_norm_cards
 
 STATIC = Path(__file__).parent / "static"
+DATA_DIRS = (Path("data/policy"), Path("data/golden_set"))
+DATA_SUFFIXES = {".yaml", ".yml", ".json", ".md"}
+
+
+def _fingerprint(roots: tuple[Path, ...], suffixes: set[str] | None = None) -> str:
+    """Changes whenever a watched file is added, removed or saved."""
+    digest = hashlib.sha1()
+    for root in roots:
+        for path in sorted(root.rglob("*")):
+            if path.is_file() and (suffixes is None or path.suffix in suffixes):
+                stat = path.stat()
+                digest.update(f"{path}:{stat.st_mtime_ns}:{stat.st_size};".encode())
+    return digest.hexdigest()[:16]
+
+
+class Payloads:
+    """The two payloads, rebuilt when the data changes. A failed rebuild keeps the last good
+    payloads and reports the error, so a half-finished edit does not take the page down."""
+
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self.fingerprint = ""
+        self.coverage: dict[str, Any] | None = None
+        self.norms: dict[str, Any] | None = None
+        self.error: str | None = None
+
+    def refresh(self) -> None:
+        current = _fingerprint(DATA_DIRS, DATA_SUFFIXES)
+        if current == self.fingerprint:
+            return
+        with self._lock:
+            if current == self.fingerprint:
+                return
+            try:
+                bundle = load_normative_coverage()
+                spec = load_policy_spec()
+                self.coverage = build_coverage_map(bundle, spec)
+                self.norms = build_norm_cards(bundle, spec)
+                self.error = None
+            except Exception as exc:  # any invalid data file, reported rather than raised
+                self.error = f"{type(exc).__name__}: {exc}"
+            self.fingerprint = current
+
+    def get(self, name: str) -> dict[str, Any]:
+        self.refresh()
+        payload: dict[str, Any] | None = getattr(self, name)
+        if payload is None:
+            raise HTTPException(status_code=503, detail=self.error or "data not loaded")
+        return payload
+
+
+PAYLOADS = Payloads()
 
 
 @asynccontextmanager
 async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
-    bundle = load_normative_coverage()
-    spec = load_policy_spec()
-    app.state.coverage = build_coverage_map(bundle, spec)
-    app.state.norms = build_norm_cards(bundle, spec)
+    PAYLOADS.refresh()
     yield
 
 
@@ -52,13 +104,22 @@ def index() -> FileResponse:
     return FileResponse(STATIC / "index.html")
 
 
+@app.get("/api/version")
+def version() -> dict[str, str | None]:
+    """What the page polls: a new `data` refetches the payloads, a new `page` reloads the page."""
+    PAYLOADS.refresh()
+    return {
+        "data": PAYLOADS.fingerprint,
+        "page": _fingerprint((STATIC,)),
+        "error": PAYLOADS.error,
+    }
+
+
 @app.get("/api/coverage")
 def coverage() -> dict[str, Any]:
-    payload: dict[str, Any] = app.state.coverage
-    return payload
+    return PAYLOADS.get("coverage")
 
 
 @app.get("/api/norms")
 def norms() -> dict[str, Any]:
-    payload: dict[str, Any] = app.state.norms
-    return payload
+    return PAYLOADS.get("norms")

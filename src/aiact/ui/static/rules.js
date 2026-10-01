@@ -7,6 +7,7 @@ const CHECKS = { verifiable: "document-verifiable", not_verifiable: "confirm sep
 const RULE_PAGE = 20;
 const RULE_IDX = { norms: {} };
 let RULE_IDX_READY = false;
+ON_NEW_DATA.push(() => { RULE_IDX.norms = {}; RULE_IDX_READY = false; });
 
 const human = (v) => cap(String(v).replaceAll("_", " "));
 

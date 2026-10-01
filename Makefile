@@ -24,5 +24,5 @@ types:  ## mypy type + protocol-conformance check
 test:   ## pytest
 	$(PYTEST) -q
 
-ui:     ## coverage map at http://127.0.0.1:8765
-	$(VENV)/bin/uvicorn aiact.ui.app:app --port 8765
+ui:     ## coverage UI at http://127.0.0.1:8765, live on data and code edits
+	$(VENV)/bin/uvicorn aiact.ui.app:app --port 8765 --reload --reload-dir src/aiact

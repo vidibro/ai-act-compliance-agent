@@ -2,6 +2,11 @@
 
 let CARDS = null, CARDS_LOADING = false;
 const IDX = { out: {}, in: {}, interp: {}, sum: {} };
+ON_NEW_DATA.push(() => {
+  CARDS = null;
+  CARDS_LOADING = false;
+  for (const key of Object.keys(IDX)) IDX[key] = {};
+});
 const PAGE = 25;
 let shown = PAGE;
 

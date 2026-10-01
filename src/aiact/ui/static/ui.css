@@ -303,3 +303,4 @@ details.relblock[open] > summary > div { color: var(--ink); }
 .tag.risk { color: var(--orange-ink); font-weight: 600; }
 a.idtag { font-size: 11px; color: var(--muted); text-decoration: none; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; white-space: nowrap; }
 a.idtag:hover { color: var(--orange-ink); border-color: var(--orange); }
+.banner { background: var(--red); color: #ffffff; padding: 10px 24px; font-weight: 600; font-size: 12px; white-space: pre-wrap; }
