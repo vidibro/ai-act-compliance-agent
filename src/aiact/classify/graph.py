@@ -370,7 +370,13 @@ QUESTIONS: dict[str, Question] = {
         "distortion appreciably impairs an informed decision; significant harm is physical, "
         "psychological or financial and reasonably foreseeable.\n"
         "- (b) exploits vulnerabilities of age, disability, or a specific social or economic "
-        "situation, so as to distort behaviour and cause significant harm.\n"
+        "situation, so as to distort behaviour and cause significant harm. The vulnerability must "
+        "come FROM that age (children or older people), disability or situation — poverty, a "
+        "minority, unemployment, over-indebtedness or migration status, not loneliness — and "
+        "exploiting means targeting it, not an inadvertent bias. Where a practice targets such a "
+        "group it is (b); otherwise (a). Transparent personalisation, ordinary advertising, "
+        "techniques the user knowingly consents to and lawful medical treatment are not caught by "
+        "(a) or (b); dark patterns are, where significant harm is likely.\n"
         "- (ba) generating or manipulating REALISTIC intimate imagery of an identifiable person — "
         "their intimate parts, or them engaged in sexually explicit activity — without that "
         "person's explicit consent.\n"
@@ -781,6 +787,7 @@ _QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
 QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
     "prohibited": (
         "C-2025-5052/manipulation-and-deception-elements",
+        "C-2025-5052/vulnerabilities-and-lawful-persuasion",
         "C-2025-5052/workplace-covers-recruitment",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output

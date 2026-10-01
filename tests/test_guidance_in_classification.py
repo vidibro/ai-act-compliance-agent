@@ -62,6 +62,7 @@ def test_guidance_is_attached_only_where_the_enacted_text_is_open():
     assert q["prohibited"].guidance_context, "Art. 5 leaves 'workplace covers hiring?' open"
     assert [g.snippet_ref for g in q["prohibited"].guidance_sources] == [
         "C-2025-5052/manipulation-and-deception-elements",
+        "C-2025-5052/vulnerabilities-and-lawful-persuasion",
         REF,
     ]
     # the verbatim interpretive sentence is actually in the prompt context

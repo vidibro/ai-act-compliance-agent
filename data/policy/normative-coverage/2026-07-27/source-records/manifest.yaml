@@ -7381,6 +7381,29 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P1-B-C2025-5052
+  snippet_refs:
+  - C-2025-5052/vulnerabilities-and-lawful-persuasion
+  norm_ids:
+  - AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
+  - AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-PROHIBITED
+  effect: clarifies_term
+  effect_explanation: Which vulnerabilities (b) protects, exploitation as targeting, (a) versus (b), and lawful persuasion, consent, medical use, advertising and no significant harm as the limits of both.
+  review_scope: passage_with_context
+  review_scope_detail: Fifteen stored paragraphs of sections 3.3 to 3.6, with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-01
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A005-P1-F-C2025-5052
   snippet_refs:
   - C-2025-5052/workplace-covers-recruitment

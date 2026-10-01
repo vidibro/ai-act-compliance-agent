@@ -70,7 +70,7 @@ def test_the_store_has_no_coverage_defect(consumed):
     assert guidance_coverage_errors(ROOT, consumed) == []
 
 
-@pytest.mark.parametrize(("doc", "awaiting"), [("C-2025-5052", 332), ("C-2026-5054", 0)])
+@pytest.mark.parametrize(("doc", "awaiting"), [("C-2025-5052", 287), ("C-2026-5054", 0)])
 def test_paragraphs_awaiting_review_only_shrink(doc, awaiting):
     """Declared debt. Reading a paragraph moves it into `decisions`; lower the number with it."""
     coverage = yaml.safe_load((ROOT / doc / "coverage.yaml").read_text(encoding="utf-8"))

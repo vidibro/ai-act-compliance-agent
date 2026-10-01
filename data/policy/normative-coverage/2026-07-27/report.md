@@ -1168,8 +1168,8 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - Detection-channel counts: cross_reference_structure=475, deeming_or_consequence=273, existing_implementation=552, other_modal=170, semantic_legal_effect=1410, shall_token=869
 - Mapping shapes, by norm: one-to-one=43, many-to-one=484, one-to-many=2, many-to-many=23, unmapped=858
 - Implementation debt candidates: 0
-- Interpretive links to non-binding guidance: 24
-- Review records with measured elapsed time: 0/2964
+- Interpretive links to non-binding guidance: 25
+- Review records with measured elapsed time: 0/2965
 - Parallel-duty groups: 23, linking 67 norms
 - National-law alignment notices: 4
 
