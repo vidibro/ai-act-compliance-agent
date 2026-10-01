@@ -2,7 +2,7 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 239-253, 255-433
+awaiting_review: 271-433
 decisions:
   1:
     decision: no_effect
@@ -876,7 +876,95 @@ decisions:
     reason: >-
       Such scraping has no legal basis under data protection law; the product reads only this
       Regulation.
+  239:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 5(1)(f) ban; high-risk classification and Art. 50(3) are assessed
+      separately.
+  240:
+    decision: no_effect
+    reason: >-
+      Background on emotion recognition technology and its scientific doubts, from Recital 44.
+  241:
+    decision: no_effect
+    reason: >-
+      Background on emotion recognition technology and its scientific doubts, from Recital 44.
+  242:
+    decision: no_effect
+    reason: >-
+      Restates the cumulative conditions of Art. 5(1)(f).
+  243:
+    decision: no_effect
+    reason: >-
+      Restates the cumulative conditions of Art. 5(1)(f).
+  244:
+    decision: no_effect
+    reason: >-
+      Contrasts the ban's wording with the Art. 3(39) definition; the decisive reading is supplied
+      from para (245).
+  245: {decision: used}
+  246:
+    decision: no_effect
+    reason: >-
+      Distinguishes identifying from inferring; both are covered, as para (245) states.
+  247: {decision: used}
+  248: {decision: used}
+  249: {decision: used}
+  250:
+    decision: no_effect
+    reason: >-
+      Restates that Art. 3(39) requires biometric data; the decisive reading is supplied from para
+      (251).
+  251: {decision: used}
+  252:
+    decision: no_effect
+    reason: >-
+      The biometric data definition is broad; the decisive reading is supplied from para (251).
+  253:
+    decision: no_effect
+    reason: >-
+      The workplace and education limit reflects the imbalance of power; the decisive readings are
+      supplied from paras (254) and (255).
   254: {decision: used}
+  255: {decision: used}
+  256: {decision: used}
+  257: {decision: used}
+  258: {decision: used}
+  259: {decision: used}
+  260:
+    decision: no_effect
+    reason: >-
+      Deploy for medical or safety reasons only on explicit need, and fatigue detection is not
+      emotion recognition; the decisive readings are supplied from paras (249), (257) and (259).
+  261:
+    decision: no_effect
+    reason: >-
+      Deploy for medical or safety reasons only on explicit need, and fatigue detection is not
+      emotion recognition; the decisive readings are supplied from paras (249), (257) and (259).
+  262:
+    decision: no_effect
+    reason: >-
+      Other law, including data protection, still applies within the exception; the product reads
+      only this Regulation.
+  263: {decision: used}
+  264:
+    decision: no_effect
+    reason: >-
+      Art. 2(11) lets the Union or Member States keep more favourable worker protections; national
+      law the product does not carry.
+  265:
+    decision: no_effect
+    reason: >-
+      Repeats the non-biometric and physical-state exclusions supplied from paras (249) and (251).
+  266: {decision: used}
+  267: {decision: used}
+  268: {decision: used}
+  269:
+    decision: no_effect
+    reason: >-
+      Medical-field uses are out of scope; the decisive reading is supplied from paras (257) and
+      (270).
+  270: {decision: used}
 visually_checked:
   9:
     checked_by: vidibro

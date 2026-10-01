@@ -421,7 +421,14 @@ QUESTIONS: dict[str, Question] = {
         "photo, are targeted and not this; nor are other biometrics such as voice, face sets used "
         "only to train models with no one identified, or generators of fictitious faces.\n"
         "- (f) inferring emotions of a natural person in the workplace or in education "
-        "institutions, EXCEPT for medical or safety reasons.\n"
+        "institutions, EXCEPT for medical or safety reasons. Only inference from biometric data "
+        "counts (face, voice, keystrokes, gait), attitudes such as anger included; pain, "
+        "fatigue, a noticed smile and sentiment from written text do not. Education covers every "
+        "level, online, and applicants. The exception is NARROW: medical means CE-marked medical "
+        "devices, safety means life and health only, and wellbeing, burnout, stress or boredom "
+        "monitoring stays banned unless the stress itself is dangerous. Customer and marketing "
+        "uses, crowd mood monitoring, medical settings and security that incidentally screens "
+        "staff are not this.\n"
         "- (g) biometric categorisation deducing race, political opinions, trade union membership, "
         "religious or philosophical beliefs, sex life or sexual orientation. The categorisation is "
         "made from biometric data; the attribute inferred need not itself be biometric. TWO "
@@ -806,6 +813,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2025-5052/social-scoring-elements",
         "C-2025-5052/crime-prediction-elements",
         "C-2025-5052/facial-scraping-elements",
+        "C-2025-5052/emotion-recognition-elements",
         "C-2025-5052/workplace-covers-recruitment",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
