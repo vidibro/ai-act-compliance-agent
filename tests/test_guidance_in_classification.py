@@ -60,7 +60,10 @@ def test_a_snippet_becomes_a_guidance_source():
 def test_guidance_is_attached_only_where_the_enacted_text_is_open():
     q = anchored()
     assert q["prohibited"].guidance_context, "Art. 5 leaves 'workplace covers hiring?' open"
-    assert q["prohibited"].guidance_sources[0].snippet_ref == REF
+    assert [g.snippet_ref for g in q["prohibited"].guidance_sources] == [
+        "C-2025-5052/manipulation-and-deception-elements",
+        REF,
+    ]
     # the verbatim interpretive sentence is actually in the prompt context
     assert "candidates during the selection and hiring process" in q["prohibited"].guidance_context
     # Art. 50 leaves "directly", "standard editing" and "human review" open.
@@ -125,12 +128,12 @@ def test_a_prohibited_verdict_carries_the_guidance_it_rested_on():
 
     assert result.overall_risk_class == RiskClass.PROHIBITED
     assert result.rests_on_guidance is True
-    assert [g.reference for g in result.guidance_sources] == ["C(2025) 5052 final"]
+    assert {g.reference for g in result.guidance_sources} == {"C(2025) 5052 final"}
 
     # the guidance rides on the deciding node's evidence, next to (not merged with) the law
     prohibited_ev = next(e for e in result.triggered_by if e.node_id == "prohibited")
     assert prohibited_ev.source.article == "5"  # enacted law
-    assert prohibited_ev.guidance[0].snippet_ref == REF  # non-binding interpretation, distinct
+    assert REF in [g.snippet_ref for g in prohibited_ev.guidance]  # non-binding, distinct
 
 
 def test_guidance_flows_without_an_llm():

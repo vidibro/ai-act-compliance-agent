@@ -363,7 +363,12 @@ QUESTIONS: dict[str, Question] = {
         "none. Each is narrow, and the qualifier decides it:\n"
         "- (a) subliminal, purposefully manipulative or deceptive techniques that materially "
         "distort behaviour and cause significant harm. Ordinary persuasion, advertising and "
-        "recommendation are not this.\n"
+        "recommendation are not this. All of it must hold together, linked by a plausible causal "
+        "chain. No intent is needed — the effect suffices, and a system that learned to "
+        "manipulate or deceive by itself is caught — but incidental hallucination or "
+        "manipulation, where the provider informs users and mitigates it, is not. Material "
+        "distortion appreciably impairs an informed decision; significant harm is physical, "
+        "psychological or financial and reasonably foreseeable.\n"
         "- (b) exploits vulnerabilities of age, disability, or a specific social or economic "
         "situation, so as to distort behaviour and cause significant harm.\n"
         "- (ba) generating or manipulating REALISTIC intimate imagery of an identifiable person — "
@@ -774,7 +779,10 @@ _QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
 # interpretation, not law. (Coarse for now: attached to the whole `prohibited` node; the snippet is
 # only relevant to its Art. 5(1)(f) sub-question, harmless where it is not.)
 QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
-    "prohibited": ("C-2025-5052/workplace-covers-recruitment",),
+    "prohibited": (
+        "C-2025-5052/manipulation-and-deception-elements",
+        "C-2025-5052/workplace-covers-recruitment",
+    ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
     # "intended to be used" there, which is the reading paras (10) and (13) apply.
     "territorial": ("C-2026-5054/third-country-incidental-use-not-covered",),
