@@ -399,7 +399,12 @@ QUESTIONS: dict[str, Question] = {
         "- (c) social scoring: evaluating persons over time on social behaviour or personal "
         "characteristics, where the score leads to detrimental treatment that is out of context or "
         "disproportionate. Scoring within one context on relevant data — credit from financial "
-        "history, insurance from claims — is not this.\n"
+        "history, insurance from claims — is not this. A score can be a number, ranking or label "
+        "built from data over time; the AI must play a sufficiently important role, even if "
+        "others decide; singling people out for extra checks, or rewarding some, is unfavourable "
+        "treatment. Scoring companies (unless it aggregates their people), adding up user ratings, "
+        "and lawful scoring on relevant data for a specific purpose — fraud checks, telematics "
+        "insurance, preference-based ads, police work under criminal law — are not this.\n"
         "- (d) predicting the risk of a person COMMITTING a criminal offence based SOLELY on "
         "profiling or personality traits. Does NOT cover a system supporting a human assessment "
         "already based on objective and verifiable facts linked to criminal activity.\n"
@@ -788,6 +793,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
     "prohibited": (
         "C-2025-5052/manipulation-and-deception-elements",
         "C-2025-5052/vulnerabilities-and-lawful-persuasion",
+        "C-2025-5052/social-scoring-elements",
         "C-2025-5052/workplace-covers-recruitment",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
