@@ -73,6 +73,8 @@ def test_guidance_is_attached_only_where_the_enacted_text_is_open():
         "C-2026-5054/synthetic-content-in-and-out-of-scope",
         "C-2026-5054/standard-editing-and-minor-alterations",
         "C-2026-5054/deep-fake-defined",
+        "C-2026-5054/public-interest-text-defined",
+        "C-2026-5054/public-interest-text-label-and-editorial-responsibility",
         "C-2026-5054/substantive-human-review",
     ]
     assert "AI-generated translations of text" in q["transparency"].guidance_context

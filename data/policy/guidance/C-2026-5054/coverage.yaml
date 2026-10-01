@@ -2,7 +2,7 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 129-132, 137-155
+awaiting_review: 145-155
 decisions:
   1:
     decision: no_effect
@@ -367,10 +367,44 @@ decisions:
     decision: no_effect
     reason: >-
       Intellectual property law applies alongside; the product reads only this Regulation.
+  129:
+    decision: no_effect
+    reason: >-
+      Personality rights and criminal law apply to deep fakes alongside; the product reads only this
+      Regulation and assesses Art. 5 separately.
+  130:
+    decision: no_effect
+    reason: >-
+      Restates the conditions of the Art. 50(4) text duty.
+  131: {decision: used}
+  132: {decision: used}
   133: {decision: used}
   134: {decision: used}
   135: {decision: used}
   136: {decision: used}
+  137:
+    decision: no_effect
+    reason: >-
+      An adequate code of practice under Art. 50(7) can show human review; the product does not
+      assess codes of practice.
+  138: {decision: used}
+  139:
+    decision: no_effect
+    reason: >-
+      The law-enforcement exception for published text reads as paras (46) to (48), already applied
+      to the transparency question.
+  140:
+    decision: no_effect
+    reason: >-
+      Points to the European Media Freedom Act's definition of editorial responsibility, which the
+      product does not carry; para (138) already states what the exception needs.
+  141: {decision: used}
+  142: {decision: used}
+  143: {decision: used}
+  144:
+    decision: no_effect
+    reason: >-
+      Art. 50 adds no accessibility requirements of its own; the product reads only this Regulation.
 visually_checked:
   6:
     checked_by: vidibro

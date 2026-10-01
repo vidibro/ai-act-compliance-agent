@@ -685,9 +685,15 @@ QUESTIONS: dict[str, Question] = {
         "colour correction and other minor edits are not deep fakes; AI actors, digital replicas, "
         "cloned voices and de-ageing are.\n"
         "- public_interest_text_disclosure (50(4), the DEPLOYER's duty): it generates text "
-        "published to inform the public on matters of public interest. NOT owed where the content "
-        "undergoes human review or editorial control with a person holding editorial "
-        "responsibility. That review must examine the substance, fact-checking included: a "
+        "published to inform the public on matters of public interest. Published means open to a "
+        "large, undefined readership — not private messages, closed groups or internal networks; "
+        "it must convey facts, knowledge or opinions on matters relevant to society, such as "
+        "politics, public services, justice, health, the environment, consumer safety or economic "
+        "and scientific developments. Novels, ordinary product copy and a chatbot's answer to the "
+        "one user who asked are not. NOT owed where the content undergoes human review or "
+        "editorial control with a person holding editorial responsibility — ultimate legal "
+        "responsibility, held by someone publicly identified. That review must examine the "
+        "substance, fact-checking included: a "
         "spell-check, an editorial policy on paper, an automated check or a cursory sign-off does "
         "not count, and AI changes made after the sign-off bring the duty back.\n"
         "Every duty is disapplied where the system is authorised by Union or national law to "
@@ -782,6 +788,8 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2026-5054/synthetic-content-in-and-out-of-scope",
         "C-2026-5054/standard-editing-and-minor-alterations",
         "C-2026-5054/deep-fake-defined",
+        "C-2026-5054/public-interest-text-defined",
+        "C-2026-5054/public-interest-text-label-and-editorial-responsibility",
         "C-2026-5054/substantive-human-review",
     ),
 }
