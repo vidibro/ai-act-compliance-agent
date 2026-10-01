@@ -64,6 +64,7 @@ def test_guidance_is_attached_only_where_the_enacted_text_is_open():
         "C-2025-5052/manipulation-and-deception-elements",
         "C-2025-5052/vulnerabilities-and-lawful-persuasion",
         "C-2025-5052/social-scoring-elements",
+        "C-2025-5052/crime-prediction-elements",
         REF,
     ]
     # the verbatim interpretive sentence is actually in the prompt context

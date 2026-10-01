@@ -407,7 +407,13 @@ QUESTIONS: dict[str, Question] = {
         "insurance, preference-based ads, police work under criminal law — are not this.\n"
         "- (d) predicting the risk of a person COMMITTING a criminal offence based SOLELY on "
         "profiling or personality traits. Does NOT cover a system supporting a human assessment "
-        "already based on objective and verifiable facts linked to criminal activity.\n"
+        "already based on objective and verifiable facts linked to criminal activity. Other "
+        "inputs lift the ban only if real, substantial and meaningful. Any stage counts, re-"
+        "offending risk included, and applying a group profile to a person is profiling. A "
+        "private firm is caught only when entrusted with policing, acting for the police, or "
+        "under a legal duty such as anti-money laundering; ordinary fraud detection is not. "
+        "Place-based predictive policing (unless the area's risk feeds one person's profile), "
+        "companies, and administrative offences are not this.\n"
         "- (e) creating or expanding facial recognition databases by UNTARGETED scraping of facial "
         "images from the internet or CCTV.\n"
         "- (f) inferring emotions of a natural person in the workplace or in education "
@@ -794,6 +800,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2025-5052/manipulation-and-deception-elements",
         "C-2025-5052/vulnerabilities-and-lawful-persuasion",
         "C-2025-5052/social-scoring-elements",
+        "C-2025-5052/crime-prediction-elements",
         "C-2025-5052/workplace-covers-recruitment",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
