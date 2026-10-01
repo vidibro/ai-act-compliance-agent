@@ -2,7 +2,7 @@
 # used: quoted in a snippet a question or rule is handed. not_followed: quoted, handed to nothing,
 # with the reason. no_effect: changes no answer this product gives, with the reason. A paragraph
 # not yet read is listed under awaiting_review — declared debt, never silence.
-awaiting_review: 271-433
+awaiting_review: 289-433
 decisions:
   1:
     decision: no_effect
@@ -965,6 +965,52 @@ decisions:
       Medical-field uses are out of scope; the decisive reading is supplied from paras (257) and
       (270).
   270: {decision: used}
+  271:
+    decision: no_effect
+    reason: >-
+      Restates the Art. 5(1)(g) ban and its carve-out; the decisive reading of the carve-out is
+      supplied from paras (275), (285) and (286).
+  272:
+    decision: no_effect
+    reason: >-
+      Purpose of the ban.
+  273:
+    decision: no_effect
+    reason: >-
+      Restates the cumulative conditions of Art. 5(1)(g).
+  274:
+    decision: no_effect
+    reason: >-
+      Restates that all conditions must be met and that providers and deployers are bound.
+  275: {decision: used}
+  276: {decision: used}
+  277: {decision: used}
+  278: {decision: used}
+  279: {decision: used}
+  280: {decision: used}
+  281:
+    decision: no_effect
+    reason: >-
+      Biometric data is essential; already stated in the question and supplied from paras (277) and
+      (278).
+  282: {decision: used}
+  283: {decision: used}
+  284:
+    decision: no_effect
+    reason: >-
+      Repeats the dataset carve-out stated in para (275), with Recital 30.
+  285: {decision: used}
+  286: {decision: used}
+  287:
+    decision: no_effect
+    reason: >-
+      Categorisation by sensitive traits not prohibited is high-risk; the product assesses that
+      separately.
+  288:
+    decision: no_effect
+    reason: >-
+      How the ban narrows lawful processing under data protection law; the product reads only this
+      Regulation.
 visually_checked:
   9:
     checked_by: vidibro

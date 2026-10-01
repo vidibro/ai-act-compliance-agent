@@ -431,10 +431,15 @@ QUESTIONS: dict[str, Question] = {
         "staff are not this.\n"
         "- (g) biometric categorisation deducing race, political opinions, trade union membership, "
         "religious or philosophical beliefs, sex life or sexual orientation. The categorisation is "
-        "made from biometric data; the attribute inferred need not itself be biometric. TWO "
-        "carve-outs, and both are in the same sentence: labelling or filtering of LAWFULLY "
-        "ACQUIRED biometric datasets, and categorising of biometric data IN THE AREA OF LAW "
-        "ENFORCEMENT. Say none where either applies.\n"
+        "made from biometric data; the attribute inferred need not itself be biometric. ONE "
+        "carve-out: labelling, filtering or categorising LAWFULLY ACQUIRED biometric DATASETS — "
+        "for bias testing, medical diagnosis, or police work on material they lawfully hold. It is "
+        "NOT a blanket exemption for law enforcement categorising people: Recital 30 ties the "
+        "law-enforcement words to datasets. Say none where the carve-out applies. Also not this: "
+        "categorising by clothes, accessories or social-media activity; group counts that "
+        "categorise no individual; sorting by skin or eye colour without inferring a listed "
+        "trait; and a feature both ancillary to another service AND strictly necessary for "
+        "technical reasons, such as virtual try-on or photo filters.\n"
         "- (h) 'real-time' remote biometric identification in publicly accessible spaces for law "
         "enforcement. Both qualifiers are DEFINED and supplied: 'real-time' (Art. 3(42)) covers "
         "not only instant identification but LIMITED SHORT DELAYS, so a buffer of seconds does not "
@@ -815,6 +820,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2025-5052/facial-scraping-elements",
         "C-2025-5052/emotion-recognition-elements",
         "C-2025-5052/workplace-covers-recruitment",
+        "C-2025-5052/biometric-categorisation-elements",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
     # "intended to be used" there, which is the reading paras (10) and (13) apply.

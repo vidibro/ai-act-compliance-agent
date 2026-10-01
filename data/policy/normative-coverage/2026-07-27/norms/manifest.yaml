@@ -10390,6 +10390,29 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P1-G-C2025-5052
+  snippet_refs:
+  - C-2025-5052/biometric-categorisation-elements
+  norm_ids:
+  - AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-PROHIBITED
+  effect: expands_scope
+  effect_explanation: Reads the law-enforcement words of the carve-out as labelling or filtering lawfully
+    acquired datasets, never police categorising people, and sets out what is and is not biometric categorisation.
+  review_scope: passage_with_context
+  review_scope_detail: Ten stored paragraphs of section 8, with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-01
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A005-P1-F-C2025-5052
   snippet_refs:
   - C-2025-5052/workplace-covers-recruitment
