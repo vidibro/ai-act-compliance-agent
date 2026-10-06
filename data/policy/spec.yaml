@@ -5186,6 +5186,9 @@ rules:
     applies_to_risk_class: [high_risk, not_high_risk]
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    # Art. 5(2) names its conditions but not how tight each is; paras (357) to (377) say so.
+    guidance_refs:
+      - C-2025-5052/realtime-rbi-article-5-2-safeguards
     activation_condition: >-
       Owed only where a MEMBER STATE HAS AUTHORISED the use under Art. 5(5) and the use is strictly
       necessary for one of the objectives in Art. 5(1), first subparagraph, point (h). Without that
@@ -5204,7 +5207,12 @@ rules:
       including the seriousness, probability and scale of the harm if the system were not used, and
       the consequences of the use for the rights and freedoms of all persons concerned. The use
       must also comply with the temporal, geographic and personal limitations set by the national
-      law authorising it. Acts of a law enforcement authority before a deployment rather than
+      law authorising it. Targeting means comparing only against named people already believed to
+      be victims, threats or suspects; less intrusive alternatives are weighed first; the area is
+      clearly bounded and normally not a whole city, the categories of people defined and the time
+      strictly limited; the deployer itself completes the assessment before deployment, with anyone
+      acting for it contributing; and an urgent registration is completed as soon as possible
+      [non-binding guidance: C-2025-5052/realtime-rbi-article-5-2-safeguards]. Acts of a law enforcement authority before a deployment rather than
       properties of a technical file — confirm separately.
     document_verifiable: false
     report_as_public_authority_notice: true
@@ -5224,6 +5232,9 @@ rules:
     applies_to_risk_class: [high_risk, not_high_risk]
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    # Art. 5(3) sets the authorisation but not who may grant it or what each use means; paras (380) to (406) say so.
+    guidance_refs:
+      - C-2025-5052/realtime-rbi-prior-authorisation
     activation_condition: >-
       Owed on the same branch as AIA-RULE-DP-A05-2: a use permitted under Art. 5(1), first subparagraph,
       point (h) and authorised by a Member State under Art. 5(5).
@@ -5240,7 +5251,13 @@ rules:
       results and outputs of that use, shall be immediately discarded and deleted. A deployer that
       has an urgency procedure but no deletion procedure has answered half of this. One further
       limit binds the decision the system feeds: no decision producing an adverse legal effect on a
-      person may be taken based solely on the output of the identification system. Authorisations
+      person may be taken based solely on the output of the identification system. Each use means
+      each deployment, not installing the cameras, and holds where a stadium or a shopping centre
+      operates the system for the police; the authority must be independent of the user, so never a
+      prosecutor supervising the same police; an urgent request runs from the first comparison, is
+      backed by logs and says why it came late; deletion on refusal reaches a reference database
+      built for that search; and an adverse decision needs checks beyond the match
+      [non-binding guidance: C-2025-5052/realtime-rbi-prior-authorisation]. Authorisations
       obtained from a court and an operational deletion procedure rather than a property of the
       technical file — confirm separately.
     document_verifiable: false
@@ -5260,6 +5277,9 @@ rules:
     applies_to_risk_class: [high_risk, not_high_risk]
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    # Art. 5(4) does not say when the notice goes; para (409) says after each use.
+    guidance_refs:
+      - C-2025-5052/realtime-rbi-notification
     activation_condition: >-
       Owed on the same branch as AIA-RULE-DP-A05-2, and owed WITHOUT PREJUDICE TO Art. 5(3): the
       notification is due whether or not the prior authorisation was obtained in advance or on the
@@ -5267,7 +5287,8 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      A NOTIFICATION OF EACH USE to TWO authorities — the relevant market surveillance authority
+      A NOTIFICATION OF EACH USE, made after the use
+      [non-binding guidance: C-2025-5052/realtime-rbi-notification], to TWO authorities — the relevant market surveillance authority
       AND the national data protection authority — made in accordance with the national rules
       adopted under Art. 5(5). Per use, like the authorisation, and to both bodies: notifying one
       of them is not this. WHAT IT MUST CONTAIN is a minimum and not a maximum: at least the

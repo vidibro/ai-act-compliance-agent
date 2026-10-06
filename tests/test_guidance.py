@@ -210,6 +210,9 @@ def test_no_other_rule_leans_on_interpretation():
     assert citing == {
         "AIA-RULE-ALL-A05-1",
         "AIA-RULE-DP-A05-1H",
+        "AIA-RULE-DP-A05-2",
+        "AIA-RULE-DP-A05-3",
+        "AIA-RULE-DP-A05-4",
         "AIA-RULE-TR-A50-1",
         "AIA-RULE-TR-A50-2",
         "AIA-RULE-TR-A50-3",

@@ -7581,6 +7581,72 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P2-C2025-5052
+  snippet_refs:
+  - C-2025-5052/realtime-rbi-article-5-2-safeguards
+  norm_ids:
+  - AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
+  targets:
+  - kind: policy_rule
+    target_id: AIA-RULE-DP-A05-2
+  effect: defines_evidence
+  effect_explanation: Targeting, alternatives, bounded area, categories and time, the deployer's own prior assessment and urgent registration.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (357) to (359), (364) to (367), (373), (374) and (377), with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-06
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P3-C2025-5052
+  snippet_refs:
+  - C-2025-5052/realtime-rbi-prior-authorisation
+  norm_ids:
+  - AIA-NORM-A005-P3-PRIOR-AUTHORISATION
+  targets:
+  - kind: policy_rule
+    target_id: AIA-RULE-DP-A05-3
+  effect: defines_evidence
+  effect_explanation: Authorisation per deployment by an authority independent of the user, the urgency route, deletion on refusal and no adverse decision on the match alone.
+  review_scope: passage_with_context
+  review_scope_detail: Eleven stored paragraphs of section 10.2, with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-06
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P4-C2025-5052
+  snippet_refs:
+  - C-2025-5052/realtime-rbi-notification
+  norm_ids:
+  - AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
+  targets:
+  - kind: policy_rule
+    target_id: AIA-RULE-DP-A05-4
+  effect: defines_evidence
+  effect_explanation: Notification goes to both authorities after each use.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraph (409), quoted whole.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-06
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A005-P1-F-C2025-5052
   snippet_refs:
   - C-2025-5052/workplace-covers-recruitment
