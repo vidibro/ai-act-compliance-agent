@@ -5145,6 +5145,9 @@ rules:
     applies_to_risk_class: [high_risk, not_high_risk]
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    # Art. 5(1)(h) lists the objectives but not how narrow each is; paras (289) to (354) say so.
+    guidance_refs:
+      - C-2025-5052/realtime-rbi-exceptions
     activation_condition: >-
       Owed by a deployer that uses, or would use, the system for real-time remote biometric
       identification in publicly accessible spaces for the purpose of law enforcement.
@@ -5157,7 +5160,13 @@ rules:
       persons; preventing a specific, substantial and imminent threat to life or physical safety or
       a genuine threat of terrorist attack; or locating or identifying a suspect of an Annex II
       offence — AND a Member State law under Art. 5(5) authorises that use. Without that national
-      law the use is prohibited and the answer is to stop, not to document. Where it is authorised,
+      law the use is prohibited and the answer is to stop, not to document. The objectives are
+      exhaustive and narrow: identifying a shoplifter is never one; a search is targeted, with a set
+      area and duration; a threat to life is specific, substantial and imminent, not hypothetical;
+      a terrorist threat is genuine and present or foreseeable on concrete circumstances; and a
+      suspect search needs serious grounds and evidence already gathered for an Annex II offence
+      punishable by at least four years, never a broad watchlist scan in the hope of finding wanted
+      people [non-binding guidance: C-2025-5052/realtime-rbi-exceptions]. Where it is authorised,
       the conditions of Art. 5(2) to (4) follow (AIA-RULE-DP-A05-2 to AIA-RULE-DP-A05-4). A
       decision about how the system is used rather than a property of its documentation — confirm
       separately.

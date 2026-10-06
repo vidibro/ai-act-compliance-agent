@@ -467,7 +467,10 @@ QUESTIONS: dict[str, Question] = {
         "following a suspect is. Online spaces, badge-controlled workplaces, prisons and "
         "border-control areas are not publicly accessible; airport common areas are. A private "
         "firm counts only when acting under police instruction and supervision "
-        "[non-binding guidance: C-2025-5052/realtime-rbi-elements].\n"
+        "[non-binding guidance: C-2025-5052/realtime-rbi-elements]. Searching for a missing "
+        "vulnerable person under an administrative procedure, with no crime suspected, is not "
+        "law enforcement [non-binding guidance: C-2025-5052/missing-person-administrative-search]."
+        "\n"
         "Answer none if no point fits. That is the ordinary answer: Art. 5 bans ten specific "
         "practices, not everything that reads as sensitive or intrusive.",
         "prohibited_practice",
@@ -855,6 +858,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2025-5052/workplace-covers-recruitment",
         "C-2025-5052/biometric-categorisation-elements",
         "C-2025-5052/realtime-rbi-elements",
+        "C-2025-5052/missing-person-administrative-search",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
     # "intended to be used" there, which is the reading paras (10) and (13) apply.
