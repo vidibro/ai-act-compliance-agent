@@ -62,6 +62,15 @@ def a_brain(**answers) -> ScriptedBrain:
     return ScriptedBrain({"is_ai": True, **answers})
 
 
+def realtime_rbi_brain() -> ScriptedBrain:
+    """Point (h) bans only use, so the cascade carries on: biometrics under Annex III(1)(a)."""
+    return a_brain(
+        prohibited=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
+        annex_iii=AnnexIIIArea.BIOMETRICS,
+        profiling=True,
+    )
+
+
 def high_risk_brain() -> ScriptedBrain:
     """Annex III area plus profiling — the Art. 6(3) carve-back, so high_risk with no derogation."""
     return a_brain(prohibited=None, annex_iii=AnnexIIIArea.EMPLOYMENT, profiling=True)
@@ -361,7 +370,7 @@ def test_article_5_national_law_boundaries_are_shown_in_the_report(spec):
     realtime = review(
         DOCUMENT,
         spec,
-        a_brain(prohibited=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION),
+        realtime_rbi_brain(),
         judge=StubJudge(),
     )
 
@@ -380,15 +389,32 @@ def test_article_5_national_law_boundaries_are_shown_in_the_report(spec):
     }
 
 
+def test_point_h_is_checked_against_chapter_iii_not_withdrawn(spec):
+    """Art. 5(1)(h) bans only the use, so the provider of such a system owes the high-risk
+    requirements and the report says why a practice named in Art. 5 was checked at all."""
+    judge = StubJudge()
+    report = review(DOCUMENT, spec, realtime_rbi_brain(), judge=judge)
+
+    assert report.classification.overall_risk_class == RiskClass.HIGH_RISK
+    assert (
+        report.classification.prohibited_practice
+        is ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION
+    )
+    assert report.findings, "the provider's Chapter III duties are checked"
+    assert "bans only the USE" in (report.scope_note or "")
+
+
 def test_article_5_public_authority_statements_are_not_mislabelled_as_deployer_duties(spec):
     report = review(
         DOCUMENT,
         spec,
-        a_brain(prohibited=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION),
+        realtime_rbi_brain(),
         judge=StubJudge(),
     )
 
-    assert report.public_authority_statements == [
+    # Point (h) keeps the system high-risk, so Chapter III's own authority statements sit beside
+    # these; the Art. 5 ones must all be here and none mislabelled as a deployer duty.
+    assert [n for n in report.public_authority_statements if n.startswith("AIA-NORM-A005-")] == [
         "AIA-NORM-A005-P2-COMPLETE-FRIA",
         "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
         "AIA-NORM-A005-P2-CONSIDER-IMPACTS",

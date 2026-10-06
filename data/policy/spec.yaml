@@ -3290,9 +3290,11 @@ rules:
       label such as "assistant", a site-wide "our services use AI", or a machine-readable mark no
       one can perceive does not reach the obligation. Where children, the elderly or people with
       disabilities are likely users, it must be adapted to them, and the system must say it is AI
-      when asked. A provider relying on the "obvious to a reasonably well-informed, observant and
-      circumspect person" exception should say so and say why, for the whole audience the system
-      is likely to reach; it is a narrow judgement about the context of use, not a default.
+      when asked [non-binding guidance: C-2026-5054/what-an-interaction-disclosure-must-do]. A provider relying
+      on the "obvious to a reasonably well-informed, observant and circumspect person" exception
+      should say so and say why; it is a judgement about the context of use, not a default. That
+      judgement is narrow and covers the whole audience the system is likely to reach
+      [non-binding guidance: C-2026-5054/obvious-interaction-exception].
     document_verifiable: true
     effective_date: 2026-08-02
     status: active
@@ -3350,20 +3352,22 @@ rules:
       WITHOUT human intervention, so a statement that outputs are "labelled as AI", with nothing
       about how a machine detects it, does not reach the obligation. A visible label is not a mark
       against the provider either: it is expressly allowed as a COMPLEMENT, and it helps a deployer
-      meet the separate Art. 50(4) duty — so its presence is neither the answer nor a fault.
+      meet the separate Art. 50(4) duty — so its presence is neither the answer nor a fault
+      [non-binding guidance: C-2026-5054/machine-readable-marking-defined].
       (2) DETECTION. That the marked output is DETECTABLE — a detection tool or method, and how the
       persons potentially exposed to the content can reach it. Embedding a mark that only the
       provider can read is the failure this half exists to catch. Look for a named detection
       mechanism, whether it is a publicly-available industry standard or the provider's own, and
-      whether its result is human-readable. Silence on detection is a GAP even where the marking
-      scheme is described in full.
+      whether its result is human-readable [non-binding guidance: C-2026-5054/detection-must-be-available].
+      Silence on detection is a GAP even where the marking scheme is described in full.
       The paragraph also asks that the solutions be effective, interoperable, robust and reliable as
       far as technically feasible, and a single technique or a combination may be used. The provider
       may rely on an upstream model's or a third party's marking or detection, but stays responsible
       for it meeting these requirements; no full provenance chain is required. "Technically
       feasible" is objective, never a provider's own resources, and the solution must follow the
       state of the art. Where outputs stay inside a closed product environment and cannot leave it,
-      as in a vehicle's navigation system, metadata marking alone can suffice.
+      as in a vehicle's navigation system, metadata marking alone can suffice
+      [non-binding guidance: C-2026-5054/marking-and-detection-quality].
     document_verifiable: true
     effective_date: 2026-08-02
     status: active
@@ -3394,8 +3398,10 @@ rules:
       How the deployer informs everyone exposed to the emotion recognition or biometric
       categorisation system, children included, that it is operating. The reasons for using it need
       not be given, and any means that fits the place and the audience will do: a notice at each
-      entrance, an onboarding message, standard icons, a spoken statement — so long as it is
-      noticeable, never hidden in a manual or menus, and reaches each person when first exposed.
+      entrance, an onboarding message, standard icons, a spoken statement
+      [non-binding guidance: C-2026-5054/emotion-biometric-information-content] — so long as it is noticeable,
+      never hidden in a manual or menus, and reaches each person when first exposed
+      [non-binding guidance: C-2026-5054/clear-distinguishable-first-exposure].
       Also the data-protection
       basis under Regulation
       (EU) 2016/679, Regulation (EU) 2018/1725 or Directive (EU) 2016/680. Discharged in front of
@@ -3437,23 +3443,25 @@ rules:
     evidence_expected: >-
       The deployer's disclosure that the content is artificially generated or manipulated, as a
       label people can see or hear without any tool; the provider's machine-readable mark does not
-      count. For an evidently artistic, creative, satirical or fictional work the duty is reduced to
+      count [non-binding guidance: C-2026-5054/deep-fake-disclosure]. For an evidently artistic, creative, satirical or fictional work the duty is reduced to
       disclosing that such content exists, in a way that does not hamper enjoyment of the work.
       "Evidently" is read strictly: where the content is also informative, as news or a plain
       advertisement, the full label applies, and even the reduced disclosure must respect third
-      parties' rights. For published
+      parties' rights [non-binding guidance: C-2026-5054/deep-fake-disclosure]. For published
       text informing the public on matters of public interest, the duty falls away where the content
       had human review or editorial control and a named person holds editorial responsibility —
       ultimate legal responsibility for the publication, by someone publicly identified, as in an
-      imprint or legal notice. The
-      review has to engage with the substance and check the facts: an editorial policy, a
-      spell-check, an automated check or a cursory approval does not lift the duty, and AI changes
-      made after the sign-off bring it back. Art. 50(5) SETS THE MOMENT AND THE FORM for
+      imprint or legal notice
+      [non-binding guidance: C-2026-5054/public-interest-text-label-and-editorial-responsibility]. The review has
+      to engage with the substance and check the facts: an editorial policy, a spell-check, an
+      automated check or a cursory approval does not lift the duty, and AI changes made after the
+      sign-off bring it back [non-binding guidance: C-2026-5054/substantive-human-review]. Art. 50(5) SETS THE MOMENT AND THE FORM for
       whatever disclosure remains owed: clearly and distinguishably, AT THE LATEST AT THE TIME OF
       THE FIRST INTERACTION OR EXPOSURE, and conforming to the applicable accessibility
       requirements. That is each person's first exposure, for each output: where people may come to
       the content midway, a notice only at its start is not enough, and one placed in a manual,
-      menus or terms is not clear. A publication practice, not a property of the system — confirm
+      menus or terms is not clear [non-binding guidance: C-2026-5054/clear-distinguishable-first-exposure]. A
+      publication practice, not a property of the system — confirm
       separately.
     document_verifiable: false
     effective_date: 2026-08-02
@@ -5042,7 +5050,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 5
-      paragraph: 1 # points (a) to (h), without (ba) and (bb)
+      paragraph: 1 # points (a) to (g), without (ba) and (bb); point (h) is AIA-RULE-DP-A05-1H
       act_version_date: 2026-07-27
     applies_to_risk_class: [prohibited]
     applies_to_role: [provider, importer, deployer]
@@ -5059,13 +5067,12 @@ rules:
         facial_image_scraping,
         emotion_inference_workplace_education,
         biometric_categorisation_sensitive,
-        realtime_remote_biometric_identification,
       ]
     activation_condition: >-
       Owed by every provider, importer and deployer of a system the classification places under one
-      of the Art. 5(1) points. For real-time remote biometric identification under point (h) only
-      the USE is banned, and it is lifted for a law enforcement deployer operating under a national
-      authorisation; that branch is governed by AIA-RULE-DP-A05-2 to AIA-RULE-DP-A05-4.
+      of the Art. 5(1) points that ban outright. Point (h) is not here: it bans only the USE of
+      real-time remote biometric identification, so its provider is not banned at all, and the
+      deployer's ban is AIA-RULE-DP-A05-1H.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -5076,7 +5083,7 @@ rules:
       lives. "Use" includes any misuse, so a deployer's ban holds whatever the provider's terms say.
       A provider must not supply a system reasonably likely to be used for the practice, and is
       expected to build in safeguards, exclude the prohibited use in its terms and instructions, and
-      act on misuse it learns of. A decision about the system's existence rather than a property of
+      act on misuse it learns of [non-binding guidance: C-2025-5052/misuse-and-provider-safeguards]. A decision about the system's existence rather than a property of
       its documentation — confirm separately.
     document_verifiable: false
     effective_date: 2025-02-02
@@ -5121,28 +5128,60 @@ rules:
   # outside Art. 5 — it is inside the exception, and paragraphs 2, 3 and 4 are the conditions the
   # Article attaches to being there.
   #
-  # REPORTED ALONGSIDE THE PROHIBITION, not instead of it. The classification still answers
-  # `prohibited` and the report's scope note still says withdraw; these rules add what Art. 5 costs
-  # a deployer that has the authorisation. `applies_to_prohibited_practice` is what keeps them off
-  # a system banned for social scoring, which has no lawful branch.
+  # ONLY THE USE IS BANNED, so the system keeps its ordinary tier. Placing a real-time remote
+  # biometric identification system on the market is not prohibited: it is high-risk under Annex
+  # III(1)(a), its provider owes Chapter III, and an authorised deployer owes Chapter III's deployer
+  # duties as well. The classification records point (h) and carries on to that tier;
+  # `applies_to_prohibited_practice` is what keeps these rules off every other high-risk system.
   #
-  # THE DEPLOYER, because Art. 5(2) to (4) address the law enforcement authority USING the system.
-  # The provider of such a system owes Chapter III on the ordinary route where the use is lawful;
-  # nothing here is a provider duty.
+  # THE DEPLOYER, because the ban and Art. 5(2) to (4) all address the law enforcement authority
+  # USING the system. Nothing here is a provider duty.
+  - rule_id: AIA-RULE-DP-A05-1H
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 5
+      paragraph: 1 # point (h): the use of real-time remote biometric identification
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk]
+    applies_to_role: [deployer]
+    applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    activation_condition: >-
+      Owed by a deployer that uses, or would use, the system for real-time remote biometric
+      identification in publicly accessible spaces for the purpose of law enforcement.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The system is NOT USED in real time in publicly accessible spaces for law enforcement unless
+      the use is strictly necessary for one of the three objectives of Art. 5(1)(h) — the targeted
+      search for specific victims of abduction, trafficking or sexual exploitation or for missing
+      persons; preventing a specific, substantial and imminent threat to life or physical safety or
+      a genuine threat of terrorist attack; or locating or identifying a suspect of an Annex II
+      offence — AND a Member State law under Art. 5(5) authorises that use. Without that national
+      law the use is prohibited and the answer is to stop, not to document. Where it is authorised,
+      the conditions of Art. 5(2) to (4) follow (AIA-RULE-DP-A05-2 to AIA-RULE-DP-A05-4). A
+      decision about how the system is used rather than a property of its documentation — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2025-02-02
+    effective_date_note: >-
+      Art. 113(a) applies Chapters I and II from 2 February 2025; the Omnibus did not move point
+      (h).
+    status: active
+
   - rule_id: AIA-RULE-DP-A05-2
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 5
       paragraph: 2 # the conditions on a use permitted under 5(1)(h)
       act_version_date: 2026-07-27
-    applies_to_risk_class: [prohibited]
+    applies_to_risk_class: [high_risk, not_high_risk]
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
     activation_condition: >-
       Owed only where a MEMBER STATE HAS AUTHORISED the use under Art. 5(5) and the use is strictly
       necessary for one of the objectives in Art. 5(1), first subparagraph, point (h). Without that
-      national authorisation the practice is prohibited outright and the answer is withdrawal, not
-      compliance with these conditions.
+      national authorisation the use is prohibited (AIA-RULE-DP-A05-1H) and the answer is to stop,
+      not to comply with these conditions.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -5173,7 +5212,7 @@ rules:
       article: 5
       paragraph: 3 # prior authorisation, the 24-hour urgency route, and what a refusal costs
       act_version_date: 2026-07-27
-    applies_to_risk_class: [prohibited]
+    applies_to_risk_class: [high_risk, not_high_risk]
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
     activation_condition: >-
@@ -5209,7 +5248,7 @@ rules:
       article: 5
       paragraph: 4 # the per-use notification, its minimum content and its one exclusion
       act_version_date: 2026-07-27
-    applies_to_risk_class: [prohibited]
+    applies_to_risk_class: [high_risk, not_high_risk]
     applies_to_role: [deployer]
     applies_to_prohibited_practice: [realtime_remote_biometric_identification]
     activation_condition: >-

@@ -10413,6 +10413,29 @@ interpretations:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- interpretation_id: AIA-INT-A005-P1-H-C2025-5052
+  snippet_refs:
+  - C-2025-5052/realtime-rbi-elements
+  norm_ids:
+  - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+  targets:
+  - kind: classification_question
+    target_id: AIA-CQ-PROHIBITED
+  effect: clarifies_term
+  effect_explanation: Only the use is banned and the system is otherwise high-risk; what remote identification,
+    real-time, publicly accessible and law enforcement mean, and what is out.
+  review_scope: passage_with_context
+  review_scope_detail: Fifteen stored paragraphs of sections 9 to 9.2, with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-10-01
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - interpretation_id: AIA-INT-A005-P1-F-C2025-5052
   snippet_refs:
   - C-2025-5052/workplace-covers-recruitment

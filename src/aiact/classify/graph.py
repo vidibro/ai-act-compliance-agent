@@ -11,7 +11,7 @@ Order (Commission's, with our deliberate split of profiling before derogation):
     gpai_model ─Art.3(63) a general-purpose MODEL, placed or not► GPAI_MODEL (Chapter V handover)
       │ an AI system — including one built ON such a model
     prohibited ─Art.5 yes──────────────────────────────────────► PROHIBITED
-      │ no
+      │ no ── or point (h), which bans only use and falls through (see below)
     annex_i ─no Annex I product─┐                     Art. 6(1), door ONE
       │ safety component of one │
     third_party_assessment ─yes─┼─────────────────────────────► HIGH_RISK
@@ -195,7 +195,8 @@ QUESTIONS: dict[str, Question] = {
         "outside the Union, but the OUTPUT the system produces is used in the Union. That use "
         "must be intended or foreseeable: output that reaches the Union only incidentally, "
         "without authorisation or through channels the provider or deployer does not control "
-        "does not bring the system in.\n"
+        "does not bring the system in "
+        "[non-binding guidance: C-2026-5054/third-country-incidental-use-not-covered].\n"
         "- eu_supply_chain (2(1)(d)-(f)): an importer, distributor, product manufacturer "
         "placing the system with its own product, or an authorised representative of a non-Union "
         "provider.\n"
@@ -240,10 +241,13 @@ QUESTIONS: dict[str, Question] = {
         "control. National security means protecting the State's essential functions against "
         "threats such as terrorism — not road safety or the administration of justice. EXCLUSIVELY "
         "is strict: a system also offered or used for civilian or law-enforcement purposes (dual "
-        "use) stays in scope.\n"
+        "use) stays in scope "
+        "[non-binding guidance: C-2025-5052/national-security-and-cooperation-exclusions].\n"
         "- 2(4) a third-country public authority or international organisation, under a law "
         "enforcement or judicial cooperation agreement with the Union, including private entities "
-        "that authority entrusts with tasks in that cooperation. See the caution below.\n"
+        "that authority entrusts with tasks in that cooperation "
+        "[non-binding guidance: C-2025-5052/national-security-and-cooperation-exclusions]. See "
+        "the caution below.\n"
         "- 2(6) developed and put into service for the SOLE purpose of scientific research and "
         "development — science as the end, not a stage before a product.\n"
         "- 2(8) research, testing or development PRIOR to being placed on the market or put into "
@@ -251,8 +255,10 @@ QUESTIONS: dict[str, Question] = {
         "available for testing in real-world conditions.\n"
         "- 2(10) the deployer is a natural person using it in a PURELY personal, non-professional "
         "activity. Any activity bringing an economic benefit on a regular basis is professional, "
-        "and so is any use on behalf of a professional deployer; criminal activity is never purely "
-        "personal. This lifts that person's "
+        "and so is any use on behalf of a professional deployer "
+        "[non-binding guidance: C-2026-5054/purely-personal-use-defined]; criminal activity is "
+        "never purely personal [non-binding guidance: C-2025-5052/purely-personal-excludes-crime]. "
+        "This lifts that person's "
         "obligations only; the provider keeps all of theirs, so answer none when the description "
         "is written from the provider's side.\n"
         "- 2(12) released under a free and open-source licence. Answer this whenever the licence "
@@ -368,7 +374,8 @@ QUESTIONS: dict[str, Question] = {
         "manipulate or deceive by itself is caught — but incidental hallucination or "
         "manipulation, where the provider informs users and mitigates it, is not. Material "
         "distortion appreciably impairs an informed decision; significant harm is physical, "
-        "psychological or financial and reasonably foreseeable.\n"
+        "psychological or financial and reasonably foreseeable "
+        "[non-binding guidance: C-2025-5052/manipulation-and-deception-elements].\n"
         "- (b) exploits vulnerabilities of age, disability, or a specific social or economic "
         "situation, so as to distort behaviour and cause significant harm. The vulnerability must "
         "come FROM that age (children or older people), disability or situation — poverty, a "
@@ -376,7 +383,8 @@ QUESTIONS: dict[str, Question] = {
         "exploiting means targeting it, not an inadvertent bias. Where a practice targets such a "
         "group it is (b); otherwise (a). Transparent personalisation, ordinary advertising, "
         "techniques the user knowingly consents to and lawful medical treatment are not caught by "
-        "(a) or (b); dark patterns are, where significant harm is likely.\n"
+        "(a) or (b); dark patterns are, where significant harm is likely "
+        "[non-binding guidance: C-2025-5052/vulnerabilities-and-lawful-persuasion].\n"
         "- (ba) generating or manipulating REALISTIC intimate imagery of an identifiable person — "
         "their intimate parts, or them engaged in sexually explicit activity — without that "
         "person's explicit consent.\n"
@@ -404,7 +412,8 @@ QUESTIONS: dict[str, Question] = {
         "others decide; singling people out for extra checks, or rewarding some, is unfavourable "
         "treatment. Scoring companies (unless it aggregates their people), adding up user ratings, "
         "and lawful scoring on relevant data for a specific purpose — fraud checks, telematics "
-        "insurance, preference-based ads, police work under criminal law — are not this.\n"
+        "insurance, preference-based ads, police work under criminal law — are not this "
+        "[non-binding guidance: C-2025-5052/social-scoring-elements].\n"
         "- (d) predicting the risk of a person COMMITTING a criminal offence based SOLELY on "
         "profiling or personality traits. Does NOT cover a system supporting a human assessment "
         "already based on objective and verifiable facts linked to criminal activity. Other "
@@ -413,13 +422,15 @@ QUESTIONS: dict[str, Question] = {
         "private firm is caught only when entrusted with policing, acting for the police, or "
         "under a legal duty such as anti-money laundering; ordinary fraud detection is not. "
         "Place-based predictive policing (unless the area's risk feeds one person's profile), "
-        "companies, and administrative offences are not this.\n"
+        "companies, and administrative offences are not this "
+        "[non-binding guidance: C-2025-5052/crime-prediction-elements].\n"
         "- (e) creating or expanding facial recognition databases by UNTARGETED scraping of facial "
         "images from the internet or CCTV. Any collection usable for recognition is a database; "
         "untargeted means vacuum-cleaner collection, and building it step by step does not "
         "escape. Searching for given people or a defined group, and reverse image search on one "
         "photo, are targeted and not this; nor are other biometrics such as voice, face sets used "
-        "only to train models with no one identified, or generators of fictitious faces.\n"
+        "only to train models with no one identified, or generators of fictitious faces "
+        "[non-binding guidance: C-2025-5052/facial-scraping-elements].\n"
         "- (f) inferring emotions of a natural person in the workplace or in education "
         "institutions, EXCEPT for medical or safety reasons. Only inference from biometric data "
         "counts (face, voice, keystrokes, gait), attitudes such as anger included; pain, "
@@ -428,24 +439,35 @@ QUESTIONS: dict[str, Question] = {
         "devices, safety means life and health only, and wellbeing, burnout, stress or boredom "
         "monitoring stays banned unless the stress itself is dangerous. Customer and marketing "
         "uses, crowd mood monitoring, medical settings and security that incidentally screens "
-        "staff are not this.\n"
+        "staff are not this [non-binding guidance: C-2025-5052/emotion-recognition-elements].\n"
         "- (g) biometric categorisation deducing race, political opinions, trade union membership, "
         "religious or philosophical beliefs, sex life or sexual orientation. The categorisation is "
         "made from biometric data; the attribute inferred need not itself be biometric. ONE "
         "carve-out: labelling, filtering or categorising LAWFULLY ACQUIRED biometric DATASETS — "
         "for bias testing, medical diagnosis, or police work on material they lawfully hold. It is "
         "NOT a blanket exemption for law enforcement categorising people: Recital 30 ties the "
-        "law-enforcement words to datasets. Say none where the carve-out applies. Also not this: "
+        "law-enforcement words to datasets "
+        "[non-binding guidance: C-2025-5052/biometric-categorisation-elements]. Say none where the "
+        "carve-out applies. Also not this: "
         "categorising by clothes, accessories or social-media activity; group counts that "
         "categorise no individual; sorting by skin or eye colour without inferring a listed "
         "trait; and a feature both ancillary to another service AND strictly necessary for "
-        "technical reasons, such as virtual try-on or photo filters.\n"
+        "technical reasons, such as virtual try-on or photo filters "
+        "[non-binding guidance: C-2025-5052/biometric-categorisation-elements].\n"
         "- (h) 'real-time' remote biometric identification in publicly accessible spaces for law "
         "enforcement. Both qualifiers are DEFINED and supplied: 'real-time' (Art. 3(42)) covers "
         "not only instant identification but LIMITED SHORT DELAYS, so a buffer of seconds does not "
         "take a system out of it — only identification run over already-recorded material is "
         "post-hoc. A 'publicly accessible space' (Art. 3(44)) is PUBLICLY OR PRIVATELY OWNED, so "
-        "a shop, stadium or transport hub counts.\n"
+        "a shop, stadium or transport hub counts. ONLY THE USE is banned: answer (h) whenever "
+        "the system is or would be used this way, and its provider's high-risk duties are "
+        "checked afterwards. Remote means without the person's active involvement — CCTV, "
+        "body-cams at a demonstration, voice or gait — not an access gate someone steps up to; "
+        "one-to-one verification such as a passport e-gate is not identification, while "
+        "following a suspect is. Online spaces, badge-controlled workplaces, prisons and "
+        "border-control areas are not publicly accessible; airport common areas are. A private "
+        "firm counts only when acting under police instruction and supervision "
+        "[non-binding guidance: C-2025-5052/realtime-rbi-elements].\n"
         "Answer none if no point fits. That is the ordinary answer: Art. 5 bans ten specific "
         "practices, not everything that reads as sensitive or intrusive.",
         "prohibited_practice",
@@ -694,23 +716,28 @@ QUESTIONS: dict[str, Question] = {
         "does. Answer regardless of the risk tier: Art. 50 is independent of it.\n"
         "- direct_interaction (50(1), the PROVIDER's duty): the system is intended to interact "
         "directly with natural persons. An AI agent that books, corresponds, negotiates or buys "
-        "for someone does. A tool that helps a human write replies the human then sends does NOT, "
-        "and neither do recommender systems, spam filters, search, auto-completion or back-end "
-        "decision support whose output a person only sees. Not owed where the interaction is "
-        "obvious to a reasonably well-informed person — an exception read NARROWLY and judged by "
-        "the whole audience the system is likely to reach: where that includes the public, "
-        "children, the elderly or people with disabilities, it rarely holds.\n"
+        "for someone does, and recommender systems, spam filters, search, auto-completion or "
+        "back-end decision support whose output a person only sees do not "
+        "[non-binding guidance: C-2026-5054/interactive-systems-in-and-out-of-scope]. A tool that "
+        "helps a human write replies the human then sends does NOT "
+        "[non-binding guidance: C-2026-5054/agent-assist-is-not-direct-interaction]. Not owed "
+        "where the interaction is obvious to a reasonably well-informed person — an exception "
+        "read NARROWLY and judged by the whole audience the system is likely to reach: where that "
+        "includes the public, children, the elderly or people with disabilities, it rarely holds "
+        "[non-binding guidance: C-2026-5054/obvious-interaction-exception].\n"
         "- synthetic_content_marking (50(2), the PROVIDER's duty): it generates or manipulates "
         "audio, image, video or text people perceive — including 3-D, virtual reality, content "
         "mixed with human work, and what an AI agent produces for people — which must be marked "
         "machine-readably. NOT synthetic content: source code, single words, captions, alt-text "
         "or interface labels, output only machines process, rendering, ranking or arranging "
         "existing content, sensor recordings, and intermediate files of a production workflow "
-        "(its final output is still marked). NOT owed where the system "
+        "(its final output is still marked) "
+        "[non-binding guidance: C-2026-5054/synthetic-content-in-and-out-of-scope]. NOT owed "
+        "where the system "
         "performs an assistive function for standard editing, or does not substantially alter the "
         "deployer's input data or its semantics — polishing a person's own text, translating it or "
         "transcribing speech is that carve-out; drafting, summarising or rewriting the text is "
-        "not.\n"
+        "not [non-binding guidance: C-2026-5054/standard-editing-and-minor-alterations].\n"
         "- emotion_or_biometric_categorisation (50(3), the DEPLOYER's duty): it is an emotion "
         "recognition or biometric categorisation system. Both are DEFINED and supplied: emotion "
         "recognition (Art. 3(39)) infers emotions ON THE BASIS OF BIOMETRIC DATA, so sentiment "
@@ -726,25 +753,31 @@ QUESTIONS: dict[str, Question] = {
         "falsely appears authentic turns on the context and the likely audience, children "
         "included. Unrealistic subjects (a flying sphinx, talking mice), background effects, "
         "colour correction and other minor edits are not deep fakes; AI actors, digital replicas, "
-        "cloned voices and de-ageing are.\n"
+        "cloned voices and de-ageing are [non-binding guidance: C-2026-5054/deep-fake-defined].\n"
         "- public_interest_text_disclosure (50(4), the DEPLOYER's duty): it generates text "
         "published to inform the public on matters of public interest. Published means open to a "
         "large, undefined readership — not private messages, closed groups or internal networks; "
         "it must convey facts, knowledge or opinions on matters relevant to society, such as "
         "politics, public services, justice, health, the environment, consumer safety or economic "
         "and scientific developments. Novels, ordinary product copy and a chatbot's answer to the "
-        "one user who asked are not. NOT owed where the content undergoes human review or "
-        "editorial control with a person holding editorial responsibility — ultimate legal "
-        "responsibility, held by someone publicly identified. That review must examine the "
-        "substance, fact-checking included: a "
-        "spell-check, an editorial policy on paper, an automated check or a cursory sign-off does "
-        "not count, and AI changes made after the sign-off bring the duty back.\n"
-        "Every duty is disapplied where the system is authorised by Union or national law to "
-        "detect, prevent, investigate or prosecute criminal offences and is used for that purpose "
-        "— EXCEPT direct_interaction for a system available to the public to report a criminal "
+        "one user who asked are not "
+        "[non-binding guidance: C-2026-5054/public-interest-text-defined]. NOT owed where the "
+        "content undergoes human review or editorial control with a person holding editorial "
+        "responsibility — ultimate legal responsibility, held by someone publicly identified "
+        "[non-binding guidance: "
+        "C-2026-5054/public-interest-text-label-and-editorial-responsibility]. That review must "
+        "examine the substance, fact-checking included: a spell-check, an editorial policy on "
+        "paper, an automated check or a cursory sign-off does not count, and AI changes made after "
+        "the sign-off bring the duty back "
+        "[non-binding guidance: C-2026-5054/substantive-human-review].\n"
+        "Every duty is disapplied where the system is authorised by law to detect, prevent, "
+        "investigate or prosecute criminal offences — Union or national law, and used for that "
+        "purpose [non-binding guidance: C-2026-5054/law-enforcement-exception-for-interaction] — "
+        "EXCEPT direct_interaction for a system available to the public to report a criminal "
         "offence, which still owes it. For emotion_or_biometric_categorisation the bar is lower: "
         "it is enough that the law governing police powers PERMITS its use to detect, prevent or "
-        "investigate criminal offences without informing the people concerned.",
+        "investigate criminal offences without informing the people concerned "
+        "[non-binding guidance: C-2026-5054/emotion-biometric-law-enforcement-exception].",
         "transparency_duties",
         label="Must people be told they are dealing with AI?",
     ),
@@ -821,6 +854,7 @@ QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
         "C-2025-5052/emotion-recognition-elements",
         "C-2025-5052/workplace-covers-recruitment",
         "C-2025-5052/biometric-categorisation-elements",
+        "C-2025-5052/realtime-rbi-elements",
     ),
     # Art. 2(1)(c) says only that the output "is used" in the Union; Recital 22 speaks of output
     # "intended to be used" there, which is the reading paras (10) and (13) apply.
@@ -1289,7 +1323,14 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
                 else []
             ),
         )
-    if state.prohibited is not None and state.prohibited.value is not None:
+    if (
+        state.prohibited is not None
+        and state.prohibited.value is not None
+        and not (
+            isinstance(state.prohibited.value, ProhibitedPractice)
+            and state.prohibited.value.bans_only_use
+        )
+    ):
         practice = state.prohibited.value
         if not isinstance(practice, ProhibitedPractice):
             # A ban this tool cannot cite is one a provider cannot check or contest, and the class
@@ -1502,11 +1543,20 @@ to the Art. 3(63) question and finds out WHAT is being built before saying anyth
 def _route_prohibited(state: GraphState) -> str:
     """Any answer other than a clean `none` ends the cascade. A named point is a prohibition; an
     unrecognised value is a brain claiming one it cannot cite, which `_decide_tier` turns into
-    needs_review rather than into either a ban or a clearance."""
+    needs_review rather than into either a ban or a clearance.
+
+    Point (h) is the exception and falls through. It bans only the USE of real-time remote
+    biometric identification, so the system may be placed on the market and its tier is found the
+    ordinary way — high-risk under Annex III(1)(a) — while the answer stays on record for the
+    deployer rules that carry the ban."""
     a = state.prohibited
     if a is None or _is_low_confidence(a):
         return "assemble"
-    return "annex_i" if a.value is None else "assemble"
+    if a.value is None:
+        return "annex_i"
+    if isinstance(a.value, ProhibitedPractice) and a.value.bans_only_use:
+        return "annex_i"
+    return "assemble"
 
 
 def _route_annex_i(state: GraphState) -> str:

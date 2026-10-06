@@ -411,21 +411,38 @@ class ProhibitedPractice(StrEnum):
     BIOMETRIC_CATEGORISATION_SENSITIVE = "biometric_categorisation_sensitive"
     """5(1)(g). Biometric categorisation deducing race, political opinions, trade union membership,
     religious or philosophical beliefs, sex life or sexual orientation — categorised FROM biometric
-    data, though the attribute inferred need not itself be biometric. Two carve-outs sit in the same
-    sentence: labelling or filtering of lawfully acquired biometric datasets, and categorising of
-    biometric data in the area of law enforcement."""
+    data, though the attribute inferred need not itself be biometric. The carve-out reaches
+    labelling or filtering of lawfully acquired biometric datasets, including in the area of law
+    enforcement. That it never covers police categorising PEOPLE is a reading, not the Article's
+    words: Recital 30 and the Commission's non-binding guidance, C(2025) 5052 paras (275) and
+    (286)."""
 
     REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION = "realtime_remote_biometric_identification"
     """5(1)(h). 'Real-time' remote biometric identification in publicly accessible spaces for law
     enforcement, unless strictly necessary for one of three named objectives — targeted search for
     victims or missing persons, an imminent threat to life or of terrorist attack, or locating a
     suspect for an Annex II offence. Where an objective applies, Arts. 5(2)-(3) still require a
-    fundamental rights impact assessment, registration, and prior judicial authorisation."""
+    fundamental rights impact assessment, registration, and prior judicial authorisation.
+
+    The one point that bans only the USE: placing such a system on the market is not prohibited,
+    so its provider owes Chapter III as an Annex III(1)(a) system — see `bans_only_use`."""
 
     @property
     def point(self) -> str:
         """The Art. 5(1) point, for citation — same discipline as `ScopeExclusion.paragraph`."""
         return _PROHIBITED_POINT[self]
+
+    @property
+    def bans_only_use(self) -> bool:
+        """Whether this point bans only the use of a system, never its placing or supply.
+
+        True of point (h) alone, whose words are "the use of 'real-time' remote biometric
+        identification systems". Every other point bans placing on the market, putting into service
+        and use alike, so the system itself may not ship and its tier is PROHIBITED. A point (h)
+        system may ship: it is high-risk under Annex III(1)(a), its provider owes Chapter III, and
+        the ban reaches the deployer, lifted only where a Member State authorises one of the named
+        objectives under Art. 5(5)."""
+        return self is ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION
 
     @property
     def applies_from(self) -> date:

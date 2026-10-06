@@ -69,6 +69,7 @@ def test_guidance_is_attached_only_where_the_enacted_text_is_open():
         "C-2025-5052/emotion-recognition-elements",
         REF,
         "C-2025-5052/biometric-categorisation-elements",
+        "C-2025-5052/realtime-rbi-elements",
     ]
     # the verbatim interpretive sentence is actually in the prompt context
     assert "candidates during the selection and hiring process" in q["prohibited"].guidance_context

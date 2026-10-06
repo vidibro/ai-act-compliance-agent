@@ -544,16 +544,20 @@ class PolicyRule(BaseModel):
                 f"applies_to_route is annex_i. An Annex I use case has no Annex III area, so this "
                 f"rule could never activate."
             )
-        # Same shape, same reason: only a PROHIBITED classification carries an Art. 5(1) practice,
-        # so a rule naming one and not naming that tier could never fire.
-        if self.applies_to_prohibited_practice and RiskClass.PROHIBITED not in (
-            self.applies_to_risk_class or []
-        ):
-            raise ValueError(
-                f"PolicyRule {self.rule_id!r}: applies_to_prohibited_practice names a practice but "
-                f"applies_to_risk_class does not include prohibited. Only a prohibited "
-                f"classification carries a practice, so this rule could never activate."
-            )
+        # Same shape, same reason: a practice is carried only by the tier its point produces, so a
+        # rule naming one and not naming that tier could never fire. Every point but (h) produces
+        # PROHIBITED; point (h) bans only use, so its system keeps an ordinary tier, high-risk
+        # under Annex III(1)(a).
+        tiers = set(self.applies_to_risk_class or [])
+        for practice in self.applies_to_prohibited_practice:
+            needed = RiskClass.HIGH_RISK if practice.bans_only_use else RiskClass.PROHIBITED
+            if needed not in tiers:
+                raise ValueError(
+                    f"PolicyRule {self.rule_id!r}: applies_to_prohibited_practice names "
+                    f"{practice.value} but applies_to_risk_class does not include {needed.value}, "
+                    f"the tier that practice is classified under, so this rule could never "
+                    f"activate for it."
+                )
         return self
 
     @model_validator(mode="after")

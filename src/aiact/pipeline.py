@@ -54,6 +54,21 @@ def _national_law_note(spec: PolicyRuleset, practice: ProhibitedPractice | None)
     )
 
 
+def _use_only_note(spec: PolicyRuleset, classification: ClassificationResult) -> str:
+    """Point (h) bans only the use, so the report has findings and the reader needs to know why a
+    practice named in Art. 5 was checked against Chapter III rather than withdrawn."""
+    national_law_note = _national_law_note(spec, classification.prohibited_practice)
+    return (
+        "Art. 5(1)(h) bans only the USE of real-time remote biometric identification in publicly "
+        "accessible spaces for law enforcement, so this system is not prohibited and Chapter III "
+        "was checked: its provider owes the high-risk requirements. A deployer may use it that way "
+        "only where the use is strictly necessary for one of the named objectives and a Member "
+        "State authorises it under Art. 5(5); without that national law the use is prohibited. The "
+        "Article 5 conditions listed in this report apply to an authorised use. "
+        f"{national_law_note}"
+    ).strip()
+
+
 def _prohibited_note(spec: PolicyRuleset, classification: ClassificationResult) -> str:
     """The Art. 5 note, plus the date the ban bites where that is not yet.
 
@@ -66,14 +81,6 @@ def _prohibited_note(spec: PolicyRuleset, classification: ClassificationResult) 
     """
     practice = classification.prohibited_practice
     national_law_note = _national_law_note(spec, practice)
-    if practice is ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION:
-        return (
-            "Art. 5(1)(h) prohibits this practice unless it is strictly necessary for one of its "
-            "named law-enforcement objectives and a Member State authorises it under Art. 5(5). "
-            "The Article 5 conditions listed in this report remain mandatory; Chapter III was not "
-            "checked because documentation cannot make an otherwise prohibited practice lawful. "
-            f"{national_law_note}"
-        )
     if practice is None or practice.applies_from <= datetime.now(UTC).date():
         return " ".join(part for part in (_PROHIBITED_NOTE, national_law_note) if part)
     return (
@@ -169,19 +176,14 @@ def review(
     overall = classification.overall_risk_class
     if overall == RiskClass.OUT_OF_SCOPE:
         return _empty_report(system_id, spec, classification, _OUT_OF_SCOPE_NOTE)
-    # PROHIBITED DOES NOT SHORT-CIRCUIT, because one prohibition has a lawful branch. Art. 5(1)(h)
-    # bans real-time remote biometric identification for law enforcement "unless and in so far as
-    # such use is strictly necessary" for the objectives it lists, and Art. 5(5) lets a Member State
-    # authorise that use. A deployer on that branch owes Art. 5(2), (3) and (4) — a fundamental
-    # rights impact assessment, an EU database registration, prior judicial authorisation and a
-    # per-use notification — and returning an empty report tells them none of it.
+    # PROHIBITED DOES NOT SHORT-CIRCUIT, so the ban itself reaches the report as a duty: the rules
+    # naming the practice are selected and nothing from Chapter III, since no Chapter III rule names
+    # the prohibited tier. The reasoning in `_PROHIBITED_NOTE` holds — checking documentation
+    # against Chapter III would imply the system ships once the paperwork is fixed.
     #
-    # The note still stands and still says withdraw. What is selected here is Art. 5's OWN
-    # conditions and nothing from Chapter III: those rules name the practice, and no Chapter III
-    # rule names the prohibited tier, so a practice banned outright still reaches an empty findings
-    # list. The reasoning in `_PROHIBITED_NOTE` holds — checking documentation against Chapter III
-    # would imply the system ships once the paperwork is fixed — and it is about Chapter III, not
-    # about the Article that did the banning.
+    # Point (h) never reaches this tier. It bans only the USE of real-time remote biometric
+    # identification, so the cascade gives the system its ordinary tier, Chapter III is checked,
+    # and the deployer's ban and the Art. 5(2) to (4) conditions arrive as rules beside it.
     prohibited = overall == RiskClass.PROHIBITED
     if overall == RiskClass.NEEDS_REVIEW:
         return _empty_report(system_id, spec, classification, _NEEDS_REVIEW_NOTE)
@@ -227,13 +229,16 @@ def review(
     if section_b and len(withheld) == len(high_risk):
         return report.model_copy(update={"scope_note": section_b_note(section_b)})
 
-    # The Art. 5 verdict, carried through to a report that now has findings behind it. The note is
-    # unchanged for a practice banned outright — nothing was selected and the findings list is
-    # empty. Where the lawful branch of point (h) put Art. 5(2) to (4) in the report, the reader
-    # needs both halves at once: the practice is prohibited unless the national authorisation
-    # exists, and if it does, these are the conditions Art. 5 itself attaches to it.
+    # The Art. 5 verdict, carried through to a report whose findings list is empty because nothing
+    # from Chapter III was selected for a practice banned outright.
     if prohibited:
         return report.model_copy(update={"scope_note": _prohibited_note(spec, classification)})
+    # Point (h): the report has Chapter III findings AND the deployer's ban, and the reader needs
+    # both halves at once — the system may ship, its use may not, unless national law authorises it.
+    if classification.prohibited_practice is not None and (
+        classification.prohibited_practice.bans_only_use
+    ):
+        return report.model_copy(update={"scope_note": _use_only_note(spec, classification)})
 
     # A model's obligations are listed and none is judged, so its findings list is empty for a
     # reason that has nothing to do with the documentation. Said here, because an empty findings

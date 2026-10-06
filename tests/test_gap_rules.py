@@ -925,57 +925,63 @@ def test_only_chapter_iii_sections_1_to_3_carry_two_start_dates(spec):
 _ART_5_LAWFUL_BRANCH = {"AIA-RULE-DP-A05-2", "AIA-RULE-DP-A05-3", "AIA-RULE-DP-A05-4"}
 # The ban itself as a duty: points (ba) and (bb) apply later than the rest, hence two rules.
 _ART_5_BAN = {"AIA-RULE-ALL-A05-1", "AIA-RULE-ALL-A05-1BA"}
+# Point (h) bans only the use, so its ban is a deployer duty on the system's ordinary tier.
+_ART_5_USE_BAN = "AIA-RULE-DP-A05-1H"
 
 
-def test_the_lawful_branch_duties_reach_only_the_practice_that_has_one(spec):
-    """Art. 5(2) to (4) are conditions on point (h) and on nothing else in the Article.
-
-    Every other point of Art. 5(1) bans outright: a system classified prohibited for social scoring
-    owes withdrawal, and listing a fundamental rights impact assessment beside that would describe a
-    route the Act does not open. Point (h) is drafted the other way — banned "unless and in so far
-    as such use is strictly necessary", with Art. 5(5) letting a Member State authorise it — so a
-    deployer there owes the paragraphs that condition the exception."""
-    use_case = a_use_case(risk_class=RiskClass.PROHIBITED, area=None, product=None)
-    lawful = select_rules(
+def test_point_h_reaches_the_deployer_beside_chapter_iii(spec):
+    """Art. 5(1)(h) bans only the USE of real-time remote biometric identification, so the system
+    keeps its high-risk tier. The deployer owes the use ban and the Art. 5(2) to (4) conditions on
+    top of its Chapter III duties."""
+    use_case = a_use_case(area=AnnexIIIArea.BIOMETRICS)
+    deployer = select_rules(
         spec,
         use_case,
         ActorRole.DEPLOYER,
         prohibited_practice=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
     )
-    assert {r.rule_id for r in lawful.all_rules} == _ART_5_LAWFUL_BRANCH | {"AIA-RULE-ALL-A05-1"}
+    selected = {r.rule_id for r in deployer.all_rules}
+    assert _ART_5_LAWFUL_BRANCH | {_ART_5_USE_BAN} <= selected
+    assert "AIA-RULE-DP-A26" in selected, "an authorised deployer still owes Chapter III"
+    assert not selected & _ART_5_BAN, "point (h) bans no placing, so the outright ban is absent"
 
-    for practice in ProhibitedPractice:
-        if practice is ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION:
-            continue
-        other = select_rules(spec, use_case, ActorRole.DEPLOYER, prohibited_practice=practice)
-        selected = [r.rule_id for r in other.all_rules]
-        assert len(selected) == 1 and selected[0] in _ART_5_BAN, (
+
+def test_point_h_puts_no_ban_on_the_provider(spec):
+    """Placing such a system on the market is not prohibited; its provider owes Chapter III."""
+    use_case = a_use_case(area=AnnexIIIArea.BIOMETRICS)
+    provider = select_rules(
+        spec,
+        use_case,
+        ActorRole.PROVIDER,
+        prohibited_practice=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
+    )
+    selected = {r.rule_id for r in provider.all_rules}
+    assert not selected & (_ART_5_BAN | _ART_5_LAWFUL_BRANCH | {_ART_5_USE_BAN})
+    assert "AIA-RULE-PO-A17" in selected, "the provider owes the high-risk requirements"
+
+
+def test_the_point_h_rules_stay_off_every_other_high_risk_system(spec):
+    use_case = a_use_case(area=AnnexIIIArea.BIOMETRICS)
+    plain = select_rules(spec, use_case, ActorRole.DEPLOYER, prohibited_practice=None)
+    assert not {r.rule_id for r in plain.all_rules} & (_ART_5_LAWFUL_BRANCH | {_ART_5_USE_BAN})
+
+
+@pytest.mark.parametrize(
+    "practice", [p for p in ProhibitedPractice if not p.bans_only_use]
+)
+def test_a_practice_banned_outright_owes_withdrawal_alone(spec, practice):
+    """Every point but (h) bans placing, putting into service and use alike, so a prohibited
+    classification owes the ban and nothing from Chapter III or the lawful branch."""
+    use_case = a_use_case(risk_class=RiskClass.PROHIBITED, area=None, product=None)
+    for role in ActorRole:
+        selected = [
+            r.rule_id
+            for r in select_rules(spec, use_case, role, prohibited_practice=practice).all_rules
+        ]
+        assert set(selected) <= _ART_5_BAN, (
             f"{practice.value} bans outright and owes withdrawal alone, but {selected} were "
             "selected for it"
         )
-
-
-def test_a_prohibited_classification_never_reaches_a_chapter_iii_duty(spec):
-    """Checking documentation against Chapter III would tell a reader the system ships once the
-    paperwork is fixed. Nothing in Chapter III names this tier, and this holds it that way.
-
-    Art. 5's own conditions are a different thing and are the reason the tier reaches selection at
-    all: they say what the Article costs a deployer holding the national authorisation, and saying
-    so implies nothing about whether the system may be placed on the market."""
-    use_case = a_use_case(risk_class=RiskClass.PROHIBITED, area=None, product=None)
-    for role in ActorRole:
-        active = select_rules(
-            spec,
-            use_case,
-            role,
-            prohibited_practice=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
-        )
-        for rule in active.all_rules:
-            assert rule.rule_id in _ART_5_LAWFUL_BRANCH | _ART_5_BAN, (
-                f"{rule.rule_id} was selected for a prohibited system. Only Art. 5's own "
-                f"ban and conditions belong here — nothing in Chapter III applies to a banned "
-                f"practice."
-            )
 
 
 def test_the_practice_gate_is_the_only_thing_holding_those_duties_back(spec):

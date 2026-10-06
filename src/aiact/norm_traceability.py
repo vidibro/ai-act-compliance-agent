@@ -14,6 +14,7 @@ Article 16(c) is carried by Article 17's substantive norm.
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from aiact.classify.graph import QUESTION_GUIDANCE, QUESTIONS
@@ -43,6 +44,9 @@ from aiact.schemas.norm import (
 from aiact.schemas.policy import PolicyRuleset
 from aiact.schemas.review import ReviewStatus
 from aiact.scope_notes import SCOPE_NOTES
+
+# How a sentence drawn from Commission guidance is marked inside a question or a rule's text.
+GUIDANCE_TAG = re.compile(r"\[non-binding guidance: ([^\]]+)\]")
 
 _ACCEPTED_DECISIONS = {"accepted_with_basis", "false_positive"}
 
@@ -312,6 +316,20 @@ def traceability_errors(
     for (target_id, ref), link_id in sorted(linked_uses.items()):
         if (target_id, ref) not in guidance_uses:
             errors.append(f"{link_id} says {target_id} uses guidance {ref}, but it does not")
+
+    # A sentence drawn from guidance and written into a question or a rule's own text carries a
+    # tag naming its passage, so neither the model nor a reader takes it for the Act. A tag may
+    # name only a passage that same question or rule is handed, where the verbatim text sits
+    # labelled.
+    for node, question in sorted(QUESTIONS.items()):
+        for ref in GUIDANCE_TAG.findall(question.text):
+            if ref not in QUESTION_GUIDANCE.get(node, ()):
+                errors.append(f"question {node} tags guidance {ref}, which it is not handed")
+    for rule in spec.rules:
+        text = f"{rule.evidence_expected} {rule.activation_condition or ''}"
+        for ref in GUIDANCE_TAG.findall(text):
+            if ref not in rule.guidance_refs:
+                errors.append(f"{rule.rule_id} tags guidance {ref}, which it is not handed")
 
     direct_norms_by_rule: dict[str, list[Norm]] = {}
     for norm in norms.values():

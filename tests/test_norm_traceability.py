@@ -622,6 +622,35 @@ def test_an_interpretation_link_may_claim_only_a_real_use(bundle, spec):
     ) in traceability_errors(bundle, unused, LEDGER)
 
 
+def test_a_question_may_tag_only_guidance_it_is_handed(bundle, spec, monkeypatch):
+    """A guidance line in a question's own text names its passage, so the model can tell it from
+    the Act; naming a passage the question is not handed would cite text it never sees."""
+    import aiact.norm_traceability as traceability
+
+    guidance = dict(traceability.QUESTION_GUIDANCE)
+    guidance["territorial"] = ()
+    monkeypatch.setattr(traceability, "QUESTION_GUIDANCE", guidance)
+
+    assert (
+        "question territorial tags guidance "
+        "C-2026-5054/third-country-incidental-use-not-covered, which it is not handed"
+    ) in traceability_errors(bundle, spec, LEDGER)
+
+
+def test_a_rule_may_tag_only_guidance_it_is_handed(bundle, spec):
+    rules = [
+        rule.model_copy(update={"guidance_refs": []})
+        if rule.rule_id == "AIA-RULE-ALL-A05-1"
+        else rule
+        for rule in spec.rules
+    ]
+
+    assert (
+        "AIA-RULE-ALL-A05-1 tags guidance C-2025-5052/misuse-and-provider-safeguards, which it "
+        "is not handed"
+    ) in traceability_errors(bundle, spec.model_copy(update={"rules": rules}), LEDGER)
+
+
 def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
     criteria = a15(spec).criteria
     model_flaws = next(c for c in criteria if c.norm_id == MODEL_FLAWS)

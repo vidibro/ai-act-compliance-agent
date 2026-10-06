@@ -555,11 +555,17 @@ class ClassificationCase(BaseModel):
         # point is required rather than optional for the reason the Art. 2 basis is: this class
         # tells a provider their system may not ship, and a key asserting that without naming the
         # ban it rests on cannot be checked against the Article.
-        if (self.expected_prohibited_practice is not None) != (rc == RiskClass.PROHIBITED):
+        # Point (h) is the exception: it bans only use, so its system keeps an ordinary tier.
+        bans_outright = (
+            self.expected_prohibited_practice is not None
+            and not self.expected_prohibited_practice.bans_only_use
+        )
+        if bans_outright != (rc == RiskClass.PROHIBITED):
             raise ValueError(
                 f"{self.case_id}: expected_prohibited_practice="
                 f"{self.expected_prohibited_practice} but expected_risk_class={rc}. Name the "
-                f"Art. 5(1) point exactly when the class is PROHIBITED."
+                f"Art. 5(1) point exactly when the class is PROHIBITED, except point (h), which "
+                f"bans only use and keeps the system's ordinary tier."
             )
 
         # Art. 6(3) profiling carve-back — mirror of classification.py: profiling => high_risk,
