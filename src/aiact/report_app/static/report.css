@@ -217,6 +217,7 @@ details.item[open] .oneline { white-space: normal; color: var(--ink); }
 .kv { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: baseline; }
 .kv > .l { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--orange-ink); text-align: right; }
 .kv > div { min-width: 0; white-space: pre-wrap; }
+.law { color: var(--muted); font-size: 13px; max-height: 320px; overflow-y: auto; }
 blockquote { margin: 0; padding: 8px 12px; background: var(--surface); border-left: 3px solid var(--orange);
              border-radius: 0 6px 6px 0; white-space: pre-wrap; }
 ul.criteria { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }

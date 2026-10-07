@@ -51,7 +51,7 @@ function itemMatches(item) {
   const q = state.rq.trim().toLowerCase();
   if (!q) return true;
   const text = item.q ? `${item.id} ${item.q.label} ${item.q.text} ${item.q.source}`
-                      : `${item.id} ${item.r.requirement} ${item.r.source} ${item.r.evidence_expected || ""}`;
+                      : `${item.id} ${item.r.action || ""} ${item.r.requirement} ${item.r.source} ${item.r.evidence_expected || ""}`;
   return text.toLowerCase().includes(q);
 }
 
@@ -138,9 +138,12 @@ function gapCard(item) {
       ftag("check", r.check_type),
       ftag("docs", r.document_verifiable ? "verifiable" : "confirm separately"),
       cases),
-    el("div", { class: "rtitle" }, el("span", { class: "subj" }, joinAnd(r.roles.map(actorName))), " ",
-      el("span", { class: "modal" }, "must meet"), " ", r.source),
+    r.action
+      ? el("div", { class: "rtitle" }, r.action)
+      : el("div", { class: "rtitle" }, el("span", { class: "subj" }, joinAnd(r.roles.map(actorName))), " ",
+          el("span", { class: "modal" }, "must meet"), " ", r.source),
     el("div", { class: "lines" },
+      r.action ? lineOf("owed by", joinAnd(r.roles.map(actorName))) : null,
       lineOf("requires", requirementText(r.requirement)),
       scope.some(Boolean) ? lineOf("applies to", scope) : null,
       r.activation_condition ? lineOf("only if", r.activation_condition) : null,

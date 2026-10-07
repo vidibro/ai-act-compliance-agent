@@ -66,6 +66,7 @@ def build_norm_cards(bundle: NormativeCoverageBundle, spec: PolicyRuleset) -> di
 
     rules = {
         rule.rule_id: {
+            "action": rule.action,
             "requirement": rule.requirement,
             "evidence_expected": rule.evidence_expected,
             "check_type": str(rule.check_type),

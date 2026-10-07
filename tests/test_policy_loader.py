@@ -753,3 +753,11 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
 
     for article, reason in DUTY_BEARING_EXCLUSIONS.items():
         assert len(reason.strip()) > 15, f"Article {article} is dismissed without a real reason"
+
+
+def test_every_rule_says_what_to_do_in_a_few_words():
+    """The report lists rules by their action; a rule without one would show raw legal text."""
+    spec = load_policy_spec()
+    missing = [rule.rule_id for rule in spec.rules if not rule.action]
+    assert missing == []
+    assert all(len(rule.action or "") <= 80 for rule in spec.rules)

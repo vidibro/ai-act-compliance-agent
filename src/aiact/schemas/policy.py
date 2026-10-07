@@ -175,6 +175,11 @@ class PolicyRule(BaseModel):
     rule_id: str = Field(pattern=r"^AIA-RULE-[A-Za-z0-9-]+$")
     # Stable, human-readable canonical identifier; distinct from AIA-NORM, AIA-CQ, and AIA-TEXT.
     requirement: str  # the obligation, in the Commission's own wording
+    action: str | None = Field(default=None, min_length=1, max_length=80)
+    """What the duty-holder must do, in a few plain imperative words ("Report serious incidents to
+    the market surveillance authority"), condensed from the norms the rule carries. A label for a
+    reader scanning the report, never a statement of the law: the law is `requirement`, and the
+    judge never sees this field. Every rule in the spec carries one, enforced by a test."""
     source: LegalSource
     applies_to_risk_class: list[RiskClass] = []
     """WHICH tiers owe this. Empty ONLY for an Art. 50 rule, which gates on a duty instead — see

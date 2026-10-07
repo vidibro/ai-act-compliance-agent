@@ -24,6 +24,7 @@ class RuleView(BaseModel):
 
     rule_id: str
     citation: str
+    action: str | None
     requirement: str
     evidence_expected: str
     activation_condition: str | None
@@ -86,6 +87,7 @@ def build_response(
         rule_id: RuleView(
             rule_id=rule_id,
             citation=cite(rule),
+            action=rule.action,
             requirement=rule.requirement,
             evidence_expected=rule.evidence_expected,
             activation_condition=rule.activation_condition,
