@@ -146,7 +146,8 @@ function render(data) {
     ...first,
     duties.length ? el("div", { class: "section-head" },
       el("h2", {}, "Obligations"),
-      el("p", { class: "muted" }, "What the AI Act requires for this system, grouped by who owes it, and whether your document shows it.")) : null,
+      el("p", { class: "muted" }, "What the AI Act requires for this system, grouped by who owes it, and whether your document shows it."),
+      roleFilter(duties)) : null,
     upcomingBanner(report, data, ruleDate, isFuture),
     tiles(report, data, ruleDate, isFuture),
     ...later,
@@ -291,8 +292,8 @@ function roles(report, data, ruleDate, isFuture) {
   const byParties = groupBy(Object.keys(owners).filter(shared), (key) => owners[key].join(","));
   // The widest group of parties first: it is what most readers owe.
   for (const [parties, keys] of Object.entries(byParties).sort((a, b) => b[0].split(",").length - a[0].split(",").length)) {
-    sections.push(el("section", { class: "card role" },
-      el("h2", {}, parties.split(",").map(human).join(", ")),
+    sections.push(el("section", { class: "card role", "data-roles": parties },
+      el("h2", {}, el("span", { class: "roles" }, parties.split(",").map(roleTag))),
       dutyGroups(partsOf(keys), [], ctx)));
   }
   for (const role of order) {
@@ -301,12 +302,42 @@ function roles(report, data, ruleDate, isFuture) {
     const groups = dutyGroups(parts, findings, ctx);
     if (!groups.length) continue;
     const counts = report.summary.per_role?.[role];
-    sections.push(el("section", { class: "card role" },
-      el("h2", {}, human(role),
+    sections.push(el("section", { class: "card role", "data-roles": role },
+      el("h2", {}, roleTag(role),
         counts ? el("span", { class: "n" }, `${counts.gaps} gap${counts.gaps === 1 ? "" : "s"} in force`) : null),
       groups));
   }
   return sections;
+}
+
+const roleTag = (role) => el("span", { class: `role-tag r-${role}` }, human(role));
+
+// ---- role filter -------------------------------------------------------------------------------
+// The reader picks the roles they hold; a section shows while any of its roles is picked. The
+// choice is remembered in this browser.
+const ROLES_KEY = "aiact-review:hidden-roles";
+
+function roleFilter(sections) {
+  const present = [...new Set(sections.flatMap((s) => (s.dataset.roles || "").split(",").filter(Boolean)))];
+  if (present.length < 2) return null;
+  const hidden = new Set(restore(ROLES_KEY) || []);
+  const apply = () => {
+    for (const s of sections) {
+      if (!s.dataset.roles) continue;
+      s.hidden = s.dataset.roles.split(",").every((r) => hidden.has(r));
+    }
+    for (const b of buttons) b.classList.toggle("off", hidden.has(b.dataset.role));
+    reset.hidden = !hidden.size;
+    store(ROLES_KEY, [...hidden]);
+  };
+  const buttons = present.map((role) => el("button", {
+    type: "button", class: `role-tag r-${role}`, "data-role": role, title: "Show or hide this role's obligations",
+    onclick: () => { hidden.has(role) ? hidden.delete(role) : hidden.add(role); apply(); },
+  }, human(role)));
+  const reset = el("button", { type: "button", class: "link", onclick: () => { hidden.clear(); apply(); } }, "Show all");
+  const bar = el("div", { class: "role-filter" }, el("span", { class: "lbl" }, "Show obligations for:"), buttons, reset);
+  apply();
+  return bar;
 }
 
 // The groups of one section.

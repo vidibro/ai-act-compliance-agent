@@ -6,6 +6,16 @@
   --on: #0b0b0b; --on-text: #ffffff;
   --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .03);
   color-scheme: light;
+  /* One hue per role; orange and red are kept for warnings and gaps. */
+  --role-provider: #2563eb;
+  --role-deployer: #7c3aed;
+  --role-importer: #0f766e;
+  --role-distributor: #15803d;
+  --role-authorised-representative: #be185d;
+  --role-prospective-provider: #0369a1;
+  --role-initial-provider: #4338ca;
+  --role-sandbox-participant: #475569;
+  --role-gpai-provider: #6d28d9;
 }
 /* Dark tokens apply when the system is dark (unless the viewer picked light) or when the
    viewer picked dark. The theme switch sets data-theme on <html>. */
@@ -18,6 +28,15 @@
     --on: #f5f5f4; --on-text: #0b0b0b;
     --shadow: none;
     color-scheme: dark;
+    --role-provider: #6ea8ff;
+    --role-deployer: #b794ff;
+    --role-importer: #2dd4bf;
+    --role-distributor: #4ade80;
+    --role-authorised-representative: #f472b6;
+    --role-prospective-provider: #38bdf8;
+    --role-initial-provider: #a5b4fc;
+    --role-sandbox-participant: #a8b3c4;
+    --role-gpai-provider: #c4b5fd;
   }
 }
 :root[data-theme="dark"] {
@@ -28,6 +47,15 @@
   --on: #f5f5f4; --on-text: #0b0b0b;
   --shadow: none;
   color-scheme: dark;
+  --role-provider: #6ea8ff;
+  --role-deployer: #b794ff;
+  --role-importer: #2dd4bf;
+  --role-distributor: #4ade80;
+  --role-authorised-representative: #f472b6;
+  --role-prospective-provider: #38bdf8;
+  --role-initial-provider: #a5b4fc;
+  --role-sandbox-participant: #a8b3c4;
+  --role-gpai-provider: #c4b5fd;
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -149,6 +177,24 @@ ul.basis li::marker { color: var(--orange); }
 .role { overflow: hidden; }
 .role > h2 { margin: 0; padding: 14px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase;
              letter-spacing: .08em; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
+.role > h2 .roles { display: flex; flex-wrap: wrap; gap: 6px; }
+.role-tag { --c: var(--muted); display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px;
+            font-weight: 600; text-transform: none; letter-spacing: 0; white-space: nowrap; color: var(--c);
+            background: color-mix(in srgb, var(--c) 13%, transparent);
+            border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); }
+.r-provider { --c: var(--role-provider); }
+.r-deployer { --c: var(--role-deployer); }
+.r-importer { --c: var(--role-importer); }
+.r-distributor { --c: var(--role-distributor); }
+.r-authorised_representative { --c: var(--role-authorised-representative); }
+.r-prospective_provider { --c: var(--role-prospective-provider); }
+.r-initial_provider { --c: var(--role-initial-provider); }
+.r-sandbox_participant { --c: var(--role-sandbox-participant); }
+.r-gpai_provider { --c: var(--role-gpai-provider); }
+.role-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.role-filter .lbl { font-size: 12px; font-weight: 600; color: var(--muted); }
+button.role-tag { font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+button.role-tag.off { color: var(--faint); background: none; border-color: var(--line-strong); text-decoration: line-through; }
 .role > h2 .n { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--muted); font-size: 12px; }
 .group { border-bottom: 1px solid var(--line); }
 .group:last-child { border-bottom: 0; }
