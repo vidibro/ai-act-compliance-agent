@@ -2,7 +2,8 @@
 
 **Provider:** Northwind Analytics B.V., trading as Northwind Analytics, Keizersgracht 100,
 1015 CS Amsterdam, Netherlands. Contact: compliance@northwind-analytics.example.
-The same details are affixed to the product's start-up screen and its packaging.**System:** TalentRank v4.2
+The same details are affixed to the product's start-up screen and its packaging.
+**System:** TalentRank v4.2
 **Document version:** 4.2.1 — March 2026
 **Intended purpose:** TalentRank produces a ranked fit score (0–100) for applicants against a job
 requisition, to support recruiter shortlisting decisions in the hiring process. The system is
@@ -46,6 +47,7 @@ supplied to deployers under Art. 13.
 **Residual risk.** Residual adverse-impact risk after mitigation is judged acceptable: measured
 selection-rate ratio 0.94 (see §8), with per-release re-testing. Residual automation-bias risk is
 carried and addressed through oversight measures in §7.
+
 ## 3. Data and data governance
 
 **Design choices.** Training data comprises 412,000 historical application–outcome pairs from 38
@@ -93,6 +95,7 @@ override) where returned by the deployer's applicant tracking system.
 Logging is enabled by default and cannot be disabled by the deployer. Log records are written to
 an append-only store with integrity hashing. The reference period of each log record and the
 model version make it possible to reconstruct which model produced any historic score.
+
 ## 7. Human oversight
 
 TalentRank is designed so that natural persons can effectively oversee it while in use.
@@ -118,6 +121,7 @@ number. Recruiters see a standing notice that the score is decision-support only
 sub-scores and confidence, automation bias, and how to escalate suspected unfair ranking. The
 deployer is instructed (§9) to assign oversight only to trained staff with authority to overrule
 the ranking.
+
 ## 8. Accuracy, robustness and cybersecurity
 
 **Accuracy.** Declared metric: ranking quality measured as NDCG@10 against the "advanced to
@@ -149,11 +153,13 @@ and per-deployer scoped tokens. Measures against model-poisoning at retraining: 
 admitted only from contracted client pipelines with checksum verification and human sign-off on
 dataset snapshots. Rate limiting and anomaly detection guard against model-extraction probing.
 Penetration test: annual, latest February 2026, no critical findings outstanding.
+
 ## 9. Transparency and instructions for use
 
 TalentRank is designed so that its operation is sufficiently transparent for deployers to
 interpret its output and use it appropriately. The following instructions for use accompany the
 system.
+
 ### 9.1 Contents of the instructions for use
 
 **Provider identity and contact.** As stated in the header of this document.
@@ -191,6 +197,7 @@ and change policy in Annex B. Security and model updates ship monthly and are ma
 are notified 60 days before a model version is retired.
 
 **Logs.** The deployer's ability to collect and interpret logs is described in §6.
+
 ## 10. Post-market monitoring plan
 
 Selection-rate ratio per protected group, score drift, recruiter override rate and reported

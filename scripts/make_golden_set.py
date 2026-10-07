@@ -50,7 +50,7 @@ SPEC_PATH = Path("data/policy/spec.yaml")
 
 # <!-- rule: AIA-RULE-HR-A14 --> ... <!-- /rule -->
 _SECTION = re.compile(
-    r"<!--\s*rule:\s*(?P<rule>[A-Za-z0-9\-]+)\s*-->\n(?P<body>.*?)\n<!--\s*/rule\s*-->\n",
+    r"<!--\s*rule:\s*(?P<rule>[A-Za-z0-9\-]+)\s*-->\n(?P<body>.*?)\n<!--\s*/rule\s*-->",
     re.S,
 )
 _LEADING_COMMENT = re.compile(r"\A<!--.*?^-->\n+", re.S | re.M)

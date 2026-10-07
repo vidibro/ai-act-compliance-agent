@@ -3,7 +3,8 @@
 | | |
 |---|---|
 | **Provider** | Meridian Workforce Intelligence GmbH (trade mark: Meridian WI), Leopoldstraße 210, 80804 Munich, Germany |
-| **Provider contact** | ai-compliance@meridian-wi.example — also shown on the sign-in screen of every PathFinder release || **System** | PathFinder, release 7.3 |
+| **Provider contact** | ai-compliance@meridian-wi.example — also shown on the sign-in screen of every PathFinder release |
+| **System** | PathFinder, release 7.3 |
 | **File revision** | R7.3-b — May 2026 |
 | **Classification** | High-risk, Annex III point 4(b) |
 | **Conformity route** | Internal control (Annex VI) |
@@ -94,6 +95,7 @@ and families rather than extrapolating.
 **Relevance to the intended purpose.** The population is restricted to internal moves within an
 existing employer. External hiring data is not used and PathFinder must not be applied to external
 applicants — a different intended purpose the system was neither trained nor validated for.
+
 ---
 
 ## Part C — Our people-first philosophy
@@ -104,6 +106,7 @@ worth. That conviction shapes how we build. Our founders came from HR, not from 
 we have turned down business that would have used our technology to rank people out of
 opportunities. We publish an annual Workforce Fairness Report and sit on two European
 advisory boards on the future of work.
+
 ---
 
 ## Part D — Performance, resilience and security
@@ -157,6 +160,7 @@ release record. Against model extraction, per-token rate limits and a query-patt
 detector apply. Employee protected attributes live in a separate store with independent access
 control and are unreachable from the inference path. Penetration testing is annual, most recently
 January 2026; two medium findings were remediated in R7.2, none outstanding.
+
 ---
 
 ## Part E — Oversight by managers and panels
@@ -196,6 +200,7 @@ and does not measure, how to read bands and confidence, the limitations in Part 
 bias, and how to raise a suspected unfair recommendation. Deployers are instructed in Part G to
 assign oversight only to trained staff who hold the authority to depart from a recommendation
 without escalation, and works councils receive the same material on request.
+
 ---
 
 ## Part F — Event records
@@ -212,6 +217,7 @@ Recording is enabled by default and cannot be switched off by the deployer. Rete
 by default and configurable upward to meet national employment-law requirements. Because every
 record carries its model and calibration version alongside the reference period, any historic
 recommendation can be reconstructed and attributed to the exact build that produced it.
+
 ---
 
 ## Part G — Instructions for use
@@ -219,6 +225,7 @@ recommendation can be reconstructed and attributed to the exact build that produ
 PathFinder is designed so that its operation is sufficiently transparent for deployers to
 interpret its output and use it appropriately. The following instructions accompany the system and
 are supplied to every deployer before use.
+
 ### G.1 — What the instructions contain
 
 **Identity and contact of the provider.** As given in the file header above.
@@ -272,6 +279,7 @@ for every release that alters band boundaries or calibration.
 
 **Log collection and interpretation.** The deployer's ability to collect, access and interpret
 event records is described in Part F; the export schema is in Annex 3.
+
 ---
 
 ## Part H — Technical documentation index (Annex IV)
@@ -299,6 +307,7 @@ PathFinder was placed on the market, and kept up to date at each release.
 
 The file is retained under Meridian's records procedure for ten years from placing on the market,
 and is made available to national competent authorities on reasoned request.
+
 ---
 
 ## Part I — Post-market monitoring
