@@ -45,7 +45,7 @@ _MARK = {
 }
 
 
-def _cite(rule: PolicyRule) -> str:
+def cite(rule: PolicyRule) -> str:
     source = rule.source
     paragraph = f"({source.paragraph})" if source.paragraph is not None else ""
     return f"Art. {source.article}{paragraph}"
@@ -80,6 +80,21 @@ def _condition(rule: PolicyRule) -> list[str]:
     return _wrapped("applies to:", rule.activation_condition or "")
 
 
+def application_date(
+    rule: PolicyRule, spec: PolicyRuleset, use_case: UseCaseClassification
+) -> date | None:
+    """The date `rule` starts to apply for this use case's Article 6 route, or None where that
+    date turns on a route the classification has not settled."""
+    route = route_of(use_case)
+    regime = spec.temporal_regime_for(rule)
+    if regime is not None:
+        selected = next((item for item in regime.application_routes if item.route is route), None)
+        return selected.application_start if selected is not None else regime.application_start
+    if rule.effective_date is not None:
+        return rule.effective_date
+    return rule.effective_date_by_route.get(route) if route is not None else None
+
+
 def _timing(
     rule: PolicyRule,
     spec: PolicyRuleset | None = None,
@@ -91,12 +106,8 @@ def _timing(
     December 2027 says something different from a PASS on one that is already live, and Art. 6(4)
     — the only judged rule with a note — carries a date the Regulation does not settle."""
     regime = spec.temporal_regime_for(rule) if spec is not None else None
-    if regime is not None and use_case is not None:
-        route = route_of(use_case)
-        selected = next((item for item in regime.application_routes if item.route is route), None)
-        date_value = (
-            selected.application_start if selected is not None else regime.application_start
-        )
+    if regime is not None and spec is not None and use_case is not None:
+        date_value = application_date(rule, spec, use_case)
         if date_value is not None:
             lines = _wrapped("from:", date_value.isoformat())
         else:
@@ -119,13 +130,13 @@ def _outstanding_block(rule: PolicyRule) -> list[str]:
     `evidence_expected` is the part only this branch renders. For a judged rule it was in front of
     the judge and the verdict's own reasoning answers it; for an unjudged one it is the whole of
     what the reader has to go on."""
-    lines = [f"  --  {rule.rule_id:<16} {_cite(rule)}"]
+    lines = [f"  --  {rule.rule_id:<16} {cite(rule)}"]
     lines += _condition(rule)
     lines += _wrapped("confirm:", rule.evidence_expected)
     return lines + _timing(rule)
 
 
-def _condition_text(condition: object) -> str:
+def condition_text(condition: object) -> str:
     """Render structured legal condition groups without pretending they are runtime predicates."""
     if isinstance(condition, str):
         return condition
@@ -133,7 +144,7 @@ def _condition_text(condition: object) -> str:
     operands = getattr(condition, "operands", None)
     if operator in {"all_of", "any_of"} and isinstance(operands, list):
         joiner = " AND " if operator == "all_of" else " OR "
-        return "(" + joiner.join(_condition_text(item) for item in operands) + ")"
+        return "(" + joiner.join(condition_text(item) for item in operands) + ")"
     return str(condition)
 
 
@@ -142,9 +153,9 @@ def _report_norm_block(norm: ReportNorm) -> list[str]:
     lines = [f"  --  {norm.norm_id}"]
     lines += _wrapped("means:", norm.action)
     if norm.conditions:
-        lines += _wrapped("if:", _condition_text(norm.conditions))
+        lines += _wrapped("if:", condition_text(norm.conditions))
     if norm.exceptions:
-        lines += _wrapped("except:", _condition_text(norm.exceptions))
+        lines += _wrapped("except:", condition_text(norm.exceptions))
     lines += _wrapped("basis:", ", ".join(norm.source_spans))
     return lines
 
@@ -248,14 +259,14 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
                 heading = finding.applies_from
                 out.append(f"  required from {heading.isoformat()} — not yet in force:")
             rule = by_id.get(finding.rule_id)
-            cite = _cite(rule) if rule else str(finding.citation.article)
+            citation = cite(rule) if rule else str(finding.citation.article)
             # THE USE CASE AND THE CONFIDENCE ARE PART OF THE VERDICT. One rule is judged once per
             # use case, so a two-purpose system produces two findings with the same id and role —
             # a pass and a gap on adjacent lines, and without the label nothing says they are about
             # different things. And an unlabelled low-confidence PASS reads as a confident one,
             # which for a compliance tool is the most expensive error available.
             out.append(
-                f"  {_MARK[finding.verdict]} {finding.rule_id:<16} {cite}"
+                f"  {_MARK[finding.verdict]} {finding.rule_id:<16} {citation}"
                 f"   [{finding.use_case_id}, {finding.confidence} confidence]"
             )
             out += _wrapped("", finding.reasoning)

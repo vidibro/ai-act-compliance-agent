@@ -334,7 +334,7 @@ class ReportSummary(BaseModel):
 
 
 class ComplianceReport(BaseModel):
-    """The full assembled output for one SystemUnderReview against one PolicyRuleset."""
+    """The full assembled output for one document against one PolicyRuleset."""
 
     system_id: str
     act_version_date: date

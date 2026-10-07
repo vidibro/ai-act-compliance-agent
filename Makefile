@@ -8,7 +8,7 @@ PYTEST := $(VENV)/bin/pytest
 
 TARGETS := src tests scripts
 
-.PHONY: check lint format types test ui
+.PHONY: check lint format types test ui app
 
 check: lint types test  ## run everything: lint, type-check, tests
 
@@ -26,3 +26,6 @@ test:   ## pytest
 
 ui:     ## coverage UI at http://127.0.0.1:8765, live on data and code edits
 	$(VENV)/bin/uvicorn aiact.ui.app:app --port 8765 --reload --reload-dir src/aiact
+
+app:    ## report app at http://127.0.0.1:8766 (model keys from .env)
+	$(VENV)/bin/uvicorn aiact.report_app.app:app --port 8766 --reload --reload-dir src/aiact

@@ -1005,9 +1005,7 @@ README (problem → architecture diagram → eval numbers up top → use cases),
 
 Make the harness engineering visible. The observability/trace layer, the per-rule tool calls, the provider abstraction — these are engineering, not plumbing to hide. Show a Langfuse trace in the README. (Personal angle worth surfacing in interviews: prior experience running LiteLLM as a proxy with header rewriting, and MCP work — most candidates only use these as an SDK. That's harness engineering; name it.)
 
-> **Decide `SystemUnderReview` and `DocumentChunk` here.** Both are exported from `schemas/` and referenced by nothing in `src/` — only by `test_schemas.py` and one docstring. They are anticipatory rather than dead: `SystemUnderReview` is the plausible request type for this endpoint. The endpoint settles it. If it takes raw text plus a `system_id` (what `gap.graph.analyse` already takes), both should be deleted — `DocumentChunk` is in any case superseded by `retrieval.Chunk`, which is what actually carries chunks at runtime. A schema nothing produces or consumes advertises a contract that does not exist. `ClassificationState` was removed for exactly this reason; these two were left only because M6 might still claim them.
->
-> Also fix `ComplianceReport`'s docstring while there — it says "for one SystemUnderReview", which stopped being true when `analyse()` took a `system_id` and a document instead.
+> ✅ **Endpoint built 2026-10-07** — `POST /api/review` in `src/aiact/report_app/` (`make app`, port 8766), separate from the internal coverage UI. It takes raw text plus a `system_id`, so `SystemUnderReview` and `DocumentChunk` were deleted, and `ComplianceReport`'s docstring no longer names them. The response carries the report plus every rule and norm it names, resolved (requirement, citation, what would satisfy it, the date it applies from per use case), and the report's notes as fields. Model keys still come from the environment; per-request keys are M9.
 
 **DoD:** a stranger understands it in 2 min; `git clone` + README → runs; a trace is shown.
 

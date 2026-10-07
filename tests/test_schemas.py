@@ -22,7 +22,6 @@ from aiact.schemas import (
     ClassificationResult,
     ComplianceReport,
     DerogationCondition,
-    DocumentChunk,
     Finding,
     HighRiskRoute,
     LegalSource,
@@ -33,7 +32,6 @@ from aiact.schemas import (
     PolicyRuleset,
     ReportSummary,
     RiskClass,
-    SystemUnderReview,
     TargetKind,
     TemporalRegime,
     TemporalStatus,
@@ -268,19 +266,6 @@ def a_rule(**overrides) -> PolicyRule:
 def test_legal_source_requires_act_version_date():
     with pytest.raises(ValidationError):
         LegalSource(instrument="Regulation (EU) 2024/1689", article=6)  # no act_version_date
-
-
-def test_document_chunk_and_system_valid():
-    chunk = DocumentChunk(
-        chunk_id="c1", text="…", section="Human oversight", char_start=0, char_end=3
-    )
-    system = SystemUnderReview(
-        system_id="sys-1",
-        source_type="technical_documentation",
-        raw_text="full document text",
-        chunks=[chunk],
-    )
-    assert system.chunks[0].chunk_id == "c1"
 
 
 def test_policy_rule_and_spec_valid():

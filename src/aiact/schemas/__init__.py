@@ -84,7 +84,6 @@ from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRule, Policy
 from aiact.schemas.question import Answer, Question
 from aiact.schemas.report import DISCLAIMER, ComplianceReport, Finding, ReportSummary
 from aiact.schemas.review import ReviewRecord, ReviewStatus
-from aiact.schemas.system import DocumentChunk, SystemUnderReview
 
 __all__ = [
     # enums — the Regulation's own semantics
@@ -147,9 +146,6 @@ __all__ = [
     "LegalSource",
     "PolicyRule",
     "PolicyRuleset",
-    # system
-    "DocumentChunk",
-    "SystemUnderReview",
     # the question/answer contract, shared by both askers
     "Question",
     "Answer",
