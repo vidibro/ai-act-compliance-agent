@@ -837,9 +837,8 @@ def test_art_111_4_rides_on_the_duty_not_the_tier(spec):
     assert "Art. 111(2)" not in note  # minimal risk, so the Chapter III limb does not fire
 
 
-def test_future_canonical_rule_is_reported_but_not_judged(spec):
-    """Article 9's future route is a preparation notice, never a document verdict."""
-    judge = StubJudge()
+def _report_as_of(spec, day: date, verdict: Verdict = Verdict.GAP):
+    judge = StubJudge(verdict)
     report = analyse(
         DOCUMENT,
         a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
@@ -847,12 +846,37 @@ def test_future_canonical_rule_is_reported_but_not_judged(spec):
         brain=ScriptedBrain({}),
         judge=judge,  # type: ignore[arg-type]
         max_workers=1,
-        as_of_date=date(2026, 9, 22),
+        as_of_date=day,
     )
-    notices = [notice for notice in report.timing_not_active if notice.rule_id == "AIA-RULE-HR-A09"]
-    assert len(notices) == 1
-    assert notices[0].status == "upcoming"
-    assert notices[0].application_date == date(2027, 12, 2)
-    assert notices[0].legal_basis_segment_ids == ["AIA-TEXT-A113-C"]
-    assert "AIA-RULE-HR-A09" not in judge.asked
-    assert all(finding.rule_id != "AIA-RULE-HR-A09" for finding in report.findings)
+    return report, judge
+
+
+def test_future_document_verifiable_rule_is_judged_and_dated(spec):
+    """Article 9 starts on 2 December 2027: judged now, so the reader can prepare, with its date."""
+    report, judge = _report_as_of(spec, date(2026, 9, 22))
+
+    assert "AIA-RULE-HR-A09" in judge.asked
+    [finding] = [f for f in report.findings if f.rule_id == "AIA-RULE-HR-A09"]
+    assert finding.verdict == Verdict.GAP
+    assert finding.applies_from == date(2027, 12, 2)
+    assert all(notice.rule_id != "AIA-RULE-HR-A09" for notice in report.timing_not_active)
+
+
+def test_future_gaps_are_counted_apart_from_gaps_in_force(spec):
+    """A gap against a duty that starts in 2027 is preparation, not a breach today."""
+    report, _ = _report_as_of(spec, date(2026, 9, 22))
+    future = [f for f in report.findings if f.applies_from is not None]
+    in_force = [f for f in report.findings if f.applies_from is None]
+
+    assert report.summary.gaps == len(in_force)
+    assert sum(s.gaps for s in report.summary.upcoming.values()) == len(future)
+    assert set(report.summary.upcoming) == {f.applies_from for f in future}
+
+
+def test_rules_in_force_carry_no_date(spec):
+    """Once the date has passed, the same duty is an ordinary finding."""
+    report, _ = _report_as_of(spec, date(2028, 1, 1))
+
+    [finding] = [f for f in report.findings if f.rule_id == "AIA-RULE-HR-A09"]
+    assert finding.applies_from is None
+    assert report.summary.upcoming == {}

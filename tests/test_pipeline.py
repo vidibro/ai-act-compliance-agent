@@ -249,9 +249,13 @@ def test_the_report_covers_both_duty_holders(spec):
     ]
     # Every judged finding says whose duty it is, so the two sets never merge in a reader's eye.
     assert {f.role for f in report.findings} == {ActorRole.PROVIDER}
-    assert (report.summary.per_role or {})[ActorRole.PROVIDER].total_applicable == len(
-        report.findings
-    )
+    # In force and upcoming are counted apart, and together they count every finding.
+    summaries = [report.summary, *report.summary.upcoming.values()]
+    assert sum(
+        (s.per_role or {})[ActorRole.PROVIDER].total_applicable
+        for s in summaries
+        if ActorRole.PROVIDER in (s.per_role or {})
+    ) == len(report.findings)
 
 
 # --- Art. 2: nothing is owed, and the report has to say which kind of nothing ---------------------

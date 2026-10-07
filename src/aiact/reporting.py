@@ -28,12 +28,13 @@ that every field either reaches the text or has a written reason not to, and
 from __future__ import annotations
 
 import textwrap
+from datetime import date
 
 from aiact.gap.rules import route_of
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import PolicyRule, PolicyRuleset, ReportNorm
-from aiact.schemas.report import ComplianceReport, Finding
+from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
 
 _MARK = {
     Verdict.PASS: "ok  ",
@@ -164,6 +165,13 @@ def _criteria_block(finding: Finding) -> list[str]:
     return lines
 
 
+def _tally(counts: ReportSummary, label: str) -> str:
+    return (
+        f"{counts.total_applicable} {label} — {counts.passed} pass, {counts.gaps} gap, "
+        f"{counts.inadequate} inadequate, {counts.needs_review} needs review"
+    )
+
+
 def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
     """The whole report as text, grouped by the role that owes each obligation.
 
@@ -232,7 +240,13 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
         ):
             continue
         out.append(f"--- {role.value} ---")
+        # In-force obligations first; a future one follows, labelled with the date it starts.
+        findings.sort(key=lambda f: (f.applies_from is not None, f.applies_from or date.min))
+        heading: date | None = None
         for finding in findings:
+            if finding.applies_from is not None and finding.applies_from != heading:
+                heading = finding.applies_from
+                out.append(f"  required from {heading.isoformat()} — not yet in force:")
             rule = by_id.get(finding.rule_id)
             cite = _cite(rule) if rule else str(finding.citation.article)
             # THE USE CASE AND THE CONFIDENCE ARE PART OF THE VERDICT. One rule is judged once per
@@ -304,10 +318,11 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
                 out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
         counts = (report.summary.per_role or {}).get(role)
         if counts is not None:
-            out.append(
-                f"  {counts.total_applicable} checked — {counts.passed} pass, {counts.gaps} gap, "
-                f"{counts.inadequate} inadequate, {counts.needs_review} needs review"
-            )
+            out.append(f"  {_tally(counts, 'checked')}, in force")
+        for day, upcoming in report.summary.upcoming.items():
+            future = (upcoming.per_role or {}).get(role)
+            if future is not None:
+                out.append(f"  {_tally(future, 'checked')}, required from {day.isoformat()}")
         out.append("")
 
     if report.legacy_system_note:
@@ -315,10 +330,12 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
         out.append("")
 
     s = report.summary
-    out.append(
-        f"{s.total_applicable} applicable — {s.passed} pass, {s.gaps} gap, "
-        f"{s.inadequate} inadequate, {s.needs_review} needs review"
-    )
+    out.append(f"{_tally(s, 'applicable')}, in force")
+    for day, upcoming in s.upcoming.items():
+        out.append(
+            f"{_tally(upcoming, 'applicable')}, required from {day.isoformat()} — "
+            f"preparation, not a breach today"
+        )
     # WHAT THE COUNT ABOVE LEAVES OUT. `total_applicable` counts verdicts, and half this ruleset
     # produces none: a process obligation never reaches the judge, so it is listed above and
     # counted nowhere. For a general-purpose AI model that is EVERY obligation it owes, and the

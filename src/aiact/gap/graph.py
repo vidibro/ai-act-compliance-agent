@@ -38,7 +38,7 @@ from aiact.document import check_size
 from aiact.gap import roles as role_questions
 from aiact.gap.criteria import aggregate_confidence, aggregate_reasoning, settle
 from aiact.gap.judge import LLMJudge
-from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
+from aiact.gap.rules import ActiveRules, TimingNotice, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import (
     ActorCategory,
@@ -47,7 +47,7 @@ from aiact.schemas.enums import (
     RealWorldTesting,
     Verdict,
 )
-from aiact.schemas.norm import NormKind
+from aiact.schemas.norm import NormKind, TemporalStatus
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary, RuleTimingNotice
@@ -72,12 +72,35 @@ class ComplianceCheckState(BaseModel):
     report: ComplianceReport | None = None
 
 
+def _judgeable(notice: TimingNotice) -> bool:
+    """A future duty with a known date that a technical file can evidence."""
+    return (
+        notice.status is TemporalStatus.UPCOMING
+        and notice.application_date is not None
+        and notice.rule.status == "active"
+        and notice.rule.document_verifiable
+    )
+
+
 def _summarise(findings: list[Finding]) -> ReportSummary:
-    """Count verdicts overall and per use case.
+    """Count verdicts overall and per use case; future obligations go to `upcoming` by date.
 
     NOT_APPLICABLE is counted in neither `total_applicable` nor any verdict bucket: a rule that
     never activated is not a check that passed.
     """
+    in_force = [f for f in findings if f.applies_from is None]
+    by_date: dict[date, list[Finding]] = {}
+    for finding in findings:
+        if finding.applies_from is not None:
+            by_date.setdefault(finding.applies_from, []).append(finding)
+    summary = _count(in_force)
+    return summary.model_copy(
+        update={"upcoming": {day: _count(by_date[day]) for day in sorted(by_date)}}
+    )
+
+
+def _count(findings: list[Finding]) -> ReportSummary:
+    """Verdict tallies for one group of findings, with per-use-case and per-role breakdowns."""
 
     def count_verdicts(subset: list[Finding]) -> ReportSummary:
         counted = [f for f in subset if f.verdict != Verdict.NOT_APPLICABLE]
@@ -188,16 +211,23 @@ def build_graph(
         # use case; with several, evidence written about one intended purpose can be credited to
         # another. Scoping it requires knowing which passages belong to which use case — the
         # decomposition problem, tracked in M7.
-        jobs: list[tuple[str, ActorRole, PolicyRule]] = [
-            (active.use_case_id, active.role, rule)
+        # A future duty is judged too, carrying its date, so the reader learns now whether the
+        # document will be ready. A duty whose date waits on an unsettled route is not judged.
+        jobs: list[tuple[str, ActorRole, PolicyRule, date | None]] = [
+            (active.use_case_id, active.role, rule, None)
             for active in state.active
             for rule in active.document_verifiable
+        ] + [
+            (active.use_case_id, active.role, notice.rule, notice.application_date)
+            for active in state.active
+            for notice in active.upcoming
+            if _judgeable(notice)
         ]
         if not jobs:
             return {"findings": []}
 
-        def judge_one(job: tuple[str, ActorRole, PolicyRule]) -> Finding:
-            use_case_id, role, rule = job
+        def judge_one(job: tuple[str, ActorRole, PolicyRule, date | None]) -> Finding:
+            use_case_id, role, rule, applies_from = job
             judgement = judge.judge(rule, state.document)
             # An aggregate rule's verdict is recomputed here from its declared criteria, not taken
             # from the judge: a criterion the judge skipped becomes NEEDS_REVIEW, not a silent pass.
@@ -223,6 +253,7 @@ def build_graph(
                 # the wrong evidence for it anyway. The claim this records is "interpretation was in
                 # context for this verdict", which is a fact about the prompt.
                 guidance=list(rule.guidance_sources),
+                applies_from=applies_from,
             )
 
         if max_workers <= 1:
@@ -243,6 +274,8 @@ def build_graph(
                 if rule.rule_id not in ids:
                     ids.append(rule.rule_id)
             for notice in active.upcoming + active.timing_unresolved:
+                if notice.status is TemporalStatus.UPCOMING and _judgeable(notice):
+                    continue
                 timing_not_active.append(
                     RuleTimingNotice(
                         rule_id=notice.rule.rule_id,

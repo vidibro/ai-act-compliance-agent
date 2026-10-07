@@ -39,7 +39,7 @@ from aiact.schemas.policy import PolicyRule, PolicyRuleset
 
 @dataclass(frozen=True)
 class TimingNotice:
-    """One selected rule that is visible but must not reach the judge yet."""
+    """One selected rule whose date is in the future or turns on an unsettled route."""
 
     rule: PolicyRule
     status: TemporalStatus
@@ -73,7 +73,8 @@ class ActiveRules:
     """Adopted but not yet applicable. Reported so a provider can prepare, never a gap."""
 
     upcoming: tuple[TimingNotice, ...] = ()
-    """Selected duties with a known future application date; reported but never judged."""
+    """Selected duties with a known future application date. The document-verifiable ones are
+    judged and reported with that date; the rest are listed with it."""
 
     timing_unresolved: tuple[TimingNotice, ...] = ()
     """Selected duties whose legal route has not yet been classified; reported, never judged."""

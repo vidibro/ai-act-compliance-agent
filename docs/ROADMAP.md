@@ -742,7 +742,10 @@ So a report covering every role is a decision aid, not padding: it is what a rea
 
 **The real cost is the golden set, not the rules.** Layer 2's ground truth is ablations of a PROVIDER's technical file. Deployer duties cannot be evidenced there — they need deployment records, a FRIA, logs, evidence that instructions were followed. That is a new corpus authored from scratch, and until it exists the deployer rules are unmeasured. **Ship the LIST for all roles first** (no ground truth needed, since nothing is judged), and gate JUDGING a role on having cases for it.
 
-#### M4d-5 — Nothing is in force yet, and no report says so 🟠 approach decided, build deferred
+#### M4d-5 — Nothing is in force yet, and no report says so ✅ BUILT 2026-10-06
+
+**Built:** a document-verifiable duty whose date is still ahead is judged and carries `Finding.applies_from`; `ReportSummary` counts in-force findings at the top level and future ones in `upcoming`, keyed by date, so the headline gap count is in-force only. A duty whose date turns on an unsettled Art. 6 route is listed in `timing_not_active` and never judged. Process duties keep their date on the rule (`effective_date_by_route`) and are rendered with it. The eval is unaffected: it passes no `as_of_date`, so every rule is judged as before.
+
 
 All rules carried `effective_date: 2026-08-02` (Art. 113) and `status: active`. Today's reports raise gaps against obligations that bind nobody yet, and `ActiveRules.postponed` is permanently empty because no rule uses `status: postponed` — the spec deliberately carries the date instead.
 

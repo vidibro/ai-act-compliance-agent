@@ -239,6 +239,11 @@ class Finding(BaseModel):
     judged as one obligation. When present, `verdict` must be what `aggregate_criteria` computes
     from them, so a report cannot hold a passing rule over a failing criterion."""
 
+    applies_from: date | None = None
+    """The date this obligation starts to apply, when that date is still ahead; None when it
+    already applies. A GAP against a future duty is preparation, not a breach, so it is judged and
+    shown with its date but counted apart from the obligations in force."""
+
     @property
     def rests_on_guidance(self) -> bool:
         """True when non-binding interpretation was in context for this verdict."""
@@ -289,11 +294,14 @@ class Finding(BaseModel):
 
 
 class RuleTimingNotice(BaseModel):
-    """A selected duty that is visible before it can be judged.
+    """A selected duty with a future or route-dependent date that has no verdict.
+
+    Two kinds land here: a future duty a technical file cannot evidence, and any duty whose date
+    turns on an Article 6 route the classification has not settled. A future document-verifiable
+    duty is judged instead and appears as a `Finding` with `applies_from`.
 
     The route is a classification result, the date and legal-basis segments come from the canonical
-    temporal regime attached to the rule's mandatory norms.  Keeping all four values in the report
-    makes a future duty inspectable without turning it into a gap today.
+    temporal regime attached to the rule's mandatory norms.
     """
 
     rule_id: str
@@ -306,7 +314,10 @@ class RuleTimingNotice(BaseModel):
 
 
 class ReportSummary(BaseModel):
-    """Verdict tallies, optionally broken down per use case."""
+    """Verdict tallies for the obligations in force, optionally broken down per use case.
+
+    Findings with an `applies_from` date are counted only in `upcoming`, so the headline number
+    never mixes a breach today with preparation for a later date."""
 
     total_applicable: int
     passed: int
@@ -317,6 +328,9 @@ class ReportSummary(BaseModel):
     per_role: dict[ActorRole, ReportSummary] | None = None
     """Counts broken down per duty-holder. A provider reading a combined total cannot tell which
     part of it is theirs to fix, and the deployer's half is not theirs to fix at all."""
+    upcoming: dict[date, ReportSummary] = {}
+    """Counts for the judged obligations that are not yet in force, keyed by the date each group
+    starts to apply."""
 
 
 class ComplianceReport(BaseModel):
