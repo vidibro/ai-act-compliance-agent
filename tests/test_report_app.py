@@ -9,8 +9,9 @@ from fastapi.testclient import TestClient
 
 from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.gap.judge import Judgement
-from aiact.report_app.app import app, get_brain, get_judge
+from aiact.report_app.app import app, get_brain, get_judge, get_summariser
 from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, Verdict
+from aiact.summary import SystemSummary
 
 DOCUMENT = "# System card\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
 
@@ -28,11 +29,29 @@ class GapJudge:
         )
 
 
+class StubSummariser:
+    def __init__(self, fail: bool = False) -> None:
+        self.fail = fail
+        self.calls = 0
+
+    def summarise(self, document: str) -> SystemSummary | None:
+        self.calls += 1
+        if self.fail:
+            raise RuntimeError("model unavailable")
+        return SystemSummary(name="TalentRank", summary="Scores job applicants for recruiters.")
+
+
 @pytest.fixture
-def client_for() -> Iterator:
+def summariser() -> StubSummariser:
+    return StubSummariser()
+
+
+@pytest.fixture
+def client_for(summariser) -> Iterator:
     def make(**answers: object) -> TestClient:
         app.dependency_overrides[get_brain] = lambda: ScriptedBrain({"is_ai": True, **answers})
         app.dependency_overrides[get_judge] = lambda: GapJudge()
+        app.dependency_overrides[get_summariser] = lambda: summariser
         return TestClient(app)
 
     yield make
@@ -99,12 +118,31 @@ def test_an_empty_document_is_rejected(client_for):
     assert response.status_code == 422
 
 
-def test_a_document_over_the_limit_is_rejected_before_any_model_call(client_for, monkeypatch):
+def test_a_document_over_the_limit_is_rejected_before_any_model_call(
+    client_for, summariser, monkeypatch
+):
     monkeypatch.setenv("AIACT_MAX_DOCUMENT_CHARS", "10")
     response = client_for(**high_risk()).post("/api/review", json={"document": DOCUMENT})
 
     assert response.status_code == 413
     assert "limit" in response.json()["detail"]
+    assert summariser.calls == 0
+
+
+def test_the_review_comes_with_the_system_name_and_a_summary(client_for):
+    body = client_for(**high_risk()).post("/api/review", json={"document": DOCUMENT}).json()
+    assert body["system_name"] == "TalentRank"
+    assert body["system_summary"] == "Scores job applicants for recruiters."
+
+
+def test_a_failed_summary_does_not_fail_the_review(client_for, summariser):
+    summariser.fail = True
+    response = client_for(**high_risk()).post("/api/review", json={"document": DOCUMENT})
+
+    assert response.status_code == 200
+    assert response.json()["system_summary"] is None
+    assert response.json()["system_name"] is None
+    assert response.json()["report"]["findings"]
 
 
 def test_the_page_and_its_files_are_served(client_for):
@@ -115,3 +153,14 @@ def test_the_page_and_its_files_are_served(client_for):
     assert "/static/report.js" in page.text
     assert client.get("/static/report.js").status_code == 200
     assert client.get("/static/report.css").status_code == 200
+
+
+def test_page_files_are_revalidated_so_an_edit_shows_on_reload(client_for):
+    response = client_for(**high_risk()).get("/static/report.js")
+    assert response.headers["cache-control"] == "no-cache"
+
+
+def test_the_page_is_told_the_document_limit(client_for, monkeypatch):
+    monkeypatch.setenv("AIACT_MAX_DOCUMENT_CHARS", "1234")
+    response = client_for(**high_risk()).get("/api/limits")
+    assert response.json() == {"max_document_chars": 1234}

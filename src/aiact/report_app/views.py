@@ -11,10 +11,12 @@ from datetime import date
 
 from pydantic import BaseModel
 
+from aiact.report_app.citations import segment_citations
 from aiact.reporting import application_date, cite, condition_text
 from aiact.schemas.norm import NormKind
 from aiact.schemas.policy import PolicyRuleset
 from aiact.schemas.report import ComplianceReport
+from aiact.summary import SystemSummary
 
 
 class RuleView(BaseModel):
@@ -41,6 +43,8 @@ class NormView(BaseModel):
     conditions: str | None
     exceptions: str | None
     source_spans: list[str]
+    citations: list[str]
+    """The source text as a reader cites it, e.g. "Art. 99(3)", one per distinct provision."""
 
 
 class ReportNotes(BaseModel):
@@ -55,13 +59,20 @@ class ReportNotes(BaseModel):
 
 
 class ReviewResponse(BaseModel):
+    system_name: str | None
+    """The system's name as the document gives it; None where it gives none."""
+    system_summary: str | None
+    """What the system does, in two or three sentences written by the model from the document.
+    Shown to the reader only; the review itself never reads it."""
     report: ComplianceReport
     rules: dict[str, RuleView]
     norms: dict[str, NormView]
     notes: ReportNotes
 
 
-def build_response(report: ComplianceReport, spec: PolicyRuleset) -> ReviewResponse:
+def build_response(
+    report: ComplianceReport, spec: PolicyRuleset, summary: SystemSummary | None = None
+) -> ReviewResponse:
     by_id = {rule.rule_id: rule for rule in spec.rules}
     norms_by_id = {norm.norm_id: norm for norm in spec.report_norms}
     use_cases = report.classification.use_cases
@@ -105,12 +116,17 @@ def build_response(report: ComplianceReport, spec: PolicyRuleset) -> ReviewRespo
             conditions=condition_text(norm.conditions) if norm.conditions else None,
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,
             source_spans=norm.source_spans,
+            citations=list(
+                dict.fromkeys(segment_citations().get(span, span) for span in norm.source_spans)
+            ),
         )
         for norm_id in sorted(norm_ids)
         if (norm := norms_by_id.get(norm_id)) is not None
     }
 
     return ReviewResponse(
+        system_name=summary.name if summary else None,
+        system_summary=summary.summary if summary else None,
         report=report,
         rules=rules,
         norms=norms,

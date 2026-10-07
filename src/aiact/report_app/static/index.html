@@ -25,20 +25,22 @@
   </div>
 </div></div>
 <main>
-  <form class="card input" id="form">
+  <form class="card input" id="form" data-mode="edit">
     <div class="input-head">
-      <h1>Review a system</h1>
-      <p class="muted">Paste the system card or technical documentation. The review classifies the system
+      <h1 id="form-title">Review a system</h1>
+      <p class="muted edit-only">Paste the system card or technical documentation. The review classifies the system
         under the AI Act, then checks the document against the obligations that apply.</p>
     </div>
     <textarea id="document" placeholder="# System card&#10;&#10;Describe what the system does, who it affects, and who relies on its output…" required></textarea>
     <div class="input-foot">
-      <label class="field">System name <input id="system-id" type="text" value="system" maxlength="100" required></label>
-      <label class="filebtn">Load a file<input id="file" type="file" accept=".md,.txt,text/plain,text/markdown"></label>
+      <label class="filebtn edit-only">Load a file<input id="file" type="file" accept=".md,.txt,text/plain,text/markdown"></label>
       <span class="muted small" id="chars"></span>
       <span class="spacer"></span>
-      <span class="muted small">Makes model calls; takes a minute or two.</span>
-      <button class="primary" id="run" type="submit">Run review</button>
+      <span class="muted small edit-only">Makes model calls; takes a minute or two.</span>
+      <button class="link edit-only" id="cancel" type="button">Cancel</button>
+      <button class="primary edit-only" id="run" type="submit">Run review</button>
+      <button class="secondary view-only" id="edit" type="button">Edit and re-run</button>
+      <button class="primary view-only" id="new" type="button">New review</button>
     </div>
   </form>
 
