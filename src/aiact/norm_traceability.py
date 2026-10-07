@@ -417,14 +417,14 @@ def traceability_errors(
         if norm.review.status is ReviewStatus.SUPERSEDED:
             continue
         for rule_id in norm.implementation_refs:
-            rule = rules.get(rule_id)
-            if rule is None:
+            named_rule = rules.get(rule_id)
+            if named_rule is None:
                 errors.append(f"{norm.norm_id} names rule {rule_id}, which is not in the spec")
             elif rule_id in relation_targets_by_norm.get(norm.norm_id, set()):
                 continue
-            elif norm.norm_id in {criterion.norm_id for criterion in rule.criteria}:
+            elif norm.norm_id in {criterion.norm_id for criterion in named_rule.criteria}:
                 continue
-            elif not rule.criteria and direct_norms_by_rule.get(rule_id) == [norm]:
+            elif not named_rule.criteria and direct_norms_by_rule.get(rule_id) == [norm]:
                 continue
             else:
                 errors.append(f"{rule_id} omits criterion {norm.norm_id}, which names it")
@@ -552,13 +552,13 @@ def traceability_errors(
             NormRelationKind.CARRIED_BY_POLICY_RULES,
         }:
             for rule_id in relation.target_rule_ids:
-                rule = rules.get(rule_id)
-                if rule is None:
+                target_rule = rules.get(rule_id)
+                if target_rule is None:
                     errors.append(
                         f"{relation.relation_id} names rule {rule_id}, which is not in the spec"
                     )
                     continue
-                if source.norm_id in {criterion.norm_id for criterion in rule.criteria}:
+                if source.norm_id in {criterion.norm_id for criterion in target_rule.criteria}:
                     errors.append(
                         f"{relation.relation_id} source {source.norm_id} is redundantly a "
                         "criterion "

@@ -321,8 +321,8 @@ def build_graph(
                     covered
                     for actor in report_norm.actors
                     if actor in {role.value for role in ActorRole}
-                    and ActorRole(actor).category is ActorCategory.SUPPORTED_OPERATOR
-                    for covered in ActorRole(actor).covered_roles
+                    and ActorRole.from_value(actor).category is ActorCategory.SUPPORTED_OPERATOR
+                    for covered in ActorRole.from_value(actor).covered_roles
                 }
                 if (
                     not report_norm.applies_to_all_actors

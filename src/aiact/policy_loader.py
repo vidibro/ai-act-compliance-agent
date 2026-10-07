@@ -442,7 +442,7 @@ def _national_law_notices(norms_root: Path, version: str) -> list[dict[str, obje
             f"Norm inventory at {norms_root} uses Act version {artifact_version!r}, but the spec "
             f"is pinned to {version!r}."
         )
-    notices = []
+    notices: list[dict[str, object]] = []
     for raw_relation in payload.get("relations", []):
         relation = NormRelation.model_validate(raw_relation)
         if relation.kind is not NormRelationKind.NATIONAL_LAW_REGULATION:

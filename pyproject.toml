@@ -3,7 +3,7 @@ name = "ai-act-compliance-agent"
 version = "0.1.0"
 description = "Agent that classifies AI systems under Regulation (EU) 2024/1689 and audits documentation against provider obligations."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2.7",
     "pydantic-settings>=2.3",
@@ -37,7 +37,7 @@ build-backend = "hatchling.build"
 packages = ["src/aiact"]
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py312"
 line-length = 100
 src = ["src", "tests"]
 
@@ -54,7 +54,7 @@ addopts = "-n auto"
 # Type-checks our code — including Protocol conformance (that e.g. ScriptedBrain and LLMBrain
 # actually satisfy NodeBrain, signatures and all). This is the PHP-`implements`-style guarantee,
 # enforced at check time rather than at runtime.
-python_version = "3.11"
+python_version = "3.12"
 files = ["src", "scripts"]
 mypy_path = "src"
 plugins = ["pydantic.mypy"]
@@ -65,7 +65,7 @@ warn_redundant_casts = true
 check_untyped_defs = true
 
 [[tool.mypy.overrides]]
-# Heavy third-party libs: don't follow into them (some ship stubs using newer-than-3.11 syntax,
+# Heavy third-party libs: don't follow into them (some ship stubs using newer syntax,
 # e.g. numpy's PEP 695 `type` statements). We only want to type-check OUR code, treating these as
 # opaque. This is scope control, not laziness — their internals aren't our contract.
 module = [

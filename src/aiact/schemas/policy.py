@@ -120,7 +120,7 @@ class RuleCriterion(BaseModel):
     def owed_by(self, role: ActorRole) -> bool:
         """Whether `role` owes this criterion, directly or through a collective noun."""
         return self.applies_to_all_actors or any(
-            role in ActorRole(actor).covered_roles for actor in self.actors
+            role in ActorRole.from_value(actor).covered_roles for actor in self.actors
         )
 
     @property

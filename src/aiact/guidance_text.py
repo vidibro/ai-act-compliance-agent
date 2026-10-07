@@ -56,7 +56,9 @@ def extract_paragraphs(
     import pdfplumber
 
     paragraphs: list[GuidanceParagraph] = []
-    number, pages, lines = 0, [], []
+    number = 0
+    pages: list[int] = []
+    lines: list[str] = []
     with pdfplumber.open(pdf_path) as pdf:
         for page_number, page in enumerate(pdf.pages, start=1):
             body = page.filter(

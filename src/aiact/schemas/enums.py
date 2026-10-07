@@ -7,6 +7,7 @@ list would lose the reasoning that later readers (human or model) depend on.
 
 from datetime import date
 from enum import StrEnum
+from typing import cast
 
 
 class RiskClass(StrEnum):
@@ -531,6 +532,8 @@ class TargetKind(StrEnum):
 class ActorRole(StrEnum):
     """Closed list of actual AI Act actors; qualifications are norm conditions or targets."""
 
+    category: ActorCategory
+
     def __new__(cls, value: str, category: ActorCategory):
         member = str.__new__(cls, value)
         member._value_ = value
@@ -624,6 +627,12 @@ class ActorRole(StrEnum):
         return _ACTOR_LEGAL_REFERENCE_TERMS.get(
             self, (self.value.replace("_", " "),)
         )
+
+    @classmethod
+    def from_value(cls, value: str) -> "ActorRole":
+        """The member for a stored value. `ActorRole(value)` does the same at runtime, but its
+        type is read from `__new__`, which also takes the category."""
+        return cast("ActorRole", cls._value2member_map_[value])
 
     @property
     def covered_roles(self) -> frozenset["ActorRole"]:

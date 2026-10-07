@@ -517,6 +517,7 @@ def _new_field_findings(
             (primary.source.kind, primary.source.document), set()
         )
         if FieldValidation.LOGICAL_EXPRESSION_EVIDENCE in requirements:
+            field: Literal["conditions", "exceptions"]
             for field, expression in (
                 ("conditions", norm.conditions),
                 ("exceptions", norm.exceptions),

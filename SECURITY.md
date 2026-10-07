@@ -223,7 +223,7 @@ Whatever is sent reaches the configured LLM provider like any other input, under
 
 ## Supply chain
 
-- Dependencies are pinned via `uv.lock`; `pyproject.toml` sets `requires-python >= 3.11`.
+- Dependencies are pinned via `uv.lock`; `pyproject.toml` sets `requires-python >= 3.12`.
 - `litellm`, `langfuse`, `chromadb` and the rest are standard, widely-used packages; no vendored or
   unpinned remote code is executed.
 - CI runs `ruff`, `mypy`, and the full test suite (`make check`) on every change.

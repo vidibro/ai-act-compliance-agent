@@ -39,6 +39,8 @@ def audit(version: str, articles: set[str] | None = None) -> dict[str, object]:
         if articles is not None
         else None
     )
+    if paths.adjudications is None:
+        raise SystemExit(f"Act version {version} has no validity adjudication ledger")
     ledger = load_adjudication_ledger(paths.adjudications)
     required_field_validations = {
         (item.kind, item.document): set(item.required_field_validations)

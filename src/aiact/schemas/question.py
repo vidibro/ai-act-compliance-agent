@@ -15,7 +15,7 @@ instead of a verdict.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Literal, TypeVar
+from typing import Any, Literal
 
 from pydantic import BaseModel, field_validator
 
@@ -136,10 +136,7 @@ class Answer(BaseModel):
     _value_parsed = field_validator("value")(_check_not_raw_text)
 
 
-_T = TypeVar("_T")
-
-
-def narrow(answer: Answer | None, kind: type[_T]) -> _T | None:
+def narrow[T](answer: Answer | None, kind: type[T]) -> T | None:
     """The answer's value, but only if it is the type the caller can act on.
 
     Narrowing by TYPE rather than by truthiness, which is a rule this codebase applies everywhere a
