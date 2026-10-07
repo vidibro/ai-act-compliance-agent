@@ -11,10 +11,13 @@ from __future__ import annotations
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from functools import lru_cache
+from pathlib import Path
 from typing import Annotated
 
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from aiact.brain import Brain
@@ -24,6 +27,8 @@ from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
 from aiact.report_app.views import ReviewResponse, build_response
 from aiact.schemas.policy import PolicyRuleset
+
+STATIC = Path(__file__).parent / "static"
 
 
 class ReviewRequest(BaseModel):
@@ -55,7 +60,13 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     yield
 
 
-app = FastAPI(title="AI Act report", lifespan=_lifespan)
+app = FastAPI(title="AI Act Compliance Review", lifespan=_lifespan)
+app.mount("/static", StaticFiles(directory=STATIC), name="static")
+
+
+@app.get("/", include_in_schema=False)
+def index() -> FileResponse:
+    return FileResponse(STATIC / "index.html")
 
 
 @app.post("/api/review")

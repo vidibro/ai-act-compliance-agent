@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Act Compliance Review</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/report.css">
+<script>
+  // Applied before first paint so a saved theme never flashes the other one.
+  try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="mark">AI</div>
+  <div class="brand">AI Act Compliance Review</div>
+  <div class="theme" id="theme" role="group" aria-label="Color theme">
+    <button data-theme="auto" title="Follow the system setting">Auto</button>
+    <button data-theme="light">Light</button>
+    <button data-theme="dark">Dark</button>
+  </div>
+</div></div>
+<main>
+  <form class="card input" id="form">
+    <div class="input-head">
+      <h1>Review a system</h1>
+      <p class="muted">Paste the system card or technical documentation. The review classifies the system
+        under the AI Act, then checks the document against the obligations that apply.</p>
+    </div>
+    <textarea id="document" placeholder="# System card&#10;&#10;Describe what the system does, who it affects, and who relies on its output…" required></textarea>
+    <div class="input-foot">
+      <label class="field">System name <input id="system-id" type="text" value="system" maxlength="100" required></label>
+      <label class="filebtn">Load a file<input id="file" type="file" accept=".md,.txt,text/plain,text/markdown"></label>
+      <span class="muted small" id="chars"></span>
+      <span class="spacer"></span>
+      <span class="muted small">Makes model calls; takes a minute or two.</span>
+      <button class="primary" id="run" type="submit">Run review</button>
+    </div>
+  </form>
+
+  <div class="card status" id="status" hidden></div>
+  <div class="alert" id="error" role="alert" hidden></div>
+  <div id="report"></div>
+</main>
+<script src="/static/report.js"></script>
+</body>
+</html>

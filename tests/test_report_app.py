@@ -105,3 +105,13 @@ def test_a_document_over_the_limit_is_rejected_before_any_model_call(client_for,
 
     assert response.status_code == 413
     assert "limit" in response.json()["detail"]
+
+
+def test_the_page_and_its_files_are_served(client_for):
+    client = client_for(**high_risk())
+
+    page = client.get("/")
+    assert page.status_code == 200
+    assert "/static/report.js" in page.text
+    assert client.get("/static/report.js").status_code == 200
+    assert client.get("/static/report.css").status_code == 200
