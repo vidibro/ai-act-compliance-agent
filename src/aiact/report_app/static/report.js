@@ -450,7 +450,7 @@ function normItem(id, data) {
   const norm = data.norms[id];
   return el("details", { class: "item" },
     el("summary", {},
-      el("span", {}, el("span", { class: "tag soft" }, NORM_KIND[norm?.kind] || human(norm?.kind || "norm"))),
+      el("span", {}, el("span", { class: `tag soft kind-${norm?.kind}` }, NORM_KIND[norm?.kind] || human(norm?.kind || "norm"))),
       el("span", { class: "cite" }, normCites(norm)[0] || ""),
       el("span", { class: "oneline" }, norm?.action || id),
       el("span", {})),

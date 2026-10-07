@@ -16,6 +16,9 @@
   --role-initial-provider: #4338ca;
   --role-sandbox-participant: #475569;
   --role-gpai-provider: #6d28d9;
+  /* Two greens for what the Act gives rather than asks: a permission and a right. */
+  --kind-permission: #047857;
+  --kind-entitlement: #4d7c0f;
 }
 /* Dark tokens apply when the system is dark (unless the viewer picked light) or when the
    viewer picked dark. The theme switch sets data-theme on <html>. */
@@ -37,6 +40,8 @@
     --role-initial-provider: #a5b4fc;
     --role-sandbox-participant: #a8b3c4;
     --role-gpai-provider: #c4b5fd;
+    --kind-permission: #34d399;
+    --kind-entitlement: #a3e635;
   }
 }
 :root[data-theme="dark"] {
@@ -56,6 +61,8 @@
   --role-initial-provider: #a5b4fc;
   --role-sandbox-participant: #a8b3c4;
   --role-gpai-provider: #c4b5fd;
+  --kind-permission: #34d399;
+  --kind-entitlement: #a3e635;
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -151,6 +158,8 @@ ul.basis li::marker { color: var(--orange); }
 .tag.needs_review { color: var(--orange-ink); border-color: var(--orange); border-style: dashed; background: none; }
 .tag.date { color: var(--orange-ink); border-color: var(--orange); background: none; }
 .tag.soft { color: var(--muted); font-weight: 500; }
+.tag.kind-permission { color: var(--kind-permission); border-color: currentColor; font-weight: 600; }
+.tag.kind-entitlement { color: var(--kind-entitlement); border-color: currentColor; font-weight: 600; }
 
 .section-head { margin-top: 16px; padding-top: 20px; border-top: 1px solid var(--line-strong); }
 .section-head h2 { margin: 0 0 2px; font-size: 20px; letter-spacing: -.02em; }
