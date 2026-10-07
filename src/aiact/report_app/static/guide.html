@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>System Card Guide</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/report.css">
+<script>
+  // Applied before first paint so a saved theme never flashes the other one.
+  try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="mark">AI</div>
+  <div class="brand">AI Act Compliance Review</div>
+  <a class="navlink" href="/">Back to the review</a>
+  <div class="theme" id="theme" role="group" aria-label="Color theme">
+    <button data-theme="auto" title="Follow the system setting">Auto</button>
+    <button data-theme="light">Light</button>
+    <button data-theme="dark">Dark</button>
+  </div>
+</div></div>
+<main>
+  <article class="card guide">
+    <div class="guide-tools"><button class="secondary" id="copy-guide" type="button">Copy as Markdown</button></div>
+<!-- guide -->
+  </article>
+</main>
+<script src="/static/guide.js"></script>
+</body>
+</html>

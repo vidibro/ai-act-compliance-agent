@@ -74,6 +74,10 @@ body { margin: 0; background: var(--bg); color: var(--ink);
 .mark { width: 26px; height: 26px; background: var(--orange); border-radius: 5px; display: grid;
         place-items: center; font-weight: 700; font-size: 13px; color: #0b0b0b; }
 .brand { font-weight: 700; font-size: 15px; letter-spacing: -.01em; white-space: nowrap; }
+.navlink { margin-left: auto; white-space: nowrap; font-size: 13px; font-weight: 600; color: #ffffff; text-decoration: none; }
+.navlink:hover { color: var(--orange); }
+.navlink + .theme { margin-left: 0; }
+@media (max-width: 640px) { .topbar-in { flex-wrap: wrap; } .brand { display: none; } }
 .theme { margin-left: auto; display: flex; background: #1c1c1b; border: 1px solid #2e2e2c; border-radius: 7px; padding: 2px; }
 .theme button { font: inherit; font-size: 12px; font-weight: 600; color: #a8a8a4; background: none; border: 0;
                 border-radius: 5px; padding: 3px 10px; cursor: pointer; }
@@ -87,6 +91,7 @@ main { max-width: 1040px; margin: 0 auto; padding: 24px; display: grid; gap: 16p
 .input { padding: 20px; display: grid; gap: 14px; }
 .input h1 { font-size: 20px; letter-spacing: -.02em; margin: 0 0 4px; }
 .input p { margin: 0; max-width: 680px; }
+.input-head p + p { margin-top: 6px; }
 textarea { width: 100%; min-height: 240px; resize: vertical; font: 13px/1.6 "JetBrains Mono", ui-monospace, monospace;
            padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--bg);
            color: var(--ink); outline: none; }
@@ -234,3 +239,31 @@ footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 24px;
   .kv { grid-template-columns: 1fr; gap: 2px; } .kv > .l { text-align: left; }
   .role > h2, .group > h3, .group > .hint, .empty { padding-left: 16px; padding-right: 16px; }
 }
+
+/* ---- guide ------------------------------------------------------------------------------ */
+a { color: var(--orange-ink); }
+.guide { min-width: 0; padding: 8px 36px 32px; font-size: 15px; line-height: 1.65; overflow-wrap: break-word; }
+.guide-tools { display: flex; justify-content: flex-end; margin-top: 16px; }
+.guide-tools + h1 { margin-top: 4px; }
+.guide h1 { font-size: 26px; letter-spacing: -.02em; margin: 24px 0 8px; }
+.guide h2 { font-size: 20px; letter-spacing: -.01em; margin: 32px 0 8px; }
+.guide h3 { font-size: 16px; margin: 28px 0 6px; }
+.guide h4 { font-size: 15px; margin: 22px 0 4px; }
+.guide p, .guide ul { margin: 8px 0; max-width: 760px; }
+.guide li { margin: 3px 0; }
+.guide li::marker { color: var(--orange); }
+.guide hr { border: 0; border-top: 1px solid var(--line); margin: 28px 0; }
+.guide blockquote { margin: 12px 0; padding: 8px 16px; border-left: 3px solid var(--orange); white-space: normal;
+                    background: var(--orange-soft); border-radius: 0 6px 6px 0; }
+.guide blockquote p { margin: 4px 0; }
+.guide code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; }
+.guide pre { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+             padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.55; }
+.guide pre .copy { position: absolute; top: 8px; right: 8px; font: inherit; font-family: Inter, sans-serif;
+                   font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+                   border: 1px solid var(--line-strong); background: var(--raised); color: var(--ink); }
+.guide pre .copy:hover { border-color: var(--orange); }
+.guide table { border-collapse: collapse; margin: 12px 0; font-size: 14px; display: block; overflow-x: auto; }
+.guide th, .guide td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+.guide th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+@media (max-width: 640px) { .guide { padding: 4px 16px 24px; } }

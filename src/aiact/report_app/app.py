@@ -18,8 +18,9 @@ from typing import Annotated
 
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
+from markdown_it import MarkdownIt
 from pydantic import BaseModel, Field
 
 from aiact.brain import Brain
@@ -42,6 +43,7 @@ from aiact.schemas.policy import PolicyRuleset
 from aiact.summary import LLMSummariser, Summariser, SystemSummary
 
 STATIC = Path(__file__).parent / "static"
+GUIDE = Path("docs/system-card-guide.md")  # relative to the working directory, like the data paths
 log = logging.getLogger(__name__)
 
 
@@ -107,6 +109,22 @@ async def _revalidate(
 @app.get("/", include_in_schema=False)
 def index() -> FileResponse:
     return FileResponse(STATIC / "index.html")
+
+
+@app.get("/guide", include_in_schema=False)
+def guide() -> HTMLResponse:
+    """The system-card guide, rendered from its Markdown on each request, so an edit shows on
+    reload."""
+    markdown = MarkdownIt("commonmark", {"html": False}).enable("table")
+    body = markdown.render(GUIDE.read_text(encoding="utf-8"))
+    page = (STATIC / "guide.html").read_text(encoding="utf-8")
+    return HTMLResponse(page.replace("<!-- guide -->", body))
+
+
+@app.get("/guide.md", include_in_schema=False)
+def guide_markdown() -> PlainTextResponse:
+    """The guide as written, for the page's copy button."""
+    return PlainTextResponse(GUIDE.read_text(encoding="utf-8"), media_type="text/markdown")
 
 
 class RefreshRequest(BaseModel):

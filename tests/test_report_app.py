@@ -155,6 +155,21 @@ def test_the_page_and_its_files_are_served(client_for):
     assert client.get("/static/report.css").status_code == 200
 
 
+def test_the_system_card_guide_is_served_as_a_page(client_for):
+    client = client_for(**high_risk())
+
+    assert 'href="/guide"' in client.get("/").text
+    guide = client.get("/guide")
+    assert guide.status_code == 200
+    assert "<h1>How to write a system card" in guide.text
+    assert "<table>" in guide.text  # the role and Art. 9–15 tables render as tables
+    assert client.get("/static/guide.js").status_code == 200
+
+    markdown = client.get("/guide.md")
+    assert markdown.headers["content-type"].startswith("text/markdown")
+    assert markdown.text.startswith("# How to write a system card")
+
+
 def test_page_files_are_revalidated_so_an_edit_shows_on_reload(client_for):
     response = client_for(**high_risk()).get("/static/report.js")
     assert response.headers["cache-control"] == "no-cache"

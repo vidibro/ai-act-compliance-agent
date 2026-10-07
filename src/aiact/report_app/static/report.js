@@ -204,6 +204,8 @@ function header(data) {
     c.triggered_by.length ? el("ul", { class: "basis" }, c.triggered_by.map((e) =>
       el("li", {}, el("b", {}, citeSource(e.source)), e.reasoning ? ` — ${e.reasoning}` : "",
         e.guidance?.length ? el("span", { class: "muted" }, " (rests on non-binding Commission guidance)") : null))) : null,
+    risk === "needs_review" ? el("p", { class: "muted" }, "Add the missing facts and run the review again. ",
+      el("a", { href: "/guide", target: "_blank", rel: "noopener" }, "The guide"), " says what to write.") : null,
   );
   return [system, classification];
 }
