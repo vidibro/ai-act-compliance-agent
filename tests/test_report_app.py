@@ -164,3 +164,23 @@ def test_the_page_is_told_the_document_limit(client_for, monkeypatch):
     monkeypatch.setenv("AIACT_MAX_DOCUMENT_CHARS", "1234")
     response = client_for(**high_risk()).get("/api/limits")
     assert response.json() == {"max_document_chars": 1234}
+
+
+def test_a_saved_report_is_refreshed_without_calling_a_model(client_for):
+    """The page sends back what a stored report names; rule details come from the current spec."""
+    client = client_for(**high_risk())
+    body = client.post("/api/review", json={"document": DOCUMENT}).json()
+    app.dependency_overrides[get_brain] = lambda: pytest.fail("no model call on refresh")
+
+    refreshed = client.post(
+        "/api/refresh",
+        json={
+            "use_cases": body["report"]["classification"]["use_cases"],
+            "rule_ids": list(body["rules"]),
+            "norm_ids": list(body["norms"]),
+        },
+    ).json()
+
+    assert refreshed["rules"] == body["rules"]
+    assert refreshed["norms"] == body["norms"]
+    assert refreshed["rules"]["AIA-RULE-HR-A09"]["action"]

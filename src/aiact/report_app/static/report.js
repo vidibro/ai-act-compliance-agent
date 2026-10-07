@@ -68,6 +68,28 @@ function saveDraft() {
   store(STORE.draft, { document: $("document").value, editing: $("form").dataset.mode === "edit" });
 }
 
+// A saved report keeps its verdicts and notes; its rule texts, actions and citations are rebuilt
+// from the current rules, so a report saved before a rules change still reads like a new one.
+async function refreshSaved() {
+  const saved = last;
+  try {
+    const response = await fetch("/api/refresh", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        use_cases: saved.response.report.classification.use_cases,
+        rule_ids: Object.keys(saved.response.rules),
+        norm_ids: Object.keys(saved.response.norms),
+      }),
+    });
+    if (!response.ok || last !== saved) return;
+    const fresh = await response.json();
+    last = { ...saved, response: { ...saved.response, rules: fresh.rules, norms: fresh.norms } };
+    store(STORE.last, last);
+    render(last.response);
+  } catch {}
+}
+
 // ---- edit or view ----------------------------------------------------------------------------
 // "edit": the document can be changed and run; the last report is hidden.
 // "view": the report is shown under the read-only document it reviewed.
@@ -500,6 +522,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (last) {
     try { render(last.response); } catch { last = null; try { localStorage.removeItem(STORE.last); } catch {} }
   }
+  if (last) refreshSaved();
   // Back where the reader left off: editing a draft, or reading the last report.
   if (last && !draft?.editing) {
     $("document").value = last.document;

@@ -7,12 +7,14 @@ as fields.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from datetime import date
 
 from pydantic import BaseModel
 
 from aiact.report_app.citations import segment_citations
 from aiact.reporting import application_date, cite, condition_text
+from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.norm import NormKind
 from aiact.schemas.policy import PolicyRuleset
 from aiact.schemas.report import ComplianceReport
@@ -74,16 +76,43 @@ class ReviewResponse(BaseModel):
 def build_response(
     report: ComplianceReport, spec: PolicyRuleset, summary: SystemSummary | None = None
 ) -> ReviewResponse:
-    by_id = {rule.rule_id: rule for rule in spec.rules}
-    norms_by_id = {norm.norm_id: norm for norm in spec.report_norms}
-    use_cases = report.classification.use_cases
-
     rule_ids = (
         {finding.rule_id for finding in report.findings}
         | {rule_id for ids in report.not_document_verifiable.values() for rule_id in ids}
         | {notice.rule_id for notice in report.timing_not_active}
     )
-    rules = {
+    norm_ids = set(report.public_authority_statements)
+    for bucket in (
+        report.permissions,
+        report.rights,
+        report.legal_consequences,
+        report.conditional_applicability,
+    ):
+        norm_ids |= {norm_id for ids in bucket.values() for norm_id in ids}
+
+    return ReviewResponse(
+        system_name=summary.name if summary else None,
+        system_summary=summary.summary if summary else None,
+        report=report,
+        rules=resolve_rules(rule_ids, report.classification.use_cases, spec),
+        norms=resolve_norms(norm_ids, spec),
+        notes=ReportNotes(
+            legacy_system=report.legacy_system_note,
+            provider_reallocation=report.provider_reallocation_note,
+            deployer_type=report.deployer_type_note,
+            real_world_testing=report.real_world_testing_note,
+            chapter_v_gate=report.chapter_v_gate_note,
+            rests_on_guidance=report.rests_on_guidance,
+        ),
+    )
+
+
+def resolve_rules(
+    rule_ids: Iterable[str], use_cases: list[UseCaseClassification], spec: PolicyRuleset
+) -> dict[str, RuleView]:
+    """The named rules as a reader acts on them. An id the spec does not know is left out."""
+    by_id = {rule.rule_id: rule for rule in spec.rules}
+    return {
         rule_id: RuleView(
             rule_id=rule_id,
             citation=cite(rule),
@@ -98,19 +127,15 @@ def build_response(
             },
             effective_date_note=rule.effective_date_note,
         )
-        for rule_id in sorted(rule_ids)
+        for rule_id in sorted(set(rule_ids))
         if (rule := by_id.get(rule_id)) is not None
     }
 
-    norm_ids = set(report.public_authority_statements)
-    for bucket in (
-        report.permissions,
-        report.rights,
-        report.legal_consequences,
-        report.conditional_applicability,
-    ):
-        norm_ids |= {norm_id for ids in bucket.values() for norm_id in ids}
-    norms = {
+
+def resolve_norms(norm_ids: Iterable[str], spec: PolicyRuleset) -> dict[str, NormView]:
+    """The named report norms in readable form. An id the spec does not know is left out."""
+    norms_by_id = {norm.norm_id: norm for norm in spec.report_norms}
+    return {
         norm_id: NormView(
             norm_id=norm_id,
             kind=norm.kind,
@@ -122,22 +147,6 @@ def build_response(
                 dict.fromkeys(segment_citations().get(span, span) for span in norm.source_spans)
             ),
         )
-        for norm_id in sorted(norm_ids)
+        for norm_id in sorted(set(norm_ids))
         if (norm := norms_by_id.get(norm_id)) is not None
     }
-
-    return ReviewResponse(
-        system_name=summary.name if summary else None,
-        system_summary=summary.summary if summary else None,
-        report=report,
-        rules=rules,
-        norms=norms,
-        notes=ReportNotes(
-            legacy_system=report.legacy_system_note,
-            provider_reallocation=report.provider_reallocation_note,
-            deployer_type=report.deployer_type_note,
-            real_world_testing=report.real_world_testing_note,
-            chapter_v_gate=report.chapter_v_gate_note,
-            rests_on_guidance=report.rests_on_guidance,
-        ),
-    )

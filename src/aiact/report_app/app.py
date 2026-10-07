@@ -29,7 +29,15 @@ from aiact.gap.judge import LLMJudge
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
 from aiact.report_app.citations import segment_citations
-from aiact.report_app.views import ReviewResponse, build_response
+from aiact.report_app.views import (
+    NormView,
+    ReviewResponse,
+    RuleView,
+    build_response,
+    resolve_norms,
+    resolve_rules,
+)
+from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.policy import PolicyRuleset
 from aiact.summary import LLMSummariser, Summariser, SystemSummary
 
@@ -99,6 +107,32 @@ async def _revalidate(
 @app.get("/", include_in_schema=False)
 def index() -> FileResponse:
     return FileResponse(STATIC / "index.html")
+
+
+class RefreshRequest(BaseModel):
+    """What a saved report names. The saved report itself is not sent back: its classification
+    answers come out of JSON as text, and an answer refuses raw text by design."""
+
+    use_cases: list[UseCaseClassification]
+    rule_ids: list[str]
+    norm_ids: list[str]
+
+
+class RefreshResponse(BaseModel):
+    rules: dict[str, RuleView]
+    norms: dict[str, NormView]
+
+
+@app.post("/api/refresh")
+def post_refresh(
+    request: RefreshRequest, spec: Annotated[PolicyRuleset, Depends(get_spec)]
+) -> RefreshResponse:
+    """The rules and norms a saved report names, rebuilt from the current spec, so a report saved
+    before a rules change reads like a new one. Nothing is re-judged and no model is called."""
+    return RefreshResponse(
+        rules=resolve_rules(request.rule_ids, request.use_cases, spec),
+        norms=resolve_norms(request.norm_ids, spec),
+    )
 
 
 @app.get("/api/limits")
