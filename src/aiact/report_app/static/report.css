@@ -19,6 +19,7 @@
   /* Two greens for what the Act gives rather than asks: a permission and a right. */
   --kind-permission: #047857;
   --kind-entitlement: #4d7c0f;
+  --ok: #15803d;
 }
 /* Dark tokens apply when the system is dark (unless the viewer picked light) or when the
    viewer picked dark. The theme switch sets data-theme on <html>. */
@@ -42,6 +43,7 @@
     --role-gpai-provider: #c4b5fd;
     --kind-permission: #34d399;
     --kind-entitlement: #a3e635;
+    --ok: #4ade80;
   }
 }
 :root[data-theme="dark"] {
@@ -63,6 +65,7 @@
   --role-gpai-provider: #c4b5fd;
   --kind-permission: #34d399;
   --kind-entitlement: #a3e635;
+  --ok: #4ade80;
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -174,18 +177,34 @@ ul.basis li::marker { color: var(--orange); }
 .note.stop { border-color: var(--red); background: var(--red-soft); }
 .note.stop .lead { color: var(--red); }
 .note p { margin: 0; }
+.notes { overflow: hidden; }
+.notes > h3 { margin: 0; padding: 12px 20px 4px; font-size: 11px; font-weight: 700; text-transform: uppercase;
+              letter-spacing: .08em; color: var(--muted); display: flex; gap: 8px; }
+.notes > .hint { padding: 0 20px 8px; font-size: 12px; color: var(--muted); margin: 0; }
+.notes details.note-item > summary { grid-template-columns: 220px minmax(0, 1fr); }
+.notes details.note-item .item-body { padding-left: 252px; }
+.notes details.note-item .item-body p { margin: 0; max-width: 760px; }
 
-/* ---- counts ---------------------------------------------------------------------------- */
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.tile { padding: 14px 16px; position: relative; overflow: hidden; }
-.tile::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--ink); }
-.tile.future::before { background: var(--orange); }
-.tile .k { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
-.tile .big { font-size: 26px; font-weight: 700; letter-spacing: -.03em; margin: 2px 0; font-variant-numeric: tabular-nums; }
-.tile .big small { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
-.tile .s { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
-.tile .s b { color: var(--ink); }
-.tile .s b.red { color: var(--red); }
+/* ---- the short answer ------------------------------------------------------------------ */
+.compliance { padding: 20px; display: grid; gap: 10px; border-left: 4px solid var(--ink); }
+.compliance.ok { border-left-color: var(--ok); }
+.compliance.warn { border-left-color: var(--orange); }
+.compliance.stop { border-left-color: var(--red); }
+.compliance .answer { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+.compliance.ok .answer { color: var(--ok); }
+.compliance.warn .answer { color: var(--orange-ink); }
+.compliance.stop .answer { color: var(--red); }
+.compliance p { margin: 0; font-size: 15px; max-width: 820px; }
+.compliance .todo { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+.compliance .todo h3 { margin: 0 0 8px; font-size: 15px; font-weight: 700; }
+.compliance .todo.now h3 { color: var(--red); }
+.compliance .todo.later h3 { color: var(--orange-ink); }
+.compliance ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.compliance li::marker { color: var(--muted); font-size: 13px; }
+.compliance li a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.compliance li a:hover { color: var(--orange-ink); text-decoration: underline; }
+.compliance li .tag, .compliance li .role-tag { margin-left: 8px; font-size: 11px; }
+.compliance .also { font-size: 14px; color: var(--muted); }
 
 /* ---- roles ----------------------------------------------------------------------------- */
 .role { overflow: hidden; }
@@ -209,6 +228,19 @@ ul.basis li::marker { color: var(--orange); }
 .role-filter .lbl { font-size: 12px; font-weight: 600; color: var(--muted); }
 button.role-tag { font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
 button.role-tag.off { color: var(--faint); background: none; border-color: var(--line-strong); text-decoration: line-through; }
+.provisions { overflow: hidden; }
+.provisions > .filters { padding: 14px 20px; border-bottom: 1px solid var(--line-strong); display: grid; gap: 10px; }
+.provisions .role-filter { margin: 0; }
+.when-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.when-filter .lbl { font-size: 12px; font-weight: 600; color: var(--muted); }
+.seg { display: flex; border: 1px solid var(--line-strong); border-radius: 7px; padding: 2px; }
+.seg button { font: inherit; font-size: 12px; font-weight: 600; color: var(--muted); background: none; border: 0;
+              border-radius: 5px; padding: 3px 10px; cursor: pointer; }
+.seg button:hover { color: var(--ink); }
+.seg button.on { background: var(--orange); color: #0b0b0b; }
+.what { display: grid; gap: 5px; min-width: 0; }
+.parties { display: flex; flex-wrap: wrap; gap: 4px; }
+.parties .role-tag { font-size: 11px; padding: 0 7px; }
 .role > h2 .n { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--muted); font-size: 12px; }
 .group { border-bottom: 1px solid var(--line); }
 .group:last-child { border-bottom: 0; }
@@ -243,9 +275,12 @@ footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 24px;
 @media (max-width: 760px) {
   main, .topbar-in { padding: 16px; }
   details.item > summary { grid-template-columns: auto auto minmax(0, 1fr); padding: 10px 16px; }
-  details.item > summary .when { display: none; } /* the group heading already gives the date */
   .item-body { padding: 4px 16px 14px; }
+  .notes details.note-item > summary { grid-template-columns: 1fr; gap: 2px; }
+  .notes details.note-item .item-body { padding-left: 16px; }
+  .notes > h3, .notes > .hint { padding-left: 16px; padding-right: 16px; }
   .kv { grid-template-columns: 1fr; gap: 2px; } .kv > .l { text-align: left; }
+  .provisions > .filters { padding: 12px 16px; }
   .role > h2, .group > h3, .group > .hint, .empty { padding-left: 16px; padding-right: 16px; }
 }
 

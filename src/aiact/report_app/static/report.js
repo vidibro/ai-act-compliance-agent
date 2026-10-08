@@ -115,7 +115,7 @@ function setBusy(busy) {
   const started = Date.now();
   const text = el("span", {}, "Reviewing… 0s");
   status.replaceChildren(el("span", { class: "spinner" }), text,
-    el("span", { class: "muted small" }, "Classifying the system, then checking each obligation."));
+    el("span", { class: "muted small" }, "Classifying the system, then checking each duty."));
   status.hidden = false;
   timer = setInterval(() => { text.textContent = `Reviewing… ${Math.round((Date.now() - started) / 1000)}s`; }, 1000);
 }
@@ -160,20 +160,24 @@ function render(data) {
   const ruleDate = (id) => data.rules[id]?.application_dates?.[useCase] ?? null;
   const isFuture = (d) => d !== null && d > today;
 
+  filters = []; // the bars of the report being replaced
+  whenButtons = [];
   const [first, later] = notes(data);
-  const duties = roles(report, data, ruleDate, isFuture);
+  const { duties, others } = provisions(report, data, ruleDate, isFuture);
   // A section with nothing to show is null; replaceChildren would print it as text.
   $("report").replaceChildren(...[
     ...header(data),
+    compliance(report, data, ruleDate, isFuture),
     ...first,
-    duties.length ? el("div", { class: "section-head" },
-      el("h2", {}, "Obligations"),
-      el("p", { class: "muted" }, "What the AI Act requires for this system, grouped by who owes it, and whether your document shows it."),
-      roleFilter(duties)) : null,
-    upcomingBanner(report, data, ruleDate, isFuture),
-    tiles(report, data, ruleDate, isFuture),
-    ...later,
-    ...duties,
+    duties ? el("div", { class: "section-head", id: "duties" },
+      el("h2", {}, "Your duties"),
+      el("p", { class: "muted" }, "What the AI Act requires, and who must do it. Where a duty can be shown in writing, we checked whether your document covers it. The rest can't be verified from documentation, so you need to check them yourself.")) : null,
+    duties ? later : null,
+    duties,
+    others ? el("div", { class: "section-head" },
+      el("h2", {}, "Permissions, rights and effects"),
+      el("p", { class: "muted" }, "What the AI Act allows you, what you can claim, and what follows in law. Nothing here is checked.")) : null,
+    others,
     publicAuthority(report, data),
     el("footer", { class: "disclaimer" }, report.disclaimer),
   ].filter(Boolean));
@@ -214,7 +218,8 @@ function note(kind, lead, text) {
   return el("section", { class: `note ${kind}` }, el("div", { class: "lead" }, lead), el("p", {}, text));
 }
 
-// Notes that change how the report reads go above the counts; context goes below them.
+// Notes that change how the report reads go above the counts as alerts. The rest explain a
+// condition on the duties and go in one panel under the counts, one line each.
 function notes(data) {
   const report = data.report;
   const out = [];
@@ -225,66 +230,102 @@ function notes(data) {
   }
   const n = data.notes;
   if (n.provider_reallocation) out.push(note("warn", "Who is the provider", n.provider_reallocation));
-  if (n.deployer_type) later.push(note("", "Deployer", n.deployer_type));
-  if (n.real_world_testing) later.push(note("", "Real-world testing", n.real_world_testing));
-  if (n.chapter_v_gate) later.push(note("", "General-purpose AI model", n.chapter_v_gate));
+  if (n.deployer_type) later.push(["Who deploys the system",
+    "Decides whether the impact assessment (Art. 27) and deployer registration (Art. 49(3)) apply.", n.deployer_type]);
+  if (n.real_world_testing) later.push(["Live testing before release",
+    "Decides whether the testing duties of Art. 60 and 61 apply.", n.real_world_testing]);
+  if (n.chapter_v_gate) later.push(["General-purpose AI model",
+    "Decides which Chapter V duties apply.", n.chapter_v_gate]);
   // Art. 111 is relief the report cannot grant: it turns on the market placement date, which no
   // document states. Shown as advice, never as an exemption, and it changes no count.
-  if (n.legacy_system) later.push(note("", "If the system is already on the market — check with your adviser", n.legacy_system));
-  return [out, later];
+  if (n.legacy_system) later.push(["Systems already on the market",
+    "May get more time under Art. 111. The review does not apply this — check with your adviser.", n.legacy_system]);
+  return [out, later.length ? noteList(later) : null];
 }
 
-function upcomingBanner(report, data, ruleDate, isFuture) {
-  const dates = Object.entries(report.summary.upcoming);
-  if (!dates.length) return null;
-  const confirm = [...new Set(Object.values(report.not_document_verifiable).flat())]
-    .filter((id) => isFuture(ruleDate(id))).length;
-  const parts = dates.map(([d, s]) => `${plural(s.total_applicable, "obligation")} become required on ${fmtDate(d)}`);
-  return note("warn", "Upcoming obligations",
-    `${parts.join("; ")}${confirm ? `, plus ${confirm} to check yourself` : ""}. ` +
-    "They are checked now so you can prepare. A gap against one of them is not a breach today.");
+function noteList(items) {
+  return el("section", { class: "card notes" },
+    el("h3", {}, "Notes on these duties", el("span", { class: "muted" }, `· ${items.length}`)),
+    el("p", { class: "hint" }, "Facts the review could not settle from your document, and what they change. Open a note for details."),
+    items.map(([title, hint, text]) => el("details", { class: "item note-item" },
+      el("summary", {}, el("span", { class: "cite" }, title), el("span", { class: "oneline" }, hint)),
+      el("div", { class: "item-body" }, el("p", {}, text)))));
 }
 
-function tile(cls, label, s) {
-  return el("div", { class: `card tile ${cls}` },
-    el("div", { class: "k" }, label),
-    el("div", { class: "big" }, s.total_applicable, el("small", {}, "checked")),
-    el("div", { class: "s" },
-      el("span", {}, el("b", { class: s.gaps ? "red" : "" }, s.gaps), " gap"),
-      el("span", {}, el("b", {}, s.inadequate), " inadequate"),
-      el("span", {}, el("b", {}, s.needs_review), " needs review"),
-      el("span", {}, el("b", {}, s.passed), " pass")));
+// ---- the short answer -------------------------------------------------------------------------
+// Is the system compliant, and what is left to do. Only the duties a document can show are judged,
+// so the answer never says "compliant" outright: it says the document meets what was checked, and
+// points at the duties nobody checked.
+const nDuties = (n) => `${n} ${n === 1 ? "duty" : "duties"}`;
+const FIX = { gap: "Not covered in your document", inadequate: "Covered only in part", needs_review: "Unclear from your document" };
+
+function compliance(report, data, ruleDate, isFuture) {
+  const risk = report.classification.overall_risk_class;
+  const open = report.findings.filter((f) => f.verdict in FIX);
+  const openNow = open.filter((f) => !f.applies_from);
+  const unchecked = [...new Set(Object.values(report.not_document_verifiable).flat())];
+  const uncheckedNow = unchecked.filter((id) => !isFuture(ruleDate(id))).length;
+
+  let state, answer, detail;
+  if (risk === "prohibited") {
+    state = "stop"; answer = "Not allowed";
+    detail = "This is a prohibited practice under Art. 5. It must not be placed on the EU market, put into service or used, so no other duty can make it compliant.";
+  } else if (risk === "needs_review") {
+    state = "warn"; answer = "Can't tell yet";
+    detail = "The review could not classify the system from your document, so it can't say what applies. Add the missing facts and run it again.";
+  } else if (openNow.length) {
+    state = "stop"; answer = "Not compliant today";
+    detail = `${nDuties(openNow.length)} in force today ${openNow.length === 1 ? "is" : "are"} not met by your document.`;
+  } else if (report.findings.length) {
+    state = "ok"; answer = "Compliant today";
+    detail = "Your document meets every duty in force today that it can show.";
+  } else {
+    state = "ok"; answer = "Nothing to check against your document";
+    detail = "None of the duties that apply to this system can be shown in writing.";
+  }
+
+  // What to fix now, then what to meet by each later date.
+  const later = groupBy(open.filter((f) => f.applies_from), (f) => f.applies_from);
+  const todo = (title, cls, list) => el("div", { class: `todo ${cls}` },
+    el("h3", {}, title),
+    el("ol", {}, list.map((f) => {
+      const rule = data.rules[f.rule_id];
+      return el("li", {},
+        el("a", { href: `#${itemId(f)}`, onclick: (e) => { e.preventDefault(); reveal(itemId(f)); } },
+          rule?.action || rule?.requirement || f.rule_id),
+        el("span", { class: "muted" }, ` — ${FIX[f.verdict]}, ${rule?.citation || citeSource(f.citation)}`),
+        roleTag(f.role));
+    })));
+  return el("section", { class: `card compliance ${state}` },
+    el("div", { class: "eyebrow" }, "Compliance"),
+    el("div", { class: "answer" }, answer),
+    el("p", {}, detail),
+    risk !== "prohibited" && openNow.length ? todo("Fix now", "now", openNow) : null,
+    risk !== "prohibited" ? Object.entries(later).sort().map(([d, list]) =>
+      todo(`To stay compliant from ${fmtDate(d)}: ${nDuties(list.length)} to meet`, "later", list)) : null,
+    unchecked.length && risk !== "prohibited" && risk !== "needs_review" ? el("p", { class: "also" },
+      `Also check ${nDuties(unchecked.length)} yourself that can't be verified from documentation — ${uncheckedNow} already ${uncheckedNow === 1 ? "applies" : "apply"}. `,
+      el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list")) : null,
+  );
 }
 
-function tiles(report, data, ruleDate, isFuture) {
-  const s = report.summary;
-  const outstanding = [...new Set(Object.values(report.not_document_verifiable).flat())];
-  if (!s.total_applicable && !Object.keys(s.upcoming).length && !outstanding.length) return null;
-  const confirmNow = outstanding.filter((id) => !isFuture(ruleDate(id))).length;
-  return el("section", { class: "tiles" },
-    s.total_applicable ? tile("", "In force now", s) : null, // nothing checked: no tile of zeros
-    Object.entries(s.upcoming).map(([d, u]) => tile("future", `Required from ${fmtDate(d)}`, u)),
-    outstanding.length ? el("div", { class: "card tile" },
-      el("div", { class: "k" }, "Check yourself"),
-      el("div", { class: "big" }, outstanding.length, el("small", {}, outstanding.length === 1 ? "obligation" : "obligations")),
-      el("div", { class: "s" }, confirmText(outstanding.length, confirmNow))) : null);
+const itemId = (f) => `finding-${f.rule_id}-${f.role}`;
+
+// Open a duty in the list and bring it into view, showing it even if a filter hid it.
+function reveal(id) {
+  const item = $(id);
+  if (!item) return;
+  item.hidden = false;
+  item.closest(".group").hidden = false;
+  item.open = true;
+  item.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// Obligations a document cannot show (a quality system, a registration): the review lists them
-// and the reader checks them.
-function confirmText(total, now) {
-  const later = total - now;
-  const when = !later ? (total === 1 ? "Already applies." : "All already apply.")
-    : !now ? (total === 1 ? "Applies later." : "All apply later.")
-    : `${now} already ${now === 1 ? "applies" : "apply"}, ${later} later.`;
-  return `${when} A document can't show ${total === 1 ? "it" : "these"}, so the review doesn't check ${total === 1 ? "it" : "them"}.`;
-}
-
-// ---- one section per duty-holder -------------------------------------------------------------
-// An unjudged item several parties owe (the Art. 5 ban, Art. 4 AI literacy, a fine) is listed
-// once, in a section titled with exactly those parties. Findings stay with their role: each is its
-// own verdict.
-function roles(report, data, ruleDate, isFuture) {
+// ---- one list of provisions ---------------------------------------------------------------------
+// Every provision once, tagged with the parties it applies to. A finding is one party's verdict, so
+// it carries that party's tag; an unjudged item several parties owe (the Art. 5 ban, Art. 4 AI
+// literacy, a fine) is listed once with all of their tags.
+function provisions(report, data, ruleDate, isFuture) {
   const present = new Set([
     ...report.findings.map((f) => f.role),
     ...Object.keys(report.not_document_verifiable),
@@ -293,97 +334,112 @@ function roles(report, data, ruleDate, isFuture) {
   ]);
   const order = [...ROLE_ORDER.filter((r) => present.has(r)), ...[...present].filter((r) => !ROLE_ORDER.includes(r))];
 
+  // Each unjudged item, keyed "<kind>:<id>", with the parties that owe it in role order.
   const owners = {};
-  const items = (role) => [
-    ...(report.not_document_verifiable[role] || []).map((id) => `rule:${id}`),
-    ...report.timing_not_active.filter((t) => t.role === role).map((t) => `route:${t.rule_id}`),
-    ...NORM_GROUPS.flatMap(([key]) => (report[key][role] || []).map((id) => `${key}:${id}`)),
-  ];
-  for (const role of order) for (const key of items(role)) (owners[key] ||= []).push(role);
-  const shared = (key) => owners[key].length > 1;
-
-  // An item key is "<kind>:<id>"; turn a list of keys back into ids per kind.
-  const partsOf = (keys) => {
-    const ids = (prefix) => keys.filter((k) => k.startsWith(prefix)).map((k) => k.slice(prefix.length));
-    return {
-      outstanding: ids("rule:"),
-      unresolved: ids("route:"),
-      norms: Object.fromEntries(NORM_GROUPS.map(([key]) => [key, ids(`${key}:`)])),
-    };
-  };
-  const ctx = { data, ruleDate, isFuture };
-  const sections = [];
-  const byParties = groupBy(Object.keys(owners).filter(shared), (key) => owners[key].join(","));
-  // The widest group of parties first: it is what most readers owe.
-  for (const [parties, keys] of Object.entries(byParties).sort((a, b) => b[0].split(",").length - a[0].split(",").length)) {
-    sections.push(el("section", { class: "card role", "data-roles": parties },
-      el("h2", {}, el("span", { class: "roles" }, parties.split(",").map(roleTag))),
-      dutyGroups(partsOf(keys), [], ctx)));
-  }
+  const add = (key, role) => { if (!(owners[key] ||= []).includes(role)) owners[key].push(role); };
   for (const role of order) {
-    const findings = report.findings.filter((f) => f.role === role);
-    const parts = partsOf(items(role).filter((k) => !shared(k)));
-    const groups = dutyGroups(parts, findings, ctx);
-    if (!groups.length) continue;
-    const counts = report.summary.per_role?.[role];
-    sections.push(el("section", { class: "card role", "data-roles": role },
-      el("h2", {}, roleTag(role),
-        counts ? el("span", { class: "n" }, `${counts.gaps} gap${counts.gaps === 1 ? "" : "s"} in force`) : null),
-      groups));
+    for (const id of report.not_document_verifiable[role] || []) add(`rule:${id}`, role);
+    for (const t of report.timing_not_active.filter((t) => t.role === role)) add(`route:${t.rule_id}`, role);
+    for (const [key] of NORM_GROUPS) for (const id of report[key][role] || []) add(`${key}:${id}`, role);
   }
-  return sections;
+  const ids = (prefix) => Object.keys(owners).filter((k) => k.startsWith(prefix)).map((k) => k.slice(prefix.length));
+  const partiesOf = (prefix) => (id) => owners[`${prefix}${id}`];
+  const findings = [...report.findings].sort((a, b) => order.indexOf(a.role) - order.indexOf(b.role));
+
+  const duties = dutyGroups({ outstanding: ids("rule:"), unresolved: ids("route:") },
+    findings, { data, ruleDate, isFuture, partiesOf });
+  const others = NORM_GROUPS.map(([key, label]) => {
+    const list = ids(`${key}:`);
+    return list.length ? group("", label, null, list.map((id) => normItem(id, data, partiesOf(`${key}:`)(id)))) : null;
+  }).filter(Boolean);
+  const card = (groups, ...bars) => (groups.length
+    ? el("section", { class: "card provisions" }, el("div", { class: "filters" }, ...bars, roleFilter(groups, order)), groups) : null);
+  return { duties: card(duties, whenFilter()), others: card(others) };
 }
 
 const roleTag = (role) => el("span", { class: `role-tag r-${role}` }, human(role));
 
 // ---- role filter -------------------------------------------------------------------------------
-// The reader picks the roles they hold; a section shows while any of its roles is picked. The
-// choice is remembered in this browser.
+// The reader picks the roles they hold; a provision shows while any of its parties is picked, and a
+// group with none left showing is hidden. Each list has its own bar on top; all bars share one
+// choice, remembered in this browser.
 const ROLES_KEY = "aiact-review:hidden-roles";
+let filters = []; // [{ groups, buttons, reset }] for every bar on the page
 
-function roleFilter(sections) {
-  const present = [...new Set(sections.flatMap((s) => (s.dataset.roles || "").split(",").filter(Boolean)))];
-  if (present.length < 2) return null;
+// The reader also picks which duties to see by date: all, those in force now, or those that start
+// later. A duty whose date turns on the Art. 6 route shows under "All" only.
+const WHEN_KEY = "aiact-review:when";
+const WHEN = [["all", "All"], ["now", "In force now"], ["future", "Starts later"]];
+let whenButtons = [];
+
+function whenFilter() {
+  const pick = (value) => { store(WHEN_KEY, value); applyFilters(); };
+  whenButtons = WHEN.map(([value, label]) => el("button", { type: "button", "data-when": value, onclick: () => pick(value) }, label));
+  return el("div", { class: "when-filter" }, el("span", { class: "lbl" }, "Show duties:"),
+    el("div", { class: "seg", role: "group", "aria-label": "Show duties by date" }, whenButtons));
+}
+
+function applyFilters() {
   const hidden = new Set(restore(ROLES_KEY) || []);
-  const apply = () => {
-    for (const s of sections) {
-      if (!s.dataset.roles) continue;
-      s.hidden = s.dataset.roles.split(",").every((r) => hidden.has(r));
+  const when = restore(WHEN_KEY) || "all";
+  for (const b of whenButtons) b.classList.toggle("on", b.dataset.when === when);
+  for (const { groups, buttons, reset } of filters) {
+    for (const g of groups) {
+      let shown = 0;
+      for (const item of g.querySelectorAll("[data-roles]")) {
+        item.hidden = item.dataset.roles.split(",").every((r) => hidden.has(r))
+          || (when !== "all" && item.dataset.when !== undefined && item.dataset.when !== when);
+        if (!item.hidden) shown += 1;
+      }
+      g.hidden = !shown;
+      g.querySelector(".count").textContent = `· ${shown}`;
     }
     for (const b of buttons) b.classList.toggle("off", hidden.has(b.dataset.role));
     reset.hidden = !hidden.size;
-    store(ROLES_KEY, [...hidden]);
-  };
-  const buttons = present.map((role) => el("button", {
-    type: "button", class: `role-tag r-${role}`, "data-role": role, title: "Show or hide this role's obligations",
-    onclick: () => { hidden.has(role) ? hidden.delete(role) : hidden.add(role); apply(); },
-  }, human(role)));
-  const reset = el("button", { type: "button", class: "link", onclick: () => { hidden.clear(); apply(); } }, "Show all");
-  const bar = el("div", { class: "role-filter" }, el("span", { class: "lbl" }, "Show obligations for:"), buttons, reset);
-  apply();
-  return bar;
+  }
 }
 
-// The groups of one section.
-function dutyGroups(parts, findings, { data, ruleDate, isFuture }) {
-  const now = findings.filter((f) => !f.applies_from);
-  const byDate = groupBy(findings.filter((f) => f.applies_from), (f) => f.applies_from);
-  const confirmNow = parts.outstanding.filter((id) => !isFuture(ruleDate(id)));
-  const confirmLater = parts.outstanding.filter((id) => isFuture(ruleDate(id)));
+function roleFilter(groups, roles) {
+  const tagged = new Set(groups.flatMap((g) => [...g.querySelectorAll("[data-roles]")].flatMap((i) => i.dataset.roles.split(","))));
+  const present = roles.filter((r) => tagged.has(r));
+  if (present.length < 2) return null;
+  const toggle = (role) => {
+    const hidden = new Set(restore(ROLES_KEY) || []);
+    hidden.has(role) ? hidden.delete(role) : hidden.add(role);
+    store(ROLES_KEY, [...hidden]);
+    applyFilters();
+  };
+  const buttons = present.map((role) => el("button", {
+    type: "button", class: `role-tag r-${role}`, "data-role": role, title: "Show or hide what applies to this role",
+    onclick: () => toggle(role),
+  }, human(role)));
+  const reset = el("button", { type: "button", class: "link", onclick: () => { store(ROLES_KEY, []); applyFilters(); } }, "Show all");
+  filters.push({ groups, buttons, reset });
+  queueMicrotask(applyFilters); // once the list is on the page
+  return el("div", { class: "role-filter" }, el("span", { class: "lbl" }, "Show for:"), buttons, reset);
+}
+
+function dutyGroups(parts, findings, { data, ruleDate, isFuture, partiesOf }) {
+  // In force first, then by the date each starts.
+  const byDate = (date) => date || "";
+  const checked = [...findings].sort((a, b) => byDate(a.applies_from).localeCompare(byDate(b.applies_from)));
+  const outstanding = [...parts.outstanding].sort((a, b) =>
+    byDate(isFuture(ruleDate(a)) ? ruleDate(a) : null).localeCompare(byDate(isFuture(ruleDate(b)) ? ruleDate(b) : null)));
+  const rule = partiesOf("rule:");
+  const route = partiesOf("route:");
   return [
-    now.length ? group("", "Checked — in force now", null, now.map((f) => findingItem(f, data))) : null,
-    ...Object.entries(byDate).sort().map(([d, list]) =>
-      group("future", `Checked — required from ${fmtDate(d)}`, "Not yet in force. A gap here is something to fix before this date.",
-        list.map((f) => findingItem(f, data)))),
-    confirmNow.length ? group("", "Check yourself — applies now", "A document can't show these, so the review doesn't check them. Check each one yourself.",
-      confirmNow.map((id) => outstandingItem(id, data, ruleDate(id), false))) : null,
-    confirmLater.length ? group("future", "Check yourself — applies later", "Not yet in force. A document can't show these, so check each one yourself before its date.",
-      confirmLater.map((id) => outstandingItem(id, data, ruleDate(id), true))) : null,
+    checked.length ? group("", "Checked against your document", null, checked.map((f) => findingItem(f, data))) : null,
+    outstanding.length ? group("", "Not verifiable from documentation", "The review doesn't check these. Check each one yourself.",
+      outstanding.map((id) => outstandingItem(id, data, ruleDate(id), isFuture(ruleDate(id)), rule(id)))) : null,
     parts.unresolved.length ? group("", "Date depends on the Art. 6 route", "Not checked: when these apply turns on how the system is classified.",
-      parts.unresolved.map((id) => outstandingItem(id, data, null, false))) : null,
-    ...NORM_GROUPS.map(([key, label]) => (parts.norms[key].length
-      ? group("", label, null, parts.norms[key].map((id) => normItem(id, data))) : null)),
+      parts.unresolved.map((id) => outstandingItem(id, data, null, false, route(id), "unknown"))) : null,
   ].filter(Boolean);
+}
+
+// The action, with the parties it applies to under it.
+function what(text, roles) {
+  return el("span", { class: "what" }, el("span", { class: "oneline" }, text),
+    roles?.length ? el("span", { class: "parties" }, roles.map(roleTag)) : null);
 }
 
 function groupBy(list, key) {
@@ -392,7 +448,7 @@ function groupBy(list, key) {
 
 function group(cls, title, hint, items) {
   return el("div", { class: `group ${cls}`.trim() },
-    el("h3", {}, title, el("span", { class: "muted" }, `· ${items.length}`)),
+    el("h3", {}, title, el("span", { class: "muted count" }, `· ${items.length}`)),
     hint ? el("p", { class: "hint" }, hint) : null,
     items);
 }
@@ -403,11 +459,11 @@ function kv(label, ...value) {
 
 function findingItem(f, data) {
   const rule = data.rules[f.rule_id];
-  return el("details", { class: "item" },
+  return el("details", { class: "item", id: itemId(f), "data-roles": f.role, "data-when": f.applies_from ? "future" : "now" },
     el("summary", {},
       el("span", {}, el("span", { class: `tag ${f.verdict}` }, VERDICT[f.verdict] || human(f.verdict))),
       el("span", { class: "cite" }, rule?.citation || citeSource(f.citation)),
-      el("span", { class: "oneline" }, rule?.action || rule?.requirement || f.rule_id),
+      what(rule?.action || rule?.requirement || f.rule_id, [f.role]),
       el("span", { class: "when" }, f.applies_from ? el("span", { class: "tag date" }, `from ${fmtDate(f.applies_from)}`) : null)),
     el("div", { class: "item-body" },
       kv("Finding", f.reasoning),
@@ -426,13 +482,13 @@ function findingItem(f, data) {
   );
 }
 
-function outstandingItem(id, data, date, future) {
+function outstandingItem(id, data, date, future, roles, when = future ? "future" : "now") {
   const rule = data.rules[id];
-  return el("details", { class: "item" },
+  return el("details", { class: "item", "data-roles": roles.join(","), "data-when": when },
     el("summary", {},
       el("span", {}, el("span", { class: "tag needs_review" }, "Check")),
       el("span", { class: "cite" }, rule?.citation || ""),
-      el("span", { class: "oneline" }, rule?.action || rule?.requirement || id),
+      what(rule?.action || rule?.requirement || id, roles),
       el("span", { class: "when" }, future ? el("span", { class: "tag date" }, `from ${fmtDate(date)}`) : null)),
     el("div", { class: "item-body" },
       rule ? kv("What to check", rule.evidence_expected) : null,
@@ -446,13 +502,13 @@ function outstandingItem(id, data, date, future) {
 // Reports saved before citations were added carry only the segment ids.
 const normCites = (norm) => norm?.citations || norm?.source_spans || [];
 
-function normItem(id, data) {
+function normItem(id, data, roles = null) {
   const norm = data.norms[id];
-  return el("details", { class: "item" },
+  return el("details", roles ? { class: "item", "data-roles": roles.join(",") } : { class: "item" },
     el("summary", {},
       el("span", {}, el("span", { class: `tag soft kind-${norm?.kind}` }, NORM_KIND[norm?.kind] || human(norm?.kind || "norm"))),
       el("span", { class: "cite" }, normCites(norm)[0] || ""),
-      el("span", { class: "oneline" }, norm?.action || id),
+      what(norm?.action || id, roles),
       el("span", {})),
     el("div", { class: "item-body" },
       norm ? kv("Means", norm.action) : null,
@@ -466,7 +522,7 @@ function publicAuthority(report, data) {
   const ids = report.public_authority_statements;
   if (!ids.length) return null;
   return el("section", { class: "card role" },
-    el("h2", {}, "Public authorities", el("span", { class: "n" }, "not your obligations; listed for context")),
+    el("h2", {}, "Public authorities", el("span", { class: "n" }, "not your duties; listed for context")),
     group("", "Duties and powers relevant to this system", null, ids.map((id) => normItem(id, data))));
 }
 
