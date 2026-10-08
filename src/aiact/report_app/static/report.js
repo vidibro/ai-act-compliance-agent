@@ -269,19 +269,22 @@ function compliance(report, data, ruleDate, isFuture) {
   let state, answer, detail;
   if (risk === "prohibited") {
     state = "stop"; answer = "Not allowed";
-    detail = "This is a prohibited practice under Art. 5. It must not be placed on the EU market, put into service or used, so no other duty can make it compliant.";
+    detail = "Your system is a prohibited practice under Art. 5. It must not be placed on the EU market, put into service or used, so no other duty can make it compliant.";
   } else if (risk === "needs_review") {
-    state = "warn"; answer = "Can't tell yet";
-    detail = "The review could not classify the system from your document, so it can't say what applies. Add the missing facts and run it again.";
+    state = "warn"; answer = "Not enough information to classify";
+    detail = "The document you provided doesn't say enough to classify your system, so the review can't tell which duties apply. Add the missing facts and run it again — the guide says what to write.";
+  } else if (risk === "out_of_scope") {
+    state = "ok"; answer = "Not covered by the AI Act";
+    detail = "Your system falls outside the AI Act, judging by the document you provided, so the Act sets it no duties.";
   } else if (openNow.length) {
-    state = "stop"; answer = "Not compliant today";
-    detail = `${nDuties(openNow.length)} in force today ${openNow.length === 1 ? "is" : "are"} not met by your document.`;
+    state = "stop"; answer = "Not compliant";
+    detail = `Your system does not meet ${nDuties(openNow.length)} in force today, judging by the document you provided.`;
   } else if (report.findings.length) {
-    state = "ok"; answer = "Compliant today";
-    detail = "Your document meets every duty in force today that it can show.";
+    state = "ok"; answer = "Compliant";
+    detail = "Your system meets every duty in force today, judging by the document you provided.";
   } else {
-    state = "ok"; answer = "Nothing to check against your document";
-    detail = "None of the duties that apply to this system can be shown in writing.";
+    state = "ok"; answer = "No duties to verify from your document";
+    detail = "Your system's duties can't be judged from a document. Check them yourself in the list below.";
   }
 
   // What to fix now, then what to meet by each later date.
@@ -297,13 +300,13 @@ function compliance(report, data, ruleDate, isFuture) {
         roleTag(f.role));
     })));
   return el("section", { class: `card compliance ${state}` },
-    el("div", { class: "eyebrow" }, "Compliance"),
+    el("div", { class: "eyebrow" }, "Compliance verdict"),
     el("div", { class: "answer" }, answer),
     el("p", {}, detail),
     risk !== "prohibited" && openNow.length ? todo("Fix now", "now", openNow) : null,
     risk !== "prohibited" ? Object.entries(later).sort().map(([d, list]) =>
       todo(`To stay compliant from ${fmtDate(d)}: ${nDuties(list.length)} to meet`, "later", list)) : null,
-    unchecked.length && risk !== "prohibited" && risk !== "needs_review" ? el("p", { class: "also" },
+    unchecked.length && report.findings.length && !["prohibited", "needs_review", "out_of_scope"].includes(risk) ? el("p", { class: "also" },
       `Also check ${nDuties(unchecked.length)} yourself that can't be verified from documentation — ${uncheckedNow} already ${uncheckedNow === 1 ? "applies" : "apply"}. `,
       el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list")) : null,
   );
@@ -466,19 +469,18 @@ function findingItem(f, data) {
       what(rule?.action || rule?.requirement || f.rule_id, [f.role]),
       el("span", { class: "when" }, f.applies_from ? el("span", { class: "tag date" }, `from ${fmtDate(f.applies_from)}`) : null)),
     el("div", { class: "item-body" },
-      kv("Finding", f.reasoning),
+      kv("Finding", findingText(f)),
       rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,
       kv("Evidence", f.evidence_quote ? el("blockquote", {}, f.evidence_quote)
         : el("span", { class: "muted" }, "No passage in the document was cited.")),
       f.criteria.length ? kv("Criteria", el("ul", { class: "criteria" }, f.criteria.map((c) =>
         el("li", {}, el("span", {}, el("span", { class: `tag ${c.verdict}` }, VERDICT[c.verdict] || human(c.verdict))),
-          el("span", {}, el("span", { class: "mono" }, c.norm_id), c.mandatory ? "" : " (not judged)",
+          el("span", {}, criterionTitle(rule, c), c.mandatory ? "" : " (not judged)",
             c.mandatory && c.verdict !== "pass" ? el("div", { class: "muted" }, c.reasoning) : null))))) : null,
       rule?.activation_condition ? kv("Applies to", rule.activation_condition) : null,
       kv("Confidence", human(f.confidence)),
       f.guidance.length ? kv("Guidance", "Reached with non-binding Commission guidance in view.") : null,
-      rule?.effective_date_note ? kv("Date note", rule.effective_date_note) : null,
-      kv("Rule", el("span", { class: "mono" }, f.rule_id))),
+      rule?.effective_date_note ? kv("Date note", rule.effective_date_note) : null),
   );
 }
 
@@ -494,9 +496,25 @@ function outstandingItem(id, data, date, future, roles, when = future ? "future"
       rule ? kv("What to check", rule.evidence_expected) : null,
       rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,
       rule?.activation_condition ? kv("Applies to", rule.activation_condition) : null,
-      rule?.effective_date_note ? kv("Date note", rule.effective_date_note) : null,
-      kv("Rule", el("span", { class: "mono" }, id))),
+      rule?.effective_date_note ? kv("Date note", rule.effective_date_note) : null),
   );
+}
+
+// A finding judged part by part carries a summary built from the parts' internal ids; the parts are
+// listed in full below it, so the summary is said in words instead.
+function findingText(f) {
+  const judged = f.criteria.filter((c) => c.mandatory);
+  if (!judged.length) return f.reasoning;
+  const open = judged.filter((c) => c.verdict !== "pass").length;
+  return open ? `${open} of ${judged.length} parts of this duty are not met. Each one is listed below.`
+    : `All ${judged.length} parts of this duty are met.`;
+}
+
+// A criterion as its provision and what it requires. Reports saved before criteria were sent
+// carry no titles; the refresh fills them in.
+function criterionTitle(rule, c) {
+  const criterion = rule?.criteria?.[c.norm_id];
+  return criterion ? [el("b", {}, criterion.citation), ` — ${criterion.action}`] : "";
 }
 
 // Reports saved before citations were added carry only the segment ids.

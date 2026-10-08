@@ -7,7 +7,8 @@ as fields.
 
 from __future__ import annotations
 
-from collections.abc import Iterable
+import re
+from collections.abc import Callable, Iterable
 from datetime import date
 
 from pydantic import BaseModel
@@ -16,9 +17,18 @@ from aiact.report_app.citations import segment_citations
 from aiact.reporting import application_date, cite, condition_text
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.norm import NormKind
-from aiact.schemas.policy import PolicyRuleset
+from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.report import ComplianceReport
 from aiact.summary import SystemSummary
+
+
+class CriterionView(BaseModel):
+    """One separately judged part of a rule, as a reader names it."""
+
+    citation: str
+    """The provision it comes from, e.g. "Art. 13(3)(b)(iv)"."""
+    action: str
+    """What it requires, in a few words."""
 
 
 class RuleView(BaseModel):
@@ -35,6 +45,8 @@ class RuleView(BaseModel):
     """When the obligation starts to apply, per use case id. None where the date turns on an
     Article 6 route the classification has not settled."""
     effective_date_note: str | None
+    criteria: dict[str, CriterionView] = {}
+    """The rule's separately judged parts, by norm id, so a finding's criteria read as text."""
 
 
 class NormView(BaseModel):
@@ -112,24 +124,61 @@ def resolve_rules(
 ) -> dict[str, RuleView]:
     """The named rules as a reader acts on them. An id the spec does not know is left out."""
     by_id = {rule.rule_id: rule for rule in spec.rules}
+    readable = _readable(by_id)
     return {
         rule_id: RuleView(
             rule_id=rule_id,
             citation=cite(rule),
             action=rule.action,
             requirement=rule.requirement,
-            evidence_expected=rule.evidence_expected,
-            activation_condition=rule.activation_condition,
+            evidence_expected=readable(rule.evidence_expected),
+            activation_condition=readable(rule.activation_condition),
             document_verifiable=rule.document_verifiable,
             application_dates={
                 use_case.use_case_id: application_date(rule, spec, use_case)
                 for use_case in use_cases
             },
-            effective_date_note=rule.effective_date_note,
+            effective_date_note=readable(rule.effective_date_note),
+            criteria={
+                criterion.norm_id: CriterionView(
+                    # The first span is the criterion's own provision; the rest are context.
+                    citation=_cite_spans(criterion.source_spans[:1])[0],
+                    action=criterion.action[:1].upper() + criterion.action[1:],
+                )
+                for criterion in rule.criteria
+            },
         )
         for rule_id in sorted(set(rule_ids))
         if (rule := by_id.get(rule_id)) is not None
     }
+
+
+_RULE_ID = re.compile(r"AIA-RULE-[A-Za-z0-9-]*[A-Za-z0-9]")
+_GUIDANCE_TAG = re.compile(r"\[non-binding guidance: C-(\d{4})-(\d+)/[^\]]+\]")
+
+
+def _readable(by_id: dict[str, PolicyRule]) -> Callable[[str | None], str | None]:
+    """A rule text with every other rule it names given as that rule's citation, and every guidance
+    tag as the Commission document it points to. Ids are how the ruleset cross-references itself;
+    a reader knows the provisions and the documents, not the ids."""
+
+    def replace(match: re.Match[str]) -> str:
+        rule = by_id.get(match.group())
+        return cite(rule) if rule is not None else match.group()
+
+    def readable(text: str | None) -> str | None:
+        if not text:
+            return text
+        text = _GUIDANCE_TAG.sub(r"(non-binding Commission guidance C(\1) \2)", text)
+        return _RULE_ID.sub(replace, text)
+
+    return readable
+
+
+def _cite_spans(spans: list[str]) -> list[str]:
+    """The provisions a list of text segments come from, as a reader cites them, once each."""
+    citations = segment_citations()
+    return list(dict.fromkeys(citations.get(span, span) for span in spans))
 
 
 def resolve_norms(norm_ids: Iterable[str], spec: PolicyRuleset) -> dict[str, NormView]:
@@ -143,9 +192,7 @@ def resolve_norms(norm_ids: Iterable[str], spec: PolicyRuleset) -> dict[str, Nor
             conditions=condition_text(norm.conditions) if norm.conditions else None,
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,
             source_spans=norm.source_spans,
-            citations=list(
-                dict.fromkeys(segment_citations().get(span, span) for span in norm.source_spans)
-            ),
+            citations=_cite_spans(norm.source_spans),
         )
         for norm_id in sorted(set(norm_ids))
         if (norm := norms_by_id.get(norm_id)) is not None

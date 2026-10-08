@@ -9,7 +9,9 @@ from fastapi.testclient import TestClient
 
 from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.gap.judge import Judgement
+from aiact.policy_loader import load_policy_spec
 from aiact.report_app.app import app, get_brain, get_judge, get_summariser
+from aiact.report_app.views import resolve_rules
 from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, Verdict
 from aiact.summary import SystemSummary
 
@@ -77,6 +79,31 @@ def test_a_review_returns_the_report_with_every_named_rule_resolved(client_for):
     }
     assert named <= set(body["rules"])
     assert body["report"]["disclaimer"]
+
+
+def test_every_judged_criterion_has_a_readable_title(client_for):
+    body = client_for(**high_risk()).post("/api/review", json={"document": DOCUMENT}).json()
+
+    findings = body["report"]["findings"]
+    criteria = [(f["rule_id"], c["norm_id"]) for f in findings for c in f["criteria"]]
+    assert criteria
+    for rule_id, norm_id in criteria:
+        title = body["rules"][rule_id]["criteria"][norm_id]
+        assert title["citation"].startswith(("Art.", "Annex"))
+        assert title["action"][0].isupper()
+
+
+def test_rule_texts_name_other_rules_by_citation_not_by_id():
+    spec = load_policy_spec()
+    views = resolve_rules([rule.rule_id for rule in spec.rules], [], spec)
+
+    texts = [
+        text
+        for view in views.values()
+        for text in (view.evidence_expected, view.activation_condition, view.effective_date_note)
+        if text
+    ]
+    assert not [text for text in texts if "AIA-RULE-" in text or "[non-binding guidance:" in text]
 
 
 def test_future_duties_carry_their_date(client_for):
