@@ -236,7 +236,9 @@ button.role-tag { font: inherit; font-size: 12px; font-weight: 600; cursor: poin
 button.tag { font: inherit; font-size: 12px; cursor: pointer; }
 button.tag.off { opacity: .4; text-decoration: line-through; }
 button.role-tag.off { color: var(--faint); background: none; border-color: var(--line-strong); text-decoration: line-through; }
-.provisions { overflow: hidden; }
+/* clip, not hidden: hidden would make the card a scroll container and stop its column names
+   sticking to the window. */
+.provisions { overflow: clip; }
 .provisions > .filters { padding: 14px 20px; border-bottom: 1px solid var(--line-strong); display: grid; gap: 10px; }
 .provisions .role-filter { margin: 0; }
 .when-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
@@ -246,10 +248,12 @@ button.role-tag.off { color: var(--faint); background: none; border-color: var(-
               border-radius: 5px; padding: 3px 10px; cursor: pointer; }
 .seg button:hover { color: var(--ink); }
 .seg button.on { background: var(--orange); color: #0b0b0b; }
-/* Column names over the rows, on the same grid as a row's summary. */
+/* Column names over the rows, on the same grid as a row's summary, kept in view while the list
+   scrolls past. */
 .provisions > .columns { display: grid; grid-template-columns: 104px 124px minmax(0, 1fr) auto; gap: 12px;
                          padding: 8px 20px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 700;
-                         text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+                         text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+                         position: sticky; top: 0; z-index: 2; background: var(--raised); }
 .what { display: grid; gap: 5px; min-width: 0; }
 .parties { display: flex; flex-wrap: wrap; gap: 4px; }
 .parties .role-tag { font-size: 11px; padding: 0 7px; }

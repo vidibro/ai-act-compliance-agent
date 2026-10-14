@@ -8,7 +8,7 @@ from aiact.ui.app import app
 
 def test_coverage_map_serves_page_and_consistent_payload() -> None:
     with TestClient(app) as client:
-        assert "AI Act Coverage" in client.get("/").text
+        assert "AI Act Backend" in client.get("/").text
         for asset in ("core.js", "map.js", "norms.js", "rules.js", "ui.css"):
             assert client.get(f"/static/{asset}").status_code == 200
         data = client.get("/api/coverage").json()

@@ -149,7 +149,7 @@ def post_refresh(
     before a rules change reads like a new one. Nothing is re-judged and no model is called."""
     return RefreshResponse(
         rules=resolve_rules(request.rule_ids, request.use_cases, spec),
-        norms=resolve_norms(request.norm_ids, spec),
+        norms=resolve_norms(request.norm_ids, spec, request.use_cases),
     )
 
 

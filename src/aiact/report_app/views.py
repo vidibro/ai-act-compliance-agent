@@ -17,7 +17,7 @@ from aiact.report_app.citations import segment_citations
 from aiact.reporting import application_date, cite, condition_text
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.norm import NormKind
-from aiact.schemas.policy import PolicyRule, PolicyRuleset
+from aiact.schemas.policy import PolicyRule, PolicyRuleset, ReportNorm
 from aiact.schemas.report import ComplianceReport
 from aiact.summary import SystemSummary
 
@@ -62,6 +62,9 @@ class NormView(BaseModel):
     source_spans: list[str]
     citations: list[str]
     """The source text as a reader cites it, e.g. "Art. 99(3)", one per distinct provision."""
+    application_dates: dict[str, date | None] = {}
+    """When the provision starts to apply, per use case id: the earliest date among the rules that
+    bring it into the report. None where none of those dates is settled."""
 
 
 class ReportNotes(BaseModel):
@@ -100,6 +103,7 @@ def build_response(
         report.permissions,
         report.rights,
         report.legal_consequences,
+        report.conditional_duties,
         report.conditional_applicability,
     ):
         norm_ids |= {norm_id for ids in bucket.values() for norm_id in ids}
@@ -109,7 +113,7 @@ def build_response(
         system_summary=summary.summary if summary else None,
         report=report,
         rules=resolve_rules(rule_ids, report.classification.use_cases, spec),
-        norms=resolve_norms(norm_ids, spec),
+        norms=resolve_norms(norm_ids, spec, report.classification.use_cases),
         notes=ReportNotes(
             legacy_system=report.legacy_system_note,
             provider_reallocation=report.provider_reallocation_note,
@@ -183,9 +187,24 @@ def _cite_spans(spans: list[str]) -> list[str]:
     return list(dict.fromkeys(citations.get(span, span) for span in spans))
 
 
-def resolve_norms(norm_ids: Iterable[str], spec: PolicyRuleset) -> dict[str, NormView]:
+def resolve_norms(
+    norm_ids: Iterable[str],
+    spec: PolicyRuleset,
+    use_cases: Iterable[UseCaseClassification] = (),
+) -> dict[str, NormView]:
     """The named report norms in readable form. An id the spec does not know is left out."""
     norms_by_id = {norm.norm_id: norm for norm in spec.report_norms}
+    rules_by_id = {rule.rule_id: rule for rule in spec.rules}
+
+    def start(norm: ReportNorm, use_case: UseCaseClassification) -> date | None:
+        dates = [
+            day
+            for rule_id in norm.activation_rule_ids
+            if (rule := rules_by_id.get(rule_id)) is not None
+            and (day := application_date(rule, spec, use_case)) is not None
+        ]
+        return min(dates, default=None)
+
     return {
         norm_id: NormView(
             norm_id=norm_id,
@@ -196,6 +215,9 @@ def resolve_norms(norm_ids: Iterable[str], spec: PolicyRuleset) -> dict[str, Nor
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,
             source_spans=norm.source_spans,
             citations=_cite_spans(norm.source_spans),
+            application_dates={
+                use_case.use_case_id: start(norm, use_case) for use_case in use_cases
+            },
         )
         for norm_id in sorted(set(norm_ids))
         if (norm := norms_by_id.get(norm_id)) is not None

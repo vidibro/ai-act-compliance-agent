@@ -295,6 +295,7 @@ def build_graph(
         permissions: dict[ActorRole, list[str]] = {}
         rights: dict[ActorRole, list[str]] = {}
         legal_consequences: dict[ActorRole, list[str]] = {}
+        conditional_duties: dict[ActorRole, list[str]] = {}
         conditional_applicability: dict[ActorRole, list[str]] = {}
         public_authority_statements: list[str] = []
         for active in state.active:
@@ -334,6 +335,7 @@ def build_graph(
                     NormKind.PERMISSION: permissions,
                     NormKind.ENTITLEMENT: rights,
                     NormKind.LEGAL_CONSEQUENCE: legal_consequences,
+                    NormKind.OBLIGATION: conditional_duties,
                 }.get(report_norm.kind, conditional_applicability)
                 ids = destination.setdefault(active.role, [])
                 if report_norm.norm_id not in ids:
@@ -341,6 +343,7 @@ def build_graph(
         permissions = {role: sorted(ids) for role, ids in permissions.items() if ids}
         rights = {role: sorted(ids) for role, ids in rights.items() if ids}
         legal_consequences = {role: sorted(ids) for role, ids in legal_consequences.items() if ids}
+        conditional_duties = {role: sorted(ids) for role, ids in conditional_duties.items() if ids}
         conditional_applicability = {
             role: sorted(ids) for role, ids in conditional_applicability.items() if ids
         }
@@ -358,6 +361,7 @@ def build_graph(
                 permissions=permissions,
                 rights=rights,
                 legal_consequences=legal_consequences,
+                conditional_duties=conditional_duties,
                 conditional_applicability=conditional_applicability,
                 public_authority_statements=public_authority_statements,
                 provider_reallocation=state.provider_reallocation,

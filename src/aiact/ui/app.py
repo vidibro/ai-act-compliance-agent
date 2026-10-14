@@ -1,7 +1,8 @@
 """Internal read-only UI over the Act and guidance coverage artifacts.
 
-Run with `make backend`. The data files are watched: a request after an edit rebuilds the payloads, and
-the page polls `/api/version` to pick the change up. Python edits restart the server (`--reload`).
+Run with `make backend`. The data files are watched: a request after an edit rebuilds the payloads,
+and the page polls `/api/version` to pick the change up. Python edits restart the server
+(`--reload`).
 """
 
 from __future__ import annotations

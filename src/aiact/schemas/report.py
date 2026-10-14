@@ -382,6 +382,13 @@ class ComplianceReport(BaseModel):
     exceptions; the product does not decide that a reader qualifies from silence in a document.
     """
 
+    conditional_duties: dict[ActorRole, list[str]] = {}
+    """Canonical duty norm ids that bind only under a condition this review cannot settle, keyed by
+    the active duty-holder role — e.g. Art. 48(5), owed only where other Union law also requires
+    the CE marking. Listed with their condition for the reader to check, never judged: a document
+    cannot show whether the condition holds.
+    """
+
     conditional_applicability: dict[ActorRole, list[str]] = {}
     """Canonical applicability norm ids, keyed by the active duty-holder role.
 
@@ -802,7 +809,8 @@ class ComplianceReport(BaseModel):
                 ("permissions", {"permission"}),
                 ("rights", {"entitlement"}),
                 ("legal_consequences", {"legal_consequence"}),
-                ("conditional_applicability", {"applicability", "obligation"}),
+                ("conditional_duties", {"obligation"}),
+                ("conditional_applicability", {"applicability"}),
             ):
                 for norm_id in [
                     norm_id for ids in getattr(self, field_name).values() for norm_id in ids
@@ -814,8 +822,7 @@ class ComplianceReport(BaseModel):
                             f"loaded PolicyRuleset (spec_version={spec.spec_version})."
                         )
                     if norm.kind.value not in accepted_kinds or (
-                        field_name == "conditional_applicability"
-                        and norm.kind.value == "obligation"
+                        field_name == "conditional_duties"
                         and norm.verification_mode.value != "reported_conditionally"
                     ):
                         raise ValueError(

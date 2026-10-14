@@ -239,6 +239,7 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
         permissions = report.permissions.get(role, [])
         rights = report.rights.get(role, [])
         legal_consequences = report.legal_consequences.get(role, [])
+        conditional_duties = report.conditional_duties.get(role, [])
         conditional_applicability = report.conditional_applicability.get(role, [])
         if (
             not findings
@@ -247,6 +248,7 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
             and not permissions
             and not rights
             and not legal_consequences
+            and not conditional_duties
             and not conditional_applicability
         ):
             continue
@@ -307,6 +309,11 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
                 )
                 if basis:
                     out += _wrapped("basis:", basis)
+        if conditional_duties:
+            out.append("  duties that bind only if their condition holds — check it yourself:")
+            for norm_id in conditional_duties:
+                norm = report_norms.get(norm_id)
+                out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
         if permissions:
             out.append("  permitted implementation routes:")
             for norm_id in permissions:
