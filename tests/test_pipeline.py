@@ -12,6 +12,8 @@ health unless something asserts otherwise, and that failure mode is only reachab
 
 from __future__ import annotations
 
+from datetime import date
+
 import pytest
 
 from aiact.classify.scripted_brain import ScriptedBrain
@@ -218,7 +220,14 @@ def test_the_report_covers_both_duty_holders(spec):
     report = review(DOCUMENT, spec, high_risk_brain(), judge=judge, system_id="sys-1")
 
     assert report.classification.overall_risk_class == RiskClass.HIGH_RISK
-    outstanding = report.not_document_verifiable
+    # Unjudged duties, whether in force today or listed with the later date they start from.
+    outstanding = {
+        role: sorted(
+            set(report.not_document_verifiable.get(role, []))
+            | {n.rule_id for n in report.timing_not_active if n.role is role}
+        )
+        for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER)
+    }
     assert "AIA-RULE-PO-A17" in outstanding[ActorRole.PROVIDER]
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-RULE-ALL-A04",
@@ -441,3 +450,23 @@ def test_article_5_public_authority_statements_are_not_mislabelled_as_deployer_d
         "AIA-RULE-DP-A05-3",
         "AIA-RULE-DP-A05-4",
     } & set(report.not_document_verifiable.get(ActorRole.DEPLOYER, []))
+
+
+def test_a_duty_dated_by_its_route_waits_for_that_date(spec):
+    """Arts. 16 to 27 carry their date per Art. 6 route on the rule itself, not through a temporal
+    regime. For an Annex III system reviewed before 2 December 2027 they start then — judged now as
+    preparation, or listed with that date — never reported as in force today."""
+    report = review(
+        DOCUMENT,
+        spec,
+        high_risk_brain(),
+        judge=StubJudge(),
+        system_id="sys-1",
+        as_of_date=date(2026, 10, 14),
+    )
+
+    art_16 = next(f for f in report.findings if f.rule_id == "AIA-RULE-PO-A16-B")
+    assert art_16.applies_from == date(2027, 12, 2)
+    art_17 = next(n for n in report.timing_not_active if n.rule_id == "AIA-RULE-PO-A17")
+    assert (art_17.status, art_17.application_date) == ("upcoming", date(2027, 12, 2))
+    assert "AIA-RULE-PO-A17" not in report.not_document_verifiable.get(ActorRole.PROVIDER, [])

@@ -252,9 +252,10 @@ function noteList(items) {
 }
 
 // ---- the short answer -------------------------------------------------------------------------
-// Is the system compliant, and what is left to do. Only the duties a document can show are judged,
-// so the answer never says "compliant" outright: it says the document meets what was checked, and
-// points at the duties nobody checked.
+// What the review can say, and what is left to do. Only the duties a document can show are judged,
+// so for a system the Act regulates the answer is about the documentation, never "compliant": it
+// says whether the document meets the duties it was checked against, and the duties nobody checked
+// follow straight under it.
 const nDuties = (n) => `${n} ${n === 1 ? "duty" : "duties"}`;
 const FIX = { gap: "Not covered in your document", inadequate: "Covered only in part", needs_review: "Unclear from your document" };
 
@@ -265,7 +266,10 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
   // Every duty the reader checks themselves, by its start date: the unjudged rules and the duties
   // that bind only under a condition.
   const unchecked = [
-    ...[...new Set(Object.values(report.not_document_verifiable).flat())].map(ruleDate),
+    ...[...new Set([
+      ...Object.values(report.not_document_verifiable).flat(),
+      ...report.timing_not_active.filter((t) => t.status === "upcoming").map((t) => t.rule_id),
+    ])].map(ruleDate),
     ...[...new Set(Object.values(report.conditional_duties || {}).flat())].map(normDate),
   ];
   const uncheckedNow = unchecked.filter((day) => !isFuture(day)).length;
@@ -281,38 +285,65 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
     state = "ok"; answer = "Not covered by the AI Act";
     detail = "Your system falls outside the AI Act, judging by the document you provided, so the Act sets it no duties.";
   } else if (openNow.length) {
-    state = "stop"; answer = "Not compliant";
-    detail = `Your system does not meet ${nDuties(openNow.length)} in force today, judging by the document you provided.`;
+    state = "stop"; answer = "Documentation falls short";
+    detail = "Judging by the document you provided:";
+  } else if (report.findings.some((f) => !f.applies_from)) {
+    state = "ok"; answer = "Documentation meets today's duties";
+    detail = "Judging by the document you provided:";
   } else if (report.findings.length) {
-    state = "ok"; answer = "Compliant";
-    detail = "Your system meets every duty in force today, judging by the document you provided.";
+    // Nothing a document can show is in force yet: the answer is about the first date that is.
+    const first = report.findings.map((f) => f.applies_from).sort()[0];
+    const ready = !report.findings.some((f) => f.applies_from === first && f.verdict in FIX);
+    state = ready ? "ok" : "warn";
+    answer = `Documentation ${ready ? "ready" : "not ready"} for ${fmtDate(first)}`;
+    detail = "Judging by the document you provided:";
   } else {
     state = "ok"; answer = "No duties to verify from your document";
     detail = "Your system's duties can't be judged from a document. Check them yourself in the list below.";
   }
+  const judged = !["prohibited", "needs_review", "out_of_scope"].includes(risk) && report.findings.length;
 
-  // What to fix now, then what to meet by each later date.
-  const later = groupBy(open.filter((f) => f.applies_from), (f) => f.applies_from);
-  const todo = (title, cls, list) => el("div", { class: `todo ${cls}` },
-    el("h3", {}, title),
-    el("ol", {}, list.map((f) => {
-      const rule = data.rules[f.rule_id];
-      return el("li", {},
-        el("a", { href: `#${itemId(f)}`, onclick: (e) => { e.preventDefault(); reveal(itemId(f)); } },
-          rule?.action || rule?.requirement || f.rule_id),
-        el("span", { class: "muted" }, ` — ${FIX[f.verdict]}, ${rule?.citation || citeSource(f.citation)}`),
-        roleTag(f.role));
-    })));
+  // One line per point in time, each with what is wrong under it, then the duties nobody checked:
+  // a single list, so the later dates read as part of the same answer.
+  const fixes = (list) => el("ol", { class: "fixes" }, list.map((f) => {
+    const rule = data.rules[f.rule_id];
+    return el("li", {},
+      el("a", { href: `#${itemId(f)}`, onclick: (e) => { e.preventDefault(); reveal(itemId(f)); } },
+        rule?.action || rule?.requirement || f.rule_id),
+      el("span", { class: "muted" }, ` — ${FIX[f.verdict]}, ${rule?.citation || citeSource(f.citation)}`),
+      roleTag(f.role));
+  }));
+  const line = (cls, when, text, list = null) => el("li", { class: `status ${cls}` },
+    el("span", { class: "when" }, when), el("div", {}, el("span", {}, text), list));
+  const checkedNow = report.findings.filter((f) => !f.applies_from);
+  const later = groupBy(report.findings.filter((f) => f.applies_from), (f) => f.applies_from);
+  const statuses = judged ? el("ul", { class: "statuses" },
+    !checkedNow.length ? line("ok", "Now", "No duty your document can show is in force yet.") : null,
+    checkedNow.length ? line(openNow.length ? "stop" : "ok", "Now",
+      checkedNow.length === 1 && openNow.length ? "The 1 duty in force today is not met. Fix now:"
+        : openNow.length === checkedNow.length && openNow.length ? `None of the ${nDuties(checkedNow.length)} in force today is met. Fix now:`
+        : openNow.length ? `${openNow.length} of ${nDuties(checkedNow.length)} in force today ${openNow.length === 1 ? "is" : "are"} not met. Fix now:`
+        : checkedNow.length === 1 ? "The 1 duty in force today is met." : `All ${nDuties(checkedNow.length)} in force today are met.`,
+      openNow.length ? fixes(openNow) : null) : null,
+    Object.entries(later).sort().map(([d, list]) => {
+      const notMet = list.filter((f) => f.verdict in FIX);
+      return line(notMet.length ? "warn" : "ok", `From ${fmtDate(d)}`,
+        list.length === 1 && notMet.length ? "The 1 duty that starts then isn't met yet. Fix before that date:"
+          : notMet.length === list.length ? `None of the ${nDuties(list.length)} that start then is met yet. Fix before that date:`
+          : notMet.length ? `${notMet.length} of ${nDuties(list.length)} that start then ${notMet.length === 1 ? "isn't" : "aren't"} met yet. Fix before that date:`
+          : list.length === 1 ? "The 1 duty that starts then is already met." : `All ${nDuties(list.length)} that start then are already met.`,
+        notMet.length ? fixes(notMet) : null);
+    }),
+    unchecked.length ? line("unchecked", "Not checked",
+      [`${nDuties(unchecked.length)} a document can't show — confirm them yourself. ${uncheckedNow} already ${uncheckedNow === 1 ? "applies" : "apply"}. `,
+        el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list")]) : null,
+  ) : null;
+
   return el("section", { class: `card compliance ${state}` },
-    el("div", { class: "eyebrow" }, "Compliance verdict"),
+    el("div", { class: "eyebrow" }, "Verdict"),
     el("div", { class: "answer" }, answer),
     el("p", {}, detail),
-    risk !== "prohibited" && openNow.length ? todo("Fix now", "now", openNow) : null,
-    risk !== "prohibited" ? Object.entries(later).sort().map(([d, list]) =>
-      todo(`To stay compliant from ${fmtDate(d)}: ${nDuties(list.length)} to meet`, "later", list)) : null,
-    unchecked.length && report.findings.length && !["prohibited", "needs_review", "out_of_scope"].includes(risk) ? el("p", { class: "also" },
-      `Also check ${nDuties(unchecked.length)} yourself that can't be verified from documentation — ${uncheckedNow} already ${uncheckedNow === 1 ? "applies" : "apply"}. `,
-      el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list")) : null,
+    statuses,
   );
 }
 
@@ -348,7 +379,11 @@ function provisions(report, data, ruleDate, normDate, isFuture) {
   for (const role of order) {
     for (const id of report.not_document_verifiable[role] || []) add(`rule:${id}`, role);
     for (const id of report.conditional_duties?.[role] || []) add(`cond:${id}`, role);
-    for (const t of report.timing_not_active.filter((t) => t.role === role)) add(`route:${t.rule_id}`, role);
+    // A duty that starts later is listed with the others and its date; one whose date turns on an
+    // unsettled Art. 6 route has a group of its own.
+    for (const t of report.timing_not_active.filter((t) => t.role === role)) {
+      add(`${t.status === "upcoming" ? "rule" : "route"}:${t.rule_id}`, role);
+    }
     for (const key of NORM_SECTIONS) for (const id of report[key][role] || []) add(`${key}:${id}`, role);
   }
   const ids = (prefix) => Object.keys(owners).filter((k) => k.startsWith(prefix)).map((k) => k.slice(prefix.length));
