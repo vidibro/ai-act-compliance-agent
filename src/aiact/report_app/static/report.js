@@ -450,7 +450,8 @@ function tagFilter(facet, groups, options, label = FACETS[facet].label) {
     applyFilters();
   };
   const buttons = shown.map(([value, label, cls]) => el("button", {
-    type: "button", class: cls, "data-value": value, title: "Show or hide these rows", onclick: () => toggle(value),
+    type: "button", class: cls, "data-value": value, "data-define": facet === "roles" ? value : undefined,
+    "aria-label": `Show or hide: ${label}`, onclick: () => toggle(value),
   }, label));
   const reset = el("button", { type: "button", class: "link", onclick: () => { store(FACETS[facet].key, []); applyFilters(); } }, "Show all");
   return { facet, buttons, reset, bar: el("div", { class: "role-filter" }, el("span", { class: "lbl" }, label), buttons, reset) };
@@ -611,6 +612,42 @@ function normItem(id, data, roles = null) {
   );
 }
 
+// ---- role definitions --------------------------------------------------------------------------
+// Hovering or focusing a role in a filter shows what the role means: the Act's Article 3 definition,
+// or, for a role Article 3 does not define, a summary of where the Act sets it up. The definitions
+// come from the server once; a page without them just shows no tooltip.
+let roleDefinitions = {};
+fetch("/api/roles").then((r) => (r.ok ? r.json() : {})).then((d) => { roleDefinitions = d; }).catch(() => {});
+
+const tooltip = el("div", { class: "definition", role: "tooltip", hidden: true });
+
+function showDefinition(target) {
+  const def = roleDefinitions[target.dataset.define];
+  if (!def) return;
+  // replaceChildren would print a null as text.
+  tooltip.replaceChildren(...[
+    el("div", { class: "def-head" }, el("b", {}, human(target.dataset.define)), el("span", { class: "muted" }, def.citation)),
+    el("p", {}, def.text),
+    def.defined ? null : el("p", { class: "muted small" }, "Not defined in Art. 3 — a summary of where the Act sets this role up."),
+  ].filter(Boolean));
+  tooltip.hidden = false;
+  const box = target.getBoundingClientRect();
+  const width = Math.min(420, window.innerWidth - 32);
+  tooltip.style.width = `${width}px`;
+  tooltip.style.left = `${Math.max(16, Math.min(box.left, window.innerWidth - width - 16)) + window.scrollX}px`;
+  tooltip.style.top = `${box.bottom + 8 + window.scrollY}px`;
+}
+
+function hideDefinition() { tooltip.hidden = true; }
+
+for (const [event, handler] of [["mouseover", showDefinition], ["focusin", showDefinition]]) {
+  document.addEventListener(event, (e) => { const t = e.target.closest?.("[data-define]"); if (t) handler(t); });
+}
+for (const event of ["mouseout", "focusout"]) {
+  document.addEventListener(event, (e) => { if (e.target.closest?.("[data-define]")) hideDefinition(); });
+}
+window.addEventListener("scroll", hideDefinition, { passive: true });
+
 // ---- page setup ------------------------------------------------------------------------------
 function setTheme(theme) {
   if (theme === "auto") delete document.documentElement.dataset.theme;
@@ -630,6 +667,7 @@ function countChars() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  document.body.append(tooltip);
   for (const b of document.querySelectorAll("#theme button")) b.addEventListener("click", () => setTheme(b.dataset.theme));
   setTheme(document.documentElement.dataset.theme || "auto");
   $("form").addEventListener("submit", runReview);

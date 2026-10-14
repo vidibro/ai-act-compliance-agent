@@ -226,3 +226,15 @@ def test_a_saved_report_is_refreshed_without_calling_a_model(client_for):
     assert refreshed["rules"] == body["rules"]
     assert refreshed["norms"] == body["norms"]
     assert refreshed["rules"]["AIA-RULE-HR-A09"]["action"]
+
+
+def test_roles_come_with_their_meaning(client_for):
+    roles = client_for(**high_risk()).get("/api/roles").json()
+
+    provider = roles["provider"]
+    assert provider["citation"] == "Art. 3(3)"
+    assert provider["defined"] is True
+    assert provider["text"].startswith("‘provider’ means")
+    # A role Art. 3 does not define is a summary, and says so.
+    assert roles["initial_provider"]["defined"] is False
+    assert roles["initial_provider"]["citation"] == "Art. 25(2)"

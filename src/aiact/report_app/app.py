@@ -30,6 +30,7 @@ from aiact.gap.judge import LLMJudge
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
 from aiact.report_app.citations import segment_citations
+from aiact.report_app.roles import RoleDefinition, role_definitions
 from aiact.report_app.views import (
     NormView,
     ReviewResponse,
@@ -88,6 +89,7 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     load_dotenv()  # the app boundary owns .env; the library stays free of it
     get_spec()  # fail at start, not on the first request, if the data does not load
     segment_citations()
+    role_definitions()
     yield
 
 
@@ -151,6 +153,12 @@ def post_refresh(
         rules=resolve_rules(request.rule_ids, request.use_cases, spec),
         norms=resolve_norms(request.norm_ids, spec, request.use_cases),
     )
+
+
+@app.get("/api/roles")
+def roles() -> dict[str, RoleDefinition]:
+    """What each role means, by role id: the Act's Article 3 definition where it has one."""
+    return role_definitions()
 
 
 @app.get("/api/limits")
