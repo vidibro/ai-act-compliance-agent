@@ -175,8 +175,8 @@ function render(data) {
     duties ? later : null,
     duties,
     others ? el("div", { class: "section-head" },
-      el("h2", {}, "Permissions, rights and effects"),
-      el("p", { class: "muted" }, "What the AI Act allows you, what you can claim, what follows in law, and what authorities must or may do about your system. These aren't compared with your document — they're for your information.")) : null,
+      el("h2", {}, "Other provisions"),
+      el("p", { class: "muted" }, "Permissions, rights and legal effects, and what authorities must or may do about your system. These aren't compared with your document — they're for your information.")) : null,
     others,
     el("footer", { class: "disclaimer" }, report.disclaimer),
   ].filter(Boolean));
@@ -491,6 +491,12 @@ function dutyGroups(parts, findings, { data, ruleDate, normDate, isFuture, parti
   ].filter(Boolean);
 }
 
+// The "Applies from" cell: now, a later date, or unknown where the date turns on the Art. 6 route.
+function appliesFrom(when, date) {
+  if (when === "future") return el("span", { class: "tag date" }, `from ${fmtDate(date)}`);
+  return el("span", { class: "tag soft" }, when === "unknown" ? "Date unknown" : "Now");
+}
+
 // The action, with the parties it applies to under it.
 function what(text, roles) {
   return el("span", { class: "what" }, el("span", { class: "oneline" }, text),
@@ -519,7 +525,7 @@ function findingItem(f, data) {
       el("span", {}, el("span", { class: `tag ${f.verdict}` }, VERDICT[f.verdict] || human(f.verdict))),
       el("span", { class: "cite" }, rule?.citation || citeSource(f.citation)),
       what(rule?.action || rule?.requirement || f.rule_id, [f.role]),
-      el("span", { class: "when" }, f.applies_from ? el("span", { class: "tag date" }, `from ${fmtDate(f.applies_from)}`) : null)),
+      el("span", { class: "when" }, appliesFrom(f.applies_from ? "future" : "now", f.applies_from))),
     el("div", { class: "item-body" },
       kv("Finding", findingText(f)),
       rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,
@@ -543,7 +549,7 @@ function outstandingItem(id, data, date, future, roles, when = future ? "future"
       el("span", {}, el("span", { class: "tag needs_review" }, "Check")),
       el("span", { class: "cite" }, rule?.citation || ""),
       what(rule?.action || rule?.requirement || id, roles),
-      el("span", { class: "when" }, future ? el("span", { class: "tag date" }, `from ${fmtDate(date)}`) : null)),
+      el("span", { class: "when" }, appliesFrom(when, date))),
     el("div", { class: "item-body" },
       rule ? kv("What to check", rule.evidence_expected) : null,
       rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,
@@ -578,7 +584,7 @@ function conditionalDutyItem(id, data, date, future, roles) {
       el("span", {}, el("span", { class: "tag needs_review" }, "Check")),
       el("span", { class: "cite" }, normCites(norm)[0] || ""),
       what(norm ? norm.action[0].toUpperCase() + norm.action.slice(1) : id, roles),
-      el("span", { class: "when" }, future ? el("span", { class: "tag date" }, `from ${fmtDate(date)}`) : null)),
+      el("span", { class: "when" }, appliesFrom(future ? "future" : "now", date))),
     el("div", { class: "item-body" },
       norm?.conditions ? kv("Only if", norm.conditions) : null,
       norm?.exceptions ? kv("Except", norm.exceptions) : null,
