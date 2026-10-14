@@ -182,7 +182,10 @@ ul.basis li::marker { color: var(--orange); }
 .tag.kind-prohibition { color: var(--red); border-color: currentColor; font-weight: 600; }
 
 /* The report's two main parts: a heavy rule and a large title, so they read as separate sections. */
-.section-head { margin-top: 32px; padding-top: 24px; border-top: 3px solid var(--orange); }
+.section-head { margin-top: 32px; padding-top: 24px; position: relative; }
+/* The rule reaches into the page's side padding, wider than the cards below it. */
+.section-head::before { content: ""; position: absolute; top: 0; left: -24px; right: -24px; height: 4px;
+                        border-radius: 2px; background: var(--orange); }
 .section-head h2 { margin: 0 0 6px; font-size: 30px; font-weight: 800; letter-spacing: -.03em; }
 .section-head p { margin: 0; font-size: 15px; max-width: 820px; }
 
@@ -305,6 +308,7 @@ footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 24px;
 
 @media (max-width: 760px) {
   main, .topbar-in { padding: 16px; }
+  .section-head::before { left: -16px; right: -16px; }
   details.item > summary { grid-template-columns: auto auto minmax(0, 1fr); padding: 10px 16px; }
   .item-body { padding: 4px 16px 14px; }
   .notes details.note-item > summary { grid-template-columns: 1fr; gap: 2px; }

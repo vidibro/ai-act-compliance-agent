@@ -467,7 +467,7 @@ function filterBars(groups, facets) {
 
 const roleOptions = (roles) => roles.map((r) => [r, human(r), `role-tag r-${r}`]);
 const RESULT_OPTIONS = [...["gap", "inadequate", "needs_review", "pass"].map((v) => [v, VERDICT[v], `tag ${v}`]),
-                        ["check", "Check", "tag needs_review"]];
+                        ["check", "Duty", "tag needs_review"]];
 const KIND_OPTIONS = () => KIND_ORDER.map((k) => [k, NORM_KIND[k], `tag soft kind-${k}`]);
 
 function dutyGroups(parts, findings, { data, ruleDate, normDate, isFuture, partiesOf }) {
@@ -547,7 +547,7 @@ function outstandingItem(id, data, date, future, roles, when = future ? "future"
   const rule = data.rules[id];
   return el("details", { class: "item", "data-roles": roles.join(","), "data-result": "check", "data-when": when },
     el("summary", {},
-      el("span", {}, el("span", { class: "tag needs_review" }, "Check")),
+      el("span", {}, el("span", { class: "tag needs_review" }, "Duty")),
       el("span", { class: "cite" }, rule?.citation || ""),
       what(rule?.action || rule?.requirement || id, roles),
       el("span", { class: "when" }, appliesFrom(when, date))),
@@ -582,7 +582,7 @@ function conditionalDutyItem(id, data, date, future, roles) {
   const norm = data.norms[id];
   return el("details", { class: "item", "data-roles": roles.join(","), "data-result": "check", "data-when": future ? "future" : "now" },
     el("summary", {},
-      el("span", {}, el("span", { class: "tag needs_review" }, "Check")),
+      el("span", {}, el("span", { class: "tag needs_review" }, "Duty")),
       el("span", { class: "cite" }, normCites(norm)[0] || ""),
       what(norm?.action || id, roles),
       el("span", { class: "when" }, appliesFrom(future ? "future" : "now", date))),
