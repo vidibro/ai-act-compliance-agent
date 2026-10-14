@@ -26,7 +26,7 @@ const RISK = {
   out_of_scope: "Outside the AI Act",
   needs_review: "Needs review",
 };
-const VERDICT = { pass: "Pass", gap: "Gap", inadequate: "Inadequate", needs_review: "Needs review", not_applicable: "N/a" };
+const VERDICT = { pass: "Met", gap: "Not met", inadequate: "Partly met", needs_review: "Unclear", not_applicable: "N/a" };
 const ROLE_ORDER = ["provider", "initial_provider", "prospective_provider", "sandbox_participant", "deployer",
                     "importer", "distributor", "authorised_representative", "gpai_provider"];
 // Short enough to fit the tag column.
