@@ -30,8 +30,8 @@ const VERDICT = { pass: "Pass", gap: "Gap", inadequate: "Inadequate", needs_revi
 const ROLE_ORDER = ["provider", "initial_provider", "prospective_provider", "sandbox_participant", "deployer",
                     "importer", "distributor", "authorised_representative", "gpai_provider"];
 // Short enough to fit the tag column.
-const NORM_KIND = { permission: "Permitted", entitlement: "Right", legal_consequence: "Effect", power: "Power",
-                    obligation: "Duty", prohibition: "Ban", recommendation: "Advice", applicability: "Scope",
+const NORM_KIND = { permission: "Permission", entitlement: "Right", legal_consequence: "Legal effect", power: "Power",
+                    obligation: "Duty", prohibition: "Ban", recommendation: "Advice", applicability: "Limitation",
                     definition: "Definition" };
 // The order kinds are listed in, what the reader may do first.
 const KIND_ORDER = ["permission", "entitlement", "legal_consequence", "applicability", "power", "obligation",
@@ -368,13 +368,13 @@ function provisions(report, data, ruleDate, normDate, isFuture) {
   ].sort(([a], [b]) => KIND_ORDER.indexOf(data.norms[a]?.kind) - KIND_ORDER.indexOf(data.norms[b]?.kind));
   const others = rows.length ? [group("", null, null, rows.map(([id, roles]) => normItem(id, data, roles)))] : [];
   const card = (groups, facets, columns, ...bars) => (groups.length
-    ? el("section", { class: "card provisions" }, el("div", { class: "filters" }, ...bars, filterBars(groups, facets)),
+    ? el("section", { class: "card provisions" }, el("div", { class: "filters" }, filterBars(groups, facets), ...bars),
       el("div", { class: "columns", "aria-hidden": "true" }, columns.map((c) => el("span", {}, c))), groups) : null);
   return {
-    duties: card(duties, [["result", RESULT_OPTIONS], ["roles", roleOptions(order)]],
-      ["Result", "Article", "Duty", "Applies from"], whenFilter()),
-    others: card(others, [["kind", KIND_OPTIONS()],
-      ["roles", roleOptions([...order, ...authorities]), authorities.length ? "Operator or authority:" : undefined]],
+    duties: card(duties, [["roles", roleOptions(order)], ["result", RESULT_OPTIONS]],
+      ["Check result", "Article", "Duty", "Applies from"], whenFilter()),
+    others: card(others, [["roles", roleOptions([...order, ...authorities]), authorities.length ? "Operator or authority:" : undefined],
+      ["kind", KIND_OPTIONS()]],
       ["Type", "Article", "Provision", ""]),
   };
 }
@@ -389,7 +389,7 @@ const roleTag = (role) => el("span", { class: `role-tag r-${role}` }, human(role
 const ROLES_KEY = "aiact-review:hidden-roles";
 const FACETS = {
   roles: { key: ROLES_KEY, label: "Operator:", many: true },
-  result: { key: "aiact-review:hidden-results", label: "Result:" },
+  result: { key: "aiact-review:hidden-results", label: "Check result:" },
   kind: { key: "aiact-review:hidden-kinds", label: "Type:" },
 };
 let filters = []; // [{ groups, bars: [{ facet, buttons, reset }] }] for every list on the page
@@ -583,7 +583,7 @@ function conditionalDutyItem(id, data, date, future, roles) {
     el("summary", {},
       el("span", {}, el("span", { class: "tag needs_review" }, "Check")),
       el("span", { class: "cite" }, normCites(norm)[0] || ""),
-      what(norm ? norm.action[0].toUpperCase() + norm.action.slice(1) : id, roles),
+      what(norm?.action || id, roles),
       el("span", { class: "when" }, appliesFrom(future ? "future" : "now", date))),
     el("div", { class: "item-body" },
       norm?.conditions ? kv("Only if", norm.conditions) : null,

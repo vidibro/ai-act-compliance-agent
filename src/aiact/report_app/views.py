@@ -149,7 +149,7 @@ def resolve_rules(
                 criterion.norm_id: CriterionView(
                     # The first span is the criterion's own provision; the rest are context.
                     citation=_cite_spans(criterion.source_spans[:1])[0],
-                    action=criterion.action[:1].upper() + criterion.action[1:],
+                    action=_sentence(criterion.action),
                 )
                 for criterion in rule.criteria
             },
@@ -181,6 +181,12 @@ def _readable(by_id: dict[str, PolicyRule]) -> Callable[[str | None], str | None
     return readable
 
 
+def _sentence(action: str) -> str:
+    """A norm's action as a reader sees it on its own. Norms store it as the second half of a
+    sentence ("include testing in ..."), to follow the actor; on its own it starts one."""
+    return action[:1].upper() + action[1:]
+
+
 def _cite_spans(spans: list[str]) -> list[str]:
     """The provisions a list of text segments come from, as a reader cites them, once each."""
     citations = segment_citations()
@@ -210,7 +216,7 @@ def resolve_norms(
             norm_id=norm_id,
             kind=norm.kind,
             actors=norm.actors,
-            action=norm.action,
+            action=_sentence(norm.action),
             conditions=condition_text(norm.conditions) if norm.conditions else None,
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,
             source_spans=norm.source_spans,

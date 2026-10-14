@@ -20,6 +20,9 @@
   /* Two greens for what the Act gives rather than asks: a permission and a right. */
   --kind-permission: #047857;
   --kind-entitlement: #4d7c0f;
+  --kind-legal_consequence: #a16207;
+  --kind-applicability: #a21caf;
+  --kind-power: #0e7490;
   --ok: #15803d;
 }
 /* Dark tokens apply when the system is dark (unless the viewer picked light) or when the
@@ -46,6 +49,9 @@
     --role-authority: #e0b384;
     --kind-permission: #34d399;
     --kind-entitlement: #a3e635;
+    --kind-legal_consequence: #fbbf24;
+    --kind-applicability: #e879f9;
+    --kind-power: #22d3ee;
     --ok: #4ade80;
   }
 }
@@ -68,6 +74,9 @@
   --role-gpai-provider: #c4b5fd;
   --kind-permission: #34d399;
   --kind-entitlement: #a3e635;
+  --kind-legal_consequence: #fbbf24;
+  --kind-applicability: #e879f9;
+  --kind-power: #22d3ee;
   --ok: #4ade80;
 }
 * { box-sizing: border-box; }
@@ -166,6 +175,11 @@ ul.basis li::marker { color: var(--orange); }
 .tag.soft { color: var(--muted); font-weight: 500; }
 .tag.kind-permission { color: var(--kind-permission); border-color: currentColor; font-weight: 600; }
 .tag.kind-entitlement { color: var(--kind-entitlement); border-color: currentColor; font-weight: 600; }
+.tag.kind-legal_consequence { color: var(--kind-legal_consequence); border-color: currentColor; font-weight: 600; }
+.tag.kind-applicability { color: var(--kind-applicability); border-color: currentColor; font-weight: 600; }
+.tag.kind-power { color: var(--kind-power); border-color: currentColor; font-weight: 600; }
+.tag.kind-obligation { color: var(--ink); border-color: currentColor; font-weight: 600; }
+.tag.kind-prohibition { color: var(--red); border-color: currentColor; font-weight: 600; }
 
 /* The report's two main parts: a heavy rule and a large title, so they read as separate sections. */
 .section-head { margin-top: 32px; padding-top: 24px; border-top: 3px solid var(--orange); }
