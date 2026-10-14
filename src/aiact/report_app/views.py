@@ -54,6 +54,8 @@ class NormView(BaseModel):
 
     norm_id: str
     kind: NormKind
+    actors: list[str]
+    """Who the provision names, e.g. "law_enforcement_authority"."""
     action: str
     conditions: str | None
     exceptions: str | None
@@ -188,6 +190,7 @@ def resolve_norms(norm_ids: Iterable[str], spec: PolicyRuleset) -> dict[str, Nor
         norm_id: NormView(
             norm_id=norm_id,
             kind=norm.kind,
+            actors=norm.actors,
             action=norm.action,
             conditions=condition_text(norm.conditions) if norm.conditions else None,
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,

@@ -16,6 +16,7 @@
   --role-initial-provider: #4338ca;
   --role-sandbox-participant: #475569;
   --role-gpai-provider: #6d28d9;
+  --role-authority: #92400e; /* every public authority: one family */
   /* Two greens for what the Act gives rather than asks: a permission and a right. */
   --kind-permission: #047857;
   --kind-entitlement: #4d7c0f;
@@ -41,6 +42,8 @@
     --role-initial-provider: #a5b4fc;
     --role-sandbox-participant: #a8b3c4;
     --role-gpai-provider: #c4b5fd;
+  --role-authority: #e0b384;
+    --role-authority: #e0b384;
     --kind-permission: #34d399;
     --kind-entitlement: #a3e635;
     --ok: #4ade80;
@@ -224,9 +227,14 @@ ul.basis li::marker { color: var(--orange); }
 .r-initial_provider { --c: var(--role-initial-provider); }
 .r-sandbox_participant { --c: var(--role-sandbox-participant); }
 .r-gpai_provider { --c: var(--role-gpai-provider); }
+.r-law_enforcement_authority, .r-civil_protection_authority, .r-judicial_authority,
+.r-independent_administrative_authority, .r-national_competent_authority,
+.r-market_surveillance_authority, .r-notifying_authority { --c: var(--role-authority); }
 .role-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
 .role-filter .lbl { font-size: 12px; font-weight: 600; color: var(--muted); }
 button.role-tag { font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+button.tag { font: inherit; font-size: 12px; cursor: pointer; }
+button.tag.off { opacity: .4; text-decoration: line-through; }
 button.role-tag.off { color: var(--faint); background: none; border-color: var(--line-strong); text-decoration: line-through; }
 .provisions { overflow: hidden; }
 .provisions > .filters { padding: 14px 20px; border-bottom: 1px solid var(--line-strong); display: grid; gap: 10px; }
@@ -238,6 +246,10 @@ button.role-tag.off { color: var(--faint); background: none; border-color: var(-
               border-radius: 5px; padding: 3px 10px; cursor: pointer; }
 .seg button:hover { color: var(--ink); }
 .seg button.on { background: var(--orange); color: #0b0b0b; }
+/* Column names over the rows, on the same grid as a row's summary. */
+.provisions > .columns { display: grid; grid-template-columns: 104px 124px minmax(0, 1fr) auto; gap: 12px;
+                         padding: 8px 20px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 700;
+                         text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
 .what { display: grid; gap: 5px; min-width: 0; }
 .parties { display: flex; flex-wrap: wrap; gap: 4px; }
 .parties .role-tag { font-size: 11px; padding: 0 7px; }
@@ -281,6 +293,7 @@ footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 24px;
   .notes > h3, .notes > .hint { padding-left: 16px; padding-right: 16px; }
   .kv { grid-template-columns: 1fr; gap: 2px; } .kv > .l { text-align: left; }
   .provisions > .filters { padding: 12px 16px; }
+  .provisions > .columns { display: none; }
   .role > h2, .group > h3, .group > .hint, .empty { padding-left: 16px; padding-right: 16px; }
 }
 

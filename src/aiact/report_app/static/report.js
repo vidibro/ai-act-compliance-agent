@@ -33,12 +33,11 @@ const ROLE_ORDER = ["provider", "initial_provider", "prospective_provider", "san
 const NORM_KIND = { permission: "Permitted", entitlement: "Right", legal_consequence: "Effect", power: "Power",
                     obligation: "Duty", prohibition: "Ban", recommendation: "Advice", applicability: "Scope",
                     definition: "Definition" };
-const NORM_GROUPS = [
-  ["permissions", "Permitted routes"],
-  ["rights", "Rights"],
-  ["legal_consequences", "Legal effects"],
-  ["conditional_applicability", "Scope limits"],
-];
+// The order kinds are listed in, what the reader may do first.
+const KIND_ORDER = ["permission", "entitlement", "legal_consequence", "applicability", "power", "obligation",
+                    "prohibition", "recommendation", "definition"];
+// The report's sections that list norms per role, rather than judge them.
+const NORM_SECTIONS = ["permissions", "rights", "legal_consequences", "conditional_applicability"];
 
 function citeSource(s) {
   if (!s) return "";
@@ -176,9 +175,8 @@ function render(data) {
     duties,
     others ? el("div", { class: "section-head" },
       el("h2", {}, "Permissions, rights and effects"),
-      el("p", { class: "muted" }, "What the AI Act allows you, what you can claim, and what follows in law. Nothing here is checked.")) : null,
+      el("p", { class: "muted" }, "What the AI Act allows you, what you can claim, what follows in law, and what authorities must or may do about your system. Nothing here is checked.")) : null,
     others,
-    publicAuthority(report, data),
     el("footer", { class: "disclaimer" }, report.disclaimer),
   ].filter(Boolean));
 }
@@ -333,7 +331,7 @@ function provisions(report, data, ruleDate, isFuture) {
     ...report.findings.map((f) => f.role),
     ...Object.keys(report.not_document_verifiable),
     ...report.timing_not_active.map((t) => t.role),
-    ...NORM_GROUPS.flatMap(([key]) => Object.keys(report[key])),
+    ...NORM_SECTIONS.flatMap((key) => Object.keys(report[key])),
   ]);
   const order = [...ROLE_ORDER.filter((r) => present.has(r)), ...[...present].filter((r) => !ROLE_ORDER.includes(r))];
 
@@ -343,7 +341,7 @@ function provisions(report, data, ruleDate, isFuture) {
   for (const role of order) {
     for (const id of report.not_document_verifiable[role] || []) add(`rule:${id}`, role);
     for (const t of report.timing_not_active.filter((t) => t.role === role)) add(`route:${t.rule_id}`, role);
-    for (const [key] of NORM_GROUPS) for (const id of report[key][role] || []) add(`${key}:${id}`, role);
+    for (const key of NORM_SECTIONS) for (const id of report[key][role] || []) add(`${key}:${id}`, role);
   }
   const ids = (prefix) => Object.keys(owners).filter((k) => k.startsWith(prefix)).map((k) => k.slice(prefix.length));
   const partiesOf = (prefix) => (id) => owners[`${prefix}${id}`];
@@ -351,23 +349,41 @@ function provisions(report, data, ruleDate, isFuture) {
 
   const duties = dutyGroups({ outstanding: ids("rule:"), unresolved: ids("route:") },
     findings, { data, ruleDate, isFuture, partiesOf });
-  const others = NORM_GROUPS.map(([key, label]) => {
-    const list = ids(`${key}:`);
-    return list.length ? group("", label, null, list.map((id) => normItem(id, data, partiesOf(`${key}:`)(id)))) : null;
-  }).filter(Boolean);
-  const card = (groups, ...bars) => (groups.length
-    ? el("section", { class: "card provisions" }, el("div", { class: "filters" }, ...bars, roleFilter(groups, order)), groups) : null);
-  return { duties: card(duties, whenFilter()), others: card(others) };
+  // One list: the reader's permissions, rights and effects together with what authorities must or
+  // may do, each tagged with who it names and labelled with its kind. The role filter separates
+  // them, as it does the duties.
+  const authorityIds = report.public_authority_statements.filter((id) => data.norms[id]);
+  const authorities = [...new Set(authorityIds.flatMap((id) => data.norms[id].actors || []))];
+  const rows = [
+    ...NORM_SECTIONS.flatMap((key) => ids(`${key}:`).map((id) => [id, partiesOf(`${key}:`)(id)])),
+    ...authorityIds.map((id) => [id, data.norms[id].actors || []]),
+  ].sort(([a], [b]) => KIND_ORDER.indexOf(data.norms[a]?.kind) - KIND_ORDER.indexOf(data.norms[b]?.kind));
+  const others = rows.length ? [group("", null, null, rows.map(([id, roles]) => normItem(id, data, roles)))] : [];
+  const card = (groups, facets, columns, ...bars) => (groups.length
+    ? el("section", { class: "card provisions" }, el("div", { class: "filters" }, ...bars, filterBars(groups, facets)),
+      el("div", { class: "columns", "aria-hidden": "true" }, columns.map((c) => el("span", {}, c))), groups) : null);
+  return {
+    duties: card(duties, [["result", RESULT_OPTIONS], ["roles", roleOptions(order)]],
+      ["Result", "Article", "Duty", "Applies from"], whenFilter()),
+    others: card(others, [["kind", KIND_OPTIONS()], ["roles", roleOptions([...order, ...authorities])]],
+      ["Type", "Article", "Provision", ""]),
+  };
 }
 
 const roleTag = (role) => el("span", { class: `role-tag r-${role}` }, human(role));
 
-// ---- role filter -------------------------------------------------------------------------------
-// The reader picks the roles they hold; a provision shows while any of its parties is picked, and a
-// group with none left showing is hidden. Each list has its own bar on top; all bars share one
-// choice, remembered in this browser.
+// ---- filters -----------------------------------------------------------------------------------
+// Each list has a bar of filters on top. A tag filter hides the rows carrying a value the reader
+// switched off: a role (a row shows while any of its parties is on), a result or a provision type.
+// A group with no row left showing is hidden. Choices are shared by every bar on the page and
+// remembered in this browser.
 const ROLES_KEY = "aiact-review:hidden-roles";
-let filters = []; // [{ groups, buttons, reset }] for every bar on the page
+const FACETS = {
+  roles: { key: ROLES_KEY, label: "Show for:", many: true },
+  result: { key: "aiact-review:hidden-results", label: "Result:" },
+  kind: { key: "aiact-review:hidden-kinds", label: "Type:" },
+};
+let filters = []; // [{ groups, bars: [{ facet, buttons, reset }] }] for every list on the page
 
 // The reader also picks which duties to see by date: all, those in force now, or those that start
 // later. A duty whose date turns on the Art. 6 route shows under "All" only.
@@ -382,45 +398,67 @@ function whenFilter() {
     el("div", { class: "seg", role: "group", "aria-label": "Show duties by date" }, whenButtons));
 }
 
+const hiddenOf = (facet) => new Set(restore(FACETS[facet].key) || []);
+
 function applyFilters() {
-  const hidden = new Set(restore(ROLES_KEY) || []);
+  const hidden = Object.fromEntries(Object.keys(FACETS).map((f) => [f, hiddenOf(f)]));
   const when = restore(WHEN_KEY) || "all";
   for (const b of whenButtons) b.classList.toggle("on", b.dataset.when === when);
-  for (const { groups, buttons, reset } of filters) {
+  const excluded = (item) => Object.keys(FACETS).some((facet) => {
+    const value = item.dataset[facet];
+    if (value === undefined) return false;
+    return FACETS[facet].many ? value.split(",").every((v) => hidden[facet].has(v)) : hidden[facet].has(value);
+  }) || (when !== "all" && item.dataset.when !== undefined && item.dataset.when !== when);
+  for (const { groups, bars } of filters) {
     for (const g of groups) {
       let shown = 0;
-      for (const item of g.querySelectorAll("[data-roles]")) {
-        item.hidden = item.dataset.roles.split(",").every((r) => hidden.has(r))
-          || (when !== "all" && item.dataset.when !== undefined && item.dataset.when !== when);
+      for (const item of g.querySelectorAll("details.item")) {
+        item.hidden = excluded(item);
         if (!item.hidden) shown += 1;
       }
       g.hidden = !shown;
-      g.querySelector(".count").textContent = `· ${shown}`;
+      const count = g.querySelector(".count");
+      if (count) count.textContent = `· ${shown}`;
     }
-    for (const b of buttons) b.classList.toggle("off", hidden.has(b.dataset.role));
-    reset.hidden = !hidden.size;
+    for (const { facet, buttons, reset } of bars) {
+      for (const b of buttons) b.classList.toggle("off", hidden[facet].has(b.dataset.value));
+      reset.hidden = !hidden[facet].size;
+    }
   }
 }
 
-function roleFilter(groups, roles) {
-  const tagged = new Set(groups.flatMap((g) => [...g.querySelectorAll("[data-roles]")].flatMap((i) => i.dataset.roles.split(","))));
-  const present = roles.filter((r) => tagged.has(r));
-  if (present.length < 2) return null;
-  const toggle = (role) => {
-    const hidden = new Set(restore(ROLES_KEY) || []);
-    hidden.has(role) ? hidden.delete(role) : hidden.add(role);
-    store(ROLES_KEY, [...hidden]);
+// A bar of toggles for one facet, over the values the list's rows carry, in the order given.
+// `options` is [[value, label, class]]; no bar when fewer than two values are present.
+function tagFilter(facet, groups, options) {
+  const present = new Set(groups.flatMap((g) => [...g.querySelectorAll(`[data-${facet}]`)]
+    .flatMap((i) => (FACETS[facet].many ? i.dataset[facet].split(",") : [i.dataset[facet]]))));
+  const shown = options.filter(([value]) => present.has(value));
+  if (shown.length < 2) return null;
+  const toggle = (value) => {
+    const hidden = hiddenOf(facet);
+    hidden.has(value) ? hidden.delete(value) : hidden.add(value);
+    store(FACETS[facet].key, [...hidden]);
     applyFilters();
   };
-  const buttons = present.map((role) => el("button", {
-    type: "button", class: `role-tag r-${role}`, "data-role": role, title: "Show or hide what applies to this role",
-    onclick: () => toggle(role),
-  }, human(role)));
-  const reset = el("button", { type: "button", class: "link", onclick: () => { store(ROLES_KEY, []); applyFilters(); } }, "Show all");
-  filters.push({ groups, buttons, reset });
-  queueMicrotask(applyFilters); // once the list is on the page
-  return el("div", { class: "role-filter" }, el("span", { class: "lbl" }, "Show for:"), buttons, reset);
+  const buttons = shown.map(([value, label, cls]) => el("button", {
+    type: "button", class: cls, "data-value": value, title: "Show or hide these rows", onclick: () => toggle(value),
+  }, label));
+  const reset = el("button", { type: "button", class: "link", onclick: () => { store(FACETS[facet].key, []); applyFilters(); } }, "Show all");
+  return { facet, buttons, reset, bar: el("div", { class: "role-filter" }, el("span", { class: "lbl" }, FACETS[facet].label), buttons, reset) };
 }
+
+// The filter bars of one list, registered so a choice in any bar re-applies everywhere.
+function filterBars(groups, facets) {
+  const bars = facets.map(([facet, options]) => tagFilter(facet, groups, options)).filter(Boolean);
+  filters.push({ groups, bars });
+  queueMicrotask(applyFilters); // once the list is on the page
+  return bars.map((b) => b.bar);
+}
+
+const roleOptions = (roles) => roles.map((r) => [r, human(r), `role-tag r-${r}`]);
+const RESULT_OPTIONS = [...["gap", "inadequate", "needs_review", "pass"].map((v) => [v, VERDICT[v], `tag ${v}`]),
+                        ["check", "Check", "tag needs_review"]];
+const KIND_OPTIONS = () => KIND_ORDER.map((k) => [k, NORM_KIND[k], `tag soft kind-${k}`]);
 
 function dutyGroups(parts, findings, { data, ruleDate, isFuture, partiesOf }) {
   // In force first, then by the date each starts.
@@ -451,7 +489,7 @@ function groupBy(list, key) {
 
 function group(cls, title, hint, items) {
   return el("div", { class: `group ${cls}`.trim() },
-    el("h3", {}, title, el("span", { class: "muted count" }, `· ${items.length}`)),
+    title ? el("h3", {}, title, el("span", { class: "muted count" }, `· ${items.length}`)) : null,
     hint ? el("p", { class: "hint" }, hint) : null,
     items);
 }
@@ -462,7 +500,7 @@ function kv(label, ...value) {
 
 function findingItem(f, data) {
   const rule = data.rules[f.rule_id];
-  return el("details", { class: "item", id: itemId(f), "data-roles": f.role, "data-when": f.applies_from ? "future" : "now" },
+  return el("details", { class: "item", id: itemId(f), "data-roles": f.role, "data-result": f.verdict, "data-when": f.applies_from ? "future" : "now" },
     el("summary", {},
       el("span", {}, el("span", { class: `tag ${f.verdict}` }, VERDICT[f.verdict] || human(f.verdict))),
       el("span", { class: "cite" }, rule?.citation || citeSource(f.citation)),
@@ -486,7 +524,7 @@ function findingItem(f, data) {
 
 function outstandingItem(id, data, date, future, roles, when = future ? "future" : "now") {
   const rule = data.rules[id];
-  return el("details", { class: "item", "data-roles": roles.join(","), "data-when": when },
+  return el("details", { class: "item", "data-roles": roles.join(","), "data-result": "check", "data-when": when },
     el("summary", {},
       el("span", {}, el("span", { class: "tag needs_review" }, "Check")),
       el("span", { class: "cite" }, rule?.citation || ""),
@@ -522,7 +560,7 @@ const normCites = (norm) => norm?.citations || norm?.source_spans || [];
 
 function normItem(id, data, roles = null) {
   const norm = data.norms[id];
-  return el("details", roles ? { class: "item", "data-roles": roles.join(",") } : { class: "item" },
+  return el("details", { class: "item", "data-roles": roles ? roles.join(",") : undefined, "data-kind": norm?.kind },
     el("summary", {},
       el("span", {}, el("span", { class: `tag soft kind-${norm?.kind}` }, NORM_KIND[norm?.kind] || human(norm?.kind || "norm"))),
       el("span", { class: "cite" }, normCites(norm)[0] || ""),
@@ -534,14 +572,6 @@ function normItem(id, data, roles = null) {
       norm?.exceptions ? kv("Except", norm.exceptions) : null,
       norm ? kv("Basis", normCites(norm).join(", ")) : null),
   );
-}
-
-function publicAuthority(report, data) {
-  const ids = report.public_authority_statements;
-  if (!ids.length) return null;
-  return el("section", { class: "card role" },
-    el("h2", {}, "Public authorities", el("span", { class: "n" }, "not your duties; listed for context")),
-    group("", "Duties and powers relevant to this system", null, ids.map((id) => normItem(id, data))));
 }
 
 // ---- page setup ------------------------------------------------------------------------------
