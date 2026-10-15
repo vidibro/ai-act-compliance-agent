@@ -219,5 +219,5 @@ def test_the_vocabulary_is_learned_from_the_documents_own_headings():
 
 
 def test_a_lettered_annex_keeps_its_keyword():
-    """"Part C" and "Annex C" are different sections; normalising both to "§C" would merge them."""
+    """ "Part C" and "Annex C" are different sections; normalising both to "§C" would merge them."""
     assert references_in("see Part C and Annex C") == ["Part C", "Annex C"]

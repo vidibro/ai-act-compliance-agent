@@ -34,9 +34,7 @@ def _build_current_bundle(version: str) -> NormativeCoverageBundle:
     text_payload, norm_payload = build_artifacts(reviewed, sources, paths)
     text_review = TextReviewInventory.model_validate(text_payload)
     norm_inventory = NormInventory.model_validate(norm_payload)
-    documents = {
-        (segment.source.kind, segment.source.document) for segment in text_review.segments
-    }
+    documents = {(segment.source.kind, segment.source.document) for segment in text_review.segments}
     return NormativeCoverageBundle(
         text_review=text_review,
         norm_inventory=norm_inventory,
@@ -91,9 +89,7 @@ def apply_and_verify(version: str, finding_id: str) -> tuple[str, bool]:
         raise ValueError("norm builder has no adjudication ledger")
     ledger = load_adjudication_ledger(paths.adjudications)
     required_field_validations = _required_field_validations(ledger)
-    decision = next(
-        (item for item in ledger.decisions if item.finding_id == finding_id), None
-    )
+    decision = next((item for item in ledger.decisions if item.finding_id == finding_id), None)
     if decision is None:
         raise ValueError(f"unknown validity finding: {finding_id}")
     if decision.decision != "fixed":

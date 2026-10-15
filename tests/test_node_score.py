@@ -125,9 +125,7 @@ def test_a_wrong_answer_and_an_abstention_are_different_outcomes():
     # profiling true cannot coexist with any other class.
     case = a_case(expected_risk_class=RiskClass.HIGH_RISK, expected_performs_profiling=True)
     wrong = score_nodes(case, [an_answer_at("profiling", False)])
-    declined = score_nodes(
-        case, [an_answer_at("profiling", None, "low", "description_silent")]
-    )
+    declined = score_nodes(case, [an_answer_at("profiling", None, "low", "description_silent")])
     assert [s.outcome for s in wrong] == ["wrong"]
     assert [s.outcome for s in declined] == ["abstained"]
 
@@ -268,9 +266,7 @@ def test_a_column_a_constant_answer_would_carry_is_flagged():
     Flagged beside the number, because the accuracy alone reads as a working node."""
     cases = [a_case(case_id=f"c{i}") for i in range(10)]
     pairs = [(c, score_nodes(c, [an_answer_at("prohibited", False)])) for c in cases]
-    run = NodeRunScore(
-        scores=[s for _, ss in pairs for s in ss], asked=Counter({"prohibited": 10})
-    )
+    run = NodeRunScore(scores=[s for _, ss in pairs for s in ss], asked=Counter({"prohibited": 10}))
     assert "every expected answer identical — unmeasured" in "\n".join(run.lines())
 
 
@@ -286,9 +282,7 @@ def test_a_balanced_column_is_not_flagged():
     scores = [
         s
         for c in mixed
-        for s in score_nodes(
-            c, [an_answer_at("prohibited", c.expected_prohibited_practice)]
-        )
+        for s in score_nodes(c, [an_answer_at("prohibited", c.expected_prohibited_practice)])
     ]
     run = NodeRunScore(scores=scores, asked=Counter({"prohibited": len(mixed)}))
     assert "share one expected answer" not in "\n".join(run.lines())

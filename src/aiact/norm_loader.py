@@ -150,8 +150,7 @@ def load_normative_coverage(
         ]
         if non_normative_spans:
             raise ValueError(
-                f"{regime.regime_id} legal-basis span(s) are not normative: "
-                f"{non_normative_spans}"
+                f"{regime.regime_id} legal-basis span(s) are not normative: {non_normative_spans}"
             )
 
     primary_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}

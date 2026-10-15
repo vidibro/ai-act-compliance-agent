@@ -32,8 +32,7 @@ def test_article_selection_keeps_decisions_in_their_declared_shard():
     assert scope.document == "18"
     assert decisions
     assert all(
-        ledger.shard_scope_by_finding[decision.finding_id] == scope
-        for decision in decisions
+        ledger.shard_scope_by_finding[decision.finding_id] == scope for decision in decisions
     )
 
 

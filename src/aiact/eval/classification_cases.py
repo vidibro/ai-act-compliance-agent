@@ -44,9 +44,7 @@ def load_classification_cases(
     known = set(ids)
     for c in cases:
         if c.flips_from is not None and c.flips_from not in known:
-            raise ValueError(
-                f"{c.case_id}: flips_from={c.flips_from!r} names no case in {p}."
-            )
+            raise ValueError(f"{c.case_id}: flips_from={c.flips_from!r} names no case in {p}.")
 
     # Every guidance_ref must resolve to a real, integrity-checked snippet — a label justified by
     # a citation that doesn't exist (or has drifted from its verified text) is worse than none.
@@ -175,9 +173,7 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
                 f"remove the line"
             )
         elif not pinned and node_id in reached:
-            problems.append(
-                f"`{node_id}` IS reached on this case but {field} is not set — add it"
-            )
+            problems.append(f"`{node_id}` IS reached on this case but {field} is not set — add it")
     if problems:
         raise ValueError(
             f"{case.case_id} in {path}: the pinned answers do not match the route this case "

@@ -25,7 +25,7 @@ test:   ## pytest
 	$(PYTEST) -q
 
 backend: ## backend UI at http://127.0.0.1:8765, live on data and code edits
-	$(VENV)/bin/uvicorn aiact.ui.app:app --port 8765 --reload --reload-dir src/aiact
+	$(VENV)/bin/uvicorn aiact.backend.app:app --port 8765 --reload --reload-dir src/aiact
 
 app:    ## report app at http://127.0.0.1:8766 (model keys from .env)
 	$(VENV)/bin/uvicorn aiact.report_app.app:app --port 8766 --reload --reload-dir src/aiact

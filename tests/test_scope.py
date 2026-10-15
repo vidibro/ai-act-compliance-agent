@@ -242,9 +242,7 @@ def test_every_exclusion_carries_a_paragraph():
 def test_the_exclusion_travels_out_as_evidence():
     """A verdict with no evidence cannot be audited. The scope answer carries the same way every
     other deciding answer does."""
-    result = classify(
-        "x", brain(scope=ScopeExclusion.PERSONAL_NON_PROFESSIONAL), "uc"
-    )
+    result = classify("x", brain(scope=ScopeExclusion.PERSONAL_NON_PROFESSIONAL), "uc")
     assert result.triggered_by
     assert all(isinstance(e, ClassificationEvidence) for e in result.triggered_by)
     assert any(e.node_id == "scope" for e in result.triggered_by)

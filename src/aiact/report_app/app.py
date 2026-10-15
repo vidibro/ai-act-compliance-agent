@@ -1,7 +1,7 @@
 """The report app: one document in, one compliance report out.
 
-Run with `make app`. Separate from the internal backend UI (`aiact.ui`), which exposes the whole
-ruleset and its review state; this app shows a reader their own report and nothing else.
+Run with `make app`. Separate from the internal backend UI (`aiact.backend`), which exposes the
+whole ruleset and its review state; this app shows a reader their own report and nothing else.
 
 The model keys come from the environment, as in `scripts/review.py`.
 """

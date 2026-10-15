@@ -1,5 +1,4 @@
-"""A Formex zip may only overwrite the version it actually is.
-"""
+"""A Formex zip may only overwrite the version it actually is."""
 
 from __future__ import annotations
 

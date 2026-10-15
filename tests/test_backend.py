@@ -3,7 +3,7 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 
-from aiact.ui.app import app
+from aiact.backend.app import app
 
 
 def test_coverage_map_serves_page_and_consistent_payload() -> None:
@@ -44,11 +44,10 @@ def test_norm_cards_resolve_every_reference() -> None:
     assert {ref for ref in implemented if ref.startswith("AIA-CQ-")} <= question_ids
 
 
-
 def test_version_changes_with_the_data_and_a_bad_edit_keeps_the_last_good_payload(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    from aiact.ui import app as ui_app
+    from aiact.backend import app as backend_app
 
     with TestClient(app) as client:
         first = client.get("/api/version").json()
@@ -58,8 +57,8 @@ def test_version_changes_with_the_data_and_a_bad_edit_keeps_the_last_good_payloa
         def broken() -> None:
             raise ValueError("bad yaml")
 
-        monkeypatch.setattr(ui_app, "_fingerprint", lambda *args: "edited")
-        monkeypatch.setattr(ui_app, "load_normative_coverage", broken)
+        monkeypatch.setattr(backend_app, "_fingerprint", lambda *args: "edited")
+        monkeypatch.setattr(backend_app, "load_normative_coverage", broken)
         after = client.get("/api/version").json()
         assert after["data"] == "edited"
         assert after["error"] == "ValueError: bad yaml"

@@ -39,6 +39,7 @@ _PROHIBITED_NOTE = (
     "It may not. Withdraw the practice."
 )
 
+
 def _national_law_note(spec: PolicyRuleset, practice: ProhibitedPractice | None) -> str:
     details = [
         notice.detail
@@ -49,8 +50,7 @@ def _national_law_note(spec: PolicyRuleset, practice: ProhibitedPractice | None)
         return ""
     return (
         "National-law alignment required: this application does not identify or assess applicable "
-        "national law. "
-        + " ".join(details)
+        "national law. " + " ".join(details)
     )
 
 
@@ -92,6 +92,8 @@ def _prohibited_note(spec: PolicyRuleset, classification: ClassificationResult) 
         f"built, and no documentation makes a practice that is about to be banned shippable. "
         f"Treat this as a withdrawal deadline, not a gap to close. {national_law_note}"
     )
+
+
 _OUT_OF_SCOPE_NOTE = (
     "No obligation check was run, and none is owed: Art. 2 withholds this Regulation from the "
     "system entirely. This is not a low risk tier — a minimal-risk system is still governed and "
@@ -137,9 +139,7 @@ def _empty_report(
         classification=classification,
         findings=[],
         not_document_verifiable={},
-        summary=ReportSummary(
-            total_applicable=0, passed=0, gaps=0, inadequate=0, needs_review=0
-        ),
+        summary=ReportSummary(total_applicable=0, passed=0, gaps=0, inadequate=0, needs_review=0),
         scope_note=scope_note,
     )
 
@@ -215,9 +215,7 @@ def review(
     # that is only true where nothing was: a system holding one Section B use case and one ordinary
     # Annex III use case has real findings, and this sentence would tell its reader to disregard
     # them.
-    high_risk = [
-        uc for uc in classification.use_cases if uc.risk_class == RiskClass.HIGH_RISK
-    ]
+    high_risk = [uc for uc in classification.use_cases if uc.risk_class == RiskClass.HIGH_RISK]
     withheld = [
         uc
         for uc in high_risk

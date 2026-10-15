@@ -1,4 +1,4 @@
-"""Internal read-only UI over the Act and guidance coverage artifacts.
+"""The backend: an internal read-only UI over the Act and guidance coverage artifacts.
 
 Run with `make backend`. The data files are watched: a request after an edit rebuilds the payloads,
 and the page polls `/api/version` to pick the change up. Python edits restart the server
@@ -19,10 +19,10 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from aiact.backend.coverage_map import build_coverage_map
+from aiact.backend.norm_cards import build_norm_cards
 from aiact.norm_loader import load_normative_coverage
 from aiact.policy_loader import load_policy_spec
-from aiact.ui.coverage_map import build_coverage_map
-from aiact.ui.norm_cards import build_norm_cards
 
 STATIC = Path(__file__).parent / "static"
 DATA_DIRS = (Path("data/policy"), Path("data/golden_set"))

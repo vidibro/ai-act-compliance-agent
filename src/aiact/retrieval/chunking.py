@@ -68,9 +68,7 @@ TokenCounter = Callable[[str], int]
 
 # Path Chroma downloads its bundled model to. Read-only here; we borrow its tokenizer so the chunker
 # counts with the SAME vocabulary the embedder will use. Approximating it would defeat the purpose.
-_TOKENIZER_PATH = (
-    Path.home() / ".cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx/tokenizer.json"
-)
+_TOKENIZER_PATH = Path.home() / ".cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx/tokenizer.json"
 
 
 @lru_cache(maxsize=1)

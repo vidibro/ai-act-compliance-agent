@@ -469,17 +469,18 @@ class TemporalRegime(BaseModel):
             )
         routes = [route.route for route in self.application_routes]
         if len(routes) != len(set(routes)):
-            raise ValueError(
-                "temporal regime application_routes must not duplicate a route"
+            raise ValueError("temporal regime application_routes must not duplicate a route")
+        if (
+            sum(
+                deadline is not None
+                for deadline in (
+                    self.deadline,
+                    self.relative_deadline,
+                    self.qualitative_deadline,
+                )
             )
-        if sum(
-            deadline is not None
-            for deadline in (
-                self.deadline,
-                self.relative_deadline,
-                self.qualitative_deadline,
-            )
-        ) > 1:
+            > 1
+        ):
             raise ValueError("temporal regime must contain at most one deadline constraint")
         if len(self.timing_conditions) != len(set(self.timing_conditions)):
             raise ValueError("temporal regime timing_conditions must not contain duplicates")
@@ -497,11 +498,7 @@ class TemporalRegime(BaseModel):
             if route is None:
                 return TemporalStatus.CONDITIONAL_TIMING
             application_route = next(
-                (
-                    item
-                    for item in self.application_routes
-                    if item.route is route
-                ),
+                (item for item in self.application_routes if item.route is route),
                 None,
             )
             if application_route is None:
@@ -654,9 +651,7 @@ class Norm(BaseModel):
     primary_spans: list[str] = Field(min_length=1)
     qualifier_spans: list[str] = []
     definition_spans: list[str] = []
-    temporal_regime_id: str | None = Field(
-        default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
-    )
+    temporal_regime_id: str | None = Field(default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$")
     conditions: LogicalExpression | None = None
     exceptions: LogicalExpression | None = None
     mandatory_content: list[str] = []
@@ -691,11 +686,7 @@ class Norm(BaseModel):
                 self.primary_spans
                 + self.qualifier_spans
                 + self.definition_spans
-                + [
-                    segment
-                    for actor in self.assigned_actors
-                    for segment in actor.basis_segment_ids
-                ]
+                + [segment for actor in self.assigned_actors for segment in actor.basis_segment_ids]
                 + [segment for target in self.targets for segment in target.basis_segment_ids]
                 + _condition_basis_segments(self.conditions)
                 + _condition_basis_segments(self.exceptions)
@@ -812,11 +803,7 @@ class NormInventory(BaseModel):
         if len(regime_ids) != len(set(regime_ids)):
             raise ValueError("duplicate temporal regime_id")
         unknown_regimes = sorted(
-            {
-                norm.temporal_regime_id
-                for norm in self.norms
-                if norm.temporal_regime_id is not None
-            }
+            {norm.temporal_regime_id for norm in self.norms if norm.temporal_regime_id is not None}
             - set(regime_ids)
         )
         if unknown_regimes:

@@ -106,9 +106,9 @@ def test_every_prohibited_practice_has_a_name_in_the_code():
 # --- Art. 50: the transparency duties ------------------------------------------------------------
 TRANSPARENCY_NOT_A_DUTY: dict[str, str] = {
     "5": "The manner and timing of the 50(1)-(4) information. Qualifies all four duties rather "
-         "than adding a fifth; owed a rule, see articles_awaiting_rules.",
+    "than adding a fifth; owed a rule, see articles_awaiting_rules.",
     "6": "Art. 50(1)-(4) do not affect Chapter III. A saving clause, and modelled structurally: "
-         "an Art. 50 duty is added to a tier's obligations rather than replacing them.",
+    "an Art. 50 duty is added to a tier's obligations rather than replacing them.",
     "7": "Commission duty to facilitate codes of practice on marking and labelling. Institutional.",
 }
 
@@ -127,16 +127,16 @@ def test_every_art_50_paragraph_that_creates_a_duty_has_a_name_in_the_code():
 # --- Art. 2: the scope exclusions ----------------------------------------------------------------
 SCOPE_NOT_AN_EXCLUSION: dict[str, str] = {
     "1": "Who the Regulation applies to, points (a)-(g). The positive limb, answered by the "
-         "`territorial` node into TerritorialLink rather than into an exclusion.",
+    "`territorial` node into TerritorialLink rather than into an exclusion.",
     "2": "A LIMIT on what a Section B Annex I system owes, not an exclusion. Carried by "
-         "AnnexIProduct.chapter_iii_applies and the Section B branch of select_rules.",
+    "AnnexIProduct.chapter_iii_applies and the Section B branch of select_rules.",
     "5": "Preserves the Digital Services Act's liability rules. A saving clause.",
     "7": "Union data protection law continues to apply. A saving clause.",
     "9": "Consumer protection and product safety law unaffected. A saving clause.",
     "11": "Member States may keep law more favourable to workers. A power that can only add to "
-          "what a deployer owes, never subtract.",
+    "what a deployer owes, never subtract.",
     "13": "Arts. 9-15 and 17-25 MAY BE LIMITED for an Art. 6(1) system. Not operative: it works "
-          "through delegated acts the Commission must adopt by 2 August 2027.",
+    "through delegated acts the Commission must adopt by 2 August 2027.",
 }
 
 

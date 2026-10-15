@@ -140,16 +140,17 @@ def test_article_six_separates_document_and_process_duties(bundle, spec):
         "AIA-NORM-A006-P4-REGISTER-SYSTEM": "AIA-RULE-NHR-A06-4-REGISTER",
         "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT": "AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT",
     }
-    assert {
-        norm_id: norms[norm_id].implementation_refs for norm_id in expected
-    } == {norm_id: [rule_id] for norm_id, rule_id in expected.items()}
+    assert {norm_id: norms[norm_id].implementation_refs for norm_id in expected} == {
+        norm_id: [rule_id] for norm_id, rule_id in expected.items()
+    }
     rules = {rule.rule_id: rule for rule in spec.rules}
     assert rules["AIA-RULE-NHR-A06-4"].criteria == []
     assert rules["AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT"].criteria == []
     # Article 49(2) writes the registration duty out again, so the rule names both provisions.
-    assert [
-        criterion.norm_id for criterion in rules["AIA-RULE-NHR-A06-4-REGISTER"].criteria
-    ] == ["AIA-NORM-A006-P4-REGISTER-SYSTEM", "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK"]
+    assert [criterion.norm_id for criterion in rules["AIA-RULE-NHR-A06-4-REGISTER"].criteria] == [
+        "AIA-NORM-A006-P4-REGISTER-SYSTEM",
+        "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
+    ]
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
@@ -210,10 +211,7 @@ def test_article_eleven_separates_the_simplified_documentation_permission(bundle
         "AIA-NORM-A011-P1-USE-FORM",
     ]
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
-    assert (
-        norms["AIA-NORM-A011-P1-SIMPLIFY"].implementation_mode
-        is ImplementationMode.REPORT_ONLY
-    )
+    assert norms["AIA-NORM-A011-P1-SIMPLIFY"].implementation_mode is ImplementationMode.REPORT_ONLY
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
@@ -475,9 +473,7 @@ def test_missing_report_norm_fails_the_bidirectional_strict_check(bundle, spec):
     broken = spec.model_copy(
         update={
             "report_norms": [
-                norm
-                for norm in spec.report_norms
-                if norm.norm_id != "AIA-NORM-A015-P4-REDUNDANCY"
+                norm for norm in spec.report_norms if norm.norm_id != "AIA-NORM-A015-P4-REDUNDANCY"
             ]
         }
     )
@@ -522,9 +518,7 @@ def test_a_rule_no_norm_names_fails_the_build(bundle, spec):
     """A rule fires a verdict, so a rule with no criteria that no norm names has no enacted text
     behind it. Report-only links count as naming: the Article 5(2) to (4) deployer rules are named
     only by report-only norms and are not flagged."""
-    orphan = a15(spec).model_copy(
-        update={"rule_id": "AIA-RULE-HR-A15-ORPHAN", "criteria": []}
-    )
+    orphan = a15(spec).model_copy(update={"rule_id": "AIA-RULE-HR-A15-ORPHAN", "criteria": []})
     widened = spec.model_copy(update={"rules": [*spec.rules, orphan]})
 
     errors = traceability_errors(bundle, widened, LEDGER)
@@ -681,9 +675,7 @@ def test_the_checker_names_each_broken_link(bundle, spec, tmp_path):
     assert f"{RULE} lists criterion {MODEL_FLAWS} more than once" in errors(
         [*criteria, model_flaws]
     )
-    assert f"{RULE} names missing norm AIA-NORM-A015-P9-NOT-A-NORM" in errors(
-        [*criteria, stranger]
-    )
+    assert f"{RULE} names missing norm AIA-NORM-A015-P9-NOT-A-NORM" in errors([*criteria, stranger])
     assert f"{RULE} names {outside_scope.norm_id}, which does not point back" in errors(
         [*criteria, unrelated]
     )
@@ -1241,9 +1233,7 @@ def test_a_criterion_the_model_mishandles_is_needs_review(spec, llm_judge, model
 
 def test_a_rule_with_criteria_rejects_a_legacy_rule_level_model_reply(spec, llm_judge, model_reply):
     rule = next(r for r in spec.rules if r.rule_id == "AIA-RULE-HR-A14")
-    sent = model_reply(
-        {"verdict": "gap", "reasoning": "No oversight.", "confidence": "high"}
-    )
+    sent = model_reply({"verdict": "gap", "reasoning": "No oversight.", "confidence": "high"})
     judgement = llm_judge.judge(rule, "# Doc\n")
 
     assert judgement.verdict is Verdict.NEEDS_REVIEW

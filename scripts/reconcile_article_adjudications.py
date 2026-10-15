@@ -51,9 +51,7 @@ def _build_current_bundle(version: str) -> NormativeCoverageBundle:
     text_payload, norm_payload = build_artifacts(reviewed, sources, paths)
     text_review = TextReviewInventory.model_validate(text_payload)
     norm_inventory = NormInventory.model_validate(norm_payload)
-    documents = {
-        (segment.source.kind, segment.source.document) for segment in text_review.segments
-    }
+    documents = {(segment.source.kind, segment.source.document) for segment in text_review.segments}
     return NormativeCoverageBundle(
         text_review=text_review,
         norm_inventory=norm_inventory,
@@ -195,9 +193,7 @@ def reconcile_article(version: str, article: str) -> ReconciliationResult:
     scope = _article_scope(ledger, article)
     requirements = _required_field_validations(ledger)
     fixed = [
-        decision
-        for decision in _decisions_for_scope(ledger, scope)
-        if decision.decision == "fixed"
+        decision for decision in _decisions_for_scope(ledger, scope) if decision.decision == "fixed"
     ]
     originals = _preflight_fixed_decisions(
         ledger_path=paths.adjudications,

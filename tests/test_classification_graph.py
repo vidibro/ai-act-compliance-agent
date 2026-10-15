@@ -787,9 +787,7 @@ def test_every_exception_annex_iii_writes_into_an_area_reaches_the_model():
     that occur in it and NOWHERE ELSE in the Annex. Those are what distinguish an exception from
     the area it sits in — a question that keeps 'AI systems used for the purpose of detecting' and
     drops 'financial fraud' has named nothing."""
-    annexes_dir = (
-        ROOT / "data" / "policy" / "annexes" / get_settings().act_version_date.isoformat()
-    )
+    annexes_dir = ROOT / "data" / "policy" / "annexes" / get_settings().act_version_date.isoformat()
     annex = (annexes_dir / "annex-III.md").read_text(encoding="utf-8").split("---", 2)[2]
     frequency = collections.Counter(re.findall(r"[a-z]{5,}", annex.lower()))
     exceptions = [m.group(1) for m in _ANNEX_III_EXCEPTION.finditer(annex)]
@@ -1045,9 +1043,9 @@ def test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation():
         f"the Chapter V obligation set changed with the gate answers: {sets}. A model card read "
         f"wrongly on one licence limb must cost a reader a sentence, never an obligation."
     )
-    assert any(
-        r.startswith("AIA-RULE-GP-A55") for r in sets[0]
-    ), "Art. 55 must be in the set at all"
+    assert any(r.startswith("AIA-RULE-GP-A55") for r in sets[0]), (
+        "Art. 55 must be in the set at all"
+    )
 
 
 # ==================================================================================================

@@ -66,9 +66,7 @@ def grade_classification(
             # cite provisions of their own (`scope` names Annex III(6) and (7)).
             shown = flatten(inner._user_content(question, case.description))
             results.append(
-                grader.grade(
-                    answer.reasoning, shown, label=f"{case.case_id}/{answer.node_id}"
-                )
+                grader.grade(answer.reasoning, shown, label=f"{case.case_id}/{answer.node_id}")
             )
             print(results[-1].outcome[0], end="", flush=True)
     print(f"\n\nrun cost   : {inner.usage.summary(inner.model)}")

@@ -121,7 +121,7 @@ def _answer_instructions(answer_type: str) -> str:
         products = "; ".join(f"{p.value} = {p.legislation}" for p in AnnexIProduct)
         return (
             f'set "value" to one of [{products}]; null if the system is not a safety component '
-            f"of, or itself, a product covered by Annex I; or \"{UNKNOWN}\" if the description "
+            f'of, or itself, a product covered by Annex I; or "{UNKNOWN}" if the description '
             f"does not say what product the system is part of"
         )
     if answer_type == "derogation":
@@ -296,9 +296,7 @@ def _parse_value(answer_type: str, value: object) -> object:
     parsed = _read_value(answer_type, value)
     expected = VALUE_TYPES[answer_type]
     if parsed is not None and not isinstance(parsed, expected):
-        raise TypeError(
-            f"{answer_type} parsed to {type(parsed).__name__}, expected {expected}"
-        )
+        raise TypeError(f"{answer_type} parsed to {type(parsed).__name__}, expected {expected}")
     return parsed
 
 
@@ -444,8 +442,7 @@ class LLMBrain:
         Returns a plain string where the provider has no cache-marker surface, so the unverified
         path stays maximally portable."""
         law = (
-            f"Enacted text you must answer against (verbatim):\n"
-            f'"""\n{question.context}\n"""\n\n'
+            f'Enacted text you must answer against (verbatim):\n"""\n{question.context}\n"""\n\n'
             if question.context
             else ""
         )
@@ -539,8 +536,7 @@ class LLMBrain:
         return Answer(
             value=value,
             reasoning=clip_reasoning(
-                str(data.get("reasoning", "")).strip()
-                or f"model answer for {question.node_id}"
+                str(data.get("reasoning", "")).strip() or f"model answer for {question.node_id}"
             ),
             evidence_quote=quote,
             confidence=confidence,

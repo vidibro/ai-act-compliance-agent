@@ -107,9 +107,7 @@ def test_article_six_keeps_four_alternatives_and_human_review_qualification(corr
     assert "deviations from prior decision-making patterns" in patterns.operands[0]
     assert "without proper human review" in patterns.operands[1]
     assert "preparatory task" in alternatives.operands[3]
-    assert (
-        "performs profiling of natural persons" in norm.exceptions[0].operands[0]
-    )
+    assert "performs profiling of natural persons" in norm.exceptions[0].operands[0]
     assert "AIA-TEXT-A006-P014" in norm.qualifier_spans
     # The norm and its spans carry separate approvals, taken at different times against different
     # questions: the spans that this is the enacted text, the norm that these four alternatives are
@@ -130,9 +128,9 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
         if n.norm_id.startswith("AIA-NORM-A031-")
     }
     assert len(norms) == 18
-    assert [
-        operand.text for operand in norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions
-    ] == ["except when its disclosure is required by law"]
+    assert [operand.text for operand in norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions] == [
+        "except when its disclosure is required by law"
+    ]
     staff = norms["P7-STAFF-PROFESSIONAL-SECRECY"]
     assert staff.actors[0].actor_ref == "conformity_assessment_body_personnel"
     assert "notifying authorities of the Member State" in staff.exceptions[0].text
@@ -164,8 +162,7 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
     assert all(
         n.review.status.value == "proposed"
         for suffix, n in norms.items()
-        if suffix
-        not in {"P5-DIRECT-INVOLVEMENT-PROHIBITED", "P9-LIABILITY-INSURANCE"}
+        if suffix not in {"P5-DIRECT-INVOLVEMENT-PROHIBITED", "P9-LIABILITY-INSURANCE"}
     )
     assert all(n.implementation_mode.value == "none_required" for n in norms.values())
 

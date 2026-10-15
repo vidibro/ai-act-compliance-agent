@@ -210,9 +210,7 @@ def test_no_annex_text_sits_outside_every_address():
     addressed = {(p.document, p.division) for p in provisions if p.kind == "annex"}
     orphaned: list[str] = []
     for annex in {p.document for p in provisions if p.kind == "annex"}:
-        divisions = [
-            d for d in annex_divisions(ANNEXES_DIR, annex) if not d.endswith("chapeau")
-        ]
+        divisions = [d for d in annex_divisions(ANNEXES_DIR, annex) if not d.endswith("chapeau")]
         if not divisions:
             continue
         body = _annex_body(ANNEXES_DIR, annex)

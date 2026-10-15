@@ -294,6 +294,7 @@ class ClassificationCase(BaseModel):
         """Art. 5 — whether the practice is banned at all, derived rather than stored so it cannot
         disagree with the point above."""
         return self.expected_prohibited_practice is not None
+
     expected_annex_i_product: AnnexIProduct | None = None
     """Art. 6(1)(a) — the product family whose safety component this system is, or None."""
 
@@ -491,9 +492,9 @@ class ClassificationCase(BaseModel):
                 f"Art. 2({excluded.paragraph}) — an exclusion carves out of a Regulation that "
                 f"applies."
             )
-        if (
-            excluded is ScopeExclusion.PRE_MARKET_DEVELOPMENT
-            and rc not in (RiskClass.OUT_OF_SCOPE, RiskClass.GPAI_MODEL)
+        if excluded is ScopeExclusion.PRE_MARKET_DEVELOPMENT and rc not in (
+            RiskClass.OUT_OF_SCOPE,
+            RiskClass.GPAI_MODEL,
         ):
             raise ValueError(
                 f"{self.case_id}: expected_scope_exclusion=pre_market_development but "

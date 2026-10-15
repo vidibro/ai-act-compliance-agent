@@ -308,7 +308,7 @@ def test_the_annex_i_rulings_name_the_instrument_the_annex_names(ledger):
 
 
 def test_every_definition_the_ledger_hands_to_a_node_reaches_it(ledger):
-    """"CASCADE <node>" MUST MEAN THE NODE IS GIVEN THE PROVISION, not merely that the node exists.
+    """ "CASCADE <node>" MUST MEAN THE NODE IS GIVEN THE PROVISION, not merely that the node exists.
 
     `test_every_ruling_names_something_that_exists` checks the node id resolves. That is the weaker
     half of the claim: a definition can be ruled `CASCADE prohibited` while the `prohibited` node is
@@ -521,6 +521,8 @@ _DEBT_CLAIM = re.compile(r"await[s]? a rule|awaiting_rules")
 # article-only branch declines to match where a paragraph follows, leaving the next position to
 # the branch that reads both.
 _ADDRESS = re.compile(r"\bArts? (\d+[a-z]*)\b(?!\()|\b(\d+[a-z]*)\((\d+[a-z]*)\)")
+
+
 # The coverage ledger may name a canonical norm while explaining a rule or relation.  Norm IDs
 # belong to the normative layer, not the policy-rule layer this test verifies.  Keep accepting
 # unknown rule families so a typo in prose still fails.  The negative lookahead makes the two
@@ -545,7 +547,7 @@ def _prose(path: Path) -> list[str]:
 
 
 def test_a_debt_the_ledger_claims_in_prose_is_a_debt_it_actually_holds():
-    """"Declared in articles_awaiting_rules" has to still be true of the address it names.
+    """ "Declared in articles_awaiting_rules" has to still be true of the address it names.
 
     This is the claim that goes stale, and it goes stale in one direction: the commit that writes
     the rule pays the debt and leaves the sentence behind, so the ledger tells the next reader a
@@ -572,9 +574,7 @@ def test_a_debt_the_ledger_claims_in_prose_is_a_debt_it_actually_holds():
         ]
         if not named:
             continue
-        owed = [
-            a for a in named if (a in divisions) or (a[1] is None and a[0] in documents)
-        ]
+        owed = [a for a in named if (a in divisions) or (a[1] is None and a[0] in documents)]
         assert owed, (
             f"the ledger calls {named} a debt, and none of them is in articles_awaiting_rules — "
             f"a rule was written and the sentence pointing at the gap was left behind: "
@@ -711,9 +711,7 @@ def test_a_provider_that_registers_a_derogated_system_is_told_what_to_enter(spec
 
     DERIVED over every area, so an area added to the enum is covered without anyone remembering."""
     for area in AnnexIIIArea:
-        rules = select_rules(
-            spec, _derogated_use_case(area), ActorRole.PROVIDER
-        ).all_rules
+        rules = select_rules(spec, _derogated_use_case(area), ActorRole.PROVIDER).all_rules
         assert any(rule.source.annex == "VIII" for rule in rules), (
             f"a provider derogating a {area.value} system under Art. 6(3) is told to register and "
             f"never told what to enter — no selected rule cites Annex VIII"
@@ -1058,9 +1056,7 @@ def _unbound_role_mentions(spec) -> dict[str, list[str]]:
         text = _division_text(key[0], key[1])
         named = {_ROLE_OF_WORD[m.lower()] for m in _ROLE_WORD.findall(text)}
         here = bound.get(key, set())
-        missing = {
-            role for role in named if not _roles_that_answer(role, text, key[0]) & here
-        }
+        missing = {role for role in named if not _roles_that_answer(role, text, key[0]) & here}
         if missing:
             unbound[f"{key[0]}({key[1]})"] = sorted(r.value for r in missing)
     return unbound
@@ -1113,8 +1109,6 @@ def test_a_role_mention_entry_names_the_roles_it_accounts_for(spec, ledger):
         assert len(reason.split()) >= 12, (
             f"role_mentions[{address}] is too short to be a reading: {reason!r}"
         )
-
-
 
 
 # The words a dismissal reaches for when it means "no rule stands here yet". Said about an article

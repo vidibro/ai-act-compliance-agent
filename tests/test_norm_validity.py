@@ -99,7 +99,6 @@ def refresh_article_fifteen_audit(
     shard_path.write_text(yaml.safe_dump(shard, sort_keys=False), encoding="utf-8")
 
 
-
 def test_all_enforced_adjudications_are_current():
     """The current corpus is governed by the ledger, not hard-coded article snapshots."""
     enforce_validity_adjudications(load_bundle(), LEDGER)
@@ -226,10 +225,7 @@ def test_logical_expression_leaf_evidence_is_checked_when_the_field_is_enforced(
         required_field_validations=requirements,
     )
 
-    target = (
-        "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION:"
-        "conditions:0:AIA-TEXT-A015-P006"
-    )
+    target = "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION:conditions:0:AIA-TEXT-A015-P006"
     assert any(
         finding.target == target
         and finding.rule == "logical_expression_basis_does_not_contain_text"
@@ -259,13 +255,9 @@ def test_logical_expression_unknown_basis_is_reported_when_the_field_is_enforced
         required_field_validations=requirements,
     )
 
-    target = (
-        "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION:"
-        "conditions:0:AIA-TEXT-A015-P999"
-    )
+    target = "AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION:conditions:0:AIA-TEXT-A015-P999"
     assert any(
-        finding.target == target
-        and finding.rule == "logical_expression_basis_segment_unknown"
+        finding.target == target and finding.rule == "logical_expression_basis_segment_unknown"
         for finding in findings
     )
 
@@ -612,9 +604,7 @@ def test_article_seventy_five_splits_its_cumulative_information_deadlines():
     } <= norm_ids
     findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "75")})
     assert not [
-        finding
-        for finding in findings
-        if finding.rule == "multiple_deadline_constraints_in_norm"
+        finding for finding in findings if finding.rule == "multiple_deadline_constraints_in_norm"
     ]
 
 
@@ -644,9 +634,7 @@ def test_article_eighty_one_objection_windows_are_conditions_not_deadlines():
     ]
 
     consultation.conditions = None
-    findings_without_conditions = audit_norm_validity(
-        bundle, scope={(SourceKind.ARTICLE, "81")}
-    )
+    findings_without_conditions = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "81")})
     assert any(
         finding.target == consultation.norm_id
         and finding.rule == "multiple_deadline_constraints_in_norm"
@@ -665,9 +653,7 @@ def test_article_ninety_nine_splits_initial_and_amendment_notifications():
     } <= norm_ids
     findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "99")})
     assert not [
-        finding
-        for finding in findings
-        if finding.rule == "multiple_deadline_constraints_in_norm"
+        finding for finding in findings if finding.rule == "multiple_deadline_constraints_in_norm"
     ]
 
 
@@ -691,9 +677,9 @@ def test_field_validation_gate_requires_complete_actor_evidence_for_an_article(t
     assert any(finding.rule == "actor_basis_missing" for finding in findings)
 
     root, manifest, shard = copied_ledger(tmp_path)
-    next(
-        scope for scope in manifest["enforced_scope"] if scope["document"] == "15"
-    )["required_field_validations"] = ["actor_evidence"]
+    next(scope for scope in manifest["enforced_scope"] if scope["document"] == "15")[
+        "required_field_validations"
+    ] = ["actor_evidence"]
     shard["source"]["required_field_validations"] = ["actor_evidence"]
     write_ledger(root, manifest, shard)
     refresh_article_fifteen_audit(root, bundle, requirements)
@@ -730,9 +716,7 @@ def test_universal_actor_scope_requires_the_enacted_prohibition_chapeau():
     )
 
     universal_rules = [
-        finding.rule
-        for finding in findings
-        if finding.target == f"{norm.norm_id}:actor:universal"
+        finding.rule for finding in findings if finding.target == f"{norm.norm_id}:actor:universal"
     ]
     assert universal_rules == ["universal_actor_scope_not_evidenced"]
 
@@ -811,9 +795,7 @@ def test_manifest_rejects_a_finding_duplicated_across_shards(tmp_path):
     manifest["shards"].append({"kind": "article", "document": outside, "file": file})
     write_ledger(root, manifest, shard)
     duplicate = {**shard, "source": {"kind": "article", "document": outside}}
-    (root / file).write_text(
-        yaml.safe_dump(duplicate, sort_keys=False), encoding="utf-8"
-    )
+    (root / file).write_text(yaml.safe_dump(duplicate, sort_keys=False), encoding="utf-8")
 
     with pytest.raises(
         ValueError, match="duplicate validity adjudication finding_id across shards"

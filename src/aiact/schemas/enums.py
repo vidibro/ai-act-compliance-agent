@@ -624,9 +624,7 @@ class ActorRole(StrEnum):
         A term mismatch is an audit finding, not a model decision. The adjudication may retain an
         unusual lawful formulation with an exact basis, but it cannot silently pass.
         """
-        return _ACTOR_LEGAL_REFERENCE_TERMS.get(
-            self, (self.value.replace("_", " "),)
-        )
+        return _ACTOR_LEGAL_REFERENCE_TERMS.get(self, (self.value.replace("_", " "),))
 
     @classmethod
     def from_value(cls, value: str) -> "ActorRole":

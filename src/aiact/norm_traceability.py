@@ -192,8 +192,7 @@ def traceability_errors(
             and norm.implementation_mode is ImplementationMode.NONE_REQUIRED
             and norm.product_scope is not ProductScope.DEPENDENCY_ONLY
             and any(
-                actor.category is ActorCategory.SUPPORTED_OPERATOR
-                for actor in norm.assigned_actors
+                actor.category is ActorCategory.SUPPORTED_OPERATOR for actor in norm.assigned_actors
             )
         ):
             errors.append(
@@ -229,12 +228,10 @@ def traceability_errors(
         if (
             in_scope(norm)
             and norm.review.status is not ReviewStatus.SUPERSEDED
-            and norm.kind
-            in {NormKind.PERMISSION, NormKind.ENTITLEMENT, NormKind.LEGAL_CONSEQUENCE}
+            and norm.kind in {NormKind.PERMISSION, NormKind.ENTITLEMENT, NormKind.LEGAL_CONSEQUENCE}
             and norm.product_scope is not ProductScope.DEPENDENCY_ONLY
             and any(
-                actor.category is ActorCategory.SUPPORTED_OPERATOR
-                for actor in norm.assigned_actors
+                actor.category is ActorCategory.SUPPORTED_OPERATOR for actor in norm.assigned_actors
             )
             and norm.implementation_mode
             not in {
@@ -272,8 +269,7 @@ def traceability_errors(
             }
             and not external_conditional_obligation
             and not any(
-                actor.category is ActorCategory.PUBLIC_AUTHORITY
-                for actor in norm.assigned_actors
+                actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.assigned_actors
             )
         ):
             errors.append(

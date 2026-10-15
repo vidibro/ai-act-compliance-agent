@@ -199,8 +199,24 @@ def _article_key(name: str) -> tuple[int, str]:
     return int(match.group(1)), match.group(2)
 
 
-_ANNEX_ORDER = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
-                "XIII", "XIV", "XV", "XVI"]
+_ANNEX_ORDER = [
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI",
+    "VII",
+    "VIII",
+    "IX",
+    "X",
+    "XI",
+    "XII",
+    "XIII",
+    "XIV",
+    "XV",
+    "XVI",
+]
 
 
 def _with_unnumbered(
@@ -284,9 +300,9 @@ def _annex_with_chapeau(
             start = sections.get(section, 0) if section else 0
             marker = re.compile(
                 rf"(?:^|(?<=\s)){re.escape(item)}[.)](?=[ \t]*[A-Z(‘])", re.M
-            ).search(body, start) or re.compile(
-                rf"^[ \t]*\({re.escape(item)}\)\s", re.M
-            ).search(body, start)
+            ).search(body, start) or re.compile(rf"^[ \t]*\({re.escape(item)}\)\s", re.M).search(
+                body, start
+            )
             if marker and len(body[start : marker.start()].strip()) > _UNNUMBERED_MIN:
                 out.append(f"{section}/chapeau" if section else "chapeau")
         out.append(division)
@@ -316,9 +332,10 @@ def all_provisions(articles_dir: Path, annexes_dir: Path) -> list[Provision]:
     for name in names:
         divisions = article_divisions(articles_dir, name)
         if divisions:
-            found += [Provision("article", name, d) for d in _with_unnumbered(
-                articles_dir, name, divisions
-            )]
+            found += [
+                Provision("article", name, d)
+                for d in _with_unnumbered(articles_dir, name, divisions)
+            ]
         else:
             found.append(Provision("article", name, None))
 

@@ -1037,9 +1037,7 @@ def test_the_point_h_rules_stay_off_every_other_high_risk_system(spec):
     assert not {r.rule_id for r in plain.all_rules} & (_ART_5_LAWFUL_BRANCH | {_ART_5_USE_BAN})
 
 
-@pytest.mark.parametrize(
-    "practice", [p for p in ProhibitedPractice if not p.bans_only_use]
-)
+@pytest.mark.parametrize("practice", [p for p in ProhibitedPractice if not p.bans_only_use])
 def test_a_practice_banned_outright_owes_withdrawal_alone(spec, practice):
     """Every point but (h) bans placing, putting into service and use alike, so a prohibited
     classification owes the ban and nothing from Chapter III or the lawful branch."""

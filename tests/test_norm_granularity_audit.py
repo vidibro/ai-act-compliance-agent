@@ -40,9 +40,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert len(ids) == len(set(ids)), "Document each triage candidate exactly once"
     # Keep the audit baseline: splitting a norm can remove its original scan signal.
     closed_by_splitting = {f"AIA-TEXT-A031-P{p:03}" for p in (5, 6, 7, 11, 12)}
-    closed_by_splitting |= {
-        f"AIA-TEXT-A057-P{p:03}" for p in (5, 7, 8, 12, 20, 21, 24, 25, 26)
-    }
+    closed_by_splitting |= {f"AIA-TEXT-A057-P{p:03}" for p in (5, 7, 8, 12, 20, 21, 24, 25, 26)}
     closed_by_splitting.add("AIA-TEXT-A058-P018")
     closed_by_splitting |= {"AIA-TEXT-A060-P019", "AIA-TEXT-A060-P020"}
     closed_by_splitting.add("AIA-TEXT-A060A-P010")

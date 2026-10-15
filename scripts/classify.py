@@ -62,8 +62,7 @@ def _print(result) -> None:
         duties = result.transparency_duties_by_role
         owed = (
             "; ".join(
-                f"{role.value}: "
-                + ", ".join(f"Art. 50({d.paragraph}) {d.value}" for d in ds)
+                f"{role.value}: " + ", ".join(f"Art. 50({d.paragraph}) {d.value}" for d in ds)
                 for role, ds in duties.items()
             )
             or "no duty attaches"

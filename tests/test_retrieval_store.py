@@ -288,9 +288,7 @@ def test_every_duty_the_evidence_text_names_gets_a_passage_of_its_own(spec):
 
 
 def _fake_hit(chunk_id: str) -> Hit:
-    chunk = Chunk(
-        chunk_id=chunk_id, body=chunk_id, heading_path=chunk_id, char_start=0, char_end=0
-    )
+    chunk = Chunk(chunk_id=chunk_id, body=chunk_id, heading_path=chunk_id, char_start=0, char_end=0)
     return Hit(chunk=chunk, distance=1.0)
 
 

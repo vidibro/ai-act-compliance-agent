@@ -158,15 +158,11 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
         update={
             "permissions": {ActorRole.PROVIDER: ["AIA-NORM-A015-P4-REDUNDANCY"]},
             "rights": {ActorRole.PROVIDER: ["AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT"]},
-            "legal_consequences": {
-                ActorRole.PROVIDER: ["AIA-NORM-A017-P4-FINANCIAL-DEEMING"]
-            },
+            "legal_consequences": {ActorRole.PROVIDER: ["AIA-NORM-A017-P4-FINANCIAL-DEEMING"]},
             "conditional_applicability": {
                 ActorRole.PROVIDER: ["AIA-NORM-A010-P6-TESTING-DATA-ONLY"]
             },
-            "public_authority_statements": [
-                "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY"
-            ],
+            "public_authority_statements": ["AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY"],
         }
     )
     text = render_report(report, spec)
@@ -182,8 +178,7 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
     assert "conditional scope limits:" in text
     assert "AIA-NORM-A010-P6-TESTING-DATA-ONLY" in text
     assert (
-        "limit the Article 10(2) to (4) and Article 4a(1) requirements to testing datasets"
-        in text
+        "limit the Article 10(2) to (4) and Article 4a(1) requirements to testing datasets" in text
     )
     assert "public authority (not a report actor)" in text
     assert "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY" in text

@@ -1120,9 +1120,7 @@ def _scope_exclusion(state: GraphState) -> ScopeExclusion | None:
     return a.value if a is not None and isinstance(a.value, ScopeExclusion) else None
 
 
-def _scope_evidence(
-    answer: Answer, exclusion: ScopeExclusion
-) -> ClassificationEvidence:
+def _scope_evidence(answer: Answer, exclusion: ScopeExclusion) -> ClassificationEvidence:
     """Evidence for an Art. 2 verdict, pinpointed to the PARAGRAPH that decided it.
 
     One node answers all six exclusions, so its question is registered against Article 2 as a whole
@@ -1231,11 +1229,7 @@ def _rules_out_the_union(state: GraphState) -> bool:
     — anything that is not that finding leaves the Regulation applying. Over-inclusion is
     recoverable; a silent clearance is not."""
     a = state.territorial_link
-    return (
-        a is not None
-        and isinstance(a.value, TerritorialLink)
-        and a.value.rules_out_the_union
-    )
+    return a is not None and isinstance(a.value, TerritorialLink) and a.value.rules_out_the_union
 
 
 def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
@@ -1305,11 +1299,7 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
             RiskClass.OUT_OF_SCOPE,
             f"Art. 2({excluded.paragraph}) withholds this Regulation from the system; no risk tier "
             f"is reached and nothing under this Regulation is owed.",
-            (
-                [_scope_evidence(state.scope_exclusion, excluded)]
-                if state.scope_exclusion
-                else []
-            ),
+            ([_scope_evidence(state.scope_exclusion, excluded)] if state.scope_exclusion else []),
         )
     if excluded is ScopeExclusion.PRE_MARKET_DEVELOPMENT:
         return (
@@ -1321,11 +1311,7 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
             "this assessment has not computed, because the exclusion applies now. Re-run it as the "
             "system it will be sold as. Note too that Art. 2(8) does not cover testing in "
             "REAL-WORLD CONDITIONS (Art. 3(57)), so a live pilot may already be outside it.",
-            (
-                [_scope_evidence(state.scope_exclusion, excluded)]
-                if state.scope_exclusion
-                else []
-            ),
+            ([_scope_evidence(state.scope_exclusion, excluded)] if state.scope_exclusion else []),
         )
     if (
         state.prohibited is not None

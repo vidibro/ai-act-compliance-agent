@@ -108,18 +108,8 @@ def test_temporal_regime_selects_a_source_bound_high_risk_application_route():
     )
 
     assert regime.status_on(date(2027, 12, 2)) is TemporalStatus.CONDITIONAL_TIMING
-    assert (
-        regime.status_on(
-            date(2027, 12, 2), HighRiskRoute.ANNEX_III
-        )
-        is TemporalStatus.ACTIVE
-    )
-    assert (
-        regime.status_on(
-            date(2027, 12, 2), HighRiskRoute.ANNEX_I
-        )
-        is TemporalStatus.UPCOMING
-    )
+    assert regime.status_on(date(2027, 12, 2), HighRiskRoute.ANNEX_III) is TemporalStatus.ACTIVE
+    assert regime.status_on(date(2027, 12, 2), HighRiskRoute.ANNEX_I) is TemporalStatus.UPCOMING
 
     with pytest.raises(ValidationError, match="cannot combine application_start"):
         TemporalRegime(

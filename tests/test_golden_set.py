@@ -206,8 +206,13 @@ def test_untouched_case_cannot_name_an_ablated_rule():
 def test_split_field_defaults_to_test_when_unset():
     """A hand-built case with no split is HELD OUT by default — never tuned against by accident."""
     c = GoldenCase(
-        case_id="x", system_id="s", document_path="p", raw_text="t",
-        ablated_rule_id=None, ablation=AblationType.UNTOUCHED, difficulty="obvious",
+        case_id="x",
+        system_id="s",
+        document_path="p",
+        raw_text="t",
+        ablated_rule_id=None,
+        ablation=AblationType.UNTOUCHED,
+        difficulty="obvious",
         expected={},
     )
     assert c.split == "test"

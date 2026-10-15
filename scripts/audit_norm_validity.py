@@ -24,9 +24,7 @@ def audit(version: str, articles: set[str] | None = None) -> dict[str, object]:
     text_payload, norm_payload = build_artifacts(reviewed, sources, paths)
     text_review = TextReviewInventory.model_validate(text_payload)
     norm_inventory = NormInventory.model_validate(norm_payload)
-    documents = {
-        (segment.source.kind, segment.source.document) for segment in text_review.segments
-    }
+    documents = {(segment.source.kind, segment.source.document) for segment in text_review.segments}
     bundle = NormativeCoverageBundle(
         text_review=text_review,
         norm_inventory=norm_inventory,
@@ -35,9 +33,7 @@ def audit(version: str, articles: set[str] | None = None) -> dict[str, object]:
         validated_norms=len(norm_inventory.norms),
     )
     scope = (
-        {(SourceKind.ARTICLE, article) for article in articles}
-        if articles is not None
-        else None
+        {(SourceKind.ARTICLE, article) for article in articles} if articles is not None else None
     )
     if paths.adjudications is None:
         raise SystemExit(f"Act version {version} has no validity adjudication ledger")
@@ -95,11 +91,14 @@ def main() -> int:
     )
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    rendered = json.dumps(
-        audit(args.act_version, set(args.article) if args.article else None),
-        indent=2,
-        ensure_ascii=False,
-    ) + "\n"
+    rendered = (
+        json.dumps(
+            audit(args.act_version, set(args.article) if args.article else None),
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n"
+    )
     if args.output:
         args.output.write_text(rendered, encoding="utf-8")
     else:

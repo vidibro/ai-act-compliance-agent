@@ -24,20 +24,35 @@ from aiact.retrieval.chunking import Chunk
 from aiact.retrieval.store import DocumentIndex
 
 # Forms that need no section vocabulary: the section sign and a markdown anchor.
-_UNIVERSAL = re.compile(
-    r"§\s*(?P<sec>\d+(?:\.\d+)*)|\]\(#(?P<anchor>[a-z0-9][a-z0-9-]*)\)"
-)
+_UNIVERSAL = re.compile(r"§\s*(?P<sec>\d+(?:\.\d+)*)|\]\(#(?P<anchor>[a-z0-9][a-z0-9-]*)\)")
 
 # Used in addition to the vocabulary learned from the document, for files whose headings carry no
 # keyword ("## 7. Human oversight") but whose prose says "Section 7". Not a full 24-language table:
 # unverifiable entries would be guesses, and the learned vocabulary covers the rest.
 _SEED_KEYWORDS = frozenset(
     {
-        "section", "clause", "chapter", "part", "annex", "appendix",  # EN
-        "abschnitt", "kapitel", "teil", "anhang",  # DE
-        "chapitre", "partie", "annexe",  # FR
-        "sección", "seccion", "capítulo", "capitulo", "parte", "anexo",  # ES
-        "sezione", "capitolo", "allegato",  # IT
+        "section",
+        "clause",
+        "chapter",
+        "part",
+        "annex",
+        "appendix",  # EN
+        "abschnitt",
+        "kapitel",
+        "teil",
+        "anhang",  # DE
+        "chapitre",
+        "partie",
+        "annexe",  # FR
+        "sección",
+        "seccion",
+        "capítulo",
+        "capitulo",
+        "parte",
+        "anexo",  # ES
+        "sezione",
+        "capitolo",
+        "allegato",  # IT
     }
 )
 
@@ -174,9 +189,7 @@ def resolve(index: DocumentIndex, token: str, document: str = "") -> Reference:
             return Reference(
                 token=token,
                 section=section,
-                chunks=tuple(
-                    c for c in index.chunks.values() if c.heading_path == section
-                ),
+                chunks=tuple(c for c in index.chunks.values() if c.heading_path == section),
             )
 
     body = document or "\n\n".join(c.body for c in index.chunks.values())
@@ -200,8 +213,7 @@ def resolve_all(
     document back in.
     """
     resolved = (
-        resolve(index, token, document)
-        for token in references_in(text, section_keywords(index))
+        resolve(index, token, document) for token in references_in(text, section_keywords(index))
     )
     # Dropped here rather than earlier: resolution is what proves they are not the document's own.
     return [ref for ref in resolved if not ref.cites_the_act][:limit]

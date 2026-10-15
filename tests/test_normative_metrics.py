@@ -1531,8 +1531,7 @@ def test_article_thirteen_keeps_instruction_requirements_complete_without_overla
     assert len(transparency) == 3
     assert len(contents) == 13
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-RULE-HR-A13"]
-        for norm_id in transparency
+        norms[norm_id].implementation_refs == ["AIA-RULE-HR-A13"] for norm_id in transparency
     )
     assert all(norms[norm_id].implementation_refs == ["AIA-RULE-HR-A13-3"] for norm_id in contents)
     assert all("AIA-TEXT-A013-P003" in norms[norm_id].qualifier_spans for norm_id in contents)
@@ -1602,8 +1601,7 @@ def test_article_fifteen_combines_each_threat_with_the_full_mitigation_cycle():
     assert commission.implementation_mode.value == "none_required"
     provider_norms = set(norms) - {commission.norm_id}
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-RULE-HR-A15"]
-        for norm_id in provider_norms
+        norms[norm_id].implementation_refs == ["AIA-RULE-HR-A15"] for norm_id in provider_norms
     )
 
     threats = {
@@ -1744,8 +1742,7 @@ def test_article_eighteen_applies_one_retention_chapeau_to_five_document_types()
     assert member_state.implementation_mode.value == "none_required"
     provider_norms = set(norms) - {member_state.norm_id, "AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION"}
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A18"]
-        for norm_id in provider_norms
+        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A18"] for norm_id in provider_norms
     )
     assert norms["AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION"].implementation_refs == [
         "AIA-RULE-PO-A18-3"
@@ -1835,12 +1832,10 @@ def test_article_twenty_keeps_alternative_corrective_outcomes_in_one_norm():
     assert len(paragraph_one) == 2
     assert len(paragraph_two) == 1
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A20"]
-        for norm_id in paragraph_one
+        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A20"] for norm_id in paragraph_one
     )
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A20-2"]
-        for norm_id in paragraph_two
+        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A20-2"] for norm_id in paragraph_two
     )
     response = norms["AIA-NORM-A020-P1-CORRECTIVE-RESPONSE"]
     assert all(
@@ -1882,8 +1877,7 @@ def test_article_twenty_one_keeps_disclosure_language_with_the_requested_materia
     paragraph_one = {norm_id for norm_id in norms if "-P1-" in norm_id}
     assert len(paragraph_one) == 1
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A21"]
-        for norm_id in paragraph_one
+        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A21"] for norm_id in paragraph_one
     )
     assert norms["AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS"].implementation_refs == ["AIA-RULE-PO-A21-2"]
     confidentiality = norms["AIA-NORM-A021-P3-CONFIDENTIALITY"]
@@ -1916,8 +1910,7 @@ def test_article_twenty_two_separates_provider_and_representative_duties():
         "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS",
     }
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A22"]
-        for norm_id in provider_norms
+        norms[norm_id].implementation_refs == ["AIA-RULE-PO-A22"] for norm_id in provider_norms
     )
     representative_norms = set(norms) - provider_norms
     assert all(
@@ -2742,14 +2735,11 @@ def test_article_forty_four_keeps_corrective_action_as_the_measure_exception():
     assert len(norms) == 7
     assert len(segments[2].norm_ids) == 3
     assert len(segments[3].norm_ids) == 2
-    reported = [
-        norm for norm in norms.values() if norm.implementation_mode.value == "report_only"
-    ]
+    reported = [norm for norm in norms.values() if norm.implementation_mode.value == "report_only"]
     assert len(reported) == 3
     assert all(norm.product_scope.value == "in_scope" for norm in reported)
     assert all(
-        norm.implementation_refs == ["AIA-RULE-PO-A43-1B", "AIA-RULE-PO-A43-3"]
-        for norm in reported
+        norm.implementation_refs == ["AIA-RULE-PO-A43-1B", "AIA-RULE-PO-A43-3"] for norm in reported
     )
     extension = norms["AIA-NORM-A044-P2-EXTEND-CERTIFICATE"]
     assert extension.kind.value == "permission"
@@ -3594,7 +3584,6 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     def texts(expression):
         return [operand.text for operand in expression]
 
-
     inform = norms["AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES"]
     agreement = norms["AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT"]
     assert [actor.actor_ref for actor in inform.actors] == ["provider", "prospective_provider"]
@@ -3653,8 +3642,7 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     assert not recall.conditions
     assert "upon such termination" in recall.action
     assert all(
-        [actor.actor_ref for actor in norm.assigned_actors]
-        == ["provider", "prospective_provider"]
+        [actor.actor_ref for actor in norm.assigned_actors] == ["provider", "prospective_provider"]
         for norm in (report, mitigate, recall)
     )
 
@@ -3784,6 +3772,7 @@ def test_article_sixty_two_extracts_sme_support_measures():
     # Priority access is conditional and does not shut other eligible SMEs out of the sandbox.
     priority = norms["AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS"]
     preserved = norms["AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS"]
+
     def texts(expression):
         return [operand.text for operand in expression]
 
@@ -3893,8 +3882,7 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     assert not agenda.conditions
     assert "rules of procedure" in agenda.action
     assert all(
-        norm.assigned_actors[0].actor_ref == "ai_office"
-        for norm in (secretariat, convene, agenda)
+        norm.assigned_actors[0].actor_ref == "ai_office" for norm in (secretariat, convene, agenda)
     )
     assert_extraction_never_approves(norms.values())
 
@@ -5139,9 +5127,7 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
     ]
     assert len(annex_vii) == 31
     assert {
-        norm.assigned_actors[0].category.value
-        for norm in annex_vii
-        if norm.assigned_actors
+        norm.assigned_actors[0].category.value for norm in annex_vii if norm.assigned_actors
     } >= {
         "supported_operator",
         "notified_or_conformity_body",

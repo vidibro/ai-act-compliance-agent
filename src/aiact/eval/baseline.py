@@ -18,8 +18,23 @@ from aiact.schemas.enums import Verdict
 from aiact.schemas.policy import PolicyRule
 
 _STOP = {
-    "and", "the", "for", "with", "from", "této", "provision", "of", "to", "in", "on",
-    "rules", "system", "systems", "certain", "provided", "information",
+    "and",
+    "the",
+    "for",
+    "with",
+    "from",
+    "této",
+    "provision",
+    "of",
+    "to",
+    "in",
+    "on",
+    "rules",
+    "system",
+    "systems",
+    "certain",
+    "provided",
+    "information",
 }
 _WORD = re.compile(r"[a-z]+")
 

@@ -293,7 +293,8 @@ def test_every_untrusted_block_is_fenced(judge):
 def test_the_marker_differs_between_calls(judge):
     """A marker reused across calls is a fixed delimiter with extra steps."""
     markers = {
-        line for _ in range(3)
+        line
+        for _ in range(3)
         for line in str(judge._user_content(a_rule(), (a_hit(),))).splitlines()
         if line.startswith("<<EXCERPTS ")
     }

@@ -176,8 +176,7 @@ def measure_normative_coverage(bundle: NormativeCoverageBundle) -> CoverageMetri
         documents=bundle.validated_documents,
         documents_with_extracted_norms=len(norm_documents),
         documents_with_review_debt=sum(
-            ReviewStatus.NEEDS_REVIEW in statuses
-            for statuses in document_review_statuses.values()
+            ReviewStatus.NEEDS_REVIEW in statuses for statuses in document_review_statuses.values()
         ),
         segments=bundle.validated_segments,
         norms=bundle.validated_norms,

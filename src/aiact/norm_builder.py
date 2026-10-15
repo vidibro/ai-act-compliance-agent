@@ -147,9 +147,7 @@ class NormSourceRecord(BaseModel):
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     qualifier_spans: list[str] = []
-    temporal_regime_id: str | None = Field(
-        default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
-    )
+    temporal_regime_id: str | None = Field(default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$")
     verified_by: str = ""
 
     @property

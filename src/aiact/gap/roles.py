@@ -40,6 +40,7 @@ def _act_date() -> date:
     reasoned from one text and cited to a different one — which is unfalsifiable from the report."""
     return get_settings().act_version_date
 
+
 NODE_ID = "provider_reallocation"
 DEPLOYER_NODE_ID = "deployer_type"
 TESTING_NODE_ID = "real_world_testing"

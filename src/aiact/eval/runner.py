@@ -152,8 +152,7 @@ def report(checker_name: str, results: list[Result]) -> str:
     fp = [r for r in intact if not r.correct]
     lines.append("\nFALSE POSITIVES — did it leave the UNTOUCHED rules alone?\n")
     lines.append(
-        f"  intact judgements: {len(intact)}   "
-        f"correct: {_pct(len(intact) - len(fp), len(intact))}"
+        f"  intact judgements: {len(intact)}   correct: {_pct(len(intact) - len(fp), len(intact))}"
     )
     if fp:
         for rule_id, expected, got in sorted(
@@ -173,8 +172,7 @@ def report(checker_name: str, results: list[Result]) -> str:
 
     overall = sum(r.correct for r in results)
     lines.append(
-        f"\nOverall (do not read this without the breakdown above): "
-        f"{_pct(overall, len(results))}"
+        f"\nOverall (do not read this without the breakdown above): {_pct(overall, len(results))}"
     )
     return "\n".join(lines)
 

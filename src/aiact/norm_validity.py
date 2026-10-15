@@ -256,6 +256,7 @@ def _semantic_text(norm: Norm) -> str:
 
 def _legacy_expression_payload(expression: LogicalExpression | None) -> list[object]:
     """Keep legal-content adjudication IDs stable across a structural expression migration."""
+
     def operand_payload(operand):
         if hasattr(operand, "text"):
             return operand.text
@@ -552,10 +553,7 @@ def _new_field_findings(
                                 evidence=basis.text,
                             )
                         )
-        if (
-            FieldValidation.ACTOR_EVIDENCE in requirements
-            and norm.applies_to_all_actors
-        ):
+        if FieldValidation.ACTOR_EVIDENCE in requirements and norm.applies_to_all_actors:
             scope_text = "\n".join(segments[span].text for span in norm.all_spans)
             if not _contains_exact_words(scope_text, "shall be prohibited"):
                 findings.append(
@@ -570,10 +568,7 @@ def _new_field_findings(
                 )
 
         for actor_index, actor in enumerate(norm.assigned_actors):
-            if (
-                FieldValidation.ACTOR_EVIDENCE in requirements
-                and not actor.basis_segment_ids
-            ):
+            if FieldValidation.ACTOR_EVIDENCE in requirements and not actor.basis_segment_ids:
                 findings.append(
                     _finding(
                         target=f"{norm.norm_id}:actor:{actor.actor_ref.value}",
@@ -593,9 +588,7 @@ def _new_field_findings(
                     continue
                 findings.append(
                     _finding(
-                        target=(
-                            f"{norm.norm_id}:actor:{actor.actor_ref.value}:{basis_segment_id}"
-                        ),
+                        target=(f"{norm.norm_id}:actor:{actor.actor_ref.value}:{basis_segment_id}"),
                         rule="actor_basis_does_not_name_actor",
                         source_ref=primary.segment_id,
                         source_sha256=primary.sha256,
@@ -1004,9 +997,7 @@ def audit_norm_validity(
         requirements = (required_field_validations or {}).get(
             (segment.source.kind, segment.source.document), set()
         )
-        expression_evidence_required = (
-            FieldValidation.LOGICAL_EXPRESSION_EVIDENCE in requirements
-        )
+        expression_evidence_required = FieldValidation.LOGICAL_EXPRESSION_EVIDENCE in requirements
         for norm in sorted(norms, key=lambda item: item.norm_id):
             semantic = _semantic_text(norm)
             quote = norm.norm_text.lstrip()
@@ -1084,13 +1075,8 @@ def _populated_field_snapshot(
         if document not in scope:
             continue
         requirements = (required_field_validations or {}).get(document, set())
-        if (
-            FieldValidation.ACTOR_EVIDENCE in requirements
-            and norm.applies_to_all_actors
-        ):
-            actor_assignments.append(
-                {"norm_id": norm.norm_id, "actors": [], "universal": True}
-            )
+        if FieldValidation.ACTOR_EVIDENCE in requirements and norm.applies_to_all_actors:
+            actor_assignments.append({"norm_id": norm.norm_id, "actors": [], "universal": True})
         for actor in norm.assigned_actors:
             if actor.basis_segment_ids:
                 actor_assignments.append(

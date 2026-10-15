@@ -521,9 +521,7 @@ class LLMJudge:
         if verdict in (Verdict.GAP, Verdict.INADEQUATE) and not reasoning:
             # Finding's own validator refuses this too; catching it here keeps the failure a
             # NEEDS_REVIEW rather than an exception halfway through a run.
-            return _unsure(
-                f"{label}: a {verdict.value} verdict arrived with no reasoning.", hits
-            )
+            return _unsure(f"{label}: a {verdict.value} verdict arrived with no reasoning.", hits)
 
         return Judgement(
             verdict=verdict,
