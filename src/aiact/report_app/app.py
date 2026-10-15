@@ -30,6 +30,7 @@ from aiact.gap.judge import LLMJudge
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
 from aiact.report_app.citations import segment_citations
+from aiact.report_app.law import ProvisionText, provision
 from aiact.report_app.roles import RoleDefinition, role_definitions
 from aiact.report_app.views import (
     NormView,
@@ -159,6 +160,15 @@ def post_refresh(
 def roles() -> dict[str, RoleDefinition]:
     """What each role means, by role id: the Act's Article 3 definition where it has one."""
     return role_definitions()
+
+
+@app.get("/api/provision/{key}")
+def get_provision(key: str) -> ProvisionText:
+    """An article ("75b") or annex ("IV") of the pinned Act, for a reference the reader opens."""
+    found = provision(key)
+    if found is None:
+        raise HTTPException(status_code=404, detail=f"No article or annex {key!r} in this Act.")
+    return found
 
 
 @app.get("/api/limits")

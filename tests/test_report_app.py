@@ -11,7 +11,7 @@ from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.gap.judge import Judgement
 from aiact.policy_loader import load_policy_spec
 from aiact.report_app.app import app, get_brain, get_judge, get_summariser
-from aiact.report_app.views import resolve_rules
+from aiact.report_app.views import resolve_norms, resolve_rules
 from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, Verdict
 from aiact.summary import SystemSummary
 
@@ -238,3 +238,28 @@ def test_roles_come_with_their_meaning(client_for):
     # A role Art. 3 does not define is a summary, and says so.
     assert roles["initial_provider"]["defined"] is False
     assert roles["initial_provider"]["citation"] == "Art. 25(2)"
+
+
+def test_a_cited_provision_is_served_with_its_title(client_for):
+    client = client_for(**high_risk())
+
+    commitments = client.get("/api/provision/75b").json()
+    assert (commitments["citation"], commitments["title"]) == ("Art. 75b", "Commitments")
+    assert "commitments" in commitments["text"].lower()
+    assert client.get("/api/provision/IV").json()["citation"] == "Annex IV"
+    assert client.get("/api/provision/999").status_code == 404
+
+
+def test_every_provision_opens_to_its_paragraph_and_what_it_cites():
+    spec = load_policy_spec()
+    norms = resolve_norms(["AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS"], spec)
+    view = norms["AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS"]
+
+    # The whole paragraph, not the one sentence the norm was cut from.
+    assert view.law.startswith("3. In the decision pursuant to paragraph 1")
+    assert "structured dialogue" in view.law
+    assert [(r.citation, r.title) for r in view.references] == [("Art. 75b", "Commitments")]
+    # A duty's requirement names what it cites the same way.
+    rules = resolve_rules(["AIA-RULE-HR-A11"], [], spec)
+    cited = [r.citation for r in rules["AIA-RULE-HR-A11"].references]
+    assert "Annex IV" in cited and "Art. 11" not in cited

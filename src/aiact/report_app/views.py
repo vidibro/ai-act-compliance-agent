@@ -14,6 +14,7 @@ from datetime import date
 from pydantic import BaseModel
 
 from aiact.report_app.citations import segment_citations
+from aiact.report_app.law import Provision, paragraph_text, references
 from aiact.reporting import application_date, cite, condition_text, deadline
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.norm import NormKind
@@ -47,6 +48,8 @@ class RuleView(BaseModel):
     deadline: date | None = None
     """By when the obligation must be met, where its provision sets a date (Art. 111)."""
     effective_date_note: str | None
+    references: list[Provision] = []
+    """The other articles and annexes the requirement cites, with their titles."""
     criteria: dict[str, CriterionView] = {}
     """The rule's separately judged parts, by norm id, so a finding's criteria read as text."""
 
@@ -64,6 +67,11 @@ class NormView(BaseModel):
     source_spans: list[str]
     citations: list[str]
     """The source text as a reader cites it, e.g. "Art. 99(3)", one per distinct provision."""
+    law: str = ""
+    """The paragraph of the Act the provision comes from, in full — the context its one-line
+    action leaves out."""
+    references: list[Provision] = []
+    """The other articles and annexes that paragraph cites, with their titles."""
     application_dates: dict[str, date | None] = {}
     """When the provision starts to apply, per use case id: the earliest date among the rules that
     bring it into the report. None where none of those dates is settled."""
@@ -147,6 +155,7 @@ def resolve_rules(
                 for use_case in use_cases
             },
             deadline=deadline(rule, spec),
+            references=references(rule.requirement, str(rule.source.article or "")),
             effective_date_note=readable(rule.effective_date_note),
             criteria={
                 criterion.norm_id: CriterionView(
@@ -190,6 +199,17 @@ def _sentence(action: str) -> str:
     return action[:1].upper() + action[1:]
 
 
+def _law(spans: list[str]) -> str:
+    """The paragraphs a norm's source spans belong to, each once, in order."""
+    return "\n\n".join(dict.fromkeys(text for span in spans if (text := paragraph_text(span))))
+
+
+def _article_of(spans: list[str]) -> str | None:
+    """The article a norm's first span sits in, e.g. "75c" for AIA-TEXT-A075C-P003."""
+    match = re.match(r"AIA-TEXT-A0*(\d+)([A-Z]?)-", spans[0]) if spans else None
+    return f"{match.group(1)}{match.group(2).lower()}" if match else None
+
+
 def _cite_spans(spans: list[str]) -> list[str]:
     """The provisions a list of text segments come from, as a reader cites them, once each."""
     citations = segment_citations()
@@ -224,6 +244,8 @@ def resolve_norms(
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,
             source_spans=norm.source_spans,
             citations=_cite_spans(norm.source_spans),
+            law=(law := _law(norm.source_spans)),
+            references=references(law, _article_of(norm.source_spans)),
             application_dates={
                 use_case.use_case_id: start(norm, use_case) for use_case in use_cases
             },

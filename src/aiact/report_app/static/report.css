@@ -343,6 +343,18 @@ details.item[open] .oneline { white-space: normal; color: var(--ink); }
 .kv > .l { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--orange-ink); text-align: right; }
 .kv > div { min-width: 0; white-space: pre-wrap; }
 .law { color: var(--muted); font-size: 13px; max-height: 320px; overflow-y: auto; }
+/* The provisions a paragraph cites: each opens in place to its text. */
+.refs { display: grid; gap: 6px; }
+details.ref { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+details.ref > summary { list-style: none; cursor: pointer; padding: 7px 36px 7px 12px; position: relative; }
+details.ref > summary::-webkit-details-marker { display: none; }
+details.ref > summary::after { content: ""; position: absolute; right: 10px; top: 8px; width: 18px; height: 18px;
+                               background-color: var(--muted); transition: transform .15s ease;
+                               -webkit-mask: var(--chevron) center / 14px no-repeat; mask: var(--chevron) center / 14px no-repeat; }
+details.ref > summary:hover { color: var(--orange-ink); }
+details.ref > summary:hover::after { background-color: var(--orange-ink); }
+details.ref[open] > summary::after { transform: rotate(180deg); }
+details.ref > .law { padding: 0 12px 10px; white-space: pre-wrap; }
 blockquote { margin: 0; padding: 8px 12px; background: var(--surface); border-left: 3px solid var(--orange);
              border-radius: 0 6px 6px 0; white-space: pre-wrap; }
 ul.criteria { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }

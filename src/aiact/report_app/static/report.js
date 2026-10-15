@@ -672,7 +672,8 @@ function findingItem(f, data) {
       el("span", { class: "when" }, appliesFrom(f.applies_from ? "future" : "now", f.applies_from, rule?.deadline))),
     el("div", { class: "item-body" },
       kv("Finding", findingText(f)),
-      rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,
+      rule ? actSays(rule.requirement) : null,
+      refersTo(rule?.references),
       kv("Evidence", f.evidence_quote ? el("blockquote", {}, f.evidence_quote)
         : el("span", { class: "muted" }, "No passage in the document was cited.")),
       f.criteria.length ? kv("Criteria", el("ul", { class: "criteria" }, f.criteria.map((c) =>
@@ -696,7 +697,8 @@ function outstandingItem(id, data, date, future, roles, when = future ? "future"
       el("span", { class: "when" }, appliesFrom(when, date, rule?.deadline))),
     el("div", { class: "item-body" },
       rule ? kv("What to check", rule.evidence_expected) : null,
-      rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,
+      rule ? actSays(rule.requirement) : null,
+      refersTo(rule?.references),
       rule?.activation_condition ? kv("Applies to", rule.activation_condition) : null,
       rule?.effective_date_note ? kv("Date note", rule.effective_date_note) : null),
   );
@@ -730,10 +732,42 @@ function conditionalDutyItem(id, data, date, future, roles) {
       what(norm?.action || id, roles),
       el("span", { class: "when" }, appliesFrom(future ? "future" : "now", date))),
     el("div", { class: "item-body" },
-      norm?.conditions ? kv("Only if", norm.conditions) : null,
-      norm?.exceptions ? kv("Except", norm.exceptions) : null,
+      norm?.law ? actSays(norm.law) : null,
+      refersTo(norm?.references),
+      norm?.conditions ? kv("Only if", unwrap(norm.conditions)) : null,
+      norm?.exceptions ? kv("Except", unwrap(norm.exceptions)) : null,
       norm ? kv("Basis", normCites(norm).join(", ")) : null),
   );
+}
+
+// ---- the Act's words, and what they point at ---------------------------------------------------
+// Every row, duty or not, opens to the paragraph it comes from, and to the other articles and
+// annexes that paragraph cites. A cited provision's text is fetched only when the reader opens it.
+const actSays = (text) => kv("The Act says", el("div", { class: "law" }, text));
+
+// A condition reads as a quoted fragment; its outer brackets add nothing on their own.
+const unwrap = (text) => String(text).replace(/^\((.*)\)$/s, "$1");
+
+function refersTo(references) {
+  if (!references?.length) return null;
+  return kv("Refers to", el("div", { class: "refs" }, references.map((ref) => {
+    const body = el("div", { class: "law" }, el("span", { class: "muted" }, "Loading…"));
+    const item = el("details", { class: "ref" },
+      el("summary", {}, el("b", {}, ref.citation), ref.title ? ` — ${ref.title}` : ""), body);
+    item.addEventListener("toggle", async () => {
+      if (!item.open || item.dataset.loaded) return;
+      item.dataset.loaded = "1";
+      try {
+        const response = await fetch(`/api/provision/${encodeURIComponent(ref.key)}`);
+        if (!response.ok) throw new Error(response.statusText);
+        body.replaceChildren((await response.json()).text);
+      } catch {
+        delete item.dataset.loaded;
+        body.replaceChildren(el("span", { class: "muted" }, "Could not load this provision. Close and open it to try again."));
+      }
+    });
+    return item;
+  })));
 }
 
 // Reports saved before citations were added carry only the segment ids.
@@ -748,9 +782,10 @@ function normItem(id, data, roles = null) {
       what(norm?.action || id, roles),
       el("span", {})),
     el("div", { class: "item-body" },
-      norm ? kv("Means", norm.action) : null,
-      norm?.conditions ? kv("If", norm.conditions) : null,
-      norm?.exceptions ? kv("Except", norm.exceptions) : null,
+      norm?.law ? actSays(norm.law) : null,
+      refersTo(norm?.references),
+      norm?.conditions ? kv("Only if", unwrap(norm.conditions)) : null,
+      norm?.exceptions ? kv("Except", unwrap(norm.exceptions)) : null,
       norm ? kv("Basis", normCites(norm).join(", ")) : null),
   );
 }
