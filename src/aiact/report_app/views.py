@@ -15,7 +15,13 @@ from pydantic import BaseModel
 
 from aiact.report_app import explanations
 from aiact.report_app.citations import segment_citations
-from aiact.report_app.law import Provision, article_of, paragraph_text, references
+from aiact.report_app.law import (
+    Provision,
+    article_of,
+    paragraph_text,
+    provision_cited_as,
+    references,
+)
 from aiact.reporting import application_date, cite, condition_text, deadline
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.norm import NormKind
@@ -78,6 +84,9 @@ class NormView(BaseModel):
     action leaves out."""
     references: list[Provision] = []
     """The other articles and annexes that paragraph cites, with their titles."""
+    basis: list[Provision] = []
+    """The provisions it comes from, as `citations` names them, with the article or annex each
+    sits in and its title."""
     application_dates: dict[str, date | None] = {}
     """When the provision starts to apply, per use case id: the earliest date among the rules that
     bring it into the report. None where none of those dates is settled."""
@@ -255,7 +264,8 @@ def resolve_norms(
             conditions=condition_text(norm.conditions) if norm.conditions else None,
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,
             source_spans=norm.source_spans,
-            citations=_cite_spans(norm.source_spans),
+            citations=(cited := _cite_spans(norm.source_spans)),
+            basis=[found for c in cited if (found := provision_cited_as(c))],
             **_explained(norm_id, explanations.norm_input(norm), spec),
             law=(law := _law(norm.source_spans)),
             references=references(law, article_of(norm.source_spans)),

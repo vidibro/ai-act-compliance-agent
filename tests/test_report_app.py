@@ -271,3 +271,10 @@ def test_a_lead_in_alone_is_not_shown_as_the_act_s_words():
     law = resolve_norms([norm_id], load_policy_spec())[norm_id].law
     assert law.startswith("7. Testing procedures may include testing in real-world conditions")
     assert "shall:" not in law
+
+
+def test_a_norm_names_its_basis_with_the_article_it_sits_in():
+    norm_id = "AIA-NORM-A009-P7-REAL-WORLD-TESTING"
+    basis = resolve_norms([norm_id], load_policy_spec())[norm_id].basis
+    assert [(b.citation, b.key) for b in basis] == [("Art. 9(7)", "9"), ("Art. 16", "16")]
+    assert basis[0].title == "Risk management system"

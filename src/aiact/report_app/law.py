@@ -73,6 +73,16 @@ def references(text: str, own: str | None = None) -> list[Provision]:
     return [Provision(key=p.key, citation=p.citation, title=p.title) for p in found if p]
 
 
+_CITED_AS = re.compile(r"Art\. (\d+[a-z]?)\b|Annex ([IVX]+)\b")
+
+
+def provision_cited_as(citation: str) -> Provision | None:
+    """The article or annex a citation such as "Art. 21(3)" sits in, under that citation."""
+    match = _CITED_AS.match(citation)
+    found = provision(match.group(1) or match.group(2)) if match else None
+    return Provision(key=found.key, citation=citation, title=found.title) if found else None
+
+
 @lru_cache(maxsize=1)
 def _segments() -> tuple[dict[str, list[tuple[str, str]]], dict[str, tuple[str, str, str]]]:
     """Each source document's segments in order as (citation, text), and each segment id's

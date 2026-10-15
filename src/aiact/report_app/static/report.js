@@ -740,7 +740,7 @@ function conditionalDutyItem(id, data, date, future, roles) {
       refersTo(norm?.references),
       norm?.conditions ? kv("Only if", unwrap(norm.conditions)) : null,
       norm?.exceptions ? kv("Except", unwrap(norm.exceptions)) : null,
-      norm ? kv("Basis", normCites(norm).join(", ")) : null),
+      norm ? (norm.basis?.length ? refersTo(norm.basis, "Basis") : kv("Basis", normCites(norm).join(", "))) : null),
   );
 }
 
@@ -762,9 +762,9 @@ const actSays = (text) => kv("The Act says", el("div", { class: "law" }, text));
 // A condition reads as a quoted fragment; its outer brackets add nothing on their own.
 const unwrap = (text) => String(text).replace(/^\((.*)\)$/s, "$1");
 
-function refersTo(references) {
+function refersTo(references, label = "Refers to") {
   if (!references?.length) return null;
-  return kv("Refers to", el("div", { class: "refs" }, references.map((ref) => {
+  return kv(label, el("div", { class: "refs" }, references.map((ref) => {
     const body = el("div", { class: "law" }, el("span", { class: "muted" }, "Loading…"));
     const item = el("details", { class: "ref" },
       el("summary", {}, el("b", {}, ref.citation), ref.title ? ` — ${ref.title}` : ""), body);
@@ -801,7 +801,7 @@ function normItem(id, data, roles = null) {
       refersTo(norm?.references),
       norm?.conditions ? kv("Only if", unwrap(norm.conditions)) : null,
       norm?.exceptions ? kv("Except", unwrap(norm.exceptions)) : null,
-      norm ? kv("Basis", normCites(norm).join(", ")) : null),
+      norm ? (norm.basis?.length ? refersTo(norm.basis, "Basis") : kv("Basis", normCites(norm).join(", "))) : null),
   );
 }
 
