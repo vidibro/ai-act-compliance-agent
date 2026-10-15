@@ -263,6 +263,25 @@ ul.basis li::marker { color: var(--orange); }
 button.role-tag { font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
 button.tag { font: inherit; font-size: 12px; cursor: pointer; }
 button.tag.off { opacity: .4; text-decoration: line-through; }
+/* The checklist box: a real checkbox shape, big enough to hit, with its state in words beside it. */
+button.check { --c: var(--orange); display: inline-flex; align-items: center; gap: 8px; margin: -6px 0;
+               padding: 6px 8px 6px 4px; border: 0; border-radius: 7px; background: none; cursor: pointer;
+               font: inherit; font-size: 13px; font-weight: 600; color: var(--orange-ink); white-space: nowrap; }
+button.check .box { width: 20px; height: 20px; flex: none; border: 2px solid var(--c); border-radius: 5px;
+                    position: relative; transition: background .12s, border-color .12s; }
+button.check:hover { background: var(--orange-soft); }
+button.check:hover .box { box-shadow: 0 0 0 3px var(--orange-soft); }
+button.check:focus-visible { outline: 2px solid var(--orange); outline-offset: 1px; }
+button.check.on { --c: var(--ok); color: var(--ok); }
+button.check.on:hover { background: color-mix(in srgb, var(--ok) 10%, transparent); }
+button.check.on .box { background: var(--ok); }
+/* The tick: two borders of a rotated box. */
+button.check.on .box::after { content: ""; position: absolute; left: 5px; top: 1px; width: 6px; height: 11px;
+                              border: solid var(--bg); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+/* A done duty steps back, so what is left to do stands out. */
+details.item[data-result="done"] > summary .oneline,
+details.item[data-result="done"] > summary .cite { color: var(--faint); }
+details.item[data-result="done"] > summary .parties { opacity: .55; }
 button.role-tag.off { color: var(--faint); background: none; border-color: var(--line-strong); text-decoration: line-through; }
 /* clip, not hidden: hidden would make the card a scroll container and stop its column names
    sticking to the window. */

@@ -162,6 +162,9 @@ function render(data) {
 
   filters = []; // the bars of the report being replaced
   whenButtons = [];
+  doneKey = data.system_name || "system";
+  refreshVerdict = () => $("report").querySelector(".compliance")
+    ?.replaceWith(compliance(report, data, ruleDate, normDate, isFuture));
   const [first, later] = notes(data);
   const { duties, others } = provisions(report, data, ruleDate, normDate, isFuture);
   // A section with nothing to show is null; replaceChildren would print it as text.
@@ -251,6 +254,46 @@ function noteList(items) {
       el("div", { class: "item-body" }, el("p", {}, text)))));
 }
 
+// ---- the checklist -----------------------------------------------------------------------------
+// The duties a document can't show are the reader's to confirm. Each can be ticked off as done; the
+// ticks are kept in this browser per reviewed system, so a re-run of the same system keeps them.
+const DONE_KEY = "aiact-review:done";
+let doneKey = "system"; // the reviewed system the ticks belong to
+let refreshVerdict = null; // redraws the verdict after a tick
+
+const doneSet = () => new Set((restore(DONE_KEY) || {})[doneKey] || []);
+
+function setDone(id, on) {
+  const all = restore(DONE_KEY) || {};
+  const ids = new Set(all[doneKey] || []);
+  if (on) ids.add(id); else ids.delete(id);
+  all[doneKey] = [...ids];
+  store(DONE_KEY, all);
+}
+
+// The row's tick box, in the Check result column: a checkbox with "Duty" beside it until the reader
+// ticks it off, "Done" after. A click inside <summary> would also open the row, so it is cancelled
+// and the tick handled here.
+function doneToggle(id) {
+  const on = doneSet().has(id);
+  return el("button", {
+    type: "button", class: `check${on ? " on" : ""}`, role: "checkbox", "aria-checked": String(on),
+    title: on ? "Done — click to mark as not done" : "Tick off when you have done this",
+    onclick: (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setDone(id, !on);
+      const row = e.currentTarget.closest("details");
+      row.dataset.result = on ? "check" : "done";
+      const next = doneToggle(id);
+      e.currentTarget.replaceWith(next);
+      next.focus();
+      refreshVerdict?.();
+      applyFilters();
+    },
+  }, el("span", { class: "box", "aria-hidden": "true" }), el("span", { class: "lbl" }, on ? "Done" : "Duty"));
+}
+
 // ---- the short answer -------------------------------------------------------------------------
 // What the review can say, and what is left to do. Only the duties a document can show are judged,
 // so for a system the Act regulates the answer is about the documentation, never "compliant": it
@@ -269,10 +312,17 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
     ...[...new Set([
       ...Object.values(report.not_document_verifiable).flat(),
       ...report.timing_not_active.filter((t) => t.status === "upcoming").map((t) => t.rule_id),
-    ])].map(ruleDate),
-    ...[...new Set(Object.values(report.conditional_duties || {}).flat())].map(normDate),
+    ])].map((id) => [id, ruleDate(id)]),
+    ...[...new Set(Object.values(report.conditional_duties || {}).flat())].map((id) => [id, normDate(id)]),
   ];
-  const uncheckedNow = unchecked.filter((day) => !isFuture(day)).length;
+  const done = doneSet();
+  const uncheckedNow = unchecked.filter(([, day]) => !isFuture(day));
+  const doneNow = uncheckedNow.filter(([id]) => done.has(id)).length;
+  const doneAll = unchecked.filter(([id]) => done.has(id)).length;
+  // Compliant only on both halves: every duty a document can show that is in force is met, and
+  // every other duty in force is ticked off by the reader.
+  const inForce = report.findings.some((f) => !f.applies_from) || uncheckedNow.length;
+  const compliant = !openNow.length && inForce && doneNow === uncheckedNow.length;
 
   let state, answer, detail;
   if (risk === "prohibited") {
@@ -287,6 +337,11 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
   } else if (openNow.length) {
     state = "stop"; answer = "Documentation falls short";
     detail = "Judging by the document you provided:";
+  } else if (compliant) {
+    state = "ok"; answer = "Compliant";
+    detail = report.findings.some((f) => !f.applies_from)
+      ? "Every duty in force today is covered: your document shows the ones a document can show, and you've ticked off the rest."
+      : "Every duty in force today is ticked off. None of the duties a document can show is in force yet.";
   } else if (report.findings.some((f) => !f.applies_from)) {
     state = "ok"; answer = "Documentation meets today's duties";
     detail = "Judging by the document you provided:";
@@ -334,8 +389,9 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
           : list.length === 1 ? "The 1 duty that starts then is already met." : `All ${nDuties(list.length)} that start then are already met.`,
         notMet.length ? fixes(notMet) : null);
     }),
-    unchecked.length ? line("unchecked", "Not checked",
-      [`${nDuties(unchecked.length)} a document can't show — confirm them yourself. ${uncheckedNow} already ${uncheckedNow === 1 ? "applies" : "apply"}. `,
+    unchecked.length ? line(doneNow === uncheckedNow.length ? "ok" : "unchecked", "Your checklist",
+      [`${doneAll} of ${nDuties(unchecked.length)} a document can't show ${doneAll === 1 ? "is" : "are"} ticked off`
+        + (uncheckedNow.length ? ` — ${doneNow} of the ${uncheckedNow.length} that already apply. ` : ". "),
         el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list")]) : null,
   ) : null;
 
@@ -502,7 +558,7 @@ function filterBars(groups, facets) {
 
 const roleOptions = (roles) => roles.map((r) => [r, human(r), `role-tag r-${r}`]);
 const RESULT_OPTIONS = [...["gap", "inadequate", "needs_review", "pass"].map((v) => [v, VERDICT[v], `tag ${v}`]),
-                        ["check", "Duty", "tag needs_review"]];
+                        ["check", "Duty", "tag needs_review"], ["done", "Done", "tag pass"]];
 const KIND_OPTIONS = () => KIND_ORDER.map((k) => [k, NORM_KIND[k], `tag soft kind-${k}`]);
 
 function dutyGroups(parts, findings, { data, ruleDate, normDate, isFuture, partiesOf }) {
@@ -582,9 +638,9 @@ function findingItem(f, data) {
 
 function outstandingItem(id, data, date, future, roles, when = future ? "future" : "now") {
   const rule = data.rules[id];
-  return el("details", { class: "item", "data-roles": roles.join(","), "data-result": "check", "data-when": when },
+  return el("details", { class: "item", "data-roles": roles.join(","), "data-result": doneSet().has(id) ? "done" : "check", "data-when": when },
     el("summary", {},
-      el("span", {}, el("span", { class: "tag needs_review" }, "Duty")),
+      el("span", {}, doneToggle(id)),
       el("span", { class: "cite" }, rule?.citation || ""),
       what(rule?.action || rule?.requirement || id, roles),
       el("span", { class: "when" }, appliesFrom(when, date, rule?.deadline))),
@@ -617,9 +673,9 @@ function criterionTitle(rule, c) {
 // for the reader to check.
 function conditionalDutyItem(id, data, date, future, roles) {
   const norm = data.norms[id];
-  return el("details", { class: "item", "data-roles": roles.join(","), "data-result": "check", "data-when": future ? "future" : "now" },
+  return el("details", { class: "item", "data-roles": roles.join(","), "data-result": doneSet().has(id) ? "done" : "check", "data-when": future ? "future" : "now" },
     el("summary", {},
-      el("span", {}, el("span", { class: "tag needs_review" }, "Duty")),
+      el("span", {}, doneToggle(id)),
       el("span", { class: "cite" }, normCites(norm)[0] || ""),
       what(norm?.action || id, roles),
       el("span", { class: "when" }, appliesFrom(future ? "future" : "now", date))),
