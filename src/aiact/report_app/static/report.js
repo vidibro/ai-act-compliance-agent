@@ -671,6 +671,7 @@ function findingItem(f, data) {
       what(rule?.action || rule?.requirement || f.rule_id, [f.role]),
       el("span", { class: "when" }, appliesFrom(f.applies_from ? "future" : "now", f.applies_from, rule?.deadline))),
     el("div", { class: "item-body" },
+      plainWords(rule),
       kv("Finding", findingText(f)),
       rule ? actSays(rule.requirement) : null,
       refersTo(rule?.references),
@@ -696,6 +697,7 @@ function outstandingItem(id, data, date, future, roles, when = future ? "future"
       what(rule?.action || rule?.requirement || id, roles),
       el("span", { class: "when" }, appliesFrom(when, date, rule?.deadline))),
     el("div", { class: "item-body" },
+      plainWords(rule),
       rule ? kv("What to check", rule.evidence_expected) : null,
       rule ? actSays(rule.requirement) : null,
       refersTo(rule?.references),
@@ -732,12 +734,23 @@ function conditionalDutyItem(id, data, date, future, roles) {
       what(norm?.action || id, roles),
       el("span", { class: "when" }, appliesFrom(future ? "future" : "now", date))),
     el("div", { class: "item-body" },
+      plainWords(norm),
       norm?.law ? actSays(norm.law) : null,
       refersTo(norm?.references),
       norm?.conditions ? kv("Only if", unwrap(norm.conditions)) : null,
       norm?.exceptions ? kv("Except", unwrap(norm.exceptions)) : null,
       norm ? kv("Basis", normCites(norm).join(", ")) : null),
   );
+}
+
+// ---- what a row means ---------------------------------------------------------------------------
+// One to three plain sentences, written once per row and stored with the ruleset. An explanation the
+// user has not reviewed yet says so.
+function plainWords(row) {
+  if (!row?.explanation) return null;
+  return el("div", { class: "plain" },
+    el("div", { class: "plain-head" }, "In plain words"),
+    el("p", {}, row.explanation));
 }
 
 // ---- the Act's words, and what they point at ---------------------------------------------------
@@ -782,6 +795,7 @@ function normItem(id, data, roles = null) {
       what(norm?.action || id, roles),
       el("span", {})),
     el("div", { class: "item-body" },
+      plainWords(norm),
       norm?.law ? actSays(norm.law) : null,
       refersTo(norm?.references),
       norm?.conditions ? kv("Only if", unwrap(norm.conditions)) : null,

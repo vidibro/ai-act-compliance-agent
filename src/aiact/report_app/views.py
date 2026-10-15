@@ -13,8 +13,9 @@ from datetime import date
 
 from pydantic import BaseModel
 
+from aiact.report_app import explanations
 from aiact.report_app.citations import segment_citations
-from aiact.report_app.law import Provision, paragraph_text, references
+from aiact.report_app.law import Provision, article_of, paragraph_text, references
 from aiact.reporting import application_date, cite, condition_text, deadline
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.norm import NormKind
@@ -34,6 +35,9 @@ class CriterionView(BaseModel):
 
 class RuleView(BaseModel):
     """One obligation the report names, in the words a reader acts on."""
+
+    explanation: str | None = None
+    """What the duty means, in one to three plain sentences; None where none is written yet."""
 
     rule_id: str
     citation: str
@@ -59,6 +63,8 @@ class NormView(BaseModel):
 
     norm_id: str
     kind: NormKind
+    explanation: str | None = None
+    """What the provision means, in one to three plain sentences; None where none is written."""
     actors: list[str]
     """Who the provision names, e.g. "law_enforcement_authority"."""
     action: str
@@ -156,6 +162,7 @@ def resolve_rules(
             },
             deadline=deadline(rule, spec),
             references=references(rule.requirement, str(rule.source.article or "")),
+            **_explained(rule_id, explanations.rule_input(rule), spec),
             effective_date_note=readable(rule.effective_date_note),
             criteria={
                 criterion.norm_id: CriterionView(
@@ -199,15 +206,17 @@ def _sentence(action: str) -> str:
     return action[:1].upper() + action[1:]
 
 
+def _explained(row_id: str, row_input: str, spec: PolicyRuleset) -> dict[str, object]:
+    """The row's stored explanation, if it was written from the wording the row shows now."""
+    found = explanations.current(row_id, row_input, spec.act_version_date)
+    if found is None:
+        return {}
+    return {"explanation": found.text}
+
+
 def _law(spans: list[str]) -> str:
     """The paragraphs a norm's source spans belong to, each once, in order."""
     return "\n\n".join(dict.fromkeys(text for span in spans if (text := paragraph_text(span))))
-
-
-def _article_of(spans: list[str]) -> str | None:
-    """The article a norm's first span sits in, e.g. "75c" for AIA-TEXT-A075C-P003."""
-    match = re.match(r"AIA-TEXT-A0*(\d+)([A-Z]?)-", spans[0]) if spans else None
-    return f"{match.group(1)}{match.group(2).lower()}" if match else None
 
 
 def _cite_spans(spans: list[str]) -> list[str]:
@@ -244,8 +253,9 @@ def resolve_norms(
             exceptions=condition_text(norm.exceptions) if norm.exceptions else None,
             source_spans=norm.source_spans,
             citations=_cite_spans(norm.source_spans),
+            **_explained(norm_id, explanations.norm_input(norm), spec),
             law=(law := _law(norm.source_spans)),
-            references=references(law, _article_of(norm.source_spans)),
+            references=references(law, article_of(norm.source_spans)),
             application_dates={
                 use_case.use_case_id: start(norm, use_case) for use_case in use_cases
             },

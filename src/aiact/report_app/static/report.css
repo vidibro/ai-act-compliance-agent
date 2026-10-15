@@ -343,6 +343,11 @@ details.item[open] .oneline { white-space: normal; color: var(--ink); }
 .kv > .l { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--orange-ink); text-align: right; }
 .kv > div { min-width: 0; white-space: pre-wrap; }
 .law { color: var(--muted); font-size: 13px; max-height: 320px; overflow-y: auto; }
+/* What a row means, in plain words: the first thing an opened row says, in the reading size. */
+.plain { margin: 4px 0 6px -116px; padding: 4px 0; }
+.plain-head { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+              color: var(--orange-ink); }
+.plain p { margin: 6px 0 0; font-size: 16px; line-height: 1.55; color: var(--ink); max-width: 900px; }
 /* The provisions a paragraph cites: each opens in place to its text. */
 .refs { display: grid; gap: 6px; }
 details.ref { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
@@ -369,6 +374,7 @@ footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 24px;
   details.item > summary { grid-template-columns: auto auto minmax(0, 1fr); padding: 10px 44px 10px 16px; }
   details.item > summary::after { right: 10px; }
   .item-body { padding: 4px 16px 14px; }
+  .plain { margin-left: 0; }
   .notes details.note-item > summary { grid-template-columns: 1fr; gap: 2px; }
   .notes details.note-item .item-body { padding-left: 16px; }
   .notes > h3, .notes > .hint { padding-left: 16px; padding-right: 16px; }

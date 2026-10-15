@@ -107,3 +107,36 @@ def paragraph_text(span: str) -> str:
     return "\n".join(
         text for cite, text in by_document[document] if cite == head or cite.startswith(head + "(")
     )
+
+
+def article_of(spans: list[str]) -> str | None:
+    """The article a norm's first source span sits in, e.g. "75c" for AIA-TEXT-A075C-P003."""
+    match = re.match(r"AIA-TEXT-A0*(\d+)([A-Z]?)-", spans[0]) if spans else None
+    return f"{match.group(1)}{match.group(2).lower()}" if match else None
+
+
+_DEFINITION_CITED = re.compile(
+    r"Article 3,? points? \((\d+)\)|points? \((\d+)\)(?:\([a-z]\))? of Article 3\b"
+)
+_DEFINITION = re.compile(r"^\s*\((\d+[a-z]?)\) ", re.MULTILINE)
+
+
+@lru_cache(maxsize=1)
+def _definitions() -> dict[str, str]:
+    """Article 3's definitions by point number, each in full with its sub-points."""
+    found = provision("3")
+    text = found.text if found else ""
+    marks = list(_DEFINITION.finditer(text))
+    ends = [m.start() for m in marks[1:]] + [len(text)]
+    return {
+        m.group(1): " ".join(
+            line.strip() for line in text[m.start() : end].splitlines() if line.strip()
+        )
+        for m, end in zip(marks, ends, strict=True)
+    }
+
+
+def cited_definitions(text: str) -> list[str]:
+    """The Article 3 definitions `text` cites by point ("Article 3, point (49)(c)"), in full."""
+    numbers = dict.fromkeys(a or b for a, b in _DEFINITION_CITED.findall(text))
+    return [definition for n in numbers if (definition := _definitions().get(n))]

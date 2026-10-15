@@ -1,0 +1,2091 @@
+act_version_date: '2026-07-27'
+explanations:
+  AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS:
+    text: For high-risk AI systems that are safety components of products or are products themselves under
+      specific Union harmonisation legislation, certain requirements may be limited. This is allowed if
+      other Union harmonisation legislation provides equivalent or higher protection and the overall protection
+      level of this Regulation is not reduced.
+    source_sha256: 5eef6836c151d57ee290e8edac0e9b4cec26e4fc4860c15e147dbba08a55e304
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING:
+    text: Providers of high-risk AI systems may process special categories of personal data if strictly
+      necessary to detect and correct biases, provided other data cannot achieve this, and specific safeguards
+      are met. This processing is allowed only if it aligns with the data governance and management practices
+      for high-risk AI systems, particularly regarding bias examination and mitigation.
+    source_sha256: 865e2bf5141456732cb88e4f839e4e9909b9241e201bcc1464645b7e1d9dcf06
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING:
+    text: Providers and deployers of other AI systems and models, and deployers of high-risk AI systems,
+      may process special categories of personal data. This is allowed only if it is strictly necessary
+      for bias detection and correction to prevent harm or discrimination, and if all conditions and safeguards
+      from paragraph 1 are met. This provision does not create an obligation to perform such bias detection
+      and correction.
+    source_sha256: ec3f36c97af23ee9b8463191944a6bde4b86179f38133499cb5cc4b969790262
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P2-COMPLETE-FRIA:
+    text: A law enforcement authority must complete a fundamental rights impact assessment, as described
+      in Article 27, before it can use a real-time remote biometric identification system in publicly
+      accessible spaces. This assessment describes the system's use, affected persons, risks, and safeguards.
+    source_sha256: fa394e20595c7d0adfe315714871aaf48ec720b22f8fe1a5cec4dea4a4b2d7aa
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY:
+    text: A law enforcement authority may only use real-time remote biometric identification systems in
+      publicly accessible spaces to confirm the identity of a specifically targeted individual for permitted
+      objectives. Before using such a system, the law enforcement authority must complete a fundamental
+      rights impact assessment and register the system in the EU database, though registration can be
+      delayed in urgent cases.
+    source_sha256: 741f68e544ec45a22e3f77aaad85e2b37062268859a450e7dd5ea3d6000a3ce4
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P2-CONSIDER-IMPACTS:
+    text: Before using real-time remote biometric identification systems, a law enforcement authority
+      must consider the potential harm if the system is not used, and the impact on people's rights and
+      freedoms. The law enforcement authority must also complete a fundamental rights impact assessment
+      and register the system in the EU database, though registration can be delayed in urgent cases.
+    source_sha256: 4d6c97817c5c50c0d3078df67f115af7e15384c019f06d408dec155d8177eae4
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS:
+    text: A law enforcement authority using 'real-time' remote biometric identification systems in publicly
+      accessible spaces must comply with national law safeguards, including temporal, geographic, and
+      personal limits. The law enforcement authority must also complete a fundamental rights impact assessment
+      and register the system in the EU database, though registration can be delayed in urgent cases.
+    source_sha256: ec7f9538cc5069a24ac7e3f0a6fa99e1f30532a1b4d94fec67a2588942fe8e70
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P2-REGISTER-SYSTEM:
+    text: A law enforcement authority must register a real-time remote biometric identification system
+      in the EU database before using it in publicly accessible spaces. However, in urgent cases, the
+      authority may start using the system first, but must register it without undue delay. This registration
+      is required by Article 49.
+    source_sha256: 95b1440e1ff3df3d6be363efb9c15ca4001a0667f00e7101f8c67a92f3d50e30
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS:
+    text: When deciding whether to authorize a real-time remote biometric identification system in publicly
+      accessible spaces, a judicial or independent administrative authority must consider the elements
+      referred to in paragraph 2. This ensures the system's use is necessary and proportionate for law
+      enforcement objectives.
+    source_sha256: 574819d8fab5b180e4bda1a05e2168b81cdde6904fbc3940950324712397eb15
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-DELETE-ON-REJECTION:
+    text: If a law enforcement authority uses a real-time remote biometric identification system in public
+      spaces without prior authorization due to urgency, and that authorization is later rejected, the
+      law enforcement authority must immediately stop using the system and discard and delete all data,
+      results, and outputs from that use.
+    source_sha256: cdfbcacf806b5fb1a23cbc64843578c5805637d18935f1935c89dd4ba1b05923
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION:
+    text: A law enforcement authority must not make a decision that negatively affects a person based
+      only on the output of a real-time remote biometric identification system. Before using such a system,
+      the law enforcement authority must complete a fundamental rights impact assessment and register
+      the system in the EU database.
+    source_sha256: afdba21a33068ffb3c80d84f8541d89b1a1ba87b22faf10d989d5233fc2dde02
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-PRIOR-AUTHORISATION:
+    text: For each use of a 'real-time' remote biometric identification system in publicly accessible
+      spaces for law enforcement, the law enforcement authority must obtain prior authorization from a
+      judicial or independent administrative authority. This authorization is granted upon a reasoned
+      request and in accordance with national law, and only if the use is necessary and proportionate.
+      In urgent situations, use can begin without prior authorization, but it must be requested within
+      24 hours.
+    source_sha256: 005345f0f9d985041818906d107b3c7b1f4312b8c581fb6a6e5246b93f9acd51
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS:
+    text: When a law enforcement authority urgently uses a 'real-time' remote biometric identification
+      system in publicly accessible spaces, it must request authorization from a judicial or independent
+      administrative authority within 24 hours of starting the use. If authorization is denied, the use
+      must stop immediately, and all data and results must be discarded and deleted. The law enforcement
+      authority must also have completed a fundamental rights impact assessment and registered the system
+      in the EU database, though registration can be done without undue delay in urgent cases.
+    source_sha256: 3261aeb2a8f3afdbce954405c93900fad7a5ea653b13cbffaf85bd6e4bc04772
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY:
+    text: When a law enforcement authority uses a 'real-time' remote biometric identification system in
+      publicly accessible spaces in an urgent situation, it must request authorization from a judicial
+      or independent administrative authority without undue delay, and at the latest within 24 hours.
+    source_sha256: 2d838a28c7d00d449d52415ddc2321c1b8e95cc56cdaa1ce719c8ac0b76670a2
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-RESTRICT-AUTHORISATION:
+    text: A judicial authority or an independent administrative authority may grant authorization for
+      a 'real-time' remote biometric identification system in publicly accessible spaces only if objective
+      evidence or clear indications show the use is necessary, proportionate, and strictly limited in
+      time, geography, and personal scope for specific objectives.
+    source_sha256: 88e0d6c45ddfbe559b0caa8c5f434896184ca513d9d00fa0912f74f8c5f73ae5
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-STOP-ON-REJECTION:
+    text: If a law enforcement authority uses a 'real-time' remote biometric identification system in
+      publicly accessible spaces without prior authorization due to urgency, and that authorization is
+      later rejected, the law enforcement authority must immediately stop using the system and discard
+      all data, results, and outputs from that use.
+    source_sha256: c27afeba08b073658b377c6170ecaab2059e2122af8f47ca0b878aa3a4aeac66
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P3-URGENT-USE:
+    text: A law enforcement authority may start using a 'real-time' remote biometric identification system
+      in publicly accessible spaces without prior authorization in urgent situations. However, the authority
+      must request authorization from a judicial or independent administrative authority within 24 hours.
+      If authorization is denied, the use must stop immediately, and all data and results must be discarded
+      and deleted.
+    source_sha256: 715a644f8af5aa1453920c31e83702fb298f682864ac5d4d32fbae0375b17cb4
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P4-NOTIFICATION-CONTENT:
+    text: When a law enforcement authority uses a 'real-time' remote biometric identification system in
+      publicly accessible spaces, it must notify the relevant market surveillance authority and national
+      data protection authority. This notification must include the information specified in paragraph
+      6 and exclude sensitive operational data. The use of such systems requires a fundamental rights
+      impact assessment as provided for in Article 27 and registration in the EU database according to
+      Article 49, though registration can be delayed in urgent cases.
+    source_sha256: 724a748e4fb8f5c85d33e49f7fad62a350383857d86adcc8b7fb67aa2b297f05
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A005-P4-NOTIFY-AUTHORITIES:
+    text: A law enforcement authority must notify the relevant market surveillance authority and national
+      data protection authority about each use of a 'real-time' remote biometric identification system
+      in publicly accessible spaces. This notification must follow national rules and include specific
+      information, but not sensitive operational data. This applies when the system is used for law enforcement
+      purposes, after a fundamental rights impact assessment and system registration in the EU database.
+    source_sha256: 72fe4a88a525ebf7ab927843e5c3719b9d56747ae34582241a2f14794bdb9c71
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES:
+    text: When a product contains an AI system and is subject to both this Regulation and other Union
+      harmonisation legislation listed in Annex I Section A, the provider may integrate the AI system's
+      testing, reporting, information, and documentation into existing product documentation and procedures
+      required by that other legislation.
+    source_sha256: c5ee90c7798fea58f1adff0fd15415566bc5a697e431c17940341eb1d09154d9
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A009-P10-INTEGRATE-RISK-PROCESSES:
+    text: Providers of high-risk AI systems already subject to internal risk management under other EU
+      law may integrate the AI Act's risk management aspects into their existing procedures. This allows
+      them to combine the requirements rather than creating separate processes.
+    source_sha256: 04c640f68547bb36157972c30cdab174f945b85fbca7b2c330ca8dc10275523f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE:
+    text: This provision clarifies that the risks a provider must address for a high-risk AI system are
+      limited to those that can be reasonably reduced or removed during the system's development or design,
+      or by giving sufficient technical information.
+    source_sha256: ea3a651450b47c7a4b540b92242f20ee3d4eb13e34bd3d51af46fad7cb947b10
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A009-P7-REAL-WORLD-TESTING:
+    text: Providers of high-risk AI systems may include testing in real-world conditions as part of their
+      testing procedures. This is allowed if the testing is conducted according to Article 60, which outlines
+      conditions for such testing by providers or prospective providers, including drawing up and submitting
+      a real-world testing plan to the market surveillance authority for approval.
+    source_sha256: af5d461d3249e07e3b8e93d787746fcfbf73d928aba94a2e29c264f50cdbef52
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A010-P3-COMBINED-DATASETS:
+    text: The provider may meet the requirements for training, validation, and testing data sets either
+      for each individual data set or by combining multiple data sets. This applies to ensuring the data
+      sets are relevant, representative, error-free, complete, and have appropriate statistical properties
+      for the high-risk AI system's intended use.
+    source_sha256: 3901a73fb62cc8a9155b3fed4fa70a5f0c2525fd6bce07174446b5c4d047192d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A010-P6-TESTING-DATA-ONLY:
+    text: If a provider develops a high-risk AI system without using model-training techniques, then the
+      requirements of Article 10(2) to (4) and Article 4a(1) apply only to the testing datasets. Article
+      4a(1) allows providers of high-risk AI systems to process special categories of personal data for
+      bias detection and correction under specific conditions.
+    source_sha256: de650b45b75d41ed8265710e00de72a30f58627d4a82f90a3015c85a3b8c376d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A011-P1-SIMPLIFY:
+    text: A provider that is an SME, including a start-up, or an SMC, may use a simplified technical documentation
+      form established by the Commission. This form allows them to provide the information required in
+      Annex IV in a simplified manner, and notified bodies must accept it for conformity assessment.
+    source_sha256: 5f5eed18c3df81ce7fcb35ddd8869bdb4b77768b82fa11fa853a0ae514feb755
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION:
+    text: The provider of a high-risk AI system for remote biometric identification does not need to ensure
+      that the deployer's identification is verified by two people if the system is used for law enforcement,
+      migration, border control, or asylum, and if Union or national law considers this verification disproportionate.
+    source_sha256: cdb778789a7f9a476670225fd445e840276f2152d3f4926f00ce0c095d17fc1e
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A015-P4-REDUNDANCY:
+    text: Providers of high-risk AI systems may use technical redundancy solutions, such as backup or
+      fail-safe plans, to make their systems resilient to errors, faults, or inconsistencies. This helps
+      ensure the system's robustness.
+    source_sha256: e43865c01a328c350288df078c1f0edcd115f00462bef0bcfc6b96df42a2784f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A017-P3-SECTORAL-INTEGRATION:
+    text: Providers of high-risk AI systems that already have a quality management system under other
+      EU law may include the required aspects for AI systems, such as a risk management system, post-market
+      monitoring, and serious incident reporting, within their existing system.
+    source_sha256: 170018310836660bf8f904ec64a212f3cce2359315d8df863a590a6b02e00177
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A017-P4-FINANCIAL-DEEMING:
+    text: Providers that are financial institutions subject to Union financial services law are deemed
+      to fulfill most of their quality management system obligations by complying with those financial
+      services laws. However, they must still comply with obligations regarding risk management, post-market
+      monitoring, and reporting serious incidents, taking into account harmonised standards.
+    source_sha256: dccc6763cac15a37420354d1947d1a5d1fe6ad626b75bd8ec13b2667a6e8679c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A021-P3-CONFIDENTIALITY:
+    text: A competent authority must treat information it obtains according to confidentiality obligations.
+      This means the competent authority must respect the confidentiality of intellectual property rights,
+      confidential business information, or trade secrets, among other things, as outlined in Article
+      78.
+    source_sha256: 16b1aa058aadd40a3d4ae46880d8048d750b221f8b3196bde73b3612a409559a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A025-P2-NO-COOPERATION-DUTY:
+    text: The initial provider does not have to cooperate with new providers or provide documentation
+      if it clearly stated its AI system should not become a high-risk AI system. Otherwise, the initial
+      provider must cooperate and provide information, including technical documentation, known limitations,
+      and technical access, to help new providers meet their obligations, especially for conformity assessment
+      of high-risk AI systems.
+    source_sha256: 82c5357223f561cd4dd2f2bc6a443e1ba2cc4bb833e8752ff5520c0f476d5236
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION:
+    text: Providers of high-risk AI systems and their third-party suppliers must have a written agreement
+      detailing how the supplier will help the provider meet its obligations. This duty does not apply
+      to third parties providing free and open-source tools, services, processes, or components, unless
+      they are general-purpose AI models.
+    source_sha256: e378cddc0b0d3f7c0764eaa160b4858e14b6adb4803bd9432231942b67a4738a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS:
+    text: When applying paragraphs 2 and 3, the initial provider, provider, and product manufacturer must
+      still observe and protect intellectual property rights, confidential business information, and trade
+      secrets as required by Union and national law.
+    source_sha256: dac7c9401d7d621a81a8a84742deb1bd70361bf87e508fdc0a12c88705ec84de
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P10-AGGREGATE-REPORTS:
+    text: Deployers of high-risk AI systems for post-remote biometric identification, used for law enforcement,
+      may combine information from multiple deployments into a single annual report. These reports are
+      submitted to market surveillance and national data protection authorities.
+    source_sha256: 7c6d2203ee335c6c173146eceb1b523ab058ee271dc1d1ff3050b203e6bff014
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW:
+    text: The deployer of a high-risk AI system for post-remote biometric identification must request
+      authorization from a judicial or administrative authority before or shortly after using it in a
+      criminal investigation, unless identifying a potential suspect. This authorization is for the use
+      of the system. The deployer must also submit annual reports on their use of these systems.
+    source_sha256: 69c4da8548154de65bb35cf027f1c17e5b0acf9c3f5fd2c6fc71bb5422f0b335
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680:
+    text: The deployer of a high-risk AI system for post-remote biometric identification must request
+      authorization from a judicial or administrative authority to use the system for investigating a
+      criminal offense, unless it's for initial suspect identification. If authorization is denied, the
+      deployer must immediately stop using the system and delete related personal data. The deployer must
+      also submit annual reports on their use of these systems.
+    source_sha256: 7943dd2eda7d6815b92ba74109735d2c5dbc8b9ed8c9234983037e3b89f1b1d6
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS:
+    text: The deployer must submit annual reports to the market surveillance and national data protection
+      authorities about their use of post-remote biometric identification systems. These reports may cover
+      multiple deployments and should not include sensitive operational law enforcement data. This is
+      without prejudice to the powers of supervisory authorities under Directive (EU) 2016/680.
+    source_sha256: 0cc1d6d647bf4aaa2b030db22e62f1e52430980f62d8777a9db7c0041aa75893
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P11-LAW-ENFORCEMENT-NOTICE:
+    text: When a deployer uses a high-risk AI system for law enforcement, the deployer must apply the
+      notice regime from Article 13 of Directive (EU) 2016/680. This means the deployer must inform natural
+      persons that they are subject to the use of the high-risk AI system.
+    source_sha256: 4c08cfe4aea2ed6c0458bcfe241783a8ba78164c672acd083d97fdd80335af39
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P5-FALLBACK:
+    text: If a deployer cannot reach the provider of a high-risk AI system after identifying a serious
+      incident, the deployer must report the incident to the market surveillance authorities, as if they
+      were the provider. This report must be made immediately, and in any event, not later than 15 days
+      after the deployer becomes aware of the serious incident.
+    source_sha256: 9c68ca817aa6c5f6f4669e30477746eba72321f12b3e59974e1aaf3347e81730
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P5-FINANCIAL:
+    text: Financial institutions that are deployers and are subject to Union financial services law for
+      internal governance are considered to meet their monitoring obligation for high-risk AI systems
+      if they comply with those financial services rules.
+    source_sha256: 3479cd9cd42384a7ebb914787dab2b7191df49511f5636196a53d42b9fecce88
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P5-SENSITIVE:
+    text: Law enforcement authorities that deploy AI systems do not have to share sensitive operational
+      data when informing providers about the AI system's operation or when reporting serious incidents.
+      This exception applies to the deployer's monitoring obligations and the provider's post-market monitoring
+      system.
+    source_sha256: ea68fbeb762c519cc713fd265b7910f3a7ae64a297e473a0204f2062a1681948
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES:
+    text: Before using a high-risk AI system at work, the deployer must tell workers' representatives
+      and affected workers they will be subject to its use. This notification should follow existing Union
+      and national rules for informing workers.
+    source_sha256: 683ff3ec9835e29d6011eeb3c6f6a36f4d679f0ab8133b7bc656daae42e061f5
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A027-P2-FIRST-USE:
+    text: The deployer must assess the impact on fundamental rights when first using a high-risk AI system,
+      unless it is for critical infrastructure. The deployer may reuse previous assessments for similar
+      cases or if provided by the provider. If elements of the assessment change, the deployer must update
+      the information.
+    source_sha256: 311ac3f3e8ddcb608fe3fea260ec08a6e8f5b87e6f1f99c9981dcbfacd68e0f8
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A027-P2-RELY-ON-PREVIOUS-ASSESSMENT:
+    text: A deployer may use a fundamental rights impact assessment or an impact assessment from a provider
+      for similar high-risk AI system uses. If elements in the assessment change or become outdated, the
+      deployer must update the information.
+    source_sha256: df21b5ddaf146c9f3e3cbf5e0b61de23f65c5e37ef64965f5837786b0f490a15
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A027-P3-ARTICLE-46-EXEMPTION:
+    text: The deployer must notify the market surveillance authority of the results of an assessment.
+      However, if a market surveillance authority has authorized the high-risk AI system for exceptional
+      reasons, the deployer may not have to send this notification.
+    source_sha256: 3cba05deffb4c503734d6a34ed860d0692f0e42be7a0dc849430a2b8625cfbaa
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A027-P4-INCORPORATE-DPIA:
+    text: If a deployer has already completed a data protection impact assessment under other EU laws,
+      and it covers the same obligations as the fundamental rights impact assessment, the deployer may
+      refer to or include parts of that existing assessment in the fundamental rights impact assessment.
+    source_sha256: d9571ccd9cbb9059079797e67b46da63baea651fefe626715015008d7fc71888
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION:
+    text: If a high-risk AI system or general-purpose AI model complies with relevant harmonised standards
+      published in the Official Journal, it is presumed to meet the requirements of Chapter III, Section
+      2, or the obligations of Chapter V, Sections 2 and 3, of this Regulation.
+    source_sha256: 0d6d63499312a4e2ae02cfee5099cc29c3cebe502ea0fbaabb726bf1177896ab
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION:
+    text: If a high-risk AI system or general-purpose AI model meets common specifications, it is presumed
+      to conform to the requirements in Chapter III, Section 2, or the obligations in Chapter V, Sections
+      2 and 3, as long as the specifications cover them.
+    source_sha256: 4cec72fc9d6980ff0876a56248629688430a6b6b463c271d9a2c1d5a1076e869
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION:
+    text: If a high-risk AI system is trained and tested using data that reflects its intended use setting,
+      it is presumed to comply with Article 10(4). Article 10(4) requires data sets to consider characteristics
+      of the specific setting where the high-risk AI system will be used.
+    source_sha256: 27ab5630458f9af8172c3617646e22281e06a00e6dd45ed8177f833559cc1a4f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION:
+    text: If a high-risk AI system has a cybersecurity certificate or statement of conformity published
+      in the Official Journal of the European Union, it is presumed to meet the cybersecurity requirements
+      of Article 15, to the extent those requirements are covered by the certificate or statement.
+    source_sha256: 6ab5d3a5e1354e5709327b0237b55544ff54169c65d31969d42ad386e0f7d2bb
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING:
+    text: If a high-risk AI system is covered by Regulation (EU) 2024/2847 and meets its Article 12(1)
+      conditions, it is considered to satisfy the cybersecurity requirements of Article 15 of this Regulation.
+      Article 15 requires high-risk AI systems to be designed for appropriate cybersecurity and resilience
+      against unauthorized alteration.
+    source_sha256: fe2539b9fa70bacae9f285ce3f9574d8c0e54c735d09aa085b9beaaf66cde906
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY:
+    text: For high-risk AI systems listed in Annex III, the provider may choose any notified body for
+      the conformity assessment procedure in Annex VII. However, if the high-risk AI system is for law
+      enforcement, immigration, asylum authorities, or Union institutions, the market surveillance authority
+      acts as the notified body.
+    source_sha256: 38faaaaff9a844f86bf9d3e811ecbc9893b68fa3f646cd0fc8a5099964f6b6c5
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A043-P3-OPTION:
+    text: If Union harmonisation legislation listed in Annex I allows a product manufacturer to use a
+      conformity assessment without a third-party, the manufacturer may only do so if they apply harmonised
+      standards or common specifications covering all requirements in Section 2 of this Chapter.
+    source_sha256: b5067eb242e31822f59f03cb17b57a974ba8f6a6c96e747282c8d315c9b51f75
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD:
+    text: Certificates for AI systems covered by Annex I are valid for up to five years, and for AI systems
+      covered by Annex III, up to four years. The provider can request extensions for these certificates,
+      each for the same maximum periods, after a re-assessment.
+    source_sha256: e42625559cfe052ba1981f8c76d15f793f49bd74e57783a65f3f17ab54f7dffe
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A044-P2-EXTEND-CERTIFICATE:
+    text: The provider may request to extend the validity of a certificate for an AI system. This extension
+      is possible if the AI system is covered by Annex I or Annex III, and requires a re-assessment following
+      applicable conformity assessment procedures. Each extension period cannot exceed five years for
+      Annex I AI systems or four years for Annex III AI systems.
+    source_sha256: c6ef7a5a3502106397cbde2c5012d218491c85c92bd532e5906b91811c891b06
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY:
+    text: A supplement to a certificate for an AI system remains valid as long as the certificate it adds
+      to is still valid. This applies to AI systems covered by Annex I, which lists Union harmonisation
+      legislation, and Annex III, which lists high-risk AI systems.
+    source_sha256: c4ed34d3c99466d002aed5fc2f0ceb5169a4e8c1259ff0e8410d6e7fde145c50
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS:
+    text: If a law enforcement or civil protection authority uses a high-risk AI system urgently without
+      prior authorization, and that authorization is later refused, the authority must immediately stop
+      using the system and discard all results and outputs from that use.
+    source_sha256: 5c6879d6a221fd7764e752852eeff8f2a9b561059071e9b1cf7aa9d6cf3adaf2
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A046-P2-REFUSAL-RESPONSE:
+    text: If a law enforcement or civil protection authority uses a high-risk AI system urgently without
+      prior authorization, and that authorization is later refused, the authority must immediately stop
+      using the system and discard all results from its use.
+    source_sha256: a5f2f752132f786a0bad25f29dc739b9ec1565d24ee1a18d8fef2a9c44897e1b
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A046-P2-URGENT-USE-PERMISSION:
+    text: Law enforcement or civil protection authorities may use a high-risk AI system without prior
+      authorization in urgent public safety situations, but they must request authorization during or
+      after its use without delay. If authorization is refused, the authority must immediately stop using
+      the system and discard all results.
+    source_sha256: 2fa2ac4df6a34b1c89d411805895959fb870ed03e60318807c5b80815caf6dd1
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A046-P5-OPERATOR-HEARING:
+    text: When the Commission consults with a Member State about an authorization, the operators concerned
+      must be consulted and given a chance to present their views. This happens when a Member State objects
+      to an authorization or the Commission finds it contrary to Union law.
+    source_sha256: 25d8e7a8393c8b15563b7d80e926a0cbd1186a4a0b962aac62866d3e9f0aadf6
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY:
+    text: For high-risk AI systems related to products listed in Section A of Annex I, the provider must
+      follow the conformity assessment derogations established in the Union harmonisation legislation
+      that covers those products. This means the provider does not use the conformity assessment procedures
+      described in the Act itself.
+    source_sha256: d82a3c710fb5a4e2789a4d707dfb0451cd253d453702aac3148bf1d7391bb49e
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE:
+    text: If a high-risk AI system is subject to other Union law requiring a CE marking, the provider
+      must ensure the CE marking indicates compliance with that other law. If applicable, the CE marking
+      must be followed by the identification number of the notified body responsible for the conformity
+      assessment procedures set out in Article 43.
+    source_sha256: 3b9cbf50b1b046b72a18d2d18ffd8662243f4c4d3c6c97dfafc9634a1e3c7104
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A050-P3-DATA:
+    text: When using an emotion recognition or biometric categorization system, the deployer must inform
+      people exposed to it and process their personal data according to Regulations (EU) 2016/679 and
+      (EU) 2018/1725 and Directive (EU) 2016/680, unless the system is legally permitted for criminal
+      offense detection, prevention, or investigation with safeguards.
+    source_sha256: a41e90ed5a2b1a32c099abcb0d67c46905793a6ae14888230aa3618a26dea38c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A052-P2-PRESENT-REBUTTAL:
+    text: A provider of a general-purpose AI model that has high impact capabilities may present arguments
+      with its notification to show that, due to its specific characteristics, the model does not pose
+      systemic risks and should not be classified as a general-purpose AI model with systemic risk.
+    source_sha256: 41397778e32c806c83d0a80524268fb39db32db9b73b0eaae5c2830cd7c0776f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS:
+    text: A provider of a general-purpose AI model with systemic risk may ask the Commission to reassess
+      its designation. This request must include new, objective, and detailed reasons. The provider can
+      make this request at least six months after the initial designation or a previous decision to maintain
+      the designation.
+    source_sha256: 158878a14457a56918b1076af657b87960fdb161800106cc87734a719751ac21
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION:
+    text: Providers of general-purpose AI models do not have to meet the obligations in Article 53(1)(a)
+      and (b) if their models are released under a free and open-source license allowing access, usage,
+      modification, and distribution, and if the model's parameters, architecture, and usage information
+      are publicly available. This exception does not apply to general-purpose AI models with systemic
+      risks.
+    source_sha256: 681aa07fdce9a5a08e5ae62f242292921ca4445dc66a56bb77c373793e03a491
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A053-P2-SYSTEMIC-RISK-OVERRIDE:
+    text: Providers of general-purpose AI models with systemic risks must comply with the obligations
+      in Article 53(1)(a) and (b). This is true even if their models are released under a free and open-source
+      license that allows access, usage, modification, and distribution, and whose parameters are publicly
+      available.
+    source_sha256: 0945911ba559c9b160d376f465db84a716175f3fb6392fdea677e0b832c79905
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A053-P4-HARMONISED-STANDARD-PRESUMPTION:
+    text: Providers of general-purpose AI models can presume they comply with Article 53 obligations if
+      they follow European harmonised standards covering those obligations. If no such standard exists,
+      they may use codes of practice under Article 56, or demonstrate alternative compliance means to
+      the Commission.
+    source_sha256: 913f7a711d690b8fd910bd51d8f615051b6f9f18132422221bc33d3394950bf1
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A053-P4-RELY-ON-CODES:
+    text: Providers of general-purpose AI models may use codes of practice to show they meet their obligations
+      until a harmonised standard is published. Once a harmonised standard exists, complying with it presumes
+      conformity. If neither is used, the provider must show other ways they comply.
+    source_sha256: 233145888112eadaeeb9c02f7a5b616e1634c7b1e6401b11aa7f792c878c40aa
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION:
+    text: Providers of general-purpose AI models do not have to meet the obligations of this Article if
+      their models are free and open-source and publicly available, unless these models pose systemic
+      risks.
+    source_sha256: 939a95562f81e4960b2e355c1e1beef02b8505814124ab8d4ada66d9276b88dd
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION:
+    text: Providers of general-purpose AI models with systemic risk can presume they comply with Article
+      55 obligations if they follow European harmonised standards that cover those obligations. If no
+      such standard exists, they may use codes of practice or other adequate means to show compliance.
+    source_sha256: 3ec4dc9f20771fdcfa2cd7d55e9a08338f3942f33adae46b688d048079092a69
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A055-P2-RELY-ON-CODES:
+    text: Providers of general-purpose AI models with systemic risk may use codes of practice to show
+      they meet their obligations until a harmonised standard is published. If they do not use a code
+      of practice or comply with a harmonised standard, they must show other ways they comply.
+    source_sha256: b34ac9569ab7780f261dcc253c7674a103921a4140ab692eb2ef8e70ccc2eca0
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A056-P7-LIMITED-ADHERENCE:
+    text: The AI Office may ask providers of general-purpose AI models to follow codes of practice. If
+      a general-purpose AI model does not present systemic risks, its provider may only need to follow
+      the obligations in Article 53, unless the provider chooses to follow the full code.
+    source_sha256: 291097a080a32f9ceb35eb2f31a4232f786860a70ee58d244e698e7dbe435140
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A057-P12-AI-ACT-NO-FINE-PROTECTION:
+    text: A prospective provider participating in the AI regulatory sandbox will not face administrative
+      fines for infringements of this Regulation if they follow their participation plan, terms, and national
+      competent authority's guidance in good faith. This also applies to other Union and national law
+      if relevant authorities supervised and guided compliance.
+    source_sha256: 7e6f7fe92d609023c720c88ff46006c39cc16075edaea0bc41f8363b9153cc5f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A057-P12-LIABILITY-AND-FINE-SAFE-HARBOUR:
+    text: Providers and prospective providers experimenting in the AI regulatory sandbox remain responsible
+      for harm caused to others by their experiments. However, if they follow the plan and guidance, they
+      will not face administrative fines for breaking this Regulation or other laws where authorities
+      supervised and gave guidance.
+    source_sha256: 728866e1e0599cead8fb2d6a9621d93e4388c08649f6a448d36811883839da2b
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A057-P12-OTHER-LAW-NO-FINE-PROTECTION:
+    text: If other authorities actively supervised the AI system in the sandbox and gave compliance guidance,
+      the provider or prospective provider will not face administrative fines for breaking other Union
+      or national laws that those authorities oversee.
+    source_sha256: 50d65f796088d8f84466d762e3fdf952e98641c948b5c54ced15e096addbb2bf
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A057-P7-EVIDENTIARY-USE:
+    text: Providers may use documentation from the AI regulatory sandbox, such as exit reports and written
+      proof from the competent authority, to show compliance with this Regulation. This documentation
+      can be used during conformity assessment or market surveillance activities, and market surveillance
+      authorities and notified bodies will consider it positively to speed up conformity assessment procedures.
+    source_sha256: 3e404e9d6db13c8d36d09be9db08e800176a79ea5cdfbecca2b137ff3fb6ceb3
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING:
+    text: A prospective provider may process personal data, lawfully collected for other purposes, within
+      an AI regulatory sandbox. This is allowed only for developing, training, and testing AI systems
+      that safeguard substantial public interest, and only if all specified conditions are met, including
+      data necessity, effective monitoring, and data isolation.
+    source_sha256: 850c729aa434cbc38e89126efa6512a4a255cf45ed9bd2f757804526fe7e8e89
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW:
+    text: This paragraph clarifies that other Union or national laws can still restrict how personal data
+      is processed, or provide alternative legal bases for processing personal data to develop, test,
+      or train innovative AI systems, as long as they comply with Union law on personal data protection.
+    source_sha256: be513c1ccfcacfc2d33739e44fb7f3838ff0cff0c3ca4aa4a4889f31be64906d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P1-PRESERVE-PRODUCT-TESTING-LAW:
+    text: Providers or prospective providers may test high-risk AI systems in real-world conditions, provided
+      they follow a real-world testing plan and do not engage in prohibited AI practices. This does not
+      override existing Union or national laws for testing high-risk AI systems related to products covered
+      by Union harmonisation legislation.
+    source_sha256: c2eda217e769b260b186fdf41f38fea88ec216f2e256fffd13f562e98e2769e8
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION:
+    text: Providers or prospective providers of high-risk AI systems may test them in real-world conditions
+      outside a sandbox, if they follow this Article and a real-world testing plan. This is allowed unless
+      the testing involves prohibited AI practices under Article 5.
+    source_sha256: 65a53647fa2a50da12e888cdb897831e916d9a2dc2de92dd945a6b6a0a604981
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION:
+    text: Providers or prospective providers may test high-risk AI systems, such as those used in biometrics
+      or critical infrastructure, in real-world conditions. This testing can occur before the system is
+      placed on the market or put into service, either alone or with deployers or prospective deployers.
+    source_sha256: 13db9d2c8da76eefe05fff24426eeca8860a7bf4f0f644e712260aabf7cb9494
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW:
+    text: Providers or prospective providers may test high-risk AI systems in real-world conditions before
+      placing them on the market or putting them into service. This testing does not remove any ethical
+      review requirements under Union or national law for these systems.
+    source_sha256: 0e2a37c0d4404bf0385cff776eefa0b2d90107f8a5da8dfcbe71f3f74f48bb92
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P4-EXTEND:
+    text: A provider or prospective provider may extend real-world testing of an AI system for six months
+      beyond the initial six-month limit. This extension is allowed if the provider or prospective provider
+      first notifies the market surveillance authority and explains why the extension is needed.
+    source_sha256: f3f4e286f24df7df11798fa0533eb8f146a7de17c0498a91075b2389b638cfbc
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P4-PERMISSION:
+    text: A provider or prospective provider may conduct real-world testing only if all eleven conditions
+      are met. These include submitting a plan to the market surveillance authority for approval, registering
+      the testing, and ensuring subjects give informed consent. The testing must not last longer than
+      necessary, up to six months, with a possible extension.
+    source_sha256: 926c89f8228096eb7cd5a89643bd1a764a4662dd1bd82260b86fb96ef948b4aa
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P5-PRIOR-ACTIVITIES-UNAFFECTED:
+    text: When subjects withdraw informed consent from real-world testing of high-risk AI systems, the
+      provider or prospective provider may still use data from activities already completed before the
+      withdrawal. This applies to AI systems listed in Annex III or covered by Union harmonisation legislation
+      in Annex I Section A.
+    source_sha256: c5b5424fcca655f289fb0cf7aec859f3ae2a111108e3a4da116c4b0cec21fe19
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A060-P9-TESTING-LIABILITY:
+    text: The provider or prospective provider is responsible under existing EU and national liability
+      laws for any harm caused during their real-world testing of AI systems.
+    source_sha256: 5a2161315e4bec453ee9ae59b8242a48fe7a3d265e1c0b7d6524df23d48764d1
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT:
+    text: Providers of high-risk AI systems that are small and medium-sized enterprises (SMEs) without
+      partner or linked enterprises may use a simplified approach for certain elements of their quality
+      management system, which ensures compliance with the Regulation. The Commission will provide guidelines
+      for this simplified approach, considering SME needs without lowering protection or compliance for
+      high-risk AI systems.
+    source_sha256: 1284d6e2ccde5a8b3a304a093a4e22752a654c921f4e137f228647436cb0c814
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A063-P2-NO-BROADER-EXEMPTION:
+    text: Providers of high-risk AI systems must still meet all other requirements and obligations of
+      this Regulation, even if another provision simplifies some aspects. This includes obligations related
+      to risk management, data governance, technical documentation, record-keeping, transparency, human
+      oversight, accuracy, robustness, cybersecurity, post-market monitoring, and reporting serious incidents.
+    source_sha256: 6310a210dadfecf2eb56484ebeb4f8dda20892c7560bf5eb474581a2f1e5d033
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING:
+    text: A provider of certain high-risk AI systems may integrate required post-market monitoring elements
+      into existing monitoring systems and plans, if those systems are established under specific Union
+      harmonisation legislation or Union financial services law, use the specified template, and achieve
+      an equivalent level of protection.
+    source_sha256: 39959f7f868407fd888cbe913f323057ad3ed1f5da10e8f9ad26aab9c610eea2
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT:
+    text: The provider or deployer may submit an incomplete initial report, followed by a complete report,
+      if this is necessary to ensure timely reporting.
+    source_sha256: 52dcdb98b516fe81cd7fa19222afd00406e9e66600ac82d49768dc7b7c391f56
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A073-P9-EQUIVALENT-REPORTING-LIMIT:
+    text: If a provider's high-risk AI system is already covered by other Union laws with similar reporting
+      duties, the provider only needs to report serious incidents that infringe fundamental rights. This
+      applies when the AI system is placed on the market or put into service.
+    source_sha256: 19d36e9b18ade151478747d5244d6d68628f48ff0b69fd07c0e280bc2fe7bda0
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A075-P1A-APPLY-ARTICLE-73-PROCEDURE:
+    text: Providers of high-risk AI systems under the AI Office's competence must report serious incidents
+      to the AI Office. This reporting must follow the procedures outlined in Article 73(2) to (9), which
+      detail reporting timelines and investigation requirements. The AI Office will then inform the relevant
+      market surveillance authority.
+    source_sha256: da3db451d27a0287ad0144b8d8832058f1dcce3e9533eea4b055f6c81477c389
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS:
+    text: During a structured dialogue with the AI Office, the operator of an AI system may propose commitments
+      to ensure compliance with the Regulation. The AI Office may then make these commitments binding
+      on the operator.
+    source_sha256: fdd751ceac87a353a8742268c245a1c4c2c605ff7c9b91bbed5b5d81eb23ee07
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A075C-P4-ARTICLE99-4-FINES:
+    text: The AI Office may fine an operator if it infringes any provision of this Regulation, fails to
+      comply with certain decisions or measures, or fails to comply with commitments made binding by the
+      AI Office. The AI Office may also fine an operator for supplying incorrect, incomplete, or misleading
+      information in response to a request.
+    source_sha256: 57ddebe83353bc7196907b3b5063b4551b2bc15cdef0019ad0125b21f9164a5b
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A075C-P4-INFORMATION-FINE:
+    text: If an operator provides incorrect, incomplete, or misleading information to the AI Office when
+      responding to a request, the AI Office may impose administrative fines. These fines can be up to
+      EUR 7.5 million or 1.5% of the operator's total worldwide annual turnover, whichever is higher.
+    source_sha256: 8aeb21fc328bb0b6b8b1e930e39d699e2cf0739704ab9e1b2965b886eb0b32e8
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A075D-P1-APPLY-PROCEDURAL-RIGHTS:
+    text: Operators of certain AI systems, specifically those under the AI Office's supervision as defined
+      in Article 75(1), have procedural rights similar to those in Article 18 of Regulation (EU) 2019/1020,
+      unless this Regulation provides more specific rights. The AI Office supervises AI systems based
+      on general-purpose AI models developed by the same provider, or AI systems integrated into very
+      large online platforms or search engines.
+    source_sha256: 115c7bc18ca42e83fe3046c5323f6d1fc5aabbdf1a20a5b1a38c0ed6d1b9ad49
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS:
+    text: Operators of certain AI systems, as defined in Article 75(1), may access the AI Office's file
+      if the AI Office is considering a non-compliance decision under Article 75c(1). This access is negotiated
+      and protects business secrets, but does not include the AI Office's confidential information or
+      internal documents.
+    source_sha256: c6360c623d86d85950d3a0ba9730d008738f70dc039290549d253c18758a1df6
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A080-P4-NONCOMPLIANCE-FINE:
+    text: The provider must ensure the AI system complies with the Regulation. If the provider fails to
+      bring the AI system into compliance within the specified period, the provider will be subject to
+      fines as laid down in Article 99. These fines can be up to EUR 15,000,000 or 3% of the provider's
+      total worldwide annual turnover.
+    source_sha256: e409106f3b69e6bc3fc9b645820484e497aac2784649eebaa1e710e4e0e1a27d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A080-P7-CIRCUMVENTION-FINE:
+    text: If a market surveillance authority finds that a provider intentionally misclassified an AI system
+      as non-high-risk to avoid Chapter III, Section 2 requirements, the provider will face fines. These
+      fines are set by Member States and can include administrative fines, warnings, or non-monetary measures.
+    source_sha256: 50a423e05316ea775263859af98f76d664a8db138855102c15a74d66c27cc7fd
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A086-P2-LEGAL-EXCEPTIONS:
+    text: The deployer does not have to provide explanations for high-risk AI systems if other Union or
+      national law already provides exceptions or restrictions to this obligation. This applies to decisions
+      made by the deployer based on the AI system's output that significantly affect a person's health,
+      safety, or fundamental rights.
+    source_sha256: 3c559ae86534802fdeab6c1579fe819718d8cf211553bf513b5614ce6b800372
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT:
+    text: Downstream providers may complain to the AI Office if they believe a general-purpose AI model
+      provider has broken the Regulation. The complaint must explain which rules were broken, why, and
+      include relevant facts and the provider's contact information.
+    source_sha256: 56e0671579bdaf18cf4c8f4363f61d7d2092a494930d29c9a4ea703739df4d93
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE:
+    text: If a lawyer supplies information on behalf of a general-purpose AI model provider, and that
+      information is incomplete, incorrect, or misleading, the provider remains fully responsible for
+      it.
+    source_sha256: b4ee651ec8db088c458a8eeb9c072fa5382ca6059f2b5adc670f13f01bb84916
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A094-GPAI-PROCEDURAL-RIGHTS:
+    text: The provider of a general-purpose AI model has procedural rights similar to those in Article
+      18 of Regulation (EU) 2019/1020, unless this Regulation gives them more specific rights. This means
+      the provider can expect certain procedures to be followed when decisions are made about their general-purpose
+      AI model.
+    source_sha256: 84bac8cc8f57029853a26955000308e0d1b90a9854cc12e70934ff88cd281b26
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES:
+    text: Providers or deployers of AI systems, or organizations representing them, may individually or
+      jointly create voluntary codes of conduct. These codes can apply to one or more AI systems with
+      similar intended purposes.
+    source_sha256: 75429bb4a6e76f1f487cf757c121b524acdac6b5e6da0825e973b0a89096d8ae
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-A099-P3-ARTICLE5-FINE:
+    text: Non-compliance with the prohibition of AI practices in Article 5, such as using AI to manipulate
+      behavior or exploit vulnerabilities, can lead to administrative fines. These fines can be up to
+      EUR 35,000,000 or, for an undertaking, up to 7% of its total worldwide annual turnover from the
+      preceding financial year, whichever amount is higher.
+    source_sha256: 44fa5dbc7c84b5e6194ebd07d574e4ce58fbd9d52c38d71573add91474948cc9
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-ANNEX-VII-RETRAIN:
+    text: If a notified body refuses to issue a Union technical documentation assessment certificate because
+      the AI system's training data do not meet requirements, the provider must retrain the AI system
+      before applying for a new conformity assessment.
+    source_sha256: 872fa401af86d689be7f8d2b7c2d346b8faa135f43c8da50394104902a997677
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS:
+    text: If the energy consumption of a general-purpose AI model is unknown, the provider of that model
+      may estimate its energy consumption based on the computational resources used during its development.
+    source_sha256: 9b10da9185cb5fe9b0957930b3f5a39ae31bf800ae16b860f277c1e49b04f3bd
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A04:
+    text: Providers and deployers of AI systems must help their staff and others working with AI systems
+      to develop AI literacy. This means considering their existing knowledge and the AI system's use,
+      but does not require guaranteeing a specific level of AI literacy for anyone.
+    source_sha256: 08ab0d21300b1cd8fdb8a2539bb7488e62105c6b2f49f0a4dcc83ebd6f39acb6
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A04A:
+    text: Providers of high-risk AI systems may process special categories of personal data to detect
+      and correct bias, but only if strictly necessary and under specific conditions. This is allowed
+      when other data cannot achieve the same goal, and strong safeguards are in place to protect the
+      data and prevent misuse.
+    source_sha256: 10a6a50c2aadc09a3f8218b3b4f6fcd6b24322fa60c83cfc97c426b7e9fd29a8
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A05-1:
+    text: Providers, importers, and deployers must not place on the market, put into service, or use AI
+      systems that engage in certain prohibited practices. These include AI systems that manipulate behavior,
+      exploit vulnerabilities, create non-consensual intimate deepfakes, generate child abuse material,
+      create social scoring, make certain criminal risk assessments, scrape facial images, infer emotions
+      in workplaces/education, or categorize people by sensitive biometric data. Deployers also face restrictions
+      on using real-time remote biometric identification systems in public spaces for law enforcement,
+    source_sha256: 04657f0a3f1eff58856ccfe3788eecefb83c79fbe3e413c14b762be13fe4614b
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A05-1BA:
+    text: The provider, importer, or deployer must not place on the market, put into service, or use an
+      AI system that generates or manipulates realistic intimate images or sexually explicit material
+      of an identifiable person without their explicit consent. This also applies to material related
+      to child sexual abuse, as defined in Directive 2011/93/EU, unless a 'without right' defense applies.
+    source_sha256: 1ceaa2361cbeac386a78d6b3963f5aa7b0a5ceaec477277d1f4d9a8e44463c99
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A111-1:
+    text: Providers, deployers, importers, and authorised representatives must ensure that AI systems
+      that are components of large-scale IT systems listed in Annex X, and were placed on the market or
+      put into service before August 2, 2027, comply with this Regulation by December 31, 2030. However,
+      the prohibited AI practices in Article 5 still apply to these systems from their own application
+      dates.
+    source_sha256: 482b956f1e04eb2fb8ea5272bb9d12ea0091474763b32110d595113087a528ea
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A111-2:
+    text: Providers and deployers of high-risk AI systems intended for public authorities, even if placed
+      on the market or put into service before the Chapter III application date, must comply with this
+      Regulation by 2 August 2030. This is without prejudice to the application of Article 5, which prohibits
+      certain AI practices.
+    source_sha256: 2de37258abaf3a7c163a140985ba29adafbff5dd9bd6bd48dffb8efbb6294d7c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A49-4:
+    text: For high-risk AI systems used in law enforcement, migration, asylum, or border control, the
+      provider or deployer must register specific information in a secure, non-public section of the EU
+      database. Only the Commission and national authorities can access this section.
+    source_sha256: 009fec2c91a1cf327c78bd76b49e9c8325800d97fbbed374a8b4f132c4ff0859
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A73:
+    text: The provider of a high-risk AI system must report any serious incident to the market surveillance
+      authorities where it occurred. This report is due immediately after the provider establishes a causal
+      link, or its reasonable likelihood, and no later than 15 days after the provider or deployer becomes
+      aware of the incident. If the incident involves a death, the deadline is 10 days; for widespread
+      infringements or serious incidents affecting critical infrastructure, it is two days.
+    source_sha256: b6d0def28d9b57b9fe4845252c92e7765ca88a7aa2fe1e5a82a264065a355b6f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A73-10:
+    text: Providers and deployers of high-risk AI systems that are medical devices must report serious
+      incidents to the national authority in the Member State where the incident occurred. This reporting
+      obligation is limited to incidents involving the infringement of obligations under Union law intended
+      to protect fundamental rights.
+    source_sha256: f0cb4b1ea68ab9144d260fb30ffbe10d19f64a63c2b71dd3576ab413b0500240
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A75a-3:
+    text: If the AI Office sends a simple request for information, and the provider or deployer chooses
+      to reply, the information must be correct and not misleading. Supplying incorrect or misleading
+      information can lead to fines as provided for in Article 99(5).
+    source_sha256: c06e63d241b41814e28841fd426c7039f366922ef6e56bc7d8e40684f38d1517
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A75c-3:
+    text: When the AI Office orders an operator to take measures to comply with the AI Act, the operator
+      must tell the AI Office what measures it plans to take. Once implemented, the operator must provide
+      the AI Office with a description of the measures taken.
+    source_sha256: 3377a6860fc1f8c690569d16b76930b19e0cef76b5396d88e851415b0a0d1130
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A79:
+    text: If a market surveillance authority believes an AI system presents a risk and starts an evaluation,
+      the operator must ensure all necessary corrective actions are taken for all affected AI systems
+      they have made available in the Union market.
+    source_sha256: a378137ea8aa2846e0824fa98df22ea1b1643c7fd15d5b63ccac100fefdf5109
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-ALL-A82:
+    text: If a market surveillance authority finds an AI system, even a compliant one, poses a risk, the
+      provider or other relevant operator must take corrective action for all such systems made available
+      in the Union market, within the timeline set by that authority.
+    source_sha256: 364b785cd8e3eff300faaa1abff76b53141ed33a7864ba2fc78c6af9b483068b
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-AR-A22:
+    text: The authorised representative must perform tasks specified in the mandate received from the
+      provider, including verifying the EU declaration of conformity and technical documentation, keeping
+      records for 10 years, providing information to authorities, cooperating with them, and complying
+      with registration obligations. The authorised representative must terminate the mandate if the provider
+      acts contrary to its obligations and inform the relevant market surveillance authority.
+    source_sha256: 72e3ed29f8f64c3e00f26c3fc87a91e19b88b014a76b005f5f95fdd045839a83
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-AR-A49-2:
+    text: Where applicable, the authorised representative must register themselves and the AI system in
+      the EU database before it is placed on the market or put into service, if the provider has concluded
+      it is not high-risk according to Article 6(3).
+    source_sha256: 5ad05d78c512a7b9e0a1586302aee17beb70bd0d77b857cc95c3fb5036449fa1
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DI-A24:
+    text: Before distributing a high-risk AI system, the distributor must verify it has a CE marking,
+      an EU declaration of conformity, and instructions for use. The distributor must also ensure the
+      provider and importer have met their obligations regarding identification and quality management.
+      If the system is non-compliant or presents a risk, the distributor must not make it available or
+      must take corrective actions.
+    source_sha256: 2d87e17d7e89e6e3370a7cfb1504985ec2649351d99fbad1f15e7d5ccd3cd7ff
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A05-1H:
+    text: The deployer must not use real-time remote biometric identification systems in publicly accessible
+      spaces for law enforcement purposes, unless strictly necessary for specific objectives like finding
+      victims, preventing threats, or locating suspects of serious crimes listed in Annex II.
+    source_sha256: 98cf3b6113d67fcbef0b1c7bf38acde102eba8cc27a64389ab4cd1e92902ed71
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A05-2:
+    text: The deployer, if a Member State has authorized the use of real-time remote biometric identification
+      systems in publicly accessible spaces for law enforcement, must use them only to confirm a targeted
+      individual's identity. The deployer must also complete a fundamental rights impact assessment as
+      provided for in Article 27 and register the system in the EU database according to Article 49, though
+      registration can be delayed in urgent cases.
+    source_sha256: 2f3bd90d196435a7e7308c8bf8221d350ef487ce76024a38e770d8571bbe68eb
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A05-3:
+    text: The deployer must get prior authorization from a judicial or independent administrative authority
+      for each use of a real-time remote biometric identification system in publicly accessible spaces
+      for law enforcement. This authorization is required unless there is a duly justified urgent situation,
+      in which case the deployer must request authorization within 24 hours.
+    source_sha256: 8cebb7431de4d9372b74ba0837c8b93c40caa001ade5cfd0331bdf0aef993ad2
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A05-4:
+    text: The deployer must notify the relevant market surveillance authority and national data protection
+      authority each time it uses a real-time remote biometric identification system in public spaces
+      for law enforcement. This notification must follow national rules and include information specified
+      in paragraph 6, but not sensitive operational data.
+    source_sha256: 511b981104b7e308a38df23ec86b7175bd9947ad1d183df73bc675b93086899f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26:
+    text: The deployer of a high-risk AI system must use it according to the provider's instructions and
+      assign trained human oversight. The deployer must also monitor the system's operation and, if it
+      poses a risk, inform the provider or distributor and the market surveillance authority, then suspend
+      its use.
+    source_sha256: 9d0883ba6221b7e3e795906eadf239d4177cd281ebb094048ce887c9aabed9ea
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-10:
+    text: A deployer of a high-risk AI system for post-remote biometric identification must get authorization
+      from a judicial or administrative authority before or soon after using the system in a targeted
+      criminal investigation. This authorization is not needed for initial identification of a potential
+      suspect. If authorization is denied, the deployer must stop using the system and delete related
+      personal data.
+    source_sha256: 74e7da2bd2cb4ca89c6de0a48bb330636308f51c12b31a0126cc3dd3d3c1144a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-10-LAW-ENFORCEMENT:
+    text: A deployer using a high-risk AI system for post-remote biometric identification in a targeted
+      criminal investigation must get authorization from a judicial or administrative authority, unless
+      it's for initial suspect identification. Each use must be strictly necessary for the investigation.
+      The deployer must also submit annual reports on their use of these systems.
+    source_sha256: d7d796b77255fe81b61a695b2c790d6e9013482303b6225e896b81800eda8d3d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-11:
+    text: The deployer of a high-risk AI system listed in Annex III that makes or helps make decisions
+      about people must tell those people they are subject to the system's use. This does not apply if
+      the system is used for law enforcement purposes, in which case Article 13 of Directive (EU) 2016/680
+      applies instead.
+    source_sha256: ac2de0b02c507ea5668c4b97361f50be13eca2694e4fb6b9e189fcbc6234aa8f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-12:
+    text: The deployer must cooperate with the relevant competent authorities when those authorities take
+      action regarding a high-risk AI system to implement this Regulation.
+    source_sha256: 88c99373dd1e78684e3e2291986f93b022a4eccd1dda5b270082e6c02fbf0463
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-6:
+    text: If the deployer is a financial institution, it must keep the logs generated by its high-risk
+      AI system as part of its financial-services records. The deployer must keep these logs for at least
+      six months, unless other laws specify a different period.
+    source_sha256: b00973ea7537ae0054b4880ef2b3107ed3d20341292f830932a6f8b276f75acd
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-7:
+    text: Before using a high-risk AI system at work, employers must tell their workers and their representatives
+      that the system will be used. This must be done following existing Union and national laws for informing
+      workers.
+    source_sha256: 7d0dadb1d3a1ffcdb41c26a4867fa528d7db366c01dc7490026b4aef62175fa2
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-8:
+    text: If a deployer is a public authority or a Union institution, body, office, or agency, it must
+      comply with registration obligations. If such a deployer finds that a high-risk AI system it plans
+      to use has not been registered in the EU database, it must not use that system and must inform the
+      provider or distributor. The EU database is set up and maintained by the Commission and contains
+      information about high-risk AI systems.
+    source_sha256: dda3115228bd856e992925d023b5e249ca39e2a4f2dc7a8848ab7fa5e6e3ac36
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-8-UNREGISTERED-NOTICE:
+    text: If a deployer, being a public authority or Union institution, finds that a high-risk AI system
+      it plans to use is not registered in the EU database, the deployer must not use that system and
+      must inform the provider or distributor. This database is set up and maintained by the Commission
+      and contains information about high-risk AI systems.
+    source_sha256: 63122b793c43c8a7ff77248eb40b338189b479219873be6326affa21d4f0b5da
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-8-UNREGISTERED-PROHIBITION:
+    text: If a deployer, being a public authority or Union institution, body, office, or agency, plans
+      to use a high-risk AI system and finds it is not registered in the EU database, the deployer must
+      not use that system and must inform the provider or distributor. The EU database is set up and maintained
+      by the Commission and contains information about high-risk AI systems and certain other AI systems.
+    source_sha256: e840a96b8298ad77b5f76a9f5f966c97e3a386c321c4ac55c300cd71ee677f51
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A26-9:
+    text: When a deployer of a high-risk AI system must conduct a data protection impact assessment, the
+      deployer must use the information provided by the provider under Article 13. This information includes
+      instructions for use and details about the AI system's characteristics, capabilities, and limitations.
+    source_sha256: 81f96a78a240d734eb1b62017cd7a79401c7de595406d63c1d461d69cbe3f396
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A27:
+    text: Before using certain high-risk AI systems, deployers that are public bodies or private entities
+      providing public services, or deployers of specific financial and insurance AI systems, must assess
+      the impact on fundamental rights. This assessment involves describing the AI system's use, affected
+      persons, potential risks, human oversight, and measures to address risks, using information from
+      the provider.
+    source_sha256: f955163e04d5abc048551549369695aab2e487f6414f19dde385eefb3259556d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A27-2:
+    text: The deployer must update the fundamental rights impact assessment if elements listed in paragraph
+      1 change or become outdated during the high-risk AI system's use. This applies to the first use,
+      but the deployer can reuse previous assessments in similar cases.
+    source_sha256: 98c672fd851f1a184082bda4175b14cb459f444504bbc287227270778f605a89
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A27-3:
+    text: After performing an assessment, the deployer must notify the market surveillance authority of
+      the results using a specific template. However, if a market surveillance authority has authorized
+      the AI system for exceptional public security or protection reasons, the deployer may not have to
+      provide this notification.
+    source_sha256: 6467866a3596a0f0effabe1e500f7d35fc478282457d795c327bc2473174bcd7
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A46-2:
+    text: If a law-enforcement or civil protection authority uses a high-risk AI system urgently without
+      prior authorization, and that authorization is later refused, the authority must immediately stop
+      using the system and discard all its results and outputs.
+    source_sha256: d90d4682d5314034d9ca2a20d175dde38f57b4c34cac847422629fc07da24f81
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A49-3:
+    text: Before using a high-risk AI system listed in Annex III, deployers that are public authorities,
+      Union institutions, bodies, offices, agencies, or persons acting on their behalf, must register
+      themselves and the system's use in the EU database referred to in Article 71. This does not apply
+      to high-risk AI systems listed in point 2 of Annex III.
+    source_sha256: 57f23a759a7a1e735a16111f7f4050cf412958034df61cadbc5cd122e4dc4d73
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A71-3:
+    text: A deployer who is a public authority or acts on its behalf must enter specific data from Annex
+      VIII, Section C, into the EU database. This applies when the deployer puts into service or uses
+      a high-risk AI system listed in Annex III, excluding those in point 2 of Annex III, as outlined
+      in Article 49(3) and (4).
+    source_sha256: 5ee5a6bb1d6430e3c58484d603e6315cae6c43a1f9a1ce55e68d85bbdcf9f2a3
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-DP-A86:
+    text: If a person is affected by a decision made by the deployer using a high-risk AI system, and
+      that decision significantly impacts them, the deployer must provide clear explanations of the AI
+      system's role and the decision's main elements, if the person asks. This applies to high-risk AI
+      systems listed in Annex III, except those for critical infrastructure.
+    source_sha256: e8c0517b0712a04a63d227d52b8e32e98f90e2c315e78a5ac6d19d4e15d91345
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A111-3:
+    text: Providers of general-purpose AI models placed on the market before August 2, 2025, must take
+      steps to meet the Regulation's obligations by August 2, 2027. This applies to models already on
+      the market before that date.
+    source_sha256: 20793cd789386a615648f23424c20075c47fc6c41497fc59ae33715aef739f97
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A41-5:
+    text: If the provider of a general-purpose AI model chooses not to follow common specifications adopted
+      by the Commission, the provider must explain how their technical solutions meet the obligations
+      in Chapter V to an equivalent level.
+    source_sha256: aa4d5efc43d8061e3e0911499229d769cdbabc121edd2798110eb8716c25797c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A52-1:
+    text: The provider of a general-purpose AI model must notify the Commission within two weeks if the
+      model has high impact capabilities, which is presumed if its training used over 10^25 floating point
+      operations. This notification should include information demonstrating that the requirement has
+      been met.
+    source_sha256: 6bb65b225c1936b82b323c9b128ccb10edf80678d75f146103b99f22b423b4ea
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A53-1A:
+    text: The general-purpose AI provider must create and maintain technical documentation for its model,
+      including details about its training, testing, and evaluation results. This documentation, which
+      must contain the information specified in Annex XI, must be provided to the AI Office and national
+      competent authorities upon request.
+    source_sha256: 4074b9200f951e57859fd67183385ab84d33cf675be114793b388180e94bf745
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A53-1B:
+    text: The general-purpose AI provider must create and maintain documentation for providers of AI systems
+      who integrate the general-purpose AI model into their AI systems. This documentation must help them
+      understand the model's capabilities and limitations, and comply with their obligations under this
+      Regulation. It must also include the information listed in Annex XII.
+    source_sha256: 7c32c767f97b2e18865637e5f8d6f3e99c99645e6bb248044bd36bd173e9a53a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A53-1C:
+    text: The general-purpose AI provider must create a policy to follow EU copyright law. This includes
+      identifying and respecting, possibly with advanced technology, any reservation of rights made under
+      Article 4(3) of Directive (EU) 2019/790.
+    source_sha256: 099225adde575d92730de4e168528486cba3910a7543f025ab4c3b898e14bfdf
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A53-1D:
+    text: The general-purpose AI provider must create and publicly share a detailed summary of the content
+      used to train its general-purpose AI model. This summary must follow a template provided by the
+      AI Office.
+    source_sha256: 230994de18844082c4d7bc84463a67101da2247b2b9229ea7da6cb9221ef24da
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A53-3:
+    text: The provider of a general-purpose AI model must cooperate with the Commission and national competent
+      authorities when these bodies are exercising their powers under this Regulation. This cooperation
+      is required as necessary.
+    source_sha256: cfb258f914e02b880946ac08ccf2bc2f047e0fbced45f636f52aa17f5b3c4be3
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A53-4:
+    text: A provider of a general-purpose AI model that does not follow an approved code of practice or
+      a European harmonised standard must show the Commission how it meets its obligations under Article
+      53(1) using other methods.
+    source_sha256: 45bd0912e9a5473e03da32f7aa163950eff9aa2585c8be3388bbc583e9394984
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A54-1:
+    text: Before a general-purpose AI model is placed on the Union market, a provider established in a
+      third country must appoint an authorized representative in the Union through a written mandate.
+    source_sha256: 6ae7669745e65227d89cdae743238076f0ec2ea9cc08e54e8f2427cb68eb7619
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A54-2:
+    text: The provider must allow its authorised representative to carry out the duties given to it by
+      the provider. This applies when the provider is from a third country.
+    source_sha256: 87d4bcb18593a876a371c3b5b76b37bf16f6cf7402aefcbbc7a6ed15f63653bd
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A54-4:
+    text: The mandate given to an authorised representative must allow the AI Office or competent authorities
+      to contact the representative about compliance with this Regulation, either in addition to or instead
+      of the provider.
+    source_sha256: f22b65432e6abdbeabc2ec7d3472d163637b76e3acba31f13d640f57a711fa03
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A55-1A:
+    text: The provider of a general-purpose AI model with systemic risk must evaluate the model using
+      state-of-the-art methods. This includes adversarial testing to find and reduce systemic risks, and
+      documenting these tests.
+    source_sha256: 939a90ef5a6bde5fc961728c218586baf01384a434298bfab8d70ddab2d0a48c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A55-1B:
+    text: The provider of a general-purpose AI model with systemic risk must assess and mitigate potential
+      systemic risks at Union level. This includes identifying the sources of these risks, which may arise
+      from the model's development, market placement, or use.
+    source_sha256: 5b1a17aa67c5151f95764102c2d7242ae2de39f5cf96e9113f8a0592d08b7065
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A55-1C:
+    text: The provider of a general-purpose AI model with systemic risk must track, document, and report
+      relevant information about serious incidents and possible corrective measures to the AI Office and,
+      if appropriate, to national competent authorities without undue delay.
+    source_sha256: 1919f18daba7f07e214242db8926f4c565cde47a8ac52219f0eaf2dd0cd4eb93
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A55-1D:
+    text: The provider of a general-purpose AI model with systemic risk must ensure adequate cybersecurity
+      for that model and its physical infrastructure. This applies when the model is designated as having
+      systemic risk under Article 51(1).
+    source_sha256: bd044dba44cbacd6b14ee5b7bd141175709e8e8faa59c81fc1c32557396f869a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A55-2:
+    text: Providers of general-purpose AI models with systemic risk must show they meet their obligations.
+      They can do this by following an approved code of practice or a European harmonised standard. If
+      they do not, they must show the Commission other ways they comply.
+    source_sha256: 420c54f20a0661b04a0b52c1d032472b08dc3487efb125904b5a0475aba5e62d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A91-5:
+    text: When the Commission requests information, the provider of a general-purpose AI model, or its
+      authorized representative, must supply it. If the provider is a legal entity, its authorized representatives
+      must provide the information. Lawyers can supply information for clients, but clients remain responsible
+      for its accuracy.
+    source_sha256: b73999bc52478ce201f1dba36bc7ac7bf32d1a3746dbaf153351ef4ad5aa012a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GP-A92-5:
+    text: When the Commission requests information for a model evaluation, the provider of a general-purpose
+      AI model or its authorized representative must supply it. If the provider is a legal entity, the
+      persons authorized to represent it must provide the requested access.
+    source_sha256: 9cac98cff19be38c4488c56b8b2a94349ee6168cbfdedfc239a6a64eaa39cc9a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GPAR-A54-3:
+    text: The authorised representative must carry out tasks specified in the mandate received from the
+      provider. This includes verifying the provider's compliance with obligations regarding technical
+      documentation and other requirements, keeping copies of documentation, and cooperating with the
+      AI Office and competent authorities upon request.
+    source_sha256: cb39d78dd40276a38f800d19a082e0b9f12cad2772730ca02077c1cc7d58a3ee
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-GPAR-A54-5:
+    text: The authorised representative must end its agreement with the provider and tell the AI Office
+      why, if it believes the provider is not following its obligations under this Regulation.
+    source_sha256: 9d23fc7bd4b8595c21a8189f6821b08d2413f137d6e347dd1f0f7876d1e5f218
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A09:
+    text: The provider must establish, implement, document, and maintain a continuous risk management
+      system for high-risk AI systems throughout their entire lifecycle. This system involves identifying,
+      analyzing, and evaluating risks, including those from foreseeable misuse and post-market monitoring
+      data, and then adopting measures to mitigate or eliminate these risks, ensuring the residual risk
+      is acceptable. The provider must also test the high-risk AI system to ensure consistent performance
+      and compliance, and consider potential adverse impacts on vulnerable groups.
+    source_sha256: e4a61ff483e91356049b819373b7386708ddf74242b71563faec7a7d58d09bdb
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A10:
+    text: The provider must ensure that data sets used for high-risk AI systems meet specific quality
+      criteria, including relevance, representativeness, and freedom from errors. These data sets must
+      also be managed with appropriate data governance practices. The provider may process special categories
+      of personal data for bias detection and correction under strict conditions.
+    source_sha256: 993ad4a9ff32546f848e24a8f58661a6f3b499c39cb0342f072b9e7dfbbc9b7a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A11:
+    text: The provider must create and maintain technical documentation for a high-risk AI system before
+      it is placed on the market or put into service. This documentation, detailed in Annex IV, must show
+      the system meets requirements and help authorities assess compliance. SMEs may use a simplified
+      form for this documentation.
+    source_sha256: ab026921738af79d467dd12c57cc39383e4b99b15ac6f90544705ca6361ee158
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A11-2:
+    text: When a provider places a high-risk AI system on the market or puts it into service, and that
+      system is part of a product covered by certain EU harmonization laws listed in Section A of Annex
+      I, the provider must create a single set of technical documentation. This documentation must include
+      all information required by both this Regulation and the other applicable legal acts.
+    source_sha256: a1238f0ee7576ff5c90c1bee4296ba5ae374dfafd49b93b52e5fe0d7fc32379a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A12:
+    text: The provider of a high-risk AI system must ensure the system can automatically record events
+      throughout its operational life.
+    source_sha256: bed12967e438826302bf48fe73ffdd3196ed9805332e8d9f5d346d6a40d68cef
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A12-3A:
+    text: The provider of a remote biometric identification system must record the start and end time
+      of each use of that system. This applies to systems that identify individuals from a distance, but
+      not to systems that only verify a person's identity.
+    source_sha256: 94fab0a0fa7c805dd7ec6b6d9777cde6aa027c9c0661d1339df0837fcaa4d72c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A12-3B:
+    text: The provider of a remote biometric identification system must log the specific database used
+      to check each piece of input data. This applies to systems that identify people from biometric data
+      at a distance.
+    source_sha256: 83079e33bea85a9fb5ba8d0db084d3c5708908a2cc53bd1fd6df24e09f085f21
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A12-3C:
+    text: The provider of a remote biometric identification system must log the specific input data that
+      resulted in a match during a search. This applies to systems used for identifying individuals from
+      a distance, but not for simply verifying a person's identity.
+    source_sha256: 110d3357a9f4030aa86b7edd2933067904fa28f9df7bf054f5fc93264e8646da
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A12-3D:
+    text: The provider of a high-risk AI system for remote biometric identification must identify the
+      natural persons involved in verifying the results. This is part of ensuring human oversight, which
+      aims to prevent or minimize risks to health, safety, or fundamental rights.
+    source_sha256: 4a8406248a5e73096c4c2dd5261bad1f6978fe3a7b3df6f34ba56d6d8e759af5
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A13:
+    text: The provider must design and develop high-risk AI systems to be transparent enough for deployers
+      to understand the system's output and use it correctly. This transparency helps both the provider
+      and deployer meet their obligations under Section 3.
+    source_sha256: e214b392d077ff0b14215407bf1a88c06c2febe62c4b349cb02c74d71be6f34e
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A13-3:
+    text: The provider of a high-risk AI system must include specific information in the instructions
+      for use. This includes the provider's identity, the system's characteristics, capabilities, and
+      limitations, and details on human oversight measures and record-keeping mechanisms.
+    source_sha256: 9b36fd6722fa07da9f261957f0050c8693252eb7e4f617cb17b3ee913325787b
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A14:
+    text: The provider must design and develop high-risk AI systems so people can effectively oversee
+      them while in use. This oversight aims to prevent or minimize risks to health, safety, or fundamental
+      rights. The provider must ensure the system allows people to understand its capacities and limitations,
+      monitor its operation, interpret its output, and intervene or stop it.
+    source_sha256: 6d322ff40dd455c09a9c9b9657e2b00c6e3c9d141a6f981ae04dbb5678a79dc1
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-HR-A15:
+    text: The provider must design and develop high-risk AI systems to achieve appropriate accuracy, robustness,
+      and cybersecurity, and to perform consistently throughout their lifecycle. The provider must declare
+      the accuracy levels and metrics in the instructions of use. High-risk AI systems must be resilient
+      to errors and unauthorized alterations.
+    source_sha256: 464fc78c0bd94a6c95d0fc56b9f83f1af8f7fa548874e5d6181ce10652be5ef7
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-IM-A23:
+    text: Before selling a high-risk AI system, the importer must confirm the provider has completed the
+      conformity assessment procedure, prepared technical documentation, applied the CE marking, and appointed
+      an authorized representative. The importer must not sell non-compliant systems and must inform authorities
+      if a system presents a risk. Importers must also provide their contact details, ensure proper storage,
+      keep records for 10 years, and cooperate with authorities.
+    source_sha256: 3f1fce7efd091d338b19e753ed5696a29d05351d715b4eaca1c323cd3b246bc3
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-IP-A25-2:
+    text: When an initial provider is no longer considered the provider of an AI system, it must cooperate
+      with new providers. This includes sharing technical documentation, known limitations, and providing
+      technical access for testing and validation, unless the initial provider clearly specified the AI
+      system was not to become a high-risk AI system.
+    source_sha256: 3319d738478d795c6ef8200808dd7a94ff083afbe1a2666c4a89e2fbf780106e
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-NHR-A06-4:
+    text: A provider who believes an AI system listed in Annex III is not high-risk must document this
+      assessment before releasing the system. This provider must also register themselves and the system
+      in the EU database, as specified in Article 49(2). Upon request, the provider must give this documentation
+      to national competent authorities.
+    source_sha256: 6576fd94adfcee56b1369aea1a03c10f28bf09e1c040eb786ac86e75310b13de
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT:
+    text: If a provider believes an AI system listed in Annex III is not high-risk, the provider must
+      document this assessment before placing the system on the market or putting it into service. The
+      provider must also register the system in the EU database. National competent authorities can request
+      this documentation from the provider.
+    source_sha256: d8b112b2b0348e8a166e0f8fbcf3406f945332d0d6cafec9631999850356cfa0
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-NHR-A06-4-REGISTER:
+    text: If a provider believes an AI system listed in Annex III is not high-risk, the provider must
+      document this assessment before placing the system on the market or putting it into service. The
+      provider must then register themselves and the system in the EU database.
+    source_sha256: 57c96f3541535b4509660b106a41d2f266eb3864512ccd8433d85d615cd6c8f3
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-NHR-A71-2:
+    text: The provider or, if applicable, the authorised representative, must enter specific data into
+      the EU database. This data includes information about the provider, the AI system's trade name,
+      its intended purpose, and its status, as detailed in Annex VIII.
+    source_sha256: c4a582542229cabd33e53cf56527499d600285b9fa1b2138a7efb70009d487b8
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-NHR-A80:
+    text: If a market surveillance authority finds an AI system to be high-risk and requires the provider
+      to bring it into compliance, the provider must take all necessary action to do so. If the provider
+      fails to comply within the given period, they will face fines as outlined in Article 99.
+    source_sha256: fbbae704a719f98acce4e34015cd4a9e8bb96ed85e4741d8ce6f308ac1b7fdfc
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A08-2:
+    text: If a product contains a high-risk AI system and is also covered by Union harmonisation legislation,
+      the provider must ensure the product complies with all applicable requirements. The provider may
+      integrate AI Act compliance documentation and processes into existing documentation and procedures
+      required by that Union harmonisation legislation.
+    source_sha256: 911c34100d18b3da4bfc268c61e5880f52d426663ab0b962c4534b4354ec4ba5
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A16-B:
+    text: The provider must put their name, registered trade name or trade mark, and contact address on
+      the high-risk AI system itself. If that's not possible, they must put this information on its packaging
+      or accompanying documentation.
+    source_sha256: 550416ce74fe4087af95a007c9b035d7f3076b7a1b507a201b25531b2e5869ea
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A16-K:
+    text: The provider must show a national competent authority that its high-risk AI system meets the
+      requirements in Section 2, if the authority makes a reasoned request.
+    source_sha256: 9852c1498b3ea4a64e845925fa448971be0c7ce1a6edc360cae24e7ff0de7b7c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A16-L:
+    text: The provider must ensure that their high-risk AI system meets the accessibility requirements
+      outlined in Directives (EU) 2016/2102 and (EU) 2019/882. This applies when the provider places the
+      system on the market or puts it into service.
+    source_sha256: b4c72b925571c26bb01035fcec4ae74036c56cfae1a272b59d78fb99fdaa4181
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A17:
+    text: The provider of a high-risk AI system must create a documented quality management system with
+      written policies and procedures to ensure compliance with this Regulation. This system must include
+      a strategy for regulatory compliance, techniques for design and development, examination and testing
+      procedures, technical specifications, data management systems, a risk management system, a post-market
+      monitoring system, and procedures for reporting serious incidents.
+    source_sha256: 2d23f4025932b9dd4c30cb1649e02f81323bff51106a509251bc5d4f50d81095
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A17-4:
+    text: If a provider is a financial institution, its compliance with Union financial services law for
+      internal governance fulfills most of its quality management system obligations. However, the provider
+      must also consider any harmonised standards referred to in Article 40.
+    source_sha256: 57d9de234a82cf1d5cfa0f2833700e87a718dee4109a9df2d76f5582962b247a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A18:
+    text: The provider must keep specific documentation for a high-risk AI system available to national
+      authorities for 10 years after the system is placed on the market or put into service. This includes
+      technical documentation, quality management system documentation, and the EU declaration of conformity.
+    source_sha256: de0c7fcd442f54f25c30fe418f00ae9c5384f1925cb51fbca7f8680ffa303539
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A18-3:
+    text: A provider that is a financial institution must keep the technical documentation with its other
+      records required by Union financial services law. This applies if the provider is subject to internal
+      governance requirements under that law.
+    source_sha256: 7f0cc6d4647f7cef7743983da5bb5707d8701b1aea551d900c1ffb757d35b2d3
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A19:
+    text: Providers of high-risk AI systems must keep automatically generated logs, if they control them,
+      for at least six months. These logs, which record events over the system's lifetime, help identify
+      risks and facilitate monitoring.
+    source_sha256: 659f4ec44e36be833311289bb592e43c739e6d423cba2fdda890342bbf049a1d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A19-2:
+    text: Providers that are financial institutions must keep the logs automatically generated by their
+      high-risk AI systems. These logs must be maintained as part of the documentation they already keep
+      under Union financial services law.
+    source_sha256: e72724670797b2137081175e4eea2e31d0ba76bac0620084fb2ce845a33556ea
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A20:
+    text: If a provider of a high-risk AI system believes their system does not comply with this Regulation,
+      they must immediately fix it, withdraw it, disable it, or recall it. They must also inform distributors
+      and, if applicable, deployers, authorized representatives, and importers.
+    source_sha256: 027876ce8f18f3dea06f87d24a60e0575c19ac161868dbfbb42578ac4098e3ce
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A20-2:
+    text: If a high-risk AI system presents a risk to health, safety, or fundamental rights, and the provider
+      becomes aware of it, the provider must immediately investigate the causes, collaborating with the
+      deployer if applicable. The provider must also inform the market surveillance authorities and, if
+      applicable, the notified body that issued a certificate, detailing the non-compliance and corrective
+      actions.
+    source_sha256: 344be35b421623001a69cf59a0924a14e4cad8ede7a286de279bd2528b96166d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A21:
+    text: The provider of a high-risk AI system must give a competent authority any information and documentation
+      needed to show the system meets the requirements in Section 2. This must be in a language the authority
+      understands, chosen by the Member State, when the authority makes a reasoned request.
+    source_sha256: 8b6ba33540793ec3c95469722004abe018a535224b6884bec0e84259d6d11d58
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A21-2:
+    text: Upon a reasoned request from a competent authority, the provider must give that authority access
+      to the automatically generated logs of a high-risk AI system, if the logs are under the provider's
+      control. This applies when the authority asks for access.
+    source_sha256: c817e060bd7faca62922b96e664f49a1f83190d57f8d8945d595c7cf4817fbcd
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A22:
+    text: Before making their high-risk AI systems available in the Union, providers established in third
+      countries must appoint an authorized representative in the Union by written mandate.
+    source_sha256: 7e32c7902e657784a92aa317f4c3630fe2bae43e6df018dce50d4ee0c318e4a1
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A25-4:
+    text: The provider of a high-risk AI system must agree in writing with third-party suppliers of components
+      for that system to get the information and access needed to meet the provider's obligations under
+      this Regulation. This does not apply to free and open-source components, except for general-purpose
+      AI models. The AI Office may recommend voluntary model contract terms.
+    source_sha256: e1a463c49aa32579c17cb701a74bed41c5ecebc7283064f800097d9c1b7d8505
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A36-8:
+    text: If a notified body's designation is suspended or restricted, and the notifying authority determines
+      it cannot support existing certificates, the provider must confirm in writing to national competent
+      authorities within three months that another qualified notified body is temporarily taking over
+      monitoring and responsibility for those certificates.
+    source_sha256: c2ad380a97d4d78d96c39d438e62e3f2773cd74e3b29de4ef99c7fb85d984421
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A41-5:
+    text: If a provider of a high-risk AI system or general-purpose AI model does not follow common specifications,
+      they must explain how their technical solutions meet the relevant requirements to an equivalent
+      level. This applies when the Commission has adopted common specifications and the provider chooses
+      not to comply with them.
+    source_sha256: 997aa14d712419914716349d3e6165e541e7847793641c3a174c67451f1f9a0a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A43-1:
+    text: For high-risk AI systems listed in Annex III point 1, the provider must choose a conformity
+      assessment procedure. This can be either internal control or an assessment involving a notified
+      body, unless specific conditions require the latter. A notified body is an independent third party
+      that assesses the AI system.
+    source_sha256: 4eaf47501ca10c46b7d0066e39777d9e20f2c9f99153101ee5f8687bf3db2541
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A43-1A:
+    text: When demonstrating compliance for high-risk AI systems listed in Annex III point 1, if the provider
+      used harmonised standards or common specifications, the provider may choose to follow the internal
+      control procedure described in Annex VI. This procedure involves the provider verifying their quality
+      management system, examining technical documentation, and ensuring consistency between the AI system's
+      design and its documentation.
+    source_sha256: b018e9874cb87de08148aacd68c8c96ea31bb3c4506b11ed398362e8beca6463
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A43-1B:
+    text: For high-risk AI systems listed in Annex III point 1, the provider must choose a conformity
+      assessment procedure. If the provider has not fully applied harmonised standards or common specifications,
+      or if certain conditions are met, the provider must follow the procedure in Annex VII, which involves
+      a notified body assessing the quality management system and technical documentation.
+    source_sha256: 067a7fb7b629bcfca33134e8431ab7448a370cb504e4137c83d7ac1ca4d09570
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A43-2:
+    text: For high-risk AI systems listed in Annex III points 2 to 8, the provider must follow a conformity
+      assessment procedure based on internal control, as described in Annex VI. This procedure involves
+      the provider verifying their quality management system, examining technical documentation, and ensuring
+      consistency between the AI system's design, development, and post-market monitoring with the technical
+      documentation.
+    source_sha256: 1aa86a2d677673241e10734847f40ef9313df8fb83548b67dc75501b3e65a65f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A43-3:
+    text: For high-risk AI systems covered by specific EU product safety laws, the provider must follow
+      the conformity assessment procedure required by those laws. This assessment must also include the
+      quality management system and specific parts of the technical documentation, as detailed in Annex
+      VII.
+    source_sha256: 6c71b2fa1c6ca0e9893ddbd0218aac0659f18a322451016b093e47dd8f95b88a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A43-4:
+    text: The provider must perform a new conformity assessment procedure if a high-risk AI system undergoes
+      a substantial modification. However, changes to a high-risk AI system that continues to learn, if
+      predetermined by the provider and included in the technical documentation, do not count as a substantial
+      modification.
+    source_sha256: 689e2ac24c71ad9fbcee3d48c3248b47bfcd41419c3cfa9ed5ee5ae1967e886a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A46-1:
+    text: If a market surveillance authority allows a provider to place a high-risk AI system on the market
+      or put it into service for urgent reasons, the provider must complete the necessary conformity assessment
+      procedures without undue delay. This assessment demonstrates the AI system's compliance with requirements.
+    source_sha256: 8a45bb08075592f747dcd9d1a663157a60f953f09c96ad849d1c852d8058e173
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A47:
+    text: The provider must create a written EU declaration of conformity for each high-risk AI system.
+      This declaration, identifying the system, must be kept for 10 years after the system is placed on
+      the market or put into service, and submitted to national competent authorities if requested.
+    source_sha256: 29159534330ae0891e48522afc308b5103a248ea38b6089b51a811ce355c8b32
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A47-2:
+    text: The provider must include specific information from Annex V in the EU declaration of conformity
+      for a high-risk AI system. This declaration must state the AI system meets Section 2 requirements
+      and be translated for national competent authorities in relevant Member States.
+    source_sha256: a53612b373d254db4c60dea9e70d3f658e146c951fb6eb2df489d1bd0ed23a4c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A47-3:
+    text: If a high-risk AI system is also covered by other EU laws requiring an EU declaration of conformity,
+      the provider must create one combined declaration. This single declaration must include all information
+      needed to identify every EU law it covers.
+    source_sha256: 9b38768237ca0802202a0abd3d7cab6999b76fedc92dc14f8391184100e7a590
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A47-4:
+    text: By creating the EU declaration of conformity, the provider takes responsibility for meeting
+      the requirements in Section 2. The provider must also update this declaration as needed.
+    source_sha256: 15429e7b1a97daa849246d25f90edb5b767c58d6394c08704fbadea4b571d48d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A48:
+    text: The provider must visibly, legibly, and indelibly affix the CE marking to high-risk AI systems.
+      If this is not possible due to the system's nature, the provider must affix it to the packaging
+      or accompanying documentation.
+    source_sha256: b8dcc51dd83d068fdcd2dbe718480763f38cc9d964d1ec63aace3ae64935377a
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A48-2:
+    text: If a provider offers a high-risk AI system digitally, they must use a digital CE marking. This
+      marking must be easily accessible through the system's interface, a machine-readable code, or other
+      electronic means.
+    source_sha256: 5381dbad2f59a00f2a206b1907c9fa0970137d4ff9197efbdb16b9cd80476ca4
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A48-4:
+    text: When a notified body assesses a high-risk AI system, the provider must ensure the notified body's
+      identification number follows the CE marking. This number must also appear in promotional materials
+      mentioning the CE marking.
+    source_sha256: a96e5cb0ff0ee1d66817089a8fa4838c0c5229605eef085c48fb2144b4bb0c17
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A49:
+    text: Before placing a high-risk AI system on the market or putting it into service, the provider
+      must register themselves and their system in the EU database. This applies to high-risk AI systems
+      listed in Annex III, except for those in point 2 of Annex III. The EU database is set up and maintained
+      by the Commission.
+    source_sha256: 6b2a7db8a35e79101311e0c7cd4612ada0b038ddfc05e56bd23d179488a8602e
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A49-5:
+    text: The provider must register high-risk AI systems at a national level if they are intended for
+      use as safety components in managing critical digital infrastructure, road traffic, or the supply
+      of water, gas, heating, or electricity.
+    source_sha256: 7240aaabe7552c4f87b4a0f89c8c645ca8a834bb207ea4f96ed4bda1e14e193d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A53-7:
+    text: A provider that receives information or documentation under Article 53 must keep it confidential.
+      This includes trade secrets and other confidential business information, as outlined in Article
+      78, to protect intellectual property rights.
+    source_sha256: 94ca624a30e4fb067b96df375fba8b957b40a23126cccc72f2426897cf0ff5b9
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A59-P1-E:
+    text: If a provider uses the AI regulatory sandbox, they must not share any personal data generated
+      within the sandbox outside of it. They can only share personal data originally collected for another
+      purpose if they follow Union data protection law.
+    source_sha256: bc13d8af2dcd6e422aec8b90ad295b8d143c0d28f9edca14ab3cc28702618ee3
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A60-4:
+    text: Before a provider or prospective provider tests an AI system in real-world conditions, they
+      must create a testing plan and get it approved by the market surveillance authority. They must also
+      register the testing in a database, unless it is a high-risk AI system under Annex III, point 2,
+      which is registered nationally. The provider must also meet other conditions, including being established
+      in the Union or having a legal representative there, and ensuring data transfer safeguards.
+    source_sha256: ed29b0b87af086425329d5fca9e1de4074ea1f8b3c95d6e9280274412852f39d
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A60-7:
+    text: The provider must report any serious incident during real-world testing to the national market
+      surveillance authority, as described in Article 73. The provider must also take immediate steps
+      to reduce harm or stop the testing, and have a plan to recall the AI system if testing ends.
+    source_sha256: 7d0c164c3b9edb0c34d1ed7f37d3d052a6d8d526b923e25026d8ded5258b0ebf
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A60-8:
+    text: The provider must tell the national market surveillance authority in the relevant Member State
+      when real-world testing stops and what the final results were. This applies if the provider chose
+      to conduct testing in real-world conditions.
+    source_sha256: e1358c1fbe3df170282495fc1df3b90ba9503469da56fe6d82d2ffccdb6d8c7c
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A61:
+    text: The provider must get informed consent from people before they participate in real-world testing
+      of high-risk AI systems. The provider must inform them about the testing's nature, conditions, their
+      rights, and how to challenge the AI system's outputs. This applies when the provider chooses to
+      test under Article 60.
+    source_sha256: c742a9bdf1b10e1e98e369db5f3b33201ff1fd4e2385b4a285078487f7c278fb
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A71-2:
+    text: The provider, or their authorised representative, must enter specific information about high-risk
+      AI systems into the EU database. This includes details like the provider's contact information,
+      the AI system's trade name, its intended purpose, and its status.
+    source_sha256: 34a332053d4820ee94dce75a88dd6a9afe6c2e34655c20418b28b05173f8c586
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A72:
+    text: The provider must create and document a post-market monitoring system. This system should be
+      appropriate for the AI technologies and the risks of the high-risk AI system.
+    source_sha256: ed474d1b68298d1d757a391e998e16b551594448a23ed99f9b52d7c000af0d5f
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A73-6-ALTERATION-PROHIBITION:
+    text: When investigating a serious incident it reported, the provider must not alter the AI system
+      in a way that could affect later evaluation of the incident's causes, until it has informed the
+      competent authorities of its intention to do so.
+    source_sha256: 1a52bd3dc527718efd70dea4e1347e0c8e1f0257394c0167e26f7e24d026f147
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A74-12:
+    text: Providers must give market surveillance authorities full access to documentation and data sets
+      used for high-risk AI systems, including through remote access if appropriate. This access is for
+      the authorities to fulfill their tasks and is limited to what is necessary.
+    source_sha256: 41e04e564113214ca9ec939a0a775934bcb6fb7d2e433a1ee926d71038813420
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A74-13:
+    text: The provider must give market surveillance authorities access to the source code of a high-risk
+      AI system if the authorities make a reasoned request. This access is only required if it is necessary
+      to check conformity with Chapter III, Section 2 requirements, and if other testing and verification
+      methods using the provider's data and documentation have been exhausted or were insufficient.
+    source_sha256: c7369e5dd5eec2a3436eb1d484a3df6d1b316950167c0673efa0ca70eccac250
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A75-1E:
+    text: The provider of a high-risk AI system, for which the AI Office is exclusively competent and
+      that requires a third-party conformity assessment, must pay fees for testing and assessment activities.
+      The provider pays these fees directly to the notified body that performs the tests and assessments
+      on behalf of the Commission.
+    source_sha256: 67dfe3b443694fbbe31864a341a0fe7a7c1a39718b3218aa9bce4b49639ff5f0
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A75-1a:
+    text: Providers of high-risk AI systems under the AI Office's exclusive competence must report any
+      serious incidents to the AI Office. This report should follow the rules for reporting serious incidents
+      to market surveillance authorities, including timing and investigation requirements.
+    source_sha256: 4aa1195785978691998086296ef7ed9821f2d8d57e2267396ea811d8ba3fca46
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PO-A78-3:
+    text: If a law enforcement, immigration, or asylum authority is the provider of certain high-risk
+      AI systems, it must keep the technical documentation on its premises. These authorities must also
+      ensure that market surveillance authorities can immediately access or obtain a copy of this documentation
+      upon request.
+    source_sha256: 1e2370d012e6641aa687f3f43d23504706f7b237c737087efee2107236bbdeaa
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-PP-A59-P1:
+    text: A prospective provider may process personal data collected for other purposes to develop, train,
+      and test AI systems in the AI regulatory sandbox only if all conditions are met. These conditions
+      include that the AI system must safeguard substantial public interest, the data must be necessary,
+      and effective monitoring and response mechanisms must be in place.
+    source_sha256: 7abc577dbde3c59bc8a086c6c2bd6d887b672da286adc021f3474102dc5395b6
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-SP-A59-P1-J:
+    text: If a sandbox participant uses the AI regulatory-sandbox route, they must publish a short summary
+      of their AI project, its objectives, and expected results on the competent authorities' website.
+      This publication requirement does not apply to sensitive operational data related to law enforcement,
+      border control, immigration, or asylum authorities.
+    source_sha256: b24d2175d4ec855f8c081d41abe0eddbbc22e16ff24f52d79a2bb23f439b91b9
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-TR-A111-4:
+    text: Providers of AI systems that generate synthetic audio, image, video, or text content and were
+      placed on the market before August 2, 2026, must ensure that the outputs of these systems are marked
+      as artificially generated or manipulated in a machine-readable format by December 2, 2026.
+    source_sha256: e5421e497b4574387666014193e4496acdb5fcf5cea238e201ab2fbfa0221611
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-TR-A50-1:
+    text: Providers must design and develop AI systems that interact directly with people so that those
+      people are informed they are interacting with an AI system. This is not required if it's obvious
+      to a reasonably well-informed person, or for certain AI systems used for criminal offense detection,
+      prevention, investigation, or prosecution, unless those systems are public for reporting crimes.
+    source_sha256: e6a9849a2e05e1fb08128e4816968c774c8c49d0762afa1a0c37c57cece93583
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-TR-A50-2:
+    text: Providers of AI systems that create synthetic audio, image, video, or text must ensure the output
+      is machine-readably marked as artificially generated or manipulated. This applies unless the AI
+      system only assists with standard editing, does not substantially change input data, or is used
+      for criminal offense detection as authorized by law.
+    source_sha256: c6bb642cc08a9076940e9f50f2e292cc631ce286a556ef2469a46c07913dfc49
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-TR-A50-3:
+    text: The deployer of an emotion recognition or biometric categorisation system must tell people they
+      are exposed to it. The deployer must also process personal data according to Regulations (EU) 2016/679
+      and (EU) 2018/1725 and Directive (EU) 2016/680, unless the system is legally permitted for criminal
+      offense detection, prevention, or investigation, with safeguards.
+    source_sha256: 0cc60ee397ad1d939a522e9d363920d16689170f484a40e50f69360e5a8a90c0
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
+  AIA-RULE-TR-A50-4:
+    text: A deployer using an AI system to create deep fakes must disclose that the content is AI-generated
+      or manipulated, unless legally authorized for criminal offense purposes. If the deep fake is artistic,
+      the disclosure should not hinder enjoyment. A deployer using an AI system to generate public-interest
+      text must also disclose its AI origin, unless legally authorized for criminal offense purposes or
+      if human review and editorial responsibility are in place.
+    source_sha256: 1bd111d55734a518ddd0a582c0fa8eb40d61ad5375ed5c640d504fd3d13548a0
+    model: litellm_proxy/gemini-2.5-flash
+    written_at: '2026-10-15'
+    verified_by: vidibro
