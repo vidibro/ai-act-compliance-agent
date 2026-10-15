@@ -680,7 +680,8 @@ function findingItem(f, data) {
       f.criteria.length ? kv("Criteria", el("ul", { class: "criteria" }, f.criteria.map((c) =>
         el("li", {}, el("span", {}, el("span", { class: `tag ${c.verdict}` }, VERDICT[c.verdict] || human(c.verdict))),
           el("span", {}, criterionTitle(rule, c), c.mandatory ? "" : " (not judged)",
-            c.mandatory && c.verdict !== "pass" ? el("div", { class: "muted" }, c.reasoning) : null))))) : null,
+            c.mandatory && c.verdict !== "pass"
+              ? el("div", { class: `why ${c.verdict}` }, el("span", { class: "why-icon", "aria-hidden": "true" }, "!"), el("span", {}, c.reasoning)) : null))))) : null,
       rule?.activation_condition ? kv("Applies to", rule.activation_condition) : null,
       kv("Confidence", human(f.confidence)),
       f.guidance.length ? kv("Guidance", "Reached with non-binding Commission guidance in view.") : null,

@@ -364,6 +364,13 @@ blockquote { margin: 0; padding: 8px 12px; background: var(--surface); border-le
              border-radius: 0 6px 6px 0; white-space: pre-wrap; }
 ul.criteria { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
 ul.criteria li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; }
+/* Why a criterion falls short, behind a "!" in the colour of its result. */
+ul.criteria .why { display: flex; gap: 8px; align-items: baseline; margin-top: 2px; color: var(--muted); }
+ul.criteria .why-icon { flex: none; display: inline-grid; place-items: center; width: 16px; height: 16px;
+                        border-radius: 50%; font-size: 11px; font-weight: 800; line-height: 1;
+                        color: var(--bg); background: var(--muted); transform: translateY(2px); }
+ul.criteria .why.gap .why-icon { background: var(--red); }
+ul.criteria .why.inadequate .why-icon, ul.criteria .why.needs_review .why-icon { background: var(--orange); }
 .empty { padding: 14px 20px; color: var(--muted); font-size: 13px; }
 
 footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 24px; white-space: pre-wrap; }

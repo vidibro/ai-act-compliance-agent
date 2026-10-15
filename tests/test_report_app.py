@@ -263,3 +263,11 @@ def test_every_provision_opens_to_its_paragraph_and_what_it_cites():
     rules = resolve_rules(["AIA-RULE-HR-A11"], [], spec)
     cited = [r.citation for r in rules["AIA-RULE-HR-A11"].references]
     assert "Annex IV" in cited and "Art. 11" not in cited
+
+
+def test_a_lead_in_alone_is_not_shown_as_the_act_s_words():
+    """Art. 9(7) is also sourced to Art. 16's lead-in, which says nothing without its points."""
+    norm_id = "AIA-NORM-A009-P7-REAL-WORLD-TESTING"
+    law = resolve_norms([norm_id], load_policy_spec())[norm_id].law
+    assert law.startswith("7. Testing procedures may include testing in real-world conditions")
+    assert "shall:" not in law

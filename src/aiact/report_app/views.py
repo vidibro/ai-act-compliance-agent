@@ -215,8 +215,11 @@ def _explained(row_id: str, row_input: str, spec: PolicyRuleset) -> dict[str, ob
 
 
 def _law(spans: list[str]) -> str:
-    """The paragraphs a norm's source spans belong to, each once, in order."""
-    return "\n\n".join(dict.fromkeys(text for span in spans if (text := paragraph_text(span))))
+    """The paragraphs a norm's source spans belong to, each once, in order. A lead-in on its own
+    ("Providers of high-risk AI systems shall:") says nothing without its points and is left out;
+    its article still shows as the norm's basis."""
+    texts = (paragraph_text(span) for span in spans)
+    return "\n\n".join(dict.fromkeys(t for t in texts if t and not t.rstrip().endswith(":")))
 
 
 def _cite_spans(spans: list[str]) -> list[str]:
