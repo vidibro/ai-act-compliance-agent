@@ -322,7 +322,6 @@ function doneToggle(id) {
       const next = doneToggle(id);
       e.currentTarget.replaceWith(next);
       next.focus();
-      refreshVerdict?.();
       applyFilters();
     },
   }, el("span", { class: "box", "aria-hidden": "true" }), el("span", { class: "lbl" }, on ? "Done" : "Duty"));
@@ -338,24 +337,32 @@ const FIX = { gap: "Not covered in your document", inadequate: "Covered only in 
 
 function compliance(report, data, ruleDate, normDate, isFuture) {
   const risk = report.classification.overall_risk_class;
-  const open = report.findings.filter((f) => f.verdict in FIX);
+  // Only the roles the Operator filter shows: a deployer reading with the provider hidden gets the
+  // deployer's verdict, not one a provider's gap decides.
+  const hidden = hiddenOf("roles");
+  const shown = (roles) => !roles?.length || roles.some((r) => !hidden.has(r));
+  const findings = report.findings.filter((f) => shown([f.role]));
+  const open = findings.filter((f) => f.verdict in FIX);
   const openNow = open.filter((f) => !f.applies_from);
   // Every duty the reader checks themselves, by its start date: the unjudged rules and the duties
   // that bind only under a condition.
-  const unchecked = [
-    ...[...new Set([
-      ...Object.values(report.not_document_verifiable).flat(),
-      ...report.timing_not_active.filter((t) => t.status === "upcoming").map((t) => t.rule_id),
-    ])].map((id) => [id, ruleDate(id)]),
-    ...[...new Set(Object.values(report.conditional_duties || {}).flat())].map((id) => [id, normDate(id)]),
-  ];
+  const owners = {};
+  const own = (id, role) => (owners[id] ||= new Set()).add(role);
+  for (const [role, ids] of Object.entries(report.not_document_verifiable)) for (const id of ids) own(id, role);
+  for (const t of report.timing_not_active.filter((t) => t.status === "upcoming")) own(t.rule_id, t.role);
+  const conditional = new Set();
+  for (const [role, ids] of Object.entries(report.conditional_duties || {})) {
+    for (const id of ids) { own(id, role); conditional.add(id); }
+  }
+  const unchecked = Object.keys(owners).filter((id) => shown([...owners[id]]))
+    .map((id) => [id, conditional.has(id) ? normDate(id) : ruleDate(id)]);
   const done = doneSet();
   const uncheckedNow = unchecked.filter(([, day]) => !isFuture(day));
   const doneNow = uncheckedNow.filter(([id]) => done.has(id)).length;
   const doneAll = unchecked.filter(([id]) => done.has(id)).length;
   // Compliant only on both halves: every duty a document can show that is in force is met, and
   // every other duty in force is ticked off by the reader.
-  const inForce = report.findings.some((f) => !f.applies_from) || uncheckedNow.length;
+  const inForce = findings.some((f) => !f.applies_from) || uncheckedNow.length;
   const compliant = !openNow.length && inForce && doneNow === uncheckedNow.length;
 
   let state, answer, detail;
@@ -373,24 +380,27 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
     detail = "Judging by the document you provided:";
   } else if (compliant) {
     state = "ok"; answer = "Compliant";
-    detail = report.findings.some((f) => !f.applies_from)
+    detail = findings.some((f) => !f.applies_from)
       ? "Every duty in force today is covered: your document shows the ones a document can show, and you've ticked off the rest."
       : "Every duty in force today is ticked off. None of the duties a document can show is in force yet.";
-  } else if (report.findings.some((f) => !f.applies_from)) {
+  } else if (findings.some((f) => !f.applies_from)) {
     state = "ok"; answer = "Documentation meets today's duties";
     detail = "Judging by the document you provided:";
-  } else if (report.findings.length) {
+  } else if (findings.length) {
     // Nothing a document can show is in force yet: the answer is about the first date that is.
-    const first = report.findings.map((f) => f.applies_from).sort()[0];
-    const ready = !report.findings.some((f) => f.applies_from === first && f.verdict in FIX);
+    const first = findings.map((f) => f.applies_from).sort()[0];
+    const ready = !findings.some((f) => f.applies_from === first && f.verdict in FIX);
     state = ready ? "ok" : "warn";
     answer = `Documentation ${ready ? "ready" : "not ready"} for ${fmtDate(first)}`;
     detail = "Judging by the document you provided:";
   } else {
     state = "ok"; answer = "No duties to verify from your document";
-    detail = "Your system's duties can't be judged from a document. Check them yourself in the list below.";
+    detail = hidden.size
+      ? "None of these roles' duties can be judged from a document. Tick them off in the list below as you do them."
+      : "Your system's duties can't be judged from a document. Tick them off in the list below as you do them.";
   }
-  const judged = !["prohibited", "needs_review", "out_of_scope"].includes(risk) && report.findings.length;
+  const judged = !["prohibited", "needs_review", "out_of_scope"].includes(risk)
+    && (findings.length || unchecked.length);
 
   // One line per point in time, each with what is wrong under it, then the duties nobody checked:
   // a single list, so the later dates read as part of the same answer.
@@ -405,10 +415,10 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
   }));
   const line = (cls, when, text, list = null) => el("li", { class: `status ${cls}` },
     el("span", { class: "when" }, when), el("div", {}, el("span", {}, text), list));
-  const checkedNow = report.findings.filter((f) => !f.applies_from);
-  const later = groupBy(report.findings.filter((f) => f.applies_from), (f) => f.applies_from);
+  const checkedNow = findings.filter((f) => !f.applies_from);
+  const later = groupBy(findings.filter((f) => f.applies_from), (f) => f.applies_from);
   const statuses = judged ? el("ul", { class: "statuses" },
-    !checkedNow.length ? line("ok", "Now", "No duty your document can show is in force yet.") : null,
+    !checkedNow.length && findings.length ? line("ok", "Now", "No duty your document can show is in force yet.") : null,
     checkedNow.length ? line(openNow.length ? "stop" : "ok", "Now",
       checkedNow.length === 1 && openNow.length ? "The 1 duty in force today is not met. Fix now:"
         : openNow.length === checkedNow.length && openNow.length ? `None of the ${nDuties(checkedNow.length)} in force today is met. Fix now:`
@@ -424,16 +434,20 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
           : list.length === 1 ? "The 1 duty that starts then is already met." : `All ${nDuties(list.length)} that start then are already met.`,
         notMet.length ? fixes(notMet) : null);
     }),
-    unchecked.length ? line(doneNow === uncheckedNow.length ? "ok" : "unchecked", "Your checklist",
+    unchecked.length ? line(doneNow === uncheckedNow.length ? "ok" : "unchecked", "Checklist",
       [`${doneAll} of ${nDuties(unchecked.length)} a document can't show ${doneAll === 1 ? "is" : "are"} ticked off`
         + (uncheckedNow.length ? ` — ${doneNow} of the ${uncheckedNow.length} that already apply. ` : ". "),
         el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list")]) : null,
   ) : null;
 
+  const roles = [...new Set([...report.findings.map((f) => f.role), ...Object.values(owners).flatMap((o) => [...o])])];
+  const visible = roles.filter((r) => !hidden.has(r));
   return el("section", { class: `card compliance ${state}` },
     el("div", { class: "eyebrow" }, "Verdict"),
     el("div", { class: "answer" }, answer),
     el("p", {}, detail),
+    hidden.size && visible.length < roles.length ? el("p", { class: "scope" }, "For ",
+      visible.map((r, i) => [i ? ", " : "", roleTag(r)]), " only — as set in the Operator filter below.") : null,
     statuses,
   );
 }
@@ -560,6 +574,7 @@ function applyFilters() {
       reset.hidden = !hidden[facet].size;
     }
   }
+  refreshVerdict?.(); // the verdict follows the Operator filter
 }
 
 // A bar of toggles for one facet, over the values the list's rows carry, in the order given.
