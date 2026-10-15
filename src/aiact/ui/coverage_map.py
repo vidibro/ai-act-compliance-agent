@@ -26,7 +26,7 @@ from aiact.guidance_coverage import (
 from aiact.policy_loader import source_body
 from aiact.schemas.eval import GoldenSet
 from aiact.schemas.norm import NormativeCoverageBundle, SegmentSource, SourceKind
-from aiact.schemas.policy import PolicyRuleset
+from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.text_segments import group_segments, source_path
 
 GOLDEN_SETS = {
@@ -123,6 +123,14 @@ def _case_counts() -> dict[str, Counter[str]]:
     return counts
 
 
+def _applies_from(spec: PolicyRuleset, rule: PolicyRule) -> str | None:
+    """When the rule starts to apply, as one short text: a date, or one per Art. 6 route."""
+    regime = spec.temporal_regime_for(rule)
+    if regime.application_routes:
+        return " / ".join(str(item.application_start) for item in regime.application_routes)
+    return str(regime.application_start) if regime.application_start else None
+
+
 def _rules(spec: PolicyRuleset) -> list[dict[str, Any]]:
     cases = _case_counts()
     rules = []
@@ -142,7 +150,7 @@ def _rules(spec: PolicyRuleset) -> list[dict[str, Any]]:
                 "guidance": len(rule.guidance_refs),
                 "cases_dev": cases["dev"][rule.rule_id],
                 "cases_heldout": cases["heldout"][rule.rule_id],
-                "effective_date": str(rule.effective_date) if rule.effective_date else None,
+                "applies_from": _applies_from(spec, rule),
             }
         )
     return rules

@@ -132,15 +132,10 @@ def _timing_notice(
     spec: PolicyRuleset, rule: PolicyRule, use_case: UseCaseClassification, as_of_date: date
 ) -> TimingNotice | None:
     """When a selected rule starts to apply for this use case, where that is not already: a future
-    date, or a date that turns on an Art. 6 route the classification has not settled.
-
-    A rule with a canonical temporal regime takes its timing from it. A rule without one takes it
-    from its own `effective_date` or `effective_date_by_route` — without this a duty dated
-    2 December 2027 by its route would be reported, and judged, as in force today."""
+    date, or a date that turns on an Art. 6 route the classification has not settled. The rule's
+    entry in the timing table is the only source of either."""
     regime = spec.temporal_regime_for(rule)
     route = route_of(use_case)
-    if regime is None:
-        return _own_timing_notice(rule, route, as_of_date)
     status = regime.status_on(as_of_date, route)
     if status not in {TemporalStatus.UPCOMING, TemporalStatus.CONDITIONAL_TIMING}:
         return None
@@ -157,24 +152,6 @@ def _timing_notice(
         application_date=application_date,
         legal_basis_spans=tuple(regime.legal_basis_spans),
     )
-
-
-def _own_timing_notice(
-    rule: PolicyRule, route: HighRiskRoute | None, as_of_date: date
-) -> TimingNotice | None:
-    """The timing of a rule dated on the rule itself rather than by a temporal regime."""
-    if rule.effective_date is not None:
-        day: date | None = rule.effective_date
-    elif rule.effective_date_by_route:
-        if route is None:
-            # Dated per route, and the route is not known: the date cannot be told.
-            return TimingNotice(rule, TemporalStatus.CONDITIONAL_TIMING, None, None, ())
-        day = rule.effective_date_by_route.get(route)
-    else:
-        return None
-    if day is None or day <= as_of_date:
-        return None
-    return TimingNotice(rule, TemporalStatus.UPCOMING, route, day, ())
 
 
 def _tier_or_duty_matches(

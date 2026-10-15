@@ -48,19 +48,23 @@
 # PINNED TO 2026-07-27 — the consolidated text as amended by Regulation (EU) 2026/1744 (Digital
 # Omnibus on AI). Requirement text below resolves from data/policy/articles/2026-07-27/.
 #
-# WHEN each obligation applies, per the amended Art. 113. Not one date any more:
-#   Chapter III Sections 1-3 (Arts. 6-27) -> `effective_date_by_route`, because the Omnibus gave the
-#       two Art. 6 doors different days: 2 DECEMBER 2027 for a system high-risk under 6(2)/Annex III,
+# WHEN each obligation applies comes from ONE place: `temporal_regime_id` names an entry of the
+# timing table in the norm inventory (normative-coverage/<version>/norms/manifest.yaml), which
+# carries the dates Art. 113 gives — a start date, a start date per Art. 6 route, a deadline. Per the
+# amended Art. 113:
+#   Chapter III Sections 1-3 (Arts. 6-27) -> AIA-TEMP-CHAPTER-III-SECTIONS-1-3: the Omnibus gave the
+#       two Art. 6 doors different days, 2 DECEMBER 2027 for a system high-risk under 6(2)/Annex III,
 #       2 AUGUST 2028 for one high-risk under 6(1)/Annex I. The same rule, two start dates.
-#   Chapter III Section 5 (Arts. 43, 47-49) -> NOT moved. General date, 2 August 2026, already
-#       passed — so conformity assessment and registration apply while the requirements they attest
-#       to do not. That is what the Article says; it is not a transcription error.
+#   Chapter III Section 5 (Arts. 43, 47-49) -> AIA-TEMP-CHAPTER-III-SECTION-5. NOT moved: general
+#       date, 2 August 2026, already passed — so conformity assessment and registration apply while
+#       the requirements they attest to do not. That is what the Article says, not a transcription
+#       error.
 #   Chapter IV (Art. 50) and Chapter IX (Arts. 72, 73, 86) -> general date, 2 August 2026.
 #   Chapter I (Art. 4) -> 2 February 2025, the earliest here and owed today.
+#   Art. 111(1)-(4) -> applies from 2 August 2026, with the compliance DEADLINE the paragraph sets.
 #
-# These dates are RECORDED, not yet enforced: nothing gates a rule out of a report for being
-# inapplicable today, so a high-risk report still raises all of Chapter III. Making the date live is
-# M4d-5 and a larger change than this one — see docs/ROADMAP.md.
+# A rule's entry is its OWN provision's: an entry for a deadline inside it ("within 15 days") or for
+# another Article it cites never stands in for the date it starts to apply.
 
 spec_version: "0.8.0"
 act_version_date: 2026-07-27
@@ -112,9 +116,7 @@ rules:
       tool does not carry, so what a competent conformity route looks like is a question for a
       specialist in that sector — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-HR-A09
@@ -158,6 +160,7 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     # Article 9 has one provider duty: run a risk-management system.  Its eighteen mandatory
     # Article 9 elements plus Art. 8(1)'s requirement that the risk management system be TAKEN
@@ -242,6 +245,7 @@ rules:
       contextual or functional setting it is intended for — a presumption about that limb and
       nothing else here.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     # Article 10(1)–(4) is one homogeneous, document-verifiable provider obligation. The
     # permission in (3), the special-category-data route in (5), and the testing-data scope
@@ -298,6 +302,7 @@ rules:
       makes that visible. The full Annex IV set remains the alternative; what is not open is a
       simplified set outside the form.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     # The four provider obligations in 11(1) are judged independently. The SME/SMC simplification
     # is an allowed route and is materialised separately as report material.
@@ -339,6 +344,7 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     # The general logging capability and each of its three mandatory purposes are distinct checks.
     criteria:
@@ -385,9 +391,7 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   # THE BIOMETRIC MINIMUM. AIA-RULE-HR-A12 asks what the logs must be able to record for any high-risk
@@ -431,9 +435,7 @@ rules:
       SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
       applied, and the parts of it applied, is answering this requirement through that route.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-HR-A12-3B
@@ -473,9 +475,7 @@ rules:
       SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
       applied, and the parts of it applied, is answering this requirement through that route.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-HR-A12-3C
@@ -515,9 +515,7 @@ rules:
       SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
       applied, and the parts of it applied, is answering this requirement through that route.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-HR-A12-3D
@@ -559,9 +557,7 @@ rules:
       SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
       applied, and the parts of it applied, is answering this requirement through that route.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-HR-A13
@@ -601,6 +597,7 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A013-P1-TRANSPARENT-OPERATION
@@ -653,6 +650,7 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A013-P3-A-CONTACT-DETAILS
@@ -708,6 +706,7 @@ rules:
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     # Each mandatory oversight capability is judged separately. The disproportionate-use exception
     # is a report-only conditional scope limit, not a pass/fail criterion.
@@ -764,6 +763,7 @@ rules:
       the scope of Regulation (EU) 2024/2847 meeting the conditions of its Art. 12(1) is DEEMED to
       comply with them (Art. 42(3)). Accuracy and robustness are untouched by both.
     document_verifiable: true
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     # Each Article 15 provider norm is judged and reported on its own; the rule passes only when
     # every mandatory one does. Meaning is resolved from the norm inventory at load, and
@@ -814,9 +814,7 @@ rules:
       does not satisfy it is documentation that identifies no provider at all and says nothing
       about where the identification sits.
     document_verifiable: true
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-PO-A16-K
@@ -837,9 +835,7 @@ rules:
       provider organisation rather than a property of the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-PO-A16-L
@@ -863,9 +859,7 @@ rules:
       provider duty. This tool reads Regulation (EU) 2024/1689 alone, so the assessment belongs
       with whoever holds the accessibility conformity evidence — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-PO-A17
@@ -907,9 +901,7 @@ rules:
       enterprises under Recommendation 2003/361/EC comply with certain elements in a simplified
       manner, following Commission guidelines; Article 63(2) keeps every other requirement in place.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     # Article 17(1)-(2) is one homogeneous set of obligations. Permissions and legal effects from
     # (3)-(4) are materialised separately as report norms, never as non-judged criteria.
@@ -951,9 +943,7 @@ rules:
     activation_condition: >-
       Applies only where the provider relies on Union financial-services governance compliance to
       fulfil the Article 17 quality-management-system obligation.
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-PO-A18
@@ -976,9 +966,7 @@ rules:
       retention process at the provider, not observable from the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
@@ -1007,9 +995,7 @@ rules:
     activation_condition: >-
       Applies only to a financial-institution provider subject to internal-governance requirements
       under Union financial-services law.
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
@@ -1032,9 +1018,7 @@ rules:
       protection law. Distinct from Art. 12, which is the system's capability to generate the logs
       and IS document-verifiable; this is what happens to them afterwards — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
@@ -1059,9 +1043,7 @@ rules:
       under the applicable Union financial-services law. This is an operational placement duty, not
       one inferred from the submitted technical documentation — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
@@ -1087,9 +1069,7 @@ rules:
       Art. 79 is the duty that begins with the authority. A post-market process, not visible in the
       technical documentation — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A020-P1-CORRECTIVE-RESPONSE
@@ -1115,9 +1095,7 @@ rules:
       bring a non-conforming system into line, withdraw or recall it. A post-market process
       obligation, not visible in the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-PO-A21
@@ -1141,9 +1119,7 @@ rules:
       languages have been indicated where the system is placed on the market. A relational
       obligation, not a property of the documentation — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   - rule_id: AIA-RULE-PO-A21-2
@@ -1165,9 +1141,7 @@ rules:
       other. A relational process obligation, not a property of the documentation — confirm
       separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
 
   # ART. 41 IS A COMMISSION POWER, WITH ONE PARAGRAPH THAT IS NOT. Paragraphs 1 to 4 and 6 are all
@@ -1203,7 +1177,7 @@ rules:
       specification and wrote nothing down cannot satisfy this after the fact. Which specifications
       are in force is not visible in the documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1250,7 +1224,7 @@ rules:
       from a common specification and wrote nothing down cannot satisfy this after the fact. Which
       specifications are in force is not visible in the documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       SECTION 5 WAS NOT MOVED. Regulation (EU) 2026/1744 deferred Chapter III Sections 1, 2 and 3 —
       Art. 113(c) names those three — to 2 December 2027 for an Annex III system and 2 August 2028
@@ -1299,7 +1273,7 @@ rules:
       obligation triggered by someone else's act, not visible in the technical documentation —
       confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-A036-P8-B-THREE-MONTH-CONFIRMATION
     effective_date_note: >-
       Art. 113(b) applies Chapter III Section 4 from 2 August 2025, without any of the route splits
       Art. 113(c) writes for Sections 1 to 3. So this duty has been live since before the
@@ -1348,7 +1322,7 @@ rules:
       into those authorities does not appoint a body; one is fixed for it by the intended customer.
       A procedural act preceding market placement — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1399,7 +1373,7 @@ rules:
       the easier one to leave undone. A procedural act preceding market placement — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1477,7 +1451,7 @@ rules:
       A procedure conducted with a third party over the life of the certificate, not a property of
       the documentation under review — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1521,7 +1495,7 @@ rules:
       preceding market placement, not observable from the technical documentation alone — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1581,7 +1555,7 @@ rules:
       its own instrument requires. A procedural act preceding market placement, and a relationship
       running after it — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1623,7 +1597,7 @@ rules:
       carve-out must therefore have written the intended changes down in advance; one that has not
       cannot rely on it. A lifecycle process obligation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1656,7 +1630,7 @@ rules:
       the relevant national competent authorities UPON REQUEST. An administrative artefact held
       separately from the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1694,7 +1668,7 @@ rules:
       does not satisfy this. An administrative artefact, not part of the technical documentation —
       confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1729,7 +1703,7 @@ rules:
       digitally the digital marking in Art. 48(2) applies. A physical or administrative act, not a
       property of the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1773,7 +1747,7 @@ rules:
       available, which is a duty per market rather than a single document. An administrative
       artefact, not part of the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1815,7 +1789,7 @@ rules:
       sense the paragraph requires. A property of the delivered product, not of the technical
       documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1852,7 +1826,7 @@ rules:
       marketing-review duty rather than a documentation one and is the half most often missed. Not
       visible in the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1905,7 +1879,7 @@ rules:
       AIA-RULE-ALL-A49-4. An act against an external registry, not observable from the technical
       documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -1942,7 +1916,7 @@ rules:
       external act against a registry, not observable from the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -2002,7 +1976,7 @@ rules:
       authorities have access to those restricted sections, so registering these systems in the
       ordinary public section is a breach of this paragraph and not a harmless surplus.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -2060,7 +2034,7 @@ rules:
       use. Owed before the system is put into service or used, and an external act against a
       registry rather than a property of the documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
       not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
@@ -2126,7 +2100,7 @@ rules:
       An external act against a registry, not observable from the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VIII
     effective_date_note: >-
       Art. 71 sits in Chapter VIII, which Art. 113 does not carve out, so the entry duty runs from
       the general date of 2 August 2026 — ahead of the Chapter III Section 2 requirements the
@@ -2169,7 +2143,7 @@ rules:
       paragraph asks. An external act against a registry, not observable from the technical
       documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VIII
     effective_date_note: >-
       Art. 71 sits in Chapter VIII, which Art. 113 does not carve out, so the entry duty runs from
       the general date of 2 August 2026 — ahead of the Chapter III Section 2 requirements the
@@ -2216,7 +2190,7 @@ rules:
       to contain, and an entry naming the organisation and nothing else does not satisfy it. An
       external act against a registry — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VIII
     effective_date_note: >-
       Art. 71 sits in Chapter VIII, which Art. 113 does not carve out, so the entry duty runs from
       the general date of 2 August 2026 — ahead of the Chapter III Section 2 requirements the
@@ -2251,7 +2225,7 @@ rules:
       environment, no effect on data subjects, deletion, logs, and Annex IV documentation. These
       are contingent operational facts, not a verdict inferred from a technical file.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VI
     status: active
     criteria:
       - norm_id: AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
@@ -2283,7 +2257,7 @@ rules:
       data-protection law and that personal data created in the sandbox are never shared outside it.
       This is a conditional operational fact, not a verdict inferred from a technical file.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VI
     status: active
     criteria:
       - norm_id: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
@@ -2309,7 +2283,7 @@ rules:
       operational data. This is a conditional operational fact, not a verdict inferred from a
       technical file.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VI
     status: active
     criteria:
       - norm_id: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
@@ -2386,7 +2360,7 @@ rules:
       testing. A programme of acts before and around a trial rather than a property of the
       technical file — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VI
     effective_date_note: >-
       Arts. 60 and 61 sit in Chapter VI. Art. 113(c) defers Chapter III Sections 1, 2 and 3 only,
       and none of the other carve-outs in 113(a) to (d) reaches Chapter VI, so the testing regime
@@ -2436,7 +2410,7 @@ rules:
       against the event of such a termination — a standing arrangement, in place before it is
       needed, not a decision taken when it is. An operational response — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VI
     effective_date_note: >-
       Arts. 60 and 61 sit in Chapter VI. Art. 113(c) defers Chapter III Sections 1, 2 and 3 only,
       and none of the other carve-outs in 113(a) to (d) reaches Chapter VI, so the testing regime
@@ -2473,7 +2447,7 @@ rules:
       results has closed the file without answering it. An external act against an authority —
       confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VI
     effective_date_note: >-
       Arts. 60 and 61 sit in Chapter VI. Art. 113(c) defers Chapter III Sections 1, 2 and 3 only,
       and none of the other carve-outs in 113(a) to (d) reaches Chapter VI, so the testing regime
@@ -2530,7 +2504,7 @@ rules:
       of their personal data, and only the activities already carried out survive that. Consent
       obtained from people rather than a property of the technical file — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-VI
     effective_date_note: >-
       Arts. 60 and 61 sit in Chapter VI. Art. 113(c) defers Chapter III Sections 1, 2 and 3 only,
       and none of the other carve-outs in 113(a) to (d) reaches Chapter VI, so the testing regime
@@ -2588,7 +2562,7 @@ rules:
       system on the market under Union financial services law. Integration is not exemption — the
       elements must still be there and the equivalence is the provider's to show.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     criteria:
       - norm_id: AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
       - norm_id: AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
@@ -2629,7 +2603,7 @@ rules:
       Art. 73 deadlines and post-report duties are otherwise unchanged. Not visible in the
       technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   # THE WHOLE ARTICLE, because a reporting duty without its deadline is not the duty. Art. 73(1)
@@ -2677,7 +2651,7 @@ rules:
       A relational post-market obligation, not visible in the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     criteria:
       - norm_id: AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
       - norm_id: AIA-NORM-A073-P2-REPORT-IMMEDIATELY
@@ -2715,7 +2689,7 @@ rules:
       because it is a prohibition. An operational process, not visible in the technical
       documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
     criteria:
       - norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
@@ -2764,7 +2738,7 @@ rules:
       addressee for a provider this Article reaches. Not visible in the technical documentation —
       confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   # NOT THE OFFICE'S POWER, THOUGH IT SITS INSIDE ONE. Art. 75c(3) opens with what the AI Office
@@ -2816,7 +2790,7 @@ rules:
       A relational enforcement obligation, not visible in the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   # THE ONE OPERATOR DUTY IN ART. 75a. Paragraph 3 makes the AI Office tell the recipient of a
@@ -2846,7 +2820,7 @@ rules:
       fined under Art. 99(5) through Art. 75c(4). A duty about a reply whose content the request
       sets — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   # NOT ART. 21 IN ANOTHER PLACE. Art. 21(1) is information and documentation demonstrating
@@ -2886,7 +2860,7 @@ rules:
       ground to refuse. A relational obligation toward an authority, not visible in the technical
       documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   - rule_id: AIA-RULE-PO-A74-12
@@ -2912,7 +2886,7 @@ rules:
       logs and reaches no data set. A relational obligation toward an authority, not visible in the
       technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   # Art. 82 IS NOT ART. 79 AGAIN, and it is not Art. 20 either. Its whole premise is a system that
@@ -2959,7 +2933,7 @@ rules:
       alone. A relational enforcement obligation, not visible in the technical documentation —
       confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   # Art. 78 is otherwise a confidentiality duty on the AUTHORITIES, and its third paragraph turns
@@ -3006,7 +2980,7 @@ rules:
       access arrangement between two public bodies, settled outside the technical file — confirm
       separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-ARTICLE-78
     effective_date_note: >-
       Art. 113(b) names Article 78 on its own beside Chapters III Section 4, V, VII and XII, so the
       custody duty binds from 2 August 2025, a year before the rest of Chapter IX, while the Annex IV
@@ -3056,7 +3030,7 @@ rules:
       to an authority's decision, not visible in the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
     criteria:
       - norm_id: AIA-NORM-A080-P4-BRING-SYSTEM-INTO-COMPLIANCE
@@ -3119,7 +3093,7 @@ rules:
       relational enforcement obligation, not visible in the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     criteria:
       - norm_id: AIA-NORM-A079-P2-OPERATOR-COOPERATION
       - norm_id: AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
@@ -3154,7 +3128,7 @@ rules:
       request are separate process duties, reported under AIA-RULE-NHR-A06-4-REGISTER and
       AIA-RULE-NHR-A06-4-PROVIDE-ASSESSMENT.
     document_verifiable: true
-    effective_date: 2027-12-02
+    temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
     effective_date_note: >-
       THIS DATE IS CONTESTED, and the Regulation does not settle it. Art. 113 moves Chapter III
       Section 1 — which contains Art. 6 — but its two limbs reach "AI systems classified as
@@ -3192,7 +3166,7 @@ rules:
       external registry action, not evidence that can be verified from the supplied documentation;
       confirm it separately.
     document_verifiable: false
-    effective_date: 2027-12-02
+    temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
     effective_date_note: >-
       This follows the same contested Article 6(4) reading as AIA-RULE-NHR-A06-4. Article 49(2) is in
       Section 5 and otherwise applies from 2 August 2026, but the registration is triggered by the
@@ -3219,7 +3193,7 @@ rules:
       competent authority requests it. Whether a request was received and answered is not
       verifiable from the supplied system documentation; confirm separately.
     document_verifiable: false
-    effective_date: 2027-12-02
+    temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
     effective_date_note: >-
       This follows the same contested Article 6(4) reading as AIA-RULE-NHR-A06-4: the duty attaches to
       a provider's Article 6(3) conclusion, although the alternative reading is that it applies
@@ -3263,7 +3237,7 @@ rules:
     document_verifiable: false
     # Chapter I, so Art. 113(a): in application since 2 February 2025 — earlier than every other
     # rule here, and already owed today.
-    effective_date: 2025-02-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -3300,7 +3274,7 @@ rules:
       does not determine whether the exceptional processing is taking place or whether it complies
       with the applicable GDPR, Union-institution, or law-enforcement data-protection regime.
     document_verifiable: false
-    effective_date: 2025-02-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
     status: active
     # One legal kind, one subject set and one non-judged treatment. The canonical norms supply the
     # exact safeguard text, conditions and source spans; the policy spec owns no duplicate list.
@@ -3371,7 +3345,7 @@ rules:
       judgement is narrow and covers the whole audience the system is likely to reach
       [non-binding guidance: C-2026-5054/obvious-interaction-exception].
     document_verifiable: true
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IV
     status: active
 
   - rule_id: AIA-RULE-TR-A50-2
@@ -3445,7 +3419,7 @@ rules:
       as in a vehicle's navigation system, metadata marking alone can suffice
       [non-binding guidance: C-2026-5054/marking-and-detection-quality].
     document_verifiable: true
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IV
     status: active
 
   - rule_id: AIA-RULE-TR-A50-3
@@ -3485,7 +3459,7 @@ rules:
       those people, by the operating organisation — a provider's technical file cannot show it, so
       confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IV
     status: active
 
   - rule_id: AIA-RULE-TR-A50-4
@@ -3542,7 +3516,7 @@ rules:
       publication practice, not a property of the system — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IV
     criteria:
       - norm_id: AIA-NORM-A050-P4-DEEPFAKE
       - norm_id: AIA-NORM-A050-P4-ARTISTIC-DISCLOSURE
@@ -3595,9 +3569,7 @@ rules:
       affected workers BEFORE putting the system into service or using it at the workplace.
       Held by the operating organisation, so a provider's technical file cannot evidence it.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P1-INSTRUCTION-COMPLIANT-USE
@@ -3627,9 +3599,7 @@ rules:
       under the applicable Union financial-services law. This is the financial-institution limb of
       Art. 26(6), distinct from the ordinary deployer's six-month minimum retention duty.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P6-FINANCIAL-DOCUMENTATION
@@ -3653,9 +3623,7 @@ rules:
       they will be subject to the high-risk AI system. Applicable Union or national worker-notice
       rules remain a separately reported condition.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P7-INFORM-WORKERS
@@ -3689,9 +3657,7 @@ rules:
       Compliance with the Art. 49 registration obligations, which for this deployer is Art. 49(3)
       and AIA-RULE-DP-A49-3. This is distinct from the unregistered-system prohibition and notice.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P8-REGISTER
@@ -3714,9 +3680,7 @@ rules:
       Do not use the unregistered high-risk AI system. This is independent of the related Article
       49 registration duty and is assessed separately because it is a prohibition.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
@@ -3739,9 +3703,7 @@ rules:
       Inform the provider or distributor that the envisaged high-risk AI system is not registered
       in the Article 71 EU database.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P8-INFORM-UNREGISTERED
@@ -3772,9 +3734,7 @@ rules:
       terms. Held by the deploying organisation and governed by another regime — confirm
       separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
@@ -3821,9 +3781,7 @@ rules:
       (EU) 2016/680, and Member States may impose more restrictive national law. Authorisations,
       police files and annual reports are acts of the deploying authority — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P10-REQUEST-AUTHORISATION
@@ -3851,9 +3809,7 @@ rules:
       Never use post-remote biometric identification in an untargeted way, and never take a
       decision with an adverse legal effect on a person based solely on that system's output.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P10-PROHIBIT-UNTARGETED-USE
@@ -3888,9 +3844,7 @@ rules:
       Art. 50 transparency duty owes both and neither discharges the other. A notice given to
       individuals at the point of use — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P11-INFORM-NATURAL-PERSONS
@@ -3915,9 +3869,7 @@ rules:
       Conduct during an authority's exercise of its powers rather than a property of any file —
       confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A026-P12-COOPERATE
@@ -3967,9 +3919,7 @@ rules:
       meets part of this, Art. 27(4) makes the fundamental rights assessment COMPLEMENT it rather
       than replace it — an existing DPIA is not on its own an answer here.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A027-P1-PERFORM-FRIA
@@ -4032,9 +3982,7 @@ rules:
       deployer reusing an earlier assessment is doing what the Article allows, provided it is still
       current. A process obligation, not visible in the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A027-P2-UPDATE
@@ -4077,9 +4025,7 @@ rules:
       may be exempt from notifying. An external filing, not visible in the technical documentation —
       confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
@@ -4117,9 +4063,7 @@ rules:
       separately. Note the direction: this binds the party that has STOPPED being the provider, and
       the provider obligations elsewhere in this report are the new provider's.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A025-P2-COOPERATE
@@ -4158,9 +4102,7 @@ rules:
       Office may recommend voluntary model contract terms. Discharged in a contract with a supplier
       rather than in the technical file — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A025-P4-WRITTEN-AGREEMENT
@@ -4207,9 +4149,7 @@ rules:
       satisfy the arrangement. An organisational arrangement, not visible in the technical
       documentation — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE
@@ -4252,9 +4192,7 @@ rules:
       Held by the representative organisation, so a provider's technical file cannot evidence it —
       confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A022-P3-PERFORM-MANDATE
@@ -4305,9 +4243,7 @@ rules:
       mitigate its risks. NOT conditional on a reasoned request, unlike 23(6). Conduct in the import
       chain rather than a property of any file — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A023-P1-A-VERIFY-CONFORMITY-ASSESSMENT
@@ -4359,9 +4295,7 @@ rules:
       made available — NOT conditional on a reasoned request, unlike 24(5). Conduct in the
       distribution chain rather than a property of any file — confirm separately.
     document_verifiable: false
-    effective_date_by_route:
-      annex_iii: 2027-12-02
-      annex_i: 2028-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTIONS-1-3
     status: active
     criteria:
       - norm_id: AIA-NORM-A024-P1-VERIFY-CE-MARKING
@@ -4402,7 +4336,7 @@ rules:
       law provides an exception. Discharged in operation by the deployer, so no provider file can
       evidence it.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     status: active
 
   # ==============================================================================================
@@ -4464,7 +4398,7 @@ rules:
       Commission designate an un-notified model itself. A filing with an authority, not a property
       of any document under review — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     criteria:
       - norm_id: AIA-NORM-A052-P1-NOTIFY-COMMISSION
       - norm_id: AIA-NORM-A052-P1-NOTIFICATION-CONTENT
@@ -4517,7 +4451,7 @@ rules:
       provider chooses to release. Note that Section 1(2)(d) is where the Art. 51(2) 10^25 FLOP
       figure would be recorded, which is the same number Art. 52(1) turns on.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   - rule_id: AIA-RULE-GP-A53-1B
@@ -4550,7 +4484,7 @@ rules:
       protected without excusing the duty. Owed toward another party rather than recorded in the
       provider's own file — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
     criteria:
       - norm_id: AIA-NORM-A053-P1-B-DRAW-KEEP-AND-MAKE-AVAILABLE-DOCUMENTATION
@@ -4583,7 +4517,7 @@ rules:
       obtained" is not this policy. An organisational artefact, not part of a model card — confirm
       separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
     criteria:
       - norm_id: AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
@@ -4614,7 +4548,7 @@ rules:
       the version the world sees. Published outside the documentation under review — confirm
       separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   # THE CHAPTER V TWIN OF ART. 21 AND ART. 74(12), and it is a provider duty on its face —
@@ -4653,7 +4587,7 @@ rules:
       which is the part worth knowing before a request arrives. A duty to answer a request whose
       content the request sets — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     effective_date_note: >-
       Arts. 91 and 92 sit in Chapter IX Section 5, not Chapter V, and Art. 113(b) brings forward
       Chapter V alone, so the duty to answer runs from the general date of 2 August 2026, together
@@ -4685,7 +4619,7 @@ rules:
       the provider has no legal personality, the persons authorised to represent them by law or by
       statute. A relational obligation toward the Commission — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     effective_date_note: >-
       Arts. 91 and 92 sit in Chapter IX Section 5, not Chapter V, and Art. 113(b) brings forward
       Chapter V alone, so the duty to answer runs from the general date of 2 August 2026, together
@@ -4726,7 +4660,7 @@ rules:
       evaluation of the large-scale IT system under its own legal act. A programme-level
       commitment, not visible in the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2030-12-31
+    temporal_regime_id: AIA-TEMP-A111-P1-LARGE-SCALE-IT-BY
     status: active
 
   - rule_id: AIA-RULE-ALL-A111-2
@@ -4751,7 +4685,7 @@ rules:
       The significant-change test does not relieve these systems. A transition plan, not visible
       in the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2030-08-02
+    temporal_regime_id: AIA-TEMP-A111-P2-PUBLIC-AUTHORITY-BY
     status: active
 
   - rule_id: AIA-RULE-GP-A111-3
@@ -4774,7 +4708,7 @@ rules:
       55 where it has systemic risk. A transition plan across the model's documentation and
       policies — confirm separately.
     document_verifiable: false
-    effective_date: 2027-08-02
+    temporal_regime_id: AIA-TEMP-A111-P3-LEGACY-GPAI-BY
     status: active
 
   - rule_id: AIA-RULE-TR-A111-4
@@ -4798,7 +4732,7 @@ rules:
       DECEMBER 2026. The marking itself is judged under AIA-RULE-TR-A50-2; this rule carries the
       later date a legacy system has to reach it.
     document_verifiable: false
-    effective_date: 2026-12-02
+    temporal_regime_id: AIA-TEMP-A111-P4-LEGACY-SYNTHETIC-CONTENT-BY
     status: active
 
   - rule_id: AIA-RULE-GP-A53-3
@@ -4822,7 +4756,7 @@ rules:
       answers and on what timescale before the request arrives. Conduct during an authority's
       exercise of its powers rather than a property of any file — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   - rule_id: AIA-RULE-GP-A53-4
@@ -4852,7 +4786,7 @@ rules:
       it. The Chapter V twin of Art. 41(5). Addressed to the Commission rather than recorded in a
       file — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   # ART. 54 IS THE CHAPTER V TWIN OF ART. 22, and it splits by PARTY the same way: the provider
@@ -4884,7 +4818,7 @@ rules:
       representative to carry out the four Art. 54(3)(a) to (d) tasks. An appointment recorded in a
       contract, not in a model card — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     criteria:
       - norm_id: AIA-NORM-A054-P1-APPOINT-REPRESENTATIVE
       - norm_id: AIA-NORM-A054-P3-MANDATE-EMPOWER-TASKS
@@ -4911,7 +4845,7 @@ rules:
       starved of access satisfies Art. 54(1) and breaches this paragraph, which is why the two are
       separate rules. An arrangement between two organisations — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   - rule_id: AIA-RULE-GPAR-A54-3
@@ -4943,7 +4877,7 @@ rules:
       AI systems placed on the market in the Union. Discharged by an organisation over a decade,
       not by any document under review — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     criteria:
       - norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
       - norm_id: AIA-NORM-A054-P3-PROVIDE-MANDATE
@@ -4977,7 +4911,7 @@ rules:
       must allow an authority to deal with the representative alone, so a term making it a channel
       to the provider does not satisfy this. A clause in a contract — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   - rule_id: AIA-RULE-GPAR-A54-5
@@ -5005,7 +4939,7 @@ rules:
       and a duty that runs against the party paying the representative. A governance process at the
       representative — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     criteria:
       - norm_id: AIA-NORM-A054-P5-TERMINATE-MANDATE
       - norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
@@ -5049,7 +4983,7 @@ rules:
       under Section 2(1), and the adversarial-testing measures — with any model adaptations,
       alignment and fine-tuning — under Section 2(2).
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   - rule_id: AIA-RULE-GP-A55-1B
@@ -5081,7 +5015,7 @@ rules:
       requires. So a provider that files its Annex XI documentation and stops has not answered
       this, and where the assessment is recorded is the provider's own choice.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   - rule_id: AIA-RULE-GP-A55-1C
@@ -5108,7 +5042,7 @@ rules:
       model provider, runs to the AI Office, and has no numbered clock — "without undue delay" is
       the whole of the timing. A relational obligation — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-A055-P1-C-REPORT-WITHOUT-UNDUE-DELAY
     status: active
 
   - rule_id: AIA-RULE-GP-A55-1D
@@ -5135,7 +5069,7 @@ rules:
       cybersecurity for a high-risk SYSTEM against adversarial manipulation of its behaviour.
       Operational security at the provider — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   - rule_id: AIA-RULE-GP-A55-2
@@ -5160,7 +5094,7 @@ rules:
       Art. 53 duties and on nothing for its Art. 55 duties, and would then owe this and not
       AIA-RULE-GP-A53-4. Addressed to the Commission — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -5209,7 +5143,7 @@ rules:
       act on misuse it learns of [non-binding guidance: C-2025-5052/misuse-and-provider-safeguards]. A decision about the system's existence rather than a property of
       its documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2025-02-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
     effective_date_note: >-
       Art. 113(a) applies Chapters I and II from 2 February 2025. Points (ba) and (bb), deferred by
       the Omnibus, are AIA-RULE-ALL-A05-1BA.
@@ -5235,7 +5169,7 @@ rules:
       material the point names, or it is withdrawn if it already is. As for the other Art. 5(1)
       points, nothing in a technical file makes the practice compliant — confirm separately.
     document_verifiable: false
-    effective_date: 2026-12-02
+    temporal_regime_id: AIA-TEMP-A005-P1-BA-BB-LATE-APPLICATION
     effective_date_note: >-
       The Omnibus inserted points (ba) and (bb) and Art. 113(a) applies them from 2 December 2026,
       later than the rest of Chapter II.
@@ -5296,7 +5230,7 @@ rules:
       decision about how the system is used rather than a property of its documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2025-02-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
     effective_date_note: >-
       Art. 113(a) applies Chapters I and II from 2 February 2025; the Omnibus did not move point
       (h).
@@ -5342,7 +5276,7 @@ rules:
       properties of a technical file — confirm separately.
     document_verifiable: false
     report_as_public_authority_notice: true
-    effective_date: 2025-02-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
     effective_date_note: >-
       Art. 113(a) applies Chapters I and II from 2 February 2025. The Omnibus deferred only Art.
       5(1), first subparagraph, points (ba) and (bb) and Art. 5(1a) and (1b); paragraphs 2 to 4
@@ -5389,7 +5323,7 @@ rules:
       technical file — confirm separately.
     document_verifiable: false
     report_as_public_authority_notice: true
-    effective_date: 2025-02-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
     effective_date_note: >-
       Art. 113(a), same as AIA-RULE-DP-A05-2 — Chapter II from 2 February 2025, and this paragraph was
       not among the points the Omnibus deferred.
@@ -5428,7 +5362,7 @@ rules:
       rather than a property of the technical file — confirm separately.
     document_verifiable: false
     report_as_public_authority_notice: true
-    effective_date: 2025-02-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-I-II-EARLY-APPLICATION
     effective_date_note: >-
       Art. 113(a), same as AIA-RULE-DP-A05-2.
     status: active
@@ -5467,7 +5401,7 @@ rules:
       and infrastructural assets — bound the period, so a longer one is not covered by the grant.
       An ongoing procedure at the provider — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       Art. 46 sits in Chapter III Section 5, which Art. 113(c) does not name, so it runs from the
       general date of 2 August 2026 while the Section 2 requirements the derogation postpones
@@ -5500,7 +5434,7 @@ rules:
       the first half: the discarding is not discretionary and not deferred to a review. Acts around
       a deployment rather than properties of a technical file — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       Art. 46 sits in Chapter III Section 5, so 2 August 2026, ahead of the 2 December 2027 start
       of the Section 2 requirements — as AIA-RULE-PO-A46-1.
@@ -5532,7 +5466,7 @@ rules:
       file — confirm separately, and with a specialist in the sectoral instrument for what that
       instrument adds.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-III-SECTION-5
     effective_date_note: >-
       Art. 47 sits in Chapter III Section 5, which Art. 113(c) does not name, so 2 August 2026 —
       ahead of the 2 December 2027 start of the Section 2 requirements the declaration attests to.
@@ -5570,7 +5504,7 @@ rules:
       reviewable. Registering the system and not the representative, or registering after placing,
       does not satisfy it. An entry in an external registry — confirm separately.
     document_verifiable: false
-    effective_date: 2027-12-02
+    temporal_regime_id: AIA-TEMP-A006-ANNEX-III-HIGH-RISK-APPLICATION
     effective_date_note: >-
       THIS DATE IS CONTESTED, on exactly the reading AIA-RULE-NHR-A06-4 sets out and for the same
       reason. Art. 49 sits in Chapter III Section 5, which Art. 113 did NOT move, so on the text
@@ -5609,7 +5543,7 @@ rules:
       A provider that has budgeted a fee to the Commission has the payee wrong. A commercial
       arrangement rather than a property of the technical file — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-IX
     effective_date_note: >-
       Art. 75 sits in Chapter IX, which Art. 113 does not carve out — general date, as the other
       Art. 75 rules.
@@ -5660,7 +5594,7 @@ rules:
       documentation says. A confidentiality regime at the receiving organisation rather than a
       property of the technical file — confirm separately.
     document_verifiable: false
-    effective_date: 2025-08-02
+    temporal_regime_id: AIA-TEMP-CHAPTER-V
     effective_date_note: >-
       Art. 113(b) applies Chapter V from 2 August 2025. The duty arrives with the disclosure that
       triggers it, so it binds a downstream provider from the day the model provider owed the

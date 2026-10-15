@@ -450,25 +450,15 @@ class PolicyRule(BaseModel):
     document_verifiable: bool  # see model_validator below
     report_as_public_authority_notice: bool = False
     """Render activated public-authority norms separately, never as a provider/deployer duty."""
-    effective_date: date | None = None
-    """WHEN this obligation starts to apply, where that does not depend on the Art. 6 route."""
+    temporal_regime_id: str = Field(pattern=r"^AIA-TEMP-[A-Z0-9-]+$")
+    """WHEN this obligation starts to apply: the entry of the timing table, in the norm inventory,
+    that the rule's own provision falls under. The ONE place a rule's dates come from — its start
+    date, a start date per Art. 6 route where Art. 113 gives the two doors different days, and a
+    deadline where the provision sets one (Art. 111). Read it through
+    `PolicyRuleset.temporal_regime_for`.
 
-    effective_date_by_route: dict[HighRiskRoute, date] = {}
-    """WHEN it starts to apply, where Art. 113 gives the two doors DIFFERENT dates.
-
-    Empty is the ordinary case. It is non-empty for Chapter III Sections 1 to 3 — Arts. 6-27 — and
-    the reason is Regulation (EU) 2026/1744: it rewrote Art. 113 so those Sections apply from
-    2 December 2027 to a system that is high-risk under Art. 6(2) and Annex III, and from
-    2 August 2028 to one high-risk under Art. 6(1) and Annex I.
-
-    So the SAME rule now starts on two different days depending on which door the system came
-    through, and a single `effective_date` cannot say that. This is structurally the same gap
-    `applies_to_route` was built for — there the route decided WHICH law applies, here it decides
-    WHEN — and it is answered the same way rather than by picking one date and rounding.
-
-    Sections 4 and 5 were NOT moved. Arts. 43 and 47-49 keep the general date, which is why the
-    conformity assessment and registration rules carry a plain `effective_date` while the
-    requirements they attest to do not."""
+    The entry is the provision's own: an entry for a deadline inside it ("within 15 days") or for
+    another Article the rule cites never stands in for the date it starts to apply."""
 
     effective_date_note: str | None = None
     """WHY this obligation's timing is not what a reader would assume — carried to the report, not
@@ -503,33 +493,6 @@ class PolicyRule(BaseModel):
             {k: str(v) for k, v in cite.items()} if isinstance(cite, dict) else cite
             for cite in value
         ]
-
-    @model_validator(mode="after")
-    def _one_way_of_saying_when(self) -> PolicyRule:
-        """A rule states its date one way or the other, never both.
-
-        Both would leave two answers to one question with nothing deciding between them, and the
-        one a reader got would depend on which field the renderer happened to read."""
-        if self.effective_date is not None and self.effective_date_by_route:
-            raise ValueError(
-                f"PolicyRule {self.rule_id!r}: sets both effective_date and "
-                f"effective_date_by_route. Art. 113 gives this obligation either one date or one "
-                f"per Art. 6 route — say which."
-            )
-        return self
-
-    def effective_date_for(self, route: HighRiskRoute | None) -> date | None:
-        """The date this obligation applies from, for a use case that came through `route`.
-
-        An unknown route resolves to the EARLIEST date on offer, deliberately. The alternative is
-        telling a reader they have until 2028 when the answer might have been 2027, and a deadline
-        that is wrong in that direction is the one that costs them. Every high-risk use case
-        actually carries a route, so this is a fallback rather than a normal path."""
-        if not self.effective_date_by_route:
-            return self.effective_date
-        if route is not None and route in self.effective_date_by_route:
-            return self.effective_date_by_route[route]
-        return min(self.effective_date_by_route.values())
 
     status: Literal["active", "postponed", "amended"]
     # "postponed": adopted but not yet applicable (e.g. Annex III obligations whose
@@ -618,6 +581,14 @@ class PolicyRuleset(BaseModel):
         if duplicate_regimes:
             raise ValueError(f"PolicyRuleset: duplicate temporal regime ids {duplicate_regimes}")
         known_regimes = set(regime_ids)
+        if self.temporal_regimes:
+            absent = sorted(
+                f"{rule.rule_id} -> {rule.temporal_regime_id}"
+                for rule in self.rules
+                if rule.temporal_regime_id not in known_regimes
+            )
+            if absent:
+                raise ValueError(f"PolicyRule(s) name absent temporal regimes: {absent}")
         for rule in self.rules:
             missing_regimes = sorted(
                 {
@@ -634,19 +605,15 @@ class PolicyRuleset(BaseModel):
                 )
         return self
 
-    def temporal_regime_for(self, rule: PolicyRule) -> TemporalRegime | None:
-        """Return the one canonical timing regime for a fully migrated rule.
-
-        A rule may use canonical timing only once every mandatory criterion names the same regime.
-        Anything less would let a timed criterion hide an untimed one, or let two legal dates become
-        one report date. Rules not yet migrated keep their legacy timing fields until their norms
-        are reconciled.
-        """
-        mandatory = [criterion for criterion in rule.criteria if criterion.mandatory]
-        if not mandatory or any(criterion.temporal_regime_id is None for criterion in mandatory):
-            return None
-        regime_ids = {criterion.temporal_regime_id for criterion in mandatory}
-        if len(regime_ids) != 1:
-            return None
-        regime_id = regime_ids.pop()
-        return next((item for item in self.temporal_regimes if item.regime_id == regime_id), None)
+    def temporal_regime_for(self, rule: PolicyRule) -> TemporalRegime:
+        """The timing table entry `rule` takes its dates from. Every rule names one, and the
+        validator above guarantees it exists whenever the table is loaded."""
+        regime = next(
+            (item for item in self.temporal_regimes if item.regime_id == rule.temporal_regime_id),
+            None,
+        )
+        if regime is None:
+            raise LookupError(
+                f"{rule.rule_id}: temporal regime {rule.temporal_regime_id!r} is not loaded"
+            )
+        return regime

@@ -12,8 +12,10 @@ from __future__ import annotations
 
 import re
 from datetime import date
+from pathlib import Path
 
 import pytest
+import yaml
 
 from aiact.config import get_settings
 from aiact.gap.rules import roles_with_rules, select_rules
@@ -117,6 +119,7 @@ def _a_rule(**overrides) -> PolicyRule:
         "check_type": "presence",
         "evidence_expected": "x",
         "document_verifiable": False,
+        "temporal_regime_id": "AIA-TEMP-CHAPTER-IV",
         "status": "active",
     }
     return PolicyRule(**(fields | overrides))
@@ -251,6 +254,7 @@ def test_an_area_condition_cannot_also_claim_the_annex_i_route():
             check_type="presence",
             evidence_expected="x",
             document_verifiable=False,
+            temporal_regime_id="AIA-TEMP-CHAPTER-III-SECTION-5",
             status="active",
         )
 
@@ -730,6 +734,14 @@ _ANNEX_I_DATE = date(2028, 8, 2)
 _GENERAL_DATE = date(2026, 8, 2)
 
 
+def _start(spec, rule, route: HighRiskRoute | None = None) -> date | None:
+    """When `rule` starts to apply through `route`, read from its timing table entry."""
+    regime = spec.temporal_regime_for(rule)
+    if not regime.application_routes:
+        return regime.application_start
+    return next((r.application_start for r in regime.application_routes if r.route is route), None)
+
+
 def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
     """Every rule citing Arts. 6-27 carries both dates, and resolves to the right one per door."""
     split = [r for r in spec.rules if r.source.article in _ROUTE_SPLIT_ARTICLES]
@@ -742,18 +754,10 @@ def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
         }:
             continue  # not a high-risk system at all — see its comment in spec.yaml
         regime = spec.temporal_regime_for(rule)
-        if regime is not None:
-            assert rule.effective_date is None and not rule.effective_date_by_route
-            assert (
-                regime.status_on(_ANNEX_III_DATE, HighRiskRoute.ANNEX_III) is TemporalStatus.ACTIVE
-            )
-            assert (
-                regime.status_on(_ANNEX_III_DATE, HighRiskRoute.ANNEX_I) is TemporalStatus.UPCOMING
-            )
-        else:
-            assert rule.effective_date is None, f"{rule.rule_id} states a single date"
-            assert rule.effective_date_for(HighRiskRoute.ANNEX_III) == _ANNEX_III_DATE, rule.rule_id
-            assert rule.effective_date_for(HighRiskRoute.ANNEX_I) == _ANNEX_I_DATE, rule.rule_id
+        assert regime.status_on(_ANNEX_III_DATE, HighRiskRoute.ANNEX_III) is TemporalStatus.ACTIVE
+        assert regime.status_on(_ANNEX_III_DATE, HighRiskRoute.ANNEX_I) is TemporalStatus.UPCOMING
+        assert _start(spec, rule, HighRiskRoute.ANNEX_III) == _ANNEX_III_DATE, rule.rule_id
+        assert _start(spec, rule, HighRiskRoute.ANNEX_I) == _ANNEX_I_DATE, rule.rule_id
 
 
 def test_the_sections_the_omnibus_left_alone_keep_the_general_date(spec):
@@ -769,8 +773,10 @@ def test_the_sections_the_omnibus_left_alone_keep_the_general_date(spec):
         "AIA-RULE-ALL-A49-4",
     ):
         rule = next(r for r in spec.rules if r.rule_id == rule_id)
-        assert rule.effective_date == _GENERAL_DATE, rule_id
-        assert not rule.effective_date_by_route, f"{rule_id} was not moved by the Omnibus"
+        assert _start(spec, rule) == _GENERAL_DATE, rule_id
+        assert not spec.temporal_regime_for(rule).application_routes, (
+            f"{rule_id} was not moved by the Omnibus"
+        )
 
 
 def test_no_rule_still_carries_a_date_the_omnibus_moved(spec):
@@ -779,18 +785,82 @@ def test_no_rule_still_carries_a_date_the_omnibus_moved(spec):
     stale = [
         r.rule_id
         for r in spec.rules
-        if r.source.article in _ROUTE_SPLIT_ARTICLES and r.effective_date == _GENERAL_DATE
+        if r.source.article in _ROUTE_SPLIT_ARTICLES
+        and not spec.temporal_regime_for(r).application_routes
+        and _start(spec, r) == _GENERAL_DATE
     ]
     assert not stale, f"still on the pre-Omnibus date: {stale}"
 
 
-def test_a_rule_may_not_state_its_date_twice():
-    with pytest.raises(ValueError, match="sets both effective_date"):
-        _a_rule(
-            applies_to_risk_class=[RiskClass.HIGH_RISK],
-            effective_date=_GENERAL_DATE,
-            effective_date_by_route={HighRiskRoute.ANNEX_III: _ANNEX_III_DATE},
+def test_a_rule_naming_no_loaded_timing_entry_has_no_date(spec):
+    """Every rule takes its dates from one timing table entry. One that names an entry the table
+    does not carry must fail loudly rather than read as undated."""
+    with pytest.raises(LookupError, match="AIA-TEMP-NOT-A-REGIME"):
+        spec.temporal_regime_for(
+            _a_rule(
+                applies_to_risk_class=[RiskClass.HIGH_RISK],
+                temporal_regime_id="AIA-TEMP-NOT-A-REGIME",
+            )
         )
+
+
+def test_every_rule_takes_its_dates_from_its_own_provision(spec):
+    """A rule's timing entry is the one its OWN provision falls under in the norm inventory — never
+    an entry for a deadline inside the provision, nor one for another Article the rule cites. The
+    norms the rule implements carry those entries; the rule must name one that a norm of its own
+    Article carries, wherever such a norm exists.
+
+    Two rules name another entry on purpose, each argued in its `effective_date_note`: Art. 49(2)
+    takes the deferred Art. 6(3) date (the contested reading), and Art. 5(1)(ba) takes the later
+    start Art. 113(a) gives points (ba) and (bb)."""
+    deliberate = {"AIA-RULE-AR-A49-2", "AIA-RULE-ALL-A05-1BA"}
+    root = (
+        Path(get_settings().policy_normative_coverage_path) / str(spec.act_version_date) / "norms"
+    )
+    starts = {
+        r.regime_id for r in spec.temporal_regimes if r.application_start or r.application_routes
+    }
+    own: dict[str, set[str]] = {}
+    for path in root.rglob("*.yaml"):
+        payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+        items = payload if isinstance(payload, list) else (payload or {}).get("norms") or []
+        for norm in items:
+            if not isinstance(norm, dict) or norm.get("temporal_regime_id") not in starts:
+                continue
+            for rule_id in norm.get("implementation_refs") or []:
+                own.setdefault(f"{rule_id}|{norm['norm_id']}", set()).add(
+                    norm["temporal_regime_id"]
+                )
+    wrong = []
+    for rule in spec.rules:
+        if rule.rule_id in deliberate:
+            continue
+        match = re.match(r"(\d+)([a-z]?)", str(rule.source.article))
+        prefix = f"AIA-NORM-A{int(match.group(1)):03d}{match.group(2).upper()}-"
+        candidates = {
+            regime
+            for key, regimes in own.items()
+            if key.startswith(f"{rule.rule_id}|{prefix}")
+            for regime in regimes
+        }
+        if candidates and rule.temporal_regime_id not in candidates:
+            wrong.append(f"{rule.rule_id}: {rule.temporal_regime_id} not in {sorted(candidates)}")
+    assert not wrong, wrong
+
+
+def test_article_111_duties_apply_now_with_their_own_deadline(spec):
+    """Art. 111 applies from the general date and gives each limb a date to comply BY. The deadline
+    is not the start: a provider of a legacy public-authority system works on it now."""
+    deadlines = {
+        "AIA-RULE-ALL-A111-1": date(2030, 12, 31),
+        "AIA-RULE-ALL-A111-2": date(2030, 8, 2),
+        "AIA-RULE-GP-A111-3": date(2027, 8, 2),
+        "AIA-RULE-TR-A111-4": date(2026, 12, 2),
+    }
+    for rule_id, by in deadlines.items():
+        rule = next(r for r in spec.rules if r.rule_id == rule_id)
+        regime = spec.temporal_regime_for(rule)
+        assert (regime.application_start, regime.deadline) == (_GENERAL_DATE, by), rule_id
 
 
 def test_an_unknown_route_resolves_to_the_earlier_date(spec):
@@ -840,7 +910,7 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
         # names the reading not taken, which is what this test exists to require.
         if rule.rule_id == "AIA-RULE-AR-A49-2":
             continue
-        assert rule.effective_date == _GENERAL_DATE, rule.rule_id
+        assert _start(spec, rule) == _GENERAL_DATE, rule.rule_id
         note = rule.effective_date_note or ""
         assert "2 December 2027" in note and "2 August 2026" in note, rule.rule_id
         assert "Section 5" in note, rule.rule_id
@@ -855,7 +925,7 @@ def test_the_contested_date_names_the_reading_it_did_not_take(spec):
         rule = next(r for r in spec.rules if r.rule_id == rule_id)
         note = rule.effective_date_note or ""
 
-        assert rule.effective_date == date(2027, 12, 2), rule_id
+        assert _start(spec, rule) == date(2027, 12, 2), rule_id
         assert "CONTESTED" in note, rule_id
         assert "2 August 2026" in note, f"{rule_id}: name the reading not taken, with its date"
         assert "take advice" in note, rule_id
@@ -866,7 +936,7 @@ def test_a_timing_note_never_stands_in_for_a_date(spec):
     applies and no resolvable date would read as an answer while being none."""
     for rule in spec.rules:
         if rule.effective_date_note:
-            resolved = rule.effective_date_for(HighRiskRoute.ANNEX_III)
+            resolved = _start(spec, rule, HighRiskRoute.ANNEX_III)
             assert resolved is not None, f"{rule.rule_id} explains a date it does not have"
 
 
@@ -912,11 +982,12 @@ def test_only_chapter_iii_sections_1_to_3_carry_two_start_dates(spec):
     outside = [
         r.rule_id
         for r in spec.rules
-        if r.effective_date_by_route and r.source.article not in _ROUTE_SPLIT_ARTICLES
+        if spec.temporal_regime_for(r).application_routes
+        and r.source.article not in _ROUTE_SPLIT_ARTICLES
     ]
     assert not outside, (
         f"{outside} cite an article outside Chapter III Sections 1-3 and carry two start dates. "
-        f"Art. 113 gives those articles one date; state it as `effective_date`."
+        f"Art. 113 gives those articles one date; point them at a single-date timing entry."
     )
 
 

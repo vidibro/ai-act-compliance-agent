@@ -14,7 +14,7 @@ from datetime import date
 from pydantic import BaseModel
 
 from aiact.report_app.citations import segment_citations
-from aiact.reporting import application_date, cite, condition_text
+from aiact.reporting import application_date, cite, condition_text, deadline
 from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.norm import NormKind
 from aiact.schemas.policy import PolicyRule, PolicyRuleset, ReportNorm
@@ -44,6 +44,8 @@ class RuleView(BaseModel):
     application_dates: dict[str, date | None]
     """When the obligation starts to apply, per use case id. None where the date turns on an
     Article 6 route the classification has not settled."""
+    deadline: date | None = None
+    """By when the obligation must be met, where its provision sets a date (Art. 111)."""
     effective_date_note: str | None
     criteria: dict[str, CriterionView] = {}
     """The rule's separately judged parts, by norm id, so a finding's criteria read as text."""
@@ -144,6 +146,7 @@ def resolve_rules(
                 use_case.use_case_id: application_date(rule, spec, use_case)
                 for use_case in use_cases
             },
+            deadline=deadline(rule, spec),
             effective_date_note=readable(rule.effective_date_note),
             criteria={
                 criterion.norm_id: CriterionView(

@@ -46,6 +46,7 @@ def a_rule(
         check_type=check_type,
         evidence_expected="Described oversight measures: interface tools, ability to intervene.",
         document_verifiable=document_verifiable,
+        temporal_regime_id="AIA-TEMP-CHAPTER-III-SECTIONS-1-3",
         status="active",
     )
 

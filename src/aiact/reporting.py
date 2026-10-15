@@ -85,46 +85,53 @@ def application_date(
 ) -> date | None:
     """The date `rule` starts to apply for this use case's Article 6 route, or None where that
     date turns on a route the classification has not settled."""
-    route = route_of(use_case)
     regime = spec.temporal_regime_for(rule)
-    if regime is not None:
-        selected = next((item for item in regime.application_routes if item.route is route), None)
-        return selected.application_start if selected is not None else regime.application_start
-    if rule.effective_date is not None:
-        return rule.effective_date
-    return rule.effective_date_by_route.get(route) if route is not None else None
+    if not regime.application_routes:
+        return regime.application_start
+    route = route_of(use_case)
+    return next(
+        (item.application_start for item in regime.application_routes if item.route is route),
+        None,
+    )
+
+
+def deadline(rule: PolicyRule, spec: PolicyRuleset) -> date | None:
+    """The date by which `rule` must be met, where its provision sets one (Art. 111)."""
+    return spec.temporal_regime_for(rule).deadline
 
 
 def _timing(
-    rule: PolicyRule,
-    spec: PolicyRuleset | None = None,
-    use_case: UseCaseClassification | None = None,
+    rule: PolicyRule, spec: PolicyRuleset, use_case: UseCaseClassification | None = None
 ) -> list[str]:
-    """WHEN the obligation starts to apply, and why that date is not the expected one.
+    """WHEN the obligation starts to apply, by when it must be met, and why that date is not the
+    expected one.
 
     Rendered for judged and unjudged obligations alike: a PASS on a duty that does not begin until
     December 2027 says something different from a PASS on one that is already live, and Art. 6(4)
     — the only judged rule with a note — carries a date the Regulation does not settle."""
-    regime = spec.temporal_regime_for(rule) if spec is not None else None
-    if regime is not None and spec is not None and use_case is not None:
-        date_value = application_date(rule, spec, use_case)
-        if date_value is not None:
-            lines = _wrapped("from:", date_value.isoformat())
-        else:
-            lines = _wrapped("from:", "depends on the Article 6 classification route")
-        lines += _wrapped("basis:", ", ".join(regime.legal_basis_spans))
-    elif rule.effective_date is not None:
-        lines = _wrapped("from:", rule.effective_date.isoformat())
-    elif rule.effective_date_by_route:
-        by_route = sorted(rule.effective_date_by_route.items(), key=lambda kv: kv[0].value)
-        dates = ", ".join(f"{route.value} {day.isoformat()}" for route, day in by_route)
-        lines = _wrapped("from:", dates)
+    regime = spec.temporal_regime_for(rule)
+    if use_case is not None:
+        day = application_date(rule, spec, use_case)
+        lines = _wrapped(
+            "from:", day.isoformat() if day else "depends on the Article 6 classification route"
+        )
+    elif regime.application_routes:
+        by_route = sorted(regime.application_routes, key=lambda item: item.route.value)
+        days = (f"{item.route.value} {item.application_start.isoformat()}" for item in by_route)
+        lines = _wrapped("from:", ", ".join(days))
+    elif regime.application_start is not None:
+        lines = _wrapped("from:", regime.application_start.isoformat())
     else:
         lines = []
+    if regime.deadline is not None:
+        lines += _wrapped("by:", regime.deadline.isoformat())
+    lines += _wrapped("basis:", ", ".join(regime.legal_basis_spans))
     return lines + _wrapped("note:", rule.effective_date_note or "")
 
 
-def _outstanding_block(rule: PolicyRule) -> list[str]:
+def _outstanding_block(
+    rule: PolicyRule, spec: PolicyRuleset, use_case: UseCaseClassification | None
+) -> list[str]:
     """One obligation nobody judged, with everything a reader needs to act on it.
 
     `evidence_expected` is the part only this branch renders. For a judged rule it was in front of
@@ -133,7 +140,7 @@ def _outstanding_block(rule: PolicyRule) -> list[str]:
     lines = [f"  --  {rule.rule_id:<16} {cite(rule)}"]
     lines += _condition(rule)
     lines += _wrapped("confirm:", rule.evidence_expected)
-    return lines + _timing(rule)
+    return lines + _timing(rule, spec, use_case)
 
 
 def condition_text(condition: object) -> str:
@@ -287,7 +294,8 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
             out.append("  not checkable from the documentation — confirm separately:")
             for rule_id in outstanding:
                 rule = by_id.get(rule_id)
-                out += _outstanding_block(rule) if rule else [f"  --  {rule_id}"]
+                first = next(iter(report.classification.use_cases), None)
+                out += _outstanding_block(rule, spec, first) if rule else [f"  --  {rule_id}"]
         if timing_not_active:
             out.append("  future or route-dependent duties — not judged:")
             for notice in timing_not_active:

@@ -254,6 +254,7 @@ def a_rule(**overrides) -> PolicyRule:
         check_type=CheckType.SUBSTANCE,
         evidence_expected="described oversight measures, interface, intervention ability",
         document_verifiable=True,
+        temporal_regime_id="AIA-TEMP-CHAPTER-III-SECTIONS-1-3",
         status="active",
     )
     kwargs.update(overrides)

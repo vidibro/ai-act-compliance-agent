@@ -37,7 +37,7 @@ function ruleItems() {
     if (c.cases_dev) checks.push("has_cases");
     else if (r.document_verifiable) checks.push("no_cases");
     if (r.guidance_refs.length) checks.push("guidance");
-    if (!r.effective_date && !Object.keys(r.effective_date_by_route || {}).length) checks.push("no_date");
+    if (!r.applies_from && !Object.keys(r.applies_from_by_route || {}).length) checks.push("no_date");
     return { type: "gap", id, r, c, roles: r.roles, risk: r.risk_classes, checks };
   });
   const all = [...questions, ...rules];
@@ -110,9 +110,10 @@ function questionCard(q, step) {
 }
 function whenLine(r) {
   const parts = [];
-  if (r.effective_date) parts.push(`Applies from ${fmtDate(r.effective_date)}`);
-  const routes = Object.entries(r.effective_date_by_route || {});
+  if (r.applies_from) parts.push(`Applies from ${fmtDate(r.applies_from)}`);
+  const routes = Object.entries(r.applies_from_by_route || {});
   if (routes.length) parts.push("Applies from " + routes.map(([k, d]) => `${fmtDate(d)} (${ROUTES[k] || human(k)})`).join(" or "));
+  if (r.deadline) parts.push(`to be met by ${fmtDate(r.deadline)}`);
   if (r.effective_date_note) parts.push(r.effective_date_note);
   return lineOf("when", parts.length ? parts.join("; ") : el("span", { class: "warn" }, "No date recorded on this rule."));
 }

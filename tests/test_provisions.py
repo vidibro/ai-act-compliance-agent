@@ -131,7 +131,7 @@ def test_no_enacted_text_sits_outside_every_address():
 
     An article built as a chapeau plus points is where the text escapes: the labels name the points
     and nothing names the words before the first or after the last. Art. 113's "It shall apply from
-    2 August 2026" is the general application date every rule's `effective_date` is read from, and
+    2 August 2026" is the general application date most rules' timing entries carry, and
     it sits before point (a).
 
     So the attribution below is BUILT FROM THE LAYOUT OF THE FILES rather than from the enumerator:

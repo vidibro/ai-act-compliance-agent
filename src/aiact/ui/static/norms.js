@@ -255,7 +255,7 @@ function ruleBlock(id, normId) {
   return el("div", { class: "rule" },
     el("div", { class: "rulehead" }, el("span", { class: "mono b" }, id),
       ftag("check", rule.check_type), ftag("docs", rule.document_verifiable ? "verifiable" : "confirm separately"),
-      rule.effective_date ? el("span", { class: "muted" }, `effective ${fmtDate(rule.effective_date)}`) : null),
+      rule.applies_from ? el("span", { class: "muted" }, `effective ${fmtDate(rule.applies_from)}`) : null),
     el("div", { class: "req" }, rule.requirement),
     rule.activation_condition ? el("div", { class: "kv" }, el("b", {}, "Activates when "), rule.activation_condition) : null,
     rule.qualified_by.length ? el("div", { class: "kv" }, el("b", {}, "Qualified by "), rule.qualified_by.join("; ")) : null,

@@ -216,7 +216,7 @@ def _with_unnumbered(
     brackets, `(a)` or `(1)`, and paragraphs without, which is how the two are told apart here.
 
     Art. 113 is why it matters. Its second sentence — "It shall apply from 2 August 2026" — sits
-    before point (a) and is the general application date every rule's `effective_date` is read from.
+    before point (a) and is the general application date most rules' timing entries carry.
     Art. 75b's closing paragraph, after point (c), is what happens when the AI Office rejects the
     commitments an operator offered. Neither is a point, and without an address neither is in the
     denominator that `unaccounted 0` is measured against.
@@ -303,7 +303,7 @@ def all_provisions(articles_dir: Path, annexes_dir: Path) -> list[Provision]:
     AND A DOCUMENT WITH DIVISIONS THAT DO NOT COVER IT contributes an address for what they leave
     out. An article built as a chapeau plus lettered points has enacted text before the first point
     and sometimes after the last, and neither is a point — Art. 113's "It shall apply from 2 August
-    2026" is the general application date every rule's `effective_date` is read from, and it sits
+    2026" is the general application date most rules' timing entries carry, and it sits
     outside (a) to (d). Without `chapeau` and `closing` those words have no address, so the
     denominator every coverage claim is measured against shrinks with no counter moving. That is the
     one failure this module cannot be allowed to have.

@@ -6,6 +6,7 @@ them into sentences. Segments, regimes, rules and guidance are sent once and ref
 
 from __future__ import annotations
 
+from datetime import date
 from typing import Any
 
 from aiact.classify.graph import QUESTION_GUIDANCE, QUESTIONS
@@ -21,6 +22,10 @@ def _source_label(article: str | None, paragraph: str | None, annex: str | None)
     if annex:
         parts.append(f"Annex {annex}")
     return ", ".join(parts)
+
+
+def _iso(day: date | None) -> str | None:
+    return day.isoformat() if day is not None else None
 
 
 def build_norm_cards(bundle: NormativeCoverageBundle, spec: PolicyRuleset) -> dict[str, Any]:
@@ -78,7 +83,8 @@ def build_norm_cards(bundle: NormativeCoverageBundle, spec: PolicyRuleset) -> di
             ],
             "criteria": [criterion.norm_id for criterion in rule.criteria],
             "guidance_refs": list(rule.guidance_refs),
-            "effective_date": str(rule.effective_date) if rule.effective_date else None,
+            "temporal_regime_id": rule.temporal_regime_id,
+            "applies_from": _iso(spec.temporal_regime_for(rule).application_start),
             "roles": [str(role) for role in rule.applies_to_role],
             "risk_classes": [str(value) for value in rule.applies_to_risk_class],
             "transparency_duties": [str(value) for value in rule.applies_to_transparency_duty],
@@ -87,9 +93,11 @@ def build_norm_cards(bundle: NormativeCoverageBundle, spec: PolicyRuleset) -> di
             "prohibited_practices": [str(value) for value in rule.applies_to_prohibited_practice],
             "requires_provider_reallocation": rule.requires_provider_reallocation,
             "requires_real_world_testing": rule.requires_real_world_testing,
-            "effective_date_by_route": {
-                str(route): str(day) for route, day in (rule.effective_date_by_route or {}).items()
+            "applies_from_by_route": {
+                str(item.route): str(item.application_start)
+                for item in spec.temporal_regime_for(rule).application_routes
             },
+            "deadline": _iso(spec.temporal_regime_for(rule).deadline),
             "effective_date_note": rule.effective_date_note,
             "source": _source_label(rule.source.article, rule.source.paragraph, rule.source.annex),
         }

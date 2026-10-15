@@ -528,8 +528,10 @@ function dutyGroups(parts, findings, { data, ruleDate, normDate, isFuture, parti
 }
 
 // The "Applies from" cell: now, a later date, or unknown where the date turns on the Art. 6 route.
-function appliesFrom(when, date) {
+// A duty in force with a deadline the provision sets (Art. 111) shows that deadline instead of "Now".
+function appliesFrom(when, date, by = null) {
   if (when === "future") return el("span", { class: "tag date" }, `from ${fmtDate(date)}`);
+  if (when === "now" && by) return el("span", { class: "tag date" }, `by ${fmtDate(by)}`);
   return el("span", { class: "tag soft" }, when === "unknown" ? "Date unknown" : "Now");
 }
 
@@ -561,7 +563,7 @@ function findingItem(f, data) {
       el("span", {}, el("span", { class: `tag ${f.verdict}` }, VERDICT[f.verdict] || human(f.verdict))),
       el("span", { class: "cite" }, rule?.citation || citeSource(f.citation)),
       what(rule?.action || rule?.requirement || f.rule_id, [f.role]),
-      el("span", { class: "when" }, appliesFrom(f.applies_from ? "future" : "now", f.applies_from))),
+      el("span", { class: "when" }, appliesFrom(f.applies_from ? "future" : "now", f.applies_from, rule?.deadline))),
     el("div", { class: "item-body" },
       kv("Finding", findingText(f)),
       rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,
@@ -585,7 +587,7 @@ function outstandingItem(id, data, date, future, roles, when = future ? "future"
       el("span", {}, el("span", { class: "tag needs_review" }, "Duty")),
       el("span", { class: "cite" }, rule?.citation || ""),
       what(rule?.action || rule?.requirement || id, roles),
-      el("span", { class: "when" }, appliesFrom(when, date))),
+      el("span", { class: "when" }, appliesFrom(when, date, rule?.deadline))),
     el("div", { class: "item-body" },
       rule ? kv("What to check", rule.evidence_expected) : null,
       rule ? kv("The Act says", el("div", { class: "law" }, rule.requirement)) : null,

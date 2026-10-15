@@ -220,7 +220,8 @@ def test_a_timing_note_travels_with_the_obligation_it_qualifies(spec):
     )
     for rule in noted:
         assert " ".join(rule.effective_date_note.split()) in text, rule.rule_id
-        assert rule.effective_date is not None and rule.effective_date.isoformat() in text
+        start = spec.temporal_regime_for(rule).application_start
+        assert start is not None and start.isoformat() in text
 
 
 def test_a_role_change_the_report_found_is_stated_in_the_report(spec):
@@ -398,7 +399,7 @@ def test_a_model_is_told_the_transitional_deadline_written_for_it(spec):
     GPAI_MODEL classification, and `_article_111_4_note` fires on an Art. 50 duty a model never
     owes. So without a limb of its own the whole `legacy_system_note` is None for exactly the
     reader Art. 111(3) is written for — while every Chapter V rule beside it carries
-    `effective_date: 2025-08-02` and the scope note says those duties are live now.
+    a start date of 2025-08-02 and the scope note says those duties are live now.
 
     THE DIRECTION MATTERS. Art. 111(3) is a DEFERRAL: a model placed before 2 August 2025 owes the
     Chapter V duties by 2 August 2027. Silence over-reports, which costs a reader a conversation

@@ -104,7 +104,7 @@ function ruleTable(rules) {
       el("td", {}, r.document_verifiable && !r.cases_dev
         ? el("span", { class: "tag bad" }, "none") : `${r.cases_dev} / ${r.cases_heldout}`),
       el("td", {}, String(r.guidance || "—")),
-      el("td", {}, r.effective_date || "—"))));
+      el("td", {}, r.applies_from || "—"))));
 }
 function detailBody(doc, norms, rules) {
   const segs = Object.entries(doc.segments).map(([k, v]) => `${v} ${k.replace("_", " ")}`).join(" · ");
