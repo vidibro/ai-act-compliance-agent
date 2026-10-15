@@ -90,6 +90,7 @@ def build_norm_cards(bundle: NormativeCoverageBundle, spec: PolicyRuleset) -> di
             "transparency_duties": [str(value) for value in rule.applies_to_transparency_duty],
             "route": str(rule.applies_to_route) if rule.applies_to_route else None,
             "annex_iii_areas": [str(value) for value in rule.applies_to_annex_iii_area],
+            "annex_i_products": [str(value) for value in rule.applies_to_annex_i_product],
             "prohibited_practices": [str(value) for value in rule.applies_to_prohibited_practice],
             "requires_provider_reallocation": rule.requires_provider_reallocation,
             "requires_real_world_testing": rule.requires_real_world_testing,

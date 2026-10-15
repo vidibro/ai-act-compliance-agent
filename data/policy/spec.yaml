@@ -90,6 +90,9 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
+    applies_to_annex_i_product: [machinery, toys, recreational_craft, lifts, explosive_atmospheres,
+      radio_equipment, pressure_equipment, cableways, personal_protective_equipment, gas_appliances,
+      medical_devices, ivd_medical_devices]
     # NOT GATED ON THE ART. 6 ROUTE, though it reads as if it could be. The paragraph opens "where a
     # product contains an AI system, to which the requirements of this Regulation as well as
     # requirements of the Union harmonisation legislation listed in Section A of Annex I apply" —
@@ -2585,6 +2588,7 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider, deployer]
+    applies_to_annex_i_product: [medical_devices, ivd_medical_devices]
     activation_condition: >-
       High-risk AI systems that are safety components of devices covered by Regulation (EU)
       2017/745 or Regulation (EU) 2017/746, or that are themselves such devices. Whether a product

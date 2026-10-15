@@ -124,7 +124,7 @@ function gapCard(item) {
     : null;
   const scope = [
     r.route ? ftag("route", ROUTES[r.route] || human(r.route)) : null,
-    ...tags("transparency duty", r.transparency_duties), ...tags("Annex III area", r.annex_iii_areas),
+    ...tags("transparency duty", r.transparency_duties), ...tags("Annex III area", r.annex_iii_areas), ...tags("Annex I product", r.annex_i_products || []),
     ...tags("prohibited practice", r.prohibited_practices),
     r.requires_provider_reallocation ? el("span", { class: "tag part" }, "only after provider reallocation") : null,
     r.requires_real_world_testing ? el("span", { class: "tag part" }, "only with real-world testing") : null,

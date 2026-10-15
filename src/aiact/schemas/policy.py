@@ -16,6 +16,7 @@ from aiact.schemas.enums import (
     ActorCategory,
     ActorRole,
     AnnexIIIArea,
+    AnnexIProduct,
     CheckType,
     HighRiskRoute,
     ObligationStatus,
@@ -257,6 +258,13 @@ class PolicyRule(BaseModel):
     alone and 43(2) points 2 to 8, and until this field existed the spec carried 43(2) with the
     comment "employment is Annex III point 4" and fired it at biometrics too. A condition written in
     a comment is not a condition."""
+    applies_to_annex_i_product: list[AnnexIProduct] = []
+    """WHICH Annex I products this rule fires for. Empty is the ordinary case: no product condition.
+
+    For a provision that reaches only systems built into, or sold as, a product a Union
+    harmonisation law in Annex I governs — Art. 73(10) only medical devices, Art. 8(2) only the
+    Section A instruments. The classification settles the product, so a hiring tool that is part
+    of no product is not handed a medical-device reporting duty with its condition attached."""
     applies_to_prohibited_practice: list[ProhibitedPractice] = []
     """WHICH Art. 5(1) practice this rule fires for. Empty is the ordinary case: no condition.
 

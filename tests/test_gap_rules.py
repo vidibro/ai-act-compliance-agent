@@ -422,14 +422,20 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
         practice = (
             rule.applies_to_prohibited_practice[0] if rule.applies_to_prohibited_practice else None
         )
-        # THE USE CASE THIS RULE IS FOR, not an arbitrary one. The TIER, the ROUTE and the AREA
-        # are gates on the SYSTEM, and withholding on them is correct: Art. 11(2) reaches an
-        # Annex I product and nothing else, and a Chapter V rule withheld from a high-risk system
-        # is on the other track rather than narrowed. What is under test is the one gate that is
-        # NOT about the system — the condition, which narrows the duty-HOLDER and must never
-        # withhold on top of the three that are.
+        # THE USE CASE THIS RULE IS FOR, not an arbitrary one. The TIER, the ROUTE, the AREA and
+        # the PRODUCT are gates on the SYSTEM, and withholding on them is correct: Art. 11(2)
+        # reaches an Annex I product and nothing else, and a Chapter V rule withheld from a
+        # high-risk system is on the other track rather than narrowed. What is under test is the
+        # one gate that is NOT about the system — the condition, which narrows the duty-HOLDER and
+        # must never withhold on top of the four that are.
         annex_i = rule.applies_to_route is HighRiskRoute.ANNEX_I
-        product = AnnexIProduct.MEDICAL_DEVICES if annex_i else None
+        product = (
+            rule.applies_to_annex_i_product[0]
+            if rule.applies_to_annex_i_product
+            else AnnexIProduct.MEDICAL_DEVICES
+            if annex_i
+            else None
+        )
         # high_risk where the rule names it, because that is the case the fixture is built around;
         # otherwise the first tier it does name, any of which is a use case it must be selected for.
         # A rule gated on an Art. 50 duty names no tier and is owed at any, minimal included.
@@ -1061,3 +1067,20 @@ def test_the_practice_gate_is_the_only_thing_holding_those_duties_back(spec):
     use_case = a_use_case(risk_class=RiskClass.PROHIBITED, area=None, product=None)
     silent = select_rules(spec, use_case, ActorRole.DEPLOYER, prohibited_practice=None)
     assert not silent.all_rules
+
+
+def test_a_product_duty_reaches_only_systems_in_that_product(spec):
+    """Art. 73(10) narrows incident reporting for medical devices and Art. 8(2) binds systems inside
+    an Annex I Section A product. The classification settles the product, so a hiring tool that is
+    part of none is not handed either with its condition attached."""
+    hiring = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
+    assert "AIA-RULE-ALL-A73-10" not in _rule_ids(spec, hiring, ActorRole.PROVIDER)
+    assert "AIA-RULE-PO-A08-2" not in _rule_ids(spec, hiring, ActorRole.PROVIDER)
+
+    device = a_use_case(product=AnnexIProduct.MEDICAL_DEVICES)
+    assert "AIA-RULE-ALL-A73-10" in _rule_ids(spec, device, ActorRole.PROVIDER)
+    assert "AIA-RULE-PO-A08-2" in _rule_ids(spec, device, ActorRole.PROVIDER)
+
+    lift = a_use_case(product=AnnexIProduct.LIFTS)
+    assert "AIA-RULE-ALL-A73-10" not in _rule_ids(spec, lift, ActorRole.PROVIDER)
+    assert "AIA-RULE-PO-A08-2" in _rule_ids(spec, lift, ActorRole.PROVIDER)

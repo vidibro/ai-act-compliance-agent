@@ -234,7 +234,6 @@ def test_the_report_covers_both_duty_holders(spec):
         "AIA-RULE-ALL-A04A",
         "AIA-RULE-ALL-A111-2",
         "AIA-RULE-ALL-A73",
-        "AIA-RULE-ALL-A73-10",
         "AIA-RULE-ALL-A75a-3",
         "AIA-RULE-ALL-A75c-3",
         "AIA-RULE-ALL-A79",

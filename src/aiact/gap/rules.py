@@ -2,7 +2,7 @@
 
 Deterministic and model-free: activation is a property of the ruleset (`applies_to_risk_class` or
 `applies_to_transparency_duty`, `applies_to_role`, `applies_to_route`, `applies_to_annex_iii_area`,
-`status`), not a judgement.
+`applies_to_annex_i_product`, `status`), not a judgement.
 Only whether the documentation SATISFIES an active rule is a judgement, and that is the judge's job.
 
 WHICH DOOR, WHICH AREA and — for one rule — WHETHER THE PROVIDER ROLE MOVED are conditions, not
@@ -194,6 +194,15 @@ def _area_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
     return use_case.annex_iii_area in rule.applies_to_annex_iii_area
 
 
+def _product_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
+    """A rule that names Annex I products fires only for a system that is one of them, or a safety
+    component of one. A use case with no product matches no list — the classification asked, and
+    the system is part of no regulated product."""
+    if not rule.applies_to_annex_i_product:
+        return True
+    return use_case.annex_i_product in rule.applies_to_annex_i_product
+
+
 def _practice_matches(rule: PolicyRule, practice: ProhibitedPractice | None) -> bool:
     """A rule that names an Art. 5(1) practice fires only for that practice.
 
@@ -303,6 +312,7 @@ def select_rules(
         and role in rule.applies_to_role
         and _route_matches(rule, use_case)
         and _area_matches(rule, use_case)
+        and _product_matches(rule, use_case)
         and (reallocation is not None or not rule.requires_provider_reallocation)
         and _testing_matches(rule, real_world_testing)
         and _practice_matches(rule, prohibited_practice)
