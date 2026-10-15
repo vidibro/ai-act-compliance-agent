@@ -33,11 +33,45 @@ const ROLE_ORDER = ["provider", "initial_provider", "prospective_provider", "san
 const NORM_KIND = { permission: "Permission", entitlement: "Right", legal_consequence: "Legal effect", power: "Power",
                     obligation: "Duty", prohibition: "Ban", recommendation: "Advice", applicability: "Limitation",
                     definition: "Definition" };
-// The order kinds are listed in, what the reader may do first.
+// The order of the Type filter, what the reader may do first.
 const KIND_ORDER = ["permission", "entitlement", "legal_consequence", "applicability", "power", "obligation",
                     "prohibition", "recommendation", "definition"];
 // The report's sections that list norms per role, rather than judge them.
 const NORM_SECTIONS = ["permissions", "rights", "legal_consequences", "conditional_applicability"];
+
+// ---- ordering by provision -----------------------------------------------------------------------
+// Lists run in the order of the Act: articles before annexes, then article number, its letter
+// (4 before 4a), and each paragraph and point in turn — numbers as numbers, so 9 comes before 10.
+function citeKey(citation) {
+  const text = String(citation || "");
+  const annex = /^Annex/.test(text);
+  const head = text.match(/(\d+)([a-z]*)/);
+  const parts = [...text.slice(head ? head.index + head[0].length : 0).matchAll(/\(([^)]*)\)/g)].map((m) => m[1]);
+  return [annex ? 1 : 0, head ? Number(head[1]) : Infinity, head ? head[2] : "", ...parts];
+}
+
+const ROMAN = /^[ivx]+$/;
+function roman(text) {
+  const value = { i: 1, v: 5, x: 10 };
+  return [...text].reduce((sum, ch, i) => sum + (value[ch] < (value[text[i + 1]] || 0) ? -value[ch] : value[ch]), 0);
+}
+
+function byCitation(a, b) {
+  const x = citeKey(a);
+  const y = citeKey(b);
+  for (let i = 0; i < Math.max(x.length, y.length); i += 1) {
+    if (x[i] === undefined) return -1; // Art. 26 before Art. 26(7)
+    if (y[i] === undefined) return 1;
+    if (x[i] === y[i]) continue;
+    const nx = Number.parseInt(x[i], 10);
+    const ny = Number.parseInt(y[i], 10);
+    if (!Number.isNaN(nx) && !Number.isNaN(ny) && nx !== ny) return nx - ny;
+    // Sub-points (i), (ii) ... (ix) are Roman numerals: (v) before (ix).
+    if (ROMAN.test(x[i]) && ROMAN.test(y[i])) return roman(x[i]) - roman(y[i]);
+    return String(x[i]).localeCompare(String(y[i]));
+  }
+  return 0;
+}
 
 function citeSource(s) {
   if (!s) return "";
@@ -360,7 +394,8 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
 
   // One line per point in time, each with what is wrong under it, then the duties nobody checked:
   // a single list, so the later dates read as part of the same answer.
-  const fixes = (list) => el("ol", { class: "fixes" }, list.map((f) => {
+  const fixes = (list) => el("ol", { class: "fixes" }, [...list].sort((a, b) =>
+    byCitation(data.rules[a.rule_id]?.citation, data.rules[b.rule_id]?.citation)).map((f) => {
     const rule = data.rules[f.rule_id];
     return el("li", {},
       el("a", { href: `#${itemId(f)}`, onclick: (e) => { e.preventDefault(); reveal(itemId(f)); } },
@@ -456,7 +491,7 @@ function provisions(report, data, ruleDate, normDate, isFuture) {
   const rows = [
     ...NORM_SECTIONS.flatMap((key) => ids(`${key}:`).map((id) => [id, partiesOf(`${key}:`)(id)])),
     ...authorityIds.map((id) => [id, data.norms[id].actors || []]),
-  ].sort(([a], [b]) => KIND_ORDER.indexOf(data.norms[a]?.kind) - KIND_ORDER.indexOf(data.norms[b]?.kind));
+  ].sort(([a], [b]) => byCitation(normCites(data.norms[a])[0], normCites(data.norms[b])[0]));
   const others = rows.length ? [group("", null, null, rows.map(([id, roles]) => normItem(id, data, roles)))] : [];
   const card = (groups, facets, columns, ...bars) => (groups.length
     ? el("section", { class: "card provisions" }, el("div", { class: "filters" }, filterBars(groups, facets), ...bars),
@@ -562,24 +597,24 @@ const RESULT_OPTIONS = [...["gap", "inadequate", "needs_review", "pass"].map((v)
 const KIND_OPTIONS = () => KIND_ORDER.map((k) => [k, NORM_KIND[k], `tag soft kind-${k}`]);
 
 function dutyGroups(parts, findings, { data, ruleDate, normDate, isFuture, partiesOf }) {
-  // In force first, then by the date each starts.
-  const byDate = (date) => date || "";
-  const checked = [...findings].sort((a, b) => byDate(a.applies_from).localeCompare(byDate(b.applies_from)));
+  // In the order of the Act; the date column and filter say when each applies.
+  const ruleCite = (id) => data.rules[id]?.citation || "";
+  const checked = [...findings].sort((a, b) => byCitation(ruleCite(a.rule_id), ruleCite(b.rule_id)));
   const rule = partiesOf("rule:");
   const route = partiesOf("route:");
   const cond = partiesOf("cond:");
   // The unjudged rules and the duties that bind only under a condition, together.
   const outstanding = [
-    ...parts.outstanding.map((id) => [ruleDate(id), () => outstandingItem(id, data, ruleDate(id), isFuture(ruleDate(id)), rule(id))]),
-    ...parts.conditional.map((id) => [normDate(id), () => conditionalDutyItem(id, data, normDate(id), isFuture(normDate(id)), cond(id))]),
-  ].map(([day, item]) => [isFuture(day) ? day : null, item])
-    .sort(([a], [b]) => byDate(a).localeCompare(byDate(b)));
+    ...parts.outstanding.map((id) => [ruleCite(id), () => outstandingItem(id, data, ruleDate(id), isFuture(ruleDate(id)), rule(id))]),
+    ...parts.conditional.map((id) => [normCites(data.norms[id])[0], () => conditionalDutyItem(id, data, normDate(id), isFuture(normDate(id)), cond(id))]),
+  ].sort(([a], [b]) => byCitation(a, b));
   return [
     checked.length ? group("", "Checked against your document", null, checked.map((f) => findingItem(f, data))) : null,
     outstanding.length ? group("", "Not verifiable from documentation", "The review doesn't check these. Check each one yourself.",
       outstanding.map(([, item]) => item())) : null,
     parts.unresolved.length ? group("", "Date depends on the Art. 6 route", "Not checked: when these apply turns on how the system is classified.",
-      parts.unresolved.map((id) => outstandingItem(id, data, null, false, route(id), "unknown"))) : null,
+      [...parts.unresolved].sort((a, b) => byCitation(ruleCite(a), ruleCite(b)))
+        .map((id) => outstandingItem(id, data, null, false, route(id), "unknown"))) : null,
   ].filter(Boolean);
 }
 

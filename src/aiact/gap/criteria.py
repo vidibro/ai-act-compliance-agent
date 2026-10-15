@@ -77,7 +77,7 @@ def settle_criteria(
                 norm_id=criterion.norm_id,
                 mandatory=True,
                 verdict=Verdict.NEEDS_REVIEW,
-                reasoning=f"The judge returned no verdict for {criterion.norm_id}.",
+                reasoning="The judge returned no verdict for this criterion.",
                 confidence="low",
             )
         settled.append(finding.model_copy(update={"mandatory": True}))
