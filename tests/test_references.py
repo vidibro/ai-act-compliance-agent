@@ -12,6 +12,7 @@ import pytest
 
 from aiact.retrieval.store import DocumentIndex
 from aiact.tools.references import references_in, resolve, resolve_all
+from conftest import StubEmbedding
 
 ROOT = Path(__file__).resolve().parents[1]
 DEV = ROOT / "data" / "golden_set" / "cases" / "pristine__untouched.md"
@@ -33,7 +34,9 @@ Panel composition, escalation path, stop control.
 
 
 def _index(text: str) -> DocumentIndex:
-    return DocumentIndex.build(text)
+    # Resolution reads the index's chunks and headings, never a similarity ranking, so the stub
+    # embedder serves; the real one would only add a model download.
+    return DocumentIndex.build(text, embedding_function=StubEmbedding())
 
 
 # --- the signal the judge actually needs -------------------------------------------------------

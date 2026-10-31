@@ -8,6 +8,7 @@ unnumbered subparagraph belongs to the paragraph before it.
 from __future__ import annotations
 
 import re
+from collections.abc import Sequence
 from functools import lru_cache
 
 from aiact.norm_loader import load_normative_coverage
@@ -20,7 +21,7 @@ _ROMAN = {"i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xi
 _LETTER_BEFORE = {"i": "h", "v": "u", "x": "w"}
 
 
-def cite_segments(segments: list[TextReviewSegment]) -> dict[str, str]:
+def cite_segments(segments: Sequence[TextReviewSegment]) -> dict[str, str]:
     """Citation per segment id, for segments given in document order."""
     citations: dict[str, str] = {}
     current: tuple[SourceKind, str] | None = None
@@ -54,7 +55,14 @@ def cite_segments(segments: list[TextReviewSegment]) -> dict[str, str]:
 
 
 @lru_cache(maxsize=1)
-def segment_citations() -> dict[str, str]:
+def ordered_segments() -> tuple[TextReviewSegment, ...]:
+    """The normative coverage's text segments in document order, loaded ONCE for the app's
+    lifetime. The load reads a few hundred YAML shards and takes seconds, and both this module
+    and `law` need the same segments — so they share one load rather than each paying for it."""
     segments = load_normative_coverage().text_review.segments
-    ordered = sorted(segments, key=lambda s: (s.source.kind.value, s.source.document, s.start))
-    return cite_segments(ordered)
+    return tuple(sorted(segments, key=lambda s: (s.source.kind.value, s.source.document, s.start)))
+
+
+@lru_cache(maxsize=1)
+def segment_citations() -> dict[str, str]:
+    return cite_segments(ordered_segments())

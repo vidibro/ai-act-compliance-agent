@@ -1,0 +1,121 @@
+# The documents the report page offers to load with one click — and, in demo mode, the case
+# gallery. One entry per document, in the order the gallery shows them: a storyline from a complete
+# high-risk file down to a system the Act does not reach.
+#
+# `outcome` is the risk class the DEMO stand-ins reach on the document (pinned by
+# tests/test_demo_mode.py), shown on the gallery card so a reader can pick the case they want to
+# see. A real review may read a document differently; the gallery is a demo feature.
+#
+# `kind`: reference (a golden-set technical file), system_card (written to docs/system-card-guide.md),
+# vendor_page (an anonymised product page from the smoke check), model_card (a Chapter V model).
+# `extract: guide_card` lifts the worked-example card out of the guide instead of reading a file.
+
+samples:
+  - id: hr-candidate-scoring
+    path: data/golden_set/reference/hr-candidate-scoring.md
+    kind: reference
+    outcome: high_risk
+    label: Annex III(4) · complete technical file
+    about: >-
+      The golden set's reference file: a candidate-scoring system documented to satisfy every duty
+      a document can show. What a passing report looks like.
+
+  - id: internal-mobility
+    path: data/golden_set/reference/internal-mobility.md
+    kind: reference
+    outcome: high_risk
+    label: Annex III(4) · complete technical file
+    about: >-
+      The second reference file, for internal promotion and task allocation — same duties, a
+      different document shape.
+
+  - id: guide-system-card
+    path: docs/system-card-guide.md
+    extract: guide_card
+    kind: system_card
+    outcome: high_risk
+    label: Annex III(4) · card only, duties unmet
+    about: >-
+      The guide's worked example: enough to classify, with none of the Annex IV content, so the
+      Arts. 9–15 duties show as gaps and Art. 16(b) is met.
+
+  - id: sepsis-watch-medical-device
+    path: data/demo/cards/sepsis-watch-medical-device.md
+    kind: system_card
+    outcome: high_risk
+    label: Annex I · medical device, notified body
+    about: >-
+      Software that is itself a medical device, assessed by a notified body: high-risk under
+      Art. 6(1), with a partly written technical file — met, partly met and unmet duties side by side.
+
+  - id: liftguard-assessor-not-stated
+    path: data/demo/cards/liftguard-assessor-not-stated.md
+    kind: system_card
+    outcome: needs_review
+    label: Annex I · conformity assessor not stated
+    about: >-
+      A lift safety component whose card never says who assesses the product's conformity.
+      Art. 6(1)(b) turns on that, so the review stops and names the missing fact.
+
+  - id: formfill-cv-extraction
+    path: data/demo/cards/formfill-cv-extraction.md
+    kind: system_card
+    outcome: not_high_risk
+    label: Annex III(4) · Art. 6(3)(a) derogation
+    about: >-
+      CV field extraction that evaluates nobody, with the Art. 6(4) assessment written down: not
+      high-risk, and the one duty that still applies is met.
+
+  - id: vendor-interview-coordination
+    path: data/golden_set/smoke/interview-coordination.md
+    kind: vendor_page
+    outcome: not_high_risk
+    label: Annex III(4) · scheduling, vendor page
+    about: >-
+      An interview-scheduling product page: in the employment area, evaluates nobody, claims no
+      exemption — so the Art. 6(4) assessment it owes shows as a gap.
+
+  - id: shopassist-retail-chatbot
+    path: data/demo/cards/shopassist-retail-chatbot.md
+    kind: system_card
+    outcome: minimal
+    label: Outside Annex III · Art. 50(1) and 50(2)
+    about: >-
+      A retail chatbot that also drafts product descriptions: outside Annex III, but two
+      transparency duties attach — one met, one only partly.
+
+  - id: aurora-7b-model-card
+    path: data/demo/cards/aurora-7b-model-card.md
+    kind: model_card
+    outcome: gpai_model
+    label: Chapter V · general-purpose AI model
+    about: >-
+      A model card, not a system card: compute below the Art. 51 presumption, a free and
+      open-source release — Chapter V duties listed with their conditions, none judged.
+
+  - id: vendor-video-interview-analysis
+    path: data/golden_set/smoke/video-interview-analysis.md
+    kind: vendor_page
+    outcome: prohibited
+    label: Art. 5(1)(f) · emotion inference in hiring
+    about: >-
+      A video-interview product page that reads enthusiasm and composure off candidates: a
+      prohibited practice, so no duty is checked and the verdict is "not allowed".
+
+  - id: sentinel-m-military
+    path: data/demo/cards/sentinel-m-military.md
+    kind: system_card
+    outcome: out_of_scope
+    label: Art. 2(3) · exclusively military use
+    about: >-
+      A vehicle threat-detection system used exclusively for military purposes: the Act withholds
+      itself, and the report says why nothing is owed.
+
+  - id: vendor-screening-and-ranking
+    path: data/golden_set/smoke/screening-and-ranking.md
+    kind: vendor_page
+    outcome: high_risk
+    label: Annex III(4) · marketing page, duties unmet
+    about: >-
+      A CV-screening product page that also ranks applicants: high-risk on one sentence, with
+      nothing in the prose a duty could be checked against.

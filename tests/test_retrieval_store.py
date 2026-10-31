@@ -12,64 +12,21 @@ is enough to prove the wiring carries a query to the right chunk and back.
 
 from __future__ import annotations
 
-import math
 import re
 from pathlib import Path
 
 import chromadb
 import pytest
-from chromadb.api.types import EmbeddingFunction
 
 from aiact.policy_loader import load_policy_spec
 from aiact.retrieval.chunking import chunk_document
 from aiact.retrieval.store import Chunk, DocumentIndex, Hit, document_id
 from aiact.tools.evidence import find_evidence, queries_for, query_for
+from conftest import StubEmbedding
 
 ROOT = Path(__file__).resolve().parents[1]
 DEV_DOC = ROOT / "data" / "golden_set" / "cases" / "pristine__untouched.md"
 HELDOUT_DOC = ROOT / "data" / "golden_set" / "cases-heldout" / "pristine__untouched.md"
-
-_VOCAB = [
-    "oversight",
-    "accuracy",
-    "logging",
-    "data",
-    "risk",
-    "instructions",
-    "documentation",
-    "panel",
-]
-
-
-class StubEmbedding(EmbeddingFunction):
-    """Deterministic, offline, and dependency-free: one dimension per vocabulary word.
-
-    Subclasses Chroma's base class rather than duck-typing it — the base supplies `embed_query`,
-    `get_config` and the rest of the protocol Chroma 1.x calls into.
-    """
-
-    def __init__(self) -> None:  # required by Chroma's config round-trip
-        pass
-
-    @staticmethod
-    def name() -> str:
-        return "stub"
-
-    def get_config(self) -> dict:
-        return {}
-
-    @staticmethod
-    def build_from_config(config: dict) -> StubEmbedding:
-        return StubEmbedding()
-
-    def __call__(self, input: list[str]) -> list[list[float]]:  # noqa: A002 - Chroma's signature
-        vectors = []
-        for text in input:
-            lower = text.lower()
-            raw = [float(lower.count(word)) for word in _VOCAB]
-            norm = math.sqrt(sum(v * v for v in raw)) or 1.0
-            vectors.append([v / norm for v in raw])
-        return vectors
 
 
 @pytest.fixture

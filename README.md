@@ -65,7 +65,58 @@ The two graphs are composed — one document in, one report out:
 python scripts/review.py data/golden_set/reference/hr-candidate-scoring.md
 ```
 
-Not built yet: the FastAPI layer (M6).
+The same review as a web page — paste a document, read the report — is the **report app**:
+
+```bash
+make app        # http://127.0.0.1:8766, model and key from .env
+```
+
+## The report app's two modes
+
+The page runs in one of two modes, and says which in the bar, in a banner, in a label fixed to the
+window and in its colours — orange for a real review, violet for the demo.
+
+- **Normal mode** is the review: paste a document, every model seam live, a minute or two per
+  document, the model named in `AIACT_LLM_MODEL` with its key in `.env`.
+- **Demo mode** is the same pipeline with the three model seams — the classification brain, the
+  judge and the summariser — replaced by deterministic keyword heuristics
+  (`src/aiact/report_app/demo.py`). No key, no cost, under a second, and the real report: the real
+  cascade and its legal routing, the real rule selection, the real page. What changes is who
+  answers the questions, and a demo report says so at its top, beside its title and on every verdict
+  — the response carries `demo: true`, and every heuristic answer starts with `Demo:`. **A demo
+  report is illustrative.** Word-matching cannot tell a `gap` from an `inadequate` — that is the
+  claim this project is built and measured around — so the demo shows what a report looks like and
+  how it reads, never whether a system complies.
+
+**Demo mode has no free text input: its documents are the cases.** The page opens on a gallery
+of twelve cards, each marked with the outcome the demo reaches on that document, and one click runs
+it — the reviewed document can be shown read-only beside the report. The cases are registered in
+`data/demo/samples.yaml` and served by `GET /api/samples`: the golden set's reference files
+(`data/golden_set/reference/` — high-risk, every checked duty met), the worked-example card from
+[the system-card guide](docs/system-card-guide.md) (high-risk, Arts. 9–15 as gaps), the smoke
+check's anonymised vendor pages (`data/golden_set/smoke/` — one prohibited, one not high-risk, one
+high-risk with nothing to check), and six cards written for the demo under `data/demo/cards/` for
+the cases the golden set does not cover: an Annex I medical device assessed by a notified body
+(high-risk under Art. 6(1), a partly written file), an Annex I lift component whose card never says
+who assesses conformity (needs review), CV extraction with its Art. 6(4) assessment written down
+(not high-risk), a retail chatbot owing Art. 50(1) and 50(2) (minimal risk), a general-purpose
+model card (Chapter V), and an exclusively military system (outside the Act). A reader's own
+document belongs in a real review; in normal mode the same samples are one dropdown away, without
+the outcome labels, since a model may read them differently. A demo report lives in the page's
+memory, not in the browser's storage: it survives a mode switch, not a reload — a sample is one
+click away again.
+
+**Which mode the page offers** is decided by the server, and `GET /api/mode` tells the page why:
+
+- A live review is offered only where one can run: `AIACT_LLM_MODEL` names a model **and** a key
+  for its provider is set (the variables LiteLLM reads for Anthropic, OpenAI, Gemini and Mistral
+  are recognised), or a LiteLLM proxy is set, which holds its own. A provider the page does not
+  know is given the benefit of the doubt. Otherwise the page runs in demo mode alone, the switch
+  locked on and the banner saying — provider-agnostically — that no key is set, and
+  `POST /api/review` answers 503 rather than failing on the first call.
+- `AIACT_DEMO_MODE` (`.env`) sets the rest: `available` (the default) offers both; `only` switches
+  live reviews off — a public showcase; `off` removes the demo, and `POST /api/demo/review`
+  answers 403.
 
 ## The review, end to end
 

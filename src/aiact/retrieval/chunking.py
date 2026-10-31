@@ -183,7 +183,7 @@ def _paragraphs(text: str) -> list[_Paragraph]:
         if not lines:
             start = line_start
         lines.append(line)
-        end = offset
+        end = line_start + len(line)  # the content's end, not the newline after it
 
     close()
     return out
@@ -282,13 +282,19 @@ def chunk_document(
     def flush() -> None:
         if not open_paras:
             return
+        start, end = open_paras[0].char_start, open_paras[-1].char_end
         chunks.append(
             Chunk(
                 chunk_id=f"c{len(chunks):03d}",
-                body="\n\n".join(p.body for p in open_paras),
+                # The SOURCE span, not the pieces rejoined. Two paragraphs are a blank line apart,
+                # but two sentence pieces of one long paragraph are a space apart, and a body
+                # reassembled with "\n\n" would no longer be the text its offsets point at — the
+                # citation would be decoration. Slicing the source keeps the two equal by
+                # construction, whatever the pieces were cut on.
+                body=text[start:end],
                 heading_path=open_paras[0].heading_path,
-                char_start=open_paras[0].char_start,
-                char_end=open_paras[-1].char_end,
+                char_start=start,
+                char_end=end,
             )
         )
         open_paras.clear()

@@ -10,38 +10,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/report.css">
 <script>
-  // Applied before first paint so a saved theme never flashes the other one.
+  // Applied before first paint so a saved theme never flashes the other one — and the same for
+  // demo mode, whose colours would otherwise flash orange before turning violet.
   try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
+  try { if (localStorage.getItem("aiact-review:demo") === "true") document.documentElement.dataset.demo = "1"; } catch {}
 </script>
 </head>
 <body>
 <div class="topbar"><div class="topbar-in">
   <div class="mark">AI</div>
-  <div class="brand">AI Act Compliance Review</div>
+  <div class="brand">AI Act Compliance Review<span class="demo-pill demo-only" aria-hidden="true">Demo</span></div>
+  <button class="switch" id="demo-switch" type="button" role="switch" aria-checked="false"
+          title="Demo mode runs the review without a model: instant, illustrative results">
+    <span class="track" aria-hidden="true"><span class="knob"></span></span>
+    <span class="switch-lbl">Demo mode</span>
+  </button>
   <div class="theme" id="theme" role="group" aria-label="Color theme">
     <button data-theme="auto" title="Follow the system setting">Auto</button>
     <button data-theme="light">Light</button>
     <button data-theme="dark">Dark</button>
   </div>
 </div></div>
+<div class="modebar" id="modebar" role="status" hidden><div class="modebar-in">
+  <span class="modebar-badge" id="modebar-badge">Demo mode</span>
+  <span id="modebar-text"></span>
+  <button class="link" id="modebar-off" type="button">Switch to normal mode</button>
+</div></div>
 <main>
   <form class="card input" id="form" data-mode="edit">
     <div class="input-head">
-      <h1 id="form-title">Review a system</h1>
-      <p class="muted edit-only">Paste the system card or technical documentation. The review classifies the system
+      <h1><span id="form-title">Review a system</span><span class="tag demo-tag demo-only">Demo</span></h1>
+      <p class="muted edit-only live-only">Paste the system card or technical documentation. The review classifies the system
         under the AI Act, then checks the document against the obligations that apply.</p>
-      <p class="muted edit-only">No documentation yet? <a href="/guide" target="_blank" rel="noopener">Follow the guide</a>
-        to write a system card the review can read.</p>
+      <p class="muted edit-only live-only">No documentation yet? <a href="/guide" target="_blank" rel="noopener">Follow the guide</a>
+        to write a system card the review can read, or load a sample document below.</p>
+      <p class="muted edit-only demo-only" id="demo-hint">Each case runs the demo review on a document from the repository and shows
+        the report for it. No model reads the document: keyword heuristics stand in for the classifier and the judge, so the
+        report is illustrative — it shows what a review looks like, not whether a system complies.</p>
     </div>
+    <!-- Demo mode's case gallery: one card per sample document, labelled with the outcome the demo
+         reaches on it. A click pastes the document below; "Paste & run" also runs the review. -->
+    <details class="cases demo-only" id="cases" hidden>
+      <summary>
+        <span class="cases-title">Try a case</span>
+        <span class="muted small" id="cases-count"></span>
+        <span class="cases-picked" id="cases-picked"></span>
+        <span class="muted small cases-hint">Pick the outcome you want to see. One click runs the demo review.</span>
+      </summary>
+      <div class="cases-grid" id="cases-grid"></div>
+    </details>
     <textarea id="document" placeholder="# System card&#10;&#10;Describe what the system does, who it affects, and who relies on its output…" required></textarea>
     <div class="input-foot">
       <label class="filebtn edit-only">Load a file<input id="file" type="file" accept=".md,.txt,text/plain,text/markdown"></label>
+      <select class="samplebtn edit-only" id="sample" aria-label="Load a sample document" hidden>
+        <option value="">Load a sample…</option>
+      </select>
       <span class="muted small" id="chars"></span>
       <span class="spacer"></span>
-      <span class="muted small edit-only">Makes model calls; takes a minute or two.</span>
+      <span class="muted small edit-only" id="run-hint">Makes model calls; takes a minute or two.</span>
       <button class="link edit-only" id="cancel" type="button">Cancel</button>
       <button class="primary edit-only" id="run" type="submit">Run review</button>
-      <button class="secondary view-only" id="edit" type="button">Edit and re-run</button>
+      <button class="link view-only demo-only" id="show-doc" type="button" aria-expanded="false">Show the reviewed document</button>
+      <button class="secondary view-only live-only" id="edit" type="button">Edit and re-run</button>
       <button class="primary view-only" id="new" type="button">New review</button>
     </div>
   </form>
@@ -50,6 +80,13 @@
   <div class="alert" id="error" role="alert" hidden></div>
   <div id="report"></div>
 </main>
+<!-- Fixed to the window while demo mode is on, so the mode stays in view however far the page
+     scrolls: the bar and banner above scroll away with the top of the page. -->
+<aside class="demo-float demo-only" id="demo-float" aria-label="Demo mode is on">
+  <span class="demo-float-dot" aria-hidden="true"></span>
+  <span class="demo-float-text"><b>Demo mode</b><span id="demo-float-sub">Illustrative — no model is called</span></span>
+  <button class="demo-float-off" id="demo-float-off" type="button" title="Switch to normal mode">Turn off</button>
+</aside>
 <script src="/static/report.js"></script>
 </body>
 </html>

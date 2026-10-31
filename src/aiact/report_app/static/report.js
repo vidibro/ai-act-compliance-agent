@@ -84,21 +84,35 @@ function citeSource(s) {
 // The last report (with the document it reviewed) and the input draft live in this browser's local
 // storage, so a reload or a closed tab does not lose them. Storage can be full or blocked; the page
 // works without it.
+//
+// EACH MODE HAS ITS OWN. Normal mode keeps its draft and report under the keys below, in local
+// storage. Demo mode keeps its own IN MEMORY: it survives a mode switch within the page, not a
+// reload — a demo document is a sample from the repository, one click away again, and not worth
+// its half-megabyte of the storage quota. Switching mode swaps the whole workspace, so a demo
+// document is never shown beside the "Run review" button, nor a real document under the banner.
 const STORE = { last: "aiact-review:last", draft: "aiact-review:draft" };
+const DEMO_STORE = { last: "aiact-review:demo:last", draft: "aiact-review:demo:draft" };
 const OLD_REPORT_KEY = "aiact-review:last-report"; // a bare response, saved by an earlier version
+const memory = new Map(); // the demo workspace
 let maxChars = null; // the server's document limit
 let last = null; // { response, document } of the report on screen
 
+// The key for the workspace of the mode the page is in — or of a given report's mode.
+const keyFor = (kind, inDemo = demo) => (inDemo ? DEMO_STORE : STORE)[kind];
+const inMemory = (key) => Object.values(DEMO_STORE).includes(key);
+
 function store(key, value) {
+  if (inMemory(key)) { memory.set(key, value); return; }
   try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
 }
 
 function restore(key) {
+  if (inMemory(key)) return memory.get(key) ?? null;
   try { return JSON.parse(localStorage.getItem(key) || "null"); } catch { return null; }
 }
 
 function saveDraft() {
-  store(STORE.draft, { document: $("document").value, editing: $("form").dataset.mode === "edit" });
+  store(keyFor("draft"), { document: $("document").value, editing: $("form").dataset.mode === "edit" });
 }
 
 // A saved report keeps its verdicts and notes; its rule texts, actions and citations are rebuilt
@@ -118,9 +132,192 @@ async function refreshSaved() {
     if (!response.ok || last !== saved) return;
     const fresh = await response.json();
     last = { ...saved, response: { ...saved.response, rules: fresh.rules, norms: fresh.norms } };
-    store(STORE.last, last);
+    store(keyFor("last", Boolean(last.response.demo)), last);
     render(last.response);
   } catch {}
+}
+
+// ---- demo or normal --------------------------------------------------------------------------
+// Normal mode sends the document to /api/review, where a model classifies it and judges each duty.
+// Demo mode sends it to /api/demo/review, where keyword heuristics stand in for the model: no key,
+// no cost, a second's wait, and a report that is illustrative rather than an assessment. The page
+// says which mode it is in everywhere it can — the switch in the bar, the bar's colour, a banner,
+// the run button — and every demo report carries the mark however it is shown later.
+//
+// The choice is kept in this browser. When the server has no model (AIACT_LLM_MODEL empty), demo
+// is the only mode and the switch is locked on.
+const DEMO_KEY = "aiact-review:demo";
+const DEMO_NOTE = "This is a demo report: no model read the document, so the classification and the verdicts "
+  + "come from keyword heuristics and illustrate the report rather than assess the system.";
+const DEMO_ON_TEXT = "No model is called: keyword heuristics stand in for the classifier and the judge, so the "
+  + "report is illustrative, not an assessment.";
+// What /api/mode says: the server's AIACT_DEMO_MODE ("available" | "only" | "off"), and whether a
+// live review can run at all — a model named, a key for it found. Until it answers, the page
+// assumes the ordinary case.
+let modeInfo = { demo_mode: "available", live_available: true, live_unavailable_because: null,
+                 llm_model: null, demo_note: DEMO_NOTE };
+let demo = false;
+let workspaceLoaded = false; // false until the first mode is applied on page load
+
+// Demo is the only mode where a live review cannot run (and demo is not switched off).
+const demoLocked = () => modeInfo.demo_mode !== "off" && !modeInfo.live_available;
+
+function setDemo(on, { save = true } = {}) {
+  const next = modeInfo.demo_mode !== "off" && (Boolean(on) || demoLocked());
+  const changed = next !== demo || !workspaceLoaded;
+  if (changed && workspaceLoaded) saveDraft(); // what is on screen belongs to the mode being left
+  demo = next;
+  if (demo) document.documentElement.dataset.demo = "1"; else delete document.documentElement.dataset.demo;
+  const locked = demoLocked();
+  const sw = $("demo-switch");
+  sw.hidden = modeInfo.demo_mode === "off";
+  sw.setAttribute("aria-checked", String(demo));
+  sw.disabled = locked;
+  sw.title = locked ? `${modeInfo.live_unavailable_because} Demo mode is the only mode.`
+    : demo ? "Demo mode is on: no model is called. Click to switch to normal mode."
+    : `Normal mode: reviews call ${modeInfo.llm_model || "the configured model"}. Click for demo mode.`;
+  // The banner: why demo mode is on — by choice, or because nothing else can run. With demo mode
+  // switched off AND no live review possible, the same bar says so, as a warning.
+  const stuck = modeInfo.demo_mode === "off" && !modeInfo.live_available;
+  $("modebar").hidden = !demo && !stuck;
+  $("modebar").classList.toggle("stuck", stuck);
+  $("modebar-badge").textContent = stuck ? "No review can run" : "Demo mode";
+  $("modebar-text").textContent = stuck ? `${modeInfo.live_unavailable_because} Demo mode is switched off (AIACT_DEMO_MODE=off).`
+    : locked ? `${modeInfo.live_unavailable_because} Only demo reviews can run.` : DEMO_ON_TEXT;
+  $("modebar-off").hidden = locked || stuck;
+  $("demo-float-off").hidden = locked;
+  $("demo-float-sub").textContent = locked ? "The only mode on this server" : "Illustrative — no model is called";
+  $("run").textContent = demo ? "Run demo review" : "Run review";
+  $("run-hint").textContent = demo ? "No model is called; takes a second. Illustrative only."
+    : "Makes model calls; takes a minute or two.";
+  document.title = demo ? "AI Act Compliance Review — demo" : "AI Act Compliance Review";
+  if (save) store(DEMO_KEY, demo);
+  if (changed) loadWorkspace();
+}
+
+// Saves from earlier versions of this page: a bare response under its old key, a demo report
+// saved under the normal key before the two modes kept separate workspaces, and a demo workspace
+// saved to local storage before it moved to memory. The first moves to where this version looks
+// for it; the demo ones are dropped — a sample is one click away.
+function migrateSaved() {
+  const old = restore(OLD_REPORT_KEY);
+  if (old?.report && !restore(STORE.last)) {
+    store(STORE.last, { response: old, document: restore(STORE.draft)?.document || "" });
+  }
+  const stale = [OLD_REPORT_KEY, ...Object.values(DEMO_STORE)];
+  if (restore(STORE.last)?.response?.demo) stale.push(STORE.last, STORE.draft);
+  for (const key of stale) { try { localStorage.removeItem(key); } catch {} }
+}
+
+// The document and report of the mode the page is now in — back where the reader left off in that
+// mode, or a clean page where they have not used it yet. Nothing carries over from the other mode.
+function loadWorkspace() {
+  workspaceLoaded = true;
+  showError("");
+  markCase(null);
+  const draft = restore(keyFor("draft"));
+  last = restore(keyFor("last"));
+  if (last && Boolean(last.response?.demo) !== demo) last = null; // the other mode's report
+  $("report").replaceChildren();
+  if (last) {
+    try { render(last.response); } catch { last = null; try { localStorage.removeItem(keyFor("last")); } catch {} }
+  }
+  if (last) refreshSaved();
+  if (last && !draft?.editing) {
+    $("document").value = last.document;
+    setMode("view");
+    markCase(last.sample || null);
+  } else {
+    $("document").value = draft?.document || "";
+    setMode("edit");
+  }
+  countChars();
+}
+
+// Sample documents from the repository — the golden set's reference files, the guide's worked
+// example, the smoke check's vendor pages — so there is always something to run the review on.
+const SAMPLE_GROUPS = [["system_card", "System cards — written to the guide"],
+                       ["reference", "Technical files — complete and compliant"],
+                       ["vendor_page", "Vendor pages — thin input"]];
+
+async function loadSamples() {
+  const select = $("sample");
+  let list = [];
+  try { list = await fetch("/api/samples").then((r) => (r.ok ? r.json() : [])); } catch {}
+  if (!list.length) return;
+  for (const [kind, label] of SAMPLE_GROUPS) {
+    const items = list.filter((sample) => sample.kind === kind);
+    if (!items.length) continue;
+    select.append(el("optgroup", { label }, items.map((sample) =>
+      el("option", { value: sample.id, title: sample.about }, sample.title))));
+  }
+  select.hidden = false;
+  select.addEventListener("change", () => {
+    const id = select.value;
+    select.value = "";
+    if (id) pickSample(id);
+  });
+  buildGallery(list);
+}
+
+// Paste a sample into the input — leaving a report on screen for the editor if need be — and,
+// asked to (always, in demo mode), run the review on it straight away.
+async function pickSample(id, run = false) {
+  let text;
+  try {
+    const response = await fetch(`/api/samples/${encodeURIComponent(id)}`);
+    if (!response.ok) throw new Error(response.statusText);
+    text = (await response.json()).text;
+  } catch {
+    showError("The sample document could not be loaded.");
+    return;
+  }
+  if ($("form").dataset.mode === "view") setMode("edit");
+  const area = $("document");
+  area.value = text;
+  area.setSelectionRange(0, 0);
+  area.scrollTop = 0; // read from the top, as a pasted document would be
+  countChars();
+  saveDraft();
+  showError("");
+  markCase(id);
+  if (run) $("form").requestSubmit();
+  else area.focus();
+}
+
+// ---- the case gallery --------------------------------------------------------------------------
+// Demo mode's only way in: one card per sample, marked with the outcome the demo reaches on it, so
+// the reader picks the case they want to see — a compliant file, a card with gaps, an Annex I
+// product, a prohibited practice — and has its report in one click. There is no free text input
+// in demo mode: the documents are the cases, whose outcomes are known, and a reader's own document
+// belongs in a real review.
+function buildGallery(list) {
+  const grid = $("cases-grid");
+  grid.replaceChildren(...list.map((s) => el("div", { class: `case o-${s.outcome}`, "data-sample": s.id },
+    el("button", { type: "button", class: "case-pick", title: "Run the demo review on this document",
+                   onclick: () => pickSample(s.id, true) },
+      el("span", { class: "case-outcome" }, RISK[s.outcome] || human(s.outcome)),
+      el("span", { class: "case-title" }, s.title.split(/\s+[—–-]\s+/)[0]),
+      el("span", { class: "case-label" }, s.label),
+      el("span", { class: "case-about" }, s.about),
+      el("span", { class: "case-run", "aria-hidden": "true" }, "Run demo review →")))));
+  $("cases-count").textContent = `· ${list.length} cases`;
+  $("cases").hidden = false;
+}
+
+// The card whose document is in the input, if any — named in the folded panel's summary line and
+// cleared when the text is edited. Picking a case folds the panel: the choice is made.
+let currentSample = null; // the sample in the input, carried onto the report it produces
+
+function markCase(id) {
+  currentSample = id || null;
+  let picked = "";
+  for (const card of document.querySelectorAll(".case")) {
+    const on = card.dataset.sample === id;
+    card.classList.toggle("on", on);
+    if (on) picked = card.querySelector(".case-title")?.textContent || id;
+  }
+  $("cases-picked").textContent = picked ? `${picked} reviewed` : "";
 }
 
 // ---- edit or view ----------------------------------------------------------------------------
@@ -129,10 +326,21 @@ async function refreshSaved() {
 function setMode(mode) {
   $("form").dataset.mode = mode;
   $("document").readOnly = mode === "view";
-  $("form-title").textContent = mode === "view" ? "Reviewed document" : "Review a system";
+  $("form-title").textContent = mode === "view" ? "Reviewed document" : demo ? "Pick a case" : "Review a system";
   $("cancel").hidden = !last;
   $("report").hidden = mode === "edit";
+  // In demo mode the cases ARE the input: open while choosing, folded once a report is up, and
+  // the reviewed document hidden behind its toggle until asked for.
+  if (demo) $("cases").open = mode === "edit";
+  showDocument(false);
   saveDraft();
+}
+
+// Demo mode's read-only view of the document a report was made from.
+function showDocument(shown) {
+  $("form").classList.toggle("doc-shown", shown);
+  $("show-doc").textContent = shown ? "Hide the reviewed document" : "Show the reviewed document";
+  $("show-doc").setAttribute("aria-expanded", String(shown));
 }
 
 // ---- running a review ------------------------------------------------------------------------
@@ -142,15 +350,22 @@ function setBusy(busy) {
   $("run").disabled = busy;
   $("document").readOnly = busy || $("form").dataset.mode === "view";
   $("cancel").disabled = busy;
+  // No mode switch while a run is in flight: its report belongs to the mode it was started in.
+  $("demo-switch").disabled = busy || demoLocked();
+  for (const id of ["modebar-off", "demo-float-off"]) $(id).disabled = busy;
+  for (const b of document.querySelectorAll(".case-pick")) b.disabled = busy;
   const status = $("status");
   clearInterval(timer);
   if (!busy) { status.hidden = true; return; }
   const started = Date.now();
-  const text = el("span", {}, "Reviewing… 0s");
+  const verb = demo ? "Running the demo review" : "Reviewing";
+  const text = el("span", {}, `${verb}… 0s`);
   status.replaceChildren(el("span", { class: "spinner" }), text,
-    el("span", { class: "muted small" }, "Classifying the system, then checking each duty."));
+    el("span", { class: "muted small" }, demo
+      ? "No model is called: keyword heuristics stand in for the classifier and the judge."
+      : "Classifying the system, then checking each duty."));
   status.hidden = false;
-  timer = setInterval(() => { text.textContent = `Reviewing… ${Math.round((Date.now() - started) / 1000)}s`; }, 1000);
+  timer = setInterval(() => { text.textContent = `${verb}… ${Math.round((Date.now() - started) / 1000)}s`; }, 1000);
 }
 
 function showError(message) {
@@ -162,8 +377,9 @@ async function runReview(event) {
   event.preventDefault();
   showError("");
   setBusy(true);
+  const inDemo = demo; // the mode the run was started in, whatever the switch does meanwhile
   try {
-    const response = await fetch("/api/review", {
+    const response = await fetch(inDemo ? "/api/demo/review" : "/api/review", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ document: $("document").value }),
@@ -171,10 +387,12 @@ async function runReview(event) {
     const body = await response.json().catch(() => ({}));
     if (!response.ok) {
       const detail = Array.isArray(body.detail) ? body.detail.map((d) => d.msg).join("; ") : body.detail;
-      throw new Error(detail || `The review failed (${response.status}).`);
+      const hint = inDemo || response.status === 413 || response.status === 422 ? ""
+        : "\n\nTo try the page without a model, switch on Demo mode in the bar above.";
+      throw new Error((detail || `The review failed (${response.status}).`) + hint);
     }
-    last = { response: body, document: $("document").value };
-    store(STORE.last, last);
+    last = { response: body, document: $("document").value, sample: currentSample };
+    store(keyFor("last", inDemo), last);
     render(body);
     setMode("view");
     $("report").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -196,13 +414,14 @@ function render(data) {
 
   filters = []; // the bars of the report being replaced
   whenButtons = [];
-  doneKey = data.system_name || "system";
+  doneKey = (data.demo ? "demo:" : "") + (data.system_name || "system");
   refreshVerdict = () => $("report").querySelector(".compliance")
     ?.replaceWith(compliance(report, data, ruleDate, normDate, isFuture));
   const [first, later] = notes(data);
   const { duties, others } = provisions(report, data, ruleDate, normDate, isFuture);
   // A section with nothing to show is null; replaceChildren would print it as text.
   $("report").replaceChildren(...[
+    data.demo ? note("demo", "Demo report — illustrative", data.demo_note || modeInfo.demo_note || DEMO_NOTE) : null,
     ...header(data),
     compliance(report, data, ruleDate, normDate, isFuture),
     ...first,
@@ -224,13 +443,16 @@ function header(data) {
   const report = data.report;
   const c = report.classification;
   const risk = c.overall_risk_class;
+  const demoTag = () => (data.demo ? el("span", { class: "tag demo-tag" }, "Demo") : null);
   const system = el("section", { class: "card system" },
     data.system_name
-      ? el("h2", {}, el("span", { class: "eyebrow" }, "The system"), data.system_name)
-      : el("div", { class: "eyebrow" }, "The system"),
+      ? el("h2", {}, el("span", { class: "eyebrow" }, "The system", demoTag()), data.system_name)
+      : el("div", { class: "eyebrow" }, "The system", demoTag()),
     data.system_summary
       ? el("p", { class: "summary" }, data.system_summary)
       : el("p", { class: "muted" }, "No summary could be written for this document."),
+    data.demo && data.system_summary
+      ? el("p", { class: "muted small" }, "Quoted from the document by the demo; a model would write this summary.") : null,
     el("div", { class: "meta" },
       el("span", {}, "Act version ", el("b", {}, fmtDate(report.act_version_date))),
       el("span", {}, "Generated ", el("b", {}, new Date(report.generated_at).toLocaleString("en-GB")))),
@@ -443,7 +665,7 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
   const roles = [...new Set([...report.findings.map((f) => f.role), ...Object.values(owners).flatMap((o) => [...o])])];
   const visible = roles.filter((r) => !hidden.has(r));
   return el("section", { class: `card compliance ${state}` },
-    el("div", { class: "eyebrow" }, "Verdict"),
+    el("div", { class: "eyebrow" }, "Verdict", data.demo ? el("span", { class: "tag demo-tag" }, "Demo") : null),
     el("div", { class: "answer" }, answer),
     el("p", {}, detail),
     hidden.size && visible.length < roles.length ? el("p", { class: "scope" }, "For ",
@@ -864,9 +1086,22 @@ window.addEventListener("DOMContentLoaded", () => {
   for (const b of document.querySelectorAll("#theme button")) b.addEventListener("click", () => setTheme(b.dataset.theme));
   setTheme(document.documentElement.dataset.theme || "auto");
   $("form").addEventListener("submit", runReview);
-  $("document").addEventListener("input", () => { countChars(); saveDraft(); });
+  migrateSaved();
+  // The saved choice first, so nothing flashes; then the server's word on whether a model exists.
+  setDemo(restore(DEMO_KEY) === true, { save: false });
+  $("demo-switch").addEventListener("click", () => setDemo(!demo));
+  $("modebar-off").addEventListener("click", () => setDemo(false));
+  $("demo-float-off").addEventListener("click", () => setDemo(false));
+  $("show-doc").addEventListener("click", () => showDocument(!$("form").classList.contains("doc-shown")));
+  fetch("/api/mode").then((r) => r.json()).then((info) => {
+    modeInfo = { ...modeInfo, ...info };
+    setDemo(demo, { save: false });
+  }).catch(() => {});
+  loadSamples();
+  $("document").addEventListener("input", () => { countChars(); saveDraft(); markCase(null); });
   $("edit").addEventListener("click", () => { setMode("edit"); $("document").focus(); });
   $("new").addEventListener("click", () => {
+    markCase(null);
     $("document").value = "";
     countChars();
     setMode("edit");
@@ -885,27 +1120,6 @@ window.addEventListener("DOMContentLoaded", () => {
     saveDraft();
   });
 
-  const draft = restore(STORE.draft);
-  last = restore(STORE.last);
-  const old = restore(OLD_REPORT_KEY);
-  if (!last && old?.report) {
-    last = { response: old, document: draft?.document || "" };
-    store(STORE.last, last);
-  }
-  try { localStorage.removeItem(OLD_REPORT_KEY); } catch {}
-  if (last) {
-    try { render(last.response); } catch { last = null; try { localStorage.removeItem(STORE.last); } catch {} }
-  }
-  if (last) refreshSaved();
-  // Back where the reader left off: editing a draft, or reading the last report.
-  if (last && !draft?.editing) {
-    $("document").value = last.document;
-    setMode("view");
-  } else {
-    $("document").value = draft?.document || "";
-    setMode("edit");
-  }
-  countChars();
   fetch("/api/limits").then((r) => r.json()).then((limits) => {
     maxChars = limits.max_document_chars || null;
     countChars();

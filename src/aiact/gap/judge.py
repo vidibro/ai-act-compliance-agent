@@ -37,7 +37,7 @@ import json
 import re
 import threading
 from dataclasses import dataclass
-from typing import Any
+from typing import TYPE_CHECKING, Any, Protocol
 
 from aiact.config import get_settings
 from aiact.gap.criteria import aggregate_confidence, aggregate_reasoning, settle
@@ -188,6 +188,18 @@ def _unsure(why: str, hits: tuple[Hit, ...] = (), prompt: str = "") -> Judgement
         hits=hits,
         prompt=prompt,
     )
+
+
+class Judge(Protocol):
+    """What the gap graph needs of a judge: one rule, one document, one Judgement.
+
+    The contract in the shape `Brain` takes for the classification layer — structural, so the
+    graph never names an implementation. `LLMJudge` below is the judge; the report app's demo
+    mode supplies a deterministic stand-in with the same shape, and the tests stub it."""
+
+    name: str
+
+    def judge(self, rule: PolicyRule, document: str) -> Judgement: ...
 
 
 class LLMJudge:
@@ -628,3 +640,8 @@ def _resolve_chunk_id(reported: object, quote: str | None, hits: tuple[Hit, ...]
             if needle and needle in " ".join(hit.chunk.body.split()):
                 return hit.chunk.chunk_id
     return None
+
+
+if TYPE_CHECKING:
+    # Compile-time proof that LLMJudge satisfies the Judge protocol — name AND signature.
+    _llm_judge_conforms: Judge = LLMJudge.__new__(LLMJudge)

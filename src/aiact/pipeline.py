@@ -24,7 +24,7 @@ from aiact.brain import Brain
 from aiact.classify.graph import classify, load_questions
 from aiact.gap import roles as role_questions
 from aiact.gap.graph import DEFAULT_WORKERS, analyse
-from aiact.gap.judge import LLMJudge
+from aiact.gap.judge import Judge
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ProhibitedPractice, RiskClass
 from aiact.schemas.policy import PolicyRuleset
@@ -148,7 +148,7 @@ def review(
     document: str,
     spec: PolicyRuleset,
     brain: Brain,
-    judge: LLMJudge | None = None,
+    judge: Judge | None = None,
     system_id: str = "system",
     questions: dict[str, Question] | None = None,
     max_workers: int = DEFAULT_WORKERS,
