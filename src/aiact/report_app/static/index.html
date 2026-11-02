@@ -60,6 +60,31 @@
       <div class="cases-grid" id="cases-grid"></div>
     </details>
     <textarea id="document" placeholder="# System card&#10;&#10;Describe what the system does, who it affects, and who relies on its output…" required></textarea>
+    <!-- Bring your own key. The model and the key a live review runs on, for this request only.
+         The key is typed into a password field, sent in a request header, and kept nowhere: not
+         in local storage, not on the report, not past a reload (autocomplete="off" also stops the
+         browser restoring it). Hidden in demo mode, which calls no model, and where the server
+         refuses caller keys (AIACT_BYOK_MODE=off). -->
+    <fieldset class="byok edit-only live-only" id="byok" hidden>
+      <legend class="byok-title">Model and key</legend>
+      <p class="muted small byok-why" id="byok-why"></p>
+      <div class="byok-fields">
+        <label class="field">
+          <span class="field-label">Model</span>
+          <input id="model" list="models" type="text" autocomplete="off" spellcheck="false"
+                 placeholder="e.g. anthropic/claude-haiku-4-5" aria-describedby="model-error">
+          <datalist id="models"></datalist>
+          <span class="field-error" id="model-error" role="alert" hidden></span>
+        </label>
+        <label class="field">
+          <span class="field-label" id="api-key-label">Provider key</span>
+          <input id="api-key" type="password" autocomplete="off" spellcheck="false"
+                 data-lpignore="true" data-1p-ignore data-bwignore
+                 placeholder="Sent with this review only" aria-describedby="api-key-error">
+          <span class="field-error" id="api-key-error" role="alert" hidden></span>
+        </label>
+      </div>
+    </fieldset>
     <div class="input-foot">
       <label class="filebtn edit-only">Load a file<input id="file" type="file" accept=".md,.txt,text/plain,text/markdown"></label>
       <select class="samplebtn edit-only" id="sample" aria-label="Load a sample document" hidden>

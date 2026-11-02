@@ -118,6 +118,21 @@ click away again.
   live reviews off — a public showcase; `off` removes the demo, and `POST /api/demo/review`
   answers 403.
 
+**Bring your own key.** A reader can run a live review on their own provider account: the key goes
+in the `X-LLM-API-Key` header of `POST /api/review` and the model, optionally, in the body
+(`model`, any LiteLLM model string; `GET /api/models` lists the ones this project has priced and
+shaped a request for). The review's three model seams — the classification brain, the judge and
+the summariser — all run on that key and that model, for that request only; the key is never
+stored, logged, traced or indexed (see `SECURITY.md`), and the response names the model that wrote
+the report. `AIACT_BYOK_MODE` decides what the server does with a key: `available` (the default)
+honours one where sent and uses its own otherwise; `required` never spends the server's keys on a
+review — a public deployment; `off` refuses the header, so a document goes only to the provider the
+operator configured. `GET /api/mode` reports the setting in `byok`, with whether a key or a model
+must come with the request. On the page, the two fields sit under the document in normal mode —
+the model with a list of the priced ones to pick from, the key in a password field that is never
+shown, never saved and empty again after a reload — and say, beside them, which of the two this
+server needs. Demo mode has neither: it calls no model.
+
 ## The review, end to end
 
 `review()` classifies the document, then checks it against the obligations that classification

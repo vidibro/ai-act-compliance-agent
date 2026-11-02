@@ -129,6 +129,23 @@ textarea { width: 100%; min-height: 240px; resize: vertical; font: 13px/1.6 "Jet
            padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--bg);
            color: var(--ink); outline: none; }
 textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+/* Bring your own key: the model and key fields under the document. */
+.byok { margin: 0; padding: 12px 14px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+        display: grid; gap: 8px; }
+.byok-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+              padding: 0 4px; }
+.byok-why { max-width: none; }
+.byok-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .byok-fields { grid-template-columns: 1fr; } }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field-label { font-size: 12px; font-weight: 600; }
+.field input { width: 100%; font: 13px/1.4 "JetBrains Mono", ui-monospace, monospace; padding: 8px 10px;
+               border: 1px solid var(--line-strong); border-radius: 7px; background: var(--bg); color: var(--ink);
+               outline: none; }
+.field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.field input[aria-invalid="true"] { border-color: var(--red); }
+.field input[aria-invalid="true"]:focus { box-shadow: 0 0 0 3px var(--red-soft); }
+.field-error { font-size: 12px; font-weight: 600; color: var(--red); }
 .input-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
 #chars.over { color: var(--red); font-weight: 600; }
 .filebtn { font-size: 12px; font-weight: 600; color: var(--accent-ink); cursor: pointer; }

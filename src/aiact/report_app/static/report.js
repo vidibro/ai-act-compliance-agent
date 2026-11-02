@@ -111,8 +111,10 @@ function restore(key) {
   try { return JSON.parse(localStorage.getItem(key) || "null"); } catch { return null; }
 }
 
+// The model is part of the draft; the key is NOT — see "bring your own key" below.
 function saveDraft() {
-  store(keyFor("draft"), { document: $("document").value, editing: $("form").dataset.mode === "edit" });
+  store(keyFor("draft"), { document: $("document").value, editing: $("form").dataset.mode === "edit",
+                           model: $("model").value });
 }
 
 // A saved report keeps its verdicts and notes; its rule texts, actions and citations are rebuilt
@@ -151,16 +153,20 @@ const DEMO_NOTE = "This is a demo report: no model read the document, so the cla
   + "come from keyword heuristics and illustrate the report rather than assess the system.";
 const DEMO_ON_TEXT = "No model is called: keyword heuristics stand in for the classifier and the judge, so the "
   + "report is illustrative, not an assessment.";
-// What /api/mode says: the server's AIACT_DEMO_MODE ("available" | "only" | "off"), and whether a
-// live review can run at all — a model named, a key for it found. Until it answers, the page
-// assumes the ordinary case.
+// What /api/mode says: the server's AIACT_DEMO_MODE ("available" | "only" | "off"), whether a
+// live review can run on the server's own configuration — a model named, a key for it found — and,
+// in `byok`, whether a reader can bring their own key and model instead. Until it answers, the
+// page assumes the ordinary case, with no key fields shown.
 let modeInfo = { demo_mode: "available", live_available: true, live_unavailable_because: null,
-                 llm_model: null, demo_note: DEMO_NOTE };
+                 llm_model: null, byok: { mode: "off" }, demo_note: DEMO_NOTE };
 let demo = false;
 let workspaceLoaded = false; // false until the first mode is applied on page load
 
+// A live review can run here: on the server's own configuration, or on a key the reader brings.
+const byok = () => modeInfo.byok || { mode: "off" };
+const liveReachable = () => modeInfo.live_available || (modeInfo.demo_mode !== "only" && byok().mode !== "off");
 // Demo is the only mode where a live review cannot run (and demo is not switched off).
-const demoLocked = () => modeInfo.demo_mode !== "off" && !modeInfo.live_available;
+const demoLocked = () => modeInfo.demo_mode !== "off" && !liveReachable();
 
 function setDemo(on, { save = true } = {}) {
   const next = modeInfo.demo_mode !== "off" && (Boolean(on) || demoLocked());
@@ -175,10 +181,10 @@ function setDemo(on, { save = true } = {}) {
   sw.disabled = locked;
   sw.title = locked ? `${modeInfo.live_unavailable_because} Demo mode is the only mode.`
     : demo ? "Demo mode is on: no model is called. Click to switch to normal mode."
-    : `Normal mode: reviews call ${modeInfo.llm_model || "the configured model"}. Click for demo mode.`;
+    : `Normal mode: reviews call ${modeInfo.llm_model || "the model you name"}${byok().key_required ? " on your own key" : ""}. Click for demo mode.`;
   // The banner: why demo mode is on — by choice, or because nothing else can run. With demo mode
   // switched off AND no live review possible, the same bar says so, as a warning.
-  const stuck = modeInfo.demo_mode === "off" && !modeInfo.live_available;
+  const stuck = modeInfo.demo_mode === "off" && !liveReachable();
   $("modebar").hidden = !demo && !stuck;
   $("modebar").classList.toggle("stuck", stuck);
   $("modebar-badge").textContent = stuck ? "No review can run" : "Demo mode";
@@ -191,8 +197,104 @@ function setDemo(on, { save = true } = {}) {
   $("run-hint").textContent = demo ? "No model is called; takes a second. Illustrative only."
     : "Makes model calls; takes a minute or two.";
   document.title = demo ? "AI Act Compliance Review — demo" : "AI Act Compliance Review";
+  applyByok();
   if (save) store(DEMO_KEY, demo);
   if (changed) loadWorkspace();
+}
+
+// ---- bring your own key ------------------------------------------------------------------------
+// The model and key a live review runs on, entered on the page and sent with the request: the
+// model in the body, the key in the header the server names (X-LLM-API-Key). THE KEY IS KEPT
+// NOWHERE. It lives in its password field and in the one request that sends it — never in a
+// variable that outlives that call, never in local storage or the draft (saveDraft stores the
+// document and the model), never on the report or in an error. autocomplete="off" on the field
+// keeps the browser from restoring it on reload, and pagehide clears it besides. The model is not
+// a secret and is remembered with the draft, because it is tiresome to retype.
+//
+// The fields are live-only — demo mode calls no model — and hidden where the server refuses a
+// caller's key (AIACT_BYOK_MODE=off), where the page runs exactly as it did without them.
+const KEY_MAX_LENGTH = 2048;
+const KEY_SHAPE = /^[\x21-\x7e]+$/; // one token of printable ASCII, as the server checks
+const MODEL_EXAMPLE = "anthropic/claude-haiku-4-5";
+const KEY_KEPT_NOWHERE = "The key is sent with the request only — never stored by the server or by this page — "
+  + "and is cleared when you reload.";
+
+// Why the fields are there, for the server's situation: must a key come, must a model, or neither.
+function byokWhy() {
+  const info = byok();
+  const server = modeInfo.llm_model;
+  if (info.mode === "required") {
+    return `This server runs on your own key: reviews never use one of its own. Enter the provider key for the model you name`
+      + `${server ? `, or for ${server} if you name none` : ""}. ${KEY_KEPT_NOWHERE}`;
+  }
+  if (info.model_required) {
+    return `This server names no model: enter the model to review with, and your provider key for it unless the server `
+      + `holds one. ${KEY_KEPT_NOWHERE}`;
+  }
+  if (info.key_required) {
+    return `This server holds no key for its model (${server}): enter your own provider key to run a live review — `
+      + `and another model, if you like. ${KEY_KEPT_NOWHERE}`;
+  }
+  return `Optional. Leave both blank to run on the server's model${server ? ` (${server})` : ""} and key. `
+    + `A key you enter is used instead, for the model you name. ${KEY_KEPT_NOWHERE}`;
+}
+
+function applyByok() {
+  const info = byok();
+  const shown = info.mode !== "off" && modeInfo.demo_mode !== "only";
+  $("byok").hidden = !shown;
+  if (!shown) return;
+  $("byok-why").textContent = byokWhy();
+  $("model").placeholder = modeInfo.llm_model ? `Server default: ${modeInfo.llm_model}` : `e.g. ${MODEL_EXAMPLE}`;
+  // aria-required rather than required: the browser's own bubble would speak before the messages
+  // below, in its words rather than these.
+  $("model").setAttribute("aria-required", String(Boolean(info.model_required)));
+  $("api-key").setAttribute("aria-required", String(Boolean(info.key_required)));
+  $("api-key-label").textContent = info.key_required ? "Provider key (required)" : "Provider key";
+}
+
+async function loadModels() {
+  let list = [];
+  try { list = await fetch("/api/models").then((r) => (r.ok ? r.json() : [])); } catch {}
+  $("models").replaceChildren(...list.map((m) => el("option", { value: m.model }, m.vendor)));
+}
+
+// What is wrong with a value, in the words shown under its field — or "" where nothing is.
+function modelError(value) {
+  const info = byok();
+  if (!value) return info.model_required ? `The server names no model: enter one, e.g. ${MODEL_EXAMPLE}.` : "";
+  const pattern = info.model_pattern ? new RegExp(info.model_pattern) : null;
+  if (pattern && !pattern.test(value)) {
+    return `Not a model string: letters, digits and . _ : @ / - only, up to 200 characters — e.g. ${MODEL_EXAMPLE}.`;
+  }
+  return "";
+}
+
+function keyError(value) {
+  if (!value) return byok().key_required ? "Enter your provider key: this server has none to run the review on." : "";
+  if (value.length > KEY_MAX_LENGTH || !KEY_SHAPE.test(value)) {
+    return "Not a usable key: one token of printable characters, with no spaces.";
+  }
+  return "";
+}
+
+function setFieldError(id, message) {
+  $(`${id}-error`).textContent = message;
+  $(`${id}-error`).hidden = !message;
+  $(id).setAttribute("aria-invalid", message ? "true" : "false");
+}
+
+// The model and key to send a live review with — or null, after showing what is wrong with them.
+// The returned key goes straight into the request and nowhere else.
+function byokInputs() {
+  if ($("byok").hidden) return { model: "", key: "" };
+  const model = $("model").value.trim();
+  const key = $("api-key").value.trim();
+  const errors = [["model", modelError(model)], ["api-key", keyError(key)]];
+  for (const [id, message] of errors) setFieldError(id, message);
+  const first = errors.find(([, message]) => message);
+  if (first) { $(first[0]).focus(); return null; }
+  return { model, key };
 }
 
 // Saves from earlier versions of this page: a bare response under its old key, a demo report
@@ -223,6 +325,7 @@ function loadWorkspace() {
     try { render(last.response); } catch { last = null; try { localStorage.removeItem(keyFor("last")); } catch {} }
   }
   if (last) refreshSaved();
+  if (!demo) $("model").value = draft?.model || "";
   if (last && !draft?.editing) {
     $("document").value = last.document;
     setMode("view");
@@ -376,13 +479,19 @@ function showError(message) {
 async function runReview(event) {
   event.preventDefault();
   showError("");
-  setBusy(true);
   const inDemo = demo; // the mode the run was started in, whatever the switch does meanwhile
+  // A demo review sends no model and no key: it calls no model. A live one sends what the fields
+  // hold, once they pass — the key in its header, the model in the body.
+  const inputs = inDemo ? { model: "", key: "" } : byokInputs();
+  if (!inputs) return;
+  const headers = { "Content-Type": "application/json" };
+  if (inputs.key) headers[byok().header || "X-LLM-API-Key"] = inputs.key;
+  setBusy(true);
   try {
     const response = await fetch(inDemo ? "/api/demo/review" : "/api/review", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ document: $("document").value }),
+      headers,
+      body: JSON.stringify({ document: $("document").value, ...(inputs.model ? { model: inputs.model } : {}) }),
     });
     const body = await response.json().catch(() => ({}));
     if (!response.ok) {
@@ -455,7 +564,8 @@ function header(data) {
       ? el("p", { class: "muted small" }, "Quoted from the document by the demo; a model would write this summary.") : null,
     el("div", { class: "meta" },
       el("span", {}, "Act version ", el("b", {}, fmtDate(report.act_version_date))),
-      el("span", {}, "Generated ", el("b", {}, new Date(report.generated_at).toLocaleString("en-GB")))),
+      el("span", {}, "Generated ", el("b", {}, new Date(report.generated_at).toLocaleString("en-GB"))),
+      data.model ? el("span", {}, "Model ", el("b", {}, data.model)) : null),
   );
   const classification = el("section", { class: `card verdict ${risk}` },
     el("div", { class: "eyebrow" }, "System classification"),
@@ -1098,7 +1208,12 @@ window.addEventListener("DOMContentLoaded", () => {
     setDemo(demo, { save: false });
   }).catch(() => {});
   loadSamples();
+  loadModels();
   $("document").addEventListener("input", () => { countChars(); saveDraft(); markCase(null); });
+  $("model").addEventListener("input", () => { setFieldError("model", ""); saveDraft(); });
+  $("api-key").addEventListener("input", () => setFieldError("api-key", ""));
+  // The key does not outlive the page: a reload or a closed tab starts with the field empty.
+  window.addEventListener("pagehide", () => { $("api-key").value = ""; });
   $("edit").addEventListener("click", () => { setMode("edit"); $("document").focus(); });
   $("new").addEventListener("click", () => {
     markCase(null);

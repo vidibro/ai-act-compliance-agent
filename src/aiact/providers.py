@@ -130,9 +130,11 @@ _GATEWAYS = ("litellm_proxy", "openai_like", "custom_openai")
 #   - OpenAI's reasoning family cannot be turned off; the nearest honest value is "low".
 NO_THINKING = "none"
 
-# Model-name prefix -> vendor, for resolving through a gateway. Only needed where the branches
-# below key on the PROVIDER; `claude-` is already matched by name alone.
+# Model-name prefix -> vendor, for resolving through a gateway. The profile branches below match
+# `claude-` by name alone; it is listed so that `vendor_behind` names the vendor for every model
+# the report app knows, which is what the app keys its "is there a key for this?" check on.
 _VENDOR_BY_NAME = (
+    ("claude-", "anthropic"),
     ("gemini", "gemini"),
     ("gpt-", "openai"),
     ("o1", "openai"),
@@ -143,19 +145,28 @@ _VENDOR_BY_NAME = (
 )
 
 
-def gateway_kwargs() -> dict[str, str]:
-    """`api_base`/`api_key` for the configured LiteLLM proxy — {} when talking to a vendor direct.
+def gateway_kwargs(api_key: str | None = None) -> dict[str, str]:
+    """`api_base`/`api_key` for one completion call.
 
-    The key is read from the environment on every call and never stored on Settings: a secret on a
+    With no proxy configured and no `api_key`, this is {} and LiteLLM reads the vendor's own
+    variable (ANTHROPIC_API_KEY and the like). With a proxy, `api_base` points at it and the key
+    is the proxy's, from LITELLM_PROXY_API_KEY.
+
+    `api_key` is a CALLER'S key (bring-your-own-key): it is passed through as the credential for
+    this call and takes the place of whichever key the environment would have supplied — the
+    proxy's where one is configured, the vendor's otherwise. It is used here and kept nowhere.
+
+    The environment is read on every call and no key is ever stored on Settings: a secret on a
     long-lived config object outlives the request that needed it and leaks into any repr of it.
     """
     from aiact.config import get_settings
 
     base = get_settings().llm_api_base
-    if not base:
-        return {}
-    key = os.environ.get("LITELLM_PROXY_API_KEY", "")
-    return {"api_base": base.rstrip("/"), **({"api_key": key} if key else {})}
+    kwargs: dict[str, str] = {"api_base": base.rstrip("/")} if base else {}
+    key = api_key or (os.environ.get("LITELLM_PROXY_API_KEY", "") if base else "")
+    if key:
+        kwargs["api_key"] = key
+    return kwargs
 
 
 def vendor_behind(model: str) -> tuple[str, str]:

@@ -162,6 +162,7 @@ def test_a_normal_review_that_cannot_reach_the_model_says_so(client):
             raise RuntimeError("Missing Anthropic API Key")
 
     app.dependency_overrides[get_brain] = lambda: Broken()
+    app.dependency_overrides[get_judge] = lambda: DemoJudge()  # the brain fails first either way
     app.dependency_overrides[get_summariser] = lambda: DemoSummariser()
     response = client.post("/api/review", json={"document": sample("guide-system-card")})
     assert response.status_code == 502

@@ -218,10 +218,15 @@ class LLMJudge:
         profile: ProviderProfile | None = None,
         k: int = DEFAULT_K,
         reference_content: bool = True,
+        api_key: str | None = None,
     ) -> None:
         settings = get_settings()
         self.model = model or settings.llm_model
         self.profile = profile or profile_for(self.model, effort or settings.effort_for("judge"))
+        # A caller's own key (bring-your-own-key), or None for the environment's. Used on this
+        # judge's calls and nowhere else — in particular it never reaches the document index,
+        # which holds the document and only the document.
+        self._api_key = api_key
         self.k = k
         # Whether a resolved cross-reference brings its section's text along, or only the fact that
         # it exists. Existence settles GAP; the content is what lets "metrics are in §8" reach PASS.
@@ -419,7 +424,7 @@ class LLMJudge:
             response_format={"type": "json_object"},
             num_retries=_NUM_RETRIES,
             **({"metadata": metadata} if metadata else {}),
-            **gateway_kwargs(),
+            **gateway_kwargs(self._api_key),
             **self.profile.completion_kwargs,
         )
         self.usage.record(response, cache_marked=isinstance(user_content, list))

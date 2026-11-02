@@ -1155,6 +1155,18 @@ operator never holds their credential. Shape:
 persisted or logged — a test asserts the key never appears in trace metadata, logs, or the vector
 store; the corresponding `SECURITY.md` items moved from **Planned** to current.
 
+**Done, bar the hardening.** `POST /api/review` takes the key in `X-LLM-API-Key` and the model in
+the body; a per-request `LLMAccess` builds all three seams (`get_judge` no longer hands the gap layer
+an environment-only default), `providers.gateway_kwargs(api_key)` is the one place the key goes
+onto a call, `AIACT_BYOK_MODE` is `available` / `required` / `off`, `GET /api/mode` carries a
+`byok` block and `GET /api/models` the priced models. `tests/test_byok.py` is the DoD test, and
+found one leak path while being written: the summariser's failure, logged from its own thread,
+now goes through `scrub`. The page has the two fields (`report.js`, "bring your own key"): the key
+in a password field that is never stored, never in the draft, cleared on `pagehide` and not
+restored by the browser (`autocomplete="off"`); the model validated against the pattern
+`/api/mode` publishes; and the page no longer locks into demo mode where a reader's key would do.
+Outstanding: auth and rate-limiting in front of it.
+
 ## Backlog (post-v0.1, only after M6 ships)
 
 - rule-compiler (generate policy spec from Act text) — for scaling to other Annex III areas.
