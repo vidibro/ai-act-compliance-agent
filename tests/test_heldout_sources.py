@@ -78,14 +78,19 @@ def test_the_documents_are_not_committed(sources):
     deliberate bargain; a committed copy would hash to one of the values below, whatever it was
     named, so the hashes are what this checks rather than a filename pattern."""
     cited = {s["sha256"]: s["case_id"] for s in sources}
-    tracked = subprocess.run(
-        ["git", "ls-files", "-z"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=True,
-    ).stdout.split("\0")
-    for name in filter(None, tracked):
+    try:
+        listing = subprocess.run(
+            ["git", "ls-files", "-z"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except FileNotFoundError:
+        pytest.skip("git is not installed, so nothing here counts as committed")
+    except subprocess.CalledProcessError as exc:
+        pytest.skip(f"not a usable git repository: {exc.stderr.strip()}")
+    for name in filter(None, listing.stdout.split("\0")):
         path = ROOT / name
         if not path.is_file():
             continue
