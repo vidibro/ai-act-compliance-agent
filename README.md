@@ -71,6 +71,16 @@ The same review as a web page — paste a document, read the report — is the *
 make app        # http://127.0.0.1:8766, model and key from .env
 ```
 
+**Download report** saves the report on screen as a Markdown file. The button is one pill with
+three stops: docked at the report's head beside the system's name, fixed to the window while
+reading, and docked again at the report's end — at most one on screen at a time.
+The file holds the classification, the verdict, every checked duty with its evidence and criteria,
+the checklist as a task list ticked the way the reader ticked it, the other provisions and the
+disclaimer — the whole report whatever the page's filters show, and a demo report stays marked as
+one. The Act's
+own wording behind each row is left out; each row keeps its citation. The file is written in the
+browser (`static/report-md.js`), because the ticks and the verdict they decide exist only there.
+
 ## The report app's two modes
 
 The page runs in one of two modes, and says which in the bar, in a banner, in a label fixed to the

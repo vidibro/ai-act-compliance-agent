@@ -105,6 +105,11 @@
   <div class="alert" id="error" role="alert" hidden></div>
   <div id="report"></div>
 </main>
+<!-- Download .md while reading the report: the report carries the button at its head and at its
+     end, and this one is fixed to the window in between — shown only once the head's button has
+     scrolled away and the end's is not yet in view, so there is never more than one on screen. -->
+<button class="export-md export-float" id="export-float" type="button" hidden
+        title="Save this report as a Markdown file, with the checklist as you have ticked it">Download report</button>
 <!-- Fixed to the window while demo mode is on, so the mode stays in view however far the page
      scrolls: the bar and banner above scroll away with the top of the page. -->
 <aside class="demo-float demo-only" id="demo-float" aria-label="Demo mode is on">
@@ -113,5 +118,6 @@
   <button class="demo-float-off" id="demo-float-off" type="button" title="Switch to normal mode">Turn off</button>
 </aside>
 <script src="/static/report.js"></script>
+<script src="/static/report-md.js"></script>
 </body>
 </html>

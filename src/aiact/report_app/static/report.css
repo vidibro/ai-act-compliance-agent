@@ -1,4 +1,11 @@
 :root {
+  /* The right edge of the report's content — a 1040px column, inside 24px of main padding, a 1px
+     card border and 20px of card padding — as an offset from the window's right edge. Everything
+     fixed to the window lines up on it: the download pill, which docks there at the report's head
+     and end, and the demo label under it. % rather than vw: for a fixed element it excludes the
+     scrollbar, which vw counts. */
+  --float-right: calc(max(0px, 50% - 520px) + 45px);
+  --download: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   --bg: #ffffff; --surface: #f7f7f6; --raised: #ffffff; --ink: #0b0b0b; --muted: #6d6d6a;
   --faint: #a3a3a0; --line: #e7e7e4; --line-strong: #d4d4d0;
@@ -399,9 +406,42 @@ ul.criteria .why.gap .why-icon { background: var(--red); }
 ul.criteria .why.inadequate .why-icon, ul.criteria .why.needs_review .why-icon { background: var(--orange); }
 .empty { padding: 14px 20px; color: var(--muted); font-size: 13px; }
 
-footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 24px; white-space: pre-wrap; }
+footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 0; white-space: pre-wrap; }
+
+/* ---- saving the report ----------------------------------------------------------------------- */
+/* "Download report" is ONE element with three stops: docked at the report's head beside the
+   system's name, fixed to the bottom of the window while reading (.export-float), and docked
+   again at the report's end. The page shows at most one at a time (see placeExportFloat), so the
+   same pill — the mode's accent, like the run button — reads as following the reader down. */
+.export-md { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; flex: none;
+             font: inherit; font-size: 13px; font-weight: 700; padding: 9px 18px; border: 0;
+             border-radius: 999px; background: var(--accent); color: var(--accent-text); cursor: pointer; }
+.export-md:hover { filter: brightness(1.06); }
+.export-md:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+.export-md::before { content: ""; flex: none; width: 15px; height: 15px; background-color: currentColor;
+                     -webkit-mask: var(--download) center / contain no-repeat;
+                     mask: var(--download) center / contain no-repeat; }
+.system-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px 20px; }
+.report-end { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between;
+              gap: 12px 20px; flex-wrap: wrap; margin-bottom: 24px; }
+.report-end-title { font-weight: 700; }
+.report-end p { margin: 2px 0 0; }
+/* On the report's edge (--float-right), where it docks at the head and end, so it reads as the same
+   element on its way down; the demo label lines up under it. */
+.export-float { position: fixed; right: var(--float-right); bottom: 20px; z-index: 30;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, .25); }
+.export-float[hidden] { display: none; }
+html[data-demo="1"] .export-float { bottom: 82px; } /* above the demo label */
+@media (max-width: 640px) {
+  /* No room beside the name: the button closes the card instead of splitting name from summary. */
+  .system-head { display: contents; }
+  .system-head button { order: 1; justify-self: start; }
+  .export-float { right: 50%; transform: translateX(50%); bottom: 16px; }
+  html[data-demo="1"] .export-float { bottom: 73px; } /* the same 14px above the label as on desktop */
+}
 
 @media (max-width: 760px) {
+  :root { --float-right: calc(max(0px, 50% - 520px) + 37px); }
   main, .topbar-in { padding: 16px; }
   .section-head::before { left: -16px; right: -16px; }
   details.item > summary { grid-template-columns: auto auto minmax(0, 1fr); padding: 10px 44px 10px 16px; }
@@ -522,7 +562,7 @@ html[data-demo="1"] #form[data-mode="view"]:not(.doc-shown) #chars { display: no
    the mode is on screen at every scroll position. Bottom-right keeps it clear of the column
    names that stick to the top of the window, and the page gains room at its end so the label
    never covers the last lines. */
-.demo-float { position: fixed; right: 20px; bottom: 20px; z-index: 30; display: flex; align-items: center; gap: 10px;
+.demo-float { position: fixed; right: var(--float-right); bottom: 20px; z-index: 30; display: flex; align-items: center; gap: 10px;
               max-width: calc(100vw - 40px); padding: 9px 10px 9px 14px; border-radius: 999px;
               background: var(--demo); color: var(--demo-text); font-size: 12px; line-height: 1.3;
               box-shadow: 0 6px 20px rgba(0, 0, 0, .28), 0 0 0 3px var(--demo-soft); }
