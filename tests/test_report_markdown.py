@@ -118,19 +118,24 @@ def test_the_download_belongs_to_the_report_not_to_the_input(client):
     render = script.split("function render(data)")[1].split("\n}\n")[0]
     assert render.index('class: "disclaimer"') < render.index('"card report-end"')
     assert "exportButton()" in render
-    # The pill: the same element (class and label), shown only between the two stops, and re-placed
-    # when rows open without a scroll.
-    assert '<button class="export-md export-float" id="export-float" type="button" hidden' in page
-    assert ">Download report</button>" in page and '"Download report"' in script
-    assert '$("export-float").addEventListener("click"' in script
+    # The floating pair: the same buttons (class and label), in the row fixed to the window, shown
+    # only between the two stops, and re-placed when rows open without a scroll.
+    floatbar = page.split('<div class="floatbar" id="floatbar">')[1].split("\n</div>")[0]
+    pair = floatbar.split('id="export-float" hidden>')[1]
+    print_at = pair.index('class="print-report" id="print-float"')
+    assert print_at < pair.index('class="export-md" id="download-float"')  # Download rightmost
+    assert ">Download</button>" in pair and '"Download"' in script
+    assert 'aria-label="Download report as Markdown"' in pair
+    assert '$("download-float").addEventListener("click", () => downloadMarkdown())' in script
     assert '$("report").addEventListener("toggle", placeExportFloat, true)' in script
     styles = client.get("/static/report.css").text
-    # The pill and the demo label share one right edge, the report's, at every window width —
-    # not one on the report's edge and one on the window's.
-    assert "\n.export-float { position: fixed; right: var(--float-right);" in styles
-    assert "\n.demo-float { position: fixed; right: var(--float-right);" in styles
+    # One row holds the demo label and the pair, on the report's right edge at every window width —
+    # not one on the report's edge and one on the window's, and not stacked.
+    assert floatbar.index('id="demo-float"') < floatbar.index('id="export-float"')
+    assert "\n.floatbar { position: fixed; right: var(--float-right);" in styles
     assert styles.count("--float-right: calc(max(0px, 50% - 520px)") == 2  # main's two paddings
-    assert 'html[data-demo="1"] .export-float { bottom:' in styles  # above the demo label
+    # On a phone, centred across the whole width rather than from a midpoint (half the window).
+    assert ".floatbar { left: 12px; right: 12px; bottom: 12px; justify-content: center; }" in styles
 
 
 # ---- what the file says ------------------------------------------------------------------------

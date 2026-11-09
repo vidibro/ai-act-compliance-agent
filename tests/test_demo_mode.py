@@ -479,11 +479,19 @@ def test_demo_mode_keeps_a_label_fixed_to_the_window(client):
     page = client.get("/").text
     assert 'id="demo-float"' in page and "demo-only" in page.split('id="demo-float"')[0][-80:]
     assert 'id="demo-float-off"' in page
+    # In the row fixed to the window, beside the report's Print and Download while reading.
+    floatbar = page.split('<div class="floatbar" id="floatbar">')[1].split("\n</div>")[0]
+    assert 'id="demo-float"' in floatbar
     styles = client.get("/static/report.css").text
-    rule = styles.split(".demo-float {", 1)[1].split("}", 1)[0]
+    rule = styles.split(".floatbar {", 1)[1].split("}", 1)[0]
     assert "position: fixed" in rule
+    # One line: the mode and a way out, no subline; on a phone, "Demo" and a ✕ that keeps its name.
+    label = floatbar.split('id="demo-float"')[1].split("</aside>")[0]
+    assert "Illustrative" not in label and 'id="demo-float-sub"' not in label
+    assert 'aria-label="Turn off demo mode"' in label
     script = client.get("/static/report.js").text
     assert '$("demo-float-off").addEventListener("click"' in script
+    assert "demo-float-sub" not in script
 
 
 def test_each_mode_keeps_its_own_document_and_report(client):

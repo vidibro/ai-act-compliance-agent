@@ -6,6 +6,8 @@
      scrollbar, which vw counts. */
   --float-right: calc(max(0px, 50% - 520px) + 45px);
   --download: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --printer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 6V2.5h7V6M4.5 11.5h-2v-5h11v5h-2M4.5 9.5h7v4h-7z' fill='none' stroke='black' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 3.5l9 9M12.5 3.5l-9 9' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
   --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   --bg: #ffffff; --surface: #f7f7f6; --raised: #ffffff; --ink: #0b0b0b; --muted: #6d6d6a;
   --faint: #a3a3a0; --line: #e7e7e4; --line-strong: #d4d4d0;
@@ -409,35 +411,41 @@ ul.criteria .why.inadequate .why-icon, ul.criteria .why.needs_review .why-icon {
 footer.disclaimer { font-size: 12px; color: var(--muted); padding: 4px 4px 0; white-space: pre-wrap; }
 
 /* ---- saving the report ----------------------------------------------------------------------- */
-/* "Download report" is ONE element with three stops: docked at the report's head beside the
-   system's name, fixed to the bottom of the window while reading (.export-float), and docked
-   again at the report's end. The page shows at most one at a time (see placeExportFloat), so the
-   same pill — the mode's accent, like the run button — reads as following the reader down. */
-.export-md { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; flex: none;
-             font: inherit; font-size: 13px; font-weight: 700; padding: 9px 18px; border: 0;
-             border-radius: 999px; background: var(--accent); color: var(--accent-text); cursor: pointer; }
+/* Print and Download are ONE pair with three stops: docked at the report's head beside the
+   system's name, in the row fixed to the bottom of the window while reading (.floatbar), and
+   docked again at the report's end. The page shows the pair once at a time (see placeExportFloat).
+   Small, so the pair fits one row beside the demo label on a phone: Download in the mode's
+   accent, Print in outline, and Download the rightmost — on the edge the floating row docks to. */
+.export-md, .print-report { display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex: none;
+                            height: 32px; padding: 0 13px; border-radius: 999px; white-space: nowrap; cursor: pointer;
+                            font: inherit; font-size: 13px; font-weight: 700; line-height: 1; }
+.export-md { border: 0; background: var(--accent); color: var(--accent-text); }
 .export-md:hover { filter: brightness(1.06); }
-.export-md:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
-.export-md::before { content: ""; flex: none; width: 15px; height: 15px; background-color: currentColor;
-                     -webkit-mask: var(--download) center / contain no-repeat;
-                     mask: var(--download) center / contain no-repeat; }
+.print-report { border: 1px solid var(--line-strong); background: var(--raised); color: var(--ink); }
+.print-report:hover { border-color: var(--ink); }
+.export-md:focus-visible, .print-report:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+.export-md::before, .print-report::before { content: ""; flex: none; width: 14px; height: 14px; background-color: currentColor; }
+.export-md::before { -webkit-mask: var(--download) center / contain no-repeat; mask: var(--download) center / contain no-repeat; }
+.print-report::before { -webkit-mask: var(--printer) center / contain no-repeat; mask: var(--printer) center / contain no-repeat; }
+.report-actions { display: flex; align-items: center; gap: 8px; flex: none; }
 .system-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px 20px; }
 .report-end { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between;
               gap: 12px 20px; flex-wrap: wrap; margin-bottom: 24px; }
 .report-end-title { font-weight: 700; }
 .report-end p { margin: 2px 0 0; }
-/* On the report's edge (--float-right), where it docks at the head and end, so it reads as the same
-   element on its way down; the demo label lines up under it. */
-.export-float { position: fixed; right: var(--float-right); bottom: 20px; z-index: 30;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, .25); }
-.export-float[hidden] { display: none; }
-html[data-demo="1"] .export-float { bottom: 82px; } /* above the demo label */
+/* The row fixed to the window: the demo label, then the pair. On the report's edge (--float-right),
+   where the pair docks at the head and end, so it reads as the same pair on its way down. The row
+   itself lets clicks through; only what is in it takes them. */
+.floatbar { position: fixed; right: var(--float-right); bottom: 20px; z-index: 30; display: flex; align-items: center;
+            gap: 8px; pointer-events: none; }
+.floatbar > * { pointer-events: auto; }
+.floatbar .export-md, .floatbar .print-report { box-shadow: 0 4px 14px rgba(0, 0, 0, .22); }
 @media (max-width: 640px) {
-  /* No room beside the name: the button closes the card instead of splitting name from summary. */
+  /* No room beside the name: the pair closes the card instead of splitting name from summary. */
   .system-head { display: contents; }
-  .system-head button { order: 1; justify-self: start; }
-  .export-float { right: 50%; transform: translateX(50%); bottom: 16px; }
-  html[data-demo="1"] .export-float { bottom: 73px; } /* the same 14px above the label as on desktop */
+  .system-head .report-actions { order: 1; justify-self: start; }
+  /* Centred across the whole width, not from a midpoint, which would give it half the window. */
+  .floatbar { left: 12px; right: 12px; bottom: 12px; justify-content: center; }
 }
 
 @media (max-width: 760px) {
@@ -558,29 +566,43 @@ html[data-demo="1"] #form[data-mode="view"]:not(.doc-shown) #chars { display: no
 .samplebtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
 .samplebtn option, .samplebtn optgroup { color: var(--ink); background: var(--raised); font-weight: 500; }
 
-/* The floating label: fixed to the bottom-right corner of the window while demo mode is on, so
-   the mode is on screen at every scroll position. Bottom-right keeps it clear of the column
-   names that stick to the top of the window, and the page gains room at its end so the label
-   never covers the last lines. */
-.demo-float { position: fixed; right: var(--float-right); bottom: 20px; z-index: 30; display: flex; align-items: center; gap: 10px;
-              max-width: calc(100vw - 40px); padding: 9px 10px 9px 14px; border-radius: 999px;
-              background: var(--demo); color: var(--demo-text); font-size: 12px; line-height: 1.3;
-              box-shadow: 0 6px 20px rgba(0, 0, 0, .28), 0 0 0 3px var(--demo-soft); }
+/* The demo label, first in the row fixed to the window (.floatbar) while demo mode is on, so the
+   mode is on screen at every scroll position. Bottom-right keeps it clear of the column names that
+   stick to the top of the window, and the page gains room at its end so the row never covers the
+   last lines. As tall as the buttons beside it. */
+.demo-float { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 4px 0 12px; border-radius: 999px;
+              background: var(--demo); color: var(--demo-text); font-size: 12px; line-height: 1; white-space: nowrap;
+              box-shadow: 0 4px 14px rgba(0, 0, 0, .25), 0 0 0 3px var(--demo-soft); }
 .demo-float-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: currentColor;
                   animation: demo-pulse 2s ease-in-out infinite; }
 @keyframes demo-pulse { 50% { opacity: .35; } }
 @media (prefers-reduced-motion: reduce) { .demo-float-dot { animation: none; } }
-.demo-float-text { display: flex; flex-direction: column; min-width: 0; }
-.demo-float-text b { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.demo-float-text span { opacity: .9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.demo-float-off { flex: none; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; padding: 4px 11px;
+.demo-float-text { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.demo-float-off { flex: none; height: 24px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; padding: 0 10px;
                   border-radius: 999px; border: 1px solid currentColor; background: none; color: inherit; }
 .demo-float-off:hover { background: color-mix(in srgb, currentColor 16%, transparent); }
 .demo-float-off:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-html[data-demo="1"] body { padding-bottom: 72px; }
-@media (max-width: 640px) {
-  .demo-float { right: 50%; transform: translateX(50%); bottom: 12px; }
-  .demo-float-text span { display: none; }
+.demo-float-off[hidden] { display: none; }
+/* Only the label: the locked mode has no "Turn off", and the label ends on its text. */
+.demo-float:has(.demo-float-off[hidden]) { padding-right: 14px; }
+html[data-demo="1"] body { padding-bottom: 64px; }
+/* A phone fits the row in one line by shortening it: "Demo" with a round ✕, and the pair a little
+   tighter — about 310px, inside any phone from 360px across. Narrower still, and only where the
+   demo label shares the row, the floating pair keeps only its icons; the accessible names and
+   tooltips still say what each button does, and the pair at the report's head and end keeps its
+   words. */
+@media (max-width: 480px) {
+  .floatbar { gap: 6px; }
+  .demo-float { gap: 7px; padding-left: 11px; }
+  .demo-float-long { display: none; }
+  .demo-float-off { width: 24px; padding: 0; display: grid; place-items: center; }
+  .demo-float-off::before { content: ""; width: 10px; height: 10px; background-color: currentColor;
+                            -webkit-mask: var(--close) center / contain no-repeat; mask: var(--close) center / contain no-repeat; }
+  .floatbar .export-md, .floatbar .print-report { padding: 0 11px; }
+}
+@media (max-width: 359px) {
+  html[data-demo="1"] .floatbar .export-md, html[data-demo="1"] .floatbar .print-report {
+    width: 32px; padding: 0; gap: 0; font-size: 0; }
 }
 
 /* ---- demo cases ---------------------------------------------------------------------------- */
@@ -632,3 +654,95 @@ html[data-demo="1"] .samplebtn { display: none; }
 /* The same bar as a warning: demo mode switched off and no live review possible either. */
 .modebar.stuck { background: var(--orange-soft); border-bottom-color: var(--orange); }
 .modebar.stuck .modebar-badge { color: var(--orange-ink); }
+
+/* ---- paper ------------------------------------------------------------------------------------ */
+/* What "Print report" (or the browser's own print) puts on paper: the report alone, in the light
+   theme, every row open — report.js opens them and lifts the filters for the print, and puts them
+   back after. Without the Act's text, as in the Markdown file: each row keeps its citation. The
+   reviewed document, the app's bars and every button stay on screen. */
+@media not print { .print-only { display: none !important; } }
+@media print {
+  /* The light tokens, whatever the theme: ink on white. Later than, and as specific as, the dark
+     theme's two selectors, so they win over both. */
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    --bg: #ffffff; --surface: #f7f7f6; --raised: #ffffff; --ink: #0b0b0b; --muted: #5c5c59;
+    --faint: #a3a3a0; --line: #dcdcd8; --line-strong: #c4c4bf;
+    --orange: #ff5a00; --orange-ink: #c2410c; --orange-soft: rgba(255, 90, 0, .08);
+    --red: #d92d20; --red-soft: rgba(217, 45, 32, .07);
+    --on: #0b0b0b; --on-text: #ffffff; --shadow: none;
+    --role-provider: #2563eb; --role-deployer: #7c3aed; --role-importer: #0f766e; --role-distributor: #15803d;
+    --role-authorised-representative: #be185d; --role-prospective-provider: #0369a1; --role-initial-provider: #4338ca;
+    --role-sandbox-participant: #475569; --role-gpai-provider: #6d28d9; --role-authority: #92400e;
+    --kind-permission: #047857; --kind-entitlement: #4d7c0f; --kind-legal_consequence: #a16207;
+    --kind-applicability: #a21caf; --kind-power: #0e7490; --ok: #15803d;
+    --demo: #7c3aed; --demo-ink: #6d28d9; --demo-soft: rgba(124, 58, 237, .10); --demo-text: #ffffff;
+    color-scheme: light;
+  }
+  /* The page's own margins: the page number, centred at the foot, and nothing else. Generating a
+     margin box on a side stops Chromium (Chrome and Edge 131+) drawing its own header or footer
+     there — the date, the title, the URL — even with "Headers and footers" ticked; the empty box
+     at the top is there for that alone. Browsers without margin boxes leave theirs to the print
+     dialog's checkbox. */
+  @page {
+    margin: 14mm 12mm;
+    @top-center { content: ""; }
+    @bottom-center { content: counter(page); font: 500 10px Inter, ui-sans-serif, system-ui, sans-serif; color: #5c5c59; }
+  }
+  /* The verdict's colours and the tags are meaning, not decoration: print them. */
+  html, body { background: #ffffff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html[data-demo="1"] body { padding-bottom: 0; }
+  .topbar, .modebar, #status, #error, .definition, .floatbar,
+  #form[data-mode="view"], .report-actions, .report-end, .provisions > .filters { display: none !important; }
+  /* The Act's text — a row's paragraph, or a cited provision the reader opened — stays on screen. */
+  .act-says, details.ref > .law { display: none !important; }
+  /* Block layout, not grid, for whatever runs across pages: a grid row does not grow when its
+     content is pushed onto the next page, and the row after it is then drawn over it — the
+     disclaimer over the last provisions. The gaps become margins. */
+  main, #report, .system, .verdict, .compliance, .item-body { display: block; }
+  main { max-width: none; padding: 0; }
+  #report > * + * { margin-top: 16px; }
+  /* #report, so that the cards' own "p { margin: 0 }" does not leave the paragraphs touching. */
+  #report :is(.system, .verdict, .compliance, .item-body) > * + * { margin-top: 10px; }
+  .verdict .eyebrow { margin-bottom: 0; }
+  #report > .section-head { margin-top: 48px; }
+  .card { box-shadow: none; }
+  .section-head::before { left: 0; right: 0; }
+  .provisions, .notes { overflow: visible; }
+  .provisions > .columns { position: static; }
+  /* Every row is open on paper, so nothing marks one as open or says it opens. */
+  details.item > summary { cursor: auto; }
+  details.item > summary::after, details.ref > summary::after { display: none; }
+  details.item[open] > summary { background: none; }
+  details.item[open] { box-shadow: none; }
+  details.ref > summary { padding-right: 12px; }
+  .oneline { white-space: normal; color: var(--ink); }
+  a { color: inherit; text-decoration: none; }
+  .screen-only { display: none !important; }
+  /* One layout on paper, the wide one, whatever width the browser gives the page: a sheet is
+     about 700px across, where the narrow-window rules above would otherwise take over in some
+     browsers and not in others. Without the chevron a row needs no room on its right. */
+  /* Narrower tag and article columns than the screen's: paper has no chevron and no hover, and
+     the width saved goes to the duty's title. The column names keep the same grid. */
+  details.item > summary, .provisions > .columns { grid-template-columns: 88px 112px minmax(0, 1fr) auto; }
+  details.item > summary { padding: 8px 16px; }
+  .provisions > .columns { display: grid; padding: 8px 16px; }
+  /* A field's label as a small header over its text, as "In plain words" already reads — not a
+     column beside it, which left half the sheet blank under "What to check" and its kin. The
+     body drops the screen's column indent and runs the sheet's width. */
+  .item-body { padding: 2px 16px 12px; }
+  .plain { margin: 2px 0 4px; }
+  .plain p { font-size: 14px; }
+  .kv { display: block; }
+  .kv > .l { text-align: left; margin-bottom: 3px; }
+  .notes > h3, .notes > .hint, .group > h3, .group > .hint { padding-left: 16px; padding-right: 16px; }
+  .notes details.note-item > summary { grid-template-columns: 1fr; gap: 2px; }
+  .notes details.note-item .item-body { padding-left: 16px; }
+  .compliance .status { grid-template-columns: 150px minmax(0, 1fr); gap: 16px; }
+  .cite { white-space: normal; }
+  /* Keep a heading with what follows it, and a row's title with its first lines. A card as a
+     whole may break: one with a long text, kept whole, would leave most of a page blank. */
+  h2, h3, .section-head, .group > h3, .group > .hint, .plain-head, .kv > .l, details.item > summary,
+  .eyebrow, .verdict .top, .compliance .answer, .note .lead { break-after: avoid; }
+  details.item > summary, ol.fixes li, ul.criteria li, blockquote, .meta { break-inside: avoid; }
+  .print-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+}

@@ -105,18 +105,25 @@
   <div class="alert" id="error" role="alert" hidden></div>
   <div id="report"></div>
 </main>
-<!-- Download .md while reading the report: the report carries the button at its head and at its
-     end, and this one is fixed to the window in between — shown only once the head's button has
-     scrolled away and the end's is not yet in view, so there is never more than one on screen. -->
-<button class="export-md export-float" id="export-float" type="button" hidden
-        title="Save this report as a Markdown file, with the checklist as you have ticked it">Download report</button>
-<!-- Fixed to the window while demo mode is on, so the mode stays in view however far the page
-     scrolls: the bar and banner above scroll away with the top of the page. -->
-<aside class="demo-float demo-only" id="demo-float" aria-label="Demo mode is on">
-  <span class="demo-float-dot" aria-hidden="true"></span>
-  <span class="demo-float-text"><b>Demo mode</b><span id="demo-float-sub">Illustrative — no model is called</span></span>
-  <button class="demo-float-off" id="demo-float-off" type="button" title="Switch to normal mode">Turn off</button>
-</aside>
+<!-- One row fixed to the bottom of the window, on the report's right edge: the demo label while
+     demo mode is on, and Print and Download while reading the report. The report carries the same
+     pair at its head and at its end; this one shows only in between — once the head's pair has
+     scrolled away and while the end's is not yet in view — so there is never more than one pair on
+     screen. The mode's bar and banner scroll away with the top of the page; the label does not. -->
+<div class="floatbar" id="floatbar">
+  <aside class="demo-float demo-only" id="demo-float" aria-label="Demo mode is on">
+    <span class="demo-float-dot" aria-hidden="true"></span>
+    <b class="demo-float-text">Demo<span class="demo-float-long"> mode</span></b>
+    <button class="demo-float-off" id="demo-float-off" type="button" title="Switch to normal mode"
+            aria-label="Turn off demo mode"><span class="demo-float-long">Turn off</span></button>
+  </aside>
+  <div class="report-actions export-float" id="export-float" hidden>
+    <button class="print-report" id="print-float" type="button" aria-label="Print report"
+            title="Print this report or save it as a PDF: the whole report, with the checklist as you have ticked it">Print</button>
+    <button class="export-md" id="download-float" type="button" aria-label="Download report as Markdown"
+            title="Save this report as a Markdown file, with the checklist as you have ticked it">Download</button>
+  </div>
+</div>
 <script src="/static/report.js"></script>
 <script src="/static/report-md.js"></script>
 </body>

@@ -192,7 +192,6 @@ function setDemo(on, { save = true } = {}) {
     : locked ? `${modeInfo.live_unavailable_because} Only demo reviews can run.` : DEMO_ON_TEXT;
   $("modebar-off").hidden = locked || stuck;
   $("demo-float-off").hidden = locked;
-  $("demo-float-sub").textContent = locked ? "The only mode on this server" : "Illustrative — no model is called";
   $("run").textContent = demo ? "Run demo review" : "Run review";
   $("run-hint").textContent = demo ? "No model is called; takes a second. Illustrative only."
     : "Makes model calls; takes a minute or two.";
@@ -531,6 +530,8 @@ function render(data) {
   const { duties, others } = provisions(report, data, ruleDate, normDate, isFuture);
   // A section with nothing to show is null; replaceChildren would print it as text.
   $("report").replaceChildren(...[
+    // On paper, where the app's bar is not, the page says what it is.
+    el("div", { class: "print-only print-title" }, `AI Act compliance report${data.demo ? " — demo" : ""}`),
     data.demo ? note("demo", "Demo report — illustrative", data.demo_note || modeInfo.demo_note || DEMO_NOTE) : null,
     ...header(data),
     compliance(report, data, ruleDate, normDate, isFuture),
@@ -547,22 +548,24 @@ function render(data) {
     el("footer", { class: "disclaimer" }, report.disclaimer),
     el("section", { class: "card report-end" },
       el("div", {}, el("div", { class: "report-end-title" }, "End of report"),
-        el("p", { class: "muted small" }, "Save it as a Markdown file: the whole report, with the checklist as you've ticked it.")),
-      exportButton()),
+        el("p", { class: "muted small" }, "Print it, or save it as a Markdown file: the whole report, with the checklist as you've ticked it.")),
+      el("div", { class: "report-actions" }, printButton(), exportButton())),
   ].filter(Boolean));
   placeExportFloat();
 }
 
 // ---- saving the report -------------------------------------------------------------------------
-// "Download .md" is where a reader is when they want it: at the head of the report beside the
-// system's name, at its end once it has been read, and in between in a pill fixed to the window
-// (#export-float) — shown only when the head's button has scrolled away above and the end's is not
-// yet in view, so one is always in reach and never two at once. All three save the same file
-// (report-md.js).
+// Print and Download are where a reader is when they want them: a pair at the head of the report
+// beside the system's name, at its end once it has been read, and in between in the row fixed to
+// the bottom of the window (#export-float) — shown only when the head's pair has scrolled away
+// above and the end's is not yet in view, so the pair is always in reach and never twice on
+// screen. Each Download saves the same file (report-md.js); each Print prints the same report.
+// The labels are short, to fit one row beside the demo label on a phone; the accessible names and
+// tooltips say what each one saves.
 const EXPORT_TITLE = "Save this report as a Markdown file, with the checklist as you have ticked it";
 
-const exportButton = () =>
-  el("button", { type: "button", class: "export-md", title: EXPORT_TITLE, onclick: () => downloadMarkdown() }, "Download report");
+const exportButton = () => el("button", { type: "button", class: "export-md", title: EXPORT_TITLE,
+  "aria-label": "Download report as Markdown", onclick: () => downloadMarkdown() }, "Download");
 
 let floatFrame = 0;
 function placeExportFloat() {
@@ -576,6 +579,46 @@ function placeExportFloat() {
   });
 }
 
+// ---- printing the report -----------------------------------------------------------------------
+// "Print" sits beside "Download" wherever it is, and prints what the Markdown file holds: the
+// whole report, whatever the filters on screen show — every role, every result, every date, each
+// row opened — with the verdict for every role and the checklist as ticked. A printed record that
+// silently dropped a role's duties because a filter was on would read as complete and not be. The
+// Act's own text is left out, as in the file; each row keeps its citation. The page is set up for
+// paper on the browser's own print events, so Ctrl/Cmd+P prints the same thing as the button; the
+// paper layout itself is report.css's print rules.
+const PRINT_TITLE = "Print this report or save it as a PDF: the whole report, with the checklist as you have ticked it";
+
+const printButton = () => el("button", { type: "button", class: "print-report", title: PRINT_TITLE,
+  "aria-label": "Print report", onclick: () => window.print() }, "Print");
+
+let printing = false; // read by the filters: nothing is hidden while printing
+let unprint = null; // puts the page back as the reader left it
+
+function beforePrint() {
+  // Only a report on screen is set up for paper; the input prints as it is.
+  if (printing || !last?.response || $("report").hidden) return;
+  printing = true;
+  const closed = [...$("report").querySelectorAll("details.item:not([open])")];
+  for (const item of closed) item.open = true;
+  applyFilters(); // every row and group shown, full counts, the verdict for every role
+  for (const b of $("report").querySelectorAll(".printed-at")) b.textContent = new Date().toLocaleString("en-GB");
+  // The name a browser gives a PDF of the page.
+  const title = document.title;
+  document.title = markdownFilename(last.response).replace(/\.md$/, ""); // report-md.js
+  unprint = () => {
+    printing = false;
+    for (const item of closed) item.open = false;
+    applyFilters();
+    document.title = title;
+  };
+}
+
+function afterPrint() {
+  unprint?.();
+  unprint = null;
+}
+
 // What the system is first, then how it is classified.
 function header(data) {
   const report = data.report;
@@ -587,7 +630,7 @@ function header(data) {
       data.system_name
         ? el("h2", {}, el("span", { class: "eyebrow" }, "The system", demoTag()), data.system_name)
         : el("div", { class: "eyebrow" }, "The system", demoTag()),
-      exportButton()),
+      el("div", { class: "report-actions" }, printButton(), exportButton())),
     data.system_summary
       ? el("p", { class: "summary" }, data.system_summary)
       : el("p", { class: "muted" }, "No summary could be written for this document."),
@@ -596,7 +639,8 @@ function header(data) {
     el("div", { class: "meta" },
       el("span", {}, "Act version ", el("b", {}, fmtDate(report.act_version_date))),
       el("span", {}, "Generated ", el("b", {}, new Date(report.generated_at).toLocaleString("en-GB"))),
-      data.model ? el("span", {}, "Model ", el("b", {}, data.model)) : null),
+      data.model ? el("span", {}, "Model ", el("b", {}, data.model)) : null,
+      el("span", { class: "print-only" }, "Printed ", el("b", { class: "printed-at" }))),
   );
   const classification = el("section", { class: `card verdict ${risk}` },
     el("div", { class: "eyebrow" }, "System classification"),
@@ -654,7 +698,7 @@ const NOTES_HEAD = ["Notes on these duties", "Facts the review could not settle 
 function noteList(items) {
   return el("section", { class: "card notes" },
     el("h3", {}, NOTES_HEAD[0], el("span", { class: "muted" }, `· ${items.length}`)),
-    el("p", { class: "hint" }, `${NOTES_HEAD[1]} Open a note for details.`),
+    el("p", { class: "hint" }, NOTES_HEAD[1], el("span", { class: "screen-only" }, " Open a note for details.")),
     items.map(([title, hint, text]) => el("details", { class: "item note-item" },
       el("summary", {}, el("span", { class: "cite" }, title), el("span", { class: "oneline" }, hint)),
       el("div", { class: "item-body" }, el("p", {}, text)))));
@@ -962,11 +1006,12 @@ function whenFilter() {
     el("div", { class: "seg", role: "group", "aria-label": "Show duties by date" }, whenButtons));
 }
 
-const hiddenOf = (facet) => new Set(restore(FACETS[facet].key) || []);
+// While the page is being printed nothing is hidden: see "printing the report".
+const hiddenOf = (facet) => new Set(printing ? [] : restore(FACETS[facet].key) || []);
 
 function applyFilters() {
   const hidden = Object.fromEntries(Object.keys(FACETS).map((f) => [f, hiddenOf(f)]));
-  const when = restore(WHEN_KEY) || "all";
+  const when = printing ? "all" : restore(WHEN_KEY) || "all";
   for (const b of whenButtons) b.classList.toggle("on", b.dataset.when === when);
   const excluded = (item) => Object.keys(FACETS).some((facet) => {
     const value = item.dataset[facet];
@@ -1167,7 +1212,8 @@ function plainWords(row) {
 // ---- the Act's words, and what they point at ---------------------------------------------------
 // Every row, duty or not, opens to the paragraph it comes from, and to the other articles and
 // annexes that paragraph cites. A cited provision's text is fetched only when the reader opens it.
-const actSays = (text) => kv("The Act says", el("div", { class: "law" }, text));
+const actSays = (text) => el("div", { class: "kv act-says" }, el("div", { class: "l" }, "The Act says"),
+  el("div", {}, el("div", { class: "law" }, text)));
 
 // A condition reads as a quoted fragment; its outer brackets add nothing on their own.
 const unwrap = (text) => String(text).replace(/^\((.*)\)$/s, "$1");
@@ -1293,7 +1339,10 @@ window.addEventListener("DOMContentLoaded", () => {
   // The key does not outlive the page: a reload or a closed tab starts with the field empty.
   window.addEventListener("pagehide", () => { $("api-key").value = ""; });
   $("edit").addEventListener("click", () => { setMode("edit"); $("document").focus(); });
-  $("export-float").addEventListener("click", () => downloadMarkdown()); // report-md.js
+  $("download-float").addEventListener("click", () => downloadMarkdown()); // report-md.js
+  $("print-float").addEventListener("click", () => window.print());
+  window.addEventListener("beforeprint", beforePrint);
+  window.addEventListener("afterprint", afterPrint);
   for (const event of ["scroll", "resize"]) window.addEventListener(event, placeExportFloat, { passive: true });
   // Opening or closing a row moves the end of the report without a scroll.
   $("report").addEventListener("toggle", placeExportFloat, true);

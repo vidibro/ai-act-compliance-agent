@@ -71,15 +71,27 @@ The same review as a web page — paste a document, read the report — is the *
 make app        # http://127.0.0.1:8766, model and key from .env
 ```
 
-**Download report** saves the report on screen as a Markdown file. The button is one pill with
-three stops: docked at the report's head beside the system's name, fixed to the window while
-reading, and docked again at the report's end — at most one on screen at a time.
-The file holds the classification, the verdict, every checked duty with its evidence and criteria,
-the checklist as a task list ticked the way the reader ticked it, the other provisions and the
-disclaimer — the whole report whatever the page's filters show, and a demo report stays marked as
-one. The Act's
-own wording behind each row is left out; each row keeps its citation. The file is written in the
-browser (`static/report-md.js`), because the ticks and the verdict they decide exist only there.
+**Print** and **Download** are one pair of small buttons with three stops: docked at the report's
+head beside the system's name, in a row fixed to the bottom of the window while reading (beside
+the demo label in demo mode), and docked again at the report's end — one pair on screen at a time.
+The row fits one line on any screen: on a phone the demo label shortens to "Demo" and a ✕, and
+below 360px the floating pair keeps only its icons.
+
+**Download** saves the report on screen as a Markdown file. The file holds the classification, the
+verdict, every checked duty with its evidence and criteria, the checklist as a task list ticked the
+way the reader ticked it, the other provisions and the disclaimer — the whole report whatever the
+page's filters show, and a demo report stays marked as one. The Act's own wording behind each row
+is left out; each row keeps its citation. The file is written in the browser
+(`static/report-md.js`), because the ticks and the verdict they decide exist only there.
+
+**Print** prints the same content, or saves it as a PDF named like the Markdown file. Paper also
+holds the whole report whatever the filters show: every row opened, the verdict for every role, the
+checklist as ticked, and the time of printing. The Act's own wording is left out. The page is set
+up on the browser's print events, so Ctrl/Cmd+P prints the same thing, and put back as it was
+afterwards. The paper layout is the light theme whatever the page shows (`@media print` in
+`static/report.css`), and its margins hold the page number alone: in Chrome and Edge the browser's
+own header and footer (date, title, URL) are replaced even with "Headers and footers" ticked;
+Firefox and Safari leave them to that checkbox. A high-risk report with every duty listed runs to about ninety A4 pages.
 
 ## The report app's two modes
 
