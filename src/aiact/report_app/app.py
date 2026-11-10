@@ -15,7 +15,9 @@ mode is the same pipeline with the three model seams replaced by deterministic s
 flagged `demo: true` so nothing downstream can mistake it for a review. Demo mode is always
 available unless `AIACT_DEMO_MODE=off`; it is the ONLY mode when a live review cannot run — no
 model (`AIACT_LLM_MODEL` empty), no key for it, or `AIACT_DEMO_MODE=only` — which `GET /api/mode`
-tells the page. Sample documents for either mode come from `GET /api/samples`.
+tells the page. Demo mode's cases come from `GET /api/samples`; normal mode offers none — a reader
+writes their own card with the guide. The text of an uploaded PDF or DOCX comes from
+`POST /api/extract` (`aiact.report_app.uploads`).
 """
 
 from __future__ import annotations
@@ -51,6 +53,7 @@ from aiact.report_app.demo import DEMO_NOTE, DemoBrain, DemoJudge, DemoSummarise
 from aiact.report_app.law import ProvisionText, paragraph_text, provision
 from aiact.report_app.roles import RoleDefinition, role_definitions
 from aiact.report_app.samples import Sample, SampleDocument, list_samples, load_sample
+from aiact.report_app.uploads import UnreadableUpload, UnsupportedUpload, extract_upload
 from aiact.report_app.views import (
     NormView,
     ReviewResponse,
@@ -377,8 +380,11 @@ def get_provision(key: str) -> ProvisionText:
 
 @app.get("/api/limits")
 def limits() -> dict[str, int]:
-    """What the page shows beside the input. 0 means no limit."""
-    return {"max_document_chars": get_settings().max_document_chars}
+    """What the page shows beside the input, and checks before an upload. 0 means no limit."""
+    return {
+        "max_document_chars": get_settings().max_document_chars,
+        "max_upload_bytes": MAX_UPLOAD_BYTES,
+    }
 
 
 class ByokInfo(BaseModel):
@@ -481,8 +487,8 @@ def models() -> list[ModelInfo]:
 
 @app.get("/api/samples")
 def samples() -> list[Sample]:
-    """Documents the page can load to try the review on: the golden set's reference files, the
-    guide's worked-example card and the smoke check's vendor pages."""
+    """Demo mode's cases, for its gallery: the golden set's reference files, the guide's
+    worked-example card, the smoke check's vendor pages and the cards written for the demo."""
     return list_samples()
 
 
@@ -492,6 +498,53 @@ def get_sample(sample_id: str) -> SampleDocument:
     if found is None:
         raise HTTPException(status_code=404, detail=f"No sample document {sample_id!r}.")
     return found
+
+
+MAX_UPLOAD_BYTES = 20_000_000
+"""The cap on an uploaded file, before extraction spends anything on it. Generous against the
+document limit — a PDF's bytes are mostly not its text — but an ordinary technical file fits with
+room to spare; `max_document_chars` still rules on what comes out."""
+
+
+class ExtractedDocument(BaseModel):
+    """What an uploaded file yields: the text the review would read, for the page's input box."""
+
+    filename: str
+    text: str
+
+
+@app.post("/api/extract")
+async def post_extract(request: Request, filename: str = "upload") -> ExtractedDocument:
+    """The text of an uploaded PDF or DOCX, for "Load a file" — the page reads .txt and .md itself.
+
+    The file travels as the raw request body (no multipart), its name in the `filename` query
+    parameter. No model is called and nothing is kept: the text goes back to the input box, where
+    the reader checks it before any review runs on it. 413 where the file, or the text inside it,
+    is over the limit; 415 for a format this cannot read; 422 for a file that is not what its name
+    says or holds no text (a scanned PDF needs OCR first)."""
+    declared = request.headers.get("content-length", "")
+    if declared.isdigit() and int(declared) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail=_upload_too_large(int(declared)))
+    data = await request.body()
+    if len(data) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail=_upload_too_large(len(data)))
+    if not data:
+        raise HTTPException(status_code=422, detail=f"{filename!r} is empty.")
+    try:
+        text = extract_upload(filename, data)
+    except UnsupportedUpload as exc:
+        raise HTTPException(status_code=415, detail=str(exc)) from exc
+    except UnreadableUpload as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    try:
+        check_size(text)
+    except DocumentTooLarge as exc:
+        raise HTTPException(status_code=413, detail=str(exc)) from exc
+    return ExtractedDocument(filename=filename, text=text)
+
+
+def _upload_too_large(size: int) -> str:
+    return f"The file is {size:,} bytes; the upload limit is {MAX_UPLOAD_BYTES:,}."
 
 
 def _review(

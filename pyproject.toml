@@ -18,6 +18,9 @@ dependencies = [
     "uvicorn[standard]>=0.30",
     "pyyaml>=6.0",
     "markdown-it-py>=3.0",
+    # Reads the PDFs readers upload to the report app (aiact.report_app.uploads), and the
+    # Commission guidance PDFs in the data pipeline (aiact.guidance_text).
+    "pdfplumber>=0.11.10",
 ]
 
 [project.optional-dependencies]
@@ -26,7 +29,8 @@ dev = [
     "ruff>=0.5",
     "mypy>=1.10",
     "pytest-xdist>=3.8.0",
-    "pdfplumber>=0.11.10",
+    # The second, independent engine behind the guidance extraction's two-engine check
+    # (aiact.guidance_text.pdfium_body_text) — development only, like the check itself.
     "pypdfium2>=5.13.0",
 ]
 

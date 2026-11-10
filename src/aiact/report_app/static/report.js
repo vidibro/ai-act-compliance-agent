@@ -95,6 +95,7 @@ const DEMO_STORE = { last: "aiact-review:demo:last", draft: "aiact-review:demo:d
 const OLD_REPORT_KEY = "aiact-review:last-report"; // a bare response, saved by an earlier version
 const memory = new Map(); // the demo workspace
 let maxChars = null; // the server's document limit
+let maxUploadBytes = null; // the server's cap on an uploaded file (PDF/DOCX), checked before sending
 let last = null; // { response, document } of the report on screen
 
 // The key for the workspace of the mode the page is in — or of a given report's mode.
@@ -315,6 +316,7 @@ function migrateSaved() {
 function loadWorkspace() {
   workspaceLoaded = true;
   showError("");
+  setFieldError("file", "");
   markCase(null);
   const draft = restore(keyFor("draft"));
   last = restore(keyFor("last"));
@@ -336,35 +338,18 @@ function loadWorkspace() {
   countChars();
 }
 
-// Sample documents from the repository — the golden set's reference files, the guide's worked
-// example, the smoke check's vendor pages — so there is always something to run the review on.
-const SAMPLE_GROUPS = [["system_card", "System cards — written to the guide"],
-                       ["reference", "Technical files — complete and compliant"],
-                       ["vendor_page", "Vendor pages — thin input"]];
-
+// Demo mode's cases: documents from the repository, each with the outcome the demo reaches on it.
+// Normal mode offers none — a reader writes their own card with the guide, and a stock document
+// would pass for a template of what a complete one looks like.
 async function loadSamples() {
-  const select = $("sample");
   let list = [];
   try { list = await fetch("/api/samples").then((r) => (r.ok ? r.json() : [])); } catch {}
-  if (!list.length) return;
-  for (const [kind, label] of SAMPLE_GROUPS) {
-    const items = list.filter((sample) => sample.kind === kind);
-    if (!items.length) continue;
-    select.append(el("optgroup", { label }, items.map((sample) =>
-      el("option", { value: sample.id, title: sample.about }, sample.title))));
-  }
-  select.hidden = false;
-  select.addEventListener("change", () => {
-    const id = select.value;
-    select.value = "";
-    if (id) pickSample(id);
-  });
-  buildGallery(list);
+  if (list.length) buildGallery(list);
 }
 
-// Paste a sample into the input — leaving a report on screen for the editor if need be — and,
-// asked to (always, in demo mode), run the review on it straight away.
-async function pickSample(id, run = false) {
+// Paste a demo case into the input — leaving a report on screen for the editor if need be — and
+// run the demo review on it straight away.
+async function pickSample(id) {
   let text;
   try {
     const response = await fetch(`/api/samples/${encodeURIComponent(id)}`);
@@ -383,8 +368,49 @@ async function pickSample(id, run = false) {
   saveDraft();
   showError("");
   markCase(id);
-  if (run) $("form").requestSubmit();
-  else area.focus();
+  $("form").requestSubmit();
+}
+
+// ---- loading a file --------------------------------------------------------------------------
+// "Load a file": .md and .txt are read in the browser; a PDF or DOCX is posted to the server,
+// which extracts its text — no model call, nothing stored — and sends it back for the input box,
+// so the reader sees exactly what the review will read before running it. A file that cannot be
+// read is reported under the button (#file-error), where the reader's eyes are, like a field's.
+const SERVER_READ = /\.(pdf|docx)$/i;
+
+async function loadFile(file) {
+  setFieldError("file", "");
+  $("chars").textContent = `Reading ${file.name}…`;
+  try {
+    const text = SERVER_READ.test(file.name) ? await extractFile(file) : await file.text();
+    const area = $("document");
+    area.value = text;
+    area.setSelectionRange(0, 0);
+    area.scrollTop = 0; // read from the top, as a pasted document would be
+    markCase(null);
+    saveDraft();
+    showError(""); // a failed review of the previous document no longer applies
+  } catch (err) {
+    setFieldError("file", err.message);
+  } finally {
+    countChars(); // also replaces the "Reading…" note, whichever way it went
+  }
+}
+
+// The raw bytes to POST /api/extract, the text out of its answer, or its refusal in its words.
+async function extractFile(file) {
+  if (maxUploadBytes && file.size > maxUploadBytes) {
+    throw new Error(`${file.name} is ${file.size.toLocaleString("en-GB")} bytes; ` +
+      `the upload limit is ${maxUploadBytes.toLocaleString("en-GB")}.`);
+  }
+  const response = await fetch(`/api/extract?filename=${encodeURIComponent(file.name)}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/octet-stream" },
+    body: file,
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(body.detail || `The file could not be read (${response.status}).`);
+  return body.text;
 }
 
 // ---- the case gallery --------------------------------------------------------------------------
@@ -397,7 +423,7 @@ function buildGallery(list) {
   const grid = $("cases-grid");
   grid.replaceChildren(...list.map((s) => el("div", { class: `case o-${s.outcome}`, "data-sample": s.id },
     el("button", { type: "button", class: "case-pick", title: "Run the demo review on this document",
-                   onclick: () => pickSample(s.id, true) },
+                   onclick: () => pickSample(s.id) },
       el("span", { class: "case-outcome" }, RISK[s.outcome] || human(s.outcome)),
       el("span", { class: "case-title" }, s.title.split(/\s+[—–-]\s+/)[0]),
       el("span", { class: "case-label" }, s.label),
@@ -479,6 +505,7 @@ function showError(message) {
 async function runReview(event) {
   event.preventDefault();
   showError("");
+  setFieldError("file", "");
   const inDemo = demo; // the mode the run was started in, whatever the switch does meanwhile
   // A demo review sends no model and no key: it calls no model. A live one sends what the fields
   // hold, once they pass — the key in its header, the model in the body.
@@ -1333,7 +1360,9 @@ window.addEventListener("DOMContentLoaded", () => {
   }).catch(() => {});
   loadSamples();
   loadModels();
-  $("document").addEventListener("input", () => { countChars(); saveDraft(); markCase(null); });
+  $("document").addEventListener("input", () => {
+    countChars(); saveDraft(); markCase(null); setFieldError("file", "");
+  });
   $("model").addEventListener("input", () => { setFieldError("model", ""); saveDraft(); });
   $("api-key").addEventListener("input", () => setFieldError("api-key", ""));
   // The key does not outlive the page: a reload or a closed tab starts with the field empty.
@@ -1358,16 +1387,15 @@ window.addEventListener("DOMContentLoaded", () => {
     countChars();
     setMode("view");
   });
-  $("file").addEventListener("change", async () => {
+  $("file").addEventListener("change", () => {
     const file = $("file").files[0];
-    if (!file) return;
-    $("document").value = await file.text();
-    countChars();
-    saveDraft();
+    $("file").value = ""; // so the same file, edited outside, can be loaded again
+    if (file) loadFile(file);
   });
 
   fetch("/api/limits").then((r) => r.json()).then((limits) => {
     maxChars = limits.max_document_chars || null;
+    maxUploadBytes = limits.max_upload_bytes || null;
     countChars();
   }).catch(() => {});
 });

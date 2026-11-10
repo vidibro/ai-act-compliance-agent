@@ -444,7 +444,9 @@ def test_the_page_carries_the_mode_switch_and_the_demo_banner(client):
     page = client.get("/").text
     assert 'id="demo-switch"' in page and 'role="switch"' in page
     assert 'id="modebar"' in page
-    assert 'id="sample"' in page
+    # The samples are demo mode's cases and nothing else: normal mode offers no stock document,
+    # which would read as a template of a complete system card (the guide is the way to write one).
+    assert 'id="sample"' not in page
     # Demo mode has no free text input: the cases are the input, and the reviewed document is
     # shown read-only on request.
     styles = client.get("/static/report.css").text
@@ -469,7 +471,7 @@ def test_demo_mode_offers_a_case_gallery(client):
     assert "<summary>" in page.split('id="cases"')[1][:40]
     script = client.get("/static/report.js").text
     assert "function buildGallery(list)" in script
-    assert "pickSample(s.id, true)" in script  # one click runs the case
+    assert "pickSample(s.id)" in script  # one click runs the case
     assert "requestSubmit()" in script
     assert '$("cases").open = mode === "edit";' in script  # open while choosing, folded after
 

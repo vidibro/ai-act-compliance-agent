@@ -9,7 +9,9 @@ The body is what each document's `source.md` declares: its font sizes and the lo
 reaches on a page. That drops footnotes, footnote markers, the contents page and page numbers, which
 would otherwise run into the paragraph they interrupt.
 
-pdfplumber and pypdfium2 are development dependencies, imported only when a PDF is actually read.
+Both engines are imported only when a PDF is actually read. pypdfium2 is a development dependency,
+like this check; pdfplumber is a runtime one, since the report app reads uploaded PDFs with it
+(`aiact.report_app.uploads`).
 """
 
 from __future__ import annotations

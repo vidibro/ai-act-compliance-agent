@@ -1,4 +1,8 @@
-"""Sample documents the page can load with one click — and, in demo mode, the case gallery.
+"""The documents behind demo mode's case gallery — one click runs the demo review on one.
+
+Demo mode only. Normal mode offers no stock documents: a reader writes their own system card with
+`docs/system-card-guide.md`, and a sample loaded into a real review would read as a template of
+what a complete card looks like, which none of these is.
 
 The registry is `data/demo/samples.yaml`: one entry per document, in display order, each with the
 risk class the demo stand-ins reach on it (`outcome`) so a reader can pick the case they want to

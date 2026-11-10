@@ -43,7 +43,7 @@
       <p class="muted edit-only live-only">Paste the system card or technical documentation. The review classifies the system
         under the AI Act, then checks the document against the obligations that apply.</p>
       <p class="muted edit-only live-only">No documentation yet? <a href="/guide" target="_blank" rel="noopener">Follow the guide</a>
-        to write a system card the review can read, or load a sample document below.</p>
+        to write a system card the review can read.</p>
       <p class="muted edit-only demo-only" id="demo-hint">Each case runs the demo review on a document from the repository and shows
         the report for it. No model reads the document: keyword heuristics stand in for the classifier and the judge, so the
         report is illustrative — it shows what a review looks like, not whether a system complies.</p>
@@ -86,10 +86,16 @@
       </div>
     </fieldset>
     <div class="input-foot">
-      <label class="filebtn edit-only">Load a file<input id="file" type="file" accept=".md,.txt,text/plain,text/markdown"></label>
-      <select class="samplebtn edit-only" id="sample" aria-label="Load a sample document" hidden>
-        <option value="">Load a sample…</option>
-      </select>
+      <!-- .md and .txt are read in the browser; .pdf and .docx go to POST /api/extract, which
+           returns their text for the box — the reader sees what the review will read. A file that
+           cannot be read is reported right under the button, as the model and key fields report
+           theirs, not in the page's error block below the form. -->
+      <div class="upload edit-only">
+        <label class="filebtn" title="Markdown, plain text, PDF or Word (.docx)">Load a file<input id="file" type="file"
+               accept=".md,.txt,.pdf,.docx,text/plain,text/markdown,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+               aria-describedby="file-error"></label>
+        <span class="field-error" id="file-error" role="alert" hidden></span>
+      </div>
       <span class="muted small" id="chars"></span>
       <span class="spacer"></span>
       <span class="muted small edit-only" id="run-hint">Makes model calls; takes a minute or two.</span>

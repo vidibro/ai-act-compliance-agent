@@ -71,6 +71,11 @@ The same review as a web page — paste a document, read the report — is the *
 make app        # http://127.0.0.1:8766, model and key from .env
 ```
 
+**Load a file** accepts Markdown and plain text, and also PDF and Word (`.docx`): the server
+extracts their text (`POST /api/extract` — no model call, nothing stored) into the input box, so
+what the review reads is on screen before it runs. A scanned PDF holds no text and is refused with
+a message; it needs OCR first.
+
 **Print** and **Download** are one pair of small buttons with three stops: docked at the report's
 head beside the system's name, in a row fixed to the bottom of the window while reading (beside
 the demo label in demo mode), and docked again at the report's end — one pair on screen at a time.
@@ -123,8 +128,9 @@ the cases the golden set does not cover: an Annex I medical device assessed by a
 who assesses conformity (needs review), CV extraction with its Art. 6(4) assessment written down
 (not high-risk), a retail chatbot owing Art. 50(1) and 50(2) (minimal risk), a general-purpose
 model card (Chapter V), and an exclusively military system (outside the Act). A reader's own
-document belongs in a real review; in normal mode the same samples are one dropdown away, without
-the outcome labels, since a model may read them differently. A demo report lives in the page's
+document belongs in a real review. Normal mode offers no samples: a complete system card is far
+more than any of these cases, and the way to write one is [the guide](docs/system-card-guide.md) —
+a stock document in a real review would read as a template of one. A demo report lives in the page's
 memory, not in the browser's storage: it survives a mode switch, not a reload — a sample is one
 click away again.
 
