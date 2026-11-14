@@ -12,8 +12,13 @@ REDACTED = "***REDACTED***"
 
 _SECRET_NAME = re.compile(r"(API_KEY|SECRET_KEY|_TOKEN|PASSWORD|CREDENTIALS)$")
 
-# Vendor key shapes, for a secret supplied per-request rather than through the environment.
-_SECRET_SHAPE = re.compile(r"\b(sk-[A-Za-z0-9_-]{8,}|pk-lf-[A-Za-z0-9-]{8,}|gsk_[A-Za-z0-9]{8,})")
+# Vendor key shapes, for a secret supplied per-request rather than through the environment. The
+# `sk-` family covers Anthropic (sk-ant-…), OpenAI and Mistral's newer keys; `AIza…` is Google's.
+# A shape is a second net behind `scrub(text, extra=<the caller's key>)`, which catches a key of
+# any shape at all — Mistral's classic 32-character keys have none worth matching.
+_SECRET_SHAPE = re.compile(
+    r"\b(sk-[A-Za-z0-9_-]{8,}|pk-lf-[A-Za-z0-9-]{8,}|gsk_[A-Za-z0-9]{8,}|AIza[0-9A-Za-z_-]{35})"
+)
 
 _MIN_LENGTH = 8
 """Below this a value is not a credential, and redacting it would corrupt unrelated text."""

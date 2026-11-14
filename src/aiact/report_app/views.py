@@ -113,11 +113,28 @@ class ReviewResponse(BaseModel):
     rules: dict[str, RuleView]
     norms: dict[str, NormView]
     notes: ReportNotes
+    demo: bool = False
+    """True where no model read the document: the answers, verdicts and summary come from the
+    demo mode's keyword heuristics and illustrate the report rather than assess the system.
+    Carried on the response so a saved demo report still says so when it is shown again."""
+    demo_note: str | None = None
+    """What a demo report is and is not, in the words the page shows; None for a real review."""
+    model: str | None = None
+    """The model that read the document — the request's choice or the server's; None for a demo
+    report. Carried on the response so a saved report still says who wrote it. The key that paid
+    for it is not here and is nowhere in the response."""
 
 
 def build_response(
-    report: ComplianceReport, spec: PolicyRuleset, summary: SystemSummary | None = None
+    report: ComplianceReport,
+    spec: PolicyRuleset,
+    summary: SystemSummary | None = None,
+    *,
+    demo_note: str | None = None,
+    model: str | None = None,
 ) -> ReviewResponse:
+    """The page's response. `demo_note` marks a report no model wrote (see `report_app.demo`);
+    `model` names the one that did."""
     rule_ids = (
         {finding.rule_id for finding in report.findings}
         | {rule_id for ids in report.not_document_verifiable.values() for rule_id in ids}
@@ -147,6 +164,9 @@ def build_response(
             chapter_v_gate=report.chapter_v_gate_note,
             rests_on_guidance=report.rests_on_guidance,
         ),
+        demo=demo_note is not None,
+        demo_note=demo_note,
+        model=model,
     )
 
 

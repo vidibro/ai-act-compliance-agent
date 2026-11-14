@@ -43,9 +43,11 @@ class Summariser(Protocol):
 class LLMSummariser:
     """Writes the name and summary with one completion, without extended thinking."""
 
-    def __init__(self, model: str | None = None) -> None:
+    def __init__(self, model: str | None = None, api_key: str | None = None) -> None:
         self.model = model or get_settings().llm_model
         self.profile = profile_for(self.model, NO_THINKING)
+        # A caller's own key (bring-your-own-key), or None for the environment's.
+        self._api_key = api_key
         self.usage = Usage()
 
     def summarise(self, document: str) -> SystemSummary | None:
@@ -65,7 +67,7 @@ class LLMSummariser:
             ],
             response_format={"type": "json_object"},
             max_tokens=400,
-            **gateway_kwargs(),
+            **gateway_kwargs(self._api_key),
             **self.profile.completion_kwargs,
         )
         self.usage.record(response)

@@ -16,9 +16,8 @@ from pydantic import BaseModel
 
 from aiact.config import get_settings
 from aiact.norm_citations import cited_provisions
-from aiact.norm_loader import load_normative_coverage
 from aiact.policy_loader import article_filename, articles_dir_for, provision_text
-from aiact.report_app.citations import segment_citations
+from aiact.report_app.citations import ordered_segments, segment_citations
 
 _TITLE = re.compile(r"^title:\s*(.+)$", re.MULTILINE)
 _ANNEX_ID = re.compile(r"[IVX]+")
@@ -90,11 +89,7 @@ def _segments() -> tuple[dict[str, list[tuple[str, str]]], dict[str, tuple[str, 
     citations = segment_citations()
     by_document: dict[str, list[tuple[str, str]]] = {}
     by_id: dict[str, tuple[str, str, str]] = {}
-    ordered = sorted(
-        load_normative_coverage().text_review.segments,
-        key=lambda s: (s.source.kind.value, s.source.document, s.start),
-    )
-    for segment in ordered:
+    for segment in ordered_segments():
         document = f"{segment.source.kind.value}:{segment.source.document}"
         citation = citations.get(segment.segment_id, "")
         text = segment.text.strip()

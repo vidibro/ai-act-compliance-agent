@@ -37,7 +37,7 @@ from aiact.brain import Brain
 from aiact.document import check_size
 from aiact.gap import roles as role_questions
 from aiact.gap.criteria import aggregate_confidence, aggregate_reasoning, settle
-from aiact.gap.judge import LLMJudge
+from aiact.gap.judge import Judge, LLMJudge
 from aiact.gap.rules import ActiveRules, TimingNotice, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import (
@@ -130,7 +130,7 @@ def _count(findings: list[Finding]) -> ReportSummary:
 
 def build_graph(
     spec: PolicyRuleset,
-    judge: LLMJudge,
+    judge: Judge,
     brain: Brain,
     max_workers: int = DEFAULT_WORKERS,
     questions: dict[str, Question] | None = None,
@@ -389,7 +389,7 @@ def analyse(
     classification: ClassificationResult,
     spec: PolicyRuleset,
     brain: Brain,
-    judge: LLMJudge | None = None,
+    judge: Judge | None = None,
     system_id: str = "system",
     max_workers: int = DEFAULT_WORKERS,
     questions: dict[str, Question] | None = None,

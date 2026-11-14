@@ -84,21 +84,38 @@ function citeSource(s) {
 // The last report (with the document it reviewed) and the input draft live in this browser's local
 // storage, so a reload or a closed tab does not lose them. Storage can be full or blocked; the page
 // works without it.
+//
+// EACH MODE HAS ITS OWN. Normal mode keeps its draft and report under the keys below, in local
+// storage. Demo mode keeps its own IN MEMORY: it survives a mode switch within the page, not a
+// reload — a demo document is a sample from the repository, one click away again, and not worth
+// its half-megabyte of the storage quota. Switching mode swaps the whole workspace, so a demo
+// document is never shown beside the "Run review" button, nor a real document under the banner.
 const STORE = { last: "aiact-review:last", draft: "aiact-review:draft" };
+const DEMO_STORE = { last: "aiact-review:demo:last", draft: "aiact-review:demo:draft" };
 const OLD_REPORT_KEY = "aiact-review:last-report"; // a bare response, saved by an earlier version
+const memory = new Map(); // the demo workspace
 let maxChars = null; // the server's document limit
+let maxUploadBytes = null; // the server's cap on an uploaded file (PDF/DOCX), checked before sending
 let last = null; // { response, document } of the report on screen
 
+// The key for the workspace of the mode the page is in — or of a given report's mode.
+const keyFor = (kind, inDemo = demo) => (inDemo ? DEMO_STORE : STORE)[kind];
+const inMemory = (key) => Object.values(DEMO_STORE).includes(key);
+
 function store(key, value) {
+  if (inMemory(key)) { memory.set(key, value); return; }
   try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
 }
 
 function restore(key) {
+  if (inMemory(key)) return memory.get(key) ?? null;
   try { return JSON.parse(localStorage.getItem(key) || "null"); } catch { return null; }
 }
 
+// The model is part of the draft; the key is NOT — see "bring your own key" below.
 function saveDraft() {
-  store(STORE.draft, { document: $("document").value, editing: $("form").dataset.mode === "edit" });
+  store(keyFor("draft"), { document: $("document").value, editing: $("form").dataset.mode === "edit",
+                           model: $("model").value });
 }
 
 // A saved report keeps its verdicts and notes; its rule texts, actions and citations are rebuilt
@@ -118,9 +135,317 @@ async function refreshSaved() {
     if (!response.ok || last !== saved) return;
     const fresh = await response.json();
     last = { ...saved, response: { ...saved.response, rules: fresh.rules, norms: fresh.norms } };
-    store(STORE.last, last);
+    store(keyFor("last", Boolean(last.response.demo)), last);
     render(last.response);
   } catch {}
+}
+
+// ---- demo or normal --------------------------------------------------------------------------
+// Normal mode sends the document to /api/review, where a model classifies it and judges each duty.
+// Demo mode sends it to /api/demo/review, where keyword heuristics stand in for the model: no key,
+// no cost, a second's wait, and a report that is illustrative rather than an assessment. The page
+// says which mode it is in everywhere it can — the switch in the bar, the bar's colour, a banner,
+// the run button — and every demo report carries the mark however it is shown later.
+//
+// The choice is kept in this browser. When the server has no model (AIACT_LLM_MODEL empty), demo
+// is the only mode and the switch is locked on.
+const DEMO_KEY = "aiact-review:demo";
+const DEMO_NOTE = "This is a demo report: no model read the document, so the classification and the verdicts "
+  + "come from keyword heuristics and illustrate the report rather than assess the system.";
+const DEMO_ON_TEXT = "No model is called: keyword heuristics stand in for the classifier and the judge, so the "
+  + "report is illustrative, not an assessment.";
+// What /api/mode says: the server's AIACT_DEMO_MODE ("available" | "only" | "off"), whether a
+// live review can run on the server's own configuration — a model named, a key for it found — and,
+// in `byok`, whether a reader can bring their own key and model instead. Until it answers, the
+// page assumes the ordinary case, with no key fields shown.
+let modeInfo = { demo_mode: "available", live_available: true, live_unavailable_because: null,
+                 llm_model: null, byok: { mode: "off" }, demo_note: DEMO_NOTE };
+let demo = false;
+let workspaceLoaded = false; // false until the first mode is applied on page load
+
+// A live review can run here: on the server's own configuration, or on a key the reader brings.
+const byok = () => modeInfo.byok || { mode: "off" };
+const liveReachable = () => modeInfo.live_available || (modeInfo.demo_mode !== "only" && byok().mode !== "off");
+// Demo is the only mode where a live review cannot run (and demo is not switched off).
+const demoLocked = () => modeInfo.demo_mode !== "off" && !liveReachable();
+
+function setDemo(on, { save = true } = {}) {
+  const next = modeInfo.demo_mode !== "off" && (Boolean(on) || demoLocked());
+  const changed = next !== demo || !workspaceLoaded;
+  if (changed && workspaceLoaded) saveDraft(); // what is on screen belongs to the mode being left
+  demo = next;
+  if (demo) document.documentElement.dataset.demo = "1"; else delete document.documentElement.dataset.demo;
+  const locked = demoLocked();
+  const sw = $("demo-switch");
+  sw.hidden = modeInfo.demo_mode === "off";
+  sw.setAttribute("aria-checked", String(demo));
+  sw.disabled = locked;
+  sw.title = locked ? `${modeInfo.live_unavailable_because} Demo mode is the only mode.`
+    : demo ? "Demo mode is on: no model is called. Click to switch to normal mode."
+    : `Normal mode: reviews call ${modeInfo.llm_model || "the model you name"}${byok().key_required ? " on your own key" : ""}. Click for demo mode.`;
+  // The banner: why demo mode is on — by choice, or because nothing else can run. With demo mode
+  // switched off AND no live review possible, the same bar says so, as a warning.
+  const stuck = modeInfo.demo_mode === "off" && !liveReachable();
+  $("modebar").hidden = !demo && !stuck;
+  $("modebar").classList.toggle("stuck", stuck);
+  $("modebar-badge").textContent = stuck ? "No review can run" : "Demo mode";
+  $("modebar-text").textContent = stuck ? `${modeInfo.live_unavailable_because} Demo mode is switched off (AIACT_DEMO_MODE=off).`
+    : locked ? `${modeInfo.live_unavailable_because} Only demo reviews can run.` : DEMO_ON_TEXT;
+  $("modebar-off").hidden = locked || stuck;
+  $("demo-float-off").hidden = locked;
+  $("run").textContent = demo ? "Run demo review" : "Run review";
+  $("run-hint").textContent = demo ? "No model is called; takes a second. Illustrative only."
+    : "Makes model calls; takes a minute or two.";
+  document.title = demo ? "AI Act Compliance Review — demo" : "AI Act Compliance Review";
+  applyByok();
+  if (save) store(DEMO_KEY, demo);
+  if (changed) loadWorkspace();
+}
+
+// ---- bring your own key ------------------------------------------------------------------------
+// The model and key a live review runs on, entered on the page and sent with the request: the
+// model in the body, the key in the header the server names (X-LLM-API-Key). THE KEY IS KEPT
+// NOWHERE. It lives in its password field and in the one request that sends it — never in a
+// variable that outlives that call, never in local storage or the draft (saveDraft stores the
+// document and the model), never on the report or in an error. autocomplete="off" on the field
+// keeps the browser from restoring it on reload, and pagehide clears it besides. The model is not
+// a secret and is remembered with the draft, because it is tiresome to retype.
+//
+// The fields are live-only — demo mode calls no model — and hidden where the server refuses a
+// caller's key (AIACT_BYOK_MODE=off), where the page runs exactly as it did without them.
+const KEY_MAX_LENGTH = 2048;
+const KEY_SHAPE = /^[\x21-\x7e]+$/; // one token of printable ASCII, as the server checks
+const MODEL_EXAMPLE = "anthropic/claude-haiku-4-5";
+const KEY_KEPT_NOWHERE = "The key is sent with the request only — never stored by the server or by this page — "
+  + "and is cleared when you reload.";
+
+// Why the fields are there, for the server's situation: must a key come, must a model, or neither.
+function byokWhy() {
+  const info = byok();
+  const server = modeInfo.llm_model;
+  if (info.mode === "required") {
+    return `This server runs on your own key: reviews never use one of its own. Enter the provider key for the model you name`
+      + `${server ? `, or for ${server} if you name none` : ""}. ${KEY_KEPT_NOWHERE}`;
+  }
+  if (info.model_required) {
+    return `This server names no model: enter the model to review with, and your provider key for it unless the server `
+      + `holds one. ${KEY_KEPT_NOWHERE}`;
+  }
+  if (info.key_required) {
+    return `This server holds no key for its model (${server}): enter your own provider key to run a live review — `
+      + `and another model, if you like. ${KEY_KEPT_NOWHERE}`;
+  }
+  return `Optional. Leave both blank to run on the server's model${server ? ` (${server})` : ""} and key. `
+    + `A key you enter is used instead, for the model you name. ${KEY_KEPT_NOWHERE}`;
+}
+
+function applyByok() {
+  const info = byok();
+  const shown = info.mode !== "off" && modeInfo.demo_mode !== "only";
+  $("byok").hidden = !shown;
+  if (!shown) return;
+  $("byok-why").textContent = byokWhy();
+  $("model").placeholder = modeInfo.llm_model ? `Server default: ${modeInfo.llm_model}` : `e.g. ${MODEL_EXAMPLE}`;
+  // aria-required rather than required: the browser's own bubble would speak before the messages
+  // below, in its words rather than these.
+  $("model").setAttribute("aria-required", String(Boolean(info.model_required)));
+  $("api-key").setAttribute("aria-required", String(Boolean(info.key_required)));
+  $("api-key-label").textContent = info.key_required ? "Provider key (required)" : "Provider key";
+}
+
+async function loadModels() {
+  let list = [];
+  try { list = await fetch("/api/models").then((r) => (r.ok ? r.json() : [])); } catch {}
+  $("models").replaceChildren(...list.map((m) => el("option", { value: m.model }, m.vendor)));
+}
+
+// What is wrong with a value, in the words shown under its field — or "" where nothing is.
+function modelError(value) {
+  const info = byok();
+  if (!value) return info.model_required ? `The server names no model: enter one, e.g. ${MODEL_EXAMPLE}.` : "";
+  const pattern = info.model_pattern ? new RegExp(info.model_pattern) : null;
+  if (pattern && !pattern.test(value)) {
+    return `Not a model string: letters, digits and . _ : @ / - only, up to 200 characters — e.g. ${MODEL_EXAMPLE}.`;
+  }
+  return "";
+}
+
+function keyError(value) {
+  if (!value) return byok().key_required ? "Enter your provider key: this server has none to run the review on." : "";
+  if (value.length > KEY_MAX_LENGTH || !KEY_SHAPE.test(value)) {
+    return "Not a usable key: one token of printable characters, with no spaces.";
+  }
+  return "";
+}
+
+function setFieldError(id, message) {
+  $(`${id}-error`).textContent = message;
+  $(`${id}-error`).hidden = !message;
+  $(id).setAttribute("aria-invalid", message ? "true" : "false");
+}
+
+// The model and key to send a live review with — or null, after showing what is wrong with them.
+// The returned key goes straight into the request and nowhere else.
+function byokInputs() {
+  if ($("byok").hidden) return { model: "", key: "" };
+  const model = $("model").value.trim();
+  const key = $("api-key").value.trim();
+  const errors = [["model", modelError(model)], ["api-key", keyError(key)]];
+  for (const [id, message] of errors) setFieldError(id, message);
+  const first = errors.find(([, message]) => message);
+  if (first) { $(first[0]).focus(); return null; }
+  return { model, key };
+}
+
+// Saves from earlier versions of this page: a bare response under its old key, a demo report
+// saved under the normal key before the two modes kept separate workspaces, and a demo workspace
+// saved to local storage before it moved to memory. The first moves to where this version looks
+// for it; the demo ones are dropped — a sample is one click away.
+function migrateSaved() {
+  const old = restore(OLD_REPORT_KEY);
+  if (old?.report && !restore(STORE.last)) {
+    store(STORE.last, { response: old, document: restore(STORE.draft)?.document || "" });
+  }
+  const stale = [OLD_REPORT_KEY, ...Object.values(DEMO_STORE)];
+  if (restore(STORE.last)?.response?.demo) stale.push(STORE.last, STORE.draft);
+  for (const key of stale) { try { localStorage.removeItem(key); } catch {} }
+}
+
+// The document and report of the mode the page is now in — back where the reader left off in that
+// mode, or a clean page where they have not used it yet. Nothing carries over from the other mode.
+function loadWorkspace() {
+  workspaceLoaded = true;
+  showError("");
+  setFieldError("file", "");
+  markCase(null);
+  const draft = restore(keyFor("draft"));
+  last = restore(keyFor("last"));
+  if (last && Boolean(last.response?.demo) !== demo) last = null; // the other mode's report
+  $("report").replaceChildren();
+  if (last) {
+    try { render(last.response); } catch { last = null; try { localStorage.removeItem(keyFor("last")); } catch {} }
+  }
+  if (last) refreshSaved();
+  if (!demo) $("model").value = draft?.model || "";
+  if (last && !draft?.editing) {
+    $("document").value = last.document;
+    setMode("view");
+    markCase(last.sample || null);
+  } else {
+    $("document").value = draft?.document || "";
+    setMode("edit");
+  }
+  countChars();
+}
+
+// Demo mode's cases: documents from the repository, each with the outcome the demo reaches on it.
+// Normal mode offers none — a reader writes their own card with the guide, and a stock document
+// would pass for a template of what a complete one looks like.
+async function loadSamples() {
+  let list = [];
+  try { list = await fetch("/api/samples").then((r) => (r.ok ? r.json() : [])); } catch {}
+  if (list.length) buildGallery(list);
+}
+
+// Paste a demo case into the input — leaving a report on screen for the editor if need be — and
+// run the demo review on it straight away.
+async function pickSample(id) {
+  let text;
+  try {
+    const response = await fetch(`/api/samples/${encodeURIComponent(id)}`);
+    if (!response.ok) throw new Error(response.statusText);
+    text = (await response.json()).text;
+  } catch {
+    showError("The sample document could not be loaded.");
+    return;
+  }
+  if ($("form").dataset.mode === "view") setMode("edit");
+  const area = $("document");
+  area.value = text;
+  area.setSelectionRange(0, 0);
+  area.scrollTop = 0; // read from the top, as a pasted document would be
+  countChars();
+  saveDraft();
+  showError("");
+  markCase(id);
+  $("form").requestSubmit();
+}
+
+// ---- loading a file --------------------------------------------------------------------------
+// "Load a file": .md and .txt are read in the browser; a PDF or DOCX is posted to the server,
+// which extracts its text — no model call, nothing stored — and sends it back for the input box,
+// so the reader sees exactly what the review will read before running it. A file that cannot be
+// read is reported under the button (#file-error), where the reader's eyes are, like a field's.
+const SERVER_READ = /\.(pdf|docx)$/i;
+
+async function loadFile(file) {
+  setFieldError("file", "");
+  $("chars").textContent = `Reading ${file.name}…`;
+  try {
+    const text = SERVER_READ.test(file.name) ? await extractFile(file) : await file.text();
+    const area = $("document");
+    area.value = text;
+    area.setSelectionRange(0, 0);
+    area.scrollTop = 0; // read from the top, as a pasted document would be
+    markCase(null);
+    saveDraft();
+    showError(""); // a failed review of the previous document no longer applies
+  } catch (err) {
+    setFieldError("file", err.message);
+  } finally {
+    countChars(); // also replaces the "Reading…" note, whichever way it went
+  }
+}
+
+// The raw bytes to POST /api/extract, the text out of its answer, or its refusal in its words.
+async function extractFile(file) {
+  if (maxUploadBytes && file.size > maxUploadBytes) {
+    throw new Error(`${file.name} is ${file.size.toLocaleString("en-GB")} bytes; ` +
+      `the upload limit is ${maxUploadBytes.toLocaleString("en-GB")}.`);
+  }
+  const response = await fetch(`/api/extract?filename=${encodeURIComponent(file.name)}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/octet-stream" },
+    body: file,
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(body.detail || `The file could not be read (${response.status}).`);
+  return body.text;
+}
+
+// ---- the case gallery --------------------------------------------------------------------------
+// Demo mode's only way in: one card per sample, marked with the outcome the demo reaches on it, so
+// the reader picks the case they want to see — a compliant file, a card with gaps, an Annex I
+// product, a prohibited practice — and has its report in one click. There is no free text input
+// in demo mode: the documents are the cases, whose outcomes are known, and a reader's own document
+// belongs in a real review.
+function buildGallery(list) {
+  const grid = $("cases-grid");
+  grid.replaceChildren(...list.map((s) => el("div", { class: `case o-${s.outcome}`, "data-sample": s.id },
+    el("button", { type: "button", class: "case-pick", title: "Run the demo review on this document",
+                   onclick: () => pickSample(s.id) },
+      el("span", { class: "case-outcome" }, RISK[s.outcome] || human(s.outcome)),
+      el("span", { class: "case-title" }, s.title.split(/\s+[—–-]\s+/)[0]),
+      el("span", { class: "case-label" }, s.label),
+      el("span", { class: "case-about" }, s.about),
+      el("span", { class: "case-run", "aria-hidden": "true" }, "Run demo review →")))));
+  $("cases-count").textContent = `· ${list.length} cases`;
+  $("cases").hidden = false;
+}
+
+// The card whose document is in the input, if any — named in the folded panel's summary line and
+// cleared when the text is edited. Picking a case folds the panel: the choice is made.
+let currentSample = null; // the sample in the input, carried onto the report it produces
+
+function markCase(id) {
+  currentSample = id || null;
+  let picked = "";
+  for (const card of document.querySelectorAll(".case")) {
+    const on = card.dataset.sample === id;
+    card.classList.toggle("on", on);
+    if (on) picked = card.querySelector(".case-title")?.textContent || id;
+  }
+  $("cases-picked").textContent = picked ? `${picked} reviewed` : "";
 }
 
 // ---- edit or view ----------------------------------------------------------------------------
@@ -129,10 +454,22 @@ async function refreshSaved() {
 function setMode(mode) {
   $("form").dataset.mode = mode;
   $("document").readOnly = mode === "view";
-  $("form-title").textContent = mode === "view" ? "Reviewed document" : "Review a system";
+  $("form-title").textContent = mode === "view" ? "Reviewed document" : demo ? "Pick a case" : "Review a system";
   $("cancel").hidden = !last;
   $("report").hidden = mode === "edit";
+  placeExportFloat();
+  // In demo mode the cases ARE the input: open while choosing, folded once a report is up, and
+  // the reviewed document hidden behind its toggle until asked for.
+  if (demo) $("cases").open = mode === "edit";
+  showDocument(false);
   saveDraft();
+}
+
+// Demo mode's read-only view of the document a report was made from.
+function showDocument(shown) {
+  $("form").classList.toggle("doc-shown", shown);
+  $("show-doc").textContent = shown ? "Hide the reviewed document" : "Show the reviewed document";
+  $("show-doc").setAttribute("aria-expanded", String(shown));
 }
 
 // ---- running a review ------------------------------------------------------------------------
@@ -142,15 +479,22 @@ function setBusy(busy) {
   $("run").disabled = busy;
   $("document").readOnly = busy || $("form").dataset.mode === "view";
   $("cancel").disabled = busy;
+  // No mode switch while a run is in flight: its report belongs to the mode it was started in.
+  $("demo-switch").disabled = busy || demoLocked();
+  for (const id of ["modebar-off", "demo-float-off"]) $(id).disabled = busy;
+  for (const b of document.querySelectorAll(".case-pick")) b.disabled = busy;
   const status = $("status");
   clearInterval(timer);
   if (!busy) { status.hidden = true; return; }
   const started = Date.now();
-  const text = el("span", {}, "Reviewing… 0s");
+  const verb = demo ? "Running the demo review" : "Reviewing";
+  const text = el("span", {}, `${verb}… 0s`);
   status.replaceChildren(el("span", { class: "spinner" }), text,
-    el("span", { class: "muted small" }, "Classifying the system, then checking each duty."));
+    el("span", { class: "muted small" }, demo
+      ? "No model is called: keyword heuristics stand in for the classifier and the judge."
+      : "Classifying the system, then checking each duty."));
   status.hidden = false;
-  timer = setInterval(() => { text.textContent = `Reviewing… ${Math.round((Date.now() - started) / 1000)}s`; }, 1000);
+  timer = setInterval(() => { text.textContent = `${verb}… ${Math.round((Date.now() - started) / 1000)}s`; }, 1000);
 }
 
 function showError(message) {
@@ -161,20 +505,30 @@ function showError(message) {
 async function runReview(event) {
   event.preventDefault();
   showError("");
+  setFieldError("file", "");
+  const inDemo = demo; // the mode the run was started in, whatever the switch does meanwhile
+  // A demo review sends no model and no key: it calls no model. A live one sends what the fields
+  // hold, once they pass — the key in its header, the model in the body.
+  const inputs = inDemo ? { model: "", key: "" } : byokInputs();
+  if (!inputs) return;
+  const headers = { "Content-Type": "application/json" };
+  if (inputs.key) headers[byok().header || "X-LLM-API-Key"] = inputs.key;
   setBusy(true);
   try {
-    const response = await fetch("/api/review", {
+    const response = await fetch(inDemo ? "/api/demo/review" : "/api/review", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ document: $("document").value }),
+      headers,
+      body: JSON.stringify({ document: $("document").value, ...(inputs.model ? { model: inputs.model } : {}) }),
     });
     const body = await response.json().catch(() => ({}));
     if (!response.ok) {
       const detail = Array.isArray(body.detail) ? body.detail.map((d) => d.msg).join("; ") : body.detail;
-      throw new Error(detail || `The review failed (${response.status}).`);
+      const hint = inDemo || response.status === 413 || response.status === 422 ? ""
+        : "\n\nTo try the page without a model, switch on Demo mode in the bar above.";
+      throw new Error((detail || `The review failed (${response.status}).`) + hint);
     }
-    last = { response: body, document: $("document").value };
-    store(STORE.last, last);
+    last = { response: body, document: $("document").value, sample: currentSample };
+    store(keyFor("last", inDemo), last);
     render(body);
     setMode("view");
     $("report").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -196,27 +550,100 @@ function render(data) {
 
   filters = []; // the bars of the report being replaced
   whenButtons = [];
-  doneKey = data.system_name || "system";
+  doneKey = (data.demo ? "demo:" : "") + (data.system_name || "system");
   refreshVerdict = () => $("report").querySelector(".compliance")
     ?.replaceWith(compliance(report, data, ruleDate, normDate, isFuture));
   const [first, later] = notes(data);
   const { duties, others } = provisions(report, data, ruleDate, normDate, isFuture);
   // A section with nothing to show is null; replaceChildren would print it as text.
   $("report").replaceChildren(...[
+    // On paper, where the app's bar is not, the page says what it is.
+    el("div", { class: "print-only print-title" }, `AI Act compliance report${data.demo ? " — demo" : ""}`),
+    data.demo ? note("demo", "Demo report — illustrative", data.demo_note || modeInfo.demo_note || DEMO_NOTE) : null,
     ...header(data),
     compliance(report, data, ruleDate, normDate, isFuture),
     ...first,
     duties ? el("div", { class: "section-head", id: "duties" },
-      el("h2", {}, "Operator duties"),
-      el("p", { class: "muted" }, "What the AI Act requires, and who must do it. Where a duty can be shown in writing, we checked whether your document covers it. The rest can't be verified from documentation, so you need to check them yourself.")) : null,
+      el("h2", {}, SECTIONS.duties[0]),
+      el("p", { class: "muted" }, SECTIONS.duties[1])) : null,
     duties ? later : null,
     duties,
     others ? el("div", { class: "section-head" },
-      el("h2", {}, "Other provisions"),
-      el("p", { class: "muted" }, "Permissions, rights and legal effects, and what authorities must or may do about your system. These aren't compared with your document — they're for your information.")) : null,
+      el("h2", {}, SECTIONS.others[0]),
+      el("p", { class: "muted" }, SECTIONS.others[1])) : null,
     others,
     el("footer", { class: "disclaimer" }, report.disclaimer),
+    el("section", { class: "card report-end" },
+      el("div", {}, el("div", { class: "report-end-title" }, "End of report"),
+        el("p", { class: "muted small" }, "Print it, or save it as a Markdown file: the whole report, with the checklist as you've ticked it.")),
+      el("div", { class: "report-actions" }, printButton(), exportButton())),
   ].filter(Boolean));
+  placeExportFloat();
+}
+
+// ---- saving the report -------------------------------------------------------------------------
+// Print and Download are where a reader is when they want them: a pair at the head of the report
+// beside the system's name, at its end once it has been read, and in between in the row fixed to
+// the bottom of the window (#export-float) — shown only when the head's pair has scrolled away
+// above and the end's is not yet in view, so the pair is always in reach and never twice on
+// screen. Each Download saves the same file (report-md.js); each Print prints the same report.
+// The labels are short, to fit one row beside the demo label on a phone; the accessible names and
+// tooltips say what each one saves.
+const EXPORT_TITLE = "Save this report as a Markdown file, with the checklist as you have ticked it";
+
+const exportButton = () => el("button", { type: "button", class: "export-md", title: EXPORT_TITLE,
+  "aria-label": "Download report as Markdown", onclick: () => downloadMarkdown() }, "Download");
+
+let floatFrame = 0;
+function placeExportFloat() {
+  cancelAnimationFrame(floatFrame);
+  floatFrame = requestAnimationFrame(() => {
+    const buttons = $("report").querySelectorAll(".export-md");
+    const reading = !$("report").hidden && buttons.length > 1;
+    $("export-float").hidden = !reading
+      || buttons[0].getBoundingClientRect().bottom > 0 // the head's button is on screen, or below
+      || buttons[buttons.length - 1].getBoundingClientRect().top < window.innerHeight; // the end's is
+  });
+}
+
+// ---- printing the report -----------------------------------------------------------------------
+// "Print" sits beside "Download" wherever it is, and prints what the Markdown file holds: the
+// whole report, whatever the filters on screen show — every role, every result, every date, each
+// row opened — with the verdict for every role and the checklist as ticked. A printed record that
+// silently dropped a role's duties because a filter was on would read as complete and not be. The
+// Act's own text is left out, as in the file; each row keeps its citation. The page is set up for
+// paper on the browser's own print events, so Ctrl/Cmd+P prints the same thing as the button; the
+// paper layout itself is report.css's print rules.
+const PRINT_TITLE = "Print this report or save it as a PDF: the whole report, with the checklist as you have ticked it";
+
+const printButton = () => el("button", { type: "button", class: "print-report", title: PRINT_TITLE,
+  "aria-label": "Print report", onclick: () => window.print() }, "Print");
+
+let printing = false; // read by the filters: nothing is hidden while printing
+let unprint = null; // puts the page back as the reader left it
+
+function beforePrint() {
+  // Only a report on screen is set up for paper; the input prints as it is.
+  if (printing || !last?.response || $("report").hidden) return;
+  printing = true;
+  const closed = [...$("report").querySelectorAll("details.item:not([open])")];
+  for (const item of closed) item.open = true;
+  applyFilters(); // every row and group shown, full counts, the verdict for every role
+  for (const b of $("report").querySelectorAll(".printed-at")) b.textContent = new Date().toLocaleString("en-GB");
+  // The name a browser gives a PDF of the page.
+  const title = document.title;
+  document.title = markdownFilename(last.response).replace(/\.md$/, ""); // report-md.js
+  unprint = () => {
+    printing = false;
+    for (const item of closed) item.open = false;
+    applyFilters();
+    document.title = title;
+  };
+}
+
+function afterPrint() {
+  unprint?.();
+  unprint = null;
 }
 
 // What the system is first, then how it is classified.
@@ -224,16 +651,23 @@ function header(data) {
   const report = data.report;
   const c = report.classification;
   const risk = c.overall_risk_class;
+  const demoTag = () => (data.demo ? el("span", { class: "tag demo-tag" }, "Demo") : null);
   const system = el("section", { class: "card system" },
-    data.system_name
-      ? el("h2", {}, el("span", { class: "eyebrow" }, "The system"), data.system_name)
-      : el("div", { class: "eyebrow" }, "The system"),
+    el("div", { class: "system-head" },
+      data.system_name
+        ? el("h2", {}, el("span", { class: "eyebrow" }, "The system", demoTag()), data.system_name)
+        : el("div", { class: "eyebrow" }, "The system", demoTag()),
+      el("div", { class: "report-actions" }, printButton(), exportButton())),
     data.system_summary
       ? el("p", { class: "summary" }, data.system_summary)
       : el("p", { class: "muted" }, "No summary could be written for this document."),
+    data.demo && data.system_summary
+      ? el("p", { class: "muted small" }, "Quoted from the document by the demo; a model would write this summary.") : null,
     el("div", { class: "meta" },
       el("span", {}, "Act version ", el("b", {}, fmtDate(report.act_version_date))),
-      el("span", {}, "Generated ", el("b", {}, new Date(report.generated_at).toLocaleString("en-GB")))),
+      el("span", {}, "Generated ", el("b", {}, new Date(report.generated_at).toLocaleString("en-GB"))),
+      data.model ? el("span", {}, "Model ", el("b", {}, data.model)) : null,
+      el("span", { class: "print-only" }, "Printed ", el("b", { class: "printed-at" }))),
   );
   const classification = el("section", { class: `card verdict ${risk}` },
     el("div", { class: "eyebrow" }, "System classification"),
@@ -255,17 +689,19 @@ function note(kind, lead, text) {
 }
 
 // Notes that change how the report reads go above the counts as alerts. The rest explain a
-// condition on the duties and go in one panel under the counts, one line each.
-function notes(data) {
+// condition on the duties and go in one panel under the counts, one line each. As data first, for
+// the page and the Markdown export alike: alerts as [kind, lead, text], the rest as
+// [title, hint, text].
+function noteParts(data) {
   const report = data.report;
   const out = [];
   const later = [];
   if (report.scope_note) {
     const stop = report.classification.overall_risk_class === "prohibited";
-    out.push(note(stop ? "stop" : "warn", stop ? "Prohibited" : "What was not checked", report.scope_note));
+    out.push([stop ? "stop" : "warn", stop ? "Prohibited" : "What was not checked", report.scope_note]);
   }
   const n = data.notes;
-  if (n.provider_reallocation) out.push(note("warn", "Who is the provider", n.provider_reallocation));
+  if (n.provider_reallocation) out.push(["warn", "Who is the provider", n.provider_reallocation]);
   if (n.deployer_type) later.push(["Who deploys the system",
     "Decides whether the impact assessment (Art. 27) and deployer registration (Art. 49(3)) apply.", n.deployer_type]);
   if (n.real_world_testing) later.push(["Live testing before release",
@@ -276,13 +712,20 @@ function notes(data) {
   // document states. Shown as advice, never as an exemption, and it changes no count.
   if (n.legacy_system) later.push(["Systems already on the market",
     "May get more time under Art. 111. The review does not apply this — check with your adviser.", n.legacy_system]);
-  return [out, later.length ? noteList(later) : null];
+  return { alerts: out, later };
 }
+
+function notes(data) {
+  const { alerts, later } = noteParts(data);
+  return [alerts.map(([kind, lead, text]) => note(kind, lead, text)), later.length ? noteList(later) : null];
+}
+
+const NOTES_HEAD = ["Notes on these duties", "Facts the review could not settle from your document, and what they change."];
 
 function noteList(items) {
   return el("section", { class: "card notes" },
-    el("h3", {}, "Notes on these duties", el("span", { class: "muted" }, `· ${items.length}`)),
-    el("p", { class: "hint" }, "Facts the review could not settle from your document, and what they change. Open a note for details."),
+    el("h3", {}, NOTES_HEAD[0], el("span", { class: "muted" }, `· ${items.length}`)),
+    el("p", { class: "hint" }, NOTES_HEAD[1], el("span", { class: "screen-only" }, " Open a note for details.")),
     items.map(([title, hint, text]) => el("details", { class: "item note-item" },
       el("summary", {}, el("span", { class: "cite" }, title), el("span", { class: "oneline" }, hint)),
       el("div", { class: "item-body" }, el("p", {}, text)))));
@@ -335,11 +778,13 @@ function doneToggle(id) {
 const nDuties = (n) => `${n} ${n === 1 ? "duty" : "duties"}`;
 const FIX = { gap: "Not covered in your document", inadequate: "Covered only in part", needs_review: "Unclear from your document" };
 
-function compliance(report, data, ruleDate, normDate, isFuture) {
+// What the verdict says, as data: the page draws it (`compliance`) and the Markdown export writes
+// it (`verdictMarkdown`), so the two can never say different things. `hidden` is the roles left
+// out — the Operator filter's on the page, none in the export — and `done` the duties ticked off.
+function verdictOf(report, data, ruleDate, normDate, isFuture, hidden = hiddenOf("roles"), done = doneSet()) {
   const risk = report.classification.overall_risk_class;
   // Only the roles the Operator filter shows: a deployer reading with the provider hidden gets the
   // deployer's verdict, not one a provider's gap decides.
-  const hidden = hiddenOf("roles");
   const shown = (roles) => !roles?.length || roles.some((r) => !hidden.has(r));
   const findings = report.findings.filter((f) => shown([f.role]));
   const open = findings.filter((f) => f.verdict in FIX);
@@ -356,7 +801,6 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
   }
   const unchecked = Object.keys(owners).filter((id) => shown([...owners[id]]))
     .map((id) => [id, conditional.has(id) ? normDate(id) : ruleDate(id)]);
-  const done = doneSet();
   const uncheckedNow = unchecked.filter(([, day]) => !isFuture(day));
   const doneNow = uncheckedNow.filter(([id]) => done.has(id)).length;
   const doneAll = unchecked.filter(([id]) => done.has(id)).length;
@@ -403,51 +847,65 @@ function compliance(report, data, ruleDate, normDate, isFuture) {
     && (findings.length || unchecked.length);
 
   // One line per point in time, each with what is wrong under it, then the duties nobody checked:
-  // a single list, so the later dates read as part of the same answer.
-  const fixes = (list) => el("ol", { class: "fixes" }, [...list].sort((a, b) =>
-    byCitation(data.rules[a.rule_id]?.citation, data.rules[b.rule_id]?.citation)).map((f) => {
-    const rule = data.rules[f.rule_id];
-    return el("li", {},
-      el("a", { href: `#${itemId(f)}`, onclick: (e) => { e.preventDefault(); reveal(itemId(f)); } },
-        rule?.action || rule?.requirement || f.rule_id),
-      el("span", { class: "muted" }, ` — ${FIX[f.verdict]}, ${rule?.citation || citeSource(f.citation)}`),
-      roleTag(f.role));
-  }));
-  const line = (cls, when, text, list = null) => el("li", { class: `status ${cls}` },
-    el("span", { class: "when" }, when), el("div", {}, el("span", {}, text), list));
+  // a single list, so the later dates read as part of the same answer. `fixes` are the findings to
+  // act on, in the order of the Act.
+  const inOrder = (list) => [...list].sort((a, b) =>
+    byCitation(data.rules[a.rule_id]?.citation, data.rules[b.rule_id]?.citation));
+  const line = (cls, when, text, fixes = null) => ({ cls, when, text, fixes: fixes?.length ? inOrder(fixes) : null });
   const checkedNow = findings.filter((f) => !f.applies_from);
   const later = groupBy(findings.filter((f) => f.applies_from), (f) => f.applies_from);
-  const statuses = judged ? el("ul", { class: "statuses" },
+  const statuses = judged ? [
     !checkedNow.length && findings.length ? line("ok", "Now", "No duty your document can show is in force yet.") : null,
     checkedNow.length ? line(openNow.length ? "stop" : "ok", "Now",
       checkedNow.length === 1 && openNow.length ? "The 1 duty in force today is not met. Fix now:"
         : openNow.length === checkedNow.length && openNow.length ? `None of the ${nDuties(checkedNow.length)} in force today is met. Fix now:`
         : openNow.length ? `${openNow.length} of ${nDuties(checkedNow.length)} in force today ${openNow.length === 1 ? "is" : "are"} not met. Fix now:`
         : checkedNow.length === 1 ? "The 1 duty in force today is met." : `All ${nDuties(checkedNow.length)} in force today are met.`,
-      openNow.length ? fixes(openNow) : null) : null,
-    Object.entries(later).sort().map(([d, list]) => {
+      openNow) : null,
+    ...Object.entries(later).sort().map(([d, list]) => {
       const notMet = list.filter((f) => f.verdict in FIX);
       return line(notMet.length ? "warn" : "ok", `From ${fmtDate(d)}`,
         list.length === 1 && notMet.length ? "The 1 duty that starts then isn't met yet. Fix before that date:"
           : notMet.length === list.length ? `None of the ${nDuties(list.length)} that start then is met yet. Fix before that date:`
           : notMet.length ? `${notMet.length} of ${nDuties(list.length)} that start then ${notMet.length === 1 ? "isn't" : "aren't"} met yet. Fix before that date:`
           : list.length === 1 ? "The 1 duty that starts then is already met." : `All ${nDuties(list.length)} that start then are already met.`,
-        notMet.length ? fixes(notMet) : null);
+        notMet);
     }),
-    unchecked.length ? line(doneNow === uncheckedNow.length ? "ok" : "unchecked", "Checklist",
-      [`${doneAll} of ${nDuties(unchecked.length)} a document can't show ${doneAll === 1 ? "is" : "are"} ticked off`
-        + (uncheckedNow.length ? ` — ${doneNow} of the ${uncheckedNow.length} that already apply. ` : ". "),
-        el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list")]) : null,
-  ) : null;
+    unchecked.length ? { ...line(doneNow === uncheckedNow.length ? "ok" : "unchecked", "Checklist",
+      `${doneAll} of ${nDuties(unchecked.length)} a document can't show ${doneAll === 1 ? "is" : "are"} ticked off`
+        + (uncheckedNow.length ? ` — ${doneNow} of the ${uncheckedNow.length} that already apply. ` : ". ")),
+    checklist: true } : null,
+  ].filter(Boolean) : null;
 
   const roles = [...new Set([...report.findings.map((f) => f.role), ...Object.values(owners).flatMap((o) => [...o])])];
-  const visible = roles.filter((r) => !hidden.has(r));
-  return el("section", { class: `card compliance ${state}` },
-    el("div", { class: "eyebrow" }, "Verdict"),
-    el("div", { class: "answer" }, answer),
-    el("p", {}, detail),
-    hidden.size && visible.length < roles.length ? el("p", { class: "scope" }, "For ",
-      visible.map((r, i) => [i ? ", " : "", roleTag(r)]), " only — as set in the Operator filter below.") : null,
+  return { state, answer, detail, statuses, roles, visible: roles.filter((r) => !hidden.has(r)), hidden };
+}
+
+// A finding to fix, as the verdict lists it: the duty, what is wrong, where the Act says so.
+const fixParts = (f, data) => {
+  const rule = data.rules[f.rule_id];
+  return { what: rule?.action || rule?.requirement || f.rule_id, why: FIX[f.verdict], cite: rule?.citation || citeSource(f.citation) };
+};
+
+function compliance(report, data, ruleDate, normDate, isFuture) {
+  const v = verdictOf(report, data, ruleDate, normDate, isFuture);
+  const fixes = (list) => el("ol", { class: "fixes" }, list.map((f) => {
+    const { what, why, cite } = fixParts(f, data);
+    return el("li", {},
+      el("a", { href: `#${itemId(f)}`, onclick: (e) => { e.preventDefault(); reveal(itemId(f)); } }, what),
+      el("span", { class: "muted" }, ` — ${why}, ${cite}`),
+      roleTag(f.role));
+  }));
+  const seeList = () => el("a", { href: "#duties", onclick: (e) => { e.preventDefault(); $("duties")?.scrollIntoView({ behavior: "smooth" }); } }, "See the list");
+  const statuses = v.statuses ? el("ul", { class: "statuses" }, v.statuses.map((s) => el("li", { class: `status ${s.cls}` },
+    el("span", { class: "when" }, s.when),
+    el("div", {}, el("span", {}, s.checklist ? [s.text, seeList()] : s.text), s.fixes ? fixes(s.fixes) : null)))) : null;
+  return el("section", { class: `card compliance ${v.state}` },
+    el("div", { class: "eyebrow" }, "Verdict", data.demo ? el("span", { class: "tag demo-tag" }, "Demo") : null),
+    el("div", { class: "answer" }, v.answer),
+    el("p", {}, v.detail),
+    v.hidden.size && v.visible.length < v.roles.length ? el("p", { class: "scope" }, "For ",
+      v.visible.map((r, i) => [i ? ", " : "", roleTag(r)]), " only — as set in the Operator filter below.") : null,
     statuses,
   );
 }
@@ -468,7 +926,9 @@ function reveal(id) {
 // Every provision once, tagged with the parties it applies to. A finding is one party's verdict, so
 // it carries that party's tag; an unjudged item several parties owe (the Art. 5 ban, Art. 4 AI
 // literacy, a fine) is listed once with all of their tags.
-function provisions(report, data, ruleDate, normDate, isFuture) {
+// Which rows the report lists, who owes each, and in what order — as data, so the page's lists and
+// the Markdown export hold the same rows in the same order.
+function reportRows(report, data) {
   const present = new Set([
     ...report.findings.map((f) => f.role),
     ...Object.keys(report.not_document_verifiable),
@@ -493,27 +953,53 @@ function provisions(report, data, ruleDate, normDate, isFuture) {
   }
   const ids = (prefix) => Object.keys(owners).filter((k) => k.startsWith(prefix)).map((k) => k.slice(prefix.length));
   const partiesOf = (prefix) => (id) => owners[`${prefix}${id}`];
-  const findings = [...report.findings].sort((a, b) => order.indexOf(a.role) - order.indexOf(b.role));
 
-  const duties = dutyGroups({ outstanding: ids("rule:"), conditional: ids("cond:"), unresolved: ids("route:") },
-    findings, { data, ruleDate, normDate, isFuture, partiesOf });
+  // The duties, in the order of the Act; the date column and filter say when each applies.
+  const ruleCite = (id) => data.rules[id]?.citation || "";
+  const checked = [...report.findings].sort((a, b) => order.indexOf(a.role) - order.indexOf(b.role))
+    .sort((a, b) => byCitation(ruleCite(a.rule_id), ruleCite(b.rule_id)));
+  // The unjudged rules and the duties that bind only under a condition, together.
+  const outstanding = [
+    ...ids("rule:").map((id) => ({ kind: "rule", id, roles: partiesOf("rule:")(id), cite: ruleCite(id) })),
+    ...ids("cond:").map((id) => ({ kind: "cond", id, roles: partiesOf("cond:")(id), cite: normCites(data.norms[id])[0] })),
+  ].sort((a, b) => byCitation(a.cite, b.cite));
+  const unresolved = ids("route:").sort((a, b) => byCitation(ruleCite(a), ruleCite(b)))
+    .map((id) => ({ kind: "rule", id, roles: partiesOf("route:")(id) }));
+
   // One list: the reader's permissions, rights and effects together with what authorities must or
   // may do, each tagged with who it names and labelled with its kind. The role filter separates
   // them, as it does the duties.
   const authorityIds = report.public_authority_statements.filter((id) => data.norms[id]);
   const authorities = [...new Set(authorityIds.flatMap((id) => data.norms[id].actors || []))];
-  const rows = [
-    ...NORM_SECTIONS.flatMap((key) => ids(`${key}:`).map((id) => [id, partiesOf(`${key}:`)(id)])),
-    ...authorityIds.map((id) => [id, data.norms[id].actors || []]),
-  ].sort(([a], [b]) => byCitation(normCites(data.norms[a])[0], normCites(data.norms[b])[0]));
-  const others = rows.length ? [group("", null, null, rows.map(([id, roles]) => normItem(id, data, roles)))] : [];
+  const others = [
+    ...NORM_SECTIONS.flatMap((key) => ids(`${key}:`).map((id) => ({ id, roles: partiesOf(`${key}:`)(id) }))),
+    ...authorityIds.map((id) => ({ id, roles: data.norms[id].actors || [] })),
+  ].sort((a, b) => byCitation(normCites(data.norms[a.id])[0], normCites(data.norms[b.id])[0]));
+  return { order, authorities, checked, outstanding, unresolved, others };
+}
+
+// The headings of the report's lists, on the page and in the export.
+const GROUPS = {
+  checked: ["Checked against your document", null],
+  outstanding: ["Not verifiable from documentation", "The review doesn't check these. Check each one yourself."],
+  unresolved: ["Date depends on the Art. 6 route", "Not checked: when these apply turns on how the system is classified."],
+};
+const SECTIONS = {
+  duties: ["Operator duties", "What the AI Act requires, and who must do it. Where a duty can be shown in writing, we checked whether your document covers it. The rest can't be verified from documentation, so you need to check them yourself."],
+  others: ["Other provisions", "Permissions, rights and legal effects, and what authorities must or may do about your system. These aren't compared with your document — they're for your information."],
+};
+
+function provisions(report, data, ruleDate, normDate, isFuture) {
+  const rows = reportRows(report, data);
+  const duties = dutyGroups(rows, { data, ruleDate, normDate, isFuture });
+  const others = rows.others.length ? [group("", null, null, rows.others.map(({ id, roles }) => normItem(id, data, roles)))] : [];
   const card = (groups, facets, columns, ...bars) => (groups.length
     ? el("section", { class: "card provisions" }, el("div", { class: "filters" }, filterBars(groups, facets), ...bars),
       el("div", { class: "columns", "aria-hidden": "true" }, columns.map((c) => el("span", {}, c))), groups) : null);
   return {
-    duties: card(duties, [["roles", roleOptions(order)], ["result", RESULT_OPTIONS]],
+    duties: card(duties, [["roles", roleOptions(rows.order)], ["result", RESULT_OPTIONS]],
       ["Check result", "Article", "Duty", "Applies from"], whenFilter()),
-    others: card(others, [["roles", roleOptions([...order, ...authorities]), authorities.length ? "Operator or authority:" : undefined],
+    others: card(others, [["roles", roleOptions([...rows.order, ...rows.authorities]), rows.authorities.length ? "Operator or authority:" : undefined],
       ["kind", KIND_OPTIONS()]],
       ["Type", "Article", "Provision", ""]),
   };
@@ -547,11 +1033,12 @@ function whenFilter() {
     el("div", { class: "seg", role: "group", "aria-label": "Show duties by date" }, whenButtons));
 }
 
-const hiddenOf = (facet) => new Set(restore(FACETS[facet].key) || []);
+// While the page is being printed nothing is hidden: see "printing the report".
+const hiddenOf = (facet) => new Set(printing ? [] : restore(FACETS[facet].key) || []);
 
 function applyFilters() {
   const hidden = Object.fromEntries(Object.keys(FACETS).map((f) => [f, hiddenOf(f)]));
-  const when = restore(WHEN_KEY) || "all";
+  const when = printing ? "all" : restore(WHEN_KEY) || "all";
   for (const b of whenButtons) b.classList.toggle("on", b.dataset.when === when);
   const excluded = (item) => Object.keys(FACETS).some((facet) => {
     const value = item.dataset[facet];
@@ -611,34 +1098,29 @@ const RESULT_OPTIONS = [...["gap", "inadequate", "needs_review", "pass"].map((v)
                         ["check", "Duty", "tag needs_review"], ["done", "Done", "tag pass"]];
 const KIND_OPTIONS = () => KIND_ORDER.map((k) => [k, NORM_KIND[k], `tag soft kind-${k}`]);
 
-function dutyGroups(parts, findings, { data, ruleDate, normDate, isFuture, partiesOf }) {
-  // In the order of the Act; the date column and filter say when each applies.
-  const ruleCite = (id) => data.rules[id]?.citation || "";
-  const checked = [...findings].sort((a, b) => byCitation(ruleCite(a.rule_id), ruleCite(b.rule_id)));
-  const rule = partiesOf("rule:");
-  const route = partiesOf("route:");
-  const cond = partiesOf("cond:");
-  // The unjudged rules and the duties that bind only under a condition, together.
-  const outstanding = [
-    ...parts.outstanding.map((id) => [ruleCite(id), () => outstandingItem(id, data, ruleDate(id), isFuture(ruleDate(id)), rule(id))]),
-    ...parts.conditional.map((id) => [normCites(data.norms[id])[0], () => conditionalDutyItem(id, data, normDate(id), isFuture(normDate(id)), cond(id))]),
-  ].sort(([a], [b]) => byCitation(a, b));
+function dutyGroups(rows, { data, ruleDate, normDate, isFuture }) {
+  const outstanding = ({ kind, id, roles }) => (kind === "cond"
+    ? conditionalDutyItem(id, data, normDate(id), isFuture(normDate(id)), roles)
+    : outstandingItem(id, data, ruleDate(id), isFuture(ruleDate(id)), roles));
   return [
-    checked.length ? group("", "Checked against your document", null, checked.map((f) => findingItem(f, data))) : null,
-    outstanding.length ? group("", "Not verifiable from documentation", "The review doesn't check these. Check each one yourself.",
-      outstanding.map(([, item]) => item())) : null,
-    parts.unresolved.length ? group("", "Date depends on the Art. 6 route", "Not checked: when these apply turns on how the system is classified.",
-      [...parts.unresolved].sort((a, b) => byCitation(ruleCite(a), ruleCite(b)))
-        .map((id) => outstandingItem(id, data, null, false, route(id), "unknown"))) : null,
+    rows.checked.length ? group("", ...GROUPS.checked, rows.checked.map((f) => findingItem(f, data))) : null,
+    rows.outstanding.length ? group("", ...GROUPS.outstanding, rows.outstanding.map(outstanding)) : null,
+    rows.unresolved.length ? group("", ...GROUPS.unresolved,
+      rows.unresolved.map(({ id, roles }) => outstandingItem(id, data, null, false, roles, "unknown"))) : null,
   ].filter(Boolean);
 }
 
 // The "Applies from" cell: now, a later date, or unknown where the date turns on the Art. 6 route.
 // A duty in force with a deadline the provision sets (Art. 111) shows that deadline instead of "Now".
+function appliesFromText(when, date = null, by = null) {
+  if (when === "future") return `from ${fmtDate(date)}`;
+  if (when === "now" && by) return `by ${fmtDate(by)}`;
+  return when === "unknown" ? "Date unknown" : "Now";
+}
+
 function appliesFrom(when, date, by = null) {
-  if (when === "future") return el("span", { class: "tag date" }, `from ${fmtDate(date)}`);
-  if (when === "now" && by) return el("span", { class: "tag date" }, `by ${fmtDate(by)}`);
-  return el("span", { class: "tag soft" }, when === "unknown" ? "Date unknown" : "Now");
+  const dated = when === "future" || (when === "now" && by);
+  return el("span", { class: dated ? "tag date" : "tag soft" }, appliesFromText(when, date, by));
 }
 
 // The action, with the parties it applies to under it.
@@ -757,7 +1239,8 @@ function plainWords(row) {
 // ---- the Act's words, and what they point at ---------------------------------------------------
 // Every row, duty or not, opens to the paragraph it comes from, and to the other articles and
 // annexes that paragraph cites. A cited provision's text is fetched only when the reader opens it.
-const actSays = (text) => kv("The Act says", el("div", { class: "law" }, text));
+const actSays = (text) => el("div", { class: "kv act-says" }, el("div", { class: "l" }, "The Act says"),
+  el("div", {}, el("div", { class: "law" }, text)));
 
 // A condition reads as a quoted fragment; its outer brackets add nothing on their own.
 const unwrap = (text) => String(text).replace(/^\((.*)\)$/s, "$1");
@@ -864,9 +1347,36 @@ window.addEventListener("DOMContentLoaded", () => {
   for (const b of document.querySelectorAll("#theme button")) b.addEventListener("click", () => setTheme(b.dataset.theme));
   setTheme(document.documentElement.dataset.theme || "auto");
   $("form").addEventListener("submit", runReview);
-  $("document").addEventListener("input", () => { countChars(); saveDraft(); });
+  migrateSaved();
+  // The saved choice first, so nothing flashes; then the server's word on whether a model exists.
+  setDemo(restore(DEMO_KEY) === true, { save: false });
+  $("demo-switch").addEventListener("click", () => setDemo(!demo));
+  $("modebar-off").addEventListener("click", () => setDemo(false));
+  $("demo-float-off").addEventListener("click", () => setDemo(false));
+  $("show-doc").addEventListener("click", () => showDocument(!$("form").classList.contains("doc-shown")));
+  fetch("/api/mode").then((r) => r.json()).then((info) => {
+    modeInfo = { ...modeInfo, ...info };
+    setDemo(demo, { save: false });
+  }).catch(() => {});
+  loadSamples();
+  loadModels();
+  $("document").addEventListener("input", () => {
+    countChars(); saveDraft(); markCase(null); setFieldError("file", "");
+  });
+  $("model").addEventListener("input", () => { setFieldError("model", ""); saveDraft(); });
+  $("api-key").addEventListener("input", () => setFieldError("api-key", ""));
+  // The key does not outlive the page: a reload or a closed tab starts with the field empty.
+  window.addEventListener("pagehide", () => { $("api-key").value = ""; });
   $("edit").addEventListener("click", () => { setMode("edit"); $("document").focus(); });
+  $("download-float").addEventListener("click", () => downloadMarkdown()); // report-md.js
+  $("print-float").addEventListener("click", () => window.print());
+  window.addEventListener("beforeprint", beforePrint);
+  window.addEventListener("afterprint", afterPrint);
+  for (const event of ["scroll", "resize"]) window.addEventListener(event, placeExportFloat, { passive: true });
+  // Opening or closing a row moves the end of the report without a scroll.
+  $("report").addEventListener("toggle", placeExportFloat, true);
   $("new").addEventListener("click", () => {
+    markCase(null);
     $("document").value = "";
     countChars();
     setMode("edit");
@@ -877,37 +1387,15 @@ window.addEventListener("DOMContentLoaded", () => {
     countChars();
     setMode("view");
   });
-  $("file").addEventListener("change", async () => {
+  $("file").addEventListener("change", () => {
     const file = $("file").files[0];
-    if (!file) return;
-    $("document").value = await file.text();
-    countChars();
-    saveDraft();
+    $("file").value = ""; // so the same file, edited outside, can be loaded again
+    if (file) loadFile(file);
   });
 
-  const draft = restore(STORE.draft);
-  last = restore(STORE.last);
-  const old = restore(OLD_REPORT_KEY);
-  if (!last && old?.report) {
-    last = { response: old, document: draft?.document || "" };
-    store(STORE.last, last);
-  }
-  try { localStorage.removeItem(OLD_REPORT_KEY); } catch {}
-  if (last) {
-    try { render(last.response); } catch { last = null; try { localStorage.removeItem(STORE.last); } catch {} }
-  }
-  if (last) refreshSaved();
-  // Back where the reader left off: editing a draft, or reading the last report.
-  if (last && !draft?.editing) {
-    $("document").value = last.document;
-    setMode("view");
-  } else {
-    $("document").value = draft?.document || "";
-    setMode("edit");
-  }
-  countChars();
   fetch("/api/limits").then((r) => r.json()).then((limits) => {
     maxChars = limits.max_document_chars || null;
+    maxUploadBytes = limits.max_upload_bytes || null;
     countChars();
   }).catch(() => {});
 });

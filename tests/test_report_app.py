@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.gap.judge import Judgement
 from aiact.policy_loader import load_policy_spec
-from aiact.report_app.app import app, get_brain, get_judge, get_summariser
+from aiact.report_app.app import MAX_UPLOAD_BYTES, app, get_brain, get_judge, get_summariser
 from aiact.report_app.views import resolve_norms, resolve_rules
 from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, Verdict
 from aiact.summary import SystemSummary
@@ -205,7 +205,7 @@ def test_page_files_are_revalidated_so_an_edit_shows_on_reload(client_for):
 def test_the_page_is_told_the_document_limit(client_for, monkeypatch):
     monkeypatch.setenv("AIACT_MAX_DOCUMENT_CHARS", "1234")
     response = client_for(**high_risk()).get("/api/limits")
-    assert response.json() == {"max_document_chars": 1234}
+    assert response.json() == {"max_document_chars": 1234, "max_upload_bytes": MAX_UPLOAD_BYTES}
 
 
 def test_a_saved_report_is_refreshed_without_calling_a_model(client_for):

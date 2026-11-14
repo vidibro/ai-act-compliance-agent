@@ -5,11 +5,13 @@ clearly where something is *planned* rather than built. A security document that
 deployment which does not exist yet is worse than none, so the distinction is kept explicit
 throughout.
 
-**What exists today:** a Python library and CLI. You run classification locally; the only data that
-leaves your machine goes to the LLM provider you configure (via LiteLLM) and, if you opt in with
-keys, to Langfuse. There is **no server, no multi-tenant deployment, and no stored user data** —
-the FastAPI layer and the bring-your-own-key (BYOK) model are roadmap items (M6, M9), and the
-deployment-specific controls below are labelled **Planned** accordingly.
+**What exists today:** a Python library and CLI, and the report app — a FastAPI page that runs
+the same review on a pasted document. The only data that leaves the machine goes to the LLM
+provider (via LiteLLM) and, if you opt in with keys, to Langfuse. There is **no multi-tenant
+deployment and no stored user data**. The report app's backend accepts a caller's own provider key
+per request (bring-your-own-key, BYOK — see *Secret handling*); the deployment hardening around it
+(auth, rate-limiting) is still a roadmap item, and the controls below that depend on it are
+labelled **Planned** accordingly.
 
 **Retention: the tool keeps no copy of the document you check.** Gap analysis indexes the document
 in a local vector store to find candidate evidence per obligation; that index is **in-memory by
@@ -131,9 +133,10 @@ and why the output is framed throughout as a **draft checklist for expert review
   credential that call just put in the environment is redacted from a traceback before it is
   printed. Redaction is by exact value for anything the environment names as a credential
   (`*_API_KEY`, `*_SECRET_KEY`, `*_TOKEN`, `*PASSWORD`, `*CREDENTIALS`) plus a conservative pattern
-  for vendor key shapes, which is what will cover a BYOK key that lives on a request rather than in
-  the environment. Covered by `tests/test_scrubbing.py`, including a real subprocess whose
-  traceback is checked for the key.
+  for vendor key shapes, and by exact value for a key named explicitly (`scrub(text, extra=...)`),
+  which is how the report app covers a BYOK key that lives on a request rather than in the
+  environment. Covered by `tests/test_scrubbing.py`, including a real subprocess whose traceback
+  is checked for the key.
 
   This is **defence in depth, not a fix for a known leak**: LiteLLM's exceptions were probed across
   connection, authentication, bad-parameter and proxy failures, and none carried the key — not in
@@ -141,27 +144,55 @@ and why the output is framed throughout as a **draft checklist for expert review
   request headers hanging off the response. The hook exists because that is a property of the
   current version of a fast-moving dependency, not a guarantee it offers.
 
-**Planned (BYOK, M9 — not yet built):**
+**Bring-your-own-key (the report app, built — M9's backend half):**
 
-- Each caller supplies their **own** LLM key on the request; it is injected per-request into the
-  LiteLLM call and **never persisted, never written to the vector store, never logged, never placed
-  in trace metadata**. Config may be cached, but a secret must not be — keys live on the request,
-  not on a process-global `Settings`.
-- ~~Keys scrubbed from error messages and stack traces before they leave the process.~~ **Built**
-  — see below; the per-request half is already supported (`scrub(text, extra=<the caller's key>)`).
-- ~~A test will assert the caller's key never appears in trace metadata, logs, or the vector
-  store.~~ **Partly built** — `tests/test_scrubbing.py` asserts it for trace metadata. The vector
-  store holds only the document being checked, so that half becomes meaningful once a key travels
-  on a request.
+- A caller supplies their **own** LLM key in the `X-LLM-API-Key` header of `POST /api/review` and
+  may name the model in the body. The key is carried on a per-request `LLMAccess` value
+  (`report_app/app.py`), handed to the three model seams — the classification brain, the judge and
+  the summariser — and passed into each LiteLLM call as `api_key=` (`providers.gateway_kwargs`).
+  It is **never persisted, never written to the vector store, never logged, never placed in trace
+  metadata**, and never on `Settings`: config may be cached for the life of the process, a secret
+  is not. `LLMAccess` excludes the key from its repr, and the seams hold it privately.
+- **A header, not the body and not `Authorization`.** Bodies are what request logs, browser
+  caches and saved requests keep, and the document is already in there; `Authorization` is the
+  caller's identity to *this* service and is reserved for the auth layer to come.
+- **Shape-checked, never echoed.** The header is validated by hand rather than by a FastAPI
+  constraint, because a validation error on a header would put the rejected value in the 422
+  body. A malformed key is refused with a 400 that does not repeat it.
+- **Scrubbed on the two paths that turn an exception into text**: the 502 detail and the log
+  line behind it, and the summariser's failure, which is raised in its own thread and logged
+  (`scrub(text, extra=<the caller's key>)`, which redacts a key of any shape). This is the net
+  behind the probe above — LiteLLM's errors carry no key today — not a fix for a known leak.
+- **The operator decides** (`AIACT_BYOK_MODE`): `available` honours a key where sent and falls
+  back to the server's own; `required` never spends the server's keys on a review — the setting
+  for a public deployment; `off` refuses the header, so a document goes only to the provider the
+  operator configured. `GET /api/mode` tells the page which, and whether a key or a model is
+  needed.
+- **On the page** the key is typed into a password field — never displayed — and goes from there
+  into the one request that sends it: not into local storage, not into the saved draft (which
+  keeps the document and the model), not onto the report, and not past a reload —
+  `autocomplete="off"` stops the browser restoring it, and `pagehide` clears it besides. The
+  model is validated against the pattern the server publishes in `GET /api/mode`, and the key's
+  shape against the same rule the server applies, so a refusal is explained before anything is
+  sent.
+- Pinned by `tests/test_byok.py`: every model call of a review is made with the caller's key and
+  model; the key appears in no response, no log line and no index on a review that fails with
+  the key in the error; the trace metadata is the allow-list and nothing else; a refused key is
+  not echoed; and, on the served page, nothing that writes to storage touches the key field.
 
-Until that lands, do not run this as a shared/multi-tenant service — the current model assumes one
-trusting operator.
+**Planned (M9 — not yet built):** auth, rate-limiting and tenant isolation around the BYOK path;
+optional BYO Langfuse and BYO vector store per tenant. Until those land, a shared deployment should
+run `AIACT_BYOK_MODE=required` and `AIACT_DEMO_MODE` as suits it, behind whatever the operator
+puts in front of it — the app itself authenticates nobody.
 
 ## Data flow — what leaves the process
 
-- **To the configured LLM provider (via LiteLLM):** the system card / document text being
-  classified, plus the verbatim enacted-law and guidance context. This is the request that does the
-  work; treat whatever you send as disclosed to that provider under their terms.
+- **To the LLM provider (via LiteLLM):** the system card / document text being classified, plus
+  the verbatim enacted-law and guidance context. This is the request that does the work; treat
+  whatever you send as disclosed to that provider under their terms. In the report app the
+  provider is the one behind the model the request names, where the server accepts a caller's
+  model and key (`AIACT_BYOK_MODE`); an operator who wants documents to reach one configured
+  provider only sets it to `off`.
 - **To Langfuse (only if you set keys):** the same request/response plus the trace metadata above,
   for observability. Off by default.
 - **Nowhere else.** No telemetry, no analytics, no third-party calls beyond those two. In
@@ -236,5 +267,5 @@ Whatever is sent reaches the configured LLM provider like any other input, under
   sends nothing to regulators, and has no write access to any external system. There is no action
   for injected input to trigger.
 - It is a **proof-of-work project**, not a hardened production service. The controls above are real,
-  but the deployment hardening (auth, rate-limiting, tenant isolation) arrives with the FastAPI and
-  BYOK milestones and is not claimed before then.
+  but the deployment hardening (auth, rate-limiting, tenant isolation) is the rest of the BYOK
+  milestone and is not claimed before then.

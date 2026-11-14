@@ -65,7 +65,101 @@ The two graphs are composed — one document in, one report out:
 python scripts/review.py data/golden_set/reference/hr-candidate-scoring.md
 ```
 
-Not built yet: the FastAPI layer (M6).
+The same review as a web page — paste a document, read the report — is the **report app**:
+
+```bash
+make app        # http://127.0.0.1:8766, model and key from .env
+```
+
+**Load a file** accepts Markdown and plain text, and also PDF and Word (`.docx`): the server
+extracts their text (`POST /api/extract` — no model call, nothing stored) into the input box, so
+what the review reads is on screen before it runs. A scanned PDF holds no text and is refused with
+a message; it needs OCR first.
+
+**Print** and **Download** are one pair of small buttons with three stops: docked at the report's
+head beside the system's name, in a row fixed to the bottom of the window while reading (beside
+the demo label in demo mode), and docked again at the report's end — one pair on screen at a time.
+The row fits one line on any screen: on a phone the demo label shortens to "Demo" and a ✕, and
+below 360px the floating pair keeps only its icons.
+
+**Download** saves the report on screen as a Markdown file. The file holds the classification, the
+verdict, every checked duty with its evidence and criteria, the checklist as a task list ticked the
+way the reader ticked it, the other provisions and the disclaimer — the whole report whatever the
+page's filters show, and a demo report stays marked as one. The Act's own wording behind each row
+is left out; each row keeps its citation. The file is written in the browser
+(`static/report-md.js`), because the ticks and the verdict they decide exist only there.
+
+**Print** prints the same content, or saves it as a PDF named like the Markdown file. Paper also
+holds the whole report whatever the filters show: every row opened, the verdict for every role, the
+checklist as ticked, and the time of printing. The Act's own wording is left out. The page is set
+up on the browser's print events, so Ctrl/Cmd+P prints the same thing, and put back as it was
+afterwards. The paper layout is the light theme whatever the page shows (`@media print` in
+`static/report.css`), and its margins hold the page number alone: in Chrome and Edge the browser's
+own header and footer (date, title, URL) are replaced even with "Headers and footers" ticked;
+Firefox and Safari leave them to that checkbox. A high-risk report with every duty listed runs to about ninety A4 pages.
+
+## The report app's two modes
+
+The page runs in one of two modes, and says which in the bar, in a banner, in a label fixed to the
+window and in its colours — orange for a real review, violet for the demo.
+
+- **Normal mode** is the review: paste a document, every model seam live, a minute or two per
+  document, the model named in `AIACT_LLM_MODEL` with its key in `.env`.
+- **Demo mode** is the same pipeline with the three model seams — the classification brain, the
+  judge and the summariser — replaced by deterministic keyword heuristics
+  (`src/aiact/report_app/demo.py`). No key, no cost, under a second, and the real report: the real
+  cascade and its legal routing, the real rule selection, the real page. What changes is who
+  answers the questions, and a demo report says so at its top, beside its title and on every verdict
+  — the response carries `demo: true`, and every heuristic answer starts with `Demo:`. **A demo
+  report is illustrative.** Word-matching cannot tell a `gap` from an `inadequate` — that is the
+  claim this project is built and measured around — so the demo shows what a report looks like and
+  how it reads, never whether a system complies.
+
+**Demo mode has no free text input: its documents are the cases.** The page opens on a gallery
+of twelve cards, each marked with the outcome the demo reaches on that document, and one click runs
+it — the reviewed document can be shown read-only beside the report. The cases are registered in
+`data/demo/samples.yaml` and served by `GET /api/samples`: the golden set's reference files
+(`data/golden_set/reference/` — high-risk, every checked duty met), the worked-example card from
+[the system-card guide](docs/system-card-guide.md) (high-risk, Arts. 9–15 as gaps), the smoke
+check's anonymised vendor pages (`data/golden_set/smoke/` — one prohibited, one not high-risk, one
+high-risk with nothing to check), and six cards written for the demo under `data/demo/cards/` for
+the cases the golden set does not cover: an Annex I medical device assessed by a notified body
+(high-risk under Art. 6(1), a partly written file), an Annex I lift component whose card never says
+who assesses conformity (needs review), CV extraction with its Art. 6(4) assessment written down
+(not high-risk), a retail chatbot owing Art. 50(1) and 50(2) (minimal risk), a general-purpose
+model card (Chapter V), and an exclusively military system (outside the Act). A reader's own
+document belongs in a real review. Normal mode offers no samples: a complete system card is far
+more than any of these cases, and the way to write one is [the guide](docs/system-card-guide.md) —
+a stock document in a real review would read as a template of one. A demo report lives in the page's
+memory, not in the browser's storage: it survives a mode switch, not a reload — a sample is one
+click away again.
+
+**Which mode the page offers** is decided by the server, and `GET /api/mode` tells the page why:
+
+- A live review is offered only where one can run: `AIACT_LLM_MODEL` names a model **and** a key
+  for its provider is set (the variables LiteLLM reads for Anthropic, OpenAI, Gemini and Mistral
+  are recognised), or a LiteLLM proxy is set, which holds its own. A provider the page does not
+  know is given the benefit of the doubt. Otherwise the page runs in demo mode alone, the switch
+  locked on and the banner saying — provider-agnostically — that no key is set, and
+  `POST /api/review` answers 503 rather than failing on the first call.
+- `AIACT_DEMO_MODE` (`.env`) sets the rest: `available` (the default) offers both; `only` switches
+  live reviews off — a public showcase; `off` removes the demo, and `POST /api/demo/review`
+  answers 403.
+
+**Bring your own key.** A reader can run a live review on their own provider account: the key goes
+in the `X-LLM-API-Key` header of `POST /api/review` and the model, optionally, in the body
+(`model`, any LiteLLM model string; `GET /api/models` lists the ones this project has priced and
+shaped a request for). The review's three model seams — the classification brain, the judge and
+the summariser — all run on that key and that model, for that request only; the key is never
+stored, logged, traced or indexed (see `SECURITY.md`), and the response names the model that wrote
+the report. `AIACT_BYOK_MODE` decides what the server does with a key: `available` (the default)
+honours one where sent and uses its own otherwise; `required` never spends the server's keys on a
+review — a public deployment; `off` refuses the header, so a document goes only to the provider the
+operator configured. `GET /api/mode` reports the setting in `byok`, with whether a key or a model
+must come with the request. On the page, the two fields sit under the document in normal mode —
+the model with a list of the priced ones to pick from, the key in a password field that is never
+shown, never saved and empty again after a reload — and say, beside them, which of the two this
+server needs. Demo mode has neither: it calls no model.
 
 ## The review, end to end
 

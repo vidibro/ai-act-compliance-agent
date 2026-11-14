@@ -8,11 +8,17 @@ or with citations that do not resolve.
 
 from __future__ import annotations
 
+from math import ceil
 from pathlib import Path
 
 import pytest
 
-from aiact.retrieval.chunking import MAX_TOKENS, chunk_document, default_token_counter
+from aiact.retrieval.chunking import (
+    FALLBACK_CHARS_PER_TOKEN,
+    MAX_TOKENS,
+    chunk_document,
+    default_token_counter,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 CORPUS = [
@@ -67,13 +73,33 @@ def test_heading_path_is_prepended_to_the_embedded_text():
     assert chunk.body == "AUC is 0.81 on the validation set."
 
 
+def _counters() -> list:
+    """Both ways the chunker can measure a budget: the character estimate, which always exists,
+    and the embedding model's tokenizer where it is on disk. Each splits paragraphs differently,
+    so each has to keep its offsets honest — a fallback that only ran on machines without the
+    model once hid a body that no longer matched its span."""
+    counter, exact = default_token_counter()
+    estimate = pytest.param(lambda text: ceil(len(text) / FALLBACK_CHARS_PER_TOKEN), id="estimate")
+    if not exact:
+        tokenizer = pytest.param(
+            None, id="tokenizer", marks=pytest.mark.skip("embedding model not downloaded")
+        )
+    else:
+        tokenizer = pytest.param(counter, id="tokenizer")
+    return [estimate, tokenizer]
+
+
+@pytest.mark.parametrize("count_tokens", _counters())
 @pytest.mark.parametrize("path", CORPUS, ids=lambda p: p.parent.name)
-def test_offsets_point_at_the_text_they_claim(path: Path):
+def test_offsets_point_at_the_text_they_claim(path: Path, count_tokens):
     """A verdict cites `chars N-M`. If that does not resolve to the quoted evidence, the citation
-    is decoration — the exact failure the project refuses everywhere else."""
+    is decoration — the exact failure the project refuses everywhere else. Exactly, not modulo
+    whitespace: the body IS the span."""
     text = path.read_text(encoding="utf-8")
-    for chunk in chunk_document(text):
-        assert text[chunk.char_start : chunk.char_end].strip() == chunk.body.strip()
+    chunks = chunk_document(text, count_tokens=count_tokens)
+    assert chunks
+    for chunk in chunks:
+        assert text[chunk.char_start : chunk.char_end] == chunk.body
 
 
 @pytest.mark.parametrize("path", CORPUS, ids=lambda p: p.parent.name)

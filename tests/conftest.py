@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import functools
+import math
 import os
 from pathlib import Path
 
 import pytest
+from chromadb.api.types import EmbeddingFunction
 
 import aiact.norm_loader
 import aiact.policy_loader
@@ -65,3 +67,51 @@ def _no_tracing_keys(_never_load_a_dotenv_file):
         os.environ.pop(key, None)
     tracing._callback_registered = False
     yield
+
+
+_VOCAB = [
+    "oversight",
+    "accuracy",
+    "logging",
+    "data",
+    "risk",
+    "instructions",
+    "documentation",
+    "panel",
+]
+
+
+class StubEmbedding(EmbeddingFunction):
+    """Deterministic, offline, and dependency-free: one dimension per vocabulary word.
+
+    Chroma's DEFAULT embedder downloads an ONNX model from the internet on first use, so any test
+    that builds a `DocumentIndex` without naming an embedder passes or fails with the network. No
+    test here measures retrieval quality — that is the eval's job — so every test indexes with this
+    stub instead, and the suite runs the same offline as on.
+
+    Subclasses Chroma's base class rather than duck-typing it — the base supplies `embed_query`,
+    `get_config` and the rest of the protocol Chroma 1.x calls into.
+    """
+
+    def __init__(self) -> None:  # required by Chroma's config round-trip
+        pass
+
+    @staticmethod
+    def name() -> str:
+        return "stub"
+
+    def get_config(self) -> dict:
+        return {}
+
+    @staticmethod
+    def build_from_config(config: dict) -> StubEmbedding:
+        return StubEmbedding()
+
+    def __call__(self, input: list[str]) -> list[list[float]]:  # noqa: A002 - Chroma's signature
+        vectors = []
+        for text in input:
+            lower = text.lower()
+            raw = [float(lower.count(word)) for word in _VOCAB]
+            norm = math.sqrt(sum(v * v for v in raw)) or 1.0
+            vectors.append([v / norm for v in raw])
+        return vectors

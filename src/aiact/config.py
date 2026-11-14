@@ -49,6 +49,22 @@ class Settings(BaseSettings):
     grader_model: str = ""
     grader_effort: str | None = None
 
+    # The report app's demo mode — the review with keyword stand-ins for the model, illustrative
+    # only. "available": offered beside the live review, and the only mode where a live review
+    # cannot run (no model, or no key for it). "only": live reviews switched off, demo alone.
+    # "off": no demo at all.
+    demo_mode: Literal["available", "only", "off"] = "available"
+
+    # Bring-your-own-key on the report app: a caller's provider key arrives in the X-LLM-API-Key
+    # header of POST /api/review and is used for that request alone. "available": honoured where
+    # sent, the server's own key otherwise. "required": every live review must bring a key — the
+    # server's keys are never spent on one (a public deployment). "off": the header is refused,
+    # so a document goes only to the provider the operator configured.
+    #
+    # Never a Settings field: the key itself. Config may be cached for the life of the process; a
+    # secret must not be (SECURITY.md). It lives on the request, and on nothing that outlives it.
+    byok_mode: Literal["available", "required", "off"] = "available"
+
     def model_for_grading(self) -> str:
         """The grader's model, falling back to the shared default."""
         return self.grader_model or self.llm_model

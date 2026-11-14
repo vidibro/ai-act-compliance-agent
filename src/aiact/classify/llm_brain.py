@@ -399,12 +399,17 @@ class LLMBrain:
         model: str | None = None,
         effort: str | None = None,
         profile: ProviderProfile | None = None,
+        api_key: str | None = None,
     ) -> None:
         settings = get_settings()
         self.model = model or settings.llm_model
         # No sampling/thinking/caching parameters are named in this class — the provider seam owns
         # them, because every one of them is vendor-specific (see providers.py).
         self.profile = profile or profile_for(self.model, effort or settings.effort_for("classify"))
+        # A caller's own key (bring-your-own-key), or None for the environment's. Held for the
+        # calls this brain makes and handed to nothing else: not to the trace metadata, not to the
+        # answers, not to any log line. Private so no repr or dump of the brain shows it.
+        self._api_key = api_key
         self.usage = Usage()
 
     def _abstain(
@@ -492,7 +497,7 @@ class LLMBrain:
             ],
             response_format={"type": "json_object"},
             **({"metadata": metadata} if metadata else {}),
-            **gateway_kwargs(),
+            **gateway_kwargs(self._api_key),
             **self.profile.completion_kwargs,
         )
         # counted even if we abstain below: a wasted call still costs
