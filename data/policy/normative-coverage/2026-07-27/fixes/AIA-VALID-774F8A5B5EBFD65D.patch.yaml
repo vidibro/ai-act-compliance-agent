@@ -1,8 +1,8 @@
 schema_version: 1
 finding_id: AIA-VALID-774F8A5B5EBFD65D
 target_file: source-records/articles/018.yaml
-before_sha256: 9fdecb62c910da27e3407790afc125cee26da653f055afcbc79b86387e973a70
-after_sha256: 848c92e090a1145b4a67af21739742480160d0f115e5ec209ef9de428ee03658
+before_sha256: c6112a4423ae79d73c82d317d22ec6fce196f2e88e29c279d4e498001dc163ee
+after_sha256: f45e31eea6bd961b56f5a9588278a0c042a6b865cab7c3455c95896d653a876e
 replacements:
 - old: "  action: determine conditions preserving authority access to Article 18(1) documentation after a locally\n    established provider or authorised representative becomes bankrupt or ceases activity early\n  actors:\n  - actor_ref: member_state\n    basis_segment_ids: [AIA-TEXT-A018-P007]\n  targets: []"
   new: "  action: determine conditions preserving authority access to Article 18(1) documentation after a locally\n    established provider or authorised representative becomes bankrupt or ceases activity early\n  conditions:\n    operator: all_of\n    operands:\n    - text: for the cases when a provider or its authorised representative established on its territory goes bankrupt or ceases its activity prior to the end of that period\n      basis_segment_ids: [AIA-TEXT-A018-P007]\n  actors:\n  - actor_ref: member_state\n    basis_segment_ids: [AIA-TEXT-A018-P007]\n  targets: []"
