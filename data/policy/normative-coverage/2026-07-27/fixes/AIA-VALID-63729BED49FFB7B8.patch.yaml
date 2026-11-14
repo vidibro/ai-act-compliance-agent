@@ -1,8 +1,8 @@
 schema_version: 1
 finding_id: AIA-VALID-63729BED49FFB7B8
 target_file: source-records/articles/024.yaml
-before_sha256: 30ea6aff0da59ebf08a5c82b2e1e8fafc5b2b2a0f007bb9f1873afe5239b1591
-after_sha256: ce29b1c1487af5d31fa6bcb1592c36fca39db4bddb6c096c81d4d3e46f476bd6
+before_sha256: a551cb99631aaa8eb5059874ec1bfea7d722e6ecee439ccb3d0fa4fd8d941269
+after_sha256: a6aded028c296a8a8abf225728fe7e6d5d8f81241e94d5a6edea264952503e75
 replacements:
 - old: "  action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while\n    the system is under the distributor's responsibility\n  actors:\n  - actor_ref: distributor\n    basis_segment_ids: [AIA-TEXT-A024-P001]\n  targets: []\n  implementation_refs: *id002"
   new: "  action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while\n    the system is under the distributor's responsibility\n  actors:\n  - actor_ref: distributor\n    basis_segment_ids: [AIA-TEXT-A024-P001]\n  targets: []\n  conditions:\n    operator: all_of\n    operands:\n    - text: while a high-risk AI system is under their responsibility\n      basis_segment_ids: [AIA-TEXT-A024-P003]\n    - text: where applicable\n      basis_segment_ids: [AIA-TEXT-A024-P003]\n  implementation_refs: *id002"

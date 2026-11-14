@@ -98,5 +98,5 @@ decisions:
     \ as structured conditions. The exact patch binds the audit finding to that correction."
   fix:
     patch_file: fixes/AIA-VALID-63729BED49FFB7B8.patch.yaml
-    patch_sha256: 7a9cc2bc14e7c695fff452e56af4f499a7a5aeac64dc2084c8656920162ca445
+    patch_sha256: 312852199e8311c39799acdcad62c6100ed0d08b88542ddee468fd22f9b9c95e
   reviewed_by: vidibro
